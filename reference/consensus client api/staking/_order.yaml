@@ -12,3 +12,5 @@
 - get_staking-historical-info-height
 - get_staking-validators-validator-addr-delegations-delegator-addr
 - get_staking-validators-validator-addr-unbonding-delegations
+- >-
+  get_staking-validators-validator-addr-delegations-delegator-addr-unbonding-delegation
