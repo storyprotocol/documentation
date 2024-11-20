@@ -16,12 +16,12 @@ It might surprise many that the stock visual asset market is a multi-billion dol
 
 Assumptions
 
-- Quality output prompts are very hard, so the target audience still prefers to buy existing assets that meet their requirement
-- Thanks to the low cost of production, one could offer the most extensive catalog addressing very niche demands
+* Quality output prompts are very hard, so the target audience still prefers to buy existing assets that meet their requirement
+* Thanks to the low cost of production, one could offer the most extensive catalog addressing very niche demands
 
 Some additional features
 
-- Require prompt submission along with the output asset to check for IP or artist-style infringement
-- Use ZKP or simple hash of prompt to validate that the marketplace is running infringement checks without revealing prompts
-- Unlike a prompt marketplace, the visual asset is the product being sold, so tailor the experience for assets browsing and purchase flow
-- Beyond simple stock image T&C, enable more advanced licensing that allows creators to incorporate the assets into their IP and participate in the upside (narrative universe, animation, NFT projects, gaming)
+* Require prompt submission along with the output asset to check for IP or artist-style infringement
+* Use ZKP or simple hash of prompt to validate that the marketplace is running infringement checks without revealing prompts
+* Unlike a prompt marketplace, the visual asset is the product being sold, so tailor the experience for assets browsing and purchase flow
+* Beyond simple stock image T\&C, enable more advanced licensing that allows creators to incorporate the assets into their IP and participate in the upside (narrative universe, animation, NFT projects, gaming)
