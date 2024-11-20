@@ -11,7 +11,7 @@ next:
   description: ''
 ---
 > 🏁 React Tutorial
-> 
+>
 > Try our open-source <a href="https://sandbox.storyprotocol.xyz/" target="_blank">Developer Sandbox</a> for an interactive tutorial that shows you the React SDK being used in a Next.js project.
 
 # Compatibility matrix for parameters
