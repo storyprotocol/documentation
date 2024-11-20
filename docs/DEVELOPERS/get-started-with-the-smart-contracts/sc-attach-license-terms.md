@@ -14,14 +14,14 @@ Once [License Terms](doc:license-terms) have been created, and an associated `li
 
 ## Prerequisites
 
-- Create License Terms by following this tutorial: [Register License Terms](doc:sc-register-license-terms)
+* Create License Terms by following this tutorial: [Register License Terms](doc:sc-register-license-terms)
 
 ## Attach License Terms
 
 Create a new file under `./test/2_AttachTerms.t.sol` and paste the following:
 
 > 📘 Contract Addresses
-> 
+>
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
 ```sol 2_AttachTerms.t.sol
