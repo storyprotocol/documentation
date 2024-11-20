@@ -10,29 +10,29 @@ metadata:
 next:
   description: ''
 ---
-This contract is used to control access permissions for different function calls in the protocol.  
-It allows setting permissions for specific function calls, checking permissions, and initializing the contract.  
-The contract uses a mapping to store policies, which are represented as a nested mapping structure.  
+This contract is used to control access permissions for different function calls in the protocol.\
+It allows setting permissions for specific function calls, checking permissions, and initializing the contract.\
+The contract uses a mapping to store policies, which are represented as a nested mapping structure.\
 The contract also interacts with other contracts such as IIPAccountRegistry, IModuleRegistry, and IIPAccount.
 
-Each policy is represented as a mapping from an IP account address to a signer address to a recipient  
-address to a function selector to a permission level.  
+Each policy is represented as a mapping from an IP account address to a signer address to a recipient\
+address to a function selector to a permission level.\
 The permission level can be 0 (ABSTAIN), 1 (ALLOW), or 2 (DENY).
 
 The contract includes the following functions:
 
-- initialize: Sets the addresses of the IP account registry and the module registry.
-- setPermission: Sets the permission for a specific function call.
-- getPermission: Returns the permission level for a specific function call.
-- checkPermission: Checks if a specific function call is allowed.\_
+* initialize: Sets the addresses of the IP account registry and the module registry.
+* setPermission: Sets the permission for a specific function call.
+* getPermission: Returns the permission level for a specific function call.
+* checkPermission: Checks if a specific function call is allowed.\_
 
-### IP_ACCOUNT_REGISTRY
+### IP\_ACCOUNT\_REGISTRY
 
 ```solidity
 address IP_ACCOUNT_REGISTRY
 ```
 
-### MODULE_REGISTRY
+### MODULE\_REGISTRY
 
 ```solidity
 address MODULE_REGISTRY
@@ -44,8 +44,8 @@ address MODULE_REGISTRY
 mapping(bytes32 => uint8) encodedPermissions
 ```
 
-_Tracks the permission granted to an encoded permission path, where the  
-encoded permission path = keccak256(abi.encodePacked(ipAccount, signer, to, func))_
+*Tracks the permission granted to an encoded permission path, where the\
+encoded permission path = keccak256(abi.encodePacked(ipAccount, signer, to, func))*
 
 ### constructor
 
@@ -59,10 +59,10 @@ constructor(address governance) public
 function initialize(address ipAccountRegistry, address moduleRegistry) external
 ```
 
-_Initialize the Access Controller with the IP Account Registry and Module Registry addresses.  
-These are separated from the constructor, because we need to deploy the AccessController first for  
-to deploy many registry and module contracts, including the IP Account Registry and Module Registry.  
-Enforced to be only callable by the protocol admin in governance._
+*Initialize the Access Controller with the IP Account Registry and Module Registry addresses.\
+These are separated from the constructor, because we need to deploy the AccessController first for\
+to deploy many registry and module contracts, including the IP Account Registry and Module Registry.\
+Enforced to be only callable by the protocol admin in governance.*
 
 #### Parameters
 
@@ -79,7 +79,7 @@ function setBatchPermissions(struct AccessPermission.Permission[] permissions) e
 
 Sets a batch of permissions in a single transaction.
 
-_This function allows setting multiple permissions at once. Pausable._
+*This function allows setting multiple permissions at once. Pausable.*
 
 #### Parameters
 
@@ -95,7 +95,7 @@ function setGlobalPermission(address signer, address to, bytes4 func, uint8 perm
 
 Sets the permission for all IPAccounts
 
-_Enforced to be only callable by the protocol admin in governance._
+*Enforced to be only callable by the protocol admin in governance.*
 
 #### Parameters
 
@@ -114,14 +114,14 @@ function setPermission(address ipAccount, address signer, address to, bytes4 fun
 
 Sets the permission for a specific function call
 
-_Each policy is represented as a mapping from an IP account address to a signer address to a recipient  
-address to a function selector to a permission level. The permission level can be 0 (ABSTAIN), 1 (ALLOW), or  
-2 (DENY).  
-By default, all policies are set to 0 (ABSTAIN), which means that the permission is not set.  
-The owner of ipAccount by default has all permission.  
-address(0) => wildcard  
-bytes4(0) => wildcard  
-Specific permission overrides wildcard permission._
+*Each policy is represented as a mapping from an IP account address to a signer address to a recipient\
+address to a function selector to a permission level. The permission level can be 0 (ABSTAIN), 1 (ALLOW), or\
+2 (DENY).\
+By default, all policies are set to 0 (ABSTAIN), which means that the permission is not set.\
+The owner of ipAccount by default has all permission.\
+address(0) => wildcard\
+bytes4(0) => wildcard\
+Specific permission overrides wildcard permission.*
 
 #### Parameters
 
@@ -139,12 +139,12 @@ Specific permission overrides wildcard permission._
 function checkPermission(address ipAccount, address signer, address to, bytes4 func) external view
 ```
 
-Checks the permission level for a specific function call. Reverts if permission is not granted.  
+Checks the permission level for a specific function call. Reverts if permission is not granted.\
 Otherwise, the function is a noop.
 
-_This function checks the permission level for a specific function call.  
-If a specific permission is set, it overrides the general (wildcard) permission.  
-If the current level permission is ABSTAIN, the final permission is determined by the upper level._
+*This function checks the permission level for a specific function call.\
+If a specific permission is set, it overrides the general (wildcard) permission.\
+If the current level permission is ABSTAIN, the final permission is determined by the upper level.*
 
 #### Parameters
 
@@ -176,7 +176,7 @@ Returns the permission level for a specific function call.
 
 | Name | Type  | Description                                                                                           |
 | ---- | ----- | ----------------------------------------------------------------------------------------------------- |
-| [0]  | uint8 | permission The current permission level for the function call on `to` by the `signer` for `ipAccount` |
+| \[0] | uint8 | permission The current permission level for the function call on `to` by the `signer` for `ipAccount` |
 
 ### \_setPermission
 
@@ -184,7 +184,7 @@ Returns the permission level for a specific function call.
 function _setPermission(address ipAccount, address signer, address to, bytes4 func, uint8 permission) internal
 ```
 
-_The permission parameters will be encoded into bytes32 as key in the permissions mapping to save storage_
+*The permission parameters will be encoded into bytes32 as key in the permissions mapping to save storage*
 
 ### \_encodePermission
 
@@ -192,4 +192,4 @@ _The permission parameters will be encoded into bytes32 as key in the permission
 function _encodePermission(address ipAccount, address signer, address to, bytes4 func) internal view returns (bytes32)
 ```
 
-_encode permission to hash (bytes32)_
+*encode permission to hash (bytes32)*
