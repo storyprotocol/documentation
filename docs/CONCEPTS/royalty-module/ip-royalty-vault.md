@@ -11,11 +11,11 @@ next:
   description: ''
 ---
 > ⏩ Skip the Read - 1 Minute Summary
-> 
+>
 > An IP Royalty Vault is a pool for all monetary inflows related to an IP Asset.
-> 
-> Every IP Asset has 100,000,000 Royalty Tokens associated with it, where each token represents the right to 0.000001% of that IPA's revenue (_"Revenue Tokens"_) stored in the pool.
-> 
+>
+> Every IP Asset has 100,000,000 Royalty Tokens associated with it, where each token represents the right to 0.000001% of that IPA's revenue (*"Revenue Tokens"*) stored in the pool.
+>
 > Revenue Tokens are ERC-20 tokens used for payment (ex. USDC). These tokens must be whitelisted by the protocol to be used.
 
 Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inflows related to an IP Asset's commercial exploration or from minting licenses. Anyone who holds Royalty Tokens (defined below) has the right to claim their share of this pool.
@@ -30,27 +30,55 @@ Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inf
 
 An ERC-20 token must be whitelisted by our protocol in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token. Here are the whitelisted tokens (you can mint tokens directly from the link):
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Network",
-    "h-1": "Token",
-    "0-0": "Iliad",
-    "0-1": "SUSD: 0x91f6F05B08c16769d3c85867548615d270C42fC7  \n  \n<a href=\"https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7\" target=\"_blank\">Mint SUSD ↗️</a>",
-    "1-0": "Odyssey",
-    "1-1": "SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5  \n  \n<a href=\"https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5\" target=\"_blank\">Mint SUSD ↗️</a>",
-    "2-0": "Odyssey",
-    "2-1": "WIP: 0x1516000000000000000000000000000000000000"
-  },
-  "cols": 2,
-  "rows": 3,
-  "align": [
-    "left",
-    "left"
-  ]
-}
-[/block]
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Network
+      </th>
 
+      <th style={{ textAlign: "left" }}>
+        Token
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        Iliad
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        SUSD: 0x91f6F05B08c16769d3c85867548615d270C42fC7  
+
+        <a href="https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7" target="_blank">Mint SUSD ↗️</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        Odyssey
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5  
+
+        <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5" target="_blank">Mint SUSD ↗️</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        Odyssey
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        WIP: 0x1516000000000000000000000000000000000000
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ## How to obtain Royalty Tokens?
 
