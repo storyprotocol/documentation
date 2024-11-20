@@ -14,8 +14,8 @@ This section demonstrates how to collect royalty tokens and then claim actual re
 
 ## Prerequisites
 
-- [Setup](doc:python-sdk-setup) the client object.
-- Understand the [Royalty Module](doc:royalty-module)
+* [Setup](doc:python-sdk-setup) the client object.
+* Understand the [Royalty Module](doc:royalty-module)
 
 # Collect Royalty Tokens
 
