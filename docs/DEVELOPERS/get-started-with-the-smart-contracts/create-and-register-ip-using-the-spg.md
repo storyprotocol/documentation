@@ -16,7 +16,7 @@ One common use case many developers will want is the ability to mint an IP as a 
 
 For these cases, we recommend using the Story Protocol SPG, which, besides offering more secure and convenient methods around remixing or registration of existing NFTs as IPAs, also offers a powerful minting engine through which you can directly create an ERC-721 representation of your IP while registering it into the protocol in a single interface.
 
-Usually, you will likely not require your own custom ERC-721 collection for your IP, and simply want to perform ad-hoc registration of an off-chain asset. For these cases, we recommend using the** SPG default ERC-721 collection**, an ERC-721 that treats every NFT as an independent entity with its own customizable metadata, and also includes native support for rendering IP attribution within its `tokenURI()`. This means that these NFTs actually show you all details related to IP attribution, along with its own core metadata. Let's start by examining two core use-cases:
+Usually, you will likely not require your own custom ERC-721 collection for your IP, and simply want to perform ad-hoc registration of an off-chain asset. For these cases, we recommend using the **SPG default ERC-721 collection**, an ERC-721 that treats every NFT as an independent entity with its own customizable metadata, and also includes native support for rendering IP attribution within its `tokenURI()`. This means that these NFTs actually show you all details related to IP attribution, along with its own core metadata. Let's start by examining two core use-cases:
 
 ## Bundled IP minting and registration with the SPG default ERC-721 collection
 
@@ -147,7 +147,7 @@ Here, we call the `mintAndRegisterDerivativeIp` function of the SPG, which allow
 
 Because the SPG is a minting engine itself, it actually supports creation of custom IP collections out-of-the-box that allows you to perform bundled mint-backed registrations. In this section, we'll go over how you can leverage the SPG to create your own collection and use it for minting and registration of IP assets.
 
-_Note: If you want something even more customizable, we recommend simply creating your own ERC-721 collection, and then leveraging the default `registerIp` or `registerDerivativeIp` SPG functions (or `register` if you were to call the IPA registry directly)._
+*Note: If you want something even more customizable, we recommend simply creating your own ERC-721 collection, and then leveraging the default`registerIp` or `registerDerivativeIp` SPG functions (or `register` if you were to call the IPA registry directly).*
 
 Configuring your custom collection is actually very simple! All you need to do is choose one of the SPG supported collection types, and pass in settings related to your collection. Here is sample code for IP minting and registration that utilizes a custom collection for doing so:
 
@@ -229,6 +229,6 @@ contract ExampleCustomSPGCollectionRegistration {
 
 Let us examine the `_getOrCreateCustomCollection()` internal function we wrote at the end. This leverages the SPG's `createIpCollection` function, which allows us to specify a collection type and a set of settings related to the collection as a whole. Here, we chose the `SP_DEFAULT_COLLECTION` type, which refers to the ERC721 variant that treats every NFT independently with its own customizable metadata. 
 
-For the setting, `start` refers to when minting can begin for the collection, with `end` referring to the when it will terminate (0 means it will run indefinitely until the max supply is reached). In addition, we specify the name, symbol, and maximum supply. The metadata provider is an abstraction used by SPG ERC-721s for metadata rendering. You may choose to implement your own, as long as it conforms to the `IERC721MetadataProvider` interface, but we recommend simply passing in the Story Protocol default metadata provider (_refer to the deployments document for what this address is_).
+For the setting, `start` refers to when minting can begin for the collection, with `end` referring to the when it will terminate (0 means it will run indefinitely until the max supply is reached). In addition, we specify the name, symbol, and maximum supply. The metadata provider is an abstraction used by SPG ERC-721s for metadata rendering. You may choose to implement your own, as long as it conforms to the `IERC721MetadataProvider` interface, but we recommend simply passing in the Story Protocol default metadata provider (*refer to the deployments document for what this address is*).
 
-_Note: For version `v0.1-beta`, the SPG only supports one type of collection, the `SP_DEFAULT_COLLECTION`, and only supports public mints by default._
+*Note: For version`v0.1-beta`, the SPG only supports one type of collection, the `SP_DEFAULT_COLLECTION`, and only supports public mints by default.*
