@@ -12,7 +12,7 @@ next:
 ---
 Base contract to be inherited by modules that need to access the licensing module.
 
-### LICENSING_MODULE
+### LICENSING\_MODULE
 
 ```solidity
 contract ILicensingModule LICENSING_MODULE
