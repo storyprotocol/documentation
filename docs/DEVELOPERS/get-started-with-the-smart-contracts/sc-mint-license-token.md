@@ -14,14 +14,14 @@ Once [License Terms](doc:license-terms) have been attached to an IP Asset, you c
 
 ## Prerequisites
 
-- An IP Asset has License Terms attached to it. You can learn how to do that here: [Attach License Terms to an IP Asset](doc:sc-attach-license-terms)
+* An IP Asset has License Terms attached to it. You can learn how to do that here: [Attach License Terms to an IP Asset](doc:sc-attach-license-terms)
 
 ## Mint a License Token
 
 Create a new file under `./test/3_LicenseToken.t.sol` and paste the following:
 
 > 📘 Contract Addresses
-> 
+>
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
 ```sol 3_LicenseToken.t.sol
