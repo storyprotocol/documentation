@@ -2,3 +2,4 @@
 - get_staking-validators-validator-addr
 - get_staking-validators-validator-addr-delegations
 - get_staking-delegations-delegator-addr
+- get_staking-delegators-delegator-addr-redelegations
