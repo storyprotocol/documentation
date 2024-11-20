@@ -14,8 +14,8 @@ This section demonstrates how to collect royalty tokens and then claim actual re
 
 ## Prerequisites
 
-- [React SDK Setup](doc:react-sdk-setup)
-- Understand the [Royalty Module](doc:royalty-module)
+* [React SDK Setup](doc:react-sdk-setup)
+* Understand the [Royalty Module](doc:royalty-module)
 
 # Collect Royalty Tokens
 
@@ -102,7 +102,7 @@ Setting `waitForTransaction: true` in the transaction options will return the `s
 Now you can `claimRevenue` as shown below. **Only the owner of the royalty tokens at the time of the provided snapshot can call this function.**
 
 > 📘 Claiming to an IP Account
-> 
+>
 > Normally, `claimRevenue` claims the revenue tokens to the wallet that runs the transaction. However, you can optionally claim to the IP Account by passing an `account` parameter which is the `ipId` of the IP Account.
 
 ```jsx ClaimRevenue.tsx
