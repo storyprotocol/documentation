@@ -14,8 +14,8 @@ This section demonstrates how to mint a license for an IP asset. You can only mi
 
 ## Prerequisites
 
-- [Setup](doc:react-sdk-setup) the Web3Provider.
-- An IP asset that has a policy added. Learn how to add a policy to an IP asset [here](doc:react-sdk-attach-a-policy-to-an-ip-asset).
+* [Setup](doc:react-sdk-setup) the Web3Provider.
+* An IP asset that has a policy added. Learn how to add a policy to an IP asset [here](doc:react-sdk-attach-a-policy-to-an-ip-asset).
 
 # Mint License
 
