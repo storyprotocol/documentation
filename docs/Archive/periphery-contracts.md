@@ -19,9 +19,9 @@ The SPG is deployed on Sepolia at: `0x5a12E3F0DAeF58d493fa4c5a462e8cEB7b15cF28`
 
 Listed below are the core functions provided by the SPG, with a detailed explanation of how to craft these inputs to build the programmable IP of your dreams!
 
-- [Default IP Collection](doc:default-ip-collection)
-- [Create IP Collection](doc:ip-creation)
-- [Register IP](doc:register-ip)
-- [Mint And Register IP](doc:mint-and-register-ip)
-- [Register Derivative IP](doc:register-derivative-ip)
-- [Mint And Register Derivative IP](doc:mint-and-register-derivative-ip)
+* [Default IP Collection](doc:default-ip-collection)
+* [Create IP Collection](doc:ip-creation)
+* [Register IP](doc:register-ip)
+* [Mint And Register IP](doc:mint-and-register-ip)
+* [Register Derivative IP](doc:register-derivative-ip)
+* [Mint And Register Derivative IP](doc:mint-and-register-derivative-ip)
