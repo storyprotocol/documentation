@@ -78,7 +78,7 @@ error IPAccount__InvalidCalldata()
 error IPAccount__InvalidAccessController()
 ```
 
-### Module_Unauthorized
+### Module\_Unauthorized
 
 ```solidity
 error Module_Unauthorized()
@@ -86,7 +86,7 @@ error Module_Unauthorized()
 
 The caller is not allowed to call the provided module.
 
-### IPAccountRegistry_InvalidIpAccountImpl
+### IPAccountRegistry\_InvalidIpAccountImpl
 
 ```solidity
 error IPAccountRegistry_InvalidIpAccountImpl()
@@ -156,7 +156,7 @@ error IPAssetRegistry__InvalidMetadataProvider()
 
 The metadata provider is not valid.
 
-### IPResolver_InvalidIP
+### IPResolver\_InvalidIP
 
 ```solidity
 error IPResolver_InvalidIP()
@@ -164,7 +164,7 @@ error IPResolver_InvalidIP()
 
 The targeted IP does not yet have an IP account.
 
-### IPResolver_Unauthorized
+### IPResolver\_Unauthorized
 
 ```solidity
 error IPResolver_Unauthorized()
