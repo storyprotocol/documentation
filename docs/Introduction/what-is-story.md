@@ -14,28 +14,14 @@ metadata:
 next:
   description: ''
 ---
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/3e11869-header_story.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/3e11869-header_story.png" />
 
 # Introducing the World's IP Blockchain
 
 Story is making the legal system for creative Intellectual Property (IP) more efficient by turning IP "programmable" on the blockchain. To do this, we have created Story Network: a purpose-built layer 1 blockchain where people or programs alike can license, remix, and monetize IP according to transparent terms set by creators themselves.
 
 > ⏩ Skip the Read - 1 Minute Summary
-> 
+>
 > Want to skip to a summary? Check out [Explain Like I'm Five](doc:explain-like-im-five) for a super fast & easy to understand explanation of everything Story.
 
 ## The "Why"
@@ -56,8 +42,8 @@ There are several elements that make up Story as a whole. Below we will cover th
 
 Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
 
-- using precompiled primitives to traverse complex data structures like IP graphs within seconds at marginal costs
-- a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
+* using precompiled primitives to traverse complex data structures like IP graphs within seconds at marginal costs
+* a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
 
 ### Proof-of-Creativity Protocol
 
@@ -72,7 +58,7 @@ To interact with IP Assets within the protocol, we use “**modules**” such as
 
 ### Programmable IP License
 
-Although on-chain, an IPA’s terms and minted License Tokens are enforced by an off-chain legal contract called the [Programmable IP License (PIL💊)](doc:programmable-ip-license-pil), which allows anyone to offramp tokenized IP into the off-chain legal system and outlines real legal terms for how creators can remix, monetize, and create derivatives of their IP. _The protocol, or more specifically the IP Assets and modules described above, are what automate and enforce those terms on-chain_, creating a mapping between the legal world (PIL) and the blockchain.
+Although on-chain, an IPA’s terms and minted License Tokens are enforced by an off-chain legal contract called the [Programmable IP License (PIL💊)](doc:programmable-ip-license-pil), which allows anyone to offramp tokenized IP into the off-chain legal system and outlines real legal terms for how creators can remix, monetize, and create derivatives of their IP. *The protocol, or more specifically the IP Assets and modules described above, are what automate and enforce those terms on-chain*, creating a mapping between the legal world (PIL) and the blockchain.
 
 Like USDC enables redemption for fiat, the PIL enables redemption for IP.
 
