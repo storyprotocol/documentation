@@ -14,7 +14,7 @@ Types and constants used by the licensing related contracts
 
 ### Policy
 
-A particular configuration (flavor) of a Policy Framework, setting values for the licensing  
+A particular configuration (flavor) of a Policy Framework, setting values for the licensing\
 terms (parameters) of the framework.
 
 #### Parameters
