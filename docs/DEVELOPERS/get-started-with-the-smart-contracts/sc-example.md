@@ -11,7 +11,7 @@ next:
   description: ''
 ---
 > 📺 Video Walkthrough
-> 
+>
 > If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=omSO5nQKa5M).
 
 Now that we have walked through each of the individual steps, let's try to write, deploy, and verify our own smart contract.
@@ -24,16 +24,16 @@ In this first section, we will combine a few of the tutorials into one. We will 
 
 ### Prerequisites
 
-- Complete [Register an NFT as an IP Asset](doc:sc-tutorial-registering-an-ip-asset__old)
-- Complete [Register License Terms](doc:sc-register-license-terms)
-- Complete [Attach License Terms to an IP Asset](doc:sc-attach-license-terms)
+* Complete [Register an NFT as an IP Asset](doc:sc-tutorial-registering-an-ip-asset__old)
+* Complete [Register License Terms](doc:sc-register-license-terms)
+* Complete [Attach License Terms to an IP Asset](doc:sc-attach-license-terms)
 
 ### Writing our Contract
 
 Create a new file under `./src/Example.sol` and paste the following:
 
 > 📘 Contract Addresses
-> 
+>
 > In order to get the contract addresses to pass in the constructor, go to [Deployed Smart Contracts](doc:deployed-smart-contracts).
 
 ```sol Example.sol
@@ -121,8 +121,8 @@ In this next section, we will combine a few of the later tutorials into one. We 
 
 ### Prerequisites
 
-- Complete [Mint a License Token from an IP Asset](doc:sc-mint-license-token)
-- Complete [Remix an IP Asset](doc:sc-remix-ipa)
+* Complete [Mint a License Token from an IP Asset](doc:sc-mint-license-token)
+* Complete [Remix an IP Asset](doc:sc-remix-ipa)
 
 ### Writing our Contract
 
