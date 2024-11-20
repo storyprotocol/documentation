@@ -14,7 +14,7 @@ This contract acts as the source of truth for all IP registered in Story Protoco
 
 IMPORTANT: The IP account address, besides being used for protocol auth, is also the canonical IP identifier for the IP NFT.
 
-### MODULE_REGISTRY
+### MODULE\_REGISTRY
 
 ```solidity
 contract IModuleRegistry MODULE_REGISTRY
@@ -22,7 +22,7 @@ contract IModuleRegistry MODULE_REGISTRY
 
 The canonical module registry used by the protocol.
 
-### REGISTRATION_MODULE
+### REGISTRATION\_MODULE
 
 ```solidity
 contract IRegistrationModule REGISTRATION_MODULE
@@ -52,7 +52,7 @@ Checks whether an operator is approved to register on behalf of an IP owner.
 mapping(address => struct IIPAssetRegistry.Record) _records
 ```
 
-_Maps an IP, identified by its IP ID, to an IP record._
+*Maps an IP, identified by its IP ID, to an IP record.*
 
 ### \_metadataProvider
 
@@ -60,7 +60,7 @@ _Maps an IP, identified by its IP ID, to an IP record._
 contract IMetadataProviderMigratable _metadataProvider
 ```
 
-_Tracks the current metadata provider used for IP registrations._
+*Tracks the current metadata provider used for IP registrations.*
 
 ### constructor
 
@@ -91,7 +91,7 @@ Enables third party operators to register on behalf of an NFT owner.
 function setRegistrationModule(address registrationModule) external
 ```
 
-_Sets the registration module that interacts with IPAssetRegistry._
+*Sets the registration module that interacts with IPAssetRegistry.*
 
 #### Parameters
 
@@ -105,8 +105,8 @@ _Sets the registration module that interacts with IPAssetRegistry._
 function setMetadataProvider(address newMetadataProvider) external
 ```
 
-_Sets the provider for storage of new IP metadata, while enabling existing IP assets to migrate their  
-metadata to the new provider._
+*Sets the provider for storage of new IP metadata, while enabling existing IP assets to migrate their\
+metadata to the new provider.*
 
 #### Parameters
 
@@ -174,7 +174,7 @@ function ipId(uint256 chainId, address tokenContract, uint256 tokenId) public vi
 
 Gets the canonical IP identifier associated with an IP NFT.
 
-_This is equivalent to the address of its bound IP account._
+*This is equivalent to the address of its bound IP account.*
 
 #### Parameters
 
@@ -188,7 +188,7 @@ _This is equivalent to the address of its bound IP account._
 
 | Name | Type    | Description                                 |
 | ---- | ------- | ------------------------------------------- |
-| [0]  | address | ipId The IP's canonical address identifier. |
+| \[0] | address | ipId The IP's canonical address identifier. |
 
 ### isRegistered
 
@@ -208,7 +208,7 @@ Checks whether an IP was registered based on its ID.
 
 | Name | Type | Description                                                   |
 | ---- | ---- | ------------------------------------------------------------- |
-| [0]  | bool | isRegistered Whether the IP was registered into the protocol. |
+| \[0] | bool | isRegistered Whether the IP was registered into the protocol. |
 
 ### resolver
 
@@ -228,7 +228,7 @@ Gets the resolver bound to an IP based on its ID.
 
 | Name | Type    | Description                                                            |
 | ---- | ------- | ---------------------------------------------------------------------- |
-| [0]  | address | resolver The IP resolver address if registered, else the zero address. |
+| \[0] | address | resolver The IP resolver address if registered, else the zero address. |
 
 ### metadataProvider
 
@@ -242,7 +242,7 @@ Gets the metadata provider used for new metadata registrations.
 
 | Name | Type    | Description                                                                          |
 | ---- | ------- | ------------------------------------------------------------------------------------ |
-| [0]  | address | metadataProvider The address of the metadata provider used for new IP registrations. |
+| \[0] | address | metadataProvider The address of the metadata provider used for new IP registrations. |
 
 ### metadataProvider
 
@@ -262,7 +262,7 @@ Gets the metadata provider linked to an IP based on its ID.
 
 | Name | Type    | Description                                                                        |
 | ---- | ------- | ---------------------------------------------------------------------------------- |
-| [0]  | address | metadataProvider The metadata provider that was bound to this IP at creation time. |
+| \[0] | address | metadataProvider The metadata provider that was bound to this IP at creation time. |
 
 ### metadata
 
@@ -282,7 +282,7 @@ Gets the underlying canonical metadata linked to an IP asset.
 
 | Name | Type  | Description                                                       |
 | ---- | ----- | ----------------------------------------------------------------- |
-| [0]  | bytes | metadata The metadata that was bound to this IP at creation time. |
+| \[0] | bytes | metadata The metadata that was bound to this IP at creation time. |
 
 ### setMetadata
 
@@ -292,16 +292,72 @@ function setMetadata(address id, address provider, bytes data) external
 
 Sets the underlying metadata for an IP asset.
 
-_As metadata is immutable but additive, this will only be used when an IP migrates from a new provider that  
-introduces new attributes._
+*As metadata is immutable but additive, this will only be used when an IP migrates from a new provider that\
+introduces new attributes.*
 
 #### Parameters
 
-| Name     | Type    | Description                                  |
-| -------- | ------- | -------------------------------------------- |
-| id       | address | The canonical ID of the IP.                  |
-| provider | address |                                              |
-| data     | bytes   | Canonical metadata to associate with the IP. |
+<Table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+
+      <th>
+        Type
+      </th>
+
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        id
+      </td>
+
+      <td>
+        address
+      </td>
+
+      <td>
+        The canonical ID of the IP.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        provider
+      </td>
+
+      <td>
+        address
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        data
+      </td>
+
+      <td>
+        bytes
+      </td>
+
+      <td>
+        Canonical metadata to associate with the IP.
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ### setResolver
 
@@ -324,7 +380,7 @@ Sets the resolver for an IP based on its canonical ID.
 function _register(uint256[] licenseIds, bytes royaltyContext, uint256 chainId, address tokenContract, uint256 tokenId, address resolverAddr, bool createAccount, bytes data) internal returns (address id)
 ```
 
-_Registers an NFT as an IP._
+*Registers an NFT as an IP.*
 
 #### Parameters
 
@@ -345,7 +401,7 @@ _Registers an NFT as an IP._
 function _setResolver(address id, address resolverAddr) internal
 ```
 
-_Sets the resolver for the specified IP._
+*Sets the resolver for the specified IP.*
 
 #### Parameters
 
@@ -360,7 +416,7 @@ _Sets the resolver for the specified IP._
 function _setMetadata(address id, contract IMetadataProviderMigratable provider, bytes data) internal
 ```
 
-_Sets the for the specified IP asset._
+*Sets the for the specified IP asset.*
 
 #### Parameters
 
