@@ -44,7 +44,7 @@ Fetches the metadata linked to an IP asset.
 
 | Name | Type                 | Description                                   |
 | ---- | -------------------- | --------------------------------------------- |
-| [0]  | struct IP.MetadataV1 | metadata The metadata linked to the IP asset. |
+| \[0] | struct IP.MetadataV1 | metadata The metadata linked to the IP asset. |
 
 ### name
 
@@ -64,7 +64,7 @@ Gets the name associated with the IP asset.
 
 | Name | Type   | Description                                 |
 | ---- | ------ | ------------------------------------------- |
-| [0]  | string | name The name associated with the IP asset. |
+| \[0] | string | name The name associated with the IP asset. |
 
 ### hash
 
@@ -84,7 +84,7 @@ Gets the hash associated with the IP asset.
 
 | Name | Type    | Description                                 |
 | ---- | ------- | ------------------------------------------- |
-| [0]  | bytes32 | hash The hash associated with the IP asset. |
+| \[0] | bytes32 | hash The hash associated with the IP asset. |
 
 ### registrationDate
 
@@ -104,7 +104,7 @@ Gets the date in which the IP asset was registered.
 
 | Name | Type   | Description                                                     |
 | ---- | ------ | --------------------------------------------------------------- |
-| [0]  | uint64 | registrationDate The date in which the IP asset was registered. |
+| \[0] | uint64 | registrationDate The date in which the IP asset was registered. |
 
 ### registrant
 
@@ -124,7 +124,7 @@ Gets the initial registrant address of the IP asset.
 
 | Name | Type    | Description                                                |
 | ---- | ------- | ---------------------------------------------------------- |
-| [0]  | address | registrant The initial registrant address of the IP asset. |
+| \[0] | address | registrant The initial registrant address of the IP asset. |
 
 ### uri
 
@@ -144,7 +144,7 @@ Gets the external URI associated with the IP asset.
 
 | Name | Type   | Description                                        |
 | ---- | ------ | -------------------------------------------------- |
-| [0]  | string | uri The external URI associated with the IP asset. |
+| \[0] | string | uri The external URI associated with the IP asset. |
 
 ### \_verifyMetadata
 
@@ -152,7 +152,7 @@ Gets the external URI associated with the IP asset.
 function _verifyMetadata(bytes data) internal virtual
 ```
 
-_Checks that the data conforms to the canonical metadata standards._
+*Checks that the data conforms to the canonical metadata standards.*
 
 #### Parameters
 
@@ -166,8 +166,8 @@ _Checks that the data conforms to the canonical metadata standards._
 function _compatible(bytes m1, bytes m2) internal pure virtual returns (bool)
 ```
 
-_Checks whether two sets of metadata are compatible with one another.  
-TODO: Add try-catch for ABI-decoding error handling._
+*Checks whether two sets of metadata are compatible with one another.\
+TODO: Add try-catch for ABI-decoding error handling.*
 
 ### \_hash
 
@@ -175,7 +175,7 @@ TODO: Add try-catch for ABI-decoding error handling._
 function _hash(struct IP.MetadataV1 data) internal pure returns (bytes32)
 ```
 
-_Gets the bytes32 hash for a MetadataV1 data struct._
+*Gets the bytes32 hash for a MetadataV1 data struct.*
 
 ### \_metadataV1
 
@@ -183,4 +183,4 @@ _Gets the bytes32 hash for a MetadataV1 data struct._
 function _metadataV1(address ipId) internal view returns (struct IP.MetadataV1)
 ```
 
-_Get the decoded canonical metadata belonging to an IP asset._
+*Get the decoded canonical metadata belonging to an IP asset.*
