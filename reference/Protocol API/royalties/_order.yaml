@@ -2,3 +2,4 @@
 - get_api-v1-royalties-payments-royaltypayid
 - post_api-v1-royalties-policies
 - get_api-v1-royalties-policies-royaltypolicyid
+- post_api-v2-royalties-payments
