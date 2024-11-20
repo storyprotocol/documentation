@@ -10,9 +10,9 @@ metadata:
 next:
   description: ''
 ---
-_This library provides utility functions to check the registration and validity of IP Accounts.  
-It uses the ERC165 standard for contract introspection and the IIPAccountRegistry interface  
-for account registration checks._
+*This library provides utility functions to check the registration and validity of IP Accounts.\
+It uses the ERC165 standard for contract introspection and the IIPAccountRegistry interface\
+for account registration checks.*
 
 ### isRegistered
 
@@ -24,18 +24,95 @@ Returns true if the IPAccount is registered.
 
 #### Parameters
 
-| Name                | Type                        | Description                                                       |
-| ------------------- | --------------------------- | ----------------------------------------------------------------- |
-| ipAccountRegistry\_ | contract IIPAccountRegistry |                                                                   |
-| chainId\_           | uint256                     | The chain ID where the IP Account is located.                     |
-| tokenContract\_     | address                     | The address of the token contract associated with the IP Account. |
-| tokenId\_           | uint256                     | The ID of the token associated with the IP Account.               |
+<Table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+
+      <th>
+        Type
+      </th>
+
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        ipAccountRegistry
+
+        \_
+      </td>
+
+      <td>
+        contract IIPAccountRegistry
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        chainId
+
+        \_
+      </td>
+
+      <td>
+        uint256
+      </td>
+
+      <td>
+        The chain ID where the IP Account is located.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        tokenContract
+
+        \_
+      </td>
+
+      <td>
+        address
+      </td>
+
+      <td>
+        The address of the token contract associated with the IP Account.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        tokenId
+
+        \_
+      </td>
+
+      <td>
+        uint256
+      </td>
+
+      <td>
+        The ID of the token associated with the IP Account.
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 #### Return Values
 
 | Name | Type | Description                                            |
 | ---- | ---- | ------------------------------------------------------ |
-| [0]  | bool | True if the IP Account is registered, false otherwise. |
+| \[0] | bool | True if the IP Account is registered, false otherwise. |
 
 ### isIpAccount
 
@@ -56,4 +133,4 @@ Checks if the given address is a valid IP Account.
 
 | Name | Type | Description                                                 |
 | ---- | ---- | ----------------------------------------------------------- |
-| [0]  | bool | True if the address is a valid IP Account, false otherwise. |
+| \[0] | bool | True if the address is a valid IP Account, false otherwise. |
