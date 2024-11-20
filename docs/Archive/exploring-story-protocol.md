@@ -11,7 +11,7 @@ next:
   description: ''
 ---
 > 🚧 Beta release
-> 
+>
 > Story Protocol is still in beta and not production complete yet – this means that we could change interfaces, smart contract deployments and backend endpoints at any time without warning or notice to you. When Story Protocol is production ready, we will remove this warning and will ensure the production quality of the protocol and update the document at a regular basis with formal notice.
 
 Welcome builders! This section will help you orient yourself around the documentation and find the most relevant information, references and tutorials.
@@ -26,9 +26,9 @@ For most read-only operations, you can use the [Story Protocol API](ref:story-pr
 
 If you want to build smart contracts with Story Protocol or build Web3 applications to interact with smart contracts directly, we encourage you to go through the [Get started with the Smart Contracts](doc:get-started-with-the-smart-contracts) tutorial which will go over:
 
-- How to [Setup a Development Environment](doc:quick-setup) for smart contract development
-- How to complete common actions, like [registering an NFT as an IP Asset](doc:registering-an-ip-asset), by calling smart contract functions directly
-- How to [create a periphery contract](doc:build-a-licensing-marketplace)
+* How to [Setup a Development Environment](doc:quick-setup) for smart contract development
+* How to complete common actions, like [registering an NFT as an IP Asset](doc:registering-an-ip-asset), by calling smart contract functions directly
+* How to [create a periphery contract](doc:build-a-licensing-marketplace)
 
 # For Everyone
 
