@@ -5,3 +5,4 @@
 - get_distribution-validators-validator-address
 - get_distribution-validators-validator-address-commission
 - get_distribution-validators-validator-address-outstanding-rewards
+- get_distribution-validators-validator-address-slashes
