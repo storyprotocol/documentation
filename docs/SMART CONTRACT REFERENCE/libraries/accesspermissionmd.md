@@ -18,7 +18,7 @@ Library for IPAccount access control permissions. These permissions are used by 
 uint8 ABSTAIN
 ```
 
-ABSTAIN means having not enough information to make decision at current level, deferred decision to up  
+ABSTAIN means having not enough information to make decision at current level, deferred decision to up\
 level permission.
 
 ### ALLOW
