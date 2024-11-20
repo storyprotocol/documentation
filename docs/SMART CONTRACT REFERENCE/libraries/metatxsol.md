@@ -10,31 +10,31 @@ metadata:
 next:
   description: ''
 ---
-_This library provides functions for handling meta transactions in the Story Protocol._
+*This library provides functions for handling meta transactions in the Story Protocol.*
 
-### EIP712_DOMAIN_VERSION
+### EIP712\_DOMAIN\_VERSION
 
 ```solidity
 string EIP712_DOMAIN_VERSION
 ```
 
-_Version of the EIP712 domain._
+*Version of the EIP712 domain.*
 
-### EIP712_DOMAIN_VERSION_HASH
+### EIP712\_DOMAIN\_VERSION\_HASH
 
 ```solidity
 bytes32 EIP712_DOMAIN_VERSION_HASH
 ```
 
-_Hash of the EIP712 domain version._
+*Hash of the EIP712 domain version.*
 
-### EIP712_DOMAIN
+### EIP712\_DOMAIN
 
 ```solidity
 bytes32 EIP712_DOMAIN
 ```
 
-_EIP712 domain type hash._
+*EIP712 domain type hash.*
 
 ### EXECUTE
 
@@ -42,11 +42,11 @@ _EIP712 domain type hash._
 bytes32 EXECUTE
 ```
 
-_Execute type hash._
+*Execute type hash.*
 
 ### Execute
 
-_Structure for the Execute type._
+*Structure for the Execute type.*
 
 ```solidity
 struct Execute {
@@ -64,13 +64,13 @@ struct Execute {
 function calculateDomainSeparator() internal view returns (bytes32)
 ```
 
-_Calculates the EIP712 domain separator for the current contract._
+*Calculates the EIP712 domain separator for the current contract.*
 
 #### Return Values
 
 | Name | Type    | Description                  |
 | ---- | ------- | ---------------------------- |
-| [0]  | bytes32 | The EIP712 domain separator. |
+| \[0] | bytes32 | The EIP712 domain separator. |
 
 ### calculateDomainSeparator
 
@@ -78,7 +78,7 @@ _Calculates the EIP712 domain separator for the current contract._
 function calculateDomainSeparator(address ipAccount) internal view returns (bytes32)
 ```
 
-_Calculates the EIP712 domain separator for a given IP account._
+*Calculates the EIP712 domain separator for a given IP account.*
 
 #### Parameters
 
@@ -90,7 +90,7 @@ _Calculates the EIP712 domain separator for a given IP account._
 
 | Name | Type    | Description                  |
 | ---- | ------- | ---------------------------- |
-| [0]  | bytes32 | The EIP712 domain separator. |
+| \[0] | bytes32 | The EIP712 domain separator. |
 
 ### getExecuteStructHash
 
@@ -98,7 +98,7 @@ _Calculates the EIP712 domain separator for a given IP account._
 function getExecuteStructHash(struct MetaTx.Execute execute) internal pure returns (bytes32)
 ```
 
-_Calculates the EIP712 struct hash of an Execute._
+*Calculates the EIP712 struct hash of an Execute.*
 
 #### Parameters
 
@@ -110,4 +110,4 @@ _Calculates the EIP712 struct hash of an Execute._
 
 | Name | Type    | Description                            |
 | ---- | ------- | -------------------------------------- |
-| [0]  | bytes32 | The EIP712 struct hash of the Execute. |
+| \[0] | bytes32 | The EIP712 struct hash of the Execute. |
