@@ -10,20 +10,20 @@ metadata:
 next:
   description: ''
 ---
-- [Use the SDK](https://docs.story.foundation/docs/how-to-register-ip-on-story#using-the-sdk)
-- [Use a Smart Contract](https://docs.story.foundation/docs/how-to-register-ip-on-story#using-a-smart-contract)
+* [Use the SDK](https://docs.story.foundation/docs/how-to-register-ip-on-story#using-the-sdk)
+* [Use a Smart Contract](https://docs.story.foundation/docs/how-to-register-ip-on-story#using-a-smart-contract)
 
 # Using the SDK
 
 > 👍 See the Completed Code
-> 
+>
 > To see a completed, working example of the following tutorial, please see:
-> 
-> - [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts) which follows **step 5a**
-> - [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts) which follows **step 5b**
+>
+> * [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts) which follows **step 5a**
+> * [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts) which follows **step 5b**
 
 > 📺 Video Walkthrough
-> 
+>
 > If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=zGQPiszTs40).
 
 In this tutorial, you will learn how to register your IP on Story using the TypeScript SDK. 
@@ -62,7 +62,7 @@ npm install @story-protocol/core-sdk @pinata/sdk viem
 
 ## 1. Set up your Story Config
 
-- Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
+* Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
 ```javascript main.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
@@ -313,7 +313,7 @@ export const defaultNftContractAbi = [
 
 Now we can call that `mintNFT` function to get a `tokenId`, and then register the NFT as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-- Associated Docs: [ Register New IP Asset and Attach License Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#register-new-ip-asset-and-attach-license-terms)
+* Associated Docs: [ Register New IP Asset and Attach License Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#register-new-ip-asset-and-attach-license-terms)
 
 ```typescript main.ts
 import { PIL_TYPE, RegisterIpAndAttachPilTermsResponse, AddressZero } from '@story-protocol/core-sdk'
@@ -349,9 +349,9 @@ In this step, instead of minting an NFT and then registering it separately (2 di
 First, in a separate script, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
 
 > ❓ Why do we have to do this?
-> 
+>
 > In order to use the `mintAndRegisterIpAssetWithPilTerms` function below, we'll have to deploy an SPG NFT collection so that the SPG can do the minting for us.
-> 
+>
 > Instead of doing this, you could technically write your own contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). But an easy way to create a collection that implements `ISPGNFT` is just to call the `createCollection` function in the SPG contract using the SDK, as shown below.
 
 ```typescript createSpgNftCollection.ts
@@ -391,12 +391,12 @@ SPG_NFT_CONTRACT_ADDRESS=<SPG_NFT_CONTRACT_ADDRESS>
 ```
 
 > 📘 Note
-> 
+>
 > You only have to do the above step **once**. Once you have your SPG NFT contract address, you can register any amount of IPs and will **not** have to do this again.
 
 The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-- Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms) 
+* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms) 
 
 ```typescript main.ts
 import { PIL_TYPE, CreateIpAssetWithPilTermsResponse } from '@story-protocol/core-sdk'
@@ -421,16 +421,16 @@ console.log(`View on the explorer: https://explorer.story.foundation/ipa/${respo
 ## 6. Done!
 
 > 👍 See the Completed Code
-> 
+>
 > To see a completed, working example of the following tutorial, please see:
-> 
-> - [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts) which follows **step 5a**
-> - [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts) which follows **step 5b**
+>
+> * [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts) which follows **step 5a**
+> * [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts) which follows **step 5b**
 
 # Using a Smart Contract
 
 > 👍 See the Completed Code
-> 
+>
 > To see a completed, working code example of how to register your IP Asset, please see [this contract](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/IPARegistrar.sol).
 
 Let's say you have some off-chain IP (ex. a book, a character, a drawing, etc). In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset). As you can probably tell, this is two transactions: Mint NFT ▶️ Register NFT
@@ -448,9 +448,9 @@ As you can see below, the registration process is relatively straightforward. We
 
 All you have to do is call `register` on the [IP Asset Registry](doc:ip-asset-registry) with:
 
-- `chainid` - you can simply use `block.chainid`
-- `tokenContract` - the address of your NFT collection
-- `tokenId` - your NFT's ID
+* `chainid` - you can simply use `block.chainid`
+* `tokenContract` - the address of your NFT collection
+* `tokenId` - your NFT's ID
 
 ```sol IPARegistrar.sol
 // SPDX-License-Identifier: UNLICENSED
@@ -493,9 +493,9 @@ In order to use `mintAndRegisterIp`, we first have to create a new `SPGNFT` coll
 
 Once you have your own SPGNFT, all you have to do is call `mintAndRegisterIp` with:
 
-- `spgNftContract` - the address of your SPGNFT contract
-- `recipient` - the address of who will receive the NFT and thus be the owner of the newly registered IP. _Note: remember that registering IP on Story is permissionless, so you can register an IP for someone else (by paying for the transaction) yet they can still be the owner of that IP Asset._
-- `ipMetadata` - the metadata associated with your NFT & IP. See [this](https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata) section to better understand setting NFT & IP metadata.
+* `spgNftContract` - the address of your SPGNFT contract
+* `recipient` - the address of who will receive the NFT and thus be the owner of the newly registered IP. *Note: remember that registering IP on Story is permissionless, so you can register an IP for someone else (by paying for the transaction) yet they can still be the owner of that IP Asset.*
+* `ipMetadata` - the metadata associated with your NFT & IP. See [this](https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata) section to better understand setting NFT & IP metadata.
 
 ```sol IPARegistrar.sol
 // SPDX-License-Identifier: UNLICENSED
