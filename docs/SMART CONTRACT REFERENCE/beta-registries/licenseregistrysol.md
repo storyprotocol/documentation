@@ -18,7 +18,7 @@ Registry of License NFTs, which represent licenses granted by IP ID licensors to
 string name
 ```
 
-_Name of the License NFT_
+*Name of the License NFT*
 
 ### symbol
 
@@ -26,9 +26,9 @@ _Name of the License NFT_
 string symbol
 ```
 
-_Symbol of the License NFT_
+*Symbol of the License NFT*
 
-### LICENSING_MODULE
+### LICENSING\_MODULE
 
 ```solidity
 contract ILicensingModule LICENSING_MODULE
@@ -36,7 +36,7 @@ contract ILicensingModule LICENSING_MODULE
 
 Returns the canonical protocol-wide LicensingModule
 
-### DISPUTE_MODULE
+### DISPUTE\_MODULE
 
 ```solidity
 contract IDisputeModule DISPUTE_MODULE
@@ -50,9 +50,9 @@ Returns the canonical protocol-wide DisputeModule
 modifier onlyLicensingModule()
 ```
 
-_We have to implement this modifier instead of inheriting `LicensingModuleAware` because LicensingModule  
-constructor requires the licenseRegistry address, which would create a circular dependency. Thus, we use the  
-function `setLicensingModule` to set the licensing module address after deploying the module._
+*We have to implement this modifier instead of inheriting`LicensingModuleAware` because LicensingModule\
+constructor requires the licenseRegistry address, which would create a circular dependency. Thus, we use the\
+function `setLicensingModule` to set the licensing module address after deploying the module.*
 
 ### constructor
 
@@ -66,8 +66,8 @@ constructor(address governance) public
 function setDisputeModule(address newDisputeModule) external
 ```
 
-_Sets the DisputeModule address.  
-Enforced to be only callable by the protocol admin_
+*Sets the DisputeModule address.\
+Enforced to be only callable by the protocol admin*
 
 #### Parameters
 
@@ -81,8 +81,8 @@ Enforced to be only callable by the protocol admin_
 function setLicensingModule(address newLicensingModule) external
 ```
 
-_Sets the LicensingModule address.  
-Enforced to be only callable by the protocol admin_
+*Sets the LicensingModule address.\
+Enforced to be only callable by the protocol admin*
 
 #### Parameters
 
@@ -96,11 +96,11 @@ Enforced to be only callable by the protocol admin_
 function mintLicense(uint256 policyId, address licensorIpId_, bool transferable, uint256 amount, address receiver) external returns (uint256 licenseId)
 ```
 
-Mints license NFTs representing a policy granted by a set of ipIds (licensors). This NFT needs to be  
-burned in order to link a derivative IP with its parents. If this is the first combination of policy and  
+Mints license NFTs representing a policy granted by a set of ipIds (licensors). This NFT needs to be\
+burned in order to link a derivative IP with its parents. If this is the first combination of policy and\
 licensors, a new licenseId will be created. If not, the license is fungible and an id will be reused.
 
-_Only callable by the licensing module._
+*Only callable by the licensing module.*
 
 #### Parameters
 
@@ -141,13 +141,13 @@ function mintedLicenses() external view returns (uint256)
 
 Returns the number of licenses registered in the protocol.
 
-_Token ID counter total count._
+*Token ID counter total count.*
 
 #### Return Values
 
 | Name | Type    | Description                                  |
 | ---- | ------- | -------------------------------------------- |
-| [0]  | uint256 | mintedLicenses The number of minted licenses |
+| \[0] | uint256 | mintedLicenses The number of minted licenses |
 
 ### isLicensee
 
@@ -161,7 +161,7 @@ Returns true if holder has positive balance for the given license ID.
 
 | Name | Type | Description                                                                                                                                                                     |
 | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [0]  | bool | isLicensee True if holder is the licensee for the license (owner of the license NFT), or derivative IP owner if the license was added to the IP by linking (burning a license). |
+| \[0] | bool | isLicensee True if holder is the licensee for the license (owner of the license NFT), or derivative IP owner if the license was added to the IP by linking (burning a license). |
 
 ### license
 
@@ -181,7 +181,7 @@ Returns the license data for the given license ID
 
 | Name | Type                     | Description                  |
 | ---- | ------------------------ | ---------------------------- |
-| [0]  | struct Licensing.License | licenseData The license data |
+| \[0] | struct Licensing.License | licenseData The license data |
 
 ### licensorIpId
 
@@ -201,7 +201,7 @@ Returns the ID of the IP asset that is the licensor of the given license ID
 
 | Name | Type    | Description                         |
 | ---- | ------- | ----------------------------------- |
-| [0]  | address | licensorIpId The ID of the licensor |
+| \[0] | address | licensorIpId The ID of the licensor |
 
 ### policyIdForLicense
 
@@ -221,7 +221,7 @@ Returns the policy ID for the given license ID
 
 | Name | Type    | Description                   |
 | ---- | ------- | ----------------------------- |
-| [0]  | uint256 | policyId The ID of the policy |
+| \[0] | uint256 | policyId The ID of the policy |
 
 ### isLicenseRevoked
 
@@ -229,7 +229,7 @@ Returns the policy ID for the given license ID
 function isLicenseRevoked(uint256 licenseId) public view returns (bool)
 ```
 
-Returns true if the license has been revoked (licensor tagged after a dispute in  
+Returns true if the license has been revoked (licensor tagged after a dispute in\
 the dispute module). If the tag is removed, the license is not revoked anymore.
 
 #### Parameters
@@ -242,7 +242,7 @@ the dispute module). If the tag is removed, the license is not revoked anymore.
 
 | Name | Type | Description                              |
 | ---- | ---- | ---------------------------------------- |
-| [0]  | bool | isRevoked True if the license is revoked |
+| \[0] | bool | isRevoked True if the license is revoked |
 
 ### uri
 
@@ -252,8 +252,8 @@ function uri(uint256 id) public view virtual returns (string)
 
 ERC1155 OpenSea metadata JSON representation of the LNFT parameters
 
-_Expect PFM.policyToJson to return {'trait_type: 'value'},{'trait_type': 'value'},...,{...}  
-(last attribute must not have a comma at the end)_
+*Expect PFM.policyToJson to return \{'trait\_type: 'value'},\{'trait\_type': 'value'},...,\{...}\
+(last attribute must not have a comma at the end)*
 
 ### \_update
 
@@ -261,4 +261,4 @@ _Expect PFM.policyToJson to return {'trait_type: 'value'},{'trait_type': 'value'
 function _update(address from, address to, uint256[] ids, uint256[] values) internal virtual
 ```
 
-_Pre-hook for ERC1155's \_update() called on transfers._
+*Pre-hook for ERC1155's\_update() called on transfers.*
