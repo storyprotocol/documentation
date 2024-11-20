@@ -14,8 +14,8 @@ In this guide, we will show you how to setup the Story smart contract developmen
 
 ## Prerequisites
 
-- [Install Foundry](https://book.getfoundry.sh/getting-started/installation)
-- [Install yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
+* [Install Foundry](https://book.getfoundry.sh/getting-started/installation)
+* [Install yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
 
 ## Creating a Project
 
