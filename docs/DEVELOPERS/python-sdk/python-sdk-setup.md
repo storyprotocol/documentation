@@ -32,7 +32,7 @@ cd story-python-example/
 
 # Install the Dependencies
 
-In the current folder `story-python-example`, install the Story Protocol Python SDK package, as well as `web3` (<https://pypi.org/project/web3/>) to access the DeFi wallet accounts.
+In the current folder `story-python-example`, install the Story Protocol Python SDK package, as well as `web3` ([https://pypi.org/project/web3/](https://pypi.org/project/web3/)) to access the DeFi wallet accounts.
 
 ```python pip
 pip install story_protocol_python_sdk web3
@@ -46,9 +46,9 @@ Next we can initiate the SDK Client by first setting up our account and then the
 
 There are two ways to set up an account. The first is to use a private key locally:
 
-> :information_source: Make sure to have WALLET_PRIVATE_KEY set up in your .env file.
+> :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
 >
-> :information_source: Make sure to have RPC_PROVIDER_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://1rpc.io/sepolia`) or, for a much faster experience, [sign up for a free Alchemy account and create an Ethereum Sepolia test application](https://dashboard.alchemy.com/)  to get your own private RPC URL. Once your application is created, you can click the "API Key" button and then copy the link in the HTTP box.
+> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://1rpc.io/sepolia`) or, for a much faster experience, [sign up for a free Alchemy account and create an Ethereum Sepolia test application](https://dashboard.alchemy.com/)  to get your own private RPC URL. Once your application is created, you can click the "API Key" button and then copy the link in the HTTP box.
 
 ```python main.py
 import os
