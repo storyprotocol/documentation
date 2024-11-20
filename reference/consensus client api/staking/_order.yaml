@@ -6,3 +6,4 @@
 - get_staking-delegators-delegator-addr-unbonding-delegations
 - get_staking-delegators-delegator-addr-validators
 - get_staking-delegators-delegator-addr-validators-validator-addr
+- get_staking-delegators-delegator-addr
