@@ -22,8 +22,8 @@ In this series of tutorials, you will learn how to build IP applications with St
 
 Along the way, you will learn how to:
 
-- [Setup SDK](doc:react-sdk-setup)
-- [Register IP Assets](https://docs.storyprotocol.xyz/docs/react-sdk-register-an-nft-as-an-ip-asset)
-- [Create a PIL policy](doc:react-sdk-create-a-pil-policy)
-- [Attach a Policy to an IP Asset (IPA)](doc:react-sdk-attach-a-policy-to-an-ip-asset)
-- [Mint a license](doc:react-sdk-mint-a-license)
+* [Setup SDK](doc:react-sdk-setup)
+* [Register IP Assets](https://docs.storyprotocol.xyz/docs/react-sdk-register-an-nft-as-an-ip-asset)
+* [Create a PIL policy](doc:react-sdk-create-a-pil-policy)
+* [Attach a Policy to an IP Asset (IPA)](doc:react-sdk-attach-a-policy-to-an-ip-asset)
+* [Mint a license](doc:react-sdk-mint-a-license)
