@@ -4,3 +4,4 @@
 - get_api-v1-royalties-policies-royaltypolicyid
 - post_api-v2-royalties-payments
 - get_api-v2-royalties-payments-royaltypayid
+- post_api-v2-royalties-policies
