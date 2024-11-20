@@ -15,7 +15,8 @@ next:
 
 <br />
 
-See the <a href="https://docs.storyprotocol.xyz/docs/node-setup#system-specs" >system specs</a></details>
+See the <a href="https://docs.storyprotocol.xyz/docs/node-setup#system-specs">system specs</a>
+</details>
 
 ***
 
@@ -24,7 +25,8 @@ See the <a href="https://docs.storyprotocol.xyz/docs/node-setup#system-specs" >s
 
 <br />
 
-~700</details>
+\~700
+</details>
 
 ***
 
@@ -33,7 +35,8 @@ See the <a href="https://docs.storyprotocol.xyz/docs/node-setup#system-specs" >s
 
 <br />
 
-Yes, it’s EVM-compatible. Story’s execution client is a fork of Geth with our custom precompiles, which enhance the IP graph's performance while maintaining strict EVM compatibility. Other Ethereum execution clients, such as RETH and Erigon, can be supported later.</details>
+Yes, it’s EVM-compatible. Story’s execution client is a fork of Geth with our custom precompiles, which enhance the IP graph's performance while maintaining strict EVM compatibility. Other Ethereum execution clients, such as RETH and Erigon, can be supported later.
+</details>
 
 ***
 
@@ -42,7 +45,8 @@ Yes, it’s EVM-compatible. Story’s execution client is a fork of Geth with ou
 
 <br />
 
-Our consensus mechanism is CometBFT</details>
+Our consensus mechanism is CometBFT
+</details>
 
 ***
 
@@ -51,7 +55,8 @@ Our consensus mechanism is CometBFT</details>
 
 <br />
 
-Batch RPCs are supported - for Geth there is a 1K limit and on the consensus side there is 10 request limit</details>
+Batch RPCs are supported - for Geth there is a 1K limit and on the consensus side there is 10 request limit
+</details>
 
 ***
 
@@ -60,7 +65,8 @@ Batch RPCs are supported - for Geth there is a 1K limit and on the consensus sid
 
 <br />
 
-Yes, WS is enabled on the execution client, and is recommended for subscription use-cases. It is open on port 8546</details>
+Yes, WS is enabled on the execution client, and is recommended for subscription use-cases. It is open on port 8546
+</details>
 
 ***
 
@@ -69,7 +75,8 @@ Yes, WS is enabled on the execution client, and is recommended for subscription 
 
 <br />
 
-Please see Geth’s latest JSON-RPC documentation for a full comprehensive list <a href="https://ethereum.org/en/developers/docs/apis/json-rpc/#web3_clientversion" >here</a>. In the future, we may add more.</details>
+Please see Geth’s latest JSON-RPC documentation for a full comprehensive list <a href="https://ethereum.org/en/developers/docs/apis/json-rpc/#web3_clientversion">here</a>. In the future, we may add more.
+</details>
 
 ***
 
@@ -78,7 +85,8 @@ Please see Geth’s latest JSON-RPC documentation for a full comprehensive list 
 
 <br />
 
-We recommend employing standard in-memory caching with a 1-10 min TTL based on the RPC method</details>
+We recommend employing standard in-memory caching with a 1-10 min TTL based on the RPC method
+</details>
 
 ***
 
@@ -87,7 +95,8 @@ We recommend employing standard in-memory caching with a 1-10 min TTL based on t
 
 <br />
 
-Use `eth_syncing` RPC call on the execution client to check if the node is sync and `eth_blockNumber` for getting the latest block</details>
+Use `eth_syncing` RPC call on the execution client to check if the node is sync and `eth_blockNumber` for getting the latest block
+</details>
 
 ***
 
@@ -96,8 +105,9 @@ Use `eth_syncing` RPC call on the execution client to check if the node is sync 
 
 <br />
 
-`eth_call`  / `eth_getLogs` / `eth_getBlockByNumber`  
-We are still running latency tests to get a sense of response times.</details>
+`eth_call` / `eth_getLogs` / `eth_getBlockByNumber` \
+We are still running latency tests to get a sense of response times.
+</details>
 
 ***
 
@@ -106,7 +116,8 @@ We are still running latency tests to get a sense of response times.</details>
 
 <br />
 
-No, not at the moment.</details>
+No, not at the moment.
+</details>
 
 ***
 
@@ -115,4 +126,5 @@ No, not at the moment.</details>
 
 <br />
 
-Not yet, but we are working on it.</details>
+Not yet, but we are working on it.
+</details>
