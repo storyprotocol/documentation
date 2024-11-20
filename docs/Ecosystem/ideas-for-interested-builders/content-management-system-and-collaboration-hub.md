@@ -18,7 +18,7 @@ Ideally, this platform can handle distributed contributions from collaborators a
 
 Some additional features:
 
-- Fandom-style wiki pages to outline project details, characters, locations, art style
-- Licensing page for both commercial and non-commercial use cases, including co-creation
-- Request for contribution functionality so project owners can easily post what type of help they are looking for
-- Discussion section to allow community members and fans a way to connect, discuss, and propose
+* Fandom-style wiki pages to outline project details, characters, locations, art style
+* Licensing page for both commercial and non-commercial use cases, including co-creation
+* Request for contribution functionality so project owners can easily post what type of help they are looking for
+* Discussion section to allow community members and fans a way to connect, discuss, and propose
