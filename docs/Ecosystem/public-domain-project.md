@@ -14,9 +14,9 @@ next:
 
 The public domain project introduces public domain intellectual properties to Story Protocol to showcase the concepts in the protocol. The project retrieves **data** from public domain literature for Story Protocol and provides an **explorer** for users to view and operate with this data. The project serves three main purposes:
 
-- Provide a dashboard to interact with entities on Story Protocol. 
-- Help users learn how Story Protocol works.
-- Provide data on Story Protocol for users to experiment and build on top of.
+* Provide a dashboard to interact with entities on Story Protocol. 
+* Help users learn how Story Protocol works.
+* Provide data on Story Protocol for users to experiment and build on top of.
 
 ## What is the Public Domain?
 
@@ -30,10 +30,10 @@ For the Story Protocol Alpha release, the **Public Domain Project** focuses on c
 
 These literary works are collected from the following data sources:
 
-- [Project Gutenberg](https://www.gutenberg.org/)
-- [Project Domain Super Heroes](https://pdsh.fandom.com/wiki/Category:Comic_Book_Characters)
-- [Public Domain Books](https://www.epubor.com/best-sites-for-public-domain-books.html)
-- [Public Domain Characters](https://pdsh.fandom.com/wiki/Category:Comic_Book_Characters)
+* [Project Gutenberg](https://www.gutenberg.org/)
+* [Project Domain Super Heroes](https://pdsh.fandom.com/wiki/Category:Comic_Book_Characters)
+* [Public Domain Books](https://www.epubor.com/best-sites-for-public-domain-books.html)
+* [Public Domain Characters](https://pdsh.fandom.com/wiki/Category:Comic_Book_Characters)
 
 The project also collects data from other public available websites that share public domain contents.
 
@@ -41,68 +41,27 @@ The project also collects data from other public available websites that share p
 
 You can visit [Story Protocol Explorer](https://sp-explorer.vercel.app/) to explore the public domain IPs in Story Protocol. You can view all the **Transactions**, **IP Orgs** or **Assets** by clicking the menu item from the left side of the page. If you go to the **IP Orgs** page and click one of the IP Org, you will browse into the IP Org page like the following snapshot.
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/afe5b79-Screen_Shot_2023-12-04_at_10.45.54_AM.png",
-        null,
-        "Snapshot 1: The IP Org Page Detail Information Page"
-      ],
-      "align": "center",
-      "caption": "Snapshot 1: The IP Org Page Detail Information Page"
-    }
-  ]
-}
-[/block]
+<Image alt="Snapshot 1: The IP Org Page Detail Information Page" align="center" src="https://files.readme.io/afe5b79-Screen_Shot_2023-12-04_at_10.45.54_AM.png">
+  Snapshot 1: The IP Org Page Detail Information Page
+</Image>
 
+From *Snapshot 1*, you can see there are two IP assets created under this IP org, and there are three transactions on the bottom. For each transaction, you can click the **TxHash** on the left column to view the Story Protocol transaction, the **Transaction Detail** page shows the **TxHash** link to the Sepolia explorer for the transaction:
 
-From _Snapshot 1_, you can see there are two IP assets created under this IP org, and there are three transactions on the bottom. For each transaction, you can click the **TxHash** on the left column to view the Story Protocol transaction, the **Transaction Detail** page shows the **TxHash** link to the Sepolia explorer for the transaction:
+<Image alt="Snapshot 2: The Transaction Detail Page" align="center" src="https://files.readme.io/aeb6ffb-Screen_Shot_2023-12-04_at_11.58.08_AM.png">
+  Snapshot 2: The Transaction Detail Page
+</Image>
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/aeb6ffb-Screen_Shot_2023-12-04_at_11.58.08_AM.png",
-        null,
-        "Snapshot 2: The Transaction Detail Page"
-      ],
-      "align": "center",
-      "caption": "Snapshot 2: The Transaction Detail Page"
-    }
-  ]
-}
-[/block]
-
-
-In the **IPA** tab in _Snapshot 1_, you can view all the IP assets belong to this IP Org, or you can click the **Assets** menu item on the left side to view all the IP Assets in the Story Protocol.
+In the **IPA** tab in *Snapshot 1*, you can view all the IP assets belong to this IP Org, or you can click the **Assets** menu item on the left side to view all the IP Assets in the Story Protocol.
 
 > 📘 Note
-> 
+>
 > The [Story Protocol Explorer](https://sp-explorer.vercel.app/) is not specific for Public Domain data only. You can also view the data you created with Story Protocol.
 
 # Technical Overview
 
 This section gives you a high level overview of the architecture of Public Domain Project. It leverages a data pipeline approach to retrieve and generate the data from public domain IPs for Story Protocol. The architecture of the pipeline is shown on the following diagram:
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/a14e94e-PublicDomain.drawio.png",
-        null,
-        ""
-      ],
-      "align": "center",
-      "sizing": "400px"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" width="400px" src="https://files.readme.io/a14e94e-PublicDomain.drawio.png" />
 
 The architecture consists of the following components.
 
