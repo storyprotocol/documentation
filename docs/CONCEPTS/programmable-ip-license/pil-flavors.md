@@ -14,37 +14,65 @@ PIL is very configurable, but we support pre-configured License Terms for ease o
 
 ## Flavor #1: Non-Commercial Social Remixing
 
-_This flavor is already registered as `licenseTermsId = 1` on Story. **In addition, every single IP Asset has these terms attached by default.**_
+*This flavor is already registered as`licenseTermsId = 1` on Story. **In addition, every single IP Asset has these terms attached by default.***
 
 Let the world build on and play with your creation. This license allows for endless free remixing while tracking all uses of your work while giving you full credit. Similar to: TikTok plus attribution.
 
 ### What others can do?
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Others can",
-    "h-1": "Others cannot",
-    "0-0": "✅ Remix this work  \n(`derivativesAllowed == true`)",
-    "0-1": "❌ Commercialize the original and derivative works  \n(`commercialUse == false`)",
-    "1-0": "✅ Distribute their remix anywhere",
-    "1-1": "❌ Claim credit for the remix as original work  \n(`derivativesAttribution == true`)",
-    "2-0": "✅ Credit you appropriately  \n(`derivativesAttribution == true`)",
-    "2-1": ""
-  },
-  "cols": 2,
-  "rows": 3,
-  "align": [
-    "left",
-    "left"
-  ]
-}
-[/block]
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Others can
+      </th>
 
+      <th style={{ textAlign: "left" }}>
+        Others cannot
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Remix this work
+        (`derivativesAllowed == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ❌ Commercialize the original and derivative works\
+        (`commercialUse == false`)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Distribute their remix anywhere
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ❌ Claim credit for the remix as original work\
+        (`derivativesAttribution == true`)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Credit you appropriately\
+        (`derivativesAttribution == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ###  PIL Term Values
 
-- **On-chain**:
+* **On-chain**:
 
 ```sol Solidity
 PILTerms({
@@ -68,7 +96,7 @@ PILTerms({
 });
 ```
 
-- **Off-chain:**
+* **Off-chain:**
 
 | Parameter                         | Options / Tags                                                              |
 | --------------------------------- | --------------------------------------------------------------------------- |
@@ -89,31 +117,58 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 
 ### What others can do?
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Others can",
-    "h-1": "Others cannot",
-    "0-0": "✅ Purchase the right to use your creation  \n(`defaultMintingFee` is set)",
-    "0-1": "❌ Claim credit for the original work  \n(`commercialAttribution == true`)",
-    "1-0": "✅ Commercialize the original and derivative works  \n(`commercialUse == true`)",
-    "1-1": "",
-    "2-0": "✅ Distribute their remix anywhere",
-    "2-1": ""
-  },
-  "cols": 2,
-  "rows": 3,
-  "align": [
-    "left",
-    "left"
-  ]
-}
-[/block]
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Others can
+      </th>
 
+      <th style={{ textAlign: "left" }}>
+        Others cannot
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Purchase the right to use your creation
+        (`defaultMintingFee` is set)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ❌ Claim credit for the original work\
+        (`commercialAttribution == true`)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Commercialize the original and derivative works\
+        (`commercialUse == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Distribute their remix anywhere
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ###  PIL Term Values
 
-- **On-chain**:
+* **On-chain**:
 
 ```sol Solidity
 PILTerms({
@@ -137,7 +192,7 @@ PILTerms({
 })
 ```
 
-- **Off-chain**
+* **Off-chain**
 
 | Parameter                         | Options / Tags                                                              |
 | --------------------------------- | --------------------------------------------------------------------------- |
@@ -158,33 +213,71 @@ Let the world build on and play with your creation... and earn money together fr
 
 ### What others can do?
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Others can",
-    "h-1": "Others cannot",
-    "0-0": "✅ Remix this work  \n(`derivativesAllowed == true`)",
-    "0-1": "❌ Claim credit for the remix as original work  \n(`derivativesAttribution == true`)",
-    "1-0": "✅ Distribute their remix anywhere",
-    "1-1": "❌ Claim credit for the original work  \n(`commercialAttribution == true`)",
-    "2-0": "✅ Credit you appropriately  \n(`derivativesAttribution == true`)",
-    "2-1": "❌ Claim all the revenue from commercial use of the original work or derivative works  \n(`commercialRevShare` is set)",
-    "3-0": "✅ Commercialize the original and derivative works  \n(`commercialUse == true`)",
-    "3-1": ""
-  },
-  "cols": 2,
-  "rows": 4,
-  "align": [
-    "left",
-    "left"
-  ]
-}
-[/block]
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Others can
+      </th>
 
+      <th style={{ textAlign: "left" }}>
+        Others cannot
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Remix this work
+        (`derivativesAllowed == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ❌ Claim credit for the remix as original work\
+        (`derivativesAttribution == true`)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Distribute their remix anywhere
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ❌ Claim credit for the original work\
+        (`commercialAttribution == true`)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Credit you appropriately\
+        (`derivativesAttribution == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ❌ Claim all the revenue from commercial use of the original work or derivative works\
+        (`commercialRevShare` is set)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Commercialize the original and derivative works\
+        (`commercialUse == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ###  PIL Term Values
 
-- **On-chain**:
+* **On-chain**:
 
 ```sol Solidity
 PILTerms({
@@ -208,7 +301,7 @@ PILTerms({
 });
 ```
 
-- **Off-chain**
+* **Off-chain**
 
 | Parameter                         | Options / Tags                                                              |
 | --------------------------------- | --------------------------------------------------------------------------- |
@@ -225,25 +318,11 @@ PILTerms({
 
 # Examples
 
-Here are some common examples of royalty flow. _More coming soon!_
+Here are some common examples of royalty flow. *More coming soon!*
 
 ## Example 1
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/574c9f3-Screenshot_2024-08-16_at_9.54.00_PM.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/574c9f3-Screenshot_2024-08-16_at_9.54.00_PM.png" />
 
 ### Explanation
 
@@ -253,21 +332,7 @@ The owner of IPA1 then decides that others can commercialize the work, but they 
 
 ## Example 2
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/e3c7fbf-Screenshot_2024-08-16_at_9.54.16_PM.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/e3c7fbf-Screenshot_2024-08-16_at_9.54.16_PM.png" />
 
 ### Explanation
 
