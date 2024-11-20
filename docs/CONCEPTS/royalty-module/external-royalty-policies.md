@@ -54,8 +54,8 @@ Following the example, when each remix is made and during the `onLinkToParents` 
 
 is called on the "Policy X" address. It should return the % of derivative's royalty tokens that the royalty policy demands for the link to happen. That share of royalty tokens are sent to the "Policy X" contract. In the example case:
 
-- "Policy X" receives 3% of RT2 token supply that it can then redistribute to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs.
-- "Policy X" receives 50% of RT3 token supply that it can then redistribute to its userbase.
+* "Policy X" receives 3% of RT2 token supply that it can then redistribute to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs.
+* "Policy X" receives 50% of RT3 token supply that it can then redistribute to its userbase.
 
 ![](https://files.readme.io/33efb951a9be1339e849eb025d183a0f8d4f949f634ee5dfe1f13dac52c79bb0-image.png)
 
@@ -74,6 +74,6 @@ Let's explore both in the context of "Policy X". Let's say that from the 50% of 
 
 From the 1M USDC inflow to IP3 Royalty Vault:
 
-- 500k USDC are claimed by the IP Account 3 which had 50% of RT3 token supply
-- 100k USDC are claimed by the IP1 Royalty Vault which has 10% of RT3 token supply via `claimByTokenBatchAsSelf` and `claimBySnapshotBatchAsSelf` functions
-- 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This is amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.
+* 500k USDC are claimed by the IP Account 3 which had 50% of RT3 token supply
+* 100k USDC are claimed by the IP1 Royalty Vault which has 10% of RT3 token supply via `claimByTokenBatchAsSelf` and `claimBySnapshotBatchAsSelf` functions
+* 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This is amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.
