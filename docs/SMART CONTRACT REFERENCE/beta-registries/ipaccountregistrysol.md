@@ -10,10 +10,10 @@ metadata:
 next:
   description: ''
 ---
-This contract is responsible for managing the registration and tracking of IP Accounts.  
+This contract is responsible for managing the registration and tracking of IP Accounts.\
 It leverages a public ERC6551 registry to deploy IPAccount contracts.
 
-### IP_ACCOUNT_IMPL
+### IP\_ACCOUNT\_IMPL
 
 ```solidity
 address IP_ACCOUNT_IMPL
@@ -21,7 +21,7 @@ address IP_ACCOUNT_IMPL
 
 Returns the IPAccount implementation address
 
-### IP_ACCOUNT_SALT
+### IP\_ACCOUNT\_SALT
 
 ```solidity
 bytes32 IP_ACCOUNT_SALT
@@ -29,7 +29,7 @@ bytes32 IP_ACCOUNT_SALT
 
 Returns the IPAccount salt
 
-### ERC6551_PUBLIC_REGISTRY
+### ERC6551\_PUBLIC\_REGISTRY
 
 ```solidity
 address ERC6551_PUBLIC_REGISTRY
@@ -51,7 +51,7 @@ function registerIpAccount(uint256 chainId, address tokenContract, uint256 token
 
 Deploys an IPAccount contract with the IPAccount implementation and returns the address of the new IP
 
-_The IPAccount deployment deltegates to public ERC6551 Registry_
+*The IPAccount deployment deltegates to public ERC6551 Registry*
 
 #### Parameters
 
@@ -87,7 +87,7 @@ Returns the IPAccount address for the given NFT token.
 
 | Name | Type    | Description                                                                        |
 | ---- | ------- | ---------------------------------------------------------------------------------- |
-| [0]  | address | ipAccountAddress The address of the IP Account associated with the given NFT token |
+| \[0] | address | ipAccountAddress The address of the IP Account associated with the given NFT token |
 
 ### getIPAccountImpl
 
@@ -101,7 +101,7 @@ Returns the IPAccount implementation address.
 
 | Name | Type    | Description                                 |
 | ---- | ------- | ------------------------------------------- |
-| [0]  | address | The address of the IPAccount implementation |
+| \[0] | address | The address of the IPAccount implementation |
 
 ### \_get6551AccountAddress
 
@@ -109,7 +109,7 @@ Returns the IPAccount implementation address.
 function _get6551AccountAddress(uint256 chainId, address tokenContract, uint256 tokenId) internal view returns (address)
 ```
 
-_Helper function to get the IPAccount address from the ERC6551 registry._
+*Helper function to get the IPAccount address from the ERC6551 registry.*
 
 ### \_get6551AccountAddress
 
