@@ -15,16 +15,16 @@ The Grouping Module enables the creation and management of group IP Assets, supp
 ## `GroupingModule.sol`
 
 > 🗒️ Contract
-> 
+>
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/grouping/GroupingModule.sol).
 
 `GroupingModule.sol` is the main entry point for the grouping workflows. It is **stateless** and responsible for:
 
-- Registering a new group
-- Adding an IPA to a group
-- Removing an IPA from a group
-- Checking whether a group contains a specific IPA
-- Get total number of IPAs of a group
+* Registering a new group
+* Adding an IPA to a group
+* Removing an IPA from a group
+* Checking whether a group contains a specific IPA
+* Get total number of IPAs of a group
 
 ## Creating a Group IPA
 
@@ -57,13 +57,13 @@ There are a few conditions an IP Asset (or other group) must meet to be added in
 
 There are a few cases in which a group becomes "locked", meaning you can't add/remove any more members:
 
-- once the group receives any type of payment
-- if a derivative is linked to the group (in other words, the group becomes a parent IP)
+* once the group receives any type of payment
+* if a derivative is linked to the group (in other words, the group becomes a parent IP)
 
 If any of these happen, you must create a new group if you wish to add/remove members.
 
 > 📘 Example
-> 
+>
 > Lets say you have an AI bot that uses training data to continuously learn and produce better content. The training data is a Group IPA that is the root, and the AI bot is a derivative IPA of the training data. And any time the AI bot gets paid, the revenue flows back to the training data as revenue.
-> 
+>
 > Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.
