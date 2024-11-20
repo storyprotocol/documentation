@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-The dispute module acts as an enforcement layer for IP assets that allows raising and resolving disputes  
+The dispute module acts as an enforcement layer for IP assets that allows raising and resolving disputes\
 through arbitration by judges.
 
 ### name
@@ -21,7 +21,7 @@ string name
 
 Returns the string identifier associated with the module.
 
-### IN_DISPUTE
+### IN\_DISPUTE
 
 ```solidity
 bytes32 IN_DISPUTE
@@ -29,7 +29,7 @@ bytes32 IN_DISPUTE
 
 Tag to represent the dispute is in dispute state waiting for judgement
 
-### IP_ASSET_REGISTRY
+### IP\_ASSET\_REGISTRY
 
 ```solidity
 contract IIPAssetRegistry IP_ASSET_REGISTRY
@@ -195,7 +195,7 @@ Raises a dispute on a given ipId
 
 | Name | Type    | Description                                  |
 | ---- | ------- | -------------------------------------------- |
-| [0]  | uint256 | disputeId The id of the newly raised dispute |
+| \[0] | uint256 | disputeId The id of the newly raised dispute |
 
 ### setDisputeJudgement
 
@@ -260,4 +260,4 @@ Returns true if the ipId is tagged with any tag (meaning at least one dispute we
 
 | Name | Type | Description                         |
 | ---- | ---- | ----------------------------------- |
-| [0]  | bool | isTagged True if the ipId is tagged |
+| \[0] | bool | isTagged True if the ipId is tagged |
