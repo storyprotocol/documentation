@@ -7,3 +7,4 @@
 - get_staking-delegators-delegator-addr-validators
 - get_staking-delegators-delegator-addr-validators-validator-addr
 - get_staking-delegators-delegator-addr
+- get_staking-params
