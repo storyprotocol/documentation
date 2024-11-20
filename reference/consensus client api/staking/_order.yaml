@@ -16,3 +16,5 @@
   get_staking-validators-validator-addr-delegations-delegator-addr-unbonding-delegation
 - >-
   get_staking-validators-validator-addr-delegators-delegator-addr-period-delegations
+- >-
+  get_staking-validators-validator-addr-delegators-delegator-addr-period-delegations-period-delegation-id
