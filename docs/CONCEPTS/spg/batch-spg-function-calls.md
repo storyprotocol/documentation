@@ -91,7 +91,7 @@ await DerivativeWorkflows.multicall([
 ## 2. Batch Function Calls via Multicall3 Contract
 
 > 🚧 Warning
-> 
+>
 > Note: The Multicall3 contract is not fully compatible with SPG functions that involve SPGNFT minting due to access control and context changes during Multicall execution. For such operations, use [SPG’s built-in multicall function.](https://docs.story.foundation/docs/batch-spg-function-calls#1-batch-spg-function-calls-via-built-in-multicall-function)
 
 The Multicall3 contract allows you to execute multiple calls within a single transaction and aggregate the results. The [`viem` library](https://viem.sh/docs/contract/multicall#multicall) provides native support for Multicall3.
@@ -130,8 +130,8 @@ function aggregate3Value(Call3Value[] calldata calls) external payable returns (
 
 ### Struct Definitions
 
-- **Call3**: Used in `aggregate3`.
-- **Call3Value**: Used in `aggregate3Value`.
+* **Call3**: Used in `aggregate3`.
+* **Call3Value**: Used in `aggregate3Value`.
 
 ```solidity
 struct Call3 {
@@ -150,7 +150,7 @@ struct Call3Value {
 
 ### Return Type
 
-- **Result**: Struct returned by both `aggregate3` and `aggregate3Value`.
+* **Result**: Struct returned by both `aggregate3` and `aggregate3Value`.
 
 ```solidity
 struct Result {
@@ -160,7 +160,7 @@ struct Result {
 ```
 
 > 📘 Examples
-> 
+>
 > For detailed examples in Solidity, TypeScript, and Python, see the [Multicall3 repository](https://github.com/mds1/multicall/tree/main/examples).
 
 ### Limitations
@@ -169,8 +169,8 @@ For a list of limitations when using Multicall3, refer to the [Multicall3 README
 
 ### Additional Resources
 
-- [Multicall3 Documentation](https://github.com/mds1/multicall/blob/main/README.md)
-- [Multicall Documentation from Viem](https://viem.sh/docs/contract/multicall#multicall)
+* [Multicall3 Documentation](https://github.com/mds1/multicall/blob/main/README.md)
+* [Multicall Documentation from Viem](https://viem.sh/docs/contract/multicall#multicall)
 
 ### Full Multicall3 Interface
 
