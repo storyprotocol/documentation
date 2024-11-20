@@ -10,8 +10,8 @@ metadata:
 next:
   description: ''
 ---
-Resolver used for returning values associated with keys. This is the  
-        preferred approach for adding additional attribution to IP that the  
+Resolver used for returning values associated with keys. This is the\
+        preferred approach for adding additional attribution to IP that the\
         IP originator thinks is beneficial to have on chain.
 
 ### \_values
@@ -20,7 +20,7 @@ Resolver used for returning values associated with keys. This is the
 mapping(address => mapping(string => string)) _values
 ```
 
-_Stores key-value pairs associated with each IP._
+*Stores key-value pairs associated with each IP.*
 
 ### setValue
 
@@ -30,7 +30,7 @@ function setValue(address ipId, string key, string val) external virtual
 
 Sets the string value for a specified key of an IP ID.
 
-_Enforced to be only callable by users with valid permission to call on behalf of the ipId._
+*Enforced to be only callable by users with valid permission to call on behalf of the ipId.*
 
 #### Parameters
 
@@ -50,16 +50,59 @@ Retrieves the string value associated with a key for an IP asset.
 
 #### Parameters
 
-| Name | Type    | Description                        |
-| ---- | ------- | ---------------------------------- |
-| ipId | address |                                    |
-| key  | string  | The string parameter key to query. |
+<Table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+
+      <th>
+        Type
+      </th>
+
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        ipId
+      </td>
+
+      <td>
+        address
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        key
+      </td>
+
+      <td>
+        string
+      </td>
+
+      <td>
+        The string parameter key to query.
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 #### Return Values
 
 | Name | Type   | Description                                        |
 | ---- | ------ | -------------------------------------------------- |
-| [0]  | string | value The value associated with the specified key. |
+| \[0] | string | value The value associated with the specified key. |
 
 ### supportsInterface
 
