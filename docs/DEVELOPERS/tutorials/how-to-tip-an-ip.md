@@ -10,13 +10,13 @@ metadata:
 next:
   description: ''
 ---
-- [Use the SDK](https://docs.story.foundation/docs/how-to-tip-an-ip#using-the-sdk)
-- [Use a Smart Contract](https://docs.story.foundation/docs/how-to-tip-an-ip#using-a-smart-contract)
+* [Use the SDK](https://docs.story.foundation/docs/how-to-tip-an-ip#using-the-sdk)
+* [Use a Smart Contract](https://docs.story.foundation/docs/how-to-tip-an-ip#using-a-smart-contract)
 
 # Using the SDK
 
 > 👍 See the Completed Code
-> 
+>
 > To see a completed, working example of setting up a simple derivative chain and then tipping the child IP Asset, please see [the commercial tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts).
 
 In this tutorial, you will learn how to send money ("tip") an IP Asset using the TypeScript SDK.
@@ -27,8 +27,8 @@ In this scenario, let's say there is a parent IP Asset that represents Mickey Mo
 
 For the purposes of this example, we will assume the child is already registered as a derivative IP Asset. If you want help learning this, check out [Register a Derivative](doc:register-a-derivative).
 
-- Parent IP ID: `0x42595dA29B541770D9F9f298a014bF912655E183`
-- Child IP ID: `0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a`
+* Parent IP ID: `0x42595dA29B541770D9F9f298a014bF912655E183`
+* Child IP ID: `0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a`
 
 ## 0. Before you Start
 
@@ -54,7 +54,7 @@ npm install @story-protocol/core-sdk viem
 
 ## 1. Set up your Story Config
 
-- Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
+* Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
 ```javascript main.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
@@ -127,11 +127,11 @@ console.log(`Claimed revenue: ${response.amountsClaimed} at snapshotId ${respons
 ## 4. Done!
 
 > 👍 See the Completed Code
-> 
+>
 > To see a completed, working example of setting up a simple derivative chain and then tipping the child IP Asset, please see [the commercial tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts).
 
 # Using a Smart Contract
 
 > 🚧 Not Completed
-> 
+>
 > A full written tutorial is coming soon. For now, you can see a code example at the bottom of [this file in our boilerplate](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/IPARoyalty.t.sol).
