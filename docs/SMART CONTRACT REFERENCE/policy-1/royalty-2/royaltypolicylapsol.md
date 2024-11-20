@@ -31,7 +31,7 @@ struct LAPRoyaltyData {
 }
 ```
 
-### TOTAL_RNFT_SUPPLY
+### TOTAL\_RNFT\_SUPPLY
 
 ```solidity
 uint32 TOTAL_RNFT_SUPPLY
@@ -39,7 +39,7 @@ uint32 TOTAL_RNFT_SUPPLY
 
 Returns the percentage scale - 1000 rnfts represents 100%
 
-### MAX_PARENTS
+### MAX\_PARENTS
 
 ```solidity
 uint256 MAX_PARENTS
@@ -47,7 +47,7 @@ uint256 MAX_PARENTS
 
 Returns the maximum number of parents
 
-### MAX_ANCESTORS
+### MAX\_ANCESTORS
 
 ```solidity
 uint256 MAX_ANCESTORS
@@ -55,9 +55,9 @@ uint256 MAX_ANCESTORS
 
 Returns the maximum number of total ancestors.
 
-_The IP derivative tree is limited to 14 ancestors, which represents 3 levels of a binary tree 14 = 2+4+8_
+*The IP derivative tree is limited to 14 ancestors, which represents 3 levels of a binary tree 14 = 2+4+8*
 
-### ROYALTY_MODULE
+### ROYALTY\_MODULE
 
 ```solidity
 address ROYALTY_MODULE
@@ -65,7 +65,7 @@ address ROYALTY_MODULE
 
 Returns the RoyaltyModule address
 
-### LICENSING_MODULE
+### LICENSING\_MODULE
 
 ```solidity
 address LICENSING_MODULE
@@ -73,7 +73,7 @@ address LICENSING_MODULE
 
 Returns the LicensingModule address
 
-### LIQUID_SPLIT_FACTORY
+### LIQUID\_SPLIT\_FACTORY
 
 ```solidity
 address LIQUID_SPLIT_FACTORY
@@ -81,7 +81,7 @@ address LIQUID_SPLIT_FACTORY
 
 Returns the 0xSplits LiquidSplitFactory address
 
-### LIQUID_SPLIT_MAIN
+### LIQUID\_SPLIT\_MAIN
 
 ```solidity
 address LIQUID_SPLIT_MAIN
@@ -89,7 +89,7 @@ address LIQUID_SPLIT_MAIN
 
 Returns the 0xSplits LiquidSplitMain address
 
-### ANCESTORS_VAULT_IMPL
+### ANCESTORS\_VAULT\_IMPL
 
 ```solidity
 address ANCESTORS_VAULT_IMPL
@@ -111,7 +111,7 @@ Returns the royalty data for a given IP asset
 modifier onlyRoyaltyModule()
 ```
 
-_Restricts the calls to the royalty module_
+*Restricts the calls to the royalty module*
 
 ### constructor
 
@@ -131,8 +131,8 @@ receive() external payable
 function setAncestorsVaultImplementation(address ancestorsVaultImpl) external
 ```
 
-_Set the ancestors vault implementation address  
-Enforced to be only callable by the protocol admin in governance_
+*Set the ancestors vault implementation address\
+Enforced to be only callable by the protocol admin in governance*
 
 #### Parameters
 
@@ -148,7 +148,7 @@ function onLicenseMinting(address ipId, bytes licenseData, bytes externalData) e
 
 Executes royalty related logic on minting a license
 
-_Enforced to be only callable by RoyaltyModule_
+*Enforced to be only callable by RoyaltyModule*
 
 #### Parameters
 
@@ -166,7 +166,7 @@ function onLinkToParents(address ipId, address[] parentIpIds, bytes[] licenseDat
 
 Executes royalty related logic on linking to parents
 
-_Enforced to be only callable by RoyaltyModule_
+*Enforced to be only callable by RoyaltyModule*
 
 #### Parameters
 
@@ -183,8 +183,8 @@ _Enforced to be only callable by RoyaltyModule_
 function _initPolicy(address ipId, address[] parentIpIds, bytes[] licenseData, bytes externalData) internal
 ```
 
-_Initializes the royalty policy for a given IP asset.  
-Enforced to be only callable by RoyaltyModule_
+*Initializes the royalty policy for a given IP asset.\
+Enforced to be only callable by RoyaltyModule*
 
 #### Parameters
 
@@ -218,11 +218,11 @@ Allows the caller to pay royalties to the given IP asset
 function distributeIpPoolFunds(address ipId, address token, address[] accounts, address distributorAddress) external
 ```
 
-Distributes funds internally so that accounts holding the royalty nfts at distribution moment can  
+Distributes funds internally so that accounts holding the royalty nfts at distribution moment can\
 claim afterwards
 
-_This call will revert if the caller holds all the royalty nfts of the ipId - in that case can call  
-claimFromIpPoolAsTotalRnftOwner() instead_
+*This call will revert if the caller holds all the royalty nfts of the ipId - in that case can call\
+claimFromIpPoolAsTotalRnftOwner() instead*
 
 #### Parameters
 
@@ -241,8 +241,8 @@ function claimFromIpPool(address account, uint256 withdrawETH, contract ERC20[] 
 
 Claims the available royalties for a given address
 
-_If there are no funds available in split main contract but there are funds in the split clone contract  
-then a distributeIpPoolFunds() call should precede this call_
+*If there are no funds available in split main contract but there are funds in the split clone contract\
+then a distributeIpPoolFunds() call should precede this call*
 
 #### Parameters
 
@@ -260,7 +260,7 @@ function claimFromIpPoolAsTotalRnftOwner(address ipId, uint256 withdrawETH, addr
 
 Claims the available royalties for a given address that holds all the royalty nfts of an ipId
 
-_This call will revert if the caller does not hold all the royalty nfts of the ipId_
+*This call will revert if the caller does not hold all the royalty nfts of the ipId*
 
 #### Parameters
 
@@ -295,7 +295,7 @@ Claims all available royalty nfts and accrued royalties for an ancestor of a giv
 function _checkAncestorsDataIsValid(address[] parentIpIds, uint32[] parentRoyalties, struct IRoyaltyPolicyLAP.InitParams params) internal view returns (uint32)
 ```
 
-_Checks if the ancestors data is valid_
+*Checks if the ancestors data is valid*
 
 #### Parameters
 
@@ -309,7 +309,7 @@ _Checks if the ancestors data is valid_
 
 | Name | Type   | Description                           |
 | ---- | ------ | ------------------------------------- |
-| [0]  | uint32 | newRoyaltyStack The new royalty stack |
+| \[0] | uint32 | newRoyaltyStack The new royalty stack |
 
 ### \_getExpectedOutputs
 
@@ -317,7 +317,7 @@ _Checks if the ancestors data is valid_
 function _getExpectedOutputs(address[] parentIpIds, uint32[] parentRoyalties, struct IRoyaltyPolicyLAP.InitParams params) internal view returns (address[] newAncestors, uint32[] newAncestorsRoyalty, uint32 ancestorsCount, uint32 royaltyStack)
 ```
 
-_Gets the expected outputs for the ancestors and ancestors royalties_
+*Gets the expected outputs for the ancestors and ancestors royalties*
 
 #### Parameters
 
@@ -342,7 +342,7 @@ _Gets the expected outputs for the ancestors and ancestors royalties_
 function _deploySplitClone(address ipId, address ancestorsVault, uint32 royaltyStack) internal returns (address)
 ```
 
-_Deploys a liquid split clone contract_
+*Deploys a liquid split clone contract*
 
 #### Parameters
 
@@ -356,7 +356,7 @@ _Deploys a liquid split clone contract_
 
 | Name | Type    | Description                                             |
 | ---- | ------- | ------------------------------------------------------- |
-| [0]  | address | The address of the deployed liquid split clone contract |
+| \[0] | address | The address of the deployed liquid split clone contract |
 
 ### \_safeTransferETH
 
@@ -364,7 +364,7 @@ _Deploys a liquid split clone contract_
 function _safeTransferETH(address to, uint256 amount) internal
 ```
 
-_Allows to transfers ETH_
+*Allows to transfers ETH*
 
 #### Parameters
 
