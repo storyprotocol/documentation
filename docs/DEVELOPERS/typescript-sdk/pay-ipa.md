@@ -14,22 +14,22 @@ This section demonstrates how to pay an IP Asset in TypeScript.
 
 There are a few reasons you would pay an IP Asset:
 
-- you simply want to "tip" an IP
-- you have to because your license terms with that IP require you to forward a certain % of payment
+* you simply want to "tip" an IP
+* you have to because your license terms with that IP require you to forward a certain % of payment
 
 In either scenario, you would use the below `payRoyaltyOnBehalf` function. When this happens, the Royalty Module automatically handles the different payment flows such that parent IP Assets who have negotiated a certain `commercialRevShare` with the IPA being paid can claim their due share. This is covered in ...
 
 ## Prerequisites
 
-- [Setup](doc:typescript-sdk-setup) the client object.
-- Understand the [💸 Royalty Module](doc:royalty-module)
+* [Setup](doc:typescript-sdk-setup) the client object.
+* Understand the [💸 Royalty Module](doc:royalty-module)
 
 > ❗️ Important: Before you continue
-> 
+>
 > In order to use the `payRoyaltyOnBehalf` function below, you'll first need to know a few things.
-> 
+>
 > First, the only way to make payments on Story is if the ERC20 token you're using is whitelisted. Currently the only whitelisted revenue token is SUSD, which is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens). You can mint some publicly [here](https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7?tab=write_contract#40c10f19).
-> 
+>
 > Then, once you have SUSD,  you have to approve the Royalty Module to spend them on behalf so it can properly distribute payment to ancestor IPs. Run the [approve transaction](https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7?tab=write_contract#095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
 
 # Paying an IP Asset
