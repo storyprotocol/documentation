@@ -18,7 +18,7 @@ This contract is used to register and track modules in the protocol.
 mapping(string => address) modules
 ```
 
-_Returns the address of a registered module by its name._
+*Returns the address of a registered module by its name.*
 
 ### moduleTypes
 
@@ -26,7 +26,7 @@ _Returns the address of a registered module by its name._
 mapping(address => string) moduleTypes
 ```
 
-_Returns the module type of a registered module by its address._
+*Returns the module type of a registered module by its address.*
 
 ### allModuleTypes
 
@@ -34,7 +34,7 @@ _Returns the module type of a registered module by its address._
 mapping(string => bytes4) allModuleTypes
 ```
 
-_Returns the interface ID of a registered module type._
+*Returns the interface ID of a registered module type.*
 
 ### constructor
 
@@ -50,7 +50,7 @@ function registerModuleType(string name, bytes4 interfaceId) external
 
 Registers a new module type in the registry associate with an interface.
 
-_Enforced to be only callable by the protocol admin in governance._
+*Enforced to be only callable by the protocol admin in governance.*
 
 #### Parameters
 
@@ -67,7 +67,7 @@ function removeModuleType(string name) external
 
 Removes a module type from the registry.
 
-_Enforced to be only callable by the protocol admin in governance._
+*Enforced to be only callable by the protocol admin in governance.*
 
 #### Parameters
 
@@ -83,7 +83,7 @@ function registerModule(string name, address moduleAddress) external
 
 Registers a new module in the registry.
 
-_Enforced to be only callable by the protocol admin in governance._
+*Enforced to be only callable by the protocol admin in governance.*
 
 #### Parameters
 
@@ -116,7 +116,7 @@ function removeModule(string name) external
 
 Removes a module from the registry.
 
-_Enforced to be only callable by the protocol admin in governance._
+*Enforced to be only callable by the protocol admin in governance.*
 
 #### Parameters
 
@@ -142,7 +142,7 @@ Checks if a module is registered in the protocol.
 
 | Name | Type | Description                                                     |
 | ---- | ---- | --------------------------------------------------------------- |
-| [0]  | bool | isRegistered True if the module is registered, false otherwise. |
+| \[0] | bool | isRegistered True if the module is registered, false otherwise. |
 
 ### getModule
 
@@ -162,7 +162,7 @@ Returns the address of a module.
 
 | Name | Type    | Description                |
 | ---- | ------- | -------------------------- |
-| [0]  | address | The address of the module. |
+| \[0] | address | The address of the module. |
 
 ### getModuleType
 
@@ -182,7 +182,7 @@ Returns the module type of a given module address.
 
 | Name | Type   | Description                         |
 | ---- | ------ | ----------------------------------- |
-| [0]  | string | The type of the module as a string. |
+| \[0] | string | The type of the module as a string. |
 
 ### getModuleTypeInterfaceId
 
@@ -202,7 +202,7 @@ Returns the interface ID associated with a given module type.
 
 | Name | Type   | Description                                    |
 | ---- | ------ | ---------------------------------------------- |
-| [0]  | bytes4 | The interface ID of the module type as bytes4. |
+| \[0] | bytes4 | The interface ID of the module type as bytes4. |
 
 ### \_registerModule
 
@@ -210,4 +210,4 @@ Returns the interface ID associated with a given module type.
 function _registerModule(string name, address moduleAddress, string moduleType) internal
 ```
 
-_Registers a new module in the registry._
+*Registers a new module in the registry.*
