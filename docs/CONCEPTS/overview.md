@@ -10,25 +10,11 @@ metadata:
 next:
   description: ''
 ---
-Story's "Proof-of-Creativity" protocol introduces a revolutionary open** Programmable IP layer**, elevating IP to a first-class entity in the blockchain ecosystem. At the heart of this system is the [🧩 IP Asset](doc:ip-asset) and its associated [⚙️ IP Account](doc:ip-account), a smart contract designed to serve as the core identity for each IP. This account-centric approach enables the storage and management of IP-related data, as well as the execution of diverse functions to manipulate that data via [🧱 Modules](doc:story-modules).
+Story's "Proof-of-Creativity" protocol introduces a revolutionary open **Programmable IP layer**, elevating IP to a first-class entity in the blockchain ecosystem. At the heart of this system is the [🧩 IP Asset](doc:ip-asset) and its associated [⚙️ IP Account](doc:ip-account), a smart contract designed to serve as the core identity for each IP. This account-centric approach enables the storage and management of IP-related data, as well as the execution of diverse functions to manipulate that data via [🧱 Modules](doc:story-modules).
 
 # Architecture
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/251dabc-story-v1-architecture.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/251dabc-story-v1-architecture.png" />
 
 Let's briefly introduce the layers mentioned in the above diagram:
 
