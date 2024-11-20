@@ -10,10 +10,10 @@ metadata:
 next:
   description: ''
 ---
-The Story Protocol arbitration policy is a simple policy that requires the dispute initiator to pay a fixed  
+The Story Protocol arbitration policy is a simple policy that requires the dispute initiator to pay a fixed\
         amount of tokens to raise a dispute and refunds that amount if the dispute initiator wins the dispute.
 
-### DISPUTE_MODULE
+### DISPUTE\_MODULE
 
 ```solidity
 address DISPUTE_MODULE
@@ -21,7 +21,7 @@ address DISPUTE_MODULE
 
 Returns the dispute module address
 
-### PAYMENT_TOKEN
+### PAYMENT\_TOKEN
 
 ```solidity
 address PAYMENT_TOKEN
@@ -29,7 +29,7 @@ address PAYMENT_TOKEN
 
 Returns the payment token address
 
-### ARBITRATION_PRICE
+### ARBITRATION\_PRICE
 
 ```solidity
 uint256 ARBITRATION_PRICE
@@ -59,7 +59,7 @@ function onRaiseDispute(address caller, bytes data) external
 
 Executes custom logic on raising dispute.
 
-_Enforced to be only callable by the DisputeModule._
+*Enforced to be only callable by the DisputeModule.*
 
 #### Parameters
 
@@ -76,7 +76,7 @@ function onDisputeJudgement(uint256 disputeId, bool decision, bytes data) extern
 
 Executes custom logic on disputing judgement.
 
-_Enforced to be only callable by the DisputeModule._
+*Enforced to be only callable by the DisputeModule.*
 
 #### Parameters
 
@@ -94,7 +94,7 @@ function onDisputeCancel(address caller, uint256 disputeId, bytes data) external
 
 Executes custom logic on disputing cancel.
 
-_Enforced to be only callable by the DisputeModule._
+*Enforced to be only callable by the DisputeModule.*
 
 #### Parameters
 
@@ -112,4 +112,4 @@ function governanceWithdraw() external
 
 Allows governance address to withdraw
 
-_Enforced to be only callable by the governance protocol admin._
+*Enforced to be only callable by the governance protocol admin.*
