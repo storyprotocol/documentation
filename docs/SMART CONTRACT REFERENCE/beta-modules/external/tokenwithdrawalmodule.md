@@ -12,10 +12,10 @@ next:
 ---
 Module for transferring ERC20, ERC721, and ERC1155 tokens for IP Accounts.
 
-_SECURITY RISK: An IPAccount can delegate to a frontend contract (not a registered module) to transfer tokens  
-on behalf of the IPAccount via the Token Management Module. This frontend contract can transfer any tokens that are  
-approved by the IPAccount for the Token Management Module. In other words, there's no mechanism for this module to  
-granularly control which token a caller (approved contract in this case) can transfer._
+*SECURITY RISK: An IPAccount can delegate to a frontend contract (not a registered module) to transfer tokens\
+on behalf of the IPAccount via the Token Management Module. This frontend contract can transfer any tokens that are\
+approved by the IPAccount for the Token Management Module. In other words, there's no mechanism for this module to\
+granularly control which token a caller (approved contract in this case) can transfer.*
 
 ### name
 
@@ -39,8 +39,8 @@ function withdrawERC20(address payable ipAccount, address tokenContract, uint256
 
 Withdraws ERC20 token from the IP account to the IP account owner.
 
-_When calling this function, the caller must have the permission to call `transfer` via the IP account.  
-Does not support transfer of multiple tokens at once._
+*When calling this function, the caller must have the permission to call`transfer` via the IP account.\
+Does not support transfer of multiple tokens at once.*
 
 #### Parameters
 
@@ -58,8 +58,8 @@ function withdrawERC721(address payable ipAccount, address tokenContract, uint25
 
 Withdraws ERC721 token from the IP account to the IP account owner.
 
-_When calling this function, the caller must have the permission to call `transferFrom` via the IP account.  
-Does not support batch transfers._
+*When calling this function, the caller must have the permission to call`transferFrom` via the IP account.\
+Does not support batch transfers.*
 
 #### Parameters
 
@@ -77,9 +77,9 @@ function withdrawERC1155(address payable ipAccount, address tokenContract, uint2
 
 Withdraws ERC1155 token from the IP account to the IP account owner.
 
-_When calling this function, the caller must have the permission to call `safeTransferFrom` via the IP  
-account.  
-Does not support batch transfers._
+*When calling this function, the caller must have the permission to call`safeTransferFrom` via the IP\
+account.\
+Does not support batch transfers.*
 
 #### Parameters
 
