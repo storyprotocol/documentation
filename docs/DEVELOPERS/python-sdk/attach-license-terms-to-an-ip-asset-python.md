@@ -14,9 +14,9 @@ This section demonstrates how to add License Terms to an IPA. By attaching terms
 
 ## Prerequisites
 
-- [Setup](doc:python-sdk-setup) the client object.
-- An existing IPA (`ipId`). Learn how to register an IP Asset [here](doc:register-an-nft-as-an-ip-asset-python).
-- An existing License Terms (`termsId`). Learn how to create a PIL Policy [here](doc:register-pil-terms-python).
+* [Setup](doc:python-sdk-setup) the client object.
+* An existing IPA (`ipId`). Learn how to register an IP Asset [here](doc:register-an-nft-as-an-ip-asset-python).
+* An existing License Terms (`termsId`). Learn how to create a PIL Policy [here](doc:register-pil-terms-python).
 
 # Attach License Terms
 
