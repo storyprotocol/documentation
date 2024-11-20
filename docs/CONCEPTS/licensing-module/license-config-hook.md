@@ -15,7 +15,7 @@ next:
 ## License Config
 
 > 🗒️ Contract
-> 
+>
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/lib/Licensing.sol).
 
 Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `licenseTermsId`) which contains a `mintingFee` and a `licensingHook`, as shown below. The `licensingHook` is an address to a smart contract that implements the `ILicensingHook.sol` interface, which contains a `beforeMintLicenseTokens` function which will be run before a user mints a License Token. This means you can insert logic to be run upon minting a license.
@@ -56,7 +56,7 @@ The hook itself is defined below in a different section. You can see it contains
 ## Licensing Hook
 
 > 🗒️ Contract
-> 
+>
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/ILicensingHook.sol#L26).
 
 The `beforeMintLicenseTokens` function, which acts as a hook, is a function that can be called before a License Token is minted to implement custom logic and determine the final `totalMintingFee` of that License Token. The owner of an IP Asset must set the License Config (of which the hook is contained in), with their own implementation of the `beforeMintLicenseTokens` function, for this to be called. 
@@ -64,7 +64,7 @@ The `beforeMintLicenseTokens` function, which acts as a hook, is a function that
 It can also be used to implement various checks and logic, as [outlined above](https://docs.story.foundation/docs/license-config-hook#logic-that-is-possible-with-license-config).
 
 > 🚧 Warning!
-> 
+>
 > Beware of potentially malicious implementations of external license hooks. Please first verify the code of the hook you choose because it may be not reviewed or audited by the Story team.
 
 ```sol ILicensingHook.sol
@@ -93,8 +93,64 @@ function beforeMintLicenseTokens(
 
 Note that it returns the `totalMintingFee`. You may be wondering, "I can set the minting fee in the License Terms, in the `LicenseConfig`, and return a dynamic price from `beforeMintLicenseTokens`. What will the final minting fee actually be?" Here is the priority:
 
-| Minting Fee                                                   | Importance       |
-| :------------------------------------------------------------ | :--------------- |
-| The `totalMintingFee` returned from `beforeMintLicenseTokens` | Highest Priority |
-| The `mintingFee` set in the `LicenseConfig`                   | :arrow_down:     |
-| The `mintingFee` set in the License Terms                     | Lowest Priority  |
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Minting Fee
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Importance
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        The 
+
+        `totalMintingFee`
+
+         returned from 
+
+        `beforeMintLicenseTokens`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Highest Priority
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        The 
+
+        `mintingFee`
+
+         set in the 
+
+        `LicenseConfig`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :arrow_down:
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        The 
+
+        `mintingFee`
+
+         set in the License Terms
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Lowest Priority
+      </td>
+    </tr>
+  </tbody>
+</Table>
