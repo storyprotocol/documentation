@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-The `registerIpWithSig` function should be used whenever you want to enroll a prospective IP that already exists as an ERC-721 (e.g. your esteemed Punk or your favorite Noun), and do not want to register it as a derivative of some existing work (_though this may be done at a later point_). This function is most commonly called by users who wish to create licenses for their IP so that others may create derivative works off of their own, e.g. when creating an original painting that you wish to copyright but allow others to remix off of.
+The `registerIpWithSig` function should be used whenever you want to enroll a prospective IP that already exists as an ERC-721 (e.g. your esteemed Punk or your favorite Noun), and do not want to register it as a derivative of some existing work (*though this may be done at a later point*). This function is most commonly called by users who wish to create licenses for their IP so that others may create derivative works off of their own, e.g. when creating an original painting that you wish to copyright but allow others to remix off of.
 
 **Function Interface**:
 
@@ -80,22 +80,22 @@ The `tokenId` identifies the token identifier of your NFT.
 
 The`ipMetadata` refers to the metadata you would like to associate with the IP. It is composed of the following fields:
 
-- **`string name`**
-  - The name you would like to assign to the registered IP asset. For simple on-chain NFT assets, this can simply be a concatenation of the collection name and your unique NFT identifier. However, for something more real-world applicable, such as a tokenized T-shirt logo, this can be something a bit more specific, such as "Story Protocol LS Tee Logo".
-- **`bytes32 contentHash`**
-  - The `contentHash` refers to a unique hash of the IP being registered. How this content hash is generated should be based on the requirements of the type of IP being registered, but for most intents and purposes, a simple SHA-256 checksum can work.
-- **`string externalURL`**
-  - The `externalURL` refers to an external URL that users may be redirected to when they want to learn more about the IP component of your registered asset. This, for example, may be a link to an IPFS PDF providing contextual information regarding how this IP was created in the first place.
-- **`Attribute[] ipMetadata`**
-  - The `ipMetadata` refers to additional IP metadata string key-value pairs that you may bind to the IP on registration. For example, this could be an array such as `[{"Copyright Type", "Literary Work"}, {"Literary Type", "Novel"}]`. Using custom IP metadata attribution is what allows extensibility for other types of on-chain IP composition. Note that for `v0.1-beta`, only string attribution is supported.
+* **`string name`**
+  * The name you would like to assign to the registered IP asset. For simple on-chain NFT assets, this can simply be a concatenation of the collection name and your unique NFT identifier. However, for something more real-world applicable, such as a tokenized T-shirt logo, this can be something a bit more specific, such as "Story Protocol LS Tee Logo".
+* **`bytes32 contentHash`**
+  * The `contentHash` refers to a unique hash of the IP being registered. How this content hash is generated should be based on the requirements of the type of IP being registered, but for most intents and purposes, a simple SHA-256 checksum can work.
+* **`string externalURL`**
+  * The `externalURL` refers to an external URL that users may be redirected to when they want to learn more about the IP component of your registered asset. This, for example, may be a link to an IPFS PDF providing contextual information regarding how this IP was created in the first place.
+* **`Attribute[] ipMetadata`**
+  * The `ipMetadata` refers to additional IP metadata string key-value pairs that you may bind to the IP on registration. For example, this could be an array such as `[{"Copyright Type", "Literary Work"}, {"Literary Type", "Novel"}]`. Using custom IP metadata attribution is what allows extensibility for other types of on-chain IP composition. Note that for `v0.1-beta`, only string attribution is supported.
 
 **`Signature signature`**
 
 The EIP-712 signature enables users to grant permissions to SPG, authorizing it to interact with other modules. This specifically includes the Licensing Module and the Metadata Resolver Module, which are utilized within the function.
 
-- **`address signer`** the address sign the message
-- **`uint256 deadline`** The time at which the signature expires.
-- **`uint256 signature`** The signature itself
+* **`address signer`** the address sign the message
+* **`uint256 deadline`** The time at which the signature expires.
+* **`uint256 signature`** The signature itself
 
 ```
 
@@ -134,8 +134,6 @@ The EIP-712 signature enables users to grant permissions to SPG, authorizing it 
         (uint8 v, bytes32 r, bytes32 s) = vm.sign(alicePk, digest);
         bytes memory signature = abi.encodePacked(r, s, v);
 ```
-
-
 
 ### IMPORTANT
 
