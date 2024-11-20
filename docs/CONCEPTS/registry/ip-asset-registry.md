@@ -11,10 +11,10 @@ next:
   description: ''
 ---
 > 🗒️ Contract
-> 
+>
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAssetRegistry.sol).
 
-The IP Asset Registry is responsible for registering IPs into the protocol. It deploys a dedicated [IP Account](doc:ip-account) contract for each new IP Asset registered on the protocol (_NOTE: This registry inherits from IP Account Registry_)
+The IP Asset Registry is responsible for registering IPs into the protocol. It deploys a dedicated [IP Account](doc:ip-account) contract for each new IP Asset registered on the protocol (*NOTE: This registry inherits from IP Account Registry*)
 
 ### Notable Functions
 
