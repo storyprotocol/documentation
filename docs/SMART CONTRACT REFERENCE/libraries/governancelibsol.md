@@ -10,9 +10,9 @@ metadata:
 next:
   description: ''
 ---
-_This library provides types for Story Protocol Governance._
+*This library provides types for Story Protocol Governance.*
 
-### PROTOCOL_ADMIN
+### PROTOCOL\_ADMIN
 
 ```solidity
 bytes32 PROTOCOL_ADMIN
