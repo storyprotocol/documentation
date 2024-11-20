@@ -1,3 +1,4 @@
 - get_bank-balances-address
 - get_bank-balances-address-by-denom
 - get_bank-params
+- get_bank-supply
