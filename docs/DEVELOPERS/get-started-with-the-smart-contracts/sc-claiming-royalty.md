@@ -16,15 +16,15 @@ In the below example, we will see how the parent IPA can claim its due 10% reven
 
 ## Prerequisites
 
-- Understand the [💸 Royalty Module](doc:royalty-module)
-- A child IPA and a parent IPA, for which their license terms have a commercial revenue share to make this example work
+* Understand the [💸 Royalty Module](doc:royalty-module)
+* A child IPA and a parent IPA, for which their license terms have a commercial revenue share to make this example work
 
 ## Claim Royalty
 
 Create a new file under `./test/5_Royalty.t.sol` and paste the following:
 
 > 📘 Contract Addresses
-> 
+>
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
 ```sol 5_Royalty.t.sol
