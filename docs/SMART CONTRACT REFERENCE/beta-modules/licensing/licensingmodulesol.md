@@ -12,12 +12,12 @@ next:
 ---
 Licensing module is the main entry point for the licensing system. It is responsible for:
 
-- Registering policy frameworks
-- Registering policies
-- Minting licenses
-- Linking IP to its parent
-- Verifying linking parameters
-- Verifying policy parameters
+* Registering policy frameworks
+* Registering policies
+* Minting licenses
+* Linking IP to its parent
+* Verifying linking parameters
+* Verifying policy parameters
 
 ### name
 
@@ -27,7 +27,7 @@ string name
 
 Returns the string identifier associated with the module.
 
-### ROYALTY_MODULE
+### ROYALTY\_MODULE
 
 ```solidity
 contract RoyaltyModule ROYALTY_MODULE
@@ -35,7 +35,7 @@ contract RoyaltyModule ROYALTY_MODULE
 
 Returns the canonical protocol-wide RoyaltyModule
 
-### LICENSE_REGISTRY
+### LICENSE\_REGISTRY
 
 ```solidity
 contract ILicenseRegistry LICENSE_REGISTRY
@@ -43,7 +43,7 @@ contract ILicenseRegistry LICENSE_REGISTRY
 
 Returns the canonical protocol-wide LicenseRegistry
 
-### DISPUTE_MODULE
+### DISPUTE\_MODULE
 
 ```solidity
 contract IDisputeModule DISPUTE_MODULE
@@ -85,7 +85,7 @@ Registers a policy framework manager into the contract, so it can add policy dat
 function registerPolicy(struct Licensing.Policy pol) external returns (uint256 policyId)
 ```
 
-Registers a policy into the contract. MUST be called by a registered framework or it will revert.  
+Registers a policy into the contract. MUST be called by a registered framework or it will revert.\
 The policy data and its integrity must be verified by the policy framework manager.
 
 #### Parameters
@@ -127,13 +127,13 @@ Adds a policy to the set of policies of an IP. Reverts if policy is undefined in
 function mintLicense(uint256 policyId, address licensorIpId, uint256 amount, address receiver, bytes royaltyContext) external returns (uint256 licenseId)
 ```
 
-Mints a license to create derivative IP. License NFTs represent a policy granted by IPs (licensors).  
+Mints a license to create derivative IP. License NFTs represent a policy granted by IPs (licensors).\
 Reverts if caller is not authorized by any of the licensors.
 
-_This NFT needs to be burned in order to link a derivative IP with its parents. If this is the first  
-combination of policy and licensors, a new licenseId will be created (by incrementing prev totalLicenses).  
-If not, the license is fungible and an id will be reused. The licensing terms that regulate creating new  
-licenses will be verified to allow minting._
+*This NFT needs to be burned in order to link a derivative IP with its parents. If this is the first\
+combination of policy and licensors, a new licenseId will be created (by incrementing prev totalLicenses).\
+If not, the license is fungible and an id will be reused. The licensing terms that regulate creating new\
+licenses will be verified to allow minting.*
 
 #### Parameters
 
@@ -157,7 +157,7 @@ licenses will be verified to allow minting._
 function linkIpToParents(uint256[] licenseIds, address childIpId, bytes royaltyContext) external
 ```
 
-Links an IP to the licensors listed in the license NFTs, if their policies allow it. Burns the license  
+Links an IP to the licensors listed in the license NFTs, if their policies allow it. Burns the license\
 NFTs in the proccess. The caller must be the owner of the IP asset and license NFTs.
 
 #### Parameters
@@ -186,7 +186,7 @@ Returns if the framework address is registered in the LicensingModule.
 
 | Name | Type | Description                                      |
 | ---- | ---- | ------------------------------------------------ |
-| [0]  | bool | isRegistered True if the framework is registered |
+| \[0] | bool | isRegistered True if the framework is registered |
 
 ### totalPolicies
 
@@ -200,7 +200,7 @@ Returns amount of distinct licensing policies in the LicensingModule.
 
 | Name | Type    | Description                          |
 | ---- | ------- | ------------------------------------ |
-| [0]  | uint256 | totalPolicies The amount of policies |
+| \[0] | uint256 | totalPolicies The amount of policies |
 
 ### policy
 
@@ -261,7 +261,7 @@ Returns the policy aggregator data for the given IP ID in the framework.
 
 | Name | Type  | Description                                                                    |
 | ---- | ----- | ------------------------------------------------------------------------------ |
-| [0]  | bytes | data The encoded policy aggregator data to be decoded by the framework manager |
+| \[0] | bytes | data The encoded policy aggregator data to be decoded by the framework manager |
 
 ### isPolicyDefined
 
@@ -281,7 +281,7 @@ Returns if policyId exists in the LicensingModule
 
 | Name | Type | Description                             |
 | ---- | ---- | --------------------------------------- |
-| [0]  | bool | isDefined True if the policy is defined |
+| \[0] | bool | isDefined True if the policy is defined |
 
 ### policyIdsForIp
 
@@ -291,7 +291,7 @@ function policyIdsForIp(bool isInherited, address ipId) external view returns (u
 
 Returns the policy ids attached to an IP
 
-_Potentially gas-intensive operation, use with care._
+*Potentially gas-intensive operation, use with care.*
 
 #### Parameters
 
@@ -325,7 +325,7 @@ Returns the total number of policies attached to an IP
 
 | Name | Type    | Description                                           |
 | ---- | ------- | ----------------------------------------------------- |
-| [0]  | uint256 | totalPolicies The total number of policies for the IP |
+| \[0] | uint256 | totalPolicies The total number of policies for the IP |
 
 ### isPolicyIdSetForIp
 
@@ -337,17 +337,73 @@ True if the given policy attached to the given IP is inherited from a parent IP.
 
 #### Parameters
 
-| Name        | Type    | Description                                         |
-| ----------- | ------- | --------------------------------------------------- |
-| isInherited | bool    |                                                     |
-| ipId        | address | The id of the IP asset that has the policy attached |
-| policyId    | uint256 | The id of the policy to check if inherited          |
+<Table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+
+      <th>
+        Type
+      </th>
+
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        isInherited
+      </td>
+
+      <td>
+        bool
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        ipId
+      </td>
+
+      <td>
+        address
+      </td>
+
+      <td>
+        The id of the IP asset that has the policy attached
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        policyId
+      </td>
+
+      <td>
+        uint256
+      </td>
+
+      <td>
+        The id of the policy to check if inherited
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 #### Return Values
 
 | Name | Type | Description                                                  |
 | ---- | ---- | ------------------------------------------------------------ |
-| [0]  | bool | isInherited True if the policy is inherited from a parent IP |
+| \[0] | bool | isInherited True if the policy is inherited from a parent IP |
 
 ### policyIdForIpAtIndex
 
@@ -391,7 +447,7 @@ Returns the policy data for an IP by the policy's local index on the IP's policy
 
 | Name | Type                    | Description            |
 | ---- | ----------------------- | ---------------------- |
-| [0]  | struct Licensing.Policy | policy The policy data |
+| \[0] | struct Licensing.Policy | policy The policy data |
 
 ### policyStatus
 
@@ -435,7 +491,7 @@ Returns if the given policy attached to the given IP is inherited from a parent 
 
 | Name | Type | Description                                                  |
 | ---- | ---- | ------------------------------------------------------------ |
-| [0]  | bool | isInherited True if the policy is inherited from a parent IP |
+| \[0] | bool | isInherited True if the policy is inherited from a parent IP |
 
 ### isParent
 
@@ -456,7 +512,7 @@ Returns if an IP is a derivative of another IP
 
 | Name | Type | Description                                                    |
 | ---- | ---- | -------------------------------------------------------------- |
-| [0]  | bool | isParent True if the child IP is a derivative of the parent IP |
+| \[0] | bool | isParent True if the child IP is a derivative of the parent IP |
 
 ### parentIpIds
 
@@ -476,7 +532,7 @@ Returns the list of parent IP assets for a given child IP asset
 
 | Name | Type       | Description                                 |
 | ---- | ---------- | ------------------------------------------- |
-| [0]  | address\[] | parentIpIds The ids of the parent IP assets |
+| \[0] | address\[] | parentIpIds The ids of the parent IP assets |
 
 ### totalParentsForIpId
 
@@ -496,4 +552,4 @@ Returns the total number of parents for an IP asset
 
 | Name | Type    | Description                                       |
 | ---- | ------- | ------------------------------------------------- |
-| [0]  | uint256 | totalParents The total number of parent IP assets |
+| \[0] | uint256 | totalParents The total number of parent IP assets |
