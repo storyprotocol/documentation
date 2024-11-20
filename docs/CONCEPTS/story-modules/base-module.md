@@ -13,7 +13,7 @@ next:
 The Base Module provides a standard set of must-have functionalities for all modules registered on Story Protocol. Anyone wishing to create and register a module on Story Protocol must inherit and override the Base Module.
 
 > 🗒️ Contract
-> 
+>
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/BaseModule.sol).
 
 # Key Features
