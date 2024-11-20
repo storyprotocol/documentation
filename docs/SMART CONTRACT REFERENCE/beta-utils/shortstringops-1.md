@@ -20,7 +20,7 @@ Library for working with Openzeppelin's ShortString data types.
 function equal(ShortString a, ShortString b) internal pure returns (bool)
 ```
 
-_Compares whether two ShortStrings are equal._
+*Compares whether two ShortStrings are equal.*
 
 ### equal
 
@@ -28,7 +28,7 @@ _Compares whether two ShortStrings are equal._
 function equal(ShortString a, string b) internal pure returns (bool)
 ```
 
-_Checks whether a ShortString and a regular string are equal._
+*Checks whether a ShortString and a regular string are equal.*
 
 ### equal
 
@@ -36,7 +36,7 @@ _Checks whether a ShortString and a regular string are equal._
 function equal(string a, ShortString b) internal pure returns (bool)
 ```
 
-_Checks whether a regular string and a ShortString are equal._
+*Checks whether a regular string and a ShortString are equal.*
 
 ### equal
 
@@ -44,7 +44,7 @@ _Checks whether a regular string and a ShortString are equal._
 function equal(bytes32 a, ShortString b) internal pure returns (bool)
 ```
 
-_Checks whether a bytes32 object and ShortString are equal._
+*Checks whether a bytes32 object and ShortString are equal.*
 
 ### equal
 
@@ -52,7 +52,7 @@ _Checks whether a bytes32 object and ShortString are equal._
 function equal(string a, bytes32 b) internal pure returns (bool)
 ```
 
-_Checks whether a string and bytes32 object are equal._
+*Checks whether a string and bytes32 object are equal.*
 
 ### equal
 
@@ -60,7 +60,7 @@ _Checks whether a string and bytes32 object are equal._
 function equal(bytes32 a, string b) internal pure returns (bool)
 ```
 
-_Checks whether a bytes32 object and string are equal._
+*Checks whether a bytes32 object and string are equal.*
 
 ### stringToBytes32
 
