@@ -17,7 +17,7 @@ This section demonstrates how to register an IP Asset using the Python SDK. Ther
 
 ## Prerequisites
 
-- [Setup](doc:python-sdk-setup) the client object.
+* [Setup](doc:python-sdk-setup) the client object.
 
 # Register an Existing NFT as an IP Asset
 
