@@ -14,21 +14,7 @@ next:
 ---
 License Terms are a particular combination of values from a [License Template](doc:license-template). Indeed, there can and will exist **multiple** License Terms (variations) for each License Template. You can imagine that a License Template generates many License Term variations.
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/62ee532-Screenshot_2024-05-07_at_17.59.18.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/62ee532-Screenshot_2024-05-07_at_17.59.18.png" />
 
 Once registered, **License Terms are immutable — they can't be tampered with or altered**, even by the License Template that generated it.
 
@@ -40,30 +26,16 @@ For example, a particular set of term values of the [Programmable IP License (PI
 
 The owner of a root IP Asset can attach License Terms to signal to other users that they can mint License Tokens of those terms to create a derivative of this IP Asset. **Once License Terms are attached to an IP Asset, it is now considered "public" and anyone can mint a License Token using those terms.**
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/39a365f-Screenshot_2024-05-07_at_18.43.38.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/39a365f-Screenshot_2024-05-07_at_18.43.38.png" />
 
 ## Inherited License Terms
 
 On the other hand, derivative IP Assets inherit their License Terms from the parent IP Asset. This means that when an IP Asset registers itself as a derivative, it burns the License Token and inherits the associated License Terms. **The owner of this derivative cannot set new License Terms.**
 
 > 📘 Changing Certain License Terms on a Derivative
-> 
+>
 > You may be wondering: "if I cannot set new License Terms on my derivative, does that also mean I can't change the minting fee, or disallowing more derivatives, on my derivative?"
-> 
+>
 > Thankfully, there is a way to get around this! Although you cannot change License Terms on a derivative IP, you can utilize the [License Config to implement special behaviors](doc:license-config-hook).
 
 ## Expiration
