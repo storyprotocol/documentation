@@ -14,14 +14,14 @@ Once a [License Token](doc:license-token) has been minted from an IP Asset, the 
 
 ## Prerequisites
 
-- Have a minted License Token. You can learn how to do that here: [Mint a License Token from an IP Asset](doc:sc-mint-license-token)
+* Have a minted License Token. You can learn how to do that here: [Mint a License Token from an IP Asset](doc:sc-mint-license-token)
 
 ## Register as Derivative
 
 Create a new file under `./test/4_IPARemix.t.sol` and paste the following:
 
 > 📘 Contract Addresses
-> 
+>
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
 ```sol 4_IPARemix.t.sol
