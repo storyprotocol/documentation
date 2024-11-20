@@ -18,15 +18,15 @@ This section demonstrates how to register an IP Asset as a derivative of another
 
 ## Prerequisites
 
-- [React SDK Setup](doc:react-sdk-setup)
-- The "parent" IPA must be registered.
-- The "child" IPA must be registered.
+* [React SDK Setup](doc:react-sdk-setup)
+* The "parent" IPA must be registered.
+* The "child" IPA must be registered.
 
 # Register Derivative using License Token
 
 ## Additional Prerequisites
 
-- An already minted License Token from the "parent" IPA. Learn how to mint a License Token [here](doc:mint-license).
+* An already minted License Token from the "parent" IPA. Learn how to mint a License Token [here](doc:mint-license).
 
 If you already have a License Token, it is easier to register a derivative this way. We can register a child IPA as a derivative of a parent IPA by calling `client.ipAsset.registerDerivativeWithLicenseTokens()` like so:
 
@@ -68,14 +68,14 @@ export type RegisterDerivativeWithLicenseTokensResponse = {
 You can also register a derivative directly, without needing a License Token. There is no real difference between `registerDerivativeWithLicenseTokens` (above) and `registerDerivative` (below) except that the former requires an already minted License Token and the latter is a convenient function that handles it for you.
 
 > ❓ "Why would I ever use a License Token then?"
-> 
+>
 > There are a few times when you would need a License Token to register a derivative:
-> 
-> - The License Token contains private license terms, so you would only be able to register if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
-> - The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `mintingFee`.
+>
+> * The License Token contains private license terms, so you would only be able to register if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
+> * The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `mintingFee`.
 
 > 📘 Quick Note
-> 
+>
 > Remember that once License Terms are attached to an IP Asset, it becomes public to register a derivative with those terms, which is why you don't necessarily need a License Token first. Read more on that [here](https://docs.story.foundation/docs/license-terms#license-terms-attached-to-ip-asset).
 
 ```jsx RegisterDerivativeIPA.tsx
