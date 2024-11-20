@@ -32,9 +32,9 @@ Royalty policies are a component of the license agreement between two IP Assets.
 The Royalty Module supports both whitelisted/native policies created by our team directly, and external ones created by you.
 
 > 📘 Note on Royalty Policies
-> 
+>
 > An IP Asset without any parents can mint licenses with different royalty policies while a derivative IP Asset inherits the royalty policy of its parents.
-> 
+>
 > Additionally, there will always be one royalty policy governing every link an IP Asset has with each of its derivatives.
 
 ### Whitelisted/Native Royalty Policies
@@ -48,7 +48,7 @@ These policies require governance whitelisting and guarantee royalty token distr
 
 These policies can be registered in a permission-less way and stipulate their own royalty and revenue distribution rules.
 
-- [External Royalty Policies](doc:external-royalty-policies)
+* [External Royalty Policies](doc:external-royalty-policies)
 
 ## Derivative Chain Configurations
 
