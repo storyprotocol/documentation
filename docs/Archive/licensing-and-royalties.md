@@ -35,14 +35,14 @@ Let's give an example - in the IP graph below let's imagine IP Asset 0 is linkin
 
 In the example mentioned the struct `InitParams` then would look like this:
 
-- `targetAncestors = [0x1,0x3,0x7,0x8,0x4,0x9,0x10,0x2,0x5,0x11,0x12,0x6,0x13,0x14] ` | When linking IPA 0 to its new parents IPAs 1 and 2
+* `targetAncestors = [0x1,0x3,0x7,0x8,0x4,0x9,0x10,0x2,0x5,0x11,0x12,0x6,0x13,0x14] ` | When linking IPA 0 to its new parents IPAs 1 and 2
 
 if we assume (for example) that the royalties demanded by each IP are equal to 5% if the IP Asset number has 2 digits and 1% if lower we get:
 
-- `targetRoyaltyAmount= [10,10,10,10,10,10,50,10,10,50,50,10,50,50]` \| `targetRoyaltyAmount` is a mirror array of `targetAncestors` and shows how many RNFTs each ancestor address demands from IP Asset 0
-- `parentAncestors1 = [0x3,0x7,0x8,0x4,0x9,0x10]`
-- `parentAncestorsRoyalties1 = [10,10,10,10,10,50]`
-- `parentAncestors2=[0x5,0x11,0x12,0x6,0x13,0x14]`
-- `parentAncestorsRoyalties2 =[10,50,50,10,50,50]`
+* `targetRoyaltyAmount= [10,10,10,10,10,10,50,10,10,50,50,10,50,50]` \| `targetRoyaltyAmount` is a mirror array of `targetAncestors` and shows how many RNFTs each ancestor address demands from IP Asset 0
+* `parentAncestors1 = [0x3,0x7,0x8,0x4,0x9,0x10]`
+* `parentAncestorsRoyalties1 = [10,10,10,10,10,50]`
+* `parentAncestors2=[0x5,0x11,0x12,0x6,0x13,0x14]`
+* `parentAncestorsRoyalties2 =[10,50,50,10,50,50]`
 
 The struct `InitParams` is prepared under the hood by the SDK. More information in [SDK documentation](doc:sdk-overview)
