@@ -18,9 +18,9 @@ This section demonstrates how to add an existing policy to an IPA. By creating s
 
 ## Prerequisites
 
-- [Setup](doc:react-sdk-setup) the Web3Provider.
-- An existing IPA (`ipId`). Learn how to register an IP Asset [here](doc:react-sdk-register-an-nft-as-an-ip-asset).
-- An existing Policy (`policyId`). Learn how to create a PIL Policy [here](doc:react-sdk-create-a-pil-policy).
+* [Setup](doc:react-sdk-setup) the Web3Provider.
+* An existing IPA (`ipId`). Learn how to register an IP Asset [here](doc:react-sdk-register-an-nft-as-an-ip-asset).
+* An existing Policy (`policyId`). Learn how to create a PIL Policy [here](doc:react-sdk-create-a-pil-policy).
 
 # Attach a Policy to an IP asset
 
