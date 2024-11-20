@@ -11,11 +11,11 @@ next:
   description: ''
 ---
 > ⏩ Skip the Read - 1 Minute Summary
-> 
+>
 > Let's come up with an example: An IP Asset ('C') is a child of 'B', and 'B' is a child of 'A', such that it goes A▶️B▶️C. 'A' specifies that any descendant must share 5% of their revenue with it. On the other hand, 'B' specifies that any descendants must share 10% of their revenue with it.
-> 
+>
 > Okay, great. Let's see what happens in two (independent) common scenarios:
-> 
+>
 > 1. **Minting a License** - 'C' mints a license from 'B' that costs 100 USDC. When 'C' pays 'B' 100 USDC to mint a license, 'A' claims 5 USDC from B. In the end, 'B' only gets 95 USDC.
 > 2. **Tipping Directly** - 'C' is a comic book that is super well written. Someone tips 100 USDC to 'C' because they love it. 'A' claims 5 USDC from 'C'. 'B' claims 10 USDC from 'C'. In the end, 'C' only gets 85 USDC.
 
@@ -29,11 +29,11 @@ Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty
 
 In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a % economic right over revenue made by IPA 3. Key notes to understand the derivative chain below:
 
-- License Royalty Percentage - this percentage is selected by the user and it means the percentage that the user wants - according to LAP rules - in return for allowing other users to remix its IPA.
-- Royalty Stack - is the revenue an IPA has to pay all its ancestors. For LAP royalty stack = sum of parents royalty stack + sum of licenses percentages used to connect to each parent
-  - Royalty Stack IPA 2 = Royalty Stack IPA 1 + License Royalty % between IPAs 1 and 2 = 0% + 5% = 5%
-  - Royalty Stack IPA 3 = Royalty Stack IPA 2 + License Royalty % between IPAs 2 and 3 = 5% + 10% = 15%
-- Royalty Tokens flow to the IPA initially when a vault is deployed. The Royalty Tokens can be transferred to any other address and after that transfer any future royalty inflow will be claimable by that new address which now holds the RTs.
+* License Royalty Percentage - this percentage is selected by the user and it means the percentage that the user wants - according to LAP rules - in return for allowing other users to remix its IPA.
+* Royalty Stack - is the revenue an IPA has to pay all its ancestors. For LAP royalty stack = sum of parents royalty stack + sum of licenses percentages used to connect to each parent
+  * Royalty Stack IPA 2 = Royalty Stack IPA 1 + License Royalty % between IPAs 1 and 2 = 0% + 5% = 5%
+  * Royalty Stack IPA 3 = Royalty Stack IPA 2 + License Royalty % between IPAs 2 and 3 = 5% + 10% = 15%
+* Royalty Tokens flow to the IPA initially when a vault is deployed. The Royalty Tokens can be transferred to any other address and after that transfer any future royalty inflow will be claimable by that new address which now holds the RTs.
 
 ![](https://files.readme.io/dcfb36162a224000d960fe9d6ca451bf7679500a31e727fb7205d22cb3581391-image.png)
 
@@ -53,7 +53,7 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 4. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalfBySnapshotBatch` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf`/`claimRevenueBySnapshotBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
    1. 50k USDC are claimed to the IPA 1 which holds 100% RT1
    2. 100k USDC are claimed to the IPA 2 which holds 100% RT2
-   3. 850k USDC are claimed by IPA 3 which holds 100% RT3  
+   3. 850k USDC are claimed by IPA 3 which holds 100% RT3\
       Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.
 
 ![](https://files.readme.io/cdc8c8569c1cb6106542c7f663ee06059a28105f5b32671dfa77331071f0d128-image.png)
