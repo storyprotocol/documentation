@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-_Optional: Check out the official Wagmi + WalletConnect installation docs [here](https://docs.walletconnect.com/appkit/next/core/installation)._
+*Optional: Check out the official Wagmi + WalletConnect installation docs[here](https://docs.walletconnect.com/appkit/next/core/installation).*
 
 ### Install the Dependencies
 
