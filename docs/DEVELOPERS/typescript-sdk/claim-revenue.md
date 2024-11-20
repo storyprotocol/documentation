@@ -14,8 +14,8 @@ This section demonstrates how to claim due revenue from an IP Asset in TypeScrip
 
 ## Prerequisites
 
-- [Setup](doc:typescript-sdk-setup) the client object.
-- Understand the [💸 Royalty Module](doc:royalty-module)
+* [Setup](doc:typescript-sdk-setup) the client object.
+* Understand the [💸 Royalty Module](doc:royalty-module)
 
 # Claiming Revenue Tokens
 
