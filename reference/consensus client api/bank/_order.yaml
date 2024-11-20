@@ -4,3 +4,4 @@
 - get_bank-supply
 - get_bank-supply-by-denom
 - get_bank-denom-owners-denom
+- get_bank-denom-owners-by-query
