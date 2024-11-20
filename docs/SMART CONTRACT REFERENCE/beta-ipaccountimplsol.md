@@ -18,7 +18,7 @@ The Story Protocol's implementation of the IPAccount.
 
 ## State Variables
 
-### ACCESS_CONTROLLER
+### ACCESS\_CONTROLLER
 
 ```solidity
 address public immutable ACCESS_CONTROLLER;
@@ -36,10 +36,10 @@ receive() external payable override(Receiver, IIPAccount);
 
 Creates a new IPAccountImpl contract instance
 
-_Initializes the IPAccountImpl with an AccessController address which is stored  
-in the implementation code's storage.  
-This means that each cloned IPAccount will inherently use the same AccessController  
-without the need for individual configuration._
+*Initializes the IPAccountImpl with an AccessController address which is stored\
+in the implementation code's storage.\
+This means that each cloned IPAccount will inherently use the same AccessController\
+without the need for individual configuration.*
 
 ```solidity
 constructor(address accessController, address ipAssetRegistry, address licenseRegistry, address moduleRegistry)
@@ -48,12 +48,81 @@ constructor(address accessController, address ipAssetRegistry, address licenseRe
 
 **Parameters**
 
-| Name               | Type      | Description                                                                   |
-| ------------------ | --------- | ----------------------------------------------------------------------------- |
-| `accessController` | `address` | The address of the AccessController contract to be used for permission checks |
-| `ipAssetRegistry`  | `address` |                                                                               |
-| `licenseRegistry`  | `address` |                                                                               |
-| `moduleRegistry`   | `address` |                                                                               |
+<Table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+
+      <th>
+        Type
+      </th>
+
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        `accessController`
+      </td>
+
+      <td>
+        `address`
+      </td>
+
+      <td>
+        The address of the AccessController contract to be used for permission checks
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `ipAssetRegistry`
+      </td>
+
+      <td>
+        `address`
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `licenseRegistry`
+      </td>
+
+      <td>
+        `address`
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `moduleRegistry`
+      </td>
+
+      <td>
+        `address`
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ### supportsInterface
 
@@ -144,7 +213,7 @@ function state() public view override(ERC6551, IIPAccount) returns (bytes32 resu
 
 ### isValidSigner
 
-_Checks if the signer is valid for the given data and recipient via the AccessController permission system._
+*Checks if the signer is valid for the given data and recipient via the AccessController permission system.*
 
 ```solidity
 function isValidSigner(address signer, address to, bytes calldata data) public view returns (bool);
@@ -214,8 +283,8 @@ function execute(address to, uint256 value, bytes calldata data) external payabl
 
 ### execute
 
-_Override 6551 execute function.  
-Only "CALL" operation is supported._
+*Override 6551 execute function.\
+Only "CALL" operation is supported.*
 
 ```solidity
 function execute(address to, uint256 value, bytes calldata data, uint8 operation)
@@ -267,7 +336,7 @@ function executeBatch(Call[] calldata calls, uint8 operation)
 
 ### \_execute
 
-_Executes a transaction from the IP Account._
+*Executes a transaction from the IP Account.*
 
 ```solidity
 function _execute(address signer, address to, uint256 value, bytes calldata data)
@@ -277,7 +346,7 @@ function _execute(address signer, address to, uint256 value, bytes calldata data
 
 ### \_updateStateForExecute
 
-_Updates the IP Account's state all execute transactions._
+*Updates the IP Account's state all execute transactions.*
 
 ```solidity
 function _updateStateForExecute(address to, uint256 value, bytes calldata data) internal;
@@ -293,7 +362,7 @@ function _updateStateForExecute(address to, uint256 value, bytes calldata data) 
 
 ### \_isValidSigner
 
-_Override Solady 6551 \_isValidSigner function._
+*Override Solady 6551\_isValidSigner function.*
 
 ```solidity
 function _isValidSigner(address signer, bytes32 extraData, bytes calldata context)
@@ -319,7 +388,7 @@ function _isValidSigner(address signer, bytes32 extraData, bytes calldata contex
 
 ### \_domainNameAndVersion
 
-_Override Solady EIP712 function and return EIP712 domain name for IPAccount._
+*Override Solady EIP712 function and return EIP712 domain name for IPAccount.*
 
 ```solidity
 function _domainNameAndVersion() internal view override returns (string memory name, string memory version);
