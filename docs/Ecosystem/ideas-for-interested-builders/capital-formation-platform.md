@@ -25,7 +25,7 @@ We are eager to see the NFT space evolve into more mature stages, and to achieve
 
 Some additional features
 
-- Projects could also grant specific commercial licenses of their finished IP
-- KYC process to enable participants to join the project's royalty pool
-- Different tiers of contribution allowing and rewards, Kickstarter style
-- Ways for project to share updates and keep backers posted in less intrusive (spammy) ways
+* Projects could also grant specific commercial licenses of their finished IP
+* KYC process to enable participants to join the project's royalty pool
+* Different tiers of contribution allowing and rewards, Kickstarter style
+* Ways for project to share updates and keep backers posted in less intrusive (spammy) ways
