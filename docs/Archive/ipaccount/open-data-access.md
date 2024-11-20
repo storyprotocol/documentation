@@ -30,41 +30,27 @@ The success of Programmable IP rests on two key principles:
 
 To achieve true openness and equality in data access, Story Protocol proposes the following structure:
 
-- **Uniform Access Rules**: All modules access data following the same set of rules, ensuring fairness and transparency in data manipulation.
-  - **Any module can write any data into any IPAccount, but can only write its own data.**
-  - **Any module can read any data from any IPAccount**
-- **Data Ownership Protocols**: Only the owner of the data can write/modify it.  However, anyone can read _any_ data.
+* **Uniform Access Rules**: All modules access data following the same set of rules, ensuring fairness and transparency in data manipulation.
+  * **Any module can write any data into any IPAccount, but can only write its own data.**
+  * **Any module can read any data from any IPAccount**
+* **Data Ownership Protocols**: Only the owner of the data can write/modify it.  However, anyone can read *any* data.
 
 ## (Post-Beta, Future Implementation) IPAccount Centric Data Model
 
-_NOTE THAT THE NAMESPACE STORAGE FEATURE WILL BE INTRODUCED IN A FUTURE RELEASE. **FOR BETA, WE DO NOT SUPPORT THE NAMESPACE STORAGE** DESCRIBED BELOW._
+*NOTE THAT THE NAMESPACE STORAGE FEATURE WILL BE INTRODUCED IN A FUTURE RELEASE.**FOR BETA, WE DO NOT SUPPORT THE NAMESPACE STORAGE** DESCRIBED BELOW.*
 
 ### NameSpace Storage and Ownership
 
 As a structured storage, an IPAccount:
 
-- Enforces data ownership access rules.
-- Standardizes data access and sharing between modules (from IPAsset to module namespace to data).
-- Identifies clear data ownership.
+* Enforces data ownership access rules.
+* Standardizes data access and sharing between modules (from IPAsset to module namespace to data).
+* Identifies clear data ownership.
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/1f2395e-Screenshot_2024-01-29_at_22.26.05.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/1f2395e-Screenshot_2024-01-29_at_22.26.05.png" />
 
 ### Permissionless Access
 
-- **IPAccount NameSpace Storage**: Story Protocol uses the module address as a namespace and ensures that any data access passes through its respective module in IPAccount. Any module can write any data into IPAccount under its own namespace.
-- **Autonomy Data Access Control**: Each module has the autonomy to decide how to open its data write access. Each module can read data of other modules in the IPAccount.
-- **User/App Selecting Data Source**: Users or applications have the discretion to trust data from specific modules based on their own criteria.
+* **IPAccount NameSpace Storage**: Story Protocol uses the module address as a namespace and ensures that any data access passes through its respective module in IPAccount. Any module can write any data into IPAccount under its own namespace.
+* **Autonomy Data Access Control**: Each module has the autonomy to decide how to open its data write access. Each module can read data of other modules in the IPAccount.
+* **User/App Selecting Data Source**: Users or applications have the discretion to trust data from specific modules based on their own criteria.
