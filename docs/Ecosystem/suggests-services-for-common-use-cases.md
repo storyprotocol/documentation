@@ -14,10 +14,10 @@ As you build applications in the world of IP, you'll find you might uncover use-
 
 ### Image scoring: infringement, rarity and NSFW tagging
 
-- [Yakoa](https://yakoa.io/): IP protection for the blockchain. Use Yakoa AI to protect intellectual property from duplication, manipulation, and scams. 
-- [Pastel Network](https://pastel.network/): Pastel infrastructure enables existing layer-1 blockchains, decentralized applications, or third-party enterprises to protect creators and collectors. From digital collectibles & media to documents & applications, users and developers are able to certify asset rareness and truly store data forever.
-- [Doppel](https://doppel.com) : Doppel offers several services, such as detecting phishing and brand cyber attacks, phishing, counterfeiting and more. Leading cybersecurity teams use Doppel to protect against threats on emerging and traditional digital channels.
+* [Yakoa](https://yakoa.io/): IP protection for the blockchain. Use Yakoa AI to protect intellectual property from duplication, manipulation, and scams. 
+* [Pastel Network](https://pastel.network/): Pastel infrastructure enables existing layer-1 blockchains, decentralized applications, or third-party enterprises to protect creators and collectors. From digital collectibles & media to documents & applications, users and developers are able to certify asset rareness and truly store data forever.
+* [Doppel](https://doppel.com) : Doppel offers several services, such as detecting phishing and brand cyber attacks, phishing, counterfeiting and more. Leading cybersecurity teams use Doppel to protect against threats on emerging and traditional digital channels.
 
 ### Confidentiality
 
-- [Lit Protocol](https://litprotocol.com): Lit is a key management network for decentralized signing and encryption. Create apps and wallets that use secrets without single points of failure.
+* [Lit Protocol](https://litprotocol.com): Lit is a key management network for decentralized signing and encryption. Create apps and wallets that use secrets without single points of failure.
