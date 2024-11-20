@@ -2,3 +2,4 @@
 - get_distribution-delegators-delegator-address-rewards
 - get_distribution-delegators-delegator-address-rewards-validator-address
 - get_distribution-delegators-delegator-address-withdraw-address
+- get_distribution-validators-validator-address
