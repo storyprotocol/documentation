@@ -14,14 +14,14 @@ Now we will learn how to register new [License Terms](doc:license-terms).
 
 ## Prerequisites
 
-- Understand what [License Terms](doc:license-terms) are.
+* Understand what [License Terms](doc:license-terms) are.
 
 ## Register License Terms
 
 Create a new file under `./test/1_LicenseTerms.t.sol` and paste the following:
 
 > 📘 Contract Addresses
-> 
+>
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
 ```sol 1_LicenseTerms.t.sol
