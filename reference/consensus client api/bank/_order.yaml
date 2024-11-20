@@ -3,3 +3,4 @@
 - get_bank-params
 - get_bank-supply
 - get_bank-supply-by-denom
+- get_bank-denom-owners-denom
