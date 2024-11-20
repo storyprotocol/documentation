@@ -67,7 +67,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
   <tbody>
     <tr>
       <td>
-        <span style="color: #6741d9;">register</span>
+        <span style={{color: "#6741d9"}}>register</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -97,7 +97,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #6741d9;">mintAndRegisterIp</span>
+        <span style={{color: "#6741d9"}}>mintAndRegisterIp</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -127,7 +127,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #2f9e43;">registerPILTerms</span>
+        <span style={{color: "#2f9e43"}}>registerPILTerms</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -157,7 +157,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #e03130;">attachLicenseTerms</span>
+        <span style={{color: "#e03130"}}>attachLicenseTerms</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -187,7 +187,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #e03130;">registerIpAndAttachPilTerms</span>
+        <span style={{color: "#e03130"}}>registerIpAndAttachPilTerms</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -217,7 +217,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #e03130;">registerPilTermsAndAttach</span>
+        <span style={{color: "#e03130"}}>registerPilTermsAndAttach</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -247,7 +247,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #e03130;">mintAndRegisterIpAssetWithPilTerms</span>
+        <span style={{color: "#e03130"}}>mintAndRegisterIpAssetWithPilTerms</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -277,7 +277,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #1971c2;">mintLicenseTokens</span>
+        <span style={{color: "#1971c2"}}>mintLicenseTokens</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -307,7 +307,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #f08c00;">registerDerivative</span>
+        <span style={{color: "#f08c00"}}>registerDerivative</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -337,7 +337,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #f08c00;">registerDerivativeWithLicenseTokens</span>
+        <span style={{color: "#f08c00"}}>registerDerivativeWithLicenseTokens</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -367,7 +367,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #f08c00;">registerDerivativeIp</span>
+        <span style={{color: "#f08c00"}}>registerDerivativeIp</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -397,7 +397,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #f08c00;">registerIpAndMakeDerivativeWithLicenseTokens</span>
+        <span style={{color: "#f08c00"}}>registerIpAndMakeDerivativeWithLicenseTokens</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -427,7 +427,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #f08c00;">mintAndRegisterIpAndMakeDerivative</span>
+        <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivative</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -457,7 +457,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
     <tr>
       <td>
-        <span style="color: #f08c00;">mintAndRegisterIpAndMakeDerivativeWithLicenseTokens</span>
+        <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivativeWithLicenseTokens</span>
       </td>
 
       <td style={{ textAlign: "center" }}>
@@ -487,10 +487,10 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
   </tbody>
 </Table>
 
-* <span style="color: #6741d9">Purple</span>: [Register an IP Asset](doc:register-an-ip-asset)
-* <span style="color: #2f9e43">Green</span>: [Register License Terms](doc:register-pil-terms)
-* <span style="color: #e03130">Red</span>: [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset)
-* <span style="color: #1971c2">Blue</span>: [Mint a License Token](doc:mint-a-license)
-* <span style="color: #f08c00">Orange</span>: [Register a Derivative](doc:register-a-derivative)
+* <span style={{color: "#6741d9"}}>Purple</span>: [Register an IP Asset](doc:register-an-ip-asset)
+* <span style={{color: "#2f9e43"}}>Green</span>: [Register License Terms](doc:register-pil-terms)
+* <span style={{color: "#e03130"}}>Red</span>: [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset)
+* <span style={{color: "#1971c2"}}>Blue</span>: [Mint a License Token](doc:mint-a-license)
+* <span style={{color: "#f08c00"}}>Orange</span>: [Register a Derivative](doc:register-a-derivative)
 
 You can also check out [Pay an IPA](doc:pay-ipa) and [Claim Revenue](doc:claim-revenue) to interact with the [💸 Royalty Module](doc:royalty-module) with the SDK.
