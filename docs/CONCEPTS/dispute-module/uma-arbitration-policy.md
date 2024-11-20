@@ -11,11 +11,11 @@ next:
   description: ''
 ---
 > 🚧 Warning: Only in v1.3
-> 
+>
 > The UMA Arbitration Policy is only available in v1.3 of our protocol, which is not yet documented.
 
 > 📘 UMA
-> 
+>
 > For detailed information on how UMA's dispute resolution works, [visit their website](https://uma.xyz/).
 
 This arbitration policy is a dispute resolution mechanism that follows [UMA's](https://uma.xyz/) rules. Below we share a high-level overview of how the UMA dispute process works.
@@ -32,17 +32,4 @@ This arbitration policy is a dispute resolution mechanism that follows [UMA's](h
 
 ## Example User UI Flow
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/18a2a6ddb91497ee0503b1ec15e26ff3346660bc8dcfa1d27cab5dffd60256d4-image_1.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
+<Image align="center" src="https://files.readme.io/18a2a6ddb91497ee0503b1ec15e26ff3346660bc8dcfa1d27cab5dffd60256d4-image_1.png" />
