@@ -12,29 +12,29 @@ next:
 ---
 ## Quick Links
 
-- [Story Geth Releases (Use Versions \<= v0.9.4)](https://github.com/piplabs/story-geth/releases)
-- [Story Releases (Use Versions \<= v0.11.0)](https://github.com/piplabs/story/releases/)  
+* [Story Geth Releases (Use Versions \<= v0.9.4)](https://github.com/piplabs/story-geth/releases)
+* [Story Releases (Use Versions \<= v0.11.0)](https://github.com/piplabs/story/releases/)  
 
 # Overview
 
 This section will guide you through how you can run your own validator. Validator operations may be done via the `story` consensus client.
 
 > 📘 Note
-> 
+>
 > The below operations do not requiring running a node! However, if you would like to participate in staking rewards, you must run a validator node.
 
 Before proceeding, it is important to familiarize yourself with the difference between a delegator and a validator:
 
-- A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
-- A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves. 
+* A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
+* A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves. 
 
-In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (_you may see the [Faucet page](doc:faucet) for details on how to fund an account)._ **We recommend using your delegator account for all below operations.**
+In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (*you may see the[Faucet page](doc:faucet) for details on how to fund an account).* **We recommend using your delegator account for all below operations.**
 
 > 📘 Note
-> 
+>
 > You may also issue transactions as the validator itself. To get the EVM private key corresponding to your validator, please refer to the [Validator Key Export](https://docs.story.foundation/docs/validator-operations#validator-key-export) section.
 
-The `.env` file should look like the following _(make sure not to add a 0x prefix):_
+The `.env` file should look like the following *(make sure not to add a 0x prefix):*
 
 ```bash
 # ~/story/.env
@@ -59,9 +59,9 @@ In addition, if you want to export the derived EVM private key of your validator
 ./story validator export --export-evm-key
 ```
 
-- You may add `--evm-key-path` to specify a different download location
+* You may add `--evm-key-path` to specify a different download location
 
-_If you would like to issue transactions as your validator, and not as a delegator, you may export the key to your `.env` file and ensure it has IP sent to it, e.g. via `./story validator export --export-evm-key --evm-key-path .env`_
+*If you would like to issue transactions as your validator, and not as a delegator, you may export the key to your`.env` file and ensure it has IP sent to it, e.g. via`./story validator export --export-evm-key --evm-key-path .env`*
 
 ## Validator Creation
 
@@ -71,9 +71,9 @@ To create a new validator, run the following command:
 ./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI}
 ```
 
-This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. _Note that to participate in consensus, at least 1 IP must be staked (equivalent to `1000000000000000000 wei`)!_
+This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. *Note that to participate in consensus, at least 1 IP must be staked (equivalent to`1000000000000000000 wei`)!*
 
-Once created, please use the `Explorer URL` to confirm the transaction. If successful, you should see your validator pub key (_found in your `priv_validator_key.json` file)_ listed as part of the following endpoint:
+Once created, please use the `Explorer URL` to confirm the transaction. If successful, you should see your validator pub key (*found in your`priv_validator_key.json` file)* listed as part of the following endpoint:
 
 ```bash
 curl https://testnet.storyrpc.io/validators | jq .
@@ -97,8 +97,8 @@ To stake to an existing validator, run the following command:
    --stake ${AMOUNT_TO_STAKE_IN_WEI}
 ```
 
-- _Note that your own `${VALIDATOR_PUB_KEY_IN_BASE64}`may be found by running the `./iliad validator export` command as the `Compresses Public Key`._
-- You must stake at least 1 ETH worth (`*1000000000000000000 wei`) for the transaction to be valid
+* *Note that your own`${VALIDATOR_PUB_KEY_IN_BASE64}`may be found by running the `./iliad validator export` command as the `Compresses Public Key`.*
+* You must stake at least 1 ETH worth (`*1000000000000000000 wei`) for the transaction to be valid
 
 Once staked, you may use the `Explorer URL` to confirm the transaction. As mentioned earlier, you may use our [validator endpoint](https://testnet.storyrpc.io/validators) to confirm the new voting power of the validator.
 
