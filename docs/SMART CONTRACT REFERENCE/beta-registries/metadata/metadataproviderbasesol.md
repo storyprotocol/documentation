@@ -12,7 +12,7 @@ next:
 ---
 Metadata provider base contract for storing canonical IP metadata.
 
-### IP_ASSET_REGISTRY
+### IP\_ASSET\_REGISTRY
 
 ```solidity
 contract IIPAssetRegistry IP_ASSET_REGISTRY
@@ -68,7 +68,7 @@ Gets the metadata associated with an IP Asset.
 
 | Name | Type  | Description                                                 |
 | ---- | ----- | ----------------------------------------------------------- |
-| [0]  | bytes | metadata The encoded metadata associated with the IP Asset. |
+| \[0] | bytes | metadata The encoded metadata associated with the IP Asset. |
 
 ### setUpgradeProvider
 
@@ -90,7 +90,7 @@ Sets a upgrade provider for users to migrate their metadata to.
 function upgrade(address payable ipId, bytes metadata) external
 ```
 
-Updates the provider used by the IP Asset, migrating existing metadata to the new provider, and adding  
+Updates the provider used by the IP Asset, migrating existing metadata to the new provider, and adding\
 new metadata.
 
 #### Parameters
@@ -108,7 +108,7 @@ function setMetadata(address ipId, bytes metadata) external virtual
 
 Sets the metadata associated with an IP Asset.
 
-_Enforced to be only callable by the IP Asset registry._
+*Enforced to be only callable by the IP Asset registry.*
 
 #### Parameters
 
@@ -123,7 +123,7 @@ _Enforced to be only callable by the IP Asset registry._
 function _verifyMetadata(bytes metadata) internal virtual
 ```
 
-_Checks that the data conforms to the canonical metadata standards._
+*Checks that the data conforms to the canonical metadata standards.*
 
 #### Parameters
 
@@ -137,7 +137,7 @@ _Checks that the data conforms to the canonical metadata standards._
 function _compatible(bytes m1, bytes m2) internal pure virtual returns (bool)
 ```
 
-_Checks whether two sets of metadata are compatible with one another._
+*Checks whether two sets of metadata are compatible with one another.*
 
 #### Parameters
 
