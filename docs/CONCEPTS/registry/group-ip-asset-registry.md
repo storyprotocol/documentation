@@ -11,7 +11,7 @@ next:
   description: ''
 ---
 > 🗒️ Contract
-> 
+>
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/GroupIPAssetRegistry.sol).
 
 The Group IP Asset Registry is responsible for managing the registration and tracking of Group IP Assets, including the group members and reward pools.
