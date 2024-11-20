@@ -13,15 +13,15 @@ next:
 This section demonstrates how to register a selection of License Terms using the PIL.
 
 > 🪙 Whitelisted Revenue Tokens
-> 
+>
 > At the moment, a token must be whitelisted by Story Protocol to be used in the royalty module as the `currency` field.
-> 
+>
 > <a href="https://sepolia.etherscan.io/address/0xB132A6B7AE652c974EE1557A3521D53d18F6739f#writeContract" target="_blank">This</a> is the only whitelisted token right now on Sepolia testnet. You can mint tokens directly from that link.
 
 ## Prerequisites
 
-- [Setup](doc:python-sdk-setup) the client object.
-- If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`. 
+* [Setup](doc:python-sdk-setup) the client object.
+* If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`. 
 
 # Create a Commercial Use License
 
