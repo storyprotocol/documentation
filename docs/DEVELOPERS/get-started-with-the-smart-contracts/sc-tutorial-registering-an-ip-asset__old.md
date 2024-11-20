@@ -14,7 +14,7 @@ next:
 
 In Story Protocol, an IP is recognized as any ERC-721 compatible NFT. Yes, that means your Bored Ape or Crypto Punk is already eligible for registration into our protocol, and don't worry, there is no wrapping involved! Before going forward, it is important to distinguish the difference between an IP and an IP Asset (IPA):
 
-_Only once an ERC-721 is registered into Story Protocol's global IP asset registry, is a corresponding IP record generated for that original IP. We refer to this globally unique record as the IP Asset, and the original ERC-721 as the IP._
+*Only once an ERC-721 is registered into Story Protocol's global IP asset registry, is a corresponding IP record generated for that original IP. We refer to this globally unique record as the IP Asset, and the original ERC-721 as the IP.*
 
 Also, one last important detail to note: Once registered, not only does every IP (ERC-721) have a IPA (record) associated with it, but also an IP Account, which is a separate contract bound to the original IP for controlling permissions around interactions with Story Protocol's modules. You can think of the IPA as the record keeper for the IP, and the IP Account as its permissions manager.
 
@@ -70,7 +70,7 @@ contract ExampleIPARegistryRegistration {
 
 ```
 
-In this case, we are doing something similar. First, we have to ABI-encode the IP metadata, and then pass similar parameters as before into the `register` function. The difference, however, as mentioned earlier, is that here we do not add any _custom_ metadata, nor do we perform any policy additions.
+In this case, we are doing something similar. First, we have to ABI-encode the IP metadata, and then pass similar parameters as before into the `register` function. The difference, however, as mentioned earlier, is that here we do not add any *custom* metadata, nor do we perform any policy additions.
 
 ## Registration Delegation
 
