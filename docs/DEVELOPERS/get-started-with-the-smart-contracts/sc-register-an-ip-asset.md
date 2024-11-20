@@ -14,14 +14,14 @@ Let's see how we can perform a barebones registration using the [IP Asset Regist
 
 ## Prerequisites
 
-- Understand what an [🧩 IP Asset](doc:ip-asset) is and how they get registered using the [IP Asset Registry](doc:ip-asset-registry).
+* Understand what an [🧩 IP Asset](doc:ip-asset) is and how they get registered using the [IP Asset Registry](doc:ip-asset-registry).
 
 ## Register an IP Asset
 
 Create a new file under `./test/0_IPARegistrar.t.sol` and paste the following:
 
 > 📘 Contract Addresses
-> 
+>
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
 ```sol 0_IPARegistrar.t.sol
