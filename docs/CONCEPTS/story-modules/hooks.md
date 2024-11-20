@@ -14,21 +14,7 @@ next:
 
 Hooks in Story Protocol are defined as a specialized interface that inherits from the Module framework. They are designed for developers to create custom implementations that integrate seamlessly with existing Modules.
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/2ea34f7-Screenshot_2024-02-05_at_16.09.49.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/2ea34f7-Screenshot_2024-02-05_at_16.09.49.png" />
 
 # Concept and Functionality
 
