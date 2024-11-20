@@ -39,7 +39,7 @@ You can keep all values as default by hitting enter key when `npm init` command 
 
 # Install the Dependencies
 
-In the current folder `my-story-protocol-example`, install the Story Protocol React SDK package, as well as `viem` (<https://www.npmjs.com/package/viem>) to access the DeFi wallet accounts, wagmi & connectkit:
+In the current folder `my-story-protocol-example`, install the Story Protocol React SDK package, as well as `viem` ([https://www.npmjs.com/package/viem](https://www.npmjs.com/package/viem)) to access the DeFi wallet accounts, wagmi & connectkit:
 
 ```shell npm
 npm install --save @story-protocol/react viem@1.21.4 wagmi connectkit
@@ -55,8 +55,8 @@ yarn add @story-protocol/core-sdk@0.1.0-alpha viem@1.21.4
 
 First, make sure to add the following to your .env file:
 
-- `NEXT_PUBLIC_WC_PROJECT_ID`: A [WalletConnect](https://walletconnect.com/) ID
-- `NEXT_PUBLIC_RPC_PROVIDER_URL`: the RPC endpoint for your desired chain. We recommend using the Sepolia network (<https://rpc.ankr.com/eth_sepolia>)
+* `NEXT_PUBLIC_WC_PROJECT_ID`: A [WalletConnect](https://walletconnect.com/) ID
+* `NEXT_PUBLIC_RPC_PROVIDER_URL`: the RPC endpoint for your desired chain. We recommend using the Sepolia network ([https://rpc.ankr.com/eth\_sepolia](https://rpc.ankr.com/eth_sepolia))
 
 Next, create a file called `Web3Provider.tsx` that looks like this:
 
