@@ -14,8 +14,6 @@ next:
 
 **The RegistrationModule will get phased out post-beta, so we recommend using the IPAssetRegistry for registering IP assets!**
 
-
-
 The registration module is responsible for registration of IP into the protocol. During registration, this module will register an IP into the protocol, create a resolver, and bind to it any licenses and terms specified by the IP registrant (IP account owner).
 
 ### name
@@ -46,8 +44,8 @@ constructor(address assetRegistry, address licensingModule, address resolverAddr
 function registerRootIp(uint256 policyId, address tokenContract, uint256 tokenId, string ipName, bytes32 contentHash, string externalURL) external returns (address)
 ```
 
-Registers a root-level IP into the protocol. Root-level IPs can be thought of as organizational hubs  
-for encapsulating policies that actual IPs can use to register through. As such, a root-level IP is not an  
+Registers a root-level IP into the protocol. Root-level IPs can be thought of as organizational hubs\
+for encapsulating policies that actual IPs can use to register through. As such, a root-level IP is not an\
 actual IP, but a container for IP policy management for their child IP assets.
 
 #### Parameters
@@ -67,7 +65,7 @@ actual IP, but a container for IP policy management for their child IP assets.
 function registerDerivativeIp(uint256[] licenseIds, address tokenContract, uint256 tokenId, string ipName, bytes32 contentHash, string externalURL, bytes royaltyContext) external
 ```
 
-Registers derivative IPs into the protocol. Derivative IPs are IP assets that inherit policies from  
+Registers derivative IPs into the protocol. Derivative IPs are IP assets that inherit policies from\
 parent IPs by burning acquired license NFTs.
 
 #### Parameters
