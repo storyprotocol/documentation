@@ -4,3 +4,4 @@
 - get_distribution-delegators-delegator-address-withdraw-address
 - get_distribution-validators-validator-address
 - get_distribution-validators-validator-address-commission
+- get_distribution-validators-validator-address-outstanding-rewards
