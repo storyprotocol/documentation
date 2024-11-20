@@ -12,7 +12,7 @@ next:
 ---
 ## Core Protocol Contracts
 
-- View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-core-v1/tree/main) 
+* View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-core-v1/tree/main) 
 
 ```json Odyssey (Story Testnet) v1.2
 {
@@ -71,7 +71,7 @@ next:
 
 ## Periphery Contracts
 
-- View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-periphery-v1) 
+* View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-periphery-v1) 
 
 ```json Odyssey (Story Testnet) v1.2
 {
@@ -100,16 +100,16 @@ next:
 
 **Iliad**
 
-- SUSD: 0x91f6F05B08c16769d3c85867548615d270C42fC7
-  - <a href="https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
+* SUSD: 0x91f6F05B08c16769d3c85867548615d270C42fC7
+  * <a href="https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
 
 **Odyssey**: 
 
-- SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
-  - <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
-- WIP: 0x1516000000000000000000000000000000000000
+* SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
+  * <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
+* WIP: 0x1516000000000000000000000000000000000000
 
 ## Misc
 
-- **Multicall3**: 0xcA11bde05977b3631167028862bE2a173976CA11
-- **Default License Terms ID** (Non-Commercial Social Remixing): 1
+* **Multicall3**: 0xcA11bde05977b3631167028862bE2a173976CA11
+* **Default License Terms ID** (Non-Commercial Social Remixing): 1
