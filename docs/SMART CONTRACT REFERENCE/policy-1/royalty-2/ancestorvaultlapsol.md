@@ -10,10 +10,10 @@ metadata:
 next:
   description: ''
 ---
-The ancestors vault allows parents and grandparents to claim their share of  
+The ancestors vault allows parents and grandparents to claim their share of\
         the royalty nfts of their children and grandchildren along with any accrued royalties.
 
-### ROYALTY_POLICY_LAP
+### ROYALTY\_POLICY\_LAP
 
 ```solidity
 contract IRoyaltyPolicyLAP ROYALTY_POLICY_LAP
@@ -60,7 +60,7 @@ Claims all available royalty nfts and accrued royalties for an ancestor of a giv
 function _transferRnftsAndAccruedTokens(address claimerIpId, address splitClone, address[] ancestors, uint32[] ancestorsRoyalties, bool withdrawETH, contract ERC20[] tokens) internal
 ```
 
-_Transfers the Royalty NFTs and accrued tokens to the claimer_
+*Transfers the Royalty NFTs and accrued tokens to the claimer*
 
 #### Parameters
 
@@ -79,7 +79,7 @@ _Transfers the Royalty NFTs and accrued tokens to the claimer_
 function _claimAccruedTokens(uint256 rnftClaimAmount, uint256 totalUnclaimedRnfts, address claimerSplitClone, bool withdrawETH, contract ERC20[] tokens) internal
 ```
 
-_Claims the accrued tokens (if any)_
+*Claims the accrued tokens (if any)*
 
 #### Parameters
 
@@ -97,7 +97,7 @@ _Claims the accrued tokens (if any)_
 function _safeTransferETH(address to, uint256 amount) internal
 ```
 
-_Allows to transfers ETH_
+*Allows to transfers ETH*
 
 #### Parameters
 
