@@ -16,13 +16,13 @@ The [Story Explorer](https://explorer.story.foundation/) provides a comprehensiv
 
 Additionally, we are sharing some applications that can be built under the ecosystem, and you are welcome to share your bold ideas and applications built with Story Protocol.
 
-- [Content Remixing Mobile App](doc:content-remixing-mobile-app)
-- [Content Management System and Collaboration Hub](doc:content-management-system-and-collaboration-hub)
-- [IP Licensing Platform](doc:ip-licensing-platform)
-- [AI-generated Assets Marketplace](doc:ai-generated-assets-marketplace)
-- [DeFi Applications and RWA](doc:defi-applications-and-rwa)
-- [Capital Formation Platform](doc:capital-formation-platform)
-- [External Hooks](doc:external-hooks)
+* [Content Remixing Mobile App](doc:content-remixing-mobile-app)
+* [Content Management System and Collaboration Hub](doc:content-management-system-and-collaboration-hub)
+* [IP Licensing Platform](doc:ip-licensing-platform)
+* [AI-generated Assets Marketplace](doc:ai-generated-assets-marketplace)
+* [DeFi Applications and RWA](doc:defi-applications-and-rwa)
+* [Capital Formation Platform](doc:capital-formation-platform)
+* [External Hooks](doc:external-hooks)
 
 # Join Story Academy
 
