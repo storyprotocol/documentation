@@ -18,9 +18,9 @@ This section demonstrates how to create a policy with PIL licensing framework pa
 
 ## Prerequisites
 
-- [Setup](doc:react-sdk-setup) the Web3Provider.
-- Understand the concept of policies and licenses.
-- If a PIL policy already exists for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will error. You can simply use an existing policy by its `policyId`.
+* [Setup](doc:react-sdk-setup) the Web3Provider.
+* Understand the concept of policies and licenses.
+* If a PIL policy already exists for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will error. You can simply use an existing policy by its `policyId`.
 
 # Create a new PIL Policy
 
