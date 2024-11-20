@@ -16,14 +16,14 @@ This section demonstrates how to register an IP Asset as a derivative of another
 
 ## Prerequisites
 
-- [Setup](doc:typescript-sdk-setup) the client object.
-- The parent IP Asset must be registered and have License Terms attached to it.
+* [Setup](doc:typescript-sdk-setup) the client object.
+* The parent IP Asset must be registered and have License Terms attached to it.
 
 # Existing Child IP + License Token
 
 ## Additional Prerequisites
 
-- An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
+* An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
 
 If you already have a License Token, it is easier to register a derivative this way. We can register a child IPA as a derivative of a parent IPA by calling `client.ipAsset.registerDerivativeWithLicenseTokens()` like so:
 
@@ -55,14 +55,14 @@ export type RegisterDerivativeWithLicenseTokensResponse = {
 You can also register a derivative directly, without needing a License Token. There is no real difference between `registerDerivativeWithLicenseTokens` (above) and `registerDerivative` (below) except that the former requires an already minted License Token and the latter is a convenient function that handles it for you.
 
 > ❓ "Why would I ever use a License Token then?"
-> 
+>
 > There are a few times when you would need a License Token to register a derivative:
-> 
-> - The License Token contains private license terms, so you would only be able to register if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
-> - The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `mintingFee`.
+>
+> * The License Token contains private license terms, so you would only be able to register if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
+> * The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `mintingFee`.
 
 > 📘 Quick Note
-> 
+>
 > Remember that once License Terms are attached to an IP Asset, it becomes public to register a derivative with those terms, which is why you don't necessarily need a License Token first. Read more on that [here](https://docs.story.foundation/docs/license-terms#license-terms-attached-to-ip-asset).
 
 ```typescript TypeScript
@@ -152,7 +152,7 @@ export type RegisterIpAndMakeDerivativeResponse = {
 
 ## Additional Prerequisites
 
-- An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
+* An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
 
 ```typescript TypeScript
 import { toHex } from 'viem';
@@ -205,13 +205,13 @@ export type RegisterIpResponse = {
 This function allows you to do all of the following: Mint an NFT :arrow_forward: [Register an NFT as an IP Asset](doc:register-an-nft-as-an-ip-asset) :arrow_forward: [Register an IPA as a Derivative](doc:register-ipa-as-derivative)
 
 > 📘 Before You Use this Function
-> 
+>
 > The address of `nftContract` **must** implement <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol" target="_blank">ISPGNFT</a> in order to work.
-> 
+>
 > An easy way to create a collection that implements ISPGNFT is to call the `createCollection` function in the <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/StoryProtocolGateway.sol" target="_blank">SPG contract</a>.
 
 > 📘 NFT Metadata
-> 
+>
 > Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
 
 ```typescript TypeScript
@@ -272,7 +272,7 @@ export type RegisterDerivativeResponse = {
 
 ## Additional Prerequisites
 
-- An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
+* An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
 
 ```typescript TypeScript
 import { toHex } from 'viem';
