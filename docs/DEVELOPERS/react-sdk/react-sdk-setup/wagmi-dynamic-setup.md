@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-_Optional: Check out the official Wagmi + Dynamic installation docs [here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi)._
+*Optional: Check out the official Wagmi + Dynamic installation docs[here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi).*
 
 ### Install the Dependencies
 
