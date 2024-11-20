@@ -14,9 +14,9 @@ next:
 
 ### Methods
 
-- raiseDispute
-- cancelDispute
-- resolveDispute
+* raiseDispute
+* cancelDispute
+* resolveDispute
 
 ### raiseDispute
 
@@ -28,11 +28,11 @@ Raises a dispute on a given ipId
 
 Parameters:
 
-- `request.targetIpId`: The IP ID that is the target of the dispute.
-- `request.targetTag`: The target tag of the dispute.
-- `request.cid`: CID (Content Identifier) is a unique identifier in IPFS, including CID v0 (base58) and CID v1 (base32).
-- `request.data`: [Optional] The data to initialize the policy.
-- `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.targetIpId`: The IP ID that is the target of the dispute.
+* `request.targetTag`: The target tag of the dispute.
+* `request.cid`: CID (Content Identifier) is a unique identifier in IPFS, including CID v0 (base58) and CID v1 (base32).
+* `request.data`: [Optional] The data to initialize the policy.
+* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RaiseDisputeResponse = {
@@ -52,9 +52,9 @@ Cancels an ongoing dispute
 
 Parameters:
 
-- `request.disputeId`: The ID of the dispute to be cancelled.
-- `request.data`: [Optional] Additional data used in the cancellation process.
-- `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.disputeId`: The ID of the dispute to be cancelled.
+* `request.data`: [Optional] Additional data used in the cancellation process.
+* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type CancelDisputeResponse = {
@@ -73,9 +73,9 @@ Resolves a dispute after it has been judged
 
 Parameters:
 
-- `request.disputeId`: The ID of the dispute to be resolved.
-- `request.data`: The data to resolve the dispute.
-- `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.disputeId`: The ID of the dispute to be resolved.
+* `request.data`: The data to resolve the dispute.
+* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type ResolveDisputeResponse = {
