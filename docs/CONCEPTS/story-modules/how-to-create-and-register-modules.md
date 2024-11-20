@@ -66,7 +66,7 @@ After creating your module, the next step is to register it with the Story Proto
 
 To get your module verified and listed in this repository, please follow these steps:
 
-1. **Fork this [Repository](https://github.com/storyprotocol/registered-modules):** Begin by forking this repository to your own GitHub account.
+1. **Fork this[Repository](https://github.com/storyprotocol/registered-modules):** Begin by forking this repository to your own GitHub account.
 2. **Update the Module List:** Add your module's details to the appropriate JSON file according to module types in the repository. Ensure that you adhere to the following JSON structure:
 
 ```json
@@ -78,8 +78,8 @@ To get your module verified and listed in this repository, please follow these s
 }
 ```
 
-- Replace `YourModuleName`, `YourModuleAddress`, and `YourModuleBlockExplorerLink` with your module's name, its address, and the link to its block explorer page, respectively.
-- Example:
+* Replace `YourModuleName`, `YourModuleAddress`, and `YourModuleBlockExplorerLink` with your module's name, its address, and the link to its block explorer page, respectively.
+* Example:
 
 ```json json
 {  
@@ -90,6 +90,6 @@ To get your module verified and listed in this repository, please follow these s
 ```
 
 3. **Create a Pull Request (PR)**: Once you have added your module, create a pull request against this repository. Utilize the provided PR template to ensure all necessary information is included.
-4. **Await Verification: **After your PR is submitted, it will be reviewed. Upon approval and merging of your PR, your module will be officially registered and recognized as safe for use within the StoryProtocol community.
+4. **Await Verification:** After your PR is submitted, it will be reviewed. Upon approval and merging of your PR, your module will be officially registered and recognized as safe for use within the StoryProtocol community.
 
 We look forward to seeing your contributions and expanding the StoryProtocol module ecosystem!
