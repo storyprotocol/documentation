@@ -12,7 +12,7 @@ next:
 ---
 # Purpose
 
-This document walks through the staking specification for Story’s odyssey testnet. The goal is to provide clarity to network participants and technical partners on how Story’s staking mechanics work and how users can interface with our chain. **Noted this staking guideline is for Odyssey testnet only. **
+This document walks through the staking specification for Story’s odyssey testnet. The goal is to provide clarity to network participants and technical partners on how Story’s staking mechanics work and how users can interface with our chain. **Noted this staking guideline is for Odyssey testnet only.**
 
 # Tokenomics
 
@@ -34,10 +34,10 @@ Both types of tokens can be slashed if their validators get slashed.
 
 A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters, whose initial values are still yet to be determined:
 
-- blocks_per_year
-  - The number of blocks expected to be produced in a year
-- inflations_per_year
-  - The total number of inflationary tokens to be emitted in a year
+* blocks\_per\_year
+  * The number of blocks expected to be produced in a year
+* inflations\_per\_year
+  * The total number of inflationary tokens to be emitted in a year
 
 New emissions will flow to two places:
 
@@ -54,19 +54,19 @@ Since story uses a fork of geth as the execution client, the burning mechanism f
 
 Story supports the below staking-related operations
 
-- Create validator
-- Create validator on behalf
-- Update validator commission
-- Stake
-- Stake on behalf
-- Unstake
-- Unstake on behalf
-- Redelegate
-- Redelegate on behalf
-- Set withdraw address
-- Set reward address
-- Unjail
-- Unjail on behalf
+* Create validator
+* Create validator on behalf
+* Update validator commission
+* Stake
+* Stake on behalf
+* Unstake
+* Unstake on behalf
+* Redelegate
+* Redelegate on behalf
+* Set withdraw address
+* Set reward address
+* Unjail
+* Unjail on behalf
 
 Before explaining the behavior of each of these operations, some high-level concepts like **Token Staking Types**, **Validator Set Status**, **Unbonding**, and **Staking Period** will be explained first:
 
@@ -98,9 +98,9 @@ For locked tokens, only flexible staking is allowed. If a user delegates their l
 
 Staking in these fixed staking periods earns more rewards. The longer the period, the bigger the reward weight multiplier. Reward multiplier for different periods:
 
-- 7 days - 1.051
-- 14 days - 1.16
-- 21 days - 1.34
+* 7 days - 1.051
+* 14 days - 1.16
+* 21 days - 1.34
 
 After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
 
@@ -180,8 +180,8 @@ The address change will take effect in the next block.
 
 Slashing penalizes bad behaviors on the validators by slashing out a fraction of their staked tokens. Two types of behaviors can get slashed in story: **double sign** and **downtime**.
 
-- **double sign**: If a validator double signs for a block, they will get slashed 5% of their tokens and get permanently jailed (called tombstoned).
-- **downtime**: If a validator is offline for too long and misses 95% of the past 28,800 blocks, they will get slashed 0.02% of their tokens and get jailed.
+* **double sign**: If a validator double signs for a block, they will get slashed 5% of their tokens and get permanently jailed (called tombstoned).
+* **downtime**: If a validator is offline for too long and misses 95% of the past 28,800 blocks, they will get slashed 0.02% of their tokens and get jailed.
 
 A validator will also get jailed after self-undelegation if the validator’s remaining self delegation amount is smaller than the minimum self delegation (1024 IP).
 
@@ -217,103 +217,75 @@ Validator and delegator public keys are secp256k1 keys. The keys have a 33 bytes
 
 ## Rewards Pool Allocation
 
-For every block, a fixed proportion of token inflation will go to the rewards distribution pool, which will be shared among all 112 active validators according to each of their share weights. _These allocated tokens will then be shared among the validator and its delegators in a fashion described by the next section._ The validator share weight is calculated based on the total token staking amount, and whether or not the token staking type is locked or unlocked. 
+For every block, a fixed proportion of token inflation will go to the rewards distribution pool, which will be shared among all 112 active validators according to each of their share weights. *These allocated tokens will then be shared among the validator and its delegators in a fashion described by the next section.* The validator share weight is calculated based on the total token staking amount, and whether or not the token staking type is locked or unlocked. 
 
 As an example, assume that we have 100 tokens allocated for the validator rewards distribution pool, and assume that we only have 3 active validators:
 
-- validatorA with 10 locked tokens staked
-- validatorB with 10 locked tokens staked
-- validatorC with 10 unlocked tokens staked
+* validatorA with 10 locked tokens staked
+* validatorB with 10 locked tokens staked
+* validatorC with 10 unlocked tokens staked
 
 To calculate how many tokens each validator receives, we first calculate each of their weighted shares, which is defined as the number of staked tokens multiplied by their rewards multiplier (0.5 if staking locked tokens, 1 if staking unlocked tokens). This gives us:
 
-- validatorA with 10 \* 0.5 = 5 shares
-- validatorB with 10 \* 0.5 = 5 shares
-- validatorC with 10 \* 1 = 10 shares
+* validatorA with 10 \* 0.5 = 5 shares
+* validatorB with 10 \* 0.5 = 5 shares
+* validatorC with 10 \* 1 = 10 shares
 
 With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each validator:
 
-- validatorA with 100 \* (5 / 20) = 25 tokens
-- validatorB with 100 \* (5 / 20) = 25 tokens
-- validatorC with 100 \* (10 / 20) = 50 tokens
+* validatorA with 100 \* (5 / 20) = 25 tokens
+* validatorB with 100 \* (5 / 20) = 25 tokens
+* validatorC with 100 \* (10 / 20) = 50 tokens
 
 The formula for calculating the total number of tokens allocated for a validator is as follows:
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/833d419fc139ba363c56aef263dcca571fe449ab824a2349a69d7419ee658bd0-Screenshot_2024-10-30_at_8.13.27_PM.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/833d419fc139ba363c56aef263dcca571fe449ab824a2349a69d7419ee658bd0-Screenshot_2024-10-30_at_8.13.27_PM.png" />
 
 where
 
-- R_i is the total inflationary token rewards for validator i
-- S_i is the staked tokens for validator i
-- M_i is the rewards multiplier (0.5 for locked tokens, 1 for unlocked tokens)
-- R_total is the total inflationary tokens allocated for the rewards pool
+* R\_i is the total inflationary token rewards for validator i
+* S\_i is the staked tokens for validator i
+* M\_i is the rewards multiplier (0.5 for locked tokens, 1 for unlocked tokens)
+* R\_total is the total inflationary tokens allocated for the rewards pool
 
 ## Validator And Delegator Rewards
 
-Total rewards allocations (_whose calculations are shown in the prior section_) for each validator are shared between the validator itself and all of its delegators:
+Total rewards allocations (*whose calculations are shown in the prior section*) for each validator are shared between the validator itself and all of its delegators:
 
-- The validator takes a fixed percentage commission, set by the validator itself
-- Remaining rewards are distributed among delegators according to their share weights
+* The validator takes a fixed percentage commission, set by the validator itself
+* Remaining rewards are distributed among delegators according to their share weights
 
 Calculation of delegator rewards is similar to that of validator rewards, where the proportion of tokens received for each delegator out of the remaining validator rewards is calculated based on each delegator’s staking multiplier (described in the staking section). 
 
 As an example, assume a validator has 100 total rewards allocated to it, with a validator commission of 20%, and 3 delegators delegating to it:
 
-- delegatorA with 10 tokens staked and a staking multiplier of 1
-- delegatorB with 10 tokens staked and a staking multiplier of 1
-- delegatorC with 10 tokens staked and a staking multiplier of 2
+* delegatorA with 10 tokens staked and a staking multiplier of 1
+* delegatorB with 10 tokens staked and a staking multiplier of 1
+* delegatorC with 10 tokens staked and a staking multiplier of 2
 
 To calculate how many tokens each delegator receives, we first calculate each of their weighted shares, which is defined as the number of staked tokens multiplied by their staking rewards multiplier. This gives us:
 
-- delegatorA with 10 \* 1 = 10 shares
-- delegatorB with 10 \* 1 = 10 shares
-- delegatorC with 10 \* 2 = 20 shares
+* delegatorA with 10 \* 1 = 10 shares
+* delegatorB with 10 \* 1 = 10 shares
+* delegatorC with 10 \* 2 = 20 shares
 
 With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each delegator, noting that the total number of tokens to be distributed among delegators is give by 100 - (100 \* 0.20) = 80:
 
-- delegatorA with 80 \* (10 / 40) = 20 tokens
-- delegatorB with 80 \* (10 / 40) = 20 tokens
-- delegatorC with 80 \* (20 / 40) = 40 tokens
+* delegatorA with 80 \* (10 / 40) = 20 tokens
+* delegatorB with 80 \* (10 / 40) = 20 tokens
+* delegatorC with 80 \* (20 / 40) = 40 tokens
 
 The formula for calculating the delegator token reward can be found below:
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/429c0eff2f0acddcabfa3e6259e427b47156aed244020bfb7f11a5b63387fec9-Screenshot_2024-10-30_at_8.15.51_PM.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/429c0eff2f0acddcabfa3e6259e427b47156aed244020bfb7f11a5b63387fec9-Screenshot_2024-10-30_at_8.15.51_PM.png" />
 
 where
 
-- D_i is the total inflationary token rewards for delegator i
-- S_i is the staked tokens for delegator i
-- M_i is the staked rewards multiplier for delegator i
-- R_total is the total inflationary tokens allocated for the validator
-- C is the commission rate for the validator
+* D\_i is the total inflationary token rewards for delegator i
+* S\_i is the staked tokens for delegator i
+* M\_i is the staked rewards multiplier for delegator i
+* R\_total is the total inflationary tokens allocated for the validator
+* C is the commission rate for the validator
 
 The validator commission is also treated as a reward and will follow the same auto-reward distribution rule described below. The minimal validator commission is set to 5% to avoid a cut-throat competition of lower commission rates among validators.
 
@@ -447,11 +419,11 @@ emit Deposit(
 );
 ```
 
-If staking_period is 0, it uses flexible staking.
+If staking\_period is 0, it uses flexible staking.
 
-- 1 = 7 days
-- 2 = 14 days
-- 3 = 21 days
+* 1 = 7 days
+* 2 = 14 days
+* 3 = 21 days
 
 Verifications:
 
