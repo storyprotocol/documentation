@@ -14,9 +14,9 @@ This section demonstrates how to add License Terms to an IPA. By attaching terms
 
 ## Prerequisites
 
-- [React SDK Setup](doc:react-sdk-setup)
-- An existing IPA (`ipId`). Learn how to register an IP Asset [here](doc:register-an-nft-as-an-ip-asset-react).
-- An existing License Terms (`termsId`). Learn how to create PIL Terms [here](doc:register-pil-terms-react).
+* [React SDK Setup](doc:react-sdk-setup)
+* An existing IPA (`ipId`). Learn how to register an IP Asset [here](doc:register-an-nft-as-an-ip-asset-react).
+* An existing License Terms (`termsId`). Learn how to create PIL Terms [here](doc:register-pil-terms-react).
 
 # Attach License Terms
 
@@ -61,4 +61,4 @@ export type AttachLicenseTermsResponse = {
 };
 ```
 
-_Note: [Non-Commercial Social Remixing](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) License Terms are attached **by default** to every IP Asset._
+*Note:[Non-Commercial Social Remixing](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) License Terms are attached **by default** to every IP Asset.*
