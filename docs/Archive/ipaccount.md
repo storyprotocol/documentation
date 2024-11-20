@@ -10,21 +10,7 @@ metadata:
 next:
   description: ''
 ---
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/72cdabb-Beta_Protocol_Architecture_6.png",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
-
+<Image align="center" src="https://files.readme.io/72cdabb-Beta_Protocol_Architecture_6.png" />
 
 IP Account is a critical component that adheres to the EIP-6551 standard. As token-bound accounts, IP Accounts are uniquely deployed at deterministic addresses via the official 6551 account registry. These accounts, essentially smart contracts, are equipped to store comprehensive IP-related data, including metadata and ownership details of various NFTs such as License NFTs or Royalty NFTs. Serving as a centralized hub, IP Account streamlines the management and organization of intellectual property (IP) data.
 
