@@ -11,7 +11,7 @@ next:
   description: ''
 ---
 > 🗒️ Contract
-> 
+>
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/LicenseRegistry.sol).
 
 The License Registry stores all license-related states within the protocol, including managing global state like registering new License Templates like the [Programmable IP License (PIL💊)](doc:programmable-ip-license), attaching licenses to individual [IP Assets](doc:ipasset), registering derivatives, and the like:
