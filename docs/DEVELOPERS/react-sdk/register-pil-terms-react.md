@@ -14,18 +14,18 @@ This section demonstrates how to register a selection of License Terms using the
 
 ## Prerequisites
 
-- [React SDK Setup](doc:react-sdk-setup)
-- If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`. 
+* [React SDK Setup](doc:react-sdk-setup)
+* If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`. 
 
 > 🪙 Whitelisted Revenue Tokens
-> 
+>
 > At the moment, a token must be whitelisted in our protocol to be used in the royalty module as the `currency` field.
-> 
+>
 > Please see the [currently whitelisted revenue tokens](https://docs.story.foundation/docs/royalty-module#whitelisted-revenue-tokens), where you can also mint tokens directly to be used in the below commercial sections.
 
 # Create a Commercial Use License
 
-- Click [here](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) to see info on Commercial Use licenses.
+* Click [here](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) to see info on Commercial Use licenses.
 
 ```jsx RegisterTerms.tsx
 import { useLicense } from "@story-protocol/react-sdk";
@@ -69,7 +69,7 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 
 # Create a Commercial Remix License
 
-- Click [here](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) to see info on Commercial Remix licenses.
+* Click [here](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) to see info on Commercial Remix licenses.
 
 ```jsx RegisterTerms.tsx
 import { useLicense } from "@story-protocol/react-sdk";
@@ -115,7 +115,7 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 
 # Create a Non-Commercial Social Remixing License
 
-- Click [here](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) to see info on Non-Commercial Social Remixing licenses.
+* Click [here](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) to see info on Non-Commercial Social Remixing licenses.
 
 There are currently no parameters to be passed in here, so this function should not really be used other than to get back the `licenseTermsId` for this license.
 
