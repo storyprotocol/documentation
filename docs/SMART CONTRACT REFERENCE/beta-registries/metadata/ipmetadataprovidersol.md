@@ -12,7 +12,7 @@ next:
 ---
 Base contract used for customization of canonical IP metadata.
 
-### MODULE_REGISTRY
+### MODULE\_REGISTRY
 
 ```solidity
 contract IModuleRegistry MODULE_REGISTRY
@@ -52,7 +52,7 @@ Gets the metadata associated with an IP asset.
 
 | Name | Type  | Description                                                 |
 | ---- | ----- | ----------------------------------------------------------- |
-| [0]  | bytes | metadata The encoded metadata associated with the IP asset. |
+| \[0] | bytes | metadata The encoded metadata associated with the IP asset. |
 
 ### setMetadata
 
