@@ -14,18 +14,18 @@ This section demonstrates how to mint a License Token for an IPA. You can only m
 
 ## Prerequisites
 
-- [Setup](doc:python-sdk-setup) the client object.
-- An IPA that has License Terms added. Learn how to add License Terms to an IPA [here](doc:attach-license-terms-to-an-ip-asset-python).
+* [Setup](doc:python-sdk-setup) the client object.
+* An IPA that has License Terms added. Learn how to add License Terms to an IPA [here](doc:attach-license-terms-to-an-ip-asset-python).
 
 # Mint License
 
 To mint a License Token, we will need the:
 
-- `licensor_ip_id` - the ipId of the IPA we are minting a License Token from
-- `license_template` - the address of the license template
-- `license_terms_id` - the id of the License Terms (ex. "1" for Non-Commercial Social Remixing)
-- `amount` - # of License Tokens to be minted (usually 1, unless the minter decides to mint a batch and distribute it in another way later on)
-- `receiver` - wallet receiving the License Token, usually the wallet address that is executing the transaction
+* `licensor_ip_id` - the ipId of the IPA we are minting a License Token from
+* `license_template` - the address of the license template
+* `license_terms_id` - the id of the License Terms (ex. "1" for Non-Commercial Social Remixing)
+* `amount` - # of License Tokens to be minted (usually 1, unless the minter decides to mint a batch and distribute it in another way later on)
+* `receiver` - wallet receiving the License Token, usually the wallet address that is executing the transaction
 
 ```python Python
 response = story_client.License.mintLicenseTokens(
