@@ -16,7 +16,7 @@ For running the tutorial for developers, we require node version 18 or later ver
 
 # Install the Dependencies
 
-In the current folder `story-ts-example`, install the Story Protocol SDK node package, as well as `viem` (<https://www.npmjs.com/package/viem>) to access the DeFi wallet accounts.
+In the current folder `story-ts-example`, install the Story Protocol SDK node package, as well as `viem` ([https://www.npmjs.com/package/viem](https://www.npmjs.com/package/viem)) to access the DeFi wallet accounts.
 
 ```shell npm
 npm install --save @story-protocol/core-sdk viem
@@ -38,12 +38,12 @@ Next we can initiate the SDK Client. There are two ways to do this:
 ## Set Up Private Key Account
 
 > ✅ See a Working Example
-> 
+>
 > Check out the [TypeScript Tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts) for a working example of how to set up the Story SDK Client.
 
-> :information_source: Make sure to have WALLET_PRIVATE_KEY set up in your .env file.
+> :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
 >
-> :information_source: Make sure to have RPC_PROVIDER_URL for your desired chain set up in your .env file. You can use the public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#explorers).
+> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use the public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#explorers).
 
 ```typescript index.ts
 import { http } from 'viem';
@@ -64,7 +64,7 @@ export const client = StoryClient.newClient(config);
 ## Set Up JSON-RPC Account (ex. Metamask)
 
 > ✅ See a Working Example
-> 
+>
 > Check out the [Developer Sandbox](https://github.com/jacob-tucker/story-developer-sandbox/blob/main/lib/context/AppContext.tsx) for a working example of how to set up the Story SDK Client in a frontend setting.
 
 We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
