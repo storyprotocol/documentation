@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-The Story Protocol royalty module allows to set royalty policies an IP asset and pay royalties as a  
+The Story Protocol royalty module allows to set royalty policies an IP asset and pay royalties as a\
         derivative IP.
 
 ### name
@@ -21,7 +21,7 @@ string name
 
 Returns the string identifier associated with the module.
 
-### LICENSING_MODULE
+### LICENSING\_MODULE
 
 ```solidity
 address LICENSING_MODULE
@@ -75,7 +75,7 @@ function setLicensingModule(address licensingModule) external
 
 Sets the license registry
 
-_Enforced to be only callable by the protocol admin_
+*Enforced to be only callable by the protocol admin*
 
 #### Parameters
 
@@ -91,7 +91,7 @@ function whitelistRoyaltyPolicy(address royaltyPolicy, bool allowed) external
 
 Whitelist a royalty policy
 
-_Enforced to be only callable by the protocol admin_
+*Enforced to be only callable by the protocol admin*
 
 #### Parameters
 
@@ -108,7 +108,7 @@ function whitelistRoyaltyToken(address token, bool allowed) external
 
 Whitelist a royalty token
 
-_Enforced to be only callable by the protocol admin_
+*Enforced to be only callable by the protocol admin*
 
 #### Parameters
 
@@ -125,7 +125,7 @@ function onLicenseMinting(address ipId, address royaltyPolicy, bytes licenseData
 
 Executes royalty related logic on license minting
 
-_Enforced to be only callable by LicensingModule_
+*Enforced to be only callable by LicensingModule*
 
 #### Parameters
 
@@ -144,7 +144,7 @@ function onLinkToParents(address ipId, address royaltyPolicy, address[] parentIp
 
 Executes royalty related logic on linking to parents
 
-_Enforced to be only callable by LicensingModule_
+*Enforced to be only callable by LicensingModule*
 
 #### Parameters
 
