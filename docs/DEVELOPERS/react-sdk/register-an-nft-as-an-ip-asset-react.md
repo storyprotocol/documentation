@@ -17,16 +17,16 @@ This section demonstrates how to register an IP Asset using the React SDK. There
 
 ## Prerequisites
 
-- [React SDK Setup](doc:react-sdk-setup)
+* [React SDK Setup](doc:react-sdk-setup)
 
 # Register an Existing NFT as an IP Asset
 
 You can register your NFT as an IP Asset by simply calling `register()` and passing in the token's contract address and token ID, like so:
 
 > 📘 Default License Terms
-> 
+>
 > Note that every single IP Asset registered on Story automatically has [Non-Commercial Social Remixing License Terms](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing)  attached to it.
-> 
+>
 > If it's a root IP Asset (meaning it has no more parents), you can attach more License Terms to it later. Please see [Attach Terms to an IP Asset in React](doc:attach-license-terms-to-an-ip-asset-react) for more info.
 
 ```jsx RegisterIPA.tsx
