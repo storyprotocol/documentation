@@ -16,14 +16,14 @@ This section will guide you through how to setup a Story node. Story draws inspi
 
 The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
 
-- **`story-geth` execution client:**
-  - Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  - Latest Stable Binary (v0.9.4): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.9.4)
-- **`story` consensus client:**
-  - Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  - Latest Stable Binary (v0.11.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.11.0)
+* **`story-geth`execution client:**
+  * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
+  * Latest Stable Binary (v0.9.4): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.9.4)
+* **`story`consensus client:**
+  * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
+  * Latest Stable Binary (v0.11.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.11.0)
 
-_Please download the binary matching your system architecture_
+*Please download the binary matching your system architecture*
 
 ## System Specs
 
@@ -38,37 +38,37 @@ On AWS, we recommend using the M6i, R6i, or C6i series.
 
 ## Ports
 
-_Ensure all ports needed for your node functionality are needed, described below_
+*Ensure all ports needed for your node functionality are needed, described below*
 
-- `story-geth`
-  - 8545
-    - Required if you want your node to interface via JSON-RPC API over HTTP
-  - 8546
-    - Required for websockets interaction
-  - 30303 (TCP + API)
-    - MUST be open for p2p communication
-- `story`
-  - 26656
-    - MUST be open for consensus p2p communication
-  - 26657
-    - Required if you want your node interfacing for Tendermint RPC
-  - 26660
-    - Needed if you want to expose prometheus metrics
+* `story-geth`
+  * 8545
+    * Required if you want your node to interface via JSON-RPC API over HTTP
+  * 8546
+    * Required for websockets interaction
+  * 30303 (TCP + API)
+    * MUST be open for p2p communication
+* `story`
+  * 26656
+    * MUST be open for consensus p2p communication
+  * 26657
+    * Required if you want your node interfacing for Tendermint RPC
+  * 26660
+    * Needed if you want to expose prometheus metrics
 
 ## Default Folder
 
 By default, we setup the following default data folders for consensus and execution clients:
 
-- Mac OS X
-  - `story` data root: `~/Library/Story/story`
-  - `story-geth` data root: `~/Library/Story/geth`
-- Linux
-  - `story` data root: `~/.story/story`
-  - `story-geth` data root:  `~/.story/geth`
+* Mac OS X
+  * `story` data root: `~/Library/Story/story`
+  * `story-geth` data root: `~/Library/Story/geth`
+* Linux
+  * `story` data root: `~/.story/story`
+  * `story-geth` data root:  `~/.story/geth`
 
-_For the remainder of this tutorial, we will refer to the `story` data root as `${STORY_DATA_ROOT}` and the `geth` data root as `${GETH_DATA_ROOT}`._ 
+*For the remainder of this tutorial, we will refer to the`story` data root as `${STORY_DATA_ROOT}` and the `geth` data root as `${GETH_DATA_ROOT}`.* 
 
-_You are able to override these configs on the `story` client side by passing `--home ${STORY_CONFIG_FOLDER}`. Similarly, for `geth`, you may use `--config ${GETH_CONFIG_FOLDER}`. For information on how overrides work, view our readme on [setting up a private network](https://github.com/piplabs/story?tab=readme-ov-file#creating-a-private-network)._
+*You are able to override these configs on the`story` client side by passing `--home ${STORY_CONFIG_FOLDER}`. Similarly, for `geth`, you may use `--config ${GETH_CONFIG_FOLDER}`. For information on how overrides work, view our readme on [setting up a private network](https://github.com/piplabs/story?tab=readme-ov-file#creating-a-private-network).*
 
 ## Execution Client Setup (`story-geth`)
 
@@ -83,7 +83,7 @@ _You are able to override these configs on the `story` client side by passing `-
    ./geth --iliad --syncmode full
    ```
 
-   - Currently, `snap` sync mode, the default, is still undergoing development
+   * Currently, `snap` sync mode, the default, is still undergoing development
 
 ### Clear State
 
@@ -93,8 +93,8 @@ If you ever run into issues and would like to try joining the network from a cle
 rm -rf ${GETH_DATA_ROOT} && ./geth --iliad --syncmode full
 ```
 
-- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --iliad --syncmode full`
-- Linux: `rm -rf ~/.story/geth/* && ./geth --iliad --syncmode full`
+* Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --iliad --syncmode full`
+* Linux: `rm -rf ~/.story/geth/* && ./geth --iliad --syncmode full`
 
 ### Debugging
 
@@ -104,16 +104,16 @@ If you would like to check the status of `geth` while it is running, it is helpf
 geth attach ${GETH_DATA_ROOT}/iliad/geth.ipc
 ```
 
-- Mac OS X:
-  - `geth attach ~/Library/Story/geth/iliad/geth.ipc`
-- Linux:
-  - `geth attach ~/.story/geth/iliad/geth.ipc`
+* Mac OS X:
+  * `geth attach ~/Library/Story/geth/iliad/geth.ipc`
+* Linux:
+  * `geth attach ~/.story/geth/iliad/geth.ipc`
 
 This will connect you to the IPC server from which you can run some helpful queries:
 
-- `eth.blockNumber` will print out the latest block geth is sync’d to - if this is `undefined` there is likely a peer connection or syncing issue
-- `admin.peers` will print out a list of other `geth` nodes your client is connected to - if this is blank there is a peer connectivity issue
-- `eth.syncing` will return `true` if geth is in the process of syncing, `false` otherwise
+* `eth.blockNumber` will print out the latest block geth is sync’d to - if this is `undefined` there is likely a peer connection or syncing issue
+* `admin.peers` will print out a list of other `geth` nodes your client is connected to - if this is blank there is a peer connectivity issue
+* `eth.syncing` will return `true` if geth is in the process of syncing, `false` otherwise
 
 ## Consensus Client Setup (`story`)
 
@@ -128,9 +128,9 @@ This will connect you to the IPC server from which you can run some helpful quer
    ./story init  --network iliad 
    ```
 
-   - By default, this uses your username for the moniker (the human-readable identifier for your node), you may override this by passing in `--moniker ${NODE_MONIKER}`
-   - If you would like to initialize the node using your own data directory, you can pass in `--home ${STORY_DATA_DIR}`
-   - If you already have config and data files, and would like to re-initialize from scratch, you can add the `--clean` flag
+   * By default, this uses your username for the moniker (the human-readable identifier for your node), you may override this by passing in `--moniker ${NODE_MONIKER}`
+   * If you would like to initialize the node using your own data directory, you can pass in `--home ${STORY_DATA_DIR}`
+   * If you already have config and data files, and would like to re-initialize from scratch, you can add the `--clean` flag
 3. Now, you may run `story` with the following command:
 
    ```bash
@@ -139,7 +139,7 @@ This will connect you to the IPC server from which you can run some helpful quer
 
 Note: currently you might see a bunch of `Stopping peer for error` logs - this is a known issue around peer connection stability with our bootnodes that we are currently fixing - for now please ignore it and rest assured that it does not impact block progression.
 
-_If you ever run into issues and would like to try re-joining the network **WHILE PRESERVING YOUR KEY,** run the following:_
+*If you ever run into issues and would like to try re-joining the network**WHILE PRESERVING YOUR KEY,** run the following:*
 
 ```bash
 rm -rf ${STORY_DATA_ROOT}/data/* && \
@@ -147,37 +147,37 @@ echo '{"height": "0", "round": 0, "step": 0}' > ${STORY_DATA_ROOT}/data/priv_val
 ./story run
 ```
 
-- Mac OS X:
+* Mac OS X:
   ```bash
   rm -rf ~/Library/Story/story/data/* && \
   echo '{"height": "0", "round": 0, "step": 0}' > ~/Library/Story/story/data/priv_validator_state.json && \
   ./story run
   ```
-- Linux:
+* Linux:
   ```bash
   rm -rf ~/.story/story/data/* && \
   echo '{"height": "0", "round": 0, "step": 0}' > ~/.story/story/data/priv_validator_state.json && \
   ./story run
   ```
 
-\*If you ever run into issues and would like to try joining the network from a **COMPLETELY** fresh state, run the following (**\*WARNING: THIS WILL DELETE YOUR `priv_validator_key.json` FILE )**
+\*If you ever run into issues and would like to try joining the network from a **COMPLETELY** fresh state, run the following (**\*WARNING: THIS WILL DELETE YOUR`priv_validator_key.json` FILE )**
 
 ```bash
 rm -rf ${STORY_DATA_ROOT} && ./story init --network iliad && ./story run
 ```
 
-- Mac OS X:
-  - `rm -rf ~/Library/Story/story/* && ./story init --network iliad && ./story run`
-- Linux:
-  - `rm -rf ~/.story/story/* && ./story init --network iliad && ./story run`
+* Mac OS X:
+  * `rm -rf ~/Library/Story/story/* && ./story init --network iliad && ./story run`
+* Linux:
+  * `rm -rf ~/.story/story/* && ./story init --network iliad && ./story run`
 
 To quickly check if the node is syncing, you could
 
-- Check the geth RPC endpoint to see if blocks are increasing:
+* Check the geth RPC endpoint to see if blocks are increasing:
   ```bash
   curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
   ```
-- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
 
 ### Clear State
 
@@ -187,26 +187,26 @@ If you ever run into issues and would like to try joining the network from a fre
 rm -rf ${STORY_DATA_ROOT} && ./story init --network iliad && ./story run
 ```
 
-- Mac OS X:
-  - `rm -rf ~/Library/Story/story/* && ./story init --network iliad && ./story run`
-- Linux:
-  - `rm -rf ~/.story/story/* && ./story init --network iliad && ./story run`
+* Mac OS X:
+  * `rm -rf ~/Library/Story/story/* && ./story init --network iliad && ./story run`
+* Linux:
+  * `rm -rf ~/.story/story/* && ./story init --network iliad && ./story run`
 
 To quickly check if the node is syncing, you could
 
-- Check the geth RPC endpoint to see if blocks are increasing:
+* Check the geth RPC endpoint to see if blocks are increasing:
   ```bash
   curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
   ```
-- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
 
 ### Custom Configuration
 
 To override your own node settings, you can do the following:
 
-- `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
-- `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
-- `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
+* `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
+* `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
+* `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
 
 ### Custom Automation
 
@@ -265,15 +265,15 @@ WantedBy=multi-user.target
 
 If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
 
-- `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  - This will give you a list of consesus peers the node is sync’d with by moniker
-- `curl localhost:26657/health`
-  - This will let you know if the node is healthy - `{}` indicates it is
+* `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
+  * This will give you a list of consesus peers the node is sync’d with by moniker
+* `curl localhost:26657/health`
+  * This will let you know if the node is healthy - `{}` indicates it is
 
 ### Common Issues
 
 1. `auth failure: secret conn failed: read tcp ${IP_A}:${PORT_A}->${IP_B}:{PORT_B}: i/o timeout`
-   - This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `exteral_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
+   * This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `exteral_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
 
 ### Automated Upgrades
 
