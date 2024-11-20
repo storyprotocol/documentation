@@ -22,11 +22,69 @@ Stores data without repetition, assigning an id to it if new or reusing existing
 
 #### Parameters
 
-| Name        | Type                        | Description                                   |
-| ----------- | --------------------------- | --------------------------------------------- |
-| data        | bytes                       | raw bytes, abi.encode() a value to be hashed  |
-| \_hashToIds | mapping(bytes32 => uint256) | storage ref to the mapping of hash -> data id |
-| existingIds | uint256                     | amount of distinct data stored.               |
+<Table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+
+      <th>
+        Type
+      </th>
+
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        data
+      </td>
+
+      <td>
+        bytes
+      </td>
+
+      <td>
+        raw bytes, abi.encode() a value to be hashed
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        \_
+
+        hashToIds
+      </td>
+
+      <td>
+        mapping(bytes32 => uint256)
+      </td>
+
+      <td>
+        storage ref to the mapping of hash -> data id
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        existingIds
+      </td>
+
+      <td>
+        uint256
+      </td>
+
+      <td>
+        amount of distinct data stored.
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 #### Return Values
 
