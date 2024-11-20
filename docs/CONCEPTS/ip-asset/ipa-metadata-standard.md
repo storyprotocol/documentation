@@ -11,66 +11,202 @@ next:
   description: ''
 ---
 > 🚧 Warning: Still Under Discussion
-> 
+>
 > We are still figuring out the best way to define an IPA Metadata Standard. For the sake of transparency, the following document is our thoughts so far but is subject to change as we progress towards releasing our public Mainnet.
 
 This is the JSON metadata that is associated with an IP Asset, and gets stored inside of an IP Account. You must call `setMetadata(...)` inside of the IP Account in order to set the metadata, and then call `metadata()` to read it.
 
 # Attributes & Structure
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Property Name",
-    "h-1": "Type",
-    "h-2": "Description",
-    "0-0": "`title`",
-    "0-1": "`string`",
-    "0-2": "Title of the IP",
-    "1-0": "`description`",
-    "1-1": "`string`",
-    "1-2": "Description of the IP",
-    "2-0": "`ipType`",
-    "2-1": "`string`",
-    "2-2": "Type of the IP Asset, can be defined arbitrarily by the creator. I.e. “character”, “chapter”, “location”, “items”, \"music\", etc",
-    "3-0": "`relationships`",
-    "3-1": "`IpRelationship[]`",
-    "3-2": "The detailed relationship info with the IPA’s direct parent asset, such as `APPEARS_IN`, `FINETUNED_FROM`, etc. See more examples [here](https://docs.story.foundation/docs/ipa-metadata-standard#relationship-types).",
-    "4-0": "`createdAt`",
-    "4-1": "`string`",
-    "4-2": "Date/Time that the IP was created (either ISO8601 or unix format).  \n  \nThis dateCreated field can be used to specify historical dates that aren’t on-chain. For example, Harry Potter was published on June 26.",
-    "5-0": "`watermarkImage`",
-    "5-1": "`string`",
-    "5-2": "Supporting image. Could be used as a “wrapper” image for things related to branding or watermarks.",
-    "6-0": "`creators`",
-    "6-1": "`IpCreator[]`",
-    "6-2": "An array of information about the creators. Creator type defined below.",
-    "7-0": "`media`",
-    "7-1": "`IpMedia[]`",
-    "7-2": "An array of supporting media. Media type defined below.",
-    "8-0": "`attributes`",
-    "8-1": "`IpAttribute[]`",
-    "8-2": "An array of key-value pairs that can be used for arbitrary mappings. Attribute type defined below.",
-    "9-0": "`appInfo`",
-    "9-1": "`StoryProtocolApp`",
-    "9-2": "This is assigned to verified application from Story Protocol directly (on a request basis so far). We will map each App ID to a name",
-    "10-0": "`tags`",
-    "10-1": "`string[]`",
-    "10-2": "Any tags that can help surface this IPA",
-    "11-0": "`robotTerms`",
-    "11-1": "`IPRobotTerms`",
-    "11-2": "Allows you to set Do Not Train for a specific agent"
-  },
-  "cols": 3,
-  "rows": 12,
-  "align": [
-    "left",
-    "left",
-    "left"
-  ]
-}
-[/block]
+<Table align={["left","left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Property Name
+      </th>
 
+      <th style={{ textAlign: "left" }}>
+        Type
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `title`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Title of the IP
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `description`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Description of the IP
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `ipType`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Type of the IP Asset, can be defined arbitrarily by the creator. I.e. “character”, “chapter”, “location”, “items”, "music", etc
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `relationships`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `IpRelationship[]`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        The detailed relationship info with the IPA’s direct parent asset, such as `APPEARS_IN`, `FINETUNED_FROM`, etc. See more examples [here](https://docs.story.foundation/docs/ipa-metadata-standard#relationship-types).
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `createdAt`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Date/Time that the IP was created (either ISO8601 or unix format).  
+
+        This dateCreated field can be used to specify historical dates that aren’t on-chain. For example, Harry Potter was published on June 26.
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `watermarkImage`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Supporting image. Could be used as a “wrapper” image for things related to branding or watermarks.
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `creators`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `IpCreator[]`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        An array of information about the creators. Creator type defined below.
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `media`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `IpMedia[]`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        An array of supporting media. Media type defined below.
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `attributes`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `IpAttribute[]`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        An array of key-value pairs that can be used for arbitrary mappings. Attribute type defined below.
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `appInfo`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `StoryProtocolApp`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        This is assigned to verified application from Story Protocol directly (on a request basis so far). We will map each App ID to a name
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `tags`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string[]`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Any tags that can help surface this IPA
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `robotTerms`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `IPRobotTerms`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Allows you to set Do Not Train for a specific agent
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ## Type Definitions
 
@@ -130,58 +266,58 @@ The different relationship types that can be used for the `relationships` attrib
 
 ### Story Relationships
 
-1. **APPEARS_IN** - A character APPEARS_IN a chapter.
+1. **APPEARS\_IN** - A character APPEARS\_IN a chapter.
 
-2. **BELONGS_TO** - A chapter BELONGS_TO a book.
+2. **BELONGS\_TO** - A chapter BELONGS\_TO a book.
 
-3. **PART_OF** - A book is PART_OF a series.
+3. **PART\_OF** - A book is PART\_OF a series.
 
-4. **CONTINUES_FROM** - A chapter CONTINUES_FROM the previous one.
+4. **CONTINUES\_FROM** - A chapter CONTINUES\_FROM the previous one.
 
-5. **LEADS_TO** - An event LEADS_TO a consequence.
+5. **LEADS\_TO** - An event LEADS\_TO a consequence.
 
 6. **FORESHADOWS** - An event FORESHADOWS future developments.
 
-7. **CONFLICTS_WITH** - A character CONFLICTS_WITH another character.
+7. **CONFLICTS\_WITH** - A character CONFLICTS\_WITH another character.
 
-8. **RESULTS_IN** - A decision RESULTS_IN a significant change.
+8. **RESULTS\_IN** - A decision RESULTS\_IN a significant change.
 
-9. **DEPENDS_ON** - A subplot DEPENDS_ON the main plot.
+9. **DEPENDS\_ON** - A subplot DEPENDS\_ON the main plot.
 
-10. **SETS_UP** - A prologue SETS_UP the story.
+10. **SETS\_UP** - A prologue SETS\_UP the story.
 
-11. **FOLLOWS_FROM** - A chapter FOLLOWS_FROM the previous one.
+11. **FOLLOWS\_FROM** - A chapter FOLLOWS\_FROM the previous one.
 
-12. **REVEALS_THAT** - A twist REVEALS_THAT something unexpected occurred.
+12. **REVEALS\_THAT** - A twist REVEALS\_THAT something unexpected occurred.
 
-13. **DEVELOPS_OVER** - A character DEVELOPS_OVER the course of the story.
+13. **DEVELOPS\_OVER** - A character DEVELOPS\_OVER the course of the story.
 
 14. **INTRODUCES** - A chapter INTRODUCES a new character or element.
 
-15. **RESOLVES_IN** - A conflict RESOLVES_IN a particular outcome.
+15. **RESOLVES\_IN** - A conflict RESOLVES\_IN a particular outcome.
 
-16. **CONNECTS_TO** - A theme CONNECTS_TO the main narrative.
+16. **CONNECTS\_TO** - A theme CONNECTS\_TO the main narrative.
 
-17. **RELATES_TO** - A subplot RELATES_TO the central theme.
+17. **RELATES\_TO** - A subplot RELATES\_TO the central theme.
 
-18. **TRANSITIONS_FROM** - A scene TRANSITIONS_FROM one setting to another.
+18. **TRANSITIONS\_FROM** - A scene TRANSITIONS\_FROM one setting to another.
 
-19. **INTERACTED_WITH** - A character INTERACTED_WITH another character.
+19. **INTERACTED\_WITH** - A character INTERACTED\_WITH another character.
 
-20. **LEADS_INTO** - An event LEADS_INTO the climax.?  
+20. **LEADS\_INTO** - An event LEADS\_INTO the climax.?\
     **PARALLEL - story** happening in parallel or around the same timeframe 
 
 ### AI Relationships
 
-1. **TRAINED_ON** - A model is TRAINED_ON a dataset.
+1. **TRAINED\_ON** - A model is TRAINED\_ON a dataset.
 
-2. **FINETUNED_FROM** - A model is FINETUNED_FROM a base model.
+2. **FINETUNED\_FROM** - A model is FINETUNED\_FROM a base model.
 
-3. **GENERATED_FROM** - An image is GENERATED_FROM a fine-tuned model.
+3. **GENERATED\_FROM** - An image is GENERATED\_FROM a fine-tuned model.
 
-4. **REQUIRES_DATA** - A model REQUIRES_DATA for training.
+4. **REQUIRES\_DATA** - A model REQUIRES\_DATA for training.
 
-5. **BASED_ON** - A remix is BASED_ON a specific workflow.
+5. **BASED\_ON** - A remix is BASED\_ON a specific workflow.
 
 6. **INFLUENCES** - Sample data INFLUENCES model output.
 
@@ -189,7 +325,7 @@ The different relationship types that can be used for the `relationships` attrib
 
 8. **UTILIZES** - A workflow UTILIZES a base model.
 
-9. **DERIVED_FROM** - A fine-tuned model is DERIVED_FROM a base model.
+9. **DERIVED\_FROM** - A fine-tuned model is DERIVED\_FROM a base model.
 
 10. **PRODUCES** - A model PRODUCES generated images.
 
@@ -197,21 +333,21 @@ The different relationship types that can be used for the `relationships` attrib
 
 12. **REFERENCES** - An AI-generated image REFERENCES original data.
 
-13. **OPTIMIZED_BY** - A model is OPTIMIZED_BY specific algorithms.
+13. **OPTIMIZED\_BY** - A model is OPTIMIZED\_BY specific algorithms.
 
 14. **INHERITS** - A fine-tuned model INHERITS features from the base model.
 
-15. **APPLIES_TO** - A fine-tuning process APPLIES_TO a model.
+15. **APPLIES\_TO** - A fine-tuning process APPLIES\_TO a model.
 
 16. **COMBINES** - A remix COMBINES elements from multiple datasets.
 
-17. **GENERATES_VARIANTS** - A model GENERATES_VARIANTS of an image.
+17. **GENERATES\_VARIANTS** - A model GENERATES\_VARIANTS of an image.
 
-18. **EXPANDS_ON** - A fine-tuning process EXPANDS_ON base capabilities.
+18. **EXPANDS\_ON** - A fine-tuning process EXPANDS\_ON base capabilities.
 
 19. **CONFIGURES** - A workflow CONFIGURES a model’s parameters.
 
-20. **ADAPTS_TO** - A fine-tuned model ADAPTS_TO new data.
+20. **ADAPTS\_TO** - A fine-tuned model ADAPTS\_TO new data.
 
 # Example Use Cases
 
