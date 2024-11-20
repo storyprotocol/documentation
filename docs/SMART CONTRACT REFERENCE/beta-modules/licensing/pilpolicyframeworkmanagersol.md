@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-PIL Policy Framework Manager implements the PIL Policy Framework logic for encoding and decoding PIL  
+PIL Policy Framework Manager implements the PIL Policy Framework logic for encoding and decoding PIL\
 policies into the LicenseRegistry and verifying the licensing parameters for linking, minting, and transferring.
 
 ### constructor
@@ -27,7 +27,7 @@ function registerPolicy(struct RegisterPILPolicyParams params) external returns 
 
 Registers a new policy to the registry
 
-_Internally, this function must generate a Licensing.Policy struct and call registerPolicy._
+*Internally, this function must generate a Licensing.Policy struct and call registerPolicy.*
 
 #### Parameters
 
@@ -49,7 +49,7 @@ function verifyLink(uint256 licenseId, address licensee, address ipId, address p
 
 Verify policy parameters for linking a child IP to a parent IP (licensor) by burning a license NFT.
 
-_Enforced to be only callable by LicenseRegistry_
+*Enforced to be only callable by LicenseRegistry*
 
 #### Parameters
 
@@ -65,7 +65,7 @@ _Enforced to be only callable by LicenseRegistry_
 
 | Name | Type | Description                           |
 | ---- | ---- | ------------------------------------- |
-| [0]  | bool | verified True if the link is verified |
+| \[0] | bool | verified True if the link is verified |
 
 ### verifyMint
 
@@ -75,7 +75,7 @@ function verifyMint(address licensee, bool mintingFromADerivative, address licen
 
 Verify policy parameters for minting a license.
 
-_Enforced to be only callable by LicenseRegistry_
+*Enforced to be only callable by LicenseRegistry*
 
 #### Parameters
 
@@ -92,7 +92,7 @@ _Enforced to be only callable by LicenseRegistry_
 
 | Name | Type | Description                           |
 | ---- | ---- | ------------------------------------- |
-| [0]  | bool | verified True if the link is verified |
+| \[0] | bool | verified True if the link is verified |
 
 ### getAggregator
 
@@ -122,7 +122,7 @@ function getPILPolicy(uint256 policyId) external view returns (struct PILPolicy 
 
 gets the PILPolicy for a given policy ID decoded from Licensing.Policy.frameworkData
 
-_Do not call this function from a smart contract, it is only for off-chain_
+*Do not call this function from a smart contract, it is only for off-chain*
 
 #### Parameters
 
@@ -144,10 +144,10 @@ function processInheritedPolicies(bytes aggregator, uint256 policyId, bytes poli
 
 Verify compatibility of one or more policies when inheriting them from one or more parent IPs.
 
-_Enforced to be only callable by LicenseRegistry  
-The assumption in this method is that we can add parents later on, hence the need  
-for an aggregator, if not we will do this when linking to parents directly with an  
-array of policies._
+*Enforced to be only callable by LicenseRegistry\
+The assumption in this method is that we can add parents later on, hence the need\
+for an aggregator, if not we will do this when linking to parents directly with an\
+array of policies.*
 
 #### Parameters
 
@@ -172,7 +172,7 @@ function policyToJson(bytes policyData) public pure returns (string)
 
 Returns the stringified JSON policy data for the LicenseRegistry.uri(uint256) method.
 
-_Must return ERC1155 OpenSea standard compliant metadata._
+*Must return ERC1155 OpenSea standard compliant metadata.*
 
 #### Parameters
 
@@ -184,7 +184,7 @@ _Must return ERC1155 OpenSea standard compliant metadata._
 
 | Name | Type   | Description                                                 |
 | ---- | ------ | ----------------------------------------------------------- |
-| [0]  | string | jsonString The OpenSea-compliant metadata URI of the policy |
+| \[0] | string | jsonString The OpenSea-compliant metadata URI of the policy |
 
 ### \_policyCommercialTraitsToJson
 
@@ -192,7 +192,7 @@ _Must return ERC1155 OpenSea standard compliant metadata._
 function _policyCommercialTraitsToJson(struct PILPolicy policy) internal pure returns (string)
 ```
 
-_Encodes the commercial traits of PIL policy into a JSON string for OpenSea_
+*Encodes the commercial traits of PIL policy into a JSON string for OpenSea*
 
 #### Parameters
 
@@ -206,7 +206,7 @@ _Encodes the commercial traits of PIL policy into a JSON string for OpenSea_
 function _policyDerivativeTraitsToJson(struct PILPolicy policy) internal pure returns (string)
 ```
 
-_Encodes the derivative traits of PIL policy into a JSON string for OpenSea_
+*Encodes the derivative traits of PIL policy into a JSON string for OpenSea*
 
 #### Parameters
 
@@ -220,16 +220,85 @@ _Encodes the derivative traits of PIL policy into a JSON string for OpenSea_
 function _verifyComercialUse(struct PILPolicy policy, address royaltyPolicy, uint256 mintingFee, address mintingFeeToken) internal view
 ```
 
-_Checks the configuration of commercial use and throws if the policy is not compliant_
+*Checks the configuration of commercial use and throws if the policy is not compliant*
 
 #### Parameters
 
-| Name            | Type             | Description                       |
-| --------------- | ---------------- | --------------------------------- |
-| policy          | struct PILPolicy | The policy to verify              |
-| royaltyPolicy   | address          | The address of the royalty policy |
-| mintingFee      | uint256          |                                   |
-| mintingFeeToken | address          |                                   |
+<Table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+
+      <th>
+        Type
+      </th>
+
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        policy
+      </td>
+
+      <td>
+        struct PILPolicy
+      </td>
+
+      <td>
+        The policy to verify
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        royaltyPolicy
+      </td>
+
+      <td>
+        address
+      </td>
+
+      <td>
+        The address of the royalty policy
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        mintingFee
+      </td>
+
+      <td>
+        uint256
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        mintingFeeToken
+      </td>
+
+      <td>
+        address
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ### \_verifyDerivatives
 
@@ -251,7 +320,7 @@ Checks the configuration of derivative parameters and throws if the policy is no
 function _verifHashedParams(bytes32 oldHash, bytes32 newHash, bytes32 permissive) internal pure returns (bytes32 result)
 ```
 
-_Verifies compatibility for params where the valid options are either permissive value, or equal params_
+*Verifies compatibility for params where the valid options are either permissive value, or equal params*
 
 #### Parameters
 
