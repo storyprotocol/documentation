@@ -16,43 +16,123 @@ The Dispute Module creates a way for users to raise and resolve disputes through
 
 The main components of the arbitration system are:
 
-- **Arbitration Policies:** the arbitration policy refers to the set rules/process/entities that combined will decide on a dispute. Currently the only supported arbitration policy is the [UMA Arbitration Policy](doc:uma-arbitration-policy).
-- **Arbitration Penalty:** what happens to an IP Asset after it has been "tagged". An IPA is not deemed "tagged" unless the dispute is decided to be correct. Once tagged, an IPA will not be able to:
-  - mint licenses
-  - link to any parents
-  - claim royalties
-  - and all of its existing licenses become unusable
-- **Tags:** refers to which "labels" can be applied to IP Assets in the protocol. The allowed tags are whitelisted by protocol governance. The initial set of tags is planned to be.
+* **Arbitration Policies:** the arbitration policy refers to the set rules/process/entities that combined will decide on a dispute. Currently the only supported arbitration policy is the [UMA Arbitration Policy](doc:uma-arbitration-policy).
+* **Arbitration Penalty:** what happens to an IP Asset after it has been "tagged". An IPA is not deemed "tagged" unless the dispute is decided to be correct. Once tagged, an IPA will not be able to:
+  * mint licenses
+  * link to any parents
+  * claim royalties
+  * and all of its existing licenses become unusable
+* **Tags:** refers to which "labels" can be applied to IP Assets in the protocol. The allowed tags are whitelisted by protocol governance. The initial set of tags is planned to be.
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Dispute Tag",
-    "h-1": "Explanation",
-    "h-2": "Dispute Raise Process",
-    "0-0": "`IMPROPER_REGISTRATION`",
-    "0-1": "Refers to registration of IP that already exists.",
-    "0-2": "Inputs:  \nA. text: URL to pre-existing IP (offchain or onchain)  \n  \nB. text: proof of pre-existing IP registration date or instructions on where to check it with appropriate links",
-    "1-0": "`IMPROPER_USAGE`  \n  \nExamples (non-exhaustive):  \nTerritory  \nChannels of Distribution  \nExpiration  \nIrrevocable  \nAttribution  \nDerivatives  \nLimitations on Creation of Derivatives  \nCommercial Use  \nSublicensable  \nNon-Transferable  \nRestriction on Cross-Platform Use",
-    "1-1": "Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.",
-    "1-2": "Inputs:  \nA. text: PIL term that has been violated  \n  \nB. text: description of the violation  \n  \nC. text: proof of violation and appropriate links",
-    "2-0": "`IMPROPER_PAYMENT`",
-    "2-1": "Refers to missing payments associated with an IP.",
-    "2-2": "Inputs:  \nA. text: description of each of each payment the disputed IP received that should have been shared with its royalty vault  \n  \nB. text: proof of payments with appropriate links",
-    "3-0": "`CONTENT_STANDARDS_VIOLATION`  \n  \nNo-Hate  \nSuitable-for-All-Ages  \nNo-Drugs-or-Weapons  \nNo-Pornography",
-    "3-1": "Refers to \"No-Hate\", \"Suitable-for-All-Ages\", \"No-Drugs-or-Weapons\" and \"No-Pornography\". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.",
-    "3-2": "Inputs:  \nA. text: the content standard point that has been violated  \n  \nB. text: description of the violation  \n  \nC. text: proof of violation and appropriate links"
-  },
-  "cols": 3,
-  "rows": 4,
-  "align": [
-    "left",
-    "left",
-    "left"
-  ]
-}
-[/block]
+<Table align={["left","left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Dispute Tag
+      </th>
 
+      <th style={{ textAlign: "left" }}>
+        Explanation
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Dispute Raise Process
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `IMPROPER_REGISTRATION`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Refers to registration of IP that already exists.
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Inputs:\
+        A. text: URL to pre-existing IP (offchain or onchain)  
+
+        B. text: proof of pre-existing IP registration date or instructions on where to check it with appropriate links
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `IMPROPER_USAGE`  
+
+        Examples (non-exhaustive):\
+        Territory\
+        Channels of Distribution\
+        Expiration\
+        Irrevocable\
+        Attribution\
+        Derivatives\
+        Limitations on Creation of Derivatives\
+        Commercial Use\
+        Sublicensable\
+        Non-Transferable\
+        Restriction on Cross-Platform Use
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Inputs:\
+        A. text: PIL term that has been violated  
+
+        B. text: description of the violation  
+
+        C. text: proof of violation and appropriate links
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `IMPROPER_PAYMENT`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Refers to missing payments associated with an IP.
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Inputs:\
+        A. text: description of each of each payment the disputed IP received that should have been shared with its royalty vault  
+
+        B. text: proof of payments with appropriate links
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `CONTENT_STANDARDS_VIOLATION`  
+
+        No-Hate\
+        Suitable-for-All-Ages\
+        No-Drugs-or-Weapons\
+        No-Pornography
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Inputs:\
+        A. text: the content standard point that has been violated  
+
+        B. text: description of the violation  
+
+        C. text: proof of violation and appropriate links
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ## Dispute Process Flow
 
@@ -75,7 +155,7 @@ The `setDisputeJudgement` can only be called by whitelisted addresses and allows
 If the `setDisputeJudgement` has tagged an IP as infringing then any address can call `tagDerivativeIfParentInfringed` to apply the same tag as the parent to the derivatives all the way down the derivative chain.
 
 > 📘 Looking Ahead
-> 
+>
 > In the future, the idea is that any derivative IP Asset of an infringed IP Asset would automatically be tagged without needed someone to call `tagDerivativeIfParentInfringed`. This is currently a limitation that we are aware of.
 
 The derivatives are then tagged directly without any need for judgment given that it is considered that if a parent IP license has been infringed then all derivatives that come from that license are also implicitly in an infringement situation.
