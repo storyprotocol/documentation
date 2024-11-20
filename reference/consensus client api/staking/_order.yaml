@@ -9,3 +9,4 @@
 - get_staking-delegators-delegator-addr
 - get_staking-params
 - get_staking-pool
+- get_staking-historical-info-height
