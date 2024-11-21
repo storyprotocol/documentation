@@ -27,7 +27,7 @@ next:
 > If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=zGQPiszTs40).
 
 <Cards columns={3}>
-  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-regular fa-tum" style="color: #63E6BE;" target="_blank">
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-regular fa-thumbs-up" style="color: #63E6BE;" target="_blank">
     Follow the completed code all the way through step 5a.
   </Card>
 
