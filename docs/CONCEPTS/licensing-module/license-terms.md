@@ -12,13 +12,17 @@ metadata:
 next:
   description: ''
 ---
+> 🍦 Example License Terms
+>
+> View some popular combinations of PIL License Terms, also known as "flavors", [here](https://docs.story.foundation/docs/pil-flavors#/).
+
 License Terms are a particular combination of values from a [License Template](doc:license-template). Indeed, there can and will exist **multiple** License Terms (variations) for each License Template. You can imagine that a License Template generates many License Term variations.
 
 <Image align="center" src="https://files.readme.io/62ee532-Screenshot_2024-05-07_at_17.59.18.png" />
 
 Once registered, **License Terms are immutable — they can't be tampered with or altered**, even by the License Template that generated it.
 
-Additionally, License Terms have a unique numeric ID within the License Template they stem from. This makes License Terms reusable, meaning if someone creates License Terms with a specific set of values, it only needs to be created once and can be used by anyone else. 
+Additionally, License Terms have a unique numeric ID within the License Template they stem from. This makes License Terms reusable, meaning if someone creates License Terms with a specific set of values, it only needs to be created once and can be used by anyone else.
 
 For example, a particular set of term values of the [Programmable IP License (PIL💊)](doc:programmable-ip-license-pil), such as non-commercial usage + derivatives allowed + free minting, defines a unique License Terms with an associated ID.
 
