@@ -14,7 +14,9 @@ PIL is very configurable, but we support pre-configured License Terms for ease o
 
 ## Flavor #1: Non-Commercial Social Remixing
 
-*This flavor is already registered as`licenseTermsId = 1` on Story. **In addition, every single IP Asset has these terms attached by default.***
+> 📘 Default Terms
+>
+> This flavor is already registered as`licenseTermsId = 1` on Story. **In addition, every single IP Asset has these terms attached by default.**
 
 Let the world build on and play with your creation. This license allows for endless free remixing while tracking all uses of your work while giving you full credit. Similar to: TikTok plus attribution.
 
@@ -41,7 +43,7 @@ Let the world build on and play with your creation. This license allows for endl
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Commercialize the original and derivative works\
+        ❌ Commercialize the original and derivative works
         (`commercialUse == false`)
       </td>
     </tr>
@@ -52,14 +54,14 @@ Let the world build on and play with your creation. This license allows for endl
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the remix as original work\
+        ❌ Claim credit for the remix as original work
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Credit you appropriately\
+        ✅ Credit you appropriately
         (`derivativesAttribution == true`)
       </td>
 
@@ -138,14 +140,14 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the original work\
+        ❌ Claim credit for the original work
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Commercialize the original and derivative works\
+        ✅ Commercialize the original and derivative works
         (`commercialUse == true`)
       </td>
 
@@ -234,7 +236,7 @@ Let the world build on and play with your creation... and earn money together fr
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the remix as original work\
+        ❌ Claim credit for the remix as original work
         (`derivativesAttribution == true`)
       </td>
     </tr>
@@ -245,26 +247,26 @@ Let the world build on and play with your creation... and earn money together fr
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the original work\
+        ❌ Claim credit for the original work
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Credit you appropriately\
+        ✅ Credit you appropriately
         (`derivativesAttribution == true`)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim all the revenue from commercial use of the original work or derivative works\
+        ❌ Claim all the revenue from commercial use of the original work or derivative works
         (`commercialRevShare` is set)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Commercialize the original and derivative works\
+        ✅ Commercialize the original and derivative works
         (`commercialUse == true`)
       </td>
 
