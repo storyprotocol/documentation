@@ -26,7 +26,11 @@ next:
 >
 > If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=zGQPiszTs40).
 
-In this tutorial, you will learn how to register your IP on Story using the TypeScript SDK. 
+<Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=zGQPiszTs40" icon="fa-video" target="_blank">
+  Check out a video walkthrough of this tutorial!
+</Card>
+
+In this tutorial, you will learn how to register your IP on Story using the TypeScript SDK.
 
 ## The Explanation
 
@@ -148,12 +152,12 @@ const nftHash = createHash('sha256').update(JSON.stringify(nftMetadata)).digest(
 
 There are two ways to do this step. Either:
 
-1. [5a. Mint an NFT and register it separately](https://docs.story.foundation/docs/how-to-register-ip-on-story#5a-mint-an-nft-and-register-it-separately) 
-2. [5b. Mint an NFT + register in the same transaction](https://docs.story.foundation/docs/how-to-register-ip-on-story#5b-mint-an-nft--register-in-the-same-transaction) 
+1. [5a. Mint an NFT and register it separately](https://docs.story.foundation/docs/how-to-register-ip-on-story#5a-mint-an-nft-and-register-it-separately)
+2. [5b. Mint an NFT + register in the same transaction](https://docs.story.foundation/docs/how-to-register-ip-on-story#5b-mint-an-nft--register-in-the-same-transaction)
 
 ### 5a. Mint an NFT and register it separately
 
-In this step, we will first mint an NFT and then register it as a IP Asset. 
+In this step, we will first mint an NFT and then register it as a IP Asset.
 
 **You can mint an NFT on Story however you want, as long as it is an ERC-721 and you have the NFT contract address and token ID**. Below, you will use an example NFT contract address we've created to do the minting.
 
@@ -344,7 +348,7 @@ console.log(`View on the explorer: https://explorer.story.foundation/ipa/${respo
 
 ### 5b. Mint an NFT + register in the same transaction
 
-In this step, instead of minting an NFT and then registering it separately (2 different transactions), we will use the [📦 SPG](doc:spg) to combine them into one transaction call for convenience. 
+In this step, instead of minting an NFT and then registering it separately (2 different transactions), we will use the [📦 SPG](doc:spg) to combine them into one transaction call for convenience.
 
 First, in a separate script, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
 
@@ -396,7 +400,7 @@ SPG_NFT_CONTRACT_ADDRESS=<SPG_NFT_CONTRACT_ADDRESS>
 
 The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms) 
+* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
 ```typescript main.ts
 import { PIL_TYPE, CreateIpAssetWithPilTermsResponse } from '@story-protocol/core-sdk'
@@ -437,8 +441,8 @@ Let's say you have some off-chain IP (ex. a book, a character, a drawing, etc). 
 
 So, we will separate this tutorial into two sections:
 
-1. [You already have an NFT and want to register it as IP](https://docs.story.foundation/docs/how-to-register-ip-on-story#you-already-have-an-nft-and-want-to-register-it-as-ip) 
-2. [You want to mint + register an NFT as IP in the same transaction](https://docs.story.foundation/docs/how-to-register-ip-on-story#you-want-to-mint--register-an-nft-as-ip-in-the-same-transaction) 
+1. [You already have an NFT and want to register it as IP](https://docs.story.foundation/docs/how-to-register-ip-on-story#you-already-have-an-nft-and-want-to-register-it-as-ip)
+2. [You want to mint + register an NFT as IP in the same transaction](https://docs.story.foundation/docs/how-to-register-ip-on-story#you-want-to-mint--register-an-nft-as-ip-in-the-same-transaction)
 
 ## You already have an NFT and want to register it as IP
 
