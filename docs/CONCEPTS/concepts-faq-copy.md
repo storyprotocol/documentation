@@ -2,7 +2,7 @@
 title: ❓ Concepts FAQ (COPY)
 excerpt: Common technical questions related to our protocol documentation.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   robots: index
 ---
