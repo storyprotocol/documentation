@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-PIL is very configurable, but we support pre-configured License Terms for ease of use. We expect these to be the most popular options:
+The [💊 Programmable IP License (PIL)](doc:programmable-ip-license) is very configurable, but we support popular pre-configured License Terms (also known as "flavors") for ease of use. We expect these to be the most popular options:
 
 ## Flavor #1: Non-Commercial Social Remixing
 
