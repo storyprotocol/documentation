@@ -26,7 +26,15 @@ next:
 >
 > If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=zGQPiszTs40).
 
-<Cards columns={1}>
+<Cards columns={3}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-regular fa-tum" target="_blank">
+    Follow the completed code all the way through step 5a.
+  </Card>
+
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-video" target="_blank">
+    Follow the completed code all the way through step 5b.
+  </Card>
+
   <Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=zGQPiszTs40" icon="fa-video" target="_blank">
     Check out a video walkthrough of this tutorial!
   </Card>
