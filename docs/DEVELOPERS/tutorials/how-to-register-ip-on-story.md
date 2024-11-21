@@ -28,7 +28,7 @@ next:
 
 <Cards columns={3}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-regular fa-thumbs-up" target="_blank">
-    Follow the completed code all the way through step 5a.
+    <p style={{color: "red"}}>Follow the completed code all the way through step 5a.</p>
   </Card>
 
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-regular fa-thumbs-up" style={{backgroundColor: "#63E6BE"}} target="_blank">
