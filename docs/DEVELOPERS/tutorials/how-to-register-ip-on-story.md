@@ -440,7 +440,7 @@ console.log(`View on the explorer: https://explorer.story.foundation/ipa/${respo
 # Using a Smart Contract
 
 <Cards columns={1}>
-  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/IPARegistrar.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/0_IPARegistrar.t.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     See the completed, working code of how to register your IP Asset.
   </Card>
 </Cards>
