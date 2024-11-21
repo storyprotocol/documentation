@@ -15,9 +15,11 @@ next:
 
 # Using the SDK
 
-> 👍 See the Completed Code
->
-> To see a completed, working example of setting up a simple derivative chain and then tipping the child IP Asset, please see [the commercial tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts).
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    See a completed, working example of setting up a simple derivative chain and then tipping the child IP Asset.
+  </Card>
+</Cards>
 
 In this tutorial, you will learn how to send money ("tip") an IP Asset using the TypeScript SDK.
 
@@ -78,7 +80,7 @@ Now we will use the `payRoyaltyOnBehalf` function to pay the derivative asset. I
 
 1. `receiverIpId` is the `ipId` of the derivative asset
 2. `payerIpId` is `zeroAddress` because the payer is a 3rd party (someone that thinks Mickey Mouse with a hat on him is cool), and not necessarily another IP Asset
-3. `token` is the address of SUSD, which is currently the only [whitelisted revenue token](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens) 
+3. `token` is the address of SUSD, which is currently the only [whitelisted revenue token](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 4. `amount` is 2, since the person tipping wants to send 2 SUSD
 
 ```typescript main.ts
@@ -98,7 +100,7 @@ console.log(`Paid royalty at transaction hash ${response.txHash}`)
 
 At this point we have already finished the tutorial: we learned how to tip an IP Asset. But what if the parent wants to claim their due revenue? In this example, the parent should be able to claim 1 SUSD since the child earned 2 SUSD and the `commercialRevShare = 50` in the license terms.
 
-We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the due revenue tokens. 
+We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the due revenue tokens.
 
 1. `ancestorIpId` is the `ipId` of the parent ("ancestor") asset
 2. `claimer` is the address that holds the royalty tokens associated with the parent's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the parent asset
@@ -126,9 +128,11 @@ console.log(`Claimed revenue: ${response.amountsClaimed} at snapshotId ${respons
 
 ## 4. Done!
 
-> 👍 See the Completed Code
->
-> To see a completed, working example of setting up a simple derivative chain and then tipping the child IP Asset, please see [the commercial tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts).
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    See a completed, working example of setting up a simple derivative chain and then tipping the child IP Asset.
+  </Card>
+</Cards>
 
 # Using a Smart Contract
 
