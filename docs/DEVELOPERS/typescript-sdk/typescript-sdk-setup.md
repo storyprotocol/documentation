@@ -37,9 +37,11 @@ Next we can initiate the SDK Client. There are two ways to do this:
 
 ## Set Up Private Key Account
 
-> ✅ See a Working Example
->
-> Check out the [TypeScript Tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts) for a working example of how to set up the Story SDK Client.
+<Cards columns={1}>
+  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Check out the TypeScript Tutorial for a working example of how to set up the Story SDK Client.
+  </Card>
+</Cards>
 
 > :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
 >
@@ -63,9 +65,11 @@ export const client = StoryClient.newClient(config);
 
 ## Set Up JSON-RPC Account (ex. Metamask)
 
-> ✅ See a Working Example
->
-> Check out the [Developer Sandbox](https://github.com/jacob-tucker/story-developer-sandbox/blob/main/lib/context/AppContext.tsx) for a working example of how to set up the Story SDK Client in a frontend setting.
+<Cards columns={1}>
+  <Card title="Working Example" href="https://github.com/jacob-tucker/story-developer-sandbox/blob/main/lib/context/AppContext.tsx" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Check out the Developer Sandbox for a working example of how to set up the Story SDK Client in a frontend setting.
+  </Card>
+</Cards>
 
 We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
 
