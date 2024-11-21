@@ -26,7 +26,7 @@ next:
 >
 > If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=zGQPiszTs40).
 
-<Cards columns={4}>
+<Cards columns={2}>
   <Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=zGQPiszTs40" icon="fa-video" target="_blank">
     Check out a video walkthrough of this tutorial!
   </Card>
