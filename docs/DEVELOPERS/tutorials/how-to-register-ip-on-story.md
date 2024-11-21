@@ -423,15 +423,19 @@ console.log(`View on the explorer: https://explorer.story.foundation/ipa/${respo
 
 ## 6. Done!
 
-\<Cards columns=\{}>
-&#x20; \<Card title="Completed Code" href="https\://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-thumbs-up" iconColor="#51af51" target="\_blank">
-&#x20;   Follow the completed code all the way through step 5a.
-&#x20; \</Card>
+<Cards columns={3}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through step 5a.
+  </Card>
 
-&#x20; \<Card title="Completed Code" href="https\://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="\_blank">
-&#x20;   Follow the completed code all the way through step 5b.
-&#x20; \</Card>
-\</Cards>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through step 5b.
+  </Card>
+
+  <Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=zGQPiszTs40" icon="fa-video" iconColor="#FF0000" target="_blank">
+    Check out a video walkthrough of this tutorial!
+  </Card>
+</Cards>
 
 # Using a Smart Contract
 
