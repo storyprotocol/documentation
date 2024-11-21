@@ -28,19 +28,19 @@ In either scenario, you would use the below `payRoyaltyOnBehalf` function. When 
 >
 > In order to use the `payRoyaltyOnBehalf` function below, you'll first need to know a few things.
 >
-> First, the only way to make payments on Story is if the ERC20 token you're using is whitelisted. Currently the only whitelisted revenue token is SUSD, which is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens). You can mint some publicly [here](https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7?tab=write_contract#40c10f19).
+> First, the only way to make payments on Story is if the ERC20 token you're using is whitelisted. One of the only whitelisted revenue tokens is SUSD, which is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens). You can mint some publicly [here](https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7?tab=write_contract#40c10f19).
 >
-> Then, once you have SUSD,  you have to approve the Royalty Module to spend them on behalf so it can properly distribute payment to ancestor IPs. Run the [approve transaction](https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7?tab=write_contract#095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
+> Then, once you have SUSD, you have to approve the Royalty Module to spend them on behalf so it can properly distribute payment to ancestor IPs. Run the [approve transaction](https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7?tab=write_contract#095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
 
 # Paying an IP Asset
 
-You can pay an IP Asset using the `payRoyaltyOnBehalf` function. There are two situations where you'd be calling this function. 
+You can pay an IP Asset using the `payRoyaltyOnBehalf` function. There are two situations where you'd be calling this function.
 
 To help with the following scenarios, let's say we have a parent IP Asset that has negotiated a 50% `commercialRevShare` with its child IP Asset.
 
 ## Tipping an IP Asset
 
-In this scenario, you're an external 3rd-party user who want to pay the child 2 SUSD for being cool. When you call the function below, you should make `payerIpId` a zero address because you are not paying on behalf of an IP Asset. Additionally, you would set `amount` to 2. 
+In this scenario, you're an external 3rd-party user who want to pay the child 2 SUSD for being cool. When you call the function below, you should make `payerIpId` a zero address because you are not paying on behalf of an IP Asset. Additionally, you would set `amount` to 2.
 
 Due to the existing license terms that specify 50% `commercialRevShare`, 50% of the revenue (2\*0.5 = 1) would automatically be claimable by the parent thanks to the Royalty Module, such that both the parent and child IP Assets earn 1 SUSD.
 
