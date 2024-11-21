@@ -27,11 +27,9 @@ next:
 > If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=zGQPiszTs40).
 
 <Cards columns={3}>
-  <div style={{ backgroundColor: "#253639" }}>
-    <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-regular fa-thumbs-up" target="_blank">
-      Follow the completed code all the way through step 5a.
-    </Card>
-  </div>
+  <Card style={{ backgroundColor: "#253639" }} title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-regular fa-thumbs-up" target="_blank">
+    Follow the completed code all the way through step 5a.
+  </Card>
 
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-regular fa-thumbs-up" style={{backgroundColor: "#63E6BE"}} target="_blank">
     Follow the completed code all the way through step 5b.
