@@ -15,17 +15,6 @@ next:
 
 # Using the SDK
 
-> 👍 See the Completed Code
->
-> To see a completed, working example of the following tutorial, please see:
->
-> * [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts) which follows **step 5a**
-> * [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts) which follows **step 5b**
-
-> 📺 Video Walkthrough
->
-> If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=zGQPiszTs40).
-
 <Cards columns={3}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Follow the completed code all the way through step 5a.
@@ -434,18 +423,23 @@ console.log(`View on the explorer: https://explorer.story.foundation/ipa/${respo
 
 ## 6. Done!
 
-> 👍 See the Completed Code
->
-> To see a completed, working example of the following tutorial, please see:
->
-> * [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts) which follows **step 5a**
-> * [This tutorial](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts) which follows **step 5b**
+\<Cards columns=\{}>
+&#x20; \<Card title="Completed Code" href="https\://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-thumbs-up" iconColor="#51af51" target="\_blank">
+&#x20;   Follow the completed code all the way through step 5a.
+&#x20; \</Card>
+
+&#x20; \<Card title="Completed Code" href="https\://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="\_blank">
+&#x20;   Follow the completed code all the way through step 5b.
+&#x20; \</Card>
+\</Cards>
 
 # Using a Smart Contract
 
-> 👍 See the Completed Code
->
-> To see a completed, working code example of how to register your IP Asset, please see [this contract](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/IPARegistrar.sol).
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/IPARegistrar.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    See the completed, working code of how to register your IP Asset.
+  </Card>
+</Cards>
 
 Let's say you have some off-chain IP (ex. a book, a character, a drawing, etc). In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset). As you can probably tell, this is two transactions: Mint NFT ▶️ Register NFT
 
