@@ -14,6 +14,12 @@ next:
 >
 > For a full written walkthrough of registering an IP Asset on Story, check out [How to Register IP on Story](doc:how-to-register-ip-on-story).
 
+<Cards columns={1}>
+  <Card title="Written Tutorial" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#/" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Check out a full written walkthrough of registering an IP Asset on Story.
+  </Card>
+</Cards>
+
 This section demonstrates how to register an IP Asset using the TypeScript SDK. There are generally two methods of IP registration:
 
 1. Register an existing NFT as an IP Asset
