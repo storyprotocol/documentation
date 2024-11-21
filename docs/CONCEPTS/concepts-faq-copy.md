@@ -6,6 +6,28 @@ hidden: true
 metadata:
   robots: index
 ---
+<Accordion title="My Accordion Title" icon="fa-info-circle">
+  This is a test to see if it works well! I think it should be great.
+</Accordion>
+
+<Cards columns={4}>
+  <Card title="First Card" href="https://readme.com" icon="fa-home" target="_blank">
+    Making a card to see how it goes! Hooray.
+  </Card>
+
+  <Card title="Second Card" icon="fa-user">
+    *Lorem ipsum dolor sit amet, consectetur adipiscing elit*
+  </Card>
+
+  <Card title="Third Card" icon="fa-star">
+    > Ut enim ad minim veniam, quis nostrud ullamco
+  </Card>
+
+  <Card title="Fourth Card" icon="fa-question">
+    **Excepteur sint occaecat cupidatat non proident**
+  </Card>
+</Cards>
+
 ## *"What is the difference between License Tokens, Royalty Tokens, and Revenue Tokens?"*
 
 <Table align={["left","left","left","left"]}>
@@ -54,7 +76,7 @@ metadata:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An ERC-721 NFT that gets minted from an IP Asset with specific license terms. It is essentially the license you hold that gives you access to use the associated IP Asset based on the terms in the License Token.  
+        An ERC-721 NFT that gets minted from an IP Asset with specific license terms. It is essentially the license you hold that gives you access to use the associated IP Asset based on the terms in the License Token.
 
         A License Token is burned when it is used to register an IP Asset as a derivative of another.
       </td>
@@ -64,7 +86,7 @@ metadata:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        These are the tokens that are actually used for payment (ex. ETH, USDC, etc).  
+        These are the tokens that are actually used for payment (ex. ETH, USDC, etc).
 
         "*Royalty Tokens*" are used to claim these Revenue Tokens when an IP Asset earns them.
       </td>
