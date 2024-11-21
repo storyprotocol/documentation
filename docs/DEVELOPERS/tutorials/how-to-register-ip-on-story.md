@@ -31,7 +31,7 @@ next:
     Follow the completed code all the way through step 5a.
   </Card>
 
-  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-video" style="color: #63E6BE;" target="_blank">
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-thumbs-up" style={{color: "#63E6BE"}} target="_blank">
     Follow the completed code all the way through step 5b.
   </Card>
 
