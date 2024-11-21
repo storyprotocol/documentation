@@ -26,9 +26,11 @@ next:
 >
 > If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=zGQPiszTs40).
 
-<Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=zGQPiszTs40" icon="fa-video" target="_blank">
-  Check out a video walkthrough of this tutorial!
-</Card>
+<Cards>
+  <Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=zGQPiszTs40" icon="fa-video" target="_blank">
+    Check out a video walkthrough of this tutorial!
+  </Card>
+</Cards>
 
 In this tutorial, you will learn how to register your IP on Story using the TypeScript SDK.
 
