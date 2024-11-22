@@ -29,7 +29,3 @@ This arbitration policy is a dispute resolution mechanism that follows [UMA's](h
 3. Settle Assertion
    1. If nobody submitted a counter dispute then when the liveness period is over, any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
    2. If somebody has submitted a counter dispute before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
-
-## Example User UI Flow
-
-<Image align="center" src="https://files.readme.io/18a2a6ddb91497ee0503b1ec15e26ff3346660bc8dcfa1d27cab5dffd60256d4-image_1.png" />
