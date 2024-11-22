@@ -38,7 +38,7 @@ When raising a dispute or making a counter dispute both parties can submit dispu
 
 * General dispute evidence document characteristics
   * It should be a text document uploaded on IPFS
-  * It should not take the reviewer more than 2 hours to review the document - the reviewer's time is limited and the evidence could be deemed invalid if it could take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to 2 hours of review time to have your dispute evidence be valid.
+  * It should not take the reviewer more than 2 hours to review the document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
 <br />
 
