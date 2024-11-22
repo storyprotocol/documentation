@@ -37,7 +37,8 @@ This arbitration policy is a dispute resolution mechanism that follows [UMA's](h
 When raising a dispute or making a counter dispute both parties can submit dispute evidence. Overall, the dispute evidence refers to a text document that UMA will use/read to make a judgement on the dispute.
 
 * General dispute evidence document characteristics
-  * It should be a text document uploaded on IPFS
+  * It should be a text document
+  * It should be uploaded on IPFS
   * It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
 <br />
