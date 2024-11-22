@@ -41,13 +41,16 @@ Dispute evidence document characteristics
 * General
 
   * It should be a text document. Can have images or video if necessary.
+
   * It should be uploaded on IPFS.
+
   * It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
-  * Specific by Dispute Tag
+  <br />
+* Specific by Dispute Tag
 
-    ![](https://files.readme.io/78d5ab85e87ac2178ae566cbbd1fe59430d64965b9a126c38dd70febcf7d01f0-image.png)
+  ![](https://files.readme.io/78d5ab85e87ac2178ae566cbbd1fe59430d64965b9a126c38dd70febcf7d01f0-image.png)
 
-    <br />
+  <br />
 
 Note: As the process is still experimental, we can expect iteration and fine tuning on the contents/formats of how the evidence should be submitted.
