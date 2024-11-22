@@ -36,9 +36,9 @@ This arbitration policy is a dispute resolution mechanism that follows [UMA's](h
 
 When raising a dispute or making a counter dispute both parties can submit dispute evidence. Overall, the dispute evidence refers to a text document that UMA will use/read to make a judgement on the dispute.
 
-Dispute evidence document characteristics
+### Dispute evidence document characteristics
 
-* General
+* **General**
 
   * It should be a text document. Can have images or video if necessary.
 
@@ -47,7 +47,7 @@ Dispute evidence document characteristics
   * It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
   <br />
-* Specific by Dispute Tag
+* **Specific by Dispute Tag**
 
   ![](https://files.readme.io/78d5ab85e87ac2178ae566cbbd1fe59430d64965b9a126c38dd70febcf7d01f0-image.png)
 
