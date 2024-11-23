@@ -68,8 +68,6 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         Inputs:
         A. Proof of pre-existing IP with earlier registration date (on-chain or off-chain) and/or instructions on where/how to check it.
-
-        <br />
       </td>
     </tr>
 
@@ -77,7 +75,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         `IMPROPER_USAGE`
 
-        Examples (non-exhaustive):\
+        Examples (non-exhaustive):
         Territory
         Channels of Distribution
         Expiration
@@ -93,7 +91,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
       <td style={{ textAlign: "left" }}>
         Inputs:\
-        A. text: PIL term that has been violated\
+        A. text: PIL term that has been violated
         B. text: description of the violation
         C. text: proof of violation and appropriate links
       </td>
