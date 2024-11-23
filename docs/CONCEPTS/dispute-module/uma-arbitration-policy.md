@@ -30,27 +30,107 @@ This arbitration policy is a dispute resolution mechanism that follows [UMA's](h
    1. If nobody submitted a counter dispute then when the liveness period is over, any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
    2. If somebody has submitted a counter dispute before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
 
-<br />
-
 ## Dispute Evidence Submission Guidelines
 
-When raising a dispute or making a counter dispute both parties can submit dispute evidence. Overall, the dispute evidence refers to a text document that UMA will use/read to make a judgement on the dispute.
+When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that UMA will use & read from to make a judgement on the dispute.
 
-### Dispute evidence document characteristics
+### Document Characteristics
 
-* **General**
+Every document should have the following characteristics:
 
-  * It should be a text document. Can have images or video if necessary.
+* It should be a text document. Can have images or video if necessary.
 
-  * It should be uploaded on IPFS.
+* It should be uploaded on IPFS.
 
-  * It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
+* It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
-  <br />
-* **Specific by Dispute Tag**
+Depending on what the type of the Dispute Tag is, you also need to include extra evidence:
 
-  ![](https://files.readme.io/78d5ab85e87ac2178ae566cbbd1fe59430d64965b9a126c38dd70febcf7d01f0-image.png)
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Dispute Tag
+      </th>
 
-  <br />
+      <th style={{ textAlign: "left" }}>
+        Dispute Evidence Contents
+      </th>
+    </tr>
+  </thead>
 
-Note: As the process is still experimental, we can expect iteration and fine tuning on the contents/formats of how the evidence should be submitted.
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `IMPROPER_REGISTRATION`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Inputs:
+        A. Proof of pre-existing IP with earlier registration date (on-chain or off-chain) and/or instructions on where/how to check it.
+
+        <br />
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `IMPROPER_USAGE`
+
+        Examples (non-exhaustive):\
+        Territory
+        Channels of Distribution
+        Expiration
+        Irrevocable
+        Attribution
+        Derivatives
+        Limitations on Creation of Derivatives
+        Commercial Use
+        Sublicensable
+        Non-Transferable
+        Restriction on Cross-Platform Use
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Inputs:\
+        A. text: PIL term that has been violated\
+        B. text: description of the violation
+        C. text: proof of violation and appropriate links
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `IMPROPER_PAYMENT`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Inputs:\
+        A. text: description of each of each payment the disputed IP received that should have been shared with its royalty vault
+        B. text: proof of payments with appropriate links
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `CONTENT_STANDARDS_VIOLATION`
+
+        No-Hate\
+        Suitable-for-All-Ages
+        No-Drugs-or-Weapons
+        No-Pornography
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Inputs:\
+        A. text: the content standard point that has been violated
+        B. text: description of the violation
+        C. text: proof of violation and appropriate links
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
+> 📘 Note
+>
+> As the process is still experimental, we can expect iteration and fine tuning on the contents/formats of how the evidence should be submitted.
