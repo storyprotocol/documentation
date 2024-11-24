@@ -24,7 +24,7 @@ The main components of the arbitration system are:
   * and all of its existing licenses become unusable
 * **Tags:** refers to which "labels" can be applied to IP Assets in the protocol. The allowed tags are whitelisted by protocol governance. The initial set of tags is planned to be.
 
-<Table align={["left","left","left"]}>
+<Table align={["left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
@@ -33,10 +33,6 @@ The main components of the arbitration system are:
 
       <th style={{ textAlign: "left" }}>
         Explanation
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Dispute Raise Process
       </th>
     </tr>
   </thead>
@@ -50,44 +46,28 @@ The main components of the arbitration system are:
       <td style={{ textAlign: "left" }}>
         Refers to registration of IP that already exists.
       </td>
-
-      <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: URL to pre-existing IP (offchain or onchain)  
-
-        B. text: proof of pre-existing IP registration date or instructions on where to check it with appropriate links
-      </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        `IMPROPER_USAGE`  
+        `IMPROPER_USAGE`
 
-        Examples (non-exhaustive):\
-        Territory\
-        Channels of Distribution\
-        Expiration\
-        Irrevocable\
-        Attribution\
-        Derivatives\
-        Limitations on Creation of Derivatives\
-        Commercial Use\
-        Sublicensable\
-        Non-Transferable\
+        Examples (non-exhaustive):
+        Territory
+        Channels of Distribution
+        Expiration
+        Irrevocable
+        Attribution
+        Derivatives
+        Limitations on Creation of Derivatives
+        Commercial Use
+        Sublicensable
+        Non-Transferable
         Restriction on Cross-Platform Use
       </td>
 
       <td style={{ textAlign: "left" }}>
         Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: PIL term that has been violated  
-
-        B. text: description of the violation  
-
-        C. text: proof of violation and appropriate links
       </td>
     </tr>
 
@@ -99,36 +79,20 @@ The main components of the arbitration system are:
       <td style={{ textAlign: "left" }}>
         Refers to missing payments associated with an IP.
       </td>
-
-      <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: description of each of each payment the disputed IP received that should have been shared with its royalty vault  
-
-        B. text: proof of payments with appropriate links
-      </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        `CONTENT_STANDARDS_VIOLATION`  
+        `CONTENT_STANDARDS_VIOLATION`
 
         No-Hate\
-        Suitable-for-All-Ages\
-        No-Drugs-or-Weapons\
+        Suitable-for-All-Ages
+        No-Drugs-or-Weapons
         No-Pornography
       </td>
 
       <td style={{ textAlign: "left" }}>
         Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: the content standard point that has been violated  
-
-        B. text: description of the violation  
-
-        C. text: proof of violation and appropriate links
       </td>
     </tr>
   </tbody>
