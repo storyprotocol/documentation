@@ -14,8 +14,6 @@ next:
 >
 > Please note that Story Network (our purpose-built L1) is still in **testnet**. This means things are subject to change or break along the way.
 
-> 📘 **Odyssey** is our current testnet. **Iliad** is our old testnet, and is being sunset soon.
-
 # Overview
 
 Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
@@ -65,78 +63,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
       <td style={{ textAlign: "left" }}>
         :white_check_mark:
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Story
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://testnet.storyrpc.io/`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        :white_check_mark:
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        QuickNode
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://lingering-frequent-dew.story-testnet.quiknode.pro/`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        NodeFleet
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://story-testnet.us.nodefleet.net`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Aura Network
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://story-testnet.aura.network`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
       </td>
     </tr>
   </tbody>
@@ -217,48 +143,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
       </td>
     </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://testnet.storyscan.xyz" target="_blank">Story Iliad Block Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        :white_check_mark:
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://testnet.story.explorers.guru/" target="_blank">Nodes.Guru Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://story-testnet.socialscan.io/" target="_blank">Social Scan Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
   </tbody>
 </Table>
 
@@ -266,149 +150,22 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
 
-<Table align={["left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-        Network
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Explorer
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Odyssey
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://odyssey.explorer.story.foundation" target="_blank">Story Odyssey Explorer ↗️</a>
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://iliad.explorer.story.foundation" target="_blank">Story Iliad Explorer ↗️</a>
-      </td>
-    </tr>
-  </tbody>
-</Table>
+| Network | Explorer                                                                                          |
+| :------ | :------------------------------------------------------------------------------------------------ |
+| Odyssey | <a href="https://odyssey.explorer.story.foundation" target="_blank">Story Odyssey Explorer ↗️</a> |
 
 ## :money_with_wings: Faucets
 
-<Table align={["left","left","left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-        Network
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Faucet
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Amount
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Requirement
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Odyssey
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://odyssey.faucet.story.foundation/" target="_blank">Story Faucet ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        1 $IP
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Every 24 hours
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Odyssey
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://faucet.quicknode.com/story/odyssey" target="_blank">Quicknode Faucet ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        1-2 $IP
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Every 24 hours
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://iliad.faucet.story.foundation/" target="_blank">Story Faucet ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        1 $IP
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Every 24 hours
-      </td>
-    </tr>
-  </tbody>
-</Table>
+| Network | Faucet                                                                                       | Amount  | Requirement    |
+| :------ | :------------------------------------------------------------------------------------------- | :------ | :------------- |
+| Odyssey | <a href="https://odyssey.faucet.story.foundation/" target="_blank">Story Faucet ↗️</a>       | 1 $IP   | Every 24 hours |
+| Odyssey | <a href="https://faucet.quicknode.com/story/odyssey" target="_blank">Quicknode Faucet ↗️</a> | 1-2 $IP | Every 24 hours |
 
 ## :moneybag: Staking
 
-<Table align={["left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-        Network
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Dashboard
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Odyssey
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        <a href="https://staking.story.foundation/" target="_blank">Story Validators ↗️</a>
-      </td>
-    </tr>
-  </tbody>
-</Table>
+| Network | Dashboard                                                                           |
+| :------ | :---------------------------------------------------------------------------------- |
+| Odyssey | <a href="https://staking.story.foundation/" target="_blank">Story Validators ↗️</a> |
 
 ## Ports
 
@@ -430,7 +187,7 @@ Metrics:
 
 ### Cross-chain
 
-* [LayerZero](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts#odyssey-testnet) 
+* [LayerZero](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts#odyssey-testnet)
 
 ### Indexers/Data
 
