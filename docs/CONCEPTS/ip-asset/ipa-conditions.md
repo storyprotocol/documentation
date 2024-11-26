@@ -5,27 +5,31 @@ hidden: true
 metadata:
   robots: index
 ---
+# All IP Assets
+
 All IPs can be modified/customized with [License Config](doc:license-config-hook):
 
-| **Action**                  | **Modifiable Until**                       | **Conditions**                                    |
-| --------------------------- | ------------------------------------------ | ------------------------------------------------- |
-| Modify license minting fee  | Always modifiable                          | N/A                                               |
-| Modify licensing hook       | Always modifiable                          | N/A                                               |
-| Modify `commercialRevShare` | Always modifiable (only increases allowed) | Cannot decrease `commercialRevShare` percentage   |
-| Disable/Enable the license  | Always modifiable                          | License can be disabled or re-enabled at any time |
+| **Action**                  | **Conditions**                                     |
+| --------------------------- | -------------------------------------------------- |
+| Modify license minting fee  | N/A                                                |
+| Modify licensing hook       | N/A                                                |
+| Modify `commercialRevShare` | Cannot decrease `commercialRevShare` percentage.   |
+| Disable/Enable the license  | License can be disabled or re-enabled at any time. |
 
-The IP can be further customized or modified using the [Licensing Hook](https://docs.story.foundation/docs/license-config-hook#/licensing-hook):
+The IP can be further customized or modified using the [License Hook](https://docs.story.foundation/docs/license-config-hook#/licensing-hook). This is a function that gets called before a [License Token](doc:license-token) (or more simply, a "license") is minted. There are various features you can implement with the License Hook, and are **always modifiable**:
 
-| **Action**                                               | **Modifiable Until** | **Conditions**                                                    |
-| -------------------------------------------------------- | -------------------- | ----------------------------------------------------------------- |
-| Dynamic bonding curve license minting fee of the license | Always modifiable    | Can be updated dynamically via bonding curve logic                |
-| Total license tokens limit of the license                | Always modifiable    | Defines the maximum number of license tokens that can be minted   |
-| Licensing Agent                                          | Always modifiable    | Restricts minting of license tokens to a specific receiver        |
-| More...                                                  | Always modifiable    | Additional licensing hook features can be implemented as required |
+| **Feature**         | **Description**                                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Dynamic License Fee | You can dynamically set the price of a license. For example, it can be updated dynamically via bonding curve logic. |
+| Total # of Licenses | You can abort the function based on a maximum number of license tokens that can be minted.                          |
+| Specific Receivers  | You can restrict minting of license to a specific receiver.                                                         |
+| More...             | Additional licensing hook features can be implemented as required.                                                  |
 
-[Group IPAs](doc:grouping-module) are subject to the following additional restrictions:
+## Group IPA Restrictions
 
-| **Action**               | **Modifiable Until**                                               | **Conditions**                                                    |
-| ------------------------ | ------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| Add IP to the group      | Before the first license token is minted or linked by a derivative | No additions allowed once a derivative or license token is minted |
-| Remove IP from the group | Before the first license token is minted or linked by a derivative | No removals allowed once a derivative or license token is minted  |
+In addition, [Group IPAs](doc:grouping-module) are subject to the following additional restrictions:
+
+| **Action**                   | **Restriction**                                                                                                                                                                    |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Add IP Asset to a Group      | You can only add an IP Asset to a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it.      |
+| Remove IP Asset from a Group | You can only remove an IP Asset from a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it. |
