@@ -16,7 +16,7 @@ All IPs can be modified/customized with [License Config](doc:license-config-hook
 | Modify `commercialRevShare` | Cannot decrease `commercialRevShare` percentage.   |
 | Disable/Enable the license  | License can be disabled or re-enabled at any time. |
 
-The IP can be further customized or modified using the [License Hook](https://docs.story.foundation/docs/license-config-hook#/licensing-hook). This is a function that gets called before a [License Token](doc:license-token) (or more simply, a "license") is minted. There are various features you can implement with the License Hook, and are **always modifiable**:
+The IP can be further customized or modified using the [License Hook](https://docs.story.foundation/docs/license-config-hook#/licensing-hook). This is a function that gets set within the License Config that gets called before a [License Token](doc:license-token) (or more simply, a "license") is minted. There are various features you can implement with the License Hook, and are **always modifiable**:
 
 | **Feature**         | **Description**                                                                                                     |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------- |
