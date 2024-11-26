@@ -181,7 +181,7 @@ Metrics:
 
 * Prometheus: 9100
 * Geth: 6060
-* Story (Iliad): 26660
+* Story: 26660
 
 ## Infrastructure Providers
 
