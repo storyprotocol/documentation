@@ -1,7 +1,7 @@
 ---
 title: IPA Metadata Standard (COPY)
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   robots: index
 ---
