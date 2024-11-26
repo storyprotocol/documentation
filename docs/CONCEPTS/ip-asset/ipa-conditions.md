@@ -1,5 +1,5 @@
 ---
-title: IP Modification & Condition
+title: IP Modifications & Restrictions
 deprecated: false
 hidden: true
 metadata:
