@@ -30,55 +30,10 @@ Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inf
 
 An ERC-20 token must be whitelisted by our protocol in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token. Here are the whitelisted tokens (you can mint tokens directly from the link):
 
-<Table align={["left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-        Network
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Token
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Iliad
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        SUSD: 0x91f6F05B08c16769d3c85867548615d270C42fC7  
-
-        <a href="https://testnet.storyscan.xyz/address/0x91f6F05B08c16769d3c85867548615d270C42fC7" target="_blank">Mint SUSD ↗️</a>
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Odyssey
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5  
-
-        <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5" target="_blank">Mint SUSD ↗️</a>
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Odyssey
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        WIP: 0x1516000000000000000000000000000000000000
-      </td>
-    </tr>
-  </tbody>
-</Table>
+| Token | Contract Address                             | Mint                                                                                                                        |
+| :---- | :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
+| SUSD  | `0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5` | <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5" target="_blank">Mint SUSD ↗️</a> |
+| WIP   | `0x1516000000000000000000000000000000000000` |                                                                                                                             |
 
 ## How to obtain Royalty Tokens?
 
@@ -108,6 +63,6 @@ Revenue Tokens can also move from a vault to another vault via the functions `cl
 
 ### Snapshots
 
-One thing to note is that when an inflow to a vault occurs through any of the routes mentioned above the value is considered pending. Once the `snapshot`  function is called that pending value is recognized. 
+One thing to note is that when an inflow to a vault occurs through any of the routes mentioned above the value is considered pending. Once the `snapshot`  function is called that pending value is recognized.
 
 What `snapshot` does is similar to taking the current pending value in a vault and dividing it proportionally to the number of Royalty Tokens each address holds at the moment `snapshot` is called. Due to gas cost reasons, `snapshot` is not called automatically whenever a payment is made, therefore please be aware the user needs to be holding the Royalty Tokens at the time `snapshot` is called in order to have the right to claim its share of the existing pending value.
