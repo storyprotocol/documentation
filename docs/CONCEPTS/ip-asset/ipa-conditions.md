@@ -7,7 +7,7 @@ metadata:
 ---
 # All IP Assets
 
-All IPs can be modified/customized with [License Config](doc:license-config-hook):
+All IPs can be modified/customized with the [License Config](doc:license-config-hook) at any point:
 
 | **Action**                  | **Conditions**                                     |
 | --------------------------- | -------------------------------------------------- |
