@@ -9,12 +9,12 @@ metadata:
 
 All IPs can be modified/customized with the [License Config](doc:license-config-hook), and can **always be changed unless there is a certain condition**:
 
-| **Action**                  | **Conditions**                                     |
-| --------------------------- | -------------------------------------------------- |
-| Modify License Minting Fee  | N/A                                                |
-| Modify Licensing Hook       | N/A                                                |
-| Modify `commercialRevShare` | Cannot decrease `commercialRevShare` percentage.   |
-| Disable/Enable the license  | License can be disabled or re-enabled at any time. |
+| **Action**                  | **Conditions**                                                                     |
+| --------------------------- | ---------------------------------------------------------------------------------- |
+| Modify License Minting Fee  | N/A                                                                                |
+| Modify Licensing Hook       | N/A                                                                                |
+| Modify `commercialRevShare` | Cannot \*\*decrease \*\*`commercialRevShare` percentage. You can only increase it. |
+| Disable/Enable the License  | License can be disabled or re-enabled at any time.                                 |
 
 ## License Hook Modifications
 
