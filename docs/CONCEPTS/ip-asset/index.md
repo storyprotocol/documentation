@@ -30,16 +30,14 @@ If you'd like to jump into code examples/tutorials, please see [How to Register 
 
 On Story, your IP is an NFT that gets registered on the protocol as an IP Asset. However, both NFTs and IP Assets have their own metadata you can set, so what's the difference?
 
-|             | NFT                                                                                          | IP                                                                                                                                                                                   |
-| :---------- | :------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Standard    | [Standard ERC721 NFT Metadata](https://github.com/ethereum/ercs/blob/master/ERCS/erc-721.md) | [IPA Metadata Standard](doc:ipa-metadata-standard)                                                                                                                                   |
-| What is it? | Things like name, image, collection info, etc                                                | More specific to Story, this includes information about the author of the work, its relationship to other works, attributes like app-specific metadata & AI remixing attributes, etc |
+|         | Standard                                                                                     | What is it?                                                                                                                                                                          |
+| :------ | :------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **NFT** | [Standard ERC721 NFT Metadata](https://github.com/ethereum/ercs/blob/master/ERCS/erc-721.md) | Things like name, image, collection info, etc                                                                                                                                        |
+| **IP**  | [IPA Metadata Standard](doc:ipa-metadata-standard)                                           | More specific to Story, this includes information about the author of the work, its relationship to other works, attributes like app-specific metadata & AI remixing attributes, etc |
 
 All other metadata, such as the ownership, legal, and economic details of an IP Asset are handled by our protocol directly. For example, the protocol stores data associated with parent-child relationships through the [📜 Licensing Module](doc:licensing-module), the monetary flow between IP Assets through the [💸 Royalty Module](doc:royalty-module), and the legal constraints/permissions of an IP Asset with the [💊 Programmable IP License (PIL)](doc:programmable-ip-license).
 
 ### Adding NFT & IP Metadata to IP Asset
-
-l
 
 In practice, whether you are using the SDK or our smart contract directly, our protocol asks you to provide 4 different parameters:
 
