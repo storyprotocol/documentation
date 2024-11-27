@@ -39,6 +39,10 @@ All other metadata, such as the ownership, legal, and economic details of an IP 
 
 ### Adding NFT & IP Metadata to IP Asset
 
+> 📘 Working Code Example
+>
+> To see how to implement proper metadata for the NFT & IP, in both the SDK and smart contracts directly, check out [How to Register IP on Story](doc:how-to-register-ip-on-story).
+
 In practice, whether you are using the SDK or our smart contract directly, our protocol asks you to provide 4 different parameters:
 
 * View the `WorkflowStructs.sol` contract [here](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/lib/WorkflowStructs.sol).
