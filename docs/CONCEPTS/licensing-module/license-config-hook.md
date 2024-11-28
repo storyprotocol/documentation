@@ -18,7 +18,7 @@ next:
 >
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/lib/Licensing.sol).
 
-Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `licenseTermsId`) which contains a `mintingFee` and a `licensingHook`, as shown below. The `licensingHook` is an address to a smart contract that implements the `ILicensingHook.sol` interface, which contains a `beforeMintLicenseTokens` function which will be run before a user mints a License Token. This means you can insert logic to be run upon minting a license.
+Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `licenseTermsId`) which contains fields like a `mintingFee` and a `licensingHook`, as shown below. The `licensingHook` is an address to a smart contract that implements the `ILicensingHook.sol` interface, which contains a `beforeMintLicenseTokens` function which will be run before a user mints a License Token. This means you can insert logic to be run upon minting a license.
 
 ```sol Licensing.sol
 /// @notice This struct is used by IP owners to define the configuration
@@ -57,11 +57,17 @@ You can also attach the `LicensingConfig` to an IP Asset as a whole, so it will 
 
 The hook itself is defined below in a different section. You can see it contains information about the license, who is minting the License Token, and who is receiving it.
 
+## Setting the License Config
+
+You can set the License Config by calling the `setLicenseConfig` function in the [LicensingModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/LicensingModule.sol).
+
+If `licenseTemplate == address(0) && licenseTermsId == 0`, it will set the License Config on the IP Asset as a whole and work for any license attached to the IP Asset. However if specific terms have a License Config set, it will overwrite the IP-wide config.
+
 ## Logic that is Possible with License Config
 
 1. **Max Number of Licenses**: The `licensingHook` (described in the next section) is where you can define logic for the max number of licenses that can be minted. For example, reverting the transaction if the max number of licenses has already been minted.
-2. **Disallowing Derivatives**: If you register a derivative of an IP Asset, that derivative cannot change its License Terms as described [here](https://docs.story.foundation/docs/license-terms#inherited-license-terms). You can be wondering: "What if I, as a derivative, want to disallow derivatives of myself, but my License Terms allow derivatives and I cannot change this?" To solve this, you can simply add a `licensingHook` (described in the next section) to your IP Asset that aborts every time it is called, so derivatives cannot be made.
-3. **Minting Fee**: Similar to #2 above... what about the minting fee? Although you cannot change License Terms on a derivative IP Asset (and thus the `mintingFee` inside of it), you can change the minting fee for that derivative by modifying the `mintingFee` in the License Config, or returning a `totalMintingFee` from the `licensingHook` (described in the next section).
+2. **Disallowing Derivatives**: If you register a derivative of an IP Asset, that derivative cannot change its License Terms as described [here](https://docs.story.foundation/docs/license-terms#inherited-license-terms). You can be wondering: "What if I, as a derivative, want to disallow derivatives of myself, but my License Terms allow derivatives and I cannot change this?" To solve this, you can simply set `disabled` to true.
+3. **Minting Fee**: Similar to #2 above... what about the minting fee? Although you cannot change License Terms on a derivative IP Asset (and thus the minting fee inside of it), you can change the minting fee for that derivative by modifying the `mintingFee` in the License Config, or returning a `totalMintingFee` from the `licensingHook` (described in the next section).
 4. **Dynamic Pricing for Minting a License Token**: Set dynamic pricing for minting a License Token from an IP Asset based on how many total have been minted, how many licenses the user is minting, or even who the user is. All of this data is available in the `licensingHook` (described in the next section).
 
 ... and more.
