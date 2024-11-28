@@ -18,7 +18,7 @@ next:
 >
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/lib/Licensing.sol).
 
-Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `licenseTermsId`) which contains fields like a `mintingFee` and a `licensingHook`, as shown below. The `licensingHook` is an address to a smart contract that implements the `ILicensingHook.sol` interface, which contains a `beforeMintLicenseTokens` function which will be run before a user mints a License Token. This means you can insert logic to be run upon minting a license.
+Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `licenseTermsId` attached to that asset) which contains fields like a `mintingFee` and a `licensingHook`, as shown below.
 
 ```sol Licensing.sol
 /// @notice This struct is used by IP owners to define the configuration
@@ -53,7 +53,9 @@ struct LicensingConfig {
 }
 ```
 
-You can also attach the `LicensingConfig` to an IP Asset as a whole, so it will execute on every license terms that belongs to the IP. Note that if both an IP-wide config and license-specific config are set, the license-specific config will take priority.
+Fields like the `mintingFee` and `commercialRevShare` overwrite their duplicate in the license terms themselves. A benefit of this is that derivative IP Assets, which normally cannot change their license terms, are able to overwrite certain fields.
+
+The `licensingHook` is an address to a smart contract that implements the `ILicensingHook.sol` interface, which contains a `beforeMintLicenseTokens` function which will be run before a user mints a License Token. This means you can insert logic to be run upon minting a license.
 
 The hook itself is defined below in a different section. You can see it contains information about the license, who is minting the License Token, and who is receiving it.
 
@@ -61,7 +63,7 @@ The hook itself is defined below in a different section. You can see it contains
 
 You can set the License Config by calling the `setLicenseConfig` function in the [LicensingModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/LicensingModule.sol).
 
-If `licenseTemplate == address(0) && licenseTermsId == 0`, it will set the License Config on the IP Asset as a whole and work for any license attached to the IP Asset. However if specific terms have a License Config set, it will overwrite the IP-wide config.
+You can also attach the License Config to an IP Asset as a whole, so it will execute on every license term that belongs to the IP. Note that if both an IP-wide config and license-specific config are set, the license-specific config will take priority. You can set a config on the IP as a whole by passing `licenseTemplate == address(0)` and `licenseTermsId == 0` to the `setLicenseConfig` function.
 
 ## Logic that is Possible with License Config
 
