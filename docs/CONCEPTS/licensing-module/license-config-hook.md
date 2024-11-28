@@ -32,11 +32,24 @@ Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `l
 /// @param mintingFee The minting fee to be paid when minting license tokens.
 /// @param licensingHook  The hook contract address for the licensing module, or address(0) if none
 /// @param hookData The data to be used by the licensing hook.
+/// @param commercialRevShare The commercial revenue share percentage.
+/// @param disabled Whether the license is disabled or not.
+/// @param expectMinimumGroupRewardShare The minimum percentage of the group’s reward share
+/// (from 0 to 100%, represented as 100 * 10 ** 6) that can be allocated to the IP when it is added to the group.
+/// If the remaining reward share in the group is less than the minimumGroupRewardShare,
+/// the IP cannot be added to the group.
+/// @param expectGroupRewardPool The address of the expected group reward pool.
+/// The IP can only be added to a group with this specified reward pool address,
+/// or address(0) if the IP does not want to be added to any group.
 struct LicensingConfig {
   bool isSet;
   uint256 mintingFee;
   address licensingHook;
   bytes hookData;
+  uint32 commercialRevShare;
+  bool disabled;
+  uint32 expectMinimumGroupRewardShare;
+  address expectGroupRewardPool;
 }
 ```
 
@@ -59,7 +72,7 @@ The hook itself is defined below in a different section. You can see it contains
 >
 > View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/ILicensingHook.sol#L26).
 
-The `beforeMintLicenseTokens` function, which acts as a hook, is a function that can be called before a License Token is minted to implement custom logic and determine the final `totalMintingFee` of that License Token. The owner of an IP Asset must set the License Config (of which the hook is contained in), with their own implementation of the `beforeMintLicenseTokens` function, for this to be called. 
+The `beforeMintLicenseTokens` function, which acts as a hook, is a function that can be called before a License Token is minted to implement custom logic and determine the final `totalMintingFee` of that License Token. The owner of an IP Asset must set the License Config (of which the hook is contained in), with their own implementation of the `beforeMintLicenseTokens` function, for this to be called.
 
 It can also be used to implement various checks and logic, as [outlined above](https://docs.story.foundation/docs/license-config-hook#logic-that-is-possible-with-license-config).
 
@@ -109,13 +122,7 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        The 
-
-        `totalMintingFee`
-
-         returned from 
-
-        `beforeMintLicenseTokens`
+        The `totalMintingFee` returned from `beforeMintLicenseTokens`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -125,13 +132,7 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        The 
-
-        `mintingFee`
-
-         set in the 
-
-        `LicenseConfig`
+        The `mintingFee` set in the `LicenseConfig`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -141,11 +142,7 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        The 
-
-        `mintingFee`
-
-         set in the License Terms
+        The `mintingFee` set in the License Terms
       </td>
 
       <td style={{ textAlign: "left" }}>
