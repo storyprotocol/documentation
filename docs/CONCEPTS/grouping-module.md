@@ -44,13 +44,13 @@ Besides the common interfaces of IP Account, the Group IP Account has functions 
 
 ## Adding & Removing from a Group
 
-Only the owner of a group can add/remove IP Assets or other groups to it. You **do not** have to own an IP Asset or group to add them to your group. 
+Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
 
 ### Conditions to Add to a Group
 
-There are a few conditions an IP Asset (or other group) must meet to be added into a group:
+There are a few conditions an IP Asset must meet to be added into a group:
 
-1. The minting fee of that IP Asset or other group must be set to 0
+1. The minting fee of that IP Asset must be set to 0
 2. It must have the same license terms of the group it is trying to join **or** no license terms at all. It can also have other license terms attached, as long as one of them is the same.
 
 ### Groups Becoming Locked
