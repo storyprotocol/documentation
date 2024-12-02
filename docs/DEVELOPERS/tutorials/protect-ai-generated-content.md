@@ -196,7 +196,7 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 >
 > Instead of doing this, you could technically write your own contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). But an easy way to create a collection that implements `ISPGNFT` is just to call the `createCollection` function in the SPG contract using the SDK, as shown below.
 
-```typescript createSpgNftCollection.ts
+```typescript utils/createSpgNftCollection.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
 import { http } from 'viem
 
@@ -226,7 +226,7 @@ console.log(
 )
 ```
 
-Look at the console output, and copy the SPG NFT contract address. Add that value as `SPG_NFT_CONTRACT_ADDRESS` to your `.env` file:
+Run this file and look at the console output. Copy the SPG NFT contract address and add that value as `SPG_NFT_CONTRACT_ADDRESS` to your `.env` file:
 
 ```Text env
 SPG_NFT_CONTRACT_ADDRESS=
