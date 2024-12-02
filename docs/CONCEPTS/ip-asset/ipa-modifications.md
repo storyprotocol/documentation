@@ -13,7 +13,7 @@ All IPs can be modified/customized by [setting the License Config](doc:license-c
 | --------------------------- | ---------------------------------------------------------------------------------- |
 | Modify License Minting Fee  | N/A                                                                                |
 | Modify Licensing Hook       | N/A                                                                                |
-| Modify `commercialRevShare` | Cannot \*\*decrease \*\*`commercialRevShare` percentage. You can only increase it. |
+| Modify `commercialRevShare` | Cannot \*\*decrease\*\* `commercialRevShare` percentage. You can only increase it. |
 | Disable/Enable the License  | License can be disabled or re-enabled at any time.                                 |
 
 ## License Hook Modifications
