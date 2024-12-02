@@ -23,7 +23,7 @@ The best way to get started is to get your hands dirty and start building.
   </Card>
 
   <Card title="Video Tutorial" href="https://www.youtube.com/watch?v=ty5GiNekVh0" icon="fa-video" iconColor="#FF0000" target="_blank">
-    Follow the completed code all the way through step 5b.
+    Watch a video tutorial overviewing an example script.
   </Card>
 </Cards>
 
