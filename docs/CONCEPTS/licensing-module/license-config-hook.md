@@ -6,12 +6,13 @@ excerpt: >-
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
+
 ## License Config
 
 > 🗒️ Contract
@@ -59,20 +60,25 @@ The `licensingHook` is an address to a smart contract that implements the `ILice
 
 The hook itself is defined below in a different section. You can see it contains information about the license, who is minting the License Token, and who is receiving it.
 
-## Setting the License Config
+### Setting the License Config
 
 You can set the License Config by calling the `setLicenseConfig` function in the [LicensingModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/LicensingModule.sol).
 
 You can also attach the License Config to an IP Asset as a whole, so it will execute on every license term that belongs to the IP. Note that if both an IP-wide config and license-specific config are set, the license-specific config will take priority. You can set a config on the IP as a whole by passing `licenseTemplate == address(0)` and `licenseTermsId == 0` to the `setLicenseConfig` function.
 
-## Logic that is Possible with License Config
+### Logic that is Possible with License Config
 
 1. **Max Number of Licenses**: The `licensingHook` (described in the next section) is where you can define logic for the max number of licenses that can be minted. For example, reverting the transaction if the max number of licenses has already been minted.
 2. **Disallowing Derivatives**: If you register a derivative of an IP Asset, that derivative cannot change its License Terms as described [here](https://docs.story.foundation/docs/license-terms#inherited-license-terms). You can be wondering: "What if I, as a derivative, want to disallow derivatives of myself, but my License Terms allow derivatives and I cannot change this?" To solve this, you can simply set `disabled` to true.
 3. **Minting Fee**: Similar to #2 above... what about the minting fee? Although you cannot change License Terms on a derivative IP Asset (and thus the minting fee inside of it), you can change the minting fee for that derivative by modifying the `mintingFee` in the License Config, or returning a `totalMintingFee` from the `licensingHook` (described in the next section).
-4. **Dynamic Pricing for Minting a License Token**: Set dynamic pricing for minting a License Token from an IP Asset based on how many total have been minted, how many licenses the user is minting, or even who the user is. All of this data is available in the `licensingHook` (described in the next section).
+4. **Commercial Revenue Share**: Similar to #2 and #3 above, you can modify the `commercialRevShare` in the License Config.
+5. **Dynamic Pricing for Minting a License Token**: Set dynamic pricing for minting a License Token from an IP Asset based on how many total have been minted, how many licenses the user is minting, or even who the user is. All of this data is available in the `licensingHook` (described in the next section).
 
 ... and more.
+
+### Restrictions
+
+If you update the License Config, you cannot decrease the `commercialRevShare` percentage. You can only increase it.
 
 ## Licensing Hook
 
@@ -125,6 +131,7 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
         Importance
       </th>
     </tr>
+
   </thead>
 
   <tbody>
@@ -157,5 +164,6 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
         Lowest Priority
       </td>
     </tr>
+
   </tbody>
 </Table>
