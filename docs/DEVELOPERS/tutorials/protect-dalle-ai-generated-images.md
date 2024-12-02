@@ -1,6 +1,6 @@
 ---
 title: Protect Dall-E AI-Generated Images
-excerpt: Learn how to protect Dall-E AI-Generated images using Story.
+excerpt: Learn how to license and protect Dall-E AI-Generated images on Story.
 deprecated: false
 hidden: false
 metadata:
@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-In this tutorial, you will learn how to protect Dall-E 2 AI-Generated images by registering it on Story.
+In this tutorial, you will learn how to license and protect Dall-E 2 AI-Generated images by registering it on Story.
 
 ## The Explanation
 
