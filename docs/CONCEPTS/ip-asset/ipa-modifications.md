@@ -1,20 +1,26 @@
 ---
 title: IP Modifications & Restrictions
+exerpt: Learn about the modifications and restrictions for IP Assets.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
+  title: ""
+  description: ""
   robots: index
+next:
+  description: ""
 ---
+
 # IP Asset Modifications
 
 All IPs can be modified/customized by [setting the License Config](doc:license-config-hook), and can **always be changed (unless there is a certain condition)**.
 
-| **Action**                  | **Conditions**                                                                     |
-| --------------------------- | ---------------------------------------------------------------------------------- |
-| Modify License Minting Fee  | N/A                                                                                |
-| Modify Licensing Hook       | N/A                                                                                |
-| Modify `commercialRevShare` | Cannot \*\*decrease\*\* `commercialRevShare` percentage. You can only increase it. |
-| Disable/Enable the License  | License can be disabled or re-enabled at any time.                                 |
+| **Action**                  | **Conditions**                                                                 |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| Modify License Minting Fee  | N/A                                                                            |
+| Modify Licensing Hook       | N/A                                                                            |
+| Modify `commercialRevShare` | Cannot **decrease** `commercialRevShare` percentage. You can only increase it. |
+| Disable/Enable the License  | License can be disabled or re-enabled at any time.                             |
 
 ## License Hook Modifications
 
