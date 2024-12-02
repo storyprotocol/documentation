@@ -241,6 +241,8 @@ import {
 } from "@story-protocol/core-sdk";
 import { Address } from "viem";
 
+// previous code here ...
+
 const response: CreateIpAssetWithPilTermsResponse =
   await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
     spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
@@ -262,4 +264,4 @@ console.log(
 );
 ```
 
-## 6. Done!
+## 7. Done!
