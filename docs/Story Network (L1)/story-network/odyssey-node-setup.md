@@ -18,10 +18,10 @@ The `story` and `geth` binaries, which make up the clients required for running 
 
 * **`story-geth`execution client:**
   * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  * Latest Stable Binary (v0.10.0): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.10.0)
+  * Latest Stable Binary (v0.10.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.10.1)
 * **`story`consensus client:**
   * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  * Latest Stable Binary (v0.12.1): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.12.1)
+  * Latest Stable Binary (v0.13.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.13.0)
 
 ***IMPORTANT: For the Odyssey testnet, it is crucial to start with version v0.12.0, as this version is required before applying any subsequent upgrades. Download this version first to ensure compatibility with the testnet environment. Also, verify that you are downloading the binary matching your system architecture***
 
