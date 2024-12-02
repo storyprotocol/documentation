@@ -14,7 +14,9 @@ In this tutorial, you will learn how to protect Dall-E 2 AI-Generated Content by
 
 ## The Explanation
 
-Let's say you have some off-chain IP (ex. a book, a character, a drawing, etc). In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset). The below tutorial will walk you through 2 different ways to do that (step 5a and step 5b).
+Let's say you generate an image using AI. Without adding a proper license to your image, others could use it freely. In this tutorial, you will learn how to add a license to your Dall-E 2 AI-Generated image so that if others want to use it, they must properly license it from you.
+
+In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset).
 
 ## 0. Before you Start
 
@@ -33,6 +35,10 @@ PINATA_JWT=
 ```
 
 3. Go to [OpenAI](https://platform.openai.com/settings/organization/api-keys) and create a new API key. Add the new key to your `.env` file:
+
+> 🚧 OpenAI Credits
+>
+> In order to generate an image, you'll need OpenAI credits. If you just created an account, you will probably have a free trial that will give you a few credits to start with.
 
 ```yaml .env
 OPENAI_API_KEY=
