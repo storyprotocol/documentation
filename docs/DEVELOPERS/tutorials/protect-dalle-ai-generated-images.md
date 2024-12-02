@@ -1,6 +1,6 @@
 ---
-title: Protect Dall-E AI-Generated Images
-excerpt: Learn how to license and protect Dall-E AI-Generated images on Story.
+title: Protect DALL·E AI-Generated Images
+excerpt: Learn how to license and protect DALL·E AI-Generated images on Story.
 deprecated: false
 hidden: false
 metadata:
@@ -10,11 +10,11 @@ metadata:
 next:
   description: ''
 ---
-In this tutorial, you will learn how to license and protect Dall-E 2 AI-Generated images by registering it on Story.
+In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generated images by registering it on Story.
 
 ## The Explanation
 
-Let's say you generate an image using AI. Without adding a proper license to your image, others could use it freely. In this tutorial, you will learn how to add a license to your Dall-E 2 AI-Generated image so that if others want to use it, they must properly license it from you.
+Let's say you generate an image using AI. Without adding a proper license to your image, others could use it freely. In this tutorial, you will learn how to add a license to your DALL·E 2 AI-Generated image so that if others want to use it, they must properly license it from you.
 
 In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset).
 
