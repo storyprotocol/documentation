@@ -2,7 +2,7 @@
 title: Protect Dall-E AI-Generated Content
 excerpt: Learn how to protect Dall-E AI-Generated Content using Story.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   title: ''
   description: ''
