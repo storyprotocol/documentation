@@ -1,26 +1,26 @@
 ---
 title: IP Modifications & Restrictions
-exerpt: Learn about the modifications and restrictions for IP Assets.
 deprecated: false
+exerpt: Learn about the modifications and restrictions for IP Assets.
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
-
 # IP Asset Modifications
 
-All IPs can be modified/customized by [setting the License Config](doc:license-config-hook), and can **always be changed (unless there is a certain condition)**.
+IP Assets can be modified/customized a few ways. For example, by [setting the License Config](doc:license-config-hook) which allows you to change a few things as you'll see below, changing its metadata, and more. These things can **always be changed unless there is a certain condition**.
 
-| **Action**                  | **Conditions**                                                                 |
-| --------------------------- | ------------------------------------------------------------------------------ |
-| Modify License Minting Fee  | N/A                                                                            |
-| Modify Licensing Hook       | N/A                                                                            |
-| Modify `commercialRevShare` | Cannot **decrease** `commercialRevShare` percentage. You can only increase it. |
-| Disable/Enable the License  | License can be disabled or re-enabled at any time.                             |
+| **Action**                  | **Conditions**                                                                                                                                                                                                                        | Via The...                                                                                                                              |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| Modify License Minting Fee  | N/A                                                                                                                                                                                                                                   | [License Config](doc:license-config-hook)                                                                                               |
+| Modify Licensing Hook       | N/A                                                                                                                                                                                                                                   | [License Config](doc:license-config-hook)                                                                                               |
+| Modify `commercialRevShare` | Cannot **decrease** `commercialRevShare` percentage. You can only increase it.                                                                                                                                                        | [License Config](doc:license-config-hook)                                                                                               |
+| Disable/Enable the License  | License can be disabled or re-enabled at any time.                                                                                                                                                                                    | [License Config](doc:license-config-hook)                                                                                               |
+| Modify Metadata             | Cannot modify if the metadata is **frozen**. This is done by calling `freezeMetadata` in the [CoreMetadataModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/metadata/CoreMetadataModule.sol). | [CoreMetadataModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/metadata/CoreMetadataModule.sol) |
 
 ## License Hook Modifications
 
