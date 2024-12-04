@@ -10,13 +10,20 @@ metadata:
 next:
   description: ''
 ---
-> 📺 Video Walkthrough
->
-> If you want to check out a video walkthrough of this tutorial, go [here](https://www.youtube.com/watch?v=omSO5nQKa5M).
 
-Now that we have walked through each of the individual steps, let's try to write, deploy, and verify our own smart contract.
+<Cards columns={2}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/Example.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    See the completed code.
+  </Card>
+
+  <Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=X421IuZENqM" icon="fa-video" iconColor="#FF0000" target="_blank">
+    Check out a video walkthrough of this tutorial!
+  </Card>
+</Cards>
 
 # Writing the Smart Contract
+
+Now that we have walked through each of the individual steps, let's try to write, deploy, and verify our own smart contract.
 
 ## Register IPA, Register License Terms, and Attach to IPA
 

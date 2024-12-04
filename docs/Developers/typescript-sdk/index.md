@@ -22,7 +22,7 @@ The best way to get started is to get your hands dirty and start building.
     Extremely easy & straightforward working code examples for all of the following tutorials.
   </Card>
 
-  <Card title="Video Tutorial" href="https://www.youtube.com/watch?v=ty5GiNekVh0" icon="fa-video" iconColor="#FF0000" target="_blank">
+  <Card title="Video Tutorial" href="https://www.youtube.com/watch?v=r3iIChDhp1g" icon="fa-video" iconColor="#FF0000" target="_blank">
     Watch a video tutorial overviewing an example script.
   </Card>
 </Cards>

@@ -24,7 +24,7 @@ next:
     Follow the completed code all the way through step 5b.
   </Card>
 
-  <Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=zGQPiszTs40" icon="fa-video" iconColor="#FF0000" target="_blank">
+  <Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=r3iIChDhp1g" icon="fa-video" iconColor="#FF0000" target="_blank">
     Check out a video walkthrough of this tutorial!
   </Card>
 </Cards>
