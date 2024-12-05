@@ -18,7 +18,7 @@ next:
 
 # Introducing the World's IP Blockchain
 
-Story is a purpose-build layer 1 blockchain designed specifically for intellectual property. It tokenizes any type of IP; whether that’s an idea, an image, a real world asset, a song, an AI model, an NFT, image rights or anything in between. By embedding usage terms, attribution, and royalty agreements directly into the blockchain, Story provides a transparent, decentralized solution for IP management. This enables IP holders to protect their work, collaborate seamlessly, and unlock more revenue opportunities in a AI-powered economy.
+Story is a purpose-built layer 1 blockchain designed specifically for intellectual property. It tokenizes any type of IP; whether that’s an idea, an image, a real world asset, a song, an AI model, an NFT, image rights or anything in between. By embedding usage terms, attribution, and royalty agreements directly into the blockchain, Story provides a transparent, decentralized solution for IP management. This enables IP holders to protect their work, collaborate seamlessly, and unlock more revenue opportunities in a AI-powered economy.
 
 > ⏩ Skip the Read - 1 Minute Summary
 >
