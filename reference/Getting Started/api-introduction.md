@@ -13,9 +13,16 @@ next:
 Welcome to the Story API Reference! Please use the `https://api.storyprotocol.net` endpoint.
 
 ```text Headers
-X-CHAIN: story-testnet, 1513
+X-CHAIN: 1513 | 1516
 X-API-Key: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
 ```
+
+## Chains
+
+| Chain Name | Chain ID | API Endpoint |
+|------------|----------|--------------|
+| `Iliad` | 1513 | https://api.storyprotocol.net/api/v1 |
+| `Odyssey` | 1516 | https://api.storyprotocol.net/api/v2 |
 
 ## Rate Limit
 
