@@ -1,16 +1,15 @@
 ---
 title: Story Network Guide
-excerpt: ""
+excerpt: ''
 deprecated: false
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
-
 > 🚧 We are still in testnet!
 >
 > Please note that Story Network (our purpose-built L1) is still in **testnet**. This means things are subject to change or break along the way.
@@ -19,9 +18,9 @@ next:
 
 Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
 
-- using precompiled primitives to traverse complex data structures like IP graphs within seconds at marginal costs
-- a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
-- a modular architecture that decouples consensus from execution via Ethereum’s Engine-API
+* using precompiled primitives to traverse complex data structures like IP graphs within seconds at marginal costs
+* a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
+* a modular architecture that decouples consensus from execution via Ethereum’s Engine-API
 
 # Resources
 
@@ -42,7 +41,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         Official
       </th>
     </tr>
-
   </thead>
 
   <tbody>
@@ -59,7 +57,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         :white_check_mark:
       </td>
     </tr>
-
   </tbody>
 </Table>
 
@@ -80,13 +77,12 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         Official
       </th>
     </tr>
-
   </thead>
 
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://odyssey.storyscan.xyz/" target="_blank">Story Odyssey Block Explorer ↗️</a>
+        <a href="https://odyssey.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -139,7 +135,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
       </td>
     </tr>
-
   </tbody>
 </Table>
 
@@ -170,45 +165,45 @@ The following ports are available for `geth` and `story` clients:
 
 Geth:
 
-- RPC: 8545
-- WS: 8546
-- P2P: 30303
+* RPC: 8545
+* WS: 8546
+* P2P: 30303
 
 Metrics:
 
-- Prometheus: 9100
-- Geth: 6060
-- Story: 26660
+* Prometheus: 9100
+* Geth: 6060
+* Story: 26660
 
 ## Infrastructure Providers
 
 ### Cross-chain
 
-- [LayerZero](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts#odyssey-testnet)
+* [LayerZero](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts#odyssey-testnet)
 
 ### Indexers/Data
 
-- [Simplehash](https://simplehash.com/)
-- [Goldsky](https://goldsky.com/)
-- [Zettablock](https://zettablock.com/)
+* [Simplehash](https://simplehash.com/)
+* [Goldsky](https://goldsky.com/)
+* [Zettablock](https://zettablock.com/)
 
 ### Oracles/Automation
 
-- [Gelato](https://www.gelato.network/)
+* [Gelato](https://www.gelato.network/)
 
 ### Tools
 
-- [Protofire](https://protofire.io/)
+* [Protofire](https://protofire.io/)
 
 ### Wallets/AA
 
-- [Dynamic](https://www.dynamic.xyz/)
-- [Pimlico](https://www.pimlico.io/)
-- [ZeroDev](https://zerodev.app/)
+* [Dynamic](https://www.dynamic.xyz/)
+* [Pimlico](https://www.pimlico.io/)
+* [ZeroDev](https://zerodev.app/)
 
 # Further Sections
 
-- [Wallet Setup](doc:odyssey-wallet-setup)
-- [Node Setup](doc:odyssey-node-setup)
-- [Validator Operations](doc:odyssey-validator-operations)
-- [Tokenomics & Staking](doc:tokenomics-staking)
+* [Wallet Setup](doc:odyssey-wallet-setup)
+* [Node Setup](doc:odyssey-node-setup)
+* [Validator Operations](doc:odyssey-validator-operations)
+* [Tokenomics & Staking](doc:tokenomics-staking)
