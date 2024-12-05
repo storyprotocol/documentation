@@ -13,7 +13,7 @@ next:
 Welcome to the Story API Reference! Please use the `https://api.storyprotocol.net` endpoint.
 
 ```text Headers
-X-CHAIN: story-testnet, 1513
+X-CHAIN: 1516
 X-API-Key: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
 ```
 
