@@ -131,4 +131,4 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
 > 📘 Note
 >
-> As the process is still experimental, we can expect iteration and fine tuning on the contents/formats of how the evidence should be submitted.
+> As the process is still experimental, we can expect iteration and fine-tuning on the contents/formats of how the evidence should be submitted.
