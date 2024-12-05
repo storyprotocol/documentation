@@ -18,7 +18,7 @@ next:
 
 # Introducing the World's IP Blockchain
 
-Story is making the legal system for creative Intellectual Property (IP) more efficient by turning IP "programmable" on the blockchain. To do this, we have created Story Network: a purpose-built layer 1 blockchain where people or programs alike can license, remix, and monetize IP according to transparent terms set by creators themselves.
+Story is a purpose-build layer 1 blockchain designed specifically for intellectual property. It tokenizes any type of IP; whether that’s an idea, an image, a real world asset, a song, an AI model, an NFT, image rights or anything in between. By embedding usage terms, attribution, and royalty agreements directly into the blockchain, Story provides a transparent, decentralized solution for IP management. This enables IP holders to protect their work, collaborate seamlessly, and unlock more revenue opportunities in a AI-powered economy.
 
 > ⏩ Skip the Read - 1 Minute Summary
 >
@@ -26,11 +26,11 @@ Story is making the legal system for creative Intellectual Property (IP) more ef
 
 ## The "Why"
 
-First, the problem: Creators want to make sure their IP (a legal concept) is protected, easy to license, and monetize. Right now this is done via the traditional legal system, where handling infringement on IP requires lawyers, is extremely expensive, and is time consuming. 
+Story solves a big problem for IP owners: in the digital age, when artists, musicians, writers, and even developers share their work online, it’s easy for others to use or change it without crediting them, and they often don't get paid fairly if their work becomes popular or valuable. This can be discouraging for people who want to share their ideas and creations but don’t want to lose control over them.
 
-Additionally, allowing others to use your IP and grow it requires cutting one-to-one licensing deals which requires more lawyers, more money, and is unscalable. As a result, most licensing simply doesn't happen.
+Additionally, the sheer speed and superabundance of AI-generated media is outpacing the current IP system that was designed for physical replication. In many cases, [LLMs are trained on and are producing copyrighted data](https://twitter.com/BriannaWu/status/1823833723764084846).
 
-And there's another major issue: the sheer speed and superabundance of AI-generated media is outpacing the current IP system that was designed for physical replication. In many cases, [LLMs are trained on and are producing copyrighted data](https://twitter.com/BriannaWu/status/1823833723764084846). We need to automate and make more efficient the licensing of IP.
+Story fixes this by providing a way for creators to share their work with built-in protection. When someone (including an AI model) uses a song, image, or any creative work that’s registered on Story, the system automatically tracks who the original creator is and makes sure they get credited. Plus, if that work generates revenue—say someone remixes a song and it earns money—the original creator automatically receives their fair share.
 
 ## The "How"
 
@@ -49,7 +49,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 Our "Proof-of-Creativity" Protocol, made up of smart contracts, is natively deployed on Story Network and allows anyone to onramp IP to Story. Most of our documentation focuses on the protocol.
 
-Creators can register their IP as “**IP Assets**” on our protocol. IP Assets (IPA) are the foundational programmable IP metadata on the protocol. Each IPA is composed of:
+Creators can register their IP as [🧩 IP Assets](doc:ip-asset) on our protocol. IP Assets (IPA) are the foundational programmable IP metadata on the protocol. Each IPA is composed of:
 
 1. an on-chain NFT. This could be an existing NFT like [Azuki](https://www.azuki.com/en) that itself is the IP, or a new NFT specifically minted to represent some off-chain IP like a real-world asset.
 2. its associated IP Account, which is a modified ERC-6551 (Token Bound Account) implementation.
@@ -64,6 +64,10 @@ Like USDC enables redemption for fiat, the PIL enables redemption for IP.
 
 ## An Example
 
-Before Story, if you wanted to create a comic with someone else’s Azuki NFT and your Pudgy NFT, you would first need to hope the Azuki has a license and then find & contact the owner. You would also need to research your license terms for your Pudgy. Since you’re not a legal expert, you would probably need a lawyer to create a new contract between the two IPs. This creates a burden on anything ever getting created legally, because few people have the time, expertise, or money for that except large studios. Thus IP is not easily composable.
+**Example #1**: Imagine you're an artist who creates digital paintings, or a musician who makes original songs. You want to share your work online, but you want to ensure that if others use or change your work, they give you credit and—if they make money from it—you get a share. That’s where Story comes in. It's a platform that uses technology to give IP owners like you control over how your work is used, tracked, and shared, so it’s both protected and fairly rewarded.
 
-With Story, Azuki & Pudgy holders can register their IP as **IP Assets** and then set terms - using the PIL - outlining how people can license and remix their IP. If your Pudgy is registered on Story, anyone can see those terms on-chain and license your Pudgy automatically using the licensing module, which generates a real license agreement. You can then register the resulting comic as a derivative, and any revenue that flows in can be distributed between you and the IP holders automatically.
+Think of it like this: Suppose you upload a song to Story. Now, anyone can see that you’re the original creator, and if someone wants to remix it, they can do so through Story. The system then automatically tracks the remix as a "derivative" of your song and notes you as the original artist. This way, if the remix becomes popular and earns money, Story   can help you earn a portion of those earnings, just like the remixer.
+
+**Example #2**: Let’s say a scientist uploads an image dataset to be used by artificial intelligence (AI) models for research. Through Story, that dataset is registered, so if any company uses it to train their AI, the original scientist is credited. If that dataset then contributes to a profitable AI application, Story ensures a fair share goes to the original contributor.
+
+With Story, you can share your work freely, knowing that wherever it goes, it’s tracked and fairly credited back to you. The idea is to create a fair environment for sharing, building upon, and growing creative work.
