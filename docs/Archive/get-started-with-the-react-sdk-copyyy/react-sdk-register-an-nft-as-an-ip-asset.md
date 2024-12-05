@@ -19,7 +19,7 @@ This section demonstrates how to register an IP asset using the React SDK. There
 1. Register an existing NFT as an IP asset
 2. Create an NFT and register it as an IP asset in one transaction
 
-For this section, we will register an existing NFT as a IP asset (#1 above).
+For this section, we will register an existing NFT as an IP asset (#1 above).
 
 ## Prerequisites
 
