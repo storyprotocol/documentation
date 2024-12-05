@@ -24,7 +24,7 @@ next:
 
 > 📘 PIL Legal Text
 >
-> Check out the actual PIL legal text [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). It is very human readable for a legal text!
+> Check out the actual PIL legal text [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). It is very human-readable for a legal text!
 
 ## The Background Story
 

@@ -76,7 +76,7 @@ Gets the metadata associated with an IP Asset.
 function setUpgradeProvider(address provider) external
 ```
 
-Sets a upgrade provider for users to migrate their metadata to.
+Sets an upgrade provider for users to migrate their metadata to.
 
 #### Parameters
 
