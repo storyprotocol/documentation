@@ -40,7 +40,7 @@ Parameters:
 * `request.signer`: The address that can call `to` on behalf of the `ipAccount`.
 * `request.to`: The address that can be called by the `signer` (currently only modules can be `to`)
 * `request.permission`: The new permission level.
-* `request.func`: [Optional] The function selector string of `to` that can be called by the `signer` on behalf of the `ipAccount`. Be default, it allows all functions.
+* `request.func`: [Optional] The function selector string of `to` that can be called by the `signer` on behalf of the `ipAccount`. By default, it allows all functions.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
@@ -65,7 +65,7 @@ Parameters:
 * `request.signer`: The address that can call `to` on behalf of the `ipAccount`.
 * `request.to`: The address that can be called by the `signer` (currently only modules can be `to`)
 * `request.permission`: The new permission level.
-* `request.func`: [Optional] The function selector string of `to` that can be called by the `signer` on behalf of the `ipAccount`. Be default, it allows all functions.
+* `request.func`: [Optional] The function selector string of `to` that can be called by the `signer` on behalf of the `ipAccount`. By default, it allows all functions.
 * `request.deadline`: [Optional] The deadline for the signature in milliseconds, default is 1000ms.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
@@ -115,7 +115,7 @@ Parameters:
   * `request.permissions[].signer`: The address that can call `to` on behalf of the `ipAccount`.
   * `request.permissions[].to`: The address that can be called by the `signer` (currently only modules can be `to`)
   * `request.permissions[].permission`: The new permission level.
-  * `request.permissions[].func`: [Optional] The function selector string of `to` that can be called by the `signer` on behalf of the `ipAccount`. Be default, it allows all functions.
+  * `request.permissions[].func`: [Optional] The function selector string of `to` that can be called by the `signer` on behalf of the `ipAccount`. By default, it allows all functions.
 * `request.deadline`: [Optional] The deadline for the signature in milliseconds, default is 1000ms.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
@@ -143,7 +143,7 @@ Parameters:
   * `request.permissions[].signer`: The address that can call `to` on behalf of the `ipAccount`.
   * `request.permissions[].to`: The address that can be called by the `signer` (currently only modules can be `to`)
   * `request.permissions[].permission`: The new permission level.
-  * `request.permissions[].func`: [Optional] The function selector string of `to` that can be called by the `signer` on behalf of the `ipAccount`. Be default, it allows all functions.
+  * `request.permissions[].func`: [Optional] The function selector string of `to` that can be called by the `signer` on behalf of the `ipAccount`. By default, it allows all functions.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
