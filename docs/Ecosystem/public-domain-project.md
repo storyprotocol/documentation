@@ -35,7 +35,7 @@ These literary works are collected from the following data sources:
 * [Public Domain Books](https://www.epubor.com/best-sites-for-public-domain-books.html)
 * [Public Domain Characters](https://pdsh.fandom.com/wiki/Category:Comic_Book_Characters)
 
-The project also collects data from other public available websites that share public domain contents.
+The project also collects data from other publicly available websites that share public domain contents.
 
 # Exploring Public Domain IP in Story Protocol
 
