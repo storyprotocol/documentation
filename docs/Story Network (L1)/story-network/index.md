@@ -135,6 +135,20 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
       </td>
     </tr>
+
+        <tr>
+      <td style={{ textAlign: "left" }}>
+        <a href="https://testnet.storyscan.app" target="_blank">Story Scan by Stakeme ↗️</a>
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `https://testnet.storyscan.app`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
   </tbody>
 </Table>
 
@@ -152,6 +166,8 @@ Specifically for IP-related transactions like registering an IPA, minting a lice
 | :------------------------------------------------------------------------------------------- | :------ | :------------- |
 | <a href="https://odyssey.faucet.story.foundation/" target="_blank">Story Faucet ↗️</a>       | 1 $IP   | Every 24 hours |
 | <a href="https://faucet.quicknode.com/story/odyssey" target="_blank">Quicknode Faucet ↗️</a> | 1-2 $IP | Every 24 hours |
+| <a href="https://story.faucetme.pro" target="_blank">Stakeme Faucet ↗️</a> | 1 $IP | Every 24 hours |
+| <a href="https://www.okx.com/web3/faucet/story-odyssey-testnet?id=60" target="_blank">OKX Faucet ↗️</a> | 1 $IP | Every 24 hours |
 
 ## :moneybag: Staking
 
