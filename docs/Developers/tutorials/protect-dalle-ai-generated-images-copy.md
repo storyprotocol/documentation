@@ -2,7 +2,7 @@
 title: Training Data
 excerpt: Learn how to license and protect DALL·E AI-Generated images on Story.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   robots: index
 ---
