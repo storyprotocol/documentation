@@ -1,5 +1,5 @@
 ---
-title: Protect DALL·E AI-Generated Images (COPY)
+title: Training Data
 excerpt: Learn how to license and protect DALL·E AI-Generated images on Story.
 deprecated: false
 hidden: false
@@ -10,9 +10,11 @@ In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generat
 
 ## The Explanation
 
-Let's say you generate an image using AI. Without adding a proper license to your image, others could use it freely. In this tutorial, you will learn how to add a license to your DALL·E 2 AI-Generated image so that if others want to use it, they must properly license it from you.
+AI runs on IP. The sheer speed and superabundance of AI-generated media is outpacing the current intellectual property system that was designed for physical replication. In many cases, AI is trained on and is producing copyrighted data.
 
-In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset).
+This creates a "tragedy of the commons" situation, where creators are no longer incentivized to make new content if AI is just going to steal and summarize it. As a result, creators make no money since consumers go straight to AI bots, and AI bots lose in the long run if there's no new content.
+
+To solve this, IP that is used as training data by LLMs should be registered on Story. Submit a project showcasing registering IP training data on Story, and an AI training on this registered data.
 
 ## 0. Before you Start
 
