@@ -313,4 +313,104 @@ sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" \
        -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.story/story/config/config.toml
 ```
 
-## 
+## Processing finalized payload failed err="rpc forkchoice updated
+Warn:
+```bash
+WRN Processing finalized payload; evm syncing
+WRN Processing finalized payload failed: evm fork choice update (will retry) status="" err="rpc forkchoice updated v3: beacon syncer reorging"
+```
+Solution:
+* Everything is fine, it just means that `story-geth` is syncing, which takes some time.
+* If the node is not far behind, you can ignore this warning.
+
+## Dial tcp 127.0.0.1:9090
+Warn:
+```bash
+WRN error getting latest block error:"rpc error: dial tcp 127.0.0.1:9090"
+```
+Solution:
+* The logs show a connection failure on port `9090`.
+* Check the listening ports:
+```bash
+sudo ss -tulpn  | grep LISTEN
+```
+* If other node uses `9090`, then modify it to another.
+* Normally, this WARNING should not affect the performance of your node.
+
+## Wrong AppHash
+Error:
+```bash
+ERRO Error in validation module=blocksync err="wrong Block[dot]Header[dot]AppHash  Expected [...]
+```
+Solution:
+* `Wrong AppHash` type logs means the story node version you are using is wrong.
+* Upgrade to the current versions of the binaries [here](https://docs.story.foundation/docs/odyssey-node-setup).
+* If your versions are newer than the current ones, perform a rollback.
+
+## Connection failed sendRoutine / Stopping peer
+Error:
+```bash
+ERRO Connection failed @ sendRoutine module=p2p peer=...
+ERRO Stopping peer for error module=p2p peer=...
+```
+Solution:
+* If the node is synchronized and not far behind, you can ignore this error.
+* If the node is lagging or has stopped completely, try updating peers, this usually happens when a node loses p2p communication:
+```bash
+PEERS="..."
+sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers =./persistent_peers = \"$PEERS\"/}" $HOME/.story/story/config/config.toml
+```
+
+## Moniker must be valid non-empty
+Error:
+```bash
+ERRO !! Fatal error occurred, app died️ unexpectedly ! err="create comet node: create node: info.Moniker must be valid non-empty 
+```
+Solution:
+* Looks like a problem with your node moniker.
+* Be sure to use `""` when executing init:
+```bash
+story init --network “...“ --moniker “...”
+```
+* Go to config, find the moniker and put it inside `""` only:
+```bash
+sudo nano ~/.story/story/config/config.toml
+```
+
+## Invalid address (26656)
+Error:
+```bash
+Fatal error occurred, app died️ unexpectedly ! err="create comet node: create node: invalid address (26656):
+```
+Solution:
+* The logs report a connection failure on port `26656`.
+* Check the listening ports:
+```bash
+sudo ss -tulpn  | grep LISTEN
+```
+* If another node is using `26656`, change it to another and keep the default `26656` for story in the `P2P configuration` options in `config`:
+```bash
+sudo nano ~/.story/story/config/config.toml
+```
+
+## Eth_coinbase does not exist 
+Warn:
+```bash
+WARN Beacon client online, but no consensus updates received in a while. Please fix your beacon client to follow the chain!
+Served eth_coinbase eth_coinbase does not exist 
+```
+Solution:
+* This error indicates that the network has stopped.
+
+## Verifying proposal failed
+Warn:
+```bash
+WARN Verifying proposal failed: push new payload to evm (will retry) status="" err="new payload: rpc new payload v3: Post \"http://localhost:8551\": round trip: dial tcp 127.0.0.1:8551: connect: connection refused" stacktrace="[errors.go:39 jwt.go:41 client.go:259 client.go:180 client.go:724 client.go:590 http.go:229 http.go:173 client.go:351 engineclient.go:101 msg_server.go:183 proposal_server.go:34 helpers.go:30 proposal_server.go:33 tx.pb.go:299 msg_service_router.go:175 tx.pb.go:301 msg_service_router.go:198 prouter.go:74 abci.go:520 cmt_abci.go:40 abci.go:85 local_client.go:164 app_conn.go:89 execution.go:166 state.go:1381 state.go:1338 state.go:2055 state.go:910 state.go:836 asm_amd64.s:1695]"
+WARN Verifying proposal
+```
+Solution:
+* It looks like port 8551 stopping, the background process running `iptables` blocking ip and port and access posix.
+* For solution try uninstall `ufw posix` and `iptables`:
+```bash
+iptables -I INPUT -s localhost -j ACCEPT 
+```
