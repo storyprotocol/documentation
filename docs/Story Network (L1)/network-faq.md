@@ -15,7 +15,7 @@ next:
 
 <br />
 
-See the <a href="https://docs.storyprotocol.xyz/docs/node-setup#system-specs">system specs</a>
+See the <a href="https://docs.story.foundation/docs/odyssey-node-setup#system-specs">system specs</a>
 </details>
 
 ***
