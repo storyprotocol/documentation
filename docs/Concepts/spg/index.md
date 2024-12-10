@@ -35,33 +35,33 @@ As mentioned above, there are many different functions we have created for you t
 >
 > The below docs on the supported workflows is a copy + paste of [this document](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md). While we will try to keep the below list up to date, you can always go there for the latest version.
 
-### [Registration Workflows](../contracts/interfaces/workflows/IRegistrationWorkflows.sol)
+### [Registration Workflows](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/workflows/IRegistrationWorkflows.sol)
 
 * `createCollection`: Creates a SPGNFT Collection
 * `registerIp`: Registers an IP
 * `mintAndRegisterIp`: Mints a NFT → Registers it as an IP
 
-### [License Attachment Workflows](../contracts/interfaces/workflows/ILicenseAttachmentWorkflows.sol)
+### [License Attachment Workflows](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/workflows/ILicenseAttachmentWorkflows.sol)
 
 * `registerPILTermsAndAttach`: Registers PIL terms → Attaches them to an IP
 * `registerIpAndAttachPILTerms`: Registers an IP → Registers PIL terms → Attaches them to the IP
 * `mintAndRegisterIpAndAttachPILTerms`: Mints a NFT → Registers it as an IP → Registers PIL terms → Attaches them to the IP
 
-### [Derivative Workflows](../contracts/interfaces/workflows/IDerivativeWorkflows.sol)
+### [Derivative Workflows](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/workflows/IDerivativeWorkflows.sol)
 
 * `registerIpAndMakeDerivative`: Registers an IP → Registers it as a derivative of another IP
 * `mintAndRegisterIpAndMakeDerivative`: Mints a NFT → Registers it as an IP → Registers the IP as a derivative of another IP
 * `registerIpAndMakeDerivativeWithLicenseTokens`: Registers an IP → Registers the IP as a derivative of another IP using the license tokens
 * `mintAndRegisterIpAndMakeDerivativeWithLicenseTokens`: Mints a NFT → Registers it as an IP → Registers the IP as a derivative of another IP using the license tokens
 
-### [Grouping Workflows](../contracts/interfaces/workflows/IGroupingWorkflows.sol)
+### [Grouping Workflows](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/workflows/IGroupingWorkflows.sol)
 
 * `mintAndRegisterIpAndAttachLicenseAndAddToGroup`: Mints a NFT → Registers it as an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
 * `registerIpAndAttachLicenseAndAddToGroup`: Registers an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
 * `registerGroupAndAttachLicense`: Registers a group IP → Attaches the given license terms to the group IP
 * `registerGroupAndAttachLicenseAndAddIps`: Registers a group IP → Attaches the given license terms to the group IP → Adds existing IPs to the group IP
 
-### [Royalty Workflows](../contracts/interfaces/workflows/IRoyaltyWorkflows.sol)
+### [Royalty Workflows](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/workflows/IRoyaltyWorkflows.sol)
 
 * `transferToVaultAndSnapshotAndClaimByTokenBatch`: Transfers revenue tokens to ancestor IP’s royalty vault → Takes a snapshot of the royalty vault → Claims all available revenue tokens from the snapshot to the claimer’s wallet
   * *Use Case*: For IP royalty token holders who want to claim both their direct revenue and royalties from descendant IPs.
