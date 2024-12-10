@@ -154,7 +154,7 @@ This will connect you to the IPC server from which you can run some helpful quer
 
 Note: currently you might see a bunch of `Stopping peer for error` logs - this is a known issue around peer connection stability with our bootnodes that we are currently fixing - for now please ignore it and rest assured that it does not impact block progression.
 
-*If you ever run into issues and would like to try re-joining the network**WHILE PRESERVING YOUR KEY,** run the following:*
+*If you ever run into issues and would like to try re-joining the network **WHILE PRESERVING YOUR KEY,** run the following:*
 
 ```bash
 rm -rf ${STORY_DATA_ROOT}/data/* && \
@@ -281,7 +281,7 @@ WantedBy=multi-user.target
 If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
 
 * `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  * This will give you a list of consesus peers the node is sync’d with by moniker
+  * This will give you a list of consensus peers the node is sync’d with by moniker
 * `curl localhost:26657/health`
   * This will let you know if the node is healthy - `{}` indicates it is
 
