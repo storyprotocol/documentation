@@ -22,7 +22,7 @@ Go to our [faucet](https://odyssey.faucet.story.foundation)  and click "Add Stor
 2. Click “Add a custom network” at the bottom
 
    <Image align="center" src="https://files.readme.io/2c24e299df26a258f9b2381807fef333e863f7b814eb6c8ce9597f01d7f207e0-newtype_2024-11-15_at_19.40.13.png" />
-3. Enter the network details as shown in the image, then click 'Save' to add the network."
+3. Enter the network details as shown in the image, then click 'Save' to add the network.
 
 * Network Name: **Story Odyssey Testnet**
 * RPC URL: `https://rpc.odyssey.storyrpc.io`
