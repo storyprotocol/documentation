@@ -25,14 +25,14 @@ This section will guide you through how you can run your own validator. Validato
 
 Before proceeding, it is important to familiarize yourself with the difference between a delegator and a validator:
 
-* A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
-* A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves. 
+* A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export](https://docs.story.foundation/docs/odyssey-validator-operations#validator-key-export) section.
+* A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves.
 
-In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (*you may see the[Faucet page](doc:faucet) for details on how to fund an account).* **We recommend using your delegator account for all below operations.**
+In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (*you may see the [Faucet page](https://docs.story.foundation/docs/story-network#-faucets) for details on how to fund an account).* **We recommend using your delegator account for all below operations.**
 
 > 📘 Note
 >
-> You may also issue transactions as the validator itself. To get the EVM private key corresponding to your validator, please refer to the [Validator Key Export](https://docs.story.foundation/docs/validator-operations#validator-key-export) section.
+> You may also issue transactions as the validator itself. To get the EVM private key corresponding to your validator, please refer to the [Validator Key Export](https://docs.story.foundation/docs/odyssey-validator-operations#validator-key-export) section.
 
 The `.env` file should look like the following *(make sure not to add a 0x prefix):*
 
