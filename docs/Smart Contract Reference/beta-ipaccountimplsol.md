@@ -377,7 +377,7 @@ function _isValidSigner(address signer, bytes32 extraData, bytes calldata contex
 | Name        | Type      | Description                                                                             |
 | ----------- | --------- | --------------------------------------------------------------------------------------- |
 | `signer`    | `address` | The signer to check                                                                     |
-| `extraData` | `bytes32` | The extra data to check against, it should bethe address of the recipient for IPAccount |
+| `extraData` | `bytes32` | The extra data to check against, it should be the address of the recipient for IPAccount |
 | `context`   | `bytes`   | The context for validating the signer                                                   |
 
 **Returns**
