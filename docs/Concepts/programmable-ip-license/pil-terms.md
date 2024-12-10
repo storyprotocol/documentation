@@ -434,7 +434,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Please see section 3.1 (s) [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Beta_Final_2024_02_Plain_English.pdf). 
+        Please see section 3.1 (s) [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). 
       </td>
     </tr>
 
