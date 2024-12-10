@@ -29,7 +29,7 @@ import { IHookModule } from "contracts/interfaces/modules/base/IHookModule.sol";
 import { BaseModule } from "contracts/modules/BaseModule.sol";
 
 /// @title Mock Token Gated Hook.
-/// @notice Hook for ensursing caller is the owner of an NFT token.
+/// @notice Hook for ensuring caller is the owner of an NFT token.
 contract TokenGatedHook is BaseModule, IHookModule {
     using ERC165Checker for address;
 
@@ -66,7 +66,7 @@ After creating your module, the next step is to register it with the Story Proto
 
 To get your module verified and listed in this repository, please follow these steps:
 
-1. **Fork this[Repository](https://github.com/storyprotocol/registered-modules):** Begin by forking this repository to your own GitHub account.
+1. **Fork this [Repository](https://github.com/storyprotocol/registered-modules):** Begin by forking this repository to your own GitHub account.
 2. **Update the Module List:** Add your module's details to the appropriate JSON file according to module types in the repository. Ensure that you adhere to the following JSON structure:
 
 ```json
