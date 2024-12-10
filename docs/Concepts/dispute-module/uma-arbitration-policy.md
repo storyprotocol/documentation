@@ -104,7 +104,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
       <td style={{ textAlign: "left" }}>
         Inputs:\
-        A. text: description of each of each payment the disputed IP received that should have been shared with its royalty vault
+        A. text: description of each payment the disputed IP received that should have been shared with its royalty vault
         B. text: proof of payments with appropriate links
       </td>
     </tr>
