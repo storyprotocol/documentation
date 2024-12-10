@@ -14,10 +14,6 @@ metadata:
   robots: index
 next:
   description: ''
-  pages:
-    - type: basic
-      slug: external-hooks
-      title: External Hooks
 ---
 One lesson learned from the 2021 NFT mania is that too much capital can be crippling to less experienced teams. If you add zero oversight from the community and no clawback options for overfunded NFT projects, it is easy to see how it can become a recipe for disaster - aka overpromised and underdelivered. 
 
