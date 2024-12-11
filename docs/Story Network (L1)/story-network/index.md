@@ -96,6 +96,19 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
     <tr>
       <td style={{ textAlign: "left" }}>
+        <a href="https://story-testnet.socialscan.io/" target="_blank">SocialScan Explorer ↗️</a>
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `https://story-testnet.socialscan.io/`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+    <tr>
+      <td style={{ textAlign: "left" }}>
         <a href="https://odyssey.story.explorers.guru/" target="_blank">Nodes.Guru Explorer ↗️</a>
       </td>
 
@@ -107,6 +120,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
       </td>
     </tr>
+
 
     <tr>
       <td style={{ textAlign: "left" }}>
