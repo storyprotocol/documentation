@@ -18,7 +18,7 @@ This section demonstrates how to add License Terms to an IPA. By attaching terms
 
 There are a few different ways you can do this, depending on what works best for you:
 
-1. Attach Existing License Terms to Existing IP Asset 
+1. Attach Existing License Terms to Existing IP Asset
 2. Register New IP Asset and Attach License Terms
 3. Register New Terms and Attach to an Existing IP Asset
 4. Mint NFT, Register as IP Asset, and Attach Terms
@@ -183,22 +183,19 @@ console.log(`
 `)
 ```
 ```typescript Request Type
-export type CreateIpAssetWithPilTermsRequest = {
+export type MintAndRegisterIpAssetWithPilTermsRequest = {
   spgNftContract: Address;
-  pilType: PIL_TYPE;
-  currency?: Address;
-  mintingFee?: string | number | bigint;
+  terms: RegisterPILTermsRequest[];
   recipient?: Address;
-  commercialRevShare?: number;
   royaltyPolicyAddress?: Address;
 } & IpMetadataAndTxOption;
 ```
 ```typescript Response Type
-export type CreateIpAssetWithPilTermsResponse = {
-  txHash?: string;
+export type MintAndRegisterIpAssetWithPilTermsResponse = {
+  txHash?: Hex;
   encodedTxData?: EncodedTxData;
   ipId?: Address;
   tokenId?: bigint;
-  licenseTermsId?: bigint;
+  licenseTermsIds?: bigint[];
 };
 ```
