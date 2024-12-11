@@ -150,7 +150,7 @@ const commercialRemixTerms: LicenseTerms = {
 
 const response = await client.ipAsset.registerPilTermsAndAttach({
   ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721',
-  terms: commercialRemixTerms,
+  terms: [commercialRemixTerms],
   txOptions: { waitForTransaction: true },
 })
 console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
