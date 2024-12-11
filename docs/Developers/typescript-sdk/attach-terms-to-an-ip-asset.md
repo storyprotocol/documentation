@@ -89,20 +89,17 @@ console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${
 export type RegisterIpAndAttachPilTermsRequest = {
   nftContract: Address;
   tokenId: bigint | string | number;
-  pilType: PIL_TYPE;
-  mintingFee: string | number | bigint;
-  currency: Address;
+  terms: RegisterPILTermsRequest[];
   deadline?: bigint | number | string;
-  commercialRevShare?: number;
-  royaltyPolicyAddress?: Address;
 } & IpMetadataAndTxOption;
 ```
 ```typescript Response Type
 export type RegisterIpAndAttachPilTermsResponse = {
-  txHash?: string;
+  txHash?: Hex;
   encodedTxData?: EncodedTxData;
   ipId?: Address;
-  licenseTermsId?: bigint;
+  licenseTermsIds?: bigint[];
+  tokenId?: bigint;
 };
 ```
 
@@ -143,7 +140,7 @@ console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
 ```typescript Request Type
 export type RegisterPilTermsAndAttachRequest = {
   ipId: Address;
-  terms: RegisterPILTermsRequest;
+  terms: RegisterPILTermsRequest[];
   deadline?: string | number | bigint;
   txOptions?: TxOptions;
 };
@@ -152,7 +149,7 @@ export type RegisterPilTermsAndAttachRequest = {
 export type RegisterPilTermsAndAttachResponse = {
   txHash?: string;
   encodedTxData?: EncodedTxData;
-  licenseTermsId?: bigint;
+  licenseTermsIds?: bigint[];
 };
 ```
 
