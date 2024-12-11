@@ -65,7 +65,7 @@ export type AttachLicenseTermsResponse = {
 Below is a code example to register a new IP Asset and attach a new set of License Terms all in one transaction:
 
 ```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
+import { LicenseTerms } from '@story-protocol/core-sdk';
 import { toHex } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
@@ -176,7 +176,7 @@ export type RegisterPilTermsAndAttachResponse = {
 Below is a code example that mints a new NFT, registers it as an IP Asset, and attaches terms to it all in one transaction:
 
 ```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
+import { LicenseTerms } from '@story-protocol/core-sdk';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
