@@ -153,7 +153,7 @@ export type MintAndRegisterIpAssetWithPilTermsResponse = {
   encodedTxData?: EncodedTxData;
   ipId?: Address;
   tokenId?: bigint;
-  licenseTermsId?: bigint;
+  licenseTermsIds?: bigint[];
 };
 ```
 
@@ -197,11 +197,15 @@ Parameters:
 
 ```typescript Response Type
 export type BatchMintAndRegisterIpAssetWithPilTermsResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  ipId?: Address;
-  tokenId?: bigint;
-  licenseTermsId?: bigint;
+  txHash: Hex;
+  results?: BatchMintAndRegisterIpAssetWithPilTermsResult[];
+};
+
+export type BatchMintAndRegisterIpAssetWithPilTermsResult = {
+  ipId: Address;
+  tokenId: bigint;
+  licenseTermsIds: bigint[];
+  spgNftContract: Address;
 };
 ```
 
@@ -248,7 +252,7 @@ export type RegisterIpAndAttachPilTermsResponse = {
   txHash?: string;
   encodedTxData?: EncodedTxData;
   ipId?: Address;
-  licenseTermsId?: bigint;
+  licenseTermsIds?: bigint[];
 };
 ```
 
@@ -379,7 +383,7 @@ Parameters:
 export type RegisterPilTermsAndAttachResponse = {
   txHash?: string;
   encodedTxData?: EncodedTxData;
-  licenseTermsId?: bigint;
+  licenseTermsIds?: bigint[];
 };
 ```
 
