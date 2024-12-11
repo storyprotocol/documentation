@@ -80,21 +80,21 @@ Let the world build on and play with your creation. This license allows for endl
 PILTerms({
   transferable: true,
   royaltyPolicy: zeroAddress,
-  defaultMintingFee: 0,
-  expiration: 0,
+  defaultMintingFee: BigInt(0),
+  expiration: BigInt(0),
   commercialUse: false,
   commercialAttribution: false,
   commercializerChecker: zeroAddress,
-  commercializerCheckerData: EMPTY_BYTES,
+  commercializerCheckerData: "0x",
   commercialRevShare: 0,
-  commercialRevCelling: 0,
+  commercialRevCeiling: BigInt(0),
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCelling: 0,
+  derivativeRevCeiling: BigInt(0),
   currency: zeroAddress,
-  uri: ''
+  uri: "",
 });
 ```
 
@@ -175,22 +175,22 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 ```sol Solidity
 PILTerms({
   transferable: true,
-  royaltyPolicy: royaltyPolicy,
-  defaultMintingFee: mintingFee,
-  expiration: 0,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
+  defaultMintingFee: BigInt(100), // ex. costs 100 SUSD to mint
+  expiration: BigInt(0),
   commercialUse: true,
   commercialAttribution: true,
   commercializerChecker: zeroAddress,
-  commercializerCheckerData: EMPTY_BYTES,
+  commercializerCheckerData: zeroAddress,
   commercialRevShare: 0,
-  commercialRevCelling: 0,
-  derivativesAllowed: false,
-  derivativesAttribution: false,
+  commercialRevCeiling: BigInt(0),
+  derivativesAllowed: true,
+  derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: false,
-  derivativeRevCelling: 0,
-  currency: currencyToken,
-  uri: ''
+  derivativeRevCeiling: BigInt(0),
+  currency: CURRENCY, // ex. SUSD address
+  uri: "",
 })
 ```
 
@@ -284,22 +284,22 @@ Let the world build on and play with your creation... and earn money together fr
 ```sol Solidity
 PILTerms({
   transferable: true,
-  royaltyPolicy: royaltyPolicy,
-  defaultMintingFee: 0,
-  expiration: 0,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
+  defaultMintingFee: BigInt(100), // ex. costs 100 SUSD to mint
+  expiration: BigInt(0),
   commercialUse: true,
   commercialAttribution: true,
   commercializerChecker: zeroAddress,
-  commercializerCheckerData: EMPTY_BYTES,
-  commercialRevShare: commercialRevShare,
-  commercialRevCelling: 0,
+  commercializerCheckerData: zeroAddress,
+  commercialRevShare: 50, // ex. can claim 50% of derivative revenue
+  commercialRevCeiling: BigInt(0),
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCelling: 0,
-  currency: zeroAddress,
-  uri: ''
+  derivativeRevCeiling: BigInt(0),
+  currency: SUSD, // ex. SUSD address
+  uri: "",
 });
 ```
 
