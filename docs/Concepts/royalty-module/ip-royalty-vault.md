@@ -61,6 +61,8 @@ Imagine we have a scenario where IPA4 tips IPA3 1M USDC by calling `payRoyaltyOn
 
 Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` or `claimBySnapshotBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For route 3 to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. Route 3 can be particularly useful when used together with external royalty policies.
 
+Vaults can only claim from other vaults if those other vaults belong to IPs in the same derivative chain. If a vault owns royalty tokens from an IP but it is not an ancestor of that IP, it is not possible to claim rewards with those royalty tokens.
+
 ### Snapshots
 
 One thing to note is that when an inflow to a vault occurs through any of the routes mentioned above the value is considered pending. Once the `snapshot`  function is called that pending value is recognized.
