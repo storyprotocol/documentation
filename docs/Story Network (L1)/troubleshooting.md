@@ -414,3 +414,20 @@ Solution:
 ```bash
 iptables -I INPUT -s localhost -j ACCEPT 
 ```
+
+## Cosmovisor "open data/upgrade-info.json: permission denied"
+Error:
+```bash
+ERRO error in proxyAppConn.FinalizeBlock      module=state err="module manager preblocker: unable to write upgrade info to filesystem: open data/upgrade-info.json: permission denied" stacktrace="[errors.go:39 app.go:161 baseapp.go:706 abci.go:756 abci.go:884 cmt_abci.go:44 abci.go:99 local_client.go:185 app_conn.go:104 execution.go:224 execution.go:202 state.go:1772 state.go:1682 state.go:1617 state.go:1655 state.go:2335 state.go:2067 state.go:929 state.go:836 asm_amd64.s:1700]"
+ERRO CONSENSUS FAILURE!!!                     module=consensus err="failed to apply block; error module manager preblocker: unable to write upgrade info to filesystem: open data/upgrade-info.json: permission denied"
+```
+Solution:
+* This indicates a for permission issue.
+* If you run process with USER you need set permission, try:
+```bash
+sudo chmod -R 755 $HOME/.story/story/data
+```
+
+
+
+
