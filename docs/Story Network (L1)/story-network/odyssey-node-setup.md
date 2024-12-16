@@ -18,7 +18,7 @@ The `story` and `geth` binaries, which make up the clients required for running 
 
 * **`story-geth`execution client:**
   * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  * Latest Stable Binary (v0.10.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.10.1)
+  * Latest Stable Binary (v0.11.0): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.11.0)
 * **`story`consensus client:**
   * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
   * Latest Stable Binary (v0.13.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.13.0)
