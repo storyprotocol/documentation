@@ -53,18 +53,12 @@ Imagine we have a scenario where IPA4 tips IPA3 1M USDC by calling `payRoyaltyOn
 2. The LAP contract separates the payment to the ancestors by calling `transferToVault`. In this case, IPA2 deserves 100k (10% of IPA3's earnings) and IPA1 deserves 50k (5% of IPA3's earnings).
 
    ![](https://files.readme.io/1ad3a4827aa302dd94bcf45ebca6749b68821fcfaadb6a85c9b70b9c8d3f4af5-image.png)
-3. Now that the Revenue Tokens are in the IP Royalty Vaults, the associated Royalty Token holders can claim from the vaults. Remember, the Revenue Tokens get claimed to whoever holds the Royalty Tokens. In the most common case, they are in the IP Account since that's where they originate. To claim, you would call either `claimRevenueOnBehalfByTokenBatch` or `claimRevenueOnBehalfBySnapshotBatch`.
+3. Now that the Revenue Tokens are in the IP Royalty Vaults, the associated Royalty Token holders can claim from the vaults. Remember, the Revenue Tokens get claimed to whoever holds the Royalty Tokens. In the most common case, they are in the IP Account since that's where they originate. To claim, you would call either `claimRevenueOnBehalfByTokenBatch` or `claimRevenueOnBehalf`.
 
    ![](https://files.readme.io/c3523d5de4a3129f07eeceff5ff577178c3b3161b35fa2b75ed6e8ef98191872-image.png)
 
 ### External Royalty Policies: Rare Case
 
-Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` or `claimBySnapshotBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For route 3 to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. Route 3 can be particularly useful when used together with external royalty policies.
+Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For route 3 to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. Route 3 can be particularly useful when used together with external royalty policies.
 
 Vaults can only claim from other vaults if those other vaults belong to IPs in the same derivative chain. If a vault owns royalty tokens from an IP but it is not an ancestor of that IP, it is not possible to claim rewards with those royalty tokens.
-
-### Snapshots
-
-One thing to note is that when an inflow to a vault occurs through any of the routes mentioned above the value is considered pending. Once the `snapshot`  function is called that pending value is recognized.
-
-What `snapshot` does is similar to taking the current pending value in a vault and dividing it proportionally to the number of Royalty Tokens each address holds at the moment `snapshot` is called. Due to gas cost reasons, `snapshot` is not called automatically whenever a payment is made, therefore please be aware the user needs to be holding the Royalty Tokens at the time `snapshot` is called in order to have the right to claim its share of the existing pending value.
