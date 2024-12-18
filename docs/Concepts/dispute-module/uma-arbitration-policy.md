@@ -126,6 +126,16 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         C. text: proof of violation and appropriate links
       </td>
     </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `OTHERS`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Other evidence deemed relevant
+      </td>
+    </tr>
   </tbody>
 </Table>
 
