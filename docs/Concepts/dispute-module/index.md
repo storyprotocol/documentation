@@ -53,16 +53,16 @@ The main components of the arbitration system are:
         `IMPROPER_USAGE`
 
         Examples (non-exhaustive):
-        Territory
-        Channels of Distribution
-        Expiration
-        Irrevocable
-        Attribution
-        Derivatives
-        Limitations on Creation of Derivatives
-        Commercial Use
-        Sublicensable
-        Non-Transferable
+        Territory,
+        Channels of Distribution,
+        Expiration,
+        Irrevocable,
+        Attribution,
+        Derivatives,
+        Limitations on Creation of Derivatives,
+        Commercial Use,
+        Sublicensable,
+        Non-Transferable,
         Restriction on Cross-Platform Use
       </td>
 
