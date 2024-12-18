@@ -62,7 +62,7 @@ Imagine we have a scenario where IPA4 tips IPA3 1M USDC by calling `payRoyaltyOn
 
    ![](https://files.readme.io/c3523d5de4a3129f07eeceff5ff577178c3b3161b35fa2b75ed6e8ef98191872-image.png)
 
-### External Royalty Policies: Rare Case
+### External Royalty Policies
 
 Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For route 3 to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. Route 3 can be particularly useful when used together with external royalty policies.
 
