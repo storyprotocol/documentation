@@ -74,4 +74,4 @@ From the 1M USDC inflow to IP3 Royalty Vault:
 
 * 500k USDC are claimed by the IP Account 3 which had 50% of RT3 token supply
 * 100k USDC are claimed by the IP1 Royalty Vault which has 10% of RT3 token supply via `claimByTokenBatchAsSelf`  function
-* 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This is amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.
+* 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.
