@@ -63,9 +63,11 @@ To answer this question two concepts are important:
 
 Let's imagine the scenario below:
 
+* IP1 is a root IP Asset.
+* IP2 is a derivative of IP1.
 * User A has 100% of Royalty Tokens of IP1
-* User B has 15% of Royalty Tokens of IP2
-* User C has 85% of Royalty Tokens of IP3
+* User B has 20% of Royalty Tokens of IP2
+* User C has 80% of Royalty Tokens of IP3
 * IP2 Royalty Stack is 10% - meaning that all its ancestor IPs via Native/Whitelisted policies require IP2 to pay 10% of its revenue to ancestors. In this case, there is only 1 ancestor which is IP1 which demands 10% of IP2's revenue in order to create a derivative.
 
 In the image below there is an example of a one million USDC payment made to IP2.
