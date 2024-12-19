@@ -58,7 +58,7 @@ When creating a derivative, the creator will want to answer the question: "How m
 
 To answer this question two concepts are important:
 
-1. Royalty Token - the IP Royalty Vault contract is also the ERC-20 contract for the Royalty Tokens of each IP Asset. This means the address of the IP Royalty Vault for an IP Asset is also the ERC-20 token address of the Royalty Tokens. Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of those gains. The holders of these Royalty Tokens can claim the Revenue Tokens that are in the associated IP Royalty Vault.
+1. Royalty Token - Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of those gains. The holders of these Royalty Tokens can claim the Revenue Tokens that are in the associated IP Royalty Vault.
 2. Royalty Stack - is the percentage of IP revenue that has to be paid to ancestors via Whitelisted/Native royalty policies.
 
 Let's imagine the scenario below:
