@@ -68,9 +68,13 @@ Let's imagine the scenario below:
 * User C has 85% of Royalty Tokens of IP3
 * IP2 Royalty Stack is 10% - meaning that all its ancestor IPs via Native/Whitelisted policies require IP2 to pay 10% of its revenue to ancestors. In this case, there is only 1 ancestor which is IP1 which demands 10% of IP2's revenue in order to create a derivative.
 
-In the image below there is an example of a 1M payment made to IP2.
+In the image below there is an example of a one million USDC payment made to IP2.
 
-![](https://files.readme.io/61f3d08fcd40ef494d4a858dbd8ae536dbc8f50a2be963edaafb652c10d80cec-image.png)
+![](https://files.readme.io/a96e7d196a85f69dceb2b125ce70008115e15d0aa76b4e14b0dff2007525051b-image.png)
+
+* RT Holder A - From the one million USDC payment gets 100k USDC. Royalty Stack percentage is paid first and RT Holder A has 100% of Royalty Tokens of IP1 so gets to keep the whole 100k USDC.
+* RT Holder B - From the one million USDC payment gets 180k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. B has 20% of Royalty Tokens of IP2 so it receives 900k USDC \* 20% = 180k.
+* RT Holder C - From the one million USDC payment gets 720k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. C has 80% of Royalty Tokens of IP2 so it receives 900k USDC \* 80% = 720k.
 
 <br />
 
