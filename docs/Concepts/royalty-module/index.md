@@ -68,7 +68,7 @@ Let's imagine the scenario below:
 * User A has 100% of Royalty Tokens of IP1
 * User B has 20% of Royalty Tokens of IP2
 * User C has 80% of Royalty Tokens of IP2
-* IP2 Royalty Stack is 10% - meaning that all its ancestor IPs via Native/Whitelisted policies require IP2 to pay 10% of its revenue in order to create the derivative. In this case, there is only 1 ancestor which is IP1. IP1 demands 10% of IP2's revenue in order to create a derivative.
+* IP2 Royalty Stack is 10% - meaning that all its ancestor IPs via Native/Whitelisted policies require IP2 to pay 10% of its revenue in order to create the derivative. In this case, there is only 1 ancestor which is IP1. IP1 demands 10% of IP2's future revenue in order to create a derivative.
 
 In the image below there is an example of a one million USDC payment made to IP2. In the image we can see how much each Royalty Token holder of the entire derivative chain receives when the payment is made.
 
