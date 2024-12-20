@@ -10,19 +10,15 @@ metadata:
 next:
   description: ''
 ---
-> 🚧 Deprecated
->
-> The Python SDK is still using Sepolia and not the latest Story Testnet. The latest version of the Python SDK will continue to work on Sepolia.
-
-The best way to get started is to get your hands dirty and start building. 
+The best way to get started is to get your hands dirty and start building.
 
 > 🏁 Python Tutorial
 >
 > Extremely easy & straightforward examples for all of the following tutorials, combined into 1 script.
 >
-> * Try the script yourself and read the code [here](https://github.com/storyprotocol/python-sdk/blob/main/tests/demo/demo.py).
+> * Try the script yourself and read the code [COMING SOON](https://github.com/storyprotocol/python-sdk/).
 
-In the following series of tutorials, you will learn how to build IP applications with Story SDK and the concepts we mentioned in the [Architecture Overview](doc:overview) of Story Protocol. 
+In the following series of tutorials, you will learn how to build IP applications with Story SDK and the concepts we mentioned in the [Architecture Overview](doc:overview) of Story Protocol.
 
 Along the way, you will learn how to:
 
