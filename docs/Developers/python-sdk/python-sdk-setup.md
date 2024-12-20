@@ -48,7 +48,7 @@ There are two ways to set up an account. The first is to use a private key local
 
 > :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
 >
-> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out other RPCs here.
+> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out other RPCs [here](https://docs.story.foundation/docs/story-network#/explorers).
 
 ```python main.py
 import os
