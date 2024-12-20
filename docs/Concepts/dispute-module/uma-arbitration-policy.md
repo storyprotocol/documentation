@@ -163,25 +163,6 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         <br />
       </td>
     </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        `OTHERS`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: description of the violation
-        B. text: proof of violation
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        1. Read the description of the violation using input A
-        2. Decide if the violation is indeed a violation that warrants tagging the disputed IP
-        3. Confirm if the violation described is indeed not a violation that should belong to the other 4 dispute tags described in this table.
-        4. Decide on the veracity of the proof presented
-      </td>
-    </tr>
   </tbody>
 </Table>
 
