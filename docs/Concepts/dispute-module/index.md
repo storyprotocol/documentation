@@ -95,16 +95,6 @@ The main components of the arbitration system are:
         Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
       </td>
     </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        `OTHERS`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        If the origin of the dispute is not any of the above
-      </td>
-    </tr>
   </tbody>
 </Table>
 
