@@ -46,7 +46,7 @@ Every document should have the following characteristics:
 
 Depending on what the type of the Dispute Tag is, you also need to include extra evidence:
 
-<Table align={["left","left"]}>
+<Table align={["left","left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
@@ -55,6 +55,10 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
       <th style={{ textAlign: "left" }}>
         Dispute Evidence Contents
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+
       </th>
     </tr>
   </thead>
@@ -68,6 +72,10 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         Inputs:
         A. Proof of pre-existing IP with earlier registration date (on-chain or off-chain) and/or instructions on where/how to check it.
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
       </td>
     </tr>
 
@@ -95,6 +103,10 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         B. text: description of the violation
         C. text: proof of violation and appropriate links
       </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
     </tr>
 
     <tr>
@@ -106,6 +118,10 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         Inputs:\
         A. text: description of each of each payment the disputed IP received that should have been shared with its royalty vault
         B. text: proof of payments with appropriate links
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
       </td>
     </tr>
 
@@ -125,6 +141,10 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         B. text: description of the violation
         C. text: proof of violation and appropriate links
       </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
     </tr>
 
     <tr>
@@ -134,6 +154,10 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
       <td style={{ textAlign: "left" }}>
         Other evidence deemed relevant
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
       </td>
     </tr>
   </tbody>
