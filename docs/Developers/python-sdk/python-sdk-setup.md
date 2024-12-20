@@ -48,7 +48,7 @@ There are two ways to set up an account. The first is to use a private key local
 
 > :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
 >
-> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://1rpc.io/sepolia`) or, for a much faster experience, [sign up for a free Alchemy account and create an Ethereum Sepolia test application](https://dashboard.alchemy.com/)  to get your own private RPC URL. Once your application is created, you can click the "API Key" button and then copy the link in the HTTP box.
+> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out other RPCs here.
 
 ```python main.py
 import os
@@ -68,7 +68,7 @@ web3 = Web3(Web3.HTTPProvider(rpc_url))
 account = web3.eth.account.from_key(private_key)
 
 # Create StoryClient instance
-story_client = StoryClient(web3, account, 11155111)
+story_client = StoryClient(web3, account, 1516)
 ```
 
 ## Set Up JSON-RPC Account (ex. Metamask)
