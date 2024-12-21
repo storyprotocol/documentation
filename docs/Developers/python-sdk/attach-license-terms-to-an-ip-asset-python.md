@@ -19,8 +19,8 @@ This section demonstrates how to add License Terms to an IPA. By attaching terms
 There are a few different ways you can do this, depending on what works best for you:
 
 1. Attach Existing License Terms to Existing IP Asset
-2. Register New IP Asset and Attach License Terms
-3. Register New Terms and Attach to an Existing IP Asset
+2. Register New IP Asset and Attach License Terms (COMING SOON)
+3. Register New Terms and Attach to an Existing IP Asset (COMING SOON)
 4. Mint NFT, Register as IP Asset, and Attach Terms
 
 ## Prerequisites
@@ -81,7 +81,6 @@ commercial_remix_terms = {
     "uri": ""
 }
 
-# Mint NFT, register IP Asset, and attach PIL terms
 response = story_client.IPAsset.mintAndRegisterIpAssetWithPilTerms(
     spg_nft_contract="0xfE265a91dBe911db06999019228a678b86C04959",
     terms=[commercial_remix_terms], # IP already has non-commercial social remixing terms. You can add more here.
@@ -101,15 +100,19 @@ License Terms IDs: {response['licenseTermsIds']}
 """)
 ```
 ```python Request Type
-AttachLicenseTermsRequest = {
-    'ip_id': str,
-    'license_template': str,
-    'license_terms_id': int,
+MintAndRegisterIpAssetWithPilTermsRequest = {
+    'spg_nft_contract': str,
+    'terms': list,
+    'ip_metadata': dict,
+    'recipient': str,
     'tx_options': dict
 }
 ```
 ```python Response Type
-AttachLicenseTermsResponse = {
-    'txHash': str
+MintAndRegisterIpAssetWithPilTermsResponse = {
+    'txHash': str,
+    'ipId': str,
+    'tokenId': int,
+    'licenseTermsIds': list
 }
 ```
