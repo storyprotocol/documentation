@@ -12,6 +12,14 @@ next:
 ---
 This section demonstrates how to mint a License Token for an IPA. You can only mint a License Token for an IPA if it has License Terms attached to it. A License Token is minted as an ERC721 token and contains the necessary licensing details.
 
+> 💰 Paid Licenses
+>
+> Note that some IP Assets may have license terms attached that require the user minting the license to pay a `mintingFee`. You can see an example of that soon.
+
+> 📘 Max Number of Licenses
+>
+> If you're curious about setting the maximum number of licesnes that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
+
 ## Prerequisites
 
 * [Setup](doc:python-sdk-setup) the client object.
