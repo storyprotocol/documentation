@@ -99,7 +99,6 @@ IPA ID: {response['ipId']}
 Token ID: {response['tokenId']}
 License Terms IDs: {response['licenseTermsIds']}
 """)
-
 ```
 ```python Request Type
 AttachLicenseTermsRequest = {
