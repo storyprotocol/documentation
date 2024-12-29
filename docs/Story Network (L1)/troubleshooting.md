@@ -36,7 +36,7 @@ Solution:
 cp $HOME/.story/story/data/priv_validator_state.json $HOME/.story/story/priv_validator_state.json.backup
 ```
 > 🚧 Be very careful with this file, especially if your validator is already signing blocks.
-* Check your the database backend type, your node must support the same as you are using the snapshot:
+* Check your database backend type, your node must support the same as you are using the snapshot:
 ```bash
 cat $HOME/.story/story/config/story.toml
 ```
@@ -113,7 +113,7 @@ iptables -I INPUT -s localhost -j ACCEPT
 ## Found signature from the same key
 Error:
 ```bash
-panic: Faile to consensus  state: found signature from the same key
+panic: Failed to consensus  state: found signature from the same key
 ```
 
 Solution:
