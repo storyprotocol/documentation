@@ -21,14 +21,14 @@ This section will guide you through how you can run your own validator. Validato
 
 > 📘 Note
 >
-> The below operations do not requiring running a node! However, if you would like to participate in staking rewards, you must run a validator node.
+> The below operations do not require running a node! However, if you would like to participate in staking rewards, you must run a validator node.
 
 Before proceeding, it is important to familiarize yourself with the difference between a delegator and a validator:
 
 * A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
 * A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves. 
 
-In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (*you may see the[Faucet page](doc:faucet) for details on how to fund an account).* **We recommend using your delegator account for all below operations.**
+In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (*you may see the [Faucet page](doc:faucet) for details on how to fund an account).* **We recommend using your delegator account for all below operations.**
 
 > 📘 Note
 >
