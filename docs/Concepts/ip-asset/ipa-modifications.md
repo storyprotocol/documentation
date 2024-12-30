@@ -1,7 +1,7 @@
 ---
-title: IP Modifications & Restrictions
+title: Модификация & Ограничения IP
 deprecated: false
-exerpt: Learn about the modifications and restrictions for IP Assets.
+exerpt: Узнайте больше про модифицаию и ограничения IP-активов.
 hidden: false
 metadata:
   title: ''
@@ -10,23 +10,23 @@ metadata:
 next:
   description: ''
 ---
-# IP Asset Modifications
+# Модификация IP-активов
 
-IP Assets can be modified/customized a few ways. For example, by [setting the License Config](doc:license-config-hook) which allows you to change a few things as you'll see below, changing its metadata, and more. These things can **always be changed unless there is a certain condition**.
+IP-активы можно модифицировать/настроить несколькими способами. Например, с помощью [установки конфигурации лицензии](doc:license-config-hook), которая позволяет вам изменить некоторые вещи, как вы увидите ниже, изменить метаданные и многое другое. Эти вещи **всегда могут быть изменены, если нет определенных условий**.
 
 <Table align={[null,null,"left"]}>
   <thead>
     <tr>
       <th>
-        Action
+        Действие
       </th>
 
       <th>
-        Conditions
+        Условие
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Via The...
+        Меняется в...
       </th>
     </tr>
   </thead>
@@ -34,7 +34,7 @@ IP Assets can be modified/customized a few ways. For example, by [setting the Li
   <tbody>
     <tr>
       <td>
-        Modify License Minting Fee
+        Изменить комиссию за минт лицензии
       </td>
 
       <td>
@@ -42,13 +42,13 @@ IP Assets can be modified/customized a few ways. For example, by [setting the Li
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [License Config](doc:license-config-hook)
+        [Конфигурация Лицензии](doc:license-config-hook)
       </td>
     </tr>
 
     <tr>
       <td>
-        Modify Licensing Hook
+        Изменить Хук Лицензии
       </td>
 
       <td>
@@ -56,47 +56,47 @@ IP Assets can be modified/customized a few ways. For example, by [setting the Li
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [License Config](doc:license-config-hook)
+        [Конфигурация Лицензии](doc:license-config-hook)
       </td>
     </tr>
 
     <tr>
       <td>
-        Modify `commercialRevShare`
+        Изменить `commercialRevShare`
       </td>
 
       <td>
-        Cannot **decrease** `commercialRevShare` percentage. You can only increase it.
+        Нельзя **уменьшить** `commercialRevShare`. Можно только увеличить.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [License Config](doc:license-config-hook)
+        [Конфигурация Лицензии](doc:license-config-hook)
       </td>
     </tr>
 
     <tr>
       <td>
-        Disable/Enable the License
+        Отключить/Включить Лицензию
       </td>
 
       <td>
-        License can be disabled or re-enabled at any time.
+        Лицензия может быть включена или выключена в любой момент.
 
-        *Note that disabling a license disallows future licenses from being minted, but does not affect existing ones.*
+        *Примечание: отключение лицензии запрещает минт лицензий в будущем, но не влияет на существующие лицензии.*
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [License Config](doc:license-config-hook)
+        [Конфигурация Лицензии](doc:license-config-hook)
       </td>
     </tr>
 
     <tr>
       <td>
-        Modify Metadata
+        Изменить Метаданные
       </td>
 
       <td>
-        Cannot modify if the metadata is **frozen**. This is done by calling `freezeMetadata` in the [CoreMetadataModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/metadata/CoreMetadataModule.sol).
+        Невозможно модифицировать, если метаданные **заморожены**. Это делается вызовом `freezeMetadata` в [CoreMetadataModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/metadata/CoreMetadataModule.sol)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -106,22 +106,22 @@ IP Assets can be modified/customized a few ways. For example, by [setting the Li
   </tbody>
 </Table>
 
-## License Hook Modifications
+## Модификация Хука Лицензии
 
-The IP can be further customized or modified using the [License Hook](https://docs.story.foundation/docs/license-config-hook#/licensing-hook). This is a function that gets set within the License Config that gets called before a [License Token](doc:license-token) (or more simply, a "license") is minted. There are various features you can implement with the License Hook, and are **always modifiable**:
+IP можно дополнительно настроить или модифицировать с помощью [Хук Лицензии](https://docs.story.foundation/docs/license-config-hook#/licensing-hook). Это функция, задаваемая в Конфигурации Лицензии, которая вызывается перед тем, как [Токен Лицензии](doc:license-token) (или, проще говоря, «лицензия») будет "отчеканена". С помощью Хука Лицензии можно реализовать различные функции, которые **всегда можно изменять**:
 
-| Feature             | Description                                                                                                         |
+| Функция         | Описание                                                                                                       |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Dynamic License Fee | You can dynamically set the price of a license. For example, it can be updated dynamically via bonding curve logic. |
-| Total # of Licenses | You can abort the function based on a maximum number of license tokens that can be minted.                          |
-| Specific Receivers  | You can restrict minting of license to a specific receiver.                                                         |
-| More...             | Additional licensing hook features can be implemented as required.                                                  |
+| Динамическая стоимость лицензии | Вы можете динамически устанавливать стоимость лицензии. Например, она может динамически обновляться. |
+| Общее число лицензий | Вы можете прервать функцию, основываясь на максимальном количестве токенов лицензий, которые могут быть созданы.                                            |
+| Конкретные получатели  | Вы можете запретить минт лицензии конкретному получателю.                                                         |
+| Ещё...           | Дополнительные функции хука лицензирования могут быть реализованы по мере необходимости.                                                           |
 
-# Group IPA Restrictions
+# Ограничения групповых IPA
 
-In addition, [Group IPAs](doc:grouping-module) are subject to the following additional restrictions:
+Кроме того, на [групповые IPA](doc:grouping-module) распространяются следующие дополнительные ограничения:
 
-| Action                       | Restriction                                                                                                                                                                        |
+| Действие                     | Ограничение                                                                                                                                                                     |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Add IP Asset to a Group      | You can only add an IP Asset to a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it.      |
-| Remove IP Asset from a Group | You can only remove an IP Asset from a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it. |
+| Добавление IP-актива в группу      |  Вы можете добавить IP-актив в группу только в том случае, если эта группа не «заблокирована». Группа становится заблокированной, когда из нее выпускается первый лицензионный токен или к ней привязывается производная.     |
+| Удаление IP-актива из группы | Группа становится заблокированной, когда из нее выпускается первый лицензионный токен или к ней привязывается производная.  |

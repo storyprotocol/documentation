@@ -1,5 +1,5 @@
 ---
-title: ⚙️ IP Account
+title: ⚙️ IP Аккаунт
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,9 +10,9 @@ metadata:
 next:
   description: ''
 ---
-> 🐦 Skip the Read
+> 🐦 Читать не обязательно
 >
-> Get a quick 2-minute overview of IP Accounts [here](https://twitter.com/jacobmtucker/status/1787603252198134234).
+> Краткая 2-минутная выжимка про IP-аккаунты тут [тут](https://twitter.com/jacobmtucker/status/1787603252198134234).
 
 When an [🧩 IP Asset](doc:ip-asset) is registered, it is given an associated **IP Account**. An IP Account is a modified ERC-6551 (Token Bound Account) implementation. It is a separate contract bound to the IP Asset for controlling permissions around interactions with Story's modules or storing the IP's associated data. Upon registration, an IP Asset is assigned a unique ID. This ID is the address of the IP Account that is bound to the IP Asset.
 
