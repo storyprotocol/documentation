@@ -46,7 +46,7 @@ Every document should have the following characteristics:
 
 Depending on what the type of the Dispute Tag is, you also need to include extra evidence:
 
-<Table align={["left","left"]}>
+<Table align={["left","left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
@@ -55,6 +55,10 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
       <th style={{ textAlign: "left" }}>
         Dispute Evidence Contents
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Dispute review process
       </th>
     </tr>
   </thead>
@@ -67,7 +71,19 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
       <td style={{ textAlign: "left" }}>
         Inputs:
-        A. Proof of pre-existing IP with earlier registration date (on-chain or off-chain) and/or instructions on where/how to check it.
+        A. Showcase or pointer to the pre-existing IP that is being infringed upon by the disputed IP
+        B. Proof that the pre-existing IP has an earlier registration or public appearance date prior to the disputed IP registration date.
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        1. Check if the pre-existing  is the same or very similar to the disputed IP using input A
+           * Mickey Mouse with 1 pixel difference is an infringement
+           * Mickey Mouse with a new hat is an infringement unless it’s a derivative of Mickey Mouse
+        2. Check the registration date of the pre-existing IP using input B
+        3. Confirm that the disputed IP has a later registration date by checking on the Hub
+        4. Confirm that the disputed IP is not a derivative of the pre-existing IP by checking on the Hub
+
+        <br />
       </td>
     </tr>
 
@@ -75,7 +91,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         `IMPROPER_USAGE`
 
-        Examples (non-exhaustive):
+        Examples (non-exhaustive):\
         Territory
         Channels of Distribution
         Expiration
@@ -93,7 +109,13 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         Inputs:\
         A. text: PIL term that has been violated
         B. text: description of the violation
-        C. text: proof of violation and appropriate links
+        C. text: proof of violation
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        1. Read the associated PIL term description on the PIL license official document using input A
+        2. Read the violation description using input B
+        3. Decide on the veracity of the proof presented by checking on associated platforms when possible using input C
       </td>
     </tr>
 
@@ -104,8 +126,20 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
       <td style={{ textAlign: "left" }}>
         Inputs:\
+
         A. text: description of each payment the disputed IP received that should have been shared with its royalty vault
         B. text: proof of payments with appropriate links
+=======
+        A. text: description of each of each payment the disputed IP received that should have been shared with its ancestors
+        B. text: proof of payments
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        1. Check veracity of the proof of payments by checking on the associated platforms when possible using input A and B
+        2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on blockchain explorer
+
+        <br />
+
       </td>
     </tr>
 
@@ -123,7 +157,15 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         Inputs:\
         A. text: the content standard point that has been violated
         B. text: description of the violation
-        C. text: proof of violation and appropriate links
+        C. text: proof of violation
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        1. Read the associated content standards description on the official content standards section in the PIL using input A
+        2. Read the violation description using input B
+        3. Decide on the veracity of the proof presented by checking on associated platforms when possible using input C
+
+        <br />
       </td>
     </tr>
   </tbody>

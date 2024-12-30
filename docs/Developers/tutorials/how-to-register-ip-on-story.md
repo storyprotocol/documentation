@@ -319,7 +319,7 @@ Now we can call that `mintNFT` function to get a `tokenId`, and then register th
 * Associated Docs: [ Register New IP Asset and Attach License Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#register-new-ip-asset-and-attach-license-terms)
 
 ```typescript main.ts
-import { PIL_TYPE, RegisterIpAndAttachPilTermsResponse, AddressZero } from '@story-protocol/core-sdk'
+import { RegisterIpAndAttachPilTermsResponse, AddressZero } from '@story-protocol/core-sdk'
 import { Address } from 'viem'
 import { mintNFT } from './utils/mintNFT'
 
@@ -329,9 +329,7 @@ const tokenId = await mintNFT(account.address, `https://ipfs.io/ipfs/${nftIpfsHa
 const response: RegisterIpAndAttachPilTermsResponse = await client.ipAsset.registerIpAndAttachPilTerms({
   nftContract: process.env.NFT_CONTRACT_ADDRESS as Address,
   tokenId: tokenId!,
-  pilType: PIL_TYPE.NON_COMMERCIAL_REMIX,
-  mintingFee: 0, // empty - doesn't apply
-  currency: AddressZero, // empty - doesn't apply
+  terms: [], // IP already has non-commercial social remixing terms. You can add more here.
   ipMetadata: {
     ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
     ipMetadataHash: `0x${ipHash}`,
@@ -402,12 +400,12 @@ The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset)
 * Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
 ```typescript main.ts
-import { PIL_TYPE, CreateIpAssetWithPilTermsResponse } from '@story-protocol/core-sdk'
+import { CreateIpAssetWithPilTermsResponse } from '@story-protocol/core-sdk'
 import { Address } from 'viem'
 
 const response: CreateIpAssetWithPilTermsResponse = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
   spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-  pilType: PIL_TYPE.NON_COMMERCIAL_REMIX,
+  terms: [], // IP already has non-commercial social remixing terms. You can add more here.
   ipMetadata: {
     ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
     ipMetadataHash: `0x${ipHash}`,

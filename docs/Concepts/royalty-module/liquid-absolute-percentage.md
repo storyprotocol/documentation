@@ -49,8 +49,7 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 
 ![](https://files.readme.io/76059536b28ba6daee35328f15baa4995850a5c54f00a1bcf863620e04a0eba3-image.png)
 
-3. After new funds arrive in the IP Royalty Vaults, any address can call `snapshot` in the [IpRoyaltyVault.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/royalty/policies/IpRoyaltyVault.sol). The snapshot function saves how much percentage of RT each token holder had at the snapshot moment. These percentages allow splitting the royalties received in each vault among each RT holder. Note that `snapshot` does not need to be called on every payment - there can be multiple payments accumulated between each `snapshot` call. There may be a minimum time interval between snapshots to contain the number of snapshots for gas-related reasons.
-4. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalfBySnapshotBatch` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf`/`claimRevenueBySnapshotBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
+3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
    1. 50k USDC are claimed to the IPA 1 which holds 100% RT1
    2. 100k USDC are claimed to the IPA 2 which holds 100% RT2
    3. 850k USDC are claimed by IPA 3 which holds 100% RT3\
