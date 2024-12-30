@@ -10,28 +10,30 @@ metadata:
 next:
   description: ''
 ---
-Story's "Proof-of-Creativity" protocol introduces a revolutionary open **Programmable IP layer**, elevating IP to a first-class entity in the blockchain ecosystem. At the heart of this system is the [🧩 IP Asset](doc:ip-asset) and its associated [⚙️ IP Account](doc:ip-account), a smart contract designed to serve as the core identity for each IP. This account-centric approach enables the storage and management of IP-related data, as well as the execution of diverse functions to manipulate that data via [🧱 Modules](doc:story-modules).
 
-# Architecture
+Протокол Story "Подтверждение Креативности (англ. Proof-of-Creativity)" представляет революционный открытый **Программируемый IP-слой**, возводящий IP в ранг первостепенной, основной сущности в экосистеме блокчейна. В основе этой системы лежит [🧩 IP Актив](doc:ip-asset) и связанный с ним [⚙️ IP Аккаунт](doc:ip-account), смарт-контракт, призванный служить основной идентификацией для каждого IP. Такой подход, ориентированный на учетную запись, позволяет хранить и управлять данными, связанными с IP, а также выполнять различные функции для манипулирования этими данными с помощью [🧱 Модули](doc:story-modules).
+
+
+# Архитектура
 
 <Image align="center" src="https://files.readme.io/251dabc-story-v1-architecture.png" />
 
-Let's briefly introduce the layers mentioned in the above diagram:
+Давайте вкратце разберём слои, упомянутые в приведенной выше диаграмме:
 
-## [🧩 IP Asset](doc:ip-asset)
+## [🧩 IP Актив](doc:ip-asset)
 
-An IP Asset is an on-chain NFT, which represents an IP. If your IP is already on-chain (like an Azuki or Pudgy Penguin), it is already ready to be registered on Story. If your IP is off-chain, you would simply mint an NFT to represent it and then register it as an IP Asset on Story.
+IP-актив - это NFT на блокчейне (анг. on-chain), который представляет IP. Если ваш IP уже находится на блокчейне (например, Azuki или Pudgy Penguin), он уже готов к регистрации в Story. Если ваш IP находится вне блокчейна (анг. off-chain), вам просто нужно создать его NFT представление, а затем зарегистрировать его как IP-актив в Story.
 
-Upon registering an NFT as an IP Asset, an associated IP Account is created.
+При регистрации NFT в качестве IP-актива создается соответствующий IP-аккаунт.
 
-## [⚙️ IP Account](doc:ip-account)
+## [⚙️ IP Аккаунт](doc:ip-account)
 
-IP Accounts are smart contracts that are tied to an IP Asset, and do two main things:
+IP-аккаунты - это смарт-контракты, которые привязаны к IP-активу, они выполняют две основные задачи:
 
-1. Store its associated IP Asset's data (such as the associated License Tokens and Royalty Tokens) created from an IP
-2. Facilitates the utilization of this data by various modules. For example, licensing, revenue/royalty sharing, remixing, and other critical features are made possible due to the IP Account's programmability.
+1. Хранят данные связанного IP-актива (например, связанные с ним токены лицензий и токены роялти), созданного на основе IP.
+2. Облегчает использование этих данных различными модулями. Например, лицензирование, распределение доходов/роялти, ремикширование (анг. remixing) и другие важные функции становятся возможными благодаря программируемости IP-аккаунта.
 
-## [🧱 Modules](doc:modules-1)
+## [🧱 Модули](doc:modules-1)
 
 Modules are customizable smart contracts that define and extend the functionality of IP Accounts. Modules empower developers to create functions and interactions for each IP to make IPs truly programmable.
 
@@ -42,12 +44,21 @@ We already have a few core modules:
 3. [❌ Dispute Module](doc:dispute-module)
 4. [👥 Grouping Module](doc:grouping-module)
 
-## [🗂️ Registry](doc:registry)
+Модули - это настраиваемые смарт-контракты, которые определяют и расширяют функциональность IP-аккаунтов. Модули позволяют разработчикам создавать функции и взаимодействия для каждого IP, чтобы сделать IP по-настоящему программируемыми.
 
-The various registries on Story function as a primary directory/storage for the global states of the protocol. Unlike IP Accounts, which manage the state of specific IPs, a registry oversees the broader states of the protocol.
+У нас уже имеется несколько основных модулей:
 
-## [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
+1. [📜 Модуль лицензирования](doc:licensing-module)
+2. [💸 Модуль роялти](doc:royalty-module)
+3. [❌ Модуль споров](doc:dispute-module)
+4. [👥 Модуль группировки](doc:grouping-module)
 
-The PIL is a real, off-chain legal contract that defines certain **License Terms** for how an IP Asset can be legally licensed. For example, how an IP Asset is commercialized or remixed, and who is allowed to do that and under what conditions.
+## [🗂️ Реестры](doc:registry)
 
-We have mapped these same terms on-chain so you can easily attach terms to your IP Asset for others to seamlessly and transparently license your IP.
+Различные реестры в Story функционируют как основной каталог/хранилище глобальных состояний протокола. В отличие от IP-аккаунтов, которые управляют состоянием конкретных IP-адресов, реестр контролирует более глобальные состояния протокола.
+
+## [💊 Программируемая IP Лицензия (PIL)](doc:programmable-ip-license)
+
+PIL - это реальный (анг. off-chain) юридический договор, определяющий **Лицензионные Условия** того, как IP-актив может быть законно лицензирован. Например, как IP-актив коммерциализируется или ремикшируется (анг. remixed), кому и на каких условиях разрешается это делать.
+
+Мы отобразили эти же условия на блокчейне, чтобы вы могли легко прикрепить условия к вашему IP-активу, а другие могли легко и прозрачно лицензировать вашу IP.
