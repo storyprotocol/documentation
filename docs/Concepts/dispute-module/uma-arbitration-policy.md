@@ -1,5 +1,5 @@
 ---
-title: UMA Arbitration Policy
+title: Арбитражная политика UMA
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,55 +10,55 @@ metadata:
 next:
   description: ''
 ---
-> 🚧 Warning: Only in v1.3
+> 🚧 Внимание: Только в версии 1.3
 >
-> The UMA Arbitration Policy is only available in v1.3 of our protocol, which is not yet documented.
+> Арбитражная политика UMA доступна только в версии 1.3 нашего протокола, которая пока не задокументирована.
 
 > 📘 UMA
 >
-> For detailed information on how UMA's dispute resolution works, [visit their website](https://uma.xyz/).
+> Для подробной информации о том, как работает механизм разрешения споров UMA, [посетите их сайт](https://uma.xyz/).
 
-This arbitration policy is a dispute resolution mechanism that follows [UMA's](https://uma.xyz/) rules. Below we share a high-level overview of how the UMA dispute process works.
-
-## Smart Contract Flow Diagram
+Эта арбитражная политика представляет собой механизм разрешения споров, который следует правилам [UMA](https://uma.xyz/). Ниже мы приводим краткий обзор того, как работает процесс разрешения споров UMA.
+## Схема Работы Смарт-контракта
 
 ![](https://files.readme.io/e0dfb0a226bdd29ab3adede7d1df7d6662497331e1b92319ee1ad8344dc5dfa3-image.png)
 
-1. Raise Dispute - The first step to initiate a dispute against an IP Asset is to call the `raiseDispute` function on [DisputeModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/dispute/DisputeModule.sol). This function will in turn call `assertTruth` on UMA's `OptimisticOracleV3.sol`. To initiate a dispute the dispute initiator will need to post a bond of at least the minimum bond defined by UMA for the selected currency.
-2. (Optional) Dispute Assertion / Counter Dispute - After the `raiseDispute` call there is a period of time called liveness in which a counter dispute can be submitted. The liveness period is split in two parts: (i) the first part of the liveness period in which only the IP owner can counter dispute and (ii) a second part in which any address can counter dispute - which can be done by calling `disputeAssertion` on `ArbitrationPolicyUMA.sol`. To counter a dispute the caller will need to post a bond of the same amount and currency that was used by the dispute initiator when raising a dispute.
-3. Settle Assertion
-   1. If nobody submitted a counter dispute then when the liveness period is over, any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
-   2. If somebody has submitted a counter dispute before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
+1. Возбуждение спора - Первый шаг для инициирования спора против IP-актива — это вызов функции `raiseDispute` в контракте [DisputeModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/dispute/DisputeModule.sol). Эта функция вызывает метод `assertTruth` в контракте UMA `OptimisticOracleV3.sol`. Чтобы инициировать спор, инициатору необходимо внести залог, который должен быть не меньше минимальной суммы, определённой UMA для выбранной валюты.
+2. (Опционально) Контрспор / Подтверждение спора - После вызова `raiseDispute` начинается период активности (анг. liveness), в течение которого можно подать контрспор. Период активности делится на две части:
+(i) первая часть, в течение которой только владелец IP может подать контрспор;
+(ii) вторая часть, в течение которой любой адрес может подать контрспор, вызвав функцию `disputeAssertion` в контракте `ArbitrationPolicyUMA.sol`.
+Чтобы подать контрспор, необходимо внести залог в той же валюте и размере, что и инициатор спора.
+3. Урегулирование заявления
+  1. Если никто не подал контрспор, то после окончания периода активности любой адрес может вызвать функцию `settleAssertion` в контракте UMA `OptimisticOracleV3.sol`.
+  2. Если контрспор был подан до окончания периода активности, спор передаётся на рассмотрение арбитров UMA, которые примут решение о том, нарушает ли IP права или нет. После вынесения решения любой адрес может вызвать функцию `settleAssertion` в контракте UMA `OptimisticOracleV3.sol`.
 
-## Dispute Evidence Submission Guidelines
+## Руководство по подаче доказательств спора
 
-When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that UMA will use & read from to make a judgement on the dispute.
+При возбуждении спора или подаче контрспора обе стороны могут предоставить доказательства спора. Доказательства спора — это текстовый документ, который будет использован UMA для принятия решения по спору.
 
-### Document Characteristics
+### Требования к документу
 
-Every document should have the following characteristics:
+Каждый документ должен соответствовать следующим требованиям:
 
-* It should be a text document. Can have images or video if necessary.
+* Это должен быть текстовый документ. При необходимости он может содержать изображения или видео.
+* Документ должен быть загружен в IPFS.
+* Его рассмотрение не должно занимать у арбитра больше двух часов. Время арбитра ограничено, и доказательства могут быть признаны недействительными, если их рассмотрение займёт слишком много времени. Старайтесь кратко излагать доказательства, чтобы они были действительными.
 
-* It should be uploaded on IPFS.
-
-* It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
-
-Depending on what the type of the Dispute Tag is, you also need to include extra evidence:
+В зависимости от тега спора (анг. Dispute Tag) необходимо предоставить дополнительные доказательства:
 
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
-        Dispute Tag
+        Тег спора
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Dispute Evidence Contents
+        Содержание доказательств
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Dispute review process
+        Процесс рассмотрения доказательств
       </th>
     </tr>
   </thead>
@@ -70,18 +70,18 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Inputs:
-        A. Showcase or pointer to the pre-existing IP that is being infringed upon by the disputed IP
-        B. Proof that the pre-existing IP has an earlier registration or public appearance date prior to the disputed IP registration date.
+        Входные данные:
+        A. Пример или ссылка на ранее существующую IP, которая нарушена спорной IP.
+        B. Доказательства, что ранее существующая IP зарегистрирована раньше, чем спорная IP.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. Check if the pre-existing  is the same or very similar to the disputed IP using input A
-           * Mickey Mouse with 1 pixel difference is an infringement
-           * Mickey Mouse with a new hat is an infringement unless it’s a derivative of Mickey Mouse
-        2. Check the registration date of the pre-existing IP using input B
-        3. Confirm that the disputed IP has a later registration date by checking on the Hub
-        4. Confirm that the disputed IP is not a derivative of the pre-existing IP by checking on the Hub
+        1. Проверьте, является ли ранее существующая IP идентичной или очень похожей на спорную IP, используя данные A.
+           * Микки Маус с разницей в 1 пиксель — это нарушение.
+           * Микки Маус в новой шляпе — это нарушение, если это не производная IP от Микки Мауса.
+        2. Проверьте дату регистрации ранее существующей IP, используя данные B.
+        3. Подтвердите, что спорная IP зарегистрирована позже, проверив данные в Хабе.
+        4. Подтвердите, что спорная IP не является производным от ранее существующей IP, проверив данные в Хабе. 
 
         <br />
       </td>
@@ -91,31 +91,31 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         `IMPROPER_USAGE`
 
-        Examples (non-exhaustive):\
-        Territory
-        Channels of Distribution
-        Expiration
-        Irrevocable
-        Attribution
-        Derivatives
-        Limitations on Creation of Derivatives
-        Commercial Use
-        Sublicensable
-        Non-Transferable
-        Restriction on Cross-Platform Use
+        Примеры (неисчерпывающие)\
+        Территория,
+        Каналы распространения,
+        Срок действия,
+        Безвозвратность,
+        Атрибуция,
+        Производные,
+        Ограничения на создание производных,
+        Коммерческое использование,  
+        Сублицензируемая,
+        Непередаваемые,
+        Ограничение на кросс-платформенное использование
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: PIL term that has been violated
-        B. text: description of the violation
-        C. text: proof of violation
+        Входные данные:\
+        A. Текст: Указание нарушенного пункта лицензии PIL.
+        B. Текст: Описание нарушения.
+        C. Текст: Доказательства нарушения.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. Read the associated PIL term description on the PIL license official document using input A
-        2. Read the violation description using input B
-        3. Decide on the veracity of the proof presented by checking on associated platforms when possible using input C
+        1. Прочитайте описание нарушенного пункта в официальном документе лицензии PIL, используя данные A.
+        2. Ознакомьтесь с описанием нарушения, используя данные B.
+        3. Проверьте достоверность представленных доказательств, используя данные C.
       </td>
     </tr>
 
@@ -125,14 +125,14 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: description of each of each payment the disputed IP received that should have been shared with its ancestors
-        B. text: proof of payments
+        Входные данные:\
+        A. Текст: Описание каждого платежа, который должен был быть передан предшествующим IP (анг. ancestors), но не был.
+        B. Текст: Доказательства по платежам.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. Check veracity of the proof of payments by checking on the associated platforms when possible using input A and B
-        2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on blockchain explorer
+        1. Проверьте достоверность доказательств платежей, используя данные A и B.
+        2.  Если доказательства платежей реальны, подтвердите, что эти платежи действительно не были выполнены на блокчейне, используя блокчейн-обозреватель (анг. blockchain explorer). 
 
         <br />
       </td>
@@ -142,23 +142,23 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         `CONTENT_STANDARDS_VIOLATION`
 
-        No-Hate\
-        Suitable-for-All-Ages
-        No-Drugs-or-Weapons
-        No-Pornography
+        Без ненависти\
+        Подходит для всех возрастов
+        Без наркотиков и оружия
+        Без порнографии
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: the content standard point that has been violated
-        B. text: description of the violation
-        C. text: proof of violation
+        Входные данные:\
+        A. Текст: Нарушенный пункт стандартов содержания.
+        B. Текст: Описание нарушения.
+        C. Текст: Доказательства нарушения.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. Read the associated content standards description on the official content standards section in the PIL using input A
-        2. Read the violation description using input B
-        3. Decide on the veracity of the proof presented by checking on associated platforms when possible using input C
+        1. Прочитайте описание нарушенного пункта в официальном документе PIL, используйте данные A.
+        2. Ознакомьтесь с описанием нарушения, используя данные B.
+        3. Проверьте достоверность представленных доказательств, используя данные C. 
 
         <br />
       </td>
@@ -166,6 +166,6 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
   </tbody>
 </Table>
 
-> 📘 Note
+> 📘 Примечание
 >
-> As the process is still experimental, we can expect iteration and fine-tuning on the contents/formats of how the evidence should be submitted.
+> Процесс пока экспериментальный, и формат/содержание доказательств может изменяться и дорабатываться.

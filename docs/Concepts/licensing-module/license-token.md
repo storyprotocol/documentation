@@ -1,8 +1,7 @@
 ---
-title: License Token
+title: Токен Лицензии
 excerpt: >-
-  An ERC-721 NFT that allows you to register your IP as a derivative of another,
-  based on the License Terms defined in the token.
+ERC-721 NFT, который позволяет зарегистрировать вашу интеллектуальную собственность (IP) как производное от другой на основе Условий Лицензии, определенных в токене.
 deprecated: false
 hidden: false
 metadata:
@@ -12,44 +11,44 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/LicenseToken.sol).
+> Ознакомиться со смарт-контрактом можно [здесь](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/LicenseToken.sol).
 
-A **License Token** is represented as an **ERC-721 NFT** and contains the specific [License Terms](doc:license-terms) it represents. Its associated `licenseTokenId` is global, as there is one License Token contract.
+**Токен Лицензии** представлен в виде **ERC-721 NFT** и содержит конкретные [Условия Лицензии](doc:license-terms), которые он представляет. Его связанный `licenseTokenId` является глобальным, так как существует только один контракт Токена Лицензии.
 
-Once License Terms are attached to an IP Asset, it becomes public so that anyone can mint a License Token for those terms. A License Token is burned when it is used to register another IP as a derivative of the original IP Asset.
+После того как Условия лицензии прикрепляются к IP-активу, он становится общедоступным, что позволяет любому человеку создать Токен Лицензии с этими условиями. Токен Лицензии сжигается, когда он используется для регистрации другго IP как производного от оригинального актива.
 
 <Image alt="A diagram showing what happens when a License Token is minted." align="center" src="https://files.readme.io/2c2938f-Screenshot_2024-05-07_at_18.42.00.png">
-  A diagram showing what happens when a License Token is minted.
+  Диаграмма, показывающая процесс создания Токена Лицензии.
 </Image>
 
-## Private Licenses
+## Приватные лицензии
 
-In order to mint a private License Token, the owner of a root IP Asset can issue License Tokens that have terms **not yet attached to the IP Asset itself**. It is important to also note that derivative IP Assets cannot issue private licenses because it is restricted to only issue licenses of its inherited terms.
+Для создания приватного Токена Лицензии владелец корневого IP-актива может выпустить Токены Лицензии с условиями, которые еще не прикреплены к самому активу. Также важно отметить, что производные IP-активы не могут выпускать приватные лицензии, поскольку они ограничены выпуском лицензий только с унаследованными условиями.
 
-## Transferability of the License Token
+## Передаваемость Токена Лицензии
 
-License Tokens might be transferrable or not, depending on the values of the License Terms terms they point to.
+Токены Лицензии могут быть передаваемыми или нет, в зависимости от условий Условий Лицензии, к которым они привязаны.
 
-Once a non-transferrable License Token is minted to a recipient, it is locked there forever.
+После создания непередаваемого Токена Лицензии и передачи его получателю он остается привязанным к этому получателю навсегда.
 
-## Registering a Derivative
+## Регистрация производного
 
-There are two ways to register a derivative IP Asset.
+Есть два способа зарегистрировать производный IP-актив.
 
-> 📘 Small Note
+> 📘 Небольшое замечание
 >
-> An IP Asset can only register as a derivative one time. If an IP Asset has multiple parents, it must register both at the same time. Once an IP Asset is a derivative, it cannot link any more parents.
+> IP-актив может быть зарегистрирован как производный только один раз. Если у IP-актива несколько родительских активов, они должны быть зарегистрированы одновременно. После регистрации как производный, актив не может привязывать новые родительские активы.
 
-### 1. Using an Existing License Token
+### 1. Использование существующего Токена лицензии
 
-A License Token is burned when it is used to register another IP as a derivative of the original IP Asset.
+Токен лицензии сжигается, когда он используется для регистрации другого IP как производного от оригинального актива.
 
 <Image align="center" src="https://files.readme.io/9bc3615-image.png" />
 
-### 2. Registering a Derivative Directly
+### 2. Прямая регистрация производного
 
-You can also register a derivative directly, without the need for a License Token. Remember that if License Terms are attached to an IP Asset it is public to mint the License Token anyway, so this is simply a convenient way to go about it, thus skipping the middle step of minting a License Token.
+Вы также можете зарегистрировать производный актив напрямую, без Токена Лицензии. Помните, что если Условия Лицензии прикреплены к IP-активу, он становится публичным, и любой может создать Токен Лицензии. Таким образом, это просто удобный способ избежать промежуточного шага создания Токена Лицензии.
 
 <Image align="center" src="https://files.readme.io/02181c4-Screenshot_2024-05-07_at_18.51.15.png" />

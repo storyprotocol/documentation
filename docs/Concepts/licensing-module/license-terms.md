@@ -1,8 +1,7 @@
 ---
-title: License Terms
+title: Условия Лицензии
 excerpt: >-
-  A particular combination of values from a License Template that define how
-  others can interact with your IP.
+ Комбинация значений из Шаблона лицензии, которая определяет, как другие могут взаимодействовать с вашим IP-активом.
 deprecated: false
 hidden: false
 metadata:
@@ -12,36 +11,35 @@ metadata:
 next:
   description: ''
 ---
-> 🍦 Example License Terms
+> 🍦 Пример условий лицензии
 >
-> View some popular combinations of PIL License Terms, also known as "flavors", [here](https://docs.story.foundation/docs/pil-flavors#/).
+> Ознакомьтесь с популярными комбинациями условий лицензии PIL, также известными как «вкусы», [здесь](https://docs.story.foundation/docs/pil-flavors#/).
 
-License Terms are a particular combination of values from a [License Template](doc:license-template). Indeed, there can and will exist **multiple** License Terms (variations) for each License Template. You can imagine that a License Template generates many License Term variations.
+Условия лицензии представляют собой конкретную комбинацию значений из [Шаблона Лицензии](doc:license-template). Фактически, для каждого Шаблона лицензии могут и будут существовать **множество** вариаций Условий лицензии. Можно представить, что Шаблон лицензии генерирует множество вариаций Условий лицензии.
 
 <Image align="center" src="https://files.readme.io/62ee532-Screenshot_2024-05-07_at_17.59.18.png" />
 
-Once registered, **License Terms are immutable — they can't be tampered with or altered**, even by the License Template that generated it.
+После регистрации **Условия лицензии неизменяемы — их нельзя модифицировать или изменять** , даже Шаблоном лицензии, который их сгенерировал.
 
-Additionally, License Terms have a unique numeric ID within the License Template they stem from. This makes License Terms reusable, meaning if someone creates License Terms with a specific set of values, it only needs to be created once and can be used by anyone else.
+Кроме того, Условия лицензии имеют уникальный числовой идентификатор в рамках Шаблона лицензии, от которого они произошли. Это делает Условия лицензии повторно используемыми: если кто-то создаёт Условия лицензии с определённым набором значений, они создаются только один раз и могут использоваться кем угодно.
 
-For example, a particular set of term values of the [Programmable IP License (PIL💊)](doc:programmable-ip-license-pil), such as non-commercial usage + derivatives allowed + free minting, defines a unique License Terms with an associated ID.
+Например, определённый набор значений условий в [Программируемой Лицензии IP (PIL💊)](doc:programmable-ip-license-pil), таких как некоммерческое использование + разрешённые производные + бесплатный выпуск, определяет уникальные Условия лицензии с соответствующим идентификатором.
 
-## License Terms Attached to IP Asset
+## Условия лицензии, прикреплённые к IP-активу
 
-The owner of a root IP Asset can attach License Terms to signal to other users that they can mint License Tokens of those terms to create a derivative of this IP Asset. **Once License Terms are attached to an IP Asset, it is now considered "public" and anyone can mint a License Token using those terms.**
-
+Владелец корневого IP-актива может прикрепить Условия лицензии, чтобы сигнализировать другим пользователям, что они могут выпускать Лицензионные токены с этими условиями для создания производных IP-активов. **Как только Условия лицензии прикреплены к IP-активу, он теперь считается "публичным", и любой может выпустить Лицензионный токен с использованием этих условий.**
 <Image align="center" src="https://files.readme.io/39a365f-Screenshot_2024-05-07_at_18.43.38.png" />
 
-## Inherited License Terms
+## Наследуемые условия лицензии
 
-On the other hand, derivative IP Assets inherit their License Terms from the parent IP Asset. This means that when an IP Asset registers itself as a derivative, it burns the License Token and inherits the associated License Terms. **The owner of this derivative cannot set new License Terms.**
+С другой стороны, производные IP-активы наследуют свои Условия лицензии от родительского IP-актива. Это означает, что когда IP-актив регистрируется как производный, он сжигает Лицензионный токен и наследует связанные с ним Условия лицензии. **Владелец этого производного IP-актива не может устанавливать новые Условия лицензии.**
 
-> 📘 Changing Certain License Terms on a Derivative
+> 📘 Изменение определённых Условий лицензии для производной IP
 >
-> You may be wondering: "if I cannot set new License Terms on my derivative, does that also mean I can't change the minting fee, or disallowing more derivatives, on my derivative?"
+> Возможно, вы задаётесь вопросом: «Если я не могу установить новые Условия лицензии для своей производной IP, значит ли это, что я не могу изменить комиссию за выпуск или запретить создание новых производных?»
 >
-> Thankfully, there is a way to get around this! Although you cannot change License Terms on a derivative IP, you can utilize the [License Config to implement special behaviors](doc:license-config-hook).
+> К счастью, существует способ обойти это! Хотя вы не можете изменить Условия лицензии для производной IP, вы можете использовать [Конфигурацию лицензии для реализации особого поведения](doc:license-config-hook).
 
-## Expiration
+## Срок действия
 
-License Terms support an `expiration` time. Once License Terms expire, any derivatives that abide by that license will no longer be able to generate revenue or create further derivatives. If an IP Asset is a derivative of multiple parents, it will expire when the soonest expiration time between the two parents is reached.
+Условия лицензии поддерживают параметр `expiration`. Как только Условия лицензии истекают, любые производные, соответствующие этой лицензии, больше не смогут генерировать доход или создавать новые производные. Если IP-актив является производным от нескольких родительских активов, его срок действия истечёт, когда наступит ближайшая дата истечения срока среди двух родительских активов.

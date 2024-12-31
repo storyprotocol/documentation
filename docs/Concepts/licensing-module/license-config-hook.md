@@ -1,8 +1,7 @@
 ---
-title: License Config / Hook
+title: Конфигурация/Хук Лицензии
 excerpt: >-
-  An optional hook that can be attached to an entire IP Asset or specific
-  license for dynamic minting fees.
+  Дополнительный хук, который можно прикрепить к IP-активу или конкретной лицензии для динамического определения комиссий за выпуск.
 deprecated: false
 hidden: false
 metadata:
@@ -13,100 +12,87 @@ next:
   description: ""
 ---
 
-## License Config
+## Конфигурация лицензии
 
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/lib/Licensing.sol).
+> Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/lib/Licensing.sol).
 
 Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `licenseTermsId` attached to that asset) which contains fields like a `mintingFee` and a `licensingHook`, as shown below.
+Вы можете опционально прикрепить `LicensingConfig` к IP-активу (для определённых `licenseTermsId`, связанных с этим активом), который содержит такие параметры, как `mintingFee` и `licensingHook`, как показано ниже.
 
 ```sol Licensing.sol
-/// @notice This struct is used by IP owners to define the configuration
-/// when others are minting license tokens of their IP through the LicensingModule.
-/// When the `mintLicenseTokens` function of LicensingModule is called, the LicensingModule will read
-/// this configuration to determine the minting fee and execute the licensing hook if set.
-/// IP owners can set these configurations for each License or set the configuration for the IP
-/// so that the configuration applies to all licenses of the IP.
-/// If both the license and IP have the configuration, then the license configuration takes precedence.
-/// @param isSet Whether the configuration is set or not.
-/// @param mintingFee The minting fee to be paid when minting license tokens.
-/// @param licensingHook  The hook contract address for the licensing module, or address(0) if none
-/// @param hookData The data to be used by the licensing hook.
-/// @param commercialRevShare The commercial revenue share percentage.
-/// @param disabled Whether the license is disabled or not.
-/// @param expectMinimumGroupRewardShare The minimum percentage of the group’s reward share
-/// (from 0 to 100%, represented as 100 * 10 ** 6) that can be allocated to the IP when it is added to the group.
-/// If the remaining reward share in the group is less than the minimumGroupRewardShare,
-/// the IP cannot be added to the group.
-/// @param expectGroupRewardPool The address of the expected group reward pool.
-/// The IP can only be added to a group with this specified reward pool address,
-/// or address(0) if the IP does not want to be added to any group.
+/// @notice Эта структура используется владельцами IP для настройки конфигурации
+/// при выпуске токенов лицензий для их IP через LicensingModule.
+/// Когда вызывается функция `mintLicenseTokens` модуля LicensingModule, он считывает
+/// эту конфигурацию для определения комиссии за выпуск и выполняет лицензионный хук, если он установлен.
+/// Владельцы IP могут устанавливать эти конфигурации для каждой лицензии
+/// или на уровне всей IP, чтобы конфигурация применялась ко всем лицензиям актива.
+/// Если конфигурация установлена и на уровне лицензии, и на уровне IP, конфигурация лицензии имеет приоритет.
 struct LicensingConfig {
-  bool isSet;
-  uint256 mintingFee;
-  address licensingHook;
-  bytes hookData;
-  uint32 commercialRevShare;
-  bool disabled;
-  uint32 expectMinimumGroupRewardShare;
-  address expectGroupRewardPool;
+  bool isSet;  // Установлена ли конфигурация
+  uint256 mintingFee;  // Комиссия за выпуск токена
+  address licensingHook;  // Адрес контракта хука, если он установлен, иначе address(0)
+  bytes hookData;  // Данные, используемые хуком
+  uint32 commercialRevShare;  // Доля коммерческих доходов в процентах
+  bool disabled;  // Отключена ли лицензия
+  uint32 expectMinimumGroupRewardShare;  // Минимальная доля вознаграждения группы
+  address expectGroupRewardPool;  // Ожидаемый пул вознаграждений группы
 }
 ```
+Параметры, такие как `mintingFee` и `commercialRevShare`, могут переписывать свои дубликаты, указанные в условиях лицензии. Это позволяет производным IP-активам (которые обычно не могут изменить условия лицензии) изменить определённые поля.
 
-Fields like the `mintingFee` and `commercialRevShare` overwrite their duplicate in the license terms themselves. A benefit of this is that derivative IP Assets, which normally cannot change their license terms, are able to overwrite certain fields.
+Параметр `licensingHook` — это адрес смарт-контракта, реализующего интерфейс `ILicensingHook.sol`. В нём содержится функция `beforeMintLicenseTokens`, которая запускается перед выпуском токена лицензии, что позволяет вставить дополнительную логику.
 
-The `licensingHook` is an address to a smart contract that implements the `ILicensingHook.sol` interface, which contains a `beforeMintLicenseTokens` function which will be run before a user mints a License Token. This means you can insert logic to be run upon minting a license.
+Сам хук определен ниже в другом разделе. Он содержит информацию о лицензии, о том, кто выпускает токен лицензии и кто его получает.
 
-The hook itself is defined below in a different section. You can see it contains information about the license, who is minting the License Token, and who is receiving it.
+### Настройка конфигурации лицензии
 
-### Setting the License Config
+Вы можете настроить конфигурацию лицензии с помощью функции `setLicenseConfig` в контракте [LicensingModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/LicensingModule.sol).
 
-You can set the License Config by calling the `setLicenseConfig` function in the [LicensingModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/LicensingModule.sol).
+Вы можете прикрепить конфигурацию лицензии ко всему IP-активу, чтобы она применялась ко всем условиям лицензий, принадлежащих этой IP. Если установлены обе конфигурации (на уровне IP и на уровне лицензии), приоритет отдаётся конфигурации лицензии. Вы можете установить конфигурацию на IP в целом, передав `licenseTemplate == address(0)` и `licenseTermsId == 0` в функцию `setLicenseConfig`.
 
-You can also attach the License Config to an IP Asset as a whole, so it will execute on every license term that belongs to the IP. Note that if both an IP-wide config and license-specific config are set, the license-specific config will take priority. You can set a config on the IP as a whole by passing `licenseTemplate == address(0)` and `licenseTermsId == 0` to the `setLicenseConfig` function.
 
-### Logic that is Possible with License Config
 
-1. **Max Number of Licenses**: The `licensingHook` (described in the next section) is where you can define logic for the max number of licenses that can be minted. For example, reverting the transaction if the max number of licenses has already been minted.
-2. **Disallowing Derivatives**: If you register a derivative of an IP Asset, that derivative cannot change its License Terms as described [here](https://docs.story.foundation/docs/license-terms#inherited-license-terms). You can be wondering: "What if I, as a derivative, want to disallow derivatives of myself, but my License Terms allow derivatives and I cannot change this?" To solve this, you can simply set `disabled` to true.
-3. **Minting Fee**: Similar to #2 above... what about the minting fee? Although you cannot change License Terms on a derivative IP Asset (and thus the minting fee inside of it), you can change the minting fee for that derivative by modifying the `mintingFee` in the License Config, or returning a `totalMintingFee` from the `licensingHook` (described in the next section).
-4. **Commercial Revenue Share**: Similar to #2 and #3 above, you can modify the `commercialRevShare` in the License Config.
-5. **Dynamic Pricing for Minting a License Token**: Set dynamic pricing for minting a License Token from an IP Asset based on how many total have been minted, how many licenses the user is minting, or even who the user is. All of this data is available in the `licensingHook` (described in the next section).
+### Примеры логики с конфигурацией лицензии
 
-... and more.
+1. **Ограничение количества лицензий**: Через `licensingHook` можно ограничить максимальное количество лицензий. Например, транзакция будет отменена, если достигнуто максимальное число лицензий.
+2. **Запрет на производные**: Если вы зарегистрируете производный IP-актив, вы не сможете изменить его лицензионные условия, как описано [здесь] (https://docs.story.foundation/docs/license-terms#inherited-license-terms). Вы можете задаться вопросом: «А что, если я, как производный IP-актив, хочу запретить производные от себя, но мои Лицензионные условия разрешают производные, могу ли я это изменить?». Да, вы можете просто установить `disabled` в true.
+3. **Комиссия за выпуск**: Аналагочино #2 выше... а что насчет комиссии? Хотя вы не можете изменить условия лицензии на родительском IP-активе (и, соответственно, плату за выпуск внутри него), вы можете изменить плату за выпуск для производного актива, изменив `mintingFee` в конфигурации лицензии или вернув `totalMintingFee` из `licensingHook` (описано в следующем разделе).
+4. **Коммерческая доля дохода**: Аналогично #2 и #3 вы можете изменить `commercialRevShare` в конфигурации лицензии.
+5. **Динамическое ценообразование**: Установите динамическую стоимость выпуска лицензии на основе количества уже выпущенных токенов, количества лицензий, которые запрашивает пользователь, или даже личности пользователя. Всё это доступно в `licensingHook` (далее).
 
-### Restrictions
+... и так далее.
 
-If you update the License Config, you cannot decrease the `commercialRevShare` percentage. You can only increase it.
+### Ограничения
 
-## Licensing Hook
+После обновления конфигурации лицензии нельзя уменьшать процент `commercialRevShare`. Его можно только увеличивать.
 
-> 🗒️ Contract
+## Хук Лицензирования
+
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/ILicensingHook.sol#L26).
+> Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/ILicensingHook.sol#L26).
 
-The `beforeMintLicenseTokens` function, which acts as a hook, is a function that can be called before a License Token is minted to implement custom logic and determine the final `totalMintingFee` of that License Token. The owner of an IP Asset must set the License Config (of which the hook is contained in), with their own implementation of the `beforeMintLicenseTokens` function, for this to be called.
+Функция `beforeMintLicenseTokens`, которая выступает в качестве хука, вызывается перед выпуском токена лицензии для выполнения пользовательской логики и определения окончательной суммы комиссии `totalMintingFee` за выпуск токена. Владелец IP-актива должен настроить конфигурацию лицензии (в которой содержится хук) с собственной реализацией функции `beforeMintLicenseTokens`, чтобы она могла быть вызвана.
 
-It can also be used to implement various checks and logic, as [outlined above](https://docs.story.foundation/docs/license-config-hook#logic-that-is-possible-with-license-config).
+Хук также может быть использован для выполнения различных проверок и логики, как [описано выше](https://docs.story.foundation/docs/license-config-hook#logic-that-is-possible-with-license-config).
 
-> 🚧 Warning!
+> 🚧 Внимание!
 >
-> Beware of potentially malicious implementations of external license hooks. Please first verify the code of the hook you choose because it may be not reviewed or audited by the Story team.
+> Будьте осторожны с потенциально вредоносными реализациями внешних хуков лицензий. Сначала проверьте код выбранного хука, так как он может не быть проверен или аудирован командой Story.
 
 ```sol ILicensingHook.sol
-/// @notice This function is called when the LicensingModule mints license tokens.
-/// @dev The hook can be used to implement various checks and determine the minting price.
-/// The hook should revert if the minting is not allowed.
-/// @param caller The address of the caller who calling the mintLicenseTokens() function.
-/// @param licensorIpId The ID of licensor IP from which issue the license tokens.
-/// @param licenseTemplate The address of the license template.
-/// @param licenseTermsId The ID of the license terms within the license template,
-/// which is used to mint license tokens.
-/// @param amount The amount of license tokens to mint.
-/// @param receiver The address of the receiver who receive the license tokens.
-/// @param hookData The data to be used by the licensing hook.
-/// @return totalMintingFee The total minting fee to be paid when minting amount of license tokens.
+/// @notice Функция вызывается LicensingModule при выпуске токенов лицензии.
+/// @dev Хук может быть использован для различных проверок и определения стоимости выпуска.
+/// @param caller Адрес вызывающего, который вызывает функцию mintLicenseTokens().
+/// @param licensorIpId ID IP-актива лицензиара, из которого выпускаются токены.
+/// @param licenseTemplate Адрес шаблона лицензии.
+/// @param licenseTermsId ID условий лицензии в шаблоне.
+/// @param amount Количество выпускаемых токенов.
+/// @param receiver Адрес получателя токенов.
+/// @param hookData Данные, используемые хуком.
+/// @return totalMintingFee Итоговая сумма комиссии за выпуск.
 function beforeMintLicenseTokens(
   address caller,
   address licensorIpId,
@@ -118,17 +104,16 @@ function beforeMintLicenseTokens(
 ) external returns (uint256 totalMintingFee);
 ```
 
-Note that it returns the `totalMintingFee`. You may be wondering, "I can set the minting fee in the License Terms, in the `LicenseConfig`, and return a dynamic price from `beforeMintLicenseTokens`. What will the final minting fee actually be?" Here is the priority:
-
+Обратите внимание, что функция возвращает `totalMintingFee`. Вы можете задаться вопросом: «Я могу установить комиссию за выпуск в условиях лицензии, в конфигурации лицензии и вернуть динамическую стоимость из `beforeMintLicenseTokens`. Какая комиссия будет в итоге?»
 <Table align={["left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
-        Minting Fee
+        Комиссия
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Importance
+        Приоритет
       </th>
     </tr>
 
@@ -137,17 +122,17 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        The `totalMintingFee` returned from `beforeMintLicenseTokens`
+        `totalMintingFee` из `beforeMintLicenseTokens`
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Highest Priority
+        Высочайший
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        The `mintingFee` set in the `LicenseConfig`
+       `mintingFee` из конфигурации лицензии
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -157,11 +142,11 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        The `mintingFee` set in the License Terms
+        `mintingFee` из условий лицензии
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Lowest Priority
+        Низкий
       </td>
     </tr>
 
