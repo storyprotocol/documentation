@@ -1,4 +1,4 @@
 ---
-title: Cosmos Origin/Bank
+title: Bank
 hidden: false
 ---
