@@ -1,5 +1,5 @@
 ---
-title: IP Asset Registry
+title: Реестр IP-активов
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,16 +10,16 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAssetRegistry.sol).
+> Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAssetRegistry.sol).
 
-The IP Asset Registry is responsible for registering IPs into the protocol. It deploys a dedicated [IP Account](doc:ip-account) contract for each new IP Asset registered on the protocol (*NOTE: This registry inherits from IP Account Registry*)
+Реестр IP-активов отвечает за регистрацию IP в протоколе. Он разворачивает выделенный контракт [IP-аккаунта](doc:ip-account) для каждого нового IP-актива, зарегистрированного в протоколе (*ПРИМЕЧАНИЕ: Этот реестр наследуется от Реестра IP-аккаунтов*).
 
-### Notable Functions
+### Основные функции
 
 ```sol IPAssetRegistry.sol
 function register(uint256 chainid, address tokenContract, uint256 tokenId) external whenNotPaused returns (address id)
 ```
 
-This function registers an ERC-721 NFT as a new IP Asset on Story.
+Эта функция регистрирует ERC-721 NFT как новый IP-актив в Story.

@@ -1,5 +1,5 @@
 ---
-title: Group IP Asset Registry
+title: Реестр групповых IP-активов
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,34 +10,34 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/GroupIPAssetRegistry.sol).
+> Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/GroupIPAssetRegistry.sol).
 
-The Group IP Asset Registry is responsible for managing the registration and tracking of Group IP Assets, including the group members and reward pools.
+Реестр групповых IP-активов отвечает за управление регистрацией и отслеживанием групповых IP-активов, включая их участников и пулы вознаграждений.
 
-The Group IP Asset Registry will maintain grouping relationship on-chain between the Group's IP Account and individual IP Accounts through a mapping:
+Реестр групповых IP-активов хранит данные о связях между групповым IP-аккаунтом и индивидуальными IP-аккаунтами на блокчейне с использованием следующего отображения:
 
 ```sol GroupIPAssetRegistry.sol
 mapping(address groupIpId => EnumerableSet.AddressSet memberIpIds) groups;
 ```
 
-### Notable Functions
+### Основные функции
 
 ```sol GroupIPAssetRegistry.sol
 function registerGroup(address groupNft, uint256 groupNftId, address rewardPool) external onlyGroupingModule whenNotPaused returns (address groupId)
 ```
 
-This function registers a new Group IPA on Story.
+Эта функция регистрирует новый групповой IP-актив в Story.
 
 ```sol GroupIPAssetRegistry.sol
 function addGroupMember(address groupId, address[] calldata ipIds) external onlyGroupingModule whenNotPaused
 ```
 
-Adds already registered IPAs to an existing Group IPA.
+Добавляет уже зарегистрированные IP-активы в существующий групповой IP-актив.
 
 ```sol GroupIPAssetRegistry.sol
 function removeGroupMember(address groupId, address[] calldata ipIds) external onlyGroupingModule whenNotPaused
 ```
 
-Removes registered IPAs from a Group IPA.
+Удаляет зарегистрированные IP-активы из группового IP-актива.

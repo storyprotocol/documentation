@@ -1,5 +1,5 @@
 ---
-title: License Registry
+title: Реестр Лицензий
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,45 +10,47 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/LicenseRegistry.sol).
+> Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/LicenseRegistry.sol).
 
 The License Registry stores all license-related states within the protocol, including managing global state like registering new License Templates like the [Programmable IP License (PIL💊)](doc:programmable-ip-license), attaching licenses to individual [IP Assets](doc:ipasset), registering derivatives, and the like:
 
+Реестр Лицензий хранит все состояния, связанные с лицензиями в протоколе, включая управление глобальными состояниями, такими как регистрация новых шаблонов лицензий, например, [Программируемая Лицензия IP (PIL💊)](doc:programmable-ip-license), прикрепление лицензий к отдельным [IP-активам](doc:ipasset), регистрацию производных активов и тому подобное:
+
 ```sol LicenseRegistry.sol
 struct LicenseRegistryStorage {
-  /// The default license template address
+  /// Адрес шаблона лицензии по умолчанию
   address defaultLicenseTemplate;
-  /// The default license terms ID
+  /// ID условий лицензии по умолчанию
   uint256 defaultLicenseTermsId;
-  /// Registered license templates
+  /// Зарегистрированные шаблоны лицензий
   mapping(address licenseTemplate => bool isRegistered) registeredLicenseTemplates;
-  /// Mapping of parent IPs to derivative IPs
+  /// Сопоставление родительских IP с производными IP
   mapping(address childIpId => EnumerableSet.AddressSet parentIpIds) parentIps;
-  /// Mapping of derivative IPs to parent IPs
+  /// Сопоставление производных IP с родительскими IP
   mapping(address parentIpId => EnumerableSet.AddressSet childIpIds) childIps;
-  /// attachedLicenseTerms Mapping of attached license terms to IP IDs
+  /// Сопоставление прикрепленных условий лицензий с ID IP
   mapping(address ipId => EnumerableSet.UintSet licenseTermsIds) attachedLicenseTerms;
-  /// Mapping of license templates to IP IDs
+  /// Сопоставление шаблонов лицензий с ID IP
   mapping(address ipId => address licenseTemplate) licenseTemplates;
-  /// Mapping of minting license configs to a licenseTerms of an IP
+  /// Сопоставление конфигураций лицензий с условиями лицензии IP
   mapping(bytes32 ipLicenseHash => Licensing.LicensingConfig licensingConfig) licensingConfigs;
-  /// Mapping of minting license configs to an IP, the config will apply to all licenses under the IP
+  /// Сопоставление конфигураций лицензий с IP, конфигурация будет применяться ко всем лицензиям данного IP
   mapping(address ipId => Licensing.LicensingConfig licensingConfig) licensingConfigsForIp;
 }
 ```
 
-### Notable Functions
+### Основные функции
 
 ```sol LicenseRegistry.sol
 function attachLicenseTermsToIp(address ipId, address licenseTemplate, uint256 licenseTermsId) external onlyLicensingModule
 ```
 
-This function allows you to attach License Terms to an IP Asset.
+Эта функция позволяет прикрепить Условия Лицензии к IP-активу.
 
 ```sol LicenseRegistry.sol
 function registerDerivativeIp(address childIpId, address[] calldata parentIpIds, address licenseTemplate, uint256[] calldata licenseTermsIds, bool isUsingLicenseToken) external onlyLicensingModule
 ```
 
-This function allows you to register an IP Asset as a derivative of another IP Asset, unlocking things like claimable royalty flows from the [Royalty Module](doc:royalty-module).
+Эта функция позволяет зарегистрировать IP-актив как производный от другого IP-актива, что открывает возможности, вроде получения роялти через [Модуль Роялти](doc:royalty-module).

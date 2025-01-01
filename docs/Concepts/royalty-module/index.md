@@ -1,6 +1,6 @@
 ---
-title: 💸 Royalty Module
-excerpt: Learn how revenue flows between parent and child IP on Story.
+title: 💸 Модуль Роялти
+excerpt: Узнайте, как распределяется доход между родительскими и дочерними IP-активами на платформе
 deprecated: false
 hidden: false
 metadata:
@@ -10,80 +10,80 @@ metadata:
 next:
   description: ''
 ---
-The Royalty Module defines how revenue flows between parent and child IP Assets. There are two common scenarios when revenue flow would happen:
+Модуль Роялти определяет, как распределяется доход между родительскими и дочерними IP-активами. Существуют два основных сценария, при которых происходит распределение дохода:
 
-1. Minting a License - sometimes there is a minting fee to mint a [License Token](doc:license-token) from an IP Asset. When this is paid by someone (who wants to register a derivative or simply hold a license), the revenue should flow up the chain.
-2. Tipping Directly - if someone sends revenue to an IP Asset directly, it should flow up the chain.
+1. Создание лицензии — иногда за выпуск [Лицензионного Токена](doc:license-token) для IP-актива взимается плата. Когда она оплачивается (кем-то, кто хочет зарегистрировать производный актив или просто владеть лицензией), доход распределяется вверх по цепочке.
+2. Прямое вознаграждение — если кто-то отправляет доход непосредственно на IP-актив, он также распределяется вверх по цепочке.
 
-The below example (using [Liquid Absolute Percentage](doc:policy-liquid-absolute-percentage)) shows what happens when an IP Asset 4 (IPA4) tips IPA3 1M USDC.
+В следующем примере (с использованием [Ликвидного абсолютного процента (LAP)](doc:policy-liquid-absolute-percentage)) показано, что происходит, когда IP-актив 4 (IPA4) отправляет 1 миллион USDC в пользу IPA3.
 
-1. Revenue first flows to the Royalty Module contract
-2. Royalty Module sends USDC to both IPA3 and the LAP contract based on the **royalty stack** (15%)
-3. LAP will distribute funds to further ancestors since they have negotiated some license agreement where they are due revenue from IPA3's earnings.
+1. Доход сначала поступает в контракт Модуля Роялти.
+2. Модуль Роялти распределяет USDC между IPA3 и контрактом LAP на основе **стека роялти** (15%).
+3. LAP распределяет средства среди других предков, так как они заключили лицензионное соглашение, в соответствии с которым они имеют право на часть дохода IPA3.
 
-**Don't worry if you don't understand everything in the picture, this is just to show you an overview of what the Royalty Module is all about.**
+**Не переживайте, если вы не понимаете все детали на изображении, оно лишь дает общий обзор работы Модуля Роялти.**
 
 ![](https://files.readme.io/25e44cabafe06886fef078422c3d48c472f25a12b6ea60207ffa0b63ef2cd65b-image.png)
 
-## Royalty Policies
+## Политики Роялти
 
-Royalty policies are a component of the license agreement between two IP Assets. It defines how revenue flow actually happens.
+Политики Роялти являются частью лицензионного соглашения между двумя IP-активами. Они определяют, как именно происходит распределение дохода.
 
-The Royalty Module supports both whitelisted/native policies created by our team directly, and external ones created by you.
+Модуль Роялти поддерживает как одобренные/встроенные политики, созданные нашей командой, так и внешние политики, которые можно создать самостоятельно.
 
-> 📘 Note on Royalty Policies
+> 📘 Примечание по Политике Роялти
 >
-> An IP Asset without any parents can mint licenses with different royalty policies while a derivative IP Asset inherits the royalty policy of its parents.
+> IP-актив, у которого нет родителей, может создавать лицензии с разными Политиками Роялти, в то время как производный IP-актив наследует Политику Роялти своих родителей.
 >
-> Additionally, there will always be one royalty policy governing every link an IP Asset has with each of its derivatives.
+> Кроме того, каждая связь IP-актива с производным активом всегда регулируется одной Политикой Роялти.
 
-### Whitelisted/Native Royalty Policies
+### Одобренные/Встроенные Политики Роялти
 
-These policies require governance whitelisting and guarantee royalty token distribution to ancestors.
+Эти политики требуют одобрения сообществом и гарантируют распределение токенов роялти среди предков.
 
-1. [Liquid Absolute Percentage (LAP)](doc:liquid-absolute-percentage)
-2. [Liquid Relative Percentage (LRP)](doc:liquid-relative-percentage)
+1. [Ликвидный Абсолютный Процент (LAP)](doc:liquid-absolute-percentage)
+2. [Ликвидный Относительный Процент(LRP)](doc:liquid-relative-percentage)
 
-### External Royalty Policies
+### Внешние политики роялти
 
-These policies can be registered in a permission-less way and stipulate their own royalty and revenue distribution rules.
+Эти политики могут быть зарегистрированы без разрешений и включать собственные правила распределения доходов и роялти.
 
-* [External Royalty Policies](doc:external-royalty-policies)
+* [Внешняя Политика Роялти](doc:external-royalty-policies)
 
 <br />
 
-#### Royalty Token % vs Royalty Stack %
+#### Роялти Токен % vs Роялти Стек %
 
-When creating a derivative, the creator will want to answer the question: "How much percentage of my IP earnings will I keep and how much will go to ancestor IPs?
+При создании производного актива создателю необходимо ответить на вопрос: «Какой процент дохода от моей IP я сохраню для себя, а сколько достанется родительским IP?»
 
-To answer this question two concepts are important:
+Для этого важны два понятия:
 
-1. Royalty Token - Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of the capital that enters each IP Royalty Vault. The holders of these Royalty Tokens can claim the Revenue Tokens that are in the associated IP Royalty Vault.
-2. Royalty Stack - is the percentage of IP revenue that has to be paid to ancestors via Whitelisted/Native royalty policies. External royalty policies do not use the royalty stack percentgae - only Whitelisted/Native royaltys policies do.
+1. Токены Роялти — Каждый IP-актив имеет 100,000,000 Токенов Роялти, где каждый токен представляет 0.000001% капитала, поступающего в Хранилище Роялти IP. Владельцы этих токенов могут требовать доход, находящийся в связанном Хранилище Роялти IP.
+2. Стек Роялти — это процент дохода IP, который необходимо выплатить предкам через встроенные политики роялти. Внешние Политики Роялти не используют процент Стека Роялти, только встроенные.
 
-Let's imagine the scenario below:
+Представим следующий сценарий:
 
-* IP1 is a root IP Asset.
-* IP2 is a derivative of IP1.
-* User A has 100% of Royalty Tokens of IP1
-* User B has 20% of Royalty Tokens of IP2
-* User C has 80% of Royalty Tokens of IP2
-* IP2 Royalty Stack is 10% - meaning that all its ancestor IPs via Native/Whitelisted policies require IP2 to pay 10% of its revenue in order to create the derivative. In this case, there is only 1 ancestor which is IP1. IP1 demands 10% of IP2's future revenue in order to create a derivative.
+* IP1 — корневой IP-актив.
+* IP2 — производный актив IP1.
+* Пользователь A владеет 100% Токенов Роялти IP1.
+* Пользователь B владеет 20% Токенов Роялти IP2.
+* Пользователь C владеет 80% Токенов Роялти IP2.
+* Стек роялти IP2 составляет 10% — это значит, что все его предки через встроенные политики роялти требуют, чтобы IP2 выплачивал 10% своего дохода. В данном случае предок только один — это IP1. IP1 требует 10% будущего дохода IP2.
 
-In the image below there is an example of a one million USDC payment made to IP2. In the image we can see how much each Royalty Token holder of the entire derivative chain receives when the payment is made.
+На изображении ниже показан пример выплаты в размере 1 миллиона USDC на адрес IP2. На нем видно, как распределяется доход среди владельцев Токенов Роялти всей цепочки производных активов.
 
 ![](https://files.readme.io/a96e7d196a85f69dceb2b125ce70008115e15d0aa76b4e14b0dff2007525051b-image.png)
 
-* RT Holder A - From the one million USDC payment gets 100k USDC. Royalty Stack percentage is paid first and RT Holder A has 100% of Royalty Tokens of IP1 so gets to keep the whole 100k USDC.
-* RT Holder B - From the one million USDC payment gets 180k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. B has 20% of Royalty Tokens of IP2 so it receives 900k USDC \* 20% = 180k.
-* RT Holder C - From the one million USDC payment gets 720k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. C has 80% of Royalty Tokens of IP2 so it receives 900k USDC \* 80% = 720k.
+* Владелец RT A — из одного миллиона USDC получает 100k USDC. Сначала выплачивается процент Стека Роялти, и владелец RT A, имеющий 100% Токенов Роялти IP1, получает всю сумму 100k USDC.
+* Владелец RT B — из одного миллиона USDC получает 180k USDC. Владельцы IP2 в целом получают 900k USDC. Эти 900k USDC распределяются между владельцами Токенов Роялти IP2: B и C. B имеет 20% Токенов Роялти IP2, поэтому получает 900k USDC \* 20% = 180k.
+* Владелец RT C — из одного миллиона USDC получает 720k USDC. Владельцы IP2 в целом получают 900k USDC, которые распределяются между B и C. C имеет 80% Токенов Роялти IP2, поэтому получает 900k USDC * 80% = 720k.
 
 <br />
 
-## Derivative Chain Configurations
+## Конфигурации цепочки производных активов
 
 ![](https://files.readme.io/79bd27f-image.png)
 
-The derivative chain can assume multiple configurations.
+Цепочка производных активов может принимать различные конфигурации.
 
-Each IP Asset is restricted to a total royalty % of 100%. It will revert when minting a license that would make the IPA reserve more than 100% of its royalty tokens for ancestors, since this would make no sense.
+Каждый IP-актив ограничен максимальным процентом роялти в 100%. При попытке создать лицензию, которая зарезервирует более 100% токенов роялти для предков, транзакция будет отклонена, так как это не имеет смысла.
