@@ -1,4 +1,4 @@
 ---
-title: Cosmos Origin/Staking
+title: Staking
 hidden: false
 ---
