@@ -1,4 +1,4 @@
 ---
-title: Cosmos Origin/Auth
+title: Auth
 hidden: false
 ---
