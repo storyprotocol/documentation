@@ -1,4 +1,4 @@
 ---
-title: Cosmos Origin/Distribution
+title: Distribution
 hidden: false
 ---
