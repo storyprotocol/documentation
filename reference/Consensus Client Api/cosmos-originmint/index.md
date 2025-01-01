@@ -1,4 +1,4 @@
 ---
-title: Cosmos Origin/Mint
+title: Mint
 hidden: false
 ---
