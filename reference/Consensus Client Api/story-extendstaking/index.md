@@ -1,4 +1,4 @@
 ---
-title: Story Extend/Staking
+title: Staking
 hidden: false
 ---
