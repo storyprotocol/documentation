@@ -1,67 +1,69 @@
 ---
-title: PIL Flavors (examples)
-excerpt: ''
+title: Варианты PIL (примеры)
+excerpt: ""
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
-The [💊 Programmable IP License (PIL)](doc:programmable-ip-license) is very configurable, but we support popular pre-configured License Terms (also known as "flavors") for ease of use. We expect these to be the most popular options:
 
-## Flavor #1: Non-Commercial Social Remixing
+[💊 Программируемая Лицензия IP (PIL)](doc:programmable-ip-license) хорошо настраивается, но для удобства использования мы поддерживаем популярные предварительно настроенные лицензионные условия (также известные как «варианты»). Мы ожидаем, что эти варианты будут наиболее востребованы:
 
-> 📘 Default Terms
+## Вариант №1: Некоммерческий социальный ремикс
+
+> 📘 Условия по умолчанию
 >
-> This flavor is already registered as`licenseTermsId = 1` on Story. **In addition, every single IP Asset has these terms attached by default.**
+> Этот вариант уже зарегистрирован как `licenseTermsId = 1` в Story. Кроме того, все объекты IP имеют эти условия по умолчанию.
 
-Let the world build on and play with your creation. This license allows for endless free remixing while tracking all uses of your work while giving you full credit. Similar to: TikTok plus attribution.
+Позвольте миру создавать и играть с вашей работой. Эта лицензия позволяет бесконечно свободно создавать ремиксы, отслеживая использование вашей работы и предоставляя вам полный кредит за оригинал. Похоже на TikTok с добавлением атрибуции.
 
-### What others can do?
+### Что могут делать другие?
 
 <Table align={["left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
-        Others can
+        Могут
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Others cannot
+        Не могут
       </th>
     </tr>
+
   </thead>
 
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Remix this work
+        ✅ Делать ремиксы на эту работу
         (`derivativesAllowed == true`)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Commercialize the original and derivative works
+        ❌ Использовать оригинал и производные работы в коммерческих целях
         (`commercialUse == false`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Distribute their remix anywhere
+        ✅ Распространять ремиксы где угодно
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the remix as original work
+        ❌ Присваивать авторство за ремиксы как за оригинал
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Credit you appropriately
+        ✅ Указывать вас как автора оригинальной работы
         (`derivativesAttribution == true`)
       </td>
 
@@ -69,12 +71,13 @@ Let the world build on and play with your creation. This license allows for endl
 
       </td>
     </tr>
+
   </tbody>
 </Table>
 
-###  PIL Term Values
+###  Значения параметров PIL
 
-* **On-chain**:
+- **На блокчейне**:
 
 ```sol Solidity
 PILTerms({
@@ -98,56 +101,57 @@ PILTerms({
 });
 ```
 
-* **Off-chain:**
+- **Вне блокчейна:**
 
-| Parameter                         | Options / Tags                                                              |
-| --------------------------------- | --------------------------------------------------------------------------- |
-| Territory                         | No restrictions                                                             |
-| Channels of Distribution          | No Restriction                                                              |
-| Attribution                       | True                                                                        |
-| Content Standards                 | No Restriction                                                              |
-| Sublicensable                     | False                                                                       |
-| AI Learning Models                | True                                                                        |
-| Restriction on Cross-Platform Use | False                                                                       |
-| Governing Law                     | California                                                                  |
-| Alternative Dispute Resolution    | Tag: Alternative-Dispute-Resolution Ledger-Authoritative-Dispute-Resolution |
-| Additional License Parameters     | None                                                                        |
+| Параметр                                          | Опции/Метки                                                                   |
+| ------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Территория                                        | Без ограничений                                                               |
+| Каналы распостранения                             | Без ограничений                                                               |
+| Атрибуция                                         | Обязательно                                                                   |
+| Стандарты контента                                | Без ограничений                                                               |
+| Возможность сублицензирования                     | Нет                                                                           |
+| Обучение ИИ                                       | Разрешено                                                                     |
+| Ограничения по использованию на разных платформах | Нет                                                                           |
+| Применимое право                                  | Калифорния                                                                    |
+| Альтернативное разрешение споров                  | Метка: Alternative-Dispute-Resolution Ledger-Authoritative-Dispute-Resolution |
+| Дополнительные параметры лицензии                 | Отсутствуют                                                                   |
 
-## Flavor #2: Commercial Use
+## Вариант №2: Коммерческое использование
 
-Retain control over reuse of your work, while allowing anyone to appropriately use the work in exchange for the economic terms you set. This is similar to Shutterstock with creator-set rules.
+Сохраняйте контроль над использованием вашей работы, позволяя другим использовать её на условиях, которые вы устанавливаете. Похоже на Shutterstock с правилами, установленными создателем.
 
-### What others can do?
+### Что могут делать другие?
 
 <Table align={["left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
-        Others can
+        Могут
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Others cannot
+        Не могут
       </th>
     </tr>
+
   </thead>
 
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Purchase the right to use your creation
-        (`defaultMintingFee` is set)
+        ✅ Покупать право использовать вашу работу
+        (`defaultMintingFee` задана)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the original work
+        ❌ Присваивать авторство за оригинальную работу
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Commercialize the original and derivative works
+        ✅ Использовать оригинал и производные работы в коммерческих целях
         (`commercialUse == true`)
       </td>
 
@@ -158,19 +162,20 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Distribute their remix anywhere
+        ✅ Распространять ремиксы где угодно
       </td>
 
       <td style={{ textAlign: "left" }}>
 
       </td>
     </tr>
+
   </tbody>
 </Table>
 
-###  PIL Term Values
+### Значения параметров PIL
 
-* **On-chain**:
+- **На блокчейне**:
 
 ```sol Solidity
 PILTerms({
@@ -194,79 +199,80 @@ PILTerms({
 })
 ```
 
-* **Off-chain**
+- **Вне блокчейна**
 
-| Parameter                         | Options / Tags                                                              |
-| --------------------------------- | --------------------------------------------------------------------------- |
-| Territory                         | No restrictions                                                             |
-| Channels of Distribution          | No Restriction                                                              |
-| Attribution                       | True                                                                        |
-| Content Standards                 | No Restriction                                                              |
-| Sublicensable                     | False                                                                       |
-| AI Learning Models                | True                                                                        |
-| Restriction on Cross-Platform Use | False                                                                       |
-| Governing Law                     | California                                                                  |
-| Alternative Dispute Resolution    | Tag: Alternative-Dispute-Resolution Ledger-Authoritative-Dispute-Resolution |
-| Additional License Parameters     | None                                                                        |
+| Параметр                                          | Опции/Метки                                                                   |
+| ------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Территория                                        | Без ограничений                                                               |
+| Каналы распостранения                             | Без ограничений                                                               |
+| Атрибуция                                         | Обязательно                                                                   |
+| Стандарты контента                                | Без ограничений                                                               |
+| Возможность сублицензирования                     | Нет                                                                           |
+| Обучение ИИ                                       | Разрешено                                                                     |
+| Ограничения по использованию на разных платформах | Нет                                                                           |
+| Применимое право                                  | Калифорния                                                                    |
+| Альтернативное разрешение споров                  | Метка: Alternative-Dispute-Resolution Ledger-Authoritative-Dispute-Resolution |
+| Дополнительные параметры лицензии                 | Отсутствуют                                                                   |
 
-## Flavor #3: Commercial Remix
+## Вариант №3: Коммерческий ремикс
 
-Let the world build on and play with your creation... and earn money together from it! This license allows for endless free remixing while tracking all uses of your work while giving you full credit, with each derivative paying a percentage of revenue to its "parent" IP.
+Позвольте миру использовать и развивать вашу работу... и зарабатывать на этом деньги вместе с вами! Эта лицензия разрешает бесконечный бесплатный ремиксинг с отслеживанием всех случаев использования вашей работы и предоставлением вам полного признания, при этом каждая производная работа платит процент от выручки своей "родительской" IP.
 
-### What others can do?
+### Что могут делать другие?
 
 <Table align={["left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
-        Others can
+        Могут
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Others cannot
+        Не могут
       </th>
     </tr>
+
   </thead>
 
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Remix this work
+        ✅ Создавать ремиксы на эту работу  
         (`derivativesAllowed == true`)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the remix as original work
+        ❌ Присваивать себе авторство ремикса как оригинальной работы  
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Distribute their remix anywhere
+        ✅ Распространять свои ремиксы где угодно
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the original work
+        ❌ Присваивать себе авторство оригинальной работы  
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Credit you appropriately
+        ✅ Указывать автора оригинала  
         (`derivativesAttribution == true`)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim all the revenue from commercial use of the original work or derivative works
+        ❌  Претендовать на весь доход от коммерческого использования оригинальной или производной работы
         (`commercialRevShare` is set)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Commercialize the original and derivative works
+        ✅ Коммерчески использовать оригинальные и производные работы  
         (`commercialUse == true`)
       </td>
 
@@ -274,12 +280,13 @@ Let the world build on and play with your creation... and earn money together fr
 
       </td>
     </tr>
+
   </tbody>
 </Table>
 
-###  PIL Term Values
+###  Значения условий PIL
 
-* **On-chain**:
+- **На блокчейне**:
 
 ```sol Solidity
 PILTerms({
@@ -303,43 +310,44 @@ PILTerms({
 });
 ```
 
-* **Off-chain**
+- **Вне блокчейна**
 
-| Parameter                         | Options / Tags                                                              |
-| --------------------------------- | --------------------------------------------------------------------------- |
-| Territory                         | No restrictions                                                             |
-| Channels of Distribution          | No Restriction                                                              |
-| Attribution                       | True                                                                        |
-| Content Standards                 | No Restriction                                                              |
-| Sublicensable                     | False                                                                       |
-| AI Learning Models                | True                                                                        |
-| Restriction on Cross-Platform Use | False                                                                       |
-| Governing Law                     | California                                                                  |
-| Alternative Dispute Resolution    | Tag: Alternative-Dispute-Resolution Ledger-Authoritative-Dispute-Resolution |
-| Additional License Parameters     | None                                                                        |
 
-# Examples
+| Параметр                                          | Опции/Метки                                                                   |
+| ------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Территория                                        | Без ограничений                                                               |
+| Каналы распостранения                             | Без ограничений                                                               |
+| Атрибуция                                         | Обязательно                                                                   |
+| Стандарты контента                                | Без ограничений                                                               |
+| Возможность сублицензирования                     | Нет                                                                           |
+| Обучение ИИ                                       | Разрешено                                                                     |
+| Ограничения по использованию на разных платформах | Нет                                                                           |
+| Применимое право                                  | Калифорния                                                                    |
+| Альтернативное разрешение споров                  | Метка: Alternative-Dispute-Resolution Ledger-Authoritative-Dispute-Resolution |
+| Дополнительные параметры лицензии                 | Отсутствуют                                                                   |
 
-Here are some common examples of royalty flow. *More coming soon!*
+# Примеры
 
-## Example 1
+Ниже приведены примеры потока роялти. Скоро появятся новые примеры!
+
+## Пример 1
 
 <Image align="center" src="https://files.readme.io/574c9f3-Screenshot_2024-08-16_at_9.54.00_PM.png" />
 
-### Explanation
+### Объяснение
 
-Someone registers their Azuki on Story. By default, that IP Asset has Non-Commercial Social Remixing Terms, which specify that anyone can create derivatives of that work but cannot commercialize them. So, someone else creates & registers a remix of that work (IPA2) which inherits those same terms. Someone else then does the same to IPA2, creating & registering IPA3.
+Кто-то регистрирует своего персонажа Azuki на платформе Story. По умолчанию этот IP-актив (IPA1) имеет условия "Некоммерческий социальный ремикс", которые разрешают любому создавать производные работы, но запрещают их коммерческое использование. Затем кто-то создает и регистрирует ремикс на этот актив (IPA2), унаследовав те же условия. Еще один человек создает ремикс на IPA2, регистрируя IPA3.
 
-The owner of IPA1 then decides that others can commercialize the work, but they cannot create derivatives to do so, they must pay a 10 USDC minting fee, and they must share 10% of all revenue earned. So, someone wants to commercialize IPA1 by putting it on a t-shirt. They pay the 10 USDC minting fee to get a License Token, which represents the license to commercialize IPA1. They then put the image on a t-shirt and sell it. 10% of revenue earned by that t-shirt must be sent on-chain to IPA1.
+Владелец IPA1 затем решает разрешить коммерческое использование своей работы, но без создания производных работ. Для этого требуется уплата комиссии за выпуск лицензии в размере 10 USDC, а также передача 10% от всего полученного дохода. Например, кто-то хочет использовать IPA1 на футболке. Он платит 10 USDC за выпуск токена лицензии, представляющего право на коммерческое использование IPA1. Затем он размещает изображение на футболке и продает ее. 10% дохода от продаж должны быть отправлены владельцу IPA1 через блокчейн.
 
-## Example 2
+## Пример 2
 
 <Image align="center" src="https://files.readme.io/e3c7fbf-Screenshot_2024-08-16_at_9.54.16_PM.png" />
 
-### Explanation
+### Объяснение
 
-Someone registers their Azuki on Story. By default, that IP Asset has Non-Commercial Social Remixing Terms, which specify that anyone can create derivatives of that work but cannot commercialize them. So, someone else creates & registers a remix of that work (IPA2) which inherits those same terms. Someone else then does the same to IPA2, creating & registering IPA3.
+Кто-то регистрирует своего персонажа Azuki на платформе Story. По умолчанию этот IP-актив (IPA1) имеет условия "Некоммерческий социальный ремикс", которые разрешают любому создавать производные работы, но запрещают их коммерческое использование. Затем кто-то создает и регистрирует ремикс на этот актив (IPA2), унаследовав те же условия. Еще один человек создает ремикс на IPA2, регистрируя IPA3.
 
-The owner of IPA1 then decides that others can create derivatives of their work and commercialize them, but they must pay a 10 USDC minting fee and share 10% of all revenue earned. So, someone wants to commercialize IPA1 by putting it on a t-shirt. They pay the 10 USDC minting fee to get a License Token and burn it to create their own derivative, which changes the background color to red. They then put the remixed image on a t-shirt and sell it. 10% of revenue earned by that t-shirt must be sent on-chain to IPA1.
+Владелец IPA1 затем решает, что другие могут создавать производные работы и коммерчески их использовать. Однако они должны уплатить комиссию за выпуск лицензии в размере 10 USDC и отчислять 10% от полученного дохода. Например, кто-то хочет использовать IPA1 на футболке. Он платит 10 USDC за выпуск лицензии и "сжигает" этот токен, чтобы создать собственный ремикс, изменив, например, цвет фона на красный. Затем он размещает ремиксированное изображение на футболке и продает ее. 10% дохода от продаж футболки должны быть отправлены владельцу IPA1 через блокчейн.
 
-A third person wants to commercialize the remix by putting it in a TV advertisement, but they want to change the hair color to white. So, they pay a 10 USDC minting fee (of which, 1 USDC gets sent back to IPA1) to create their own derivative. They then put the remixed image in a TV ad. 10% of revenue earned by that t-shirt must be sent on-chain to IPA4, of which 10% will be distributed back to IPA1.
+Третий человек хочет коммерчески использовать ремикс, разместив его в телевизионной рекламе, но при этом хочет изменить цвет волос персонажа на белый. Для этого он платит 10 USDC за выпуск лицензии (1 USDC из которых отправляется владельцу IPA1), чтобы создать свой ремикс. Затем он размещает ремиксированное изображение в телевизионной рекламе. 10% дохода от рекламы должны быть отправлены владельцу IPA2 через блокчейн, из которых 10% перераспределяются обратно владельцу IPA1.

@@ -1,6 +1,6 @@
 ---
-title: 💊 Programmable IP License (PIL)
-excerpt: Story Programmable IP License
+title: 💊 Программируемая Лицензия IP (PIL)
+excerpt: Программируемая Лицензия IP Story
 deprecated: false
 hidden: false
 metadata:
@@ -10,56 +10,71 @@ metadata:
 next:
   description: ''
 ---
-> ⏩ Skip the Read - 1 Minute Summary
+> ⏩ Читать не обязательно - 1-минутное саммари
 >
-> The Programmable IP License, also called the PIL, is a legal off-chain document based on US copyright law. It is the first and currently only example of a [License Template](doc:license-template), created by the Story team. A License Template is simply a legal document containing a set of pre-defined terms that people must set, like:
+> Программируемая Лицензия IP (PIL) — это юридический документ вне блокчейна, основанный на законе США об авторском праве. Это первый и пока единственный пример [Шаблона Лицензии](doc:license-template), созданный командой Story. Шаблон Лицензии — это просто юридический документ с набором заранее определённых параметров, которые необходимо установить, например:
 >
-> * `Commercial Use` - can someone use my work commercially?
-> * `Minting Fee`  - the cost of minting a license to use my work in your own works.
-> * `Derivatives Attribution` - does someone have to credit me in their derivative works?
+> * `Коммерческое использование` — может ли кто-то использовать мою работу в коммерческих целях?
+> * `Плата за выпуск` — стоимость выпуска лицензии на использование моей работы в своих произведениях.
+> * `Указание авторства производных` — должен ли кто-то указывать моё авторство в производных работах?
 >
-> In code, these terms form a struct that represent their real, legal off-chain counterparts. 
+> В коде эти параметры формируют структуру данных, которая соответствует их юридическим аналогам вне блокчейна.
 >
-> To see all of the terms defined by the PIL and their associated explanations in code, go [here](doc:pil-terms). To see example configurations ("flavors") of the PIL, go [here](doc:pil-flavors).
+> Посмотреть все условия PIL и их связанные части в коде [тут](doc:pil-terms). Примеры конфигураций ("вариантов" анг. flavors) PIL [тут](doc:pil-flavors).
 
-> 📘 PIL Legal Text
+> 📘 Текст PIL
 >
-> Check out the actual PIL legal text [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). It is very human-readable for a legal text!
+> Ознакомьтесь с полным текстом PIL [здесь](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). Он написан простым и понятным языком как для юридического документа!
 
-## The Background Story
-
-We designed Story Protocol's [Licensing Module](doc:licensing-module) to power the expansion of emerging forms of creativity, such as authorized remixes and co-creation. Our protocol can support any media format or project, ranging from user-generated social videos & images to Hollywood-grade collaborative storytelling.
-
-Intellectual property owners can permit other parties to use, or build on, their work by granting rights in a license, which can be for profit or for the common good. In the media world, these licenses are generally highly tailored contracts, which vary by media formats and the unique needs of licensors - often requiring unique expertise (via lawyers) and significant resources to create.
+## История создания
 
 We searched for a form of a "universal license" that could support these emerging activities at scale. Hat tip to [Creative Commons](https://creativecommons.org/mission/), [Arweave](https://mirror.xyz/0x64eA438bd2784F2C52a9095Ec0F6158f847182d9/AjNBmiD4A4Sw-ouV9YtCO6RCq0uXXcGwVJMB5cdfbhE), A16Z / [Can’t Be Evil,](https://a16zcrypto.com/posts/article/introducing-nft-licenses/) The [Token-Bound NFT License](https://james.grimmelmann.net/files/articles/token-bound-nft-license.pdf) and music rights organizations, among others. But we simply couldn't find one framework or agreement robust enough - so with our expert legal counsel (with special thanks to Ghaith Mahmood and Heather Liu) we created one ourselves! **Introducing the Story Protocol Programmable IP License (PIL:pill:), the first example of a [License Template](doc:license-template) on the protocol.**
 
-## PIL Properties
+[Модуль Лицензирования](doc:licensing-module) Story Protocol (Licensing Module) был создан для поддержки новых форм творчества, таких как разрешённые ремиксы и совместное создание. Протокол поддерживает любые форматы медиа и проекты — от пользовательских видео и изображений до создания контента уровня Голливуда.
 
-The protocol and the license work closely together. The parameters outlined in our license are enforced on-chain via Story Protocol, bridging code and law. By doing so, we unlock the benefit of transparent, autonomous, and permission-less smart contracts for the world of intellectual property. 
+Владельцы интеллектуальной собственности могут разрешать третьим сторонам использовать или развивать свои работы, предоставляя права по лицензии, будь то в коммерческих целях или на благо общества. В медиаиндустрии такие лицензии, как правило, представляют собой индивидуализированные контракты, которые зависят от формата медиа и нужд лицензиаров. Для их создания часто требуется юридическая экспертиза и значительные ресурсы.
 
-Some of our unique facets include: 
+Мы искали «универсальную лицензию», которая могла бы поддерживать эти новые виды творчества. Вдохновение черпалось у [Creative Commons](https://creativecommons.org/mission/), [Arweave](https://mirror.xyz/0x64eA438bd2784F2C52a9095Ec0F6158f847182d9/AjNBmiD4A4Sw-ouV9YtCO6RCq0uXXcGwVJMB5cdfbhE), A16Z / [Can’t Be Evil](https://a16zcrypto.com/posts/article/introducing-nft-licenses/), [Лицензии для NFT](https://james.grimmelmann.net/files/articles/token-bound-nft-license.pdf), и музыкальных правообладателей.
 
-* **Universal**: To use one of the existing open source licenses, the parties must agree on using one particular version. For Creative Commons, the agreement for commercial use is distinct from the non-commercial contract. Separate versions permitting derivatives, or relicensing, are needed to address different requirements. This results in many different licenses to represent each selection of multiple options. Why can’t there be a single flexible agreement to rule them all?
-* **Permission-less**: A goal of Web3 is permission-less licensing. Creating derivatives without requesting permission (or forgiveness!) is the default in our agreement. For certain IPAs, particularly those from established brands or media properties, approvals might be required before derivatives are created. That’s OK - there’s a tag for that.
-* **Commercial Use**: To effectively support commercial use, we need more than a simple binary selection between commercial and non-commercial, A media company or creator might want to limit the parties that can commercialize a work (perhaps certain NFT holders), have a clear and transparent definition of commercial use, or may have constraints on activity in certain media formats (perhaps from pre-existing license arrangements).
-* **Progressive Complexity**: Under each parameter, the IPA can select tags appropriate to its project. Absent a selection, we have provided defaults. For example, if you agree that your license is limited to a particular country you might select "United States." To keep it simple, our default is global. This allows an experienced media company to apply the same business logic in current usage, while the hobbyist could apply a reasonable and industry-standard default.
-* **Adaptable**: Not everyone may want to use our form. We can separately publish our parameters as a license library, which would allow others to easily map their existing agreements to our smart contracts.
-* **Content Standards**: A healthy ratings system is crucial for mass market media. The original licensor can select from certain standards that content creators must stick to. 
+Однако нам не удалось найти подходящий единый и достаточно универсальный шаблон. Вместе с опытными юристами (отдельное спасибо Гаиту Махмуду (Ghaith Mahmood) и Хизер Лю (Heather Liu)) мы создали собственный! **Представляем Программируемую Лицензию на интеллектуальную собственность (PIL 💊), первый пример [Шаблона Лицензии](doc:license-template) в рамках нашего протокола.**
 
-In future versions, we might consider adding:
+## Свойства PIL
 
-* Rules for when a remix becomes a new work
-* Co-creation / co-ownership terms
-* Features for music licenses
-* Sub-licensing capabilities
-* Fractionalization permissions and rights
-* New royalty pool structures
+Протокол и лицензия тесно связаны друг с другом. Параметры, указанные в нашей лицензии, реализуются в блокчейне через Story Protocol, соединяя код и юридическую базу. Это обеспечивает прозрачность, автономность и отсутствие необходимости в разрешении для интеллектуальной собственности.
 
-## Feedback
+Уникальные особенности PIL:
 
-We are excited to collect feedback and collaborate with IP owners to unlock the potential of their works - please let us know what you think! We can be reached at `legal@storyprotocol.xyz`.
+* **Универсальность:**
+Чтобы использовать открытые лицензии, стороны должны согласовать конкретную версию. Например, для Creative Commons соглашение о коммерческом использовании отличается от соглашения о некоммерческом использовании. PIL объединяет всё в единый, гибкий договор.
 
-> 📘 PIL Legal Text
+* **Без разрешений (анг. permission-less):**
+В духе Web3 наша лицензия подразумевает создание производных работ без необходимости запрашивать разрешение. Для некоторых известных брендов всё же можно включить параметр «одобрение перед созданием производных».
+
+* **Коммерческое использование:**
+Мы предлагаем не просто выбор между коммерческим и некоммерческим использованием. Создатели могут ограничивать права на коммерческое использование только определёнными сторонами, например, держателями NFT.
+
+* **Прогрессивная сложность:**
+Каждый параметр предоставляет дополнительные теги для настройки, если это необходимо. Например, если лицензия ограничена определённой страной, можно выбрать «США», по умолчанию применяется глобальный охват.
+
+* **Адаптивность:**
+Параметры можно использовать для настройки существующих соглашений и их интеграции с нашими смарт-контрактами.
+
+* **Контент-стандарты:**
+Для массового медиа важна система рейтингов. Оригинальный лицензиар может задавать определённые ограничения для создаваемого контента.
+
+Грядущие версии могут включать: 
+
+* Правила, определяющие, когда ремикс становится новым произведением
+* Условия совместного творчества/владения
+* Особенности для музыкальных лицензий
+* Возможности суб-лицензирования
+* Права на дробление лицензий
+* Новые структуры распределения роялти
+
+## Обратная связь
+
+Мы будем рады любым отзывам и сотрудничеству с владельцами интеллектуальной собственности! Напишите нам на почту: `legal@storyprotocol.xyz`.
+
+> 📘 Текст PIL
 >
-> Check out the actual PIL legal text [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). It is very human readable for a legal text!
+> Полный текст PIL можно найти [здесь] (https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). Он написан простым и понятным языком как для юридического документа!
