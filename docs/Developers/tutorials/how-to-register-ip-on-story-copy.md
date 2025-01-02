@@ -1,8 +1,8 @@
 ---
-title: How to Register IP on Story (COPY)
-excerpt: Learn how to add IP & NFT metadata to an IP Asset using the Typescript SDK.
+title: How to Dispute an IP on Story
+excerpt: Learn how to dispute an IP on Story.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   robots: index
 ---
@@ -11,25 +11,17 @@ metadata:
 
 # Using the SDK
 
-<Cards columns={3}>
-  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Follow the completed code all the way through step 5a.
-  </Card>
-
-  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    Follow the completed code all the way through step 5b.
-  </Card>
-
-  <Card title="Video Walkthrough" href="https://www.youtube.com/watch?v=r3iIChDhp1g" icon="fa-video" iconColor="#FF0000" target="_blank">
-    Check out a video walkthrough of this tutorial!
   </Card>
 </Cards>
 
-In this tutorial, you will learn how to register your IP on Story using the TypeScript SDK.
+In this tutorial, you will learn how to dispute an IP on Story using the TypeScript SDK.
 
 ## The Explanation
 
-Let's say you have some off-chain IP (ex. a book, a character, a drawing, etc). In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset). The below tutorial will walk you through 2 different ways to do that (step 5a and step 5b).
+> 🚧 TODO
 
 ## 0. Before you Start
 
