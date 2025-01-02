@@ -14,19 +14,19 @@ next:
 >
 > Краткая 2-минутная выжимка про IP-аккаунты тут [тут](https://twitter.com/jacobmtucker/status/1787603252198134234).
 
-When an [🧩 IP Asset](doc:ip-asset) is registered, it is given an associated **IP Account**. An IP Account is a modified ERC-6551 (Token Bound Account) implementation. It is a separate contract bound to the IP Asset for controlling permissions around interactions with Story's modules or storing the IP's associated data. Upon registration, an IP Asset is assigned a unique ID. This ID is the address of the IP Account that is bound to the IP Asset.
+Когда 🧩 [IP-актив](doc:ip-asset) регистрируется, ему назначается связанный **IP-аккаунт**. IP-аккаунт представляет собой модифицированную реализацию ERC-6551 (Token Bound Account). Это отдельный контракт, привязанный к IP-активу, который управляет разрешениями для взаимодействия с модулями Story или хранения данных, связанных с IP. При регистрации IP-активу присваивается уникальный идентификатор. Этот идентификатор является адресом IP-аккаунта, привязанного к активу.
 
 ![](https://files.readme.io/aab60607fd795080b061d93bfdfaf9a800930db861be332d205a48d637e234f1-image.png)
 
-An IP Account mainly does two things:
+IP-аккаунт выполняет две основные функции:
 
-1. Stores comprehensive IP-related data, including metadata and ownership details of associated assets such as the License Tokens or Royalty Tokens that are created from the IP.
-2. Facilitates the utilization of this data by various modules. These modules interact with and contribute to the IP Account, creating and storing data. For example, licensing, revenue/royalty sharing, remixing, disputing an IP, and other modules are made possible due to the IP Account's programmability.
+1. Хранение данных, связанных с IP. Включает метаданные и информацию о владении связанными активами, такими как Лицензионные Токены или Роялти Токены, созданные на основе IP.
+2. Обеспечение использования этих данных различными модулями. Эти модули взаимодействуют с IP-аккаунтом и вносят в него данные. Например, лицензирование, распределение доходов/роялти, ремиксы, разрешение споров и другие действия становятся возможными благодаря программируемости IP-аккаунта.
 
-> 📘 Transferring the Underlying NFT
+> 📘 Передача базового NFT
 >
-> If the underlying NFT is transferred, the new owner is also automatically the owner of the associated IP Asset & IP Account.
+> Если базовый NFT передается другому владельцу, то новый владелец автоматически становится владельцем связанного IP-актива и IP-аккаунта.
 
-## `execute` and `executeWithSig`
+## `execute` и `executeWithSig`
 
-A key feature of IP Account is the generic `execute()` function, which allows calling arbitrary modules within Story via encoded bytes data (thus extensible for future modules). Additionally, there is a `executeWithSig()` function that enables users to sign transactions and have others execute on their behalf for seamless UX.
+Ключевая функция IP-аккаунта — это универсальная функция `execute()`, которая позволяет вызывать любые модули внутри Story с использованием закодированных данных в формате bytes (что делает ее расширяемой для будущих модулей). Дополнительно существует функция `executeWithSig()`, которая позволяет пользователям подписывать транзакции и поручать их выполнение другим, обеспечивая удобство пользовательского опыта (UX).

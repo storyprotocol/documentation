@@ -1,5 +1,5 @@
 ---
-title: 🔒 Access Controller
+title: 🔒 Контроллер Доступа
 excerpt: ''
 deprecated: false
 hidden: false
@@ -12,11 +12,11 @@ next:
 ---
 <Image align="center" src="https://files.readme.io/ff607ff-Screenshot_2024-01-23_at_14.30.19.png" />
 
-Access Controller manages all permission-related states and permission checks in Story Protocol. In particular, it maintains the *Permission Table* and *Permission Engine* to process and store permissions. IPAccount permissions are set by the IPAccount owner.
+Контроллер доступа управляет всеми состояниями и проверками разрешений в Story Protocol. В частности, он поддерживает *таблицу разрешений* и *движок разрешений* для обработки и хранения прав. Разрешения IPAccount устанавливаются владельцем IPAccount.
 
-## Permission Table
+## Таблица разрешений
 
-### Permission Record
+### Журнал Разрешений
 
 | IPAccount  | Signer (caller) | To (only module) | Function Sig | Permission |
 | ---------- | --------------- | ---------------- | ------------ | ---------- |
@@ -24,15 +24,13 @@ Access Controller manages all permission-related states and permission checks in
 | 0x123..111 | 0x789..222      | 0x790..333       | 0xBBBBBBBB   | Deny       |
 | 0x123..111 | 0x789..222      | 0x790..333       | 0xCCCCCC     | Abstain    |
 
-Each record defines a permission in the form of the **Signer** (caller) calling the **Func** of the **To** (module) on behalf of the **IPAccount**.
+Каждая запись определяет разрешение (**Permission**) в виде вызвавшего адреса (**Signer**), который вызывает функцию (**Func**) модуля (**To**) от имени IPAccount.
 
-The permission field can be set as "Allow," "Deny," or "Abstain." Abstain indicates that the permission decision is determined by the upper-level permission.
+Поле разрешения может быть установлено как: "Allow," "Deny," или "Abstain." Abstain - воздержаться (решение о разрешении принимается на уровне выше).
 
-### Wildcard
+### Поддержка универсальных шаблонов (Wildcard)
 
-Wildcard is also supported when defining permissions; it defines a permission that applies to multiple modules and/or functions.
-
-With wildcards, users can easily define a whitelist or blacklist of permissions.
+Шаблоны разрешений (wildcards) позволяют определить права, применимые сразу к нескольким модулям и/или функциям. Это упрощает создание списков разрешений (whitelist) или запрещений (blacklist).
 
 <Table>
   <thead>
@@ -106,20 +104,22 @@ With wildcards, users can easily define a whitelist or blacklist of permissions.
   </tbody>
 </Table>
 
-The above example shows that the signer (0x789...) is unable to invoke any functions of the module (0x790...) on behalf of the IPAccount (0x123...).
+В примере (0x789..222) не может вызывать функции модуля (0x790..333) от имени IPAccount (0x123..111).
 
-In other words, the IPAccount has blacklisted the signer from calling any functions on the module 0x790...333
+Другими словами, IPAccount запретил адресу вызов функций в модуле 0x790...333
 
-* Supported wildcards:
 
-| Parameter                  | Wildcard   |
+* Поддерживаемые универсальные шаблоны:
+
+| Параметр                | Шаблон   |
 | -------------------------- | ---------- |
 | Func                       | bytes4(0)  |
 | Addresses (IPAccount / To) | address(0) |
 
-### Permission Prioritization
+### Приоритет разрешений
 
-Specific permissions override general permissions.
+Более конкретные разрешения имеют приоритет над общими.
+
 
 <Table>
   <thead>
@@ -215,28 +215,29 @@ Specific permissions override general permissions.
   </tbody>
 </Table>
 
-The above shows that the signer (0x789...) is not allowed to call any functions of the module (0x790...) on behalf of IPAccount (0x123...), except for the function 0xCCCCDDDD
+Пример показывает что (0x789..222) не может вызывать функции модуля (0x790..333), кроме функции 0xCCCCDDDD.
 
-Furthermore, the signer (0x789...) is permitted to call all other modules on behalf of IPAccount (0x123...).
+Однако, (0x789..222) может вызывать любые функции других модулей от имени IPAccount (0x123..111).
+
 
 <br />
 
-## Call Flows with Access Control
+## Потоки вызовов с контролем доступа
 
-There exist three types of call flows expected by the Access Controller.
+Существует три типа потоков вызовов, которые проверяются Контроллером доступа:
 
-1. An IPAccount calls a module directly.
-2. A module calls another module directly.
-3. A module calls a registry directly.
+1. IPAccount вызывает модуль напрямую.
+2. Модуль вызывает другой модуль.
+3. Модуль вызывает реестр.
 
-### IPAccount calling a Module directly
+### IPAccount вызывает модуль напрямую
 
-* IPAccount performs a permission check with the Access Controller.
-* The module only needs to check if the `msg.sender` is a valid IPAccount.
+* IPAccount проверяет разрешения через Контроллер Доступа.
+* Модуль проверяет только, является ли `msg.sender` валидным IPAccount.
 
 When calling a module from an IPAccount, the IPAccount performs an access control check with AccessController to determine if the current caller has permission to make the call. In the module, it only needs to check whether the transaction `msg.sender` is a valid IPAccount.
 
-`AccessControlled` provide a modifier `onlyIpAccount()` helps to perform the access control check.
+`AccessControlled` предоставляет метод `onlyIpAccount()` который помогает проверить доступ.
 
 ```solidity Solidity
 contract MockModule is IModule, AccessControlled {
@@ -248,13 +249,13 @@ contract MockModule is IModule, AccessControlled {
 
 <Image align="center" src="https://files.readme.io/6a835ae-Screenshot_2024-01-22_at_17.18.49.png" />
 
-## Module calling another Module
+## Модуль вызывает другой модуль
 
-* The callee module needs to perform the authorization check itself.
+* Модуль, который вызывает другой модуль, должен выполнить проверку доступа самостоятельно.
 
-When a module is called directly from another module, it is responsible for performing the access control check using AccessController. This check determines whether the current caller has permission to make the call to the module.
+Когда модуль вызывает другой модуль, он отвечает за проверку контроля доступа через Контроллер Доступа. Эта проверка определяет, имеет ли текущий вызывающий право вызывать функции другого модуля.
 
-`AccessControlled` provide a modifier `verifyPermission(address ipAccount)` helps to perform the access control check.
+`AccessControlled` предоставляет метод `verifyPermission(address ipAccount)` который помогает проверить доступ.
 
 ```coffeescript Solidity
 contract MockModule is IModule, AccessControlled {
@@ -262,19 +263,19 @@ contract MockModule is IModule, AccessControlled {
         if (!IAccessController(accessController).checkPermission(ipAccount, msg.sender, address(this), this.callFromAnotherModule.selector)) {
 		        revert Unauthorized();
         }
-			  // do something
+			  // сделать что то
     }
 }
 ```
 
 <Image align="center" src="https://files.readme.io/767f852-Screenshot_2024-01-22_at_17.19.07.png" />
 
-## Module calling Registry
+## Модуль вызывает реестр (Registry)
 
-* The registry performs the authorization check by calling AccessController.
-* The registry authorizes modules through set global permission
+* Реестр выполняет проверку авторизации через Контроллер Доступа.
+* Разрешения задаются глобально через администратора.
 
-When a registry is called by a module, it can perform the access control check using AccessController. This check determines whether the callee module has permission to call the registry.
+Когда модуль вызывает реестр, реестр выполняет проверку контроля доступа через Контроллер Доступа. Эта проверка подтверждает, что модуль имеет право вызывать функции реестра.
 
 ```solidity Solidity
 // called by StoryProtocl Admin
@@ -288,13 +289,13 @@ contract MockRegistry {
         if (!IAccessController(accessController).checkPermission(address(0), msg.sender, address(this), this.registerAction.selector)) {
 		        revert Unauthorized();
         }
-			  // do something
+			  // сделать что то
     }
 }
 ```
 
 <Image align="center" src="https://files.readme.io/3d24a42-Screenshot_2024-01-24_at_09.45.06.png" />
 
-> 📘 The IPAccount's permissions will be revoked upon transfer of ownership.
+> 📘 Разрешения IPAccount аннулируются при передаче права собственности.
 >
-> The permissions associated with the IPAccount are exclusively linked to its current owner. When the ownership of the IPAccount is transferred to a new individual, the existing permissions granted to the previous owner are automatically revoked. This ensures that only the current, legitimate owner has access to these permissions. If, in the future, the IPAccount ownership is transferred back to the original owner, the permissions that were initially revoked will be reinstated, restoring the original owner's access and control.
+> Права, связанные с IPAccount, принадлежат только текущему владельцу. При передаче IPAccount новому владельцу все ранее предоставленные разрешения автоматически аннулируются. Если право собственности возвращается прежнему владельцу, его первоначальные разрешения восстанавливаются.

@@ -1,5 +1,5 @@
 ---
-title: 👥 Grouping Module
+title: 👥 Модуль Группировки
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,60 +10,63 @@ metadata:
 next:
   description: ''
 ---
-The Grouping Module enables the creation and management of group IP Assets, supporting a royalty pool for the group.
+Модуль Группировки позволяет создавать и управлять групповыми IP-активами, поддерживая пул роялти для группы.
 
 ## `GroupingModule.sol`
 
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/grouping/GroupingModule.sol).
+> Ознакомьтесь с кодом смарт-контракта [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/grouping/GroupingModule.sol).
 
-`GroupingModule.sol` is the main entry point for the grouping workflows. It is **stateless** and responsible for:
+`GroupingModule.sol` это основная точка входа для всех операций с группами. Контракт не имеет состояния (stateless) и отвечает за:
 
-* Registering a new group
-* Adding an IPA to a group
-* Removing an IPA from a group
-* Checking whether a group contains a specific IPA
-* Get total number of IPAs of a group
+* Регистрацию новой группы
+* Добавление IP-актива в группу
+* Удаление IP-актива из группы
+* Проверку наличия определённого IP-актива в группе
+* Получение общего числа IP-активов в группе
 
-## Creating a Group IPA
+## Создание группового IP-актива
 
-Similar to the IP Asset registration process, in which you must have a minted NFT to register and then an IP Account is created, the same applies to Group IP Assets. You must have a minted ERC-721 NFT (that represents the ownership of the group) to register as a group, and then when you register, an IP Account for the group is deployed.
+Так же, как и для регистрации IP-актива (сначала должен быть выпущен NFT, а затем только создаётся IP-аккаунт), процесс для групповых IP-активов аналогичен. Необходимо сначала выпустить NFT стандарта ERC-721 (который представляет право собственности на группу), а затем зарегистрировать его как группу, после чего для группы создаётся IP-аккаунт.
 
-Anyone can create a new group.
+Создать новую группу может любой пользователь.
 
-### Group IP Asset Registry
+### Реестр групповых IP-активов 
 
-Similar to how when an IP Asset is created an IP Account is deployed & registered through the [IP Asset Registry](doc:ip-asset-registry), the Group's IP Account is deployed and registered through the [Group IP Asset Registry](doc:group-ip-asset-registry). This is responsible for managing the registration and tracking of Group IP Assets, including the group members and reward pools.
+Подобно тому, как при создании IP-актива развёртывается и регистрируется IP-аккаунт через [Реестр IP-активов](doc:ip-asset-registry), IP-аккаунт группы развёртывается и регистрируется через [Реестр Групповых IP-активов](doc:group-ip-asset-registry). Этот реестр отвечает за управление регистрацией и отслеживанием групповых IP-активов, включая участников группы и пул вознаграждений.
 
-## The Group's IP Account
+## IP-аккаунт группы
 
-The Group IP Account should function equivalently to a normal IP Account, allowing attachment of license terms, creation of derivatives, execution with modules, and other interactions. It also has the same common interface of IP Account. Hence, the Group IP Account can be applied to anywhere where IP Account can be applied.
+IP-аккаунт группы должен функционировать аналогично обычному IP-аккаунту, предоставляя возможность прикрепления лицензионных условий, создания производных активов, работы с модулями и других взаимодействий.
 
-Besides the common interfaces of IP Account, the Group IP Account has functions to manage the adding/removing of individual IPAs in the group.
+Он имеет тот же общий интерфейс, что и обычный IP-аккаунт. Таким образом, IP-аккаунт группы может применяться в тех же сценариях, где используется обычный IP-аккаунт.
 
-## Adding & Removing from a Group
+Кроме того, IP-аккаунт группы имеет функции для управления добавлением/удалением отдельных IP-активов в/из группы.
 
-Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
+## Добавление и удаление из группы
 
-### Conditions to Add to a Group
+Только владелец группы может добавлять или удалять IP-активы. При этом вам **не обязательно** владеть IP-активом, чтобы добавить его в свою группу.
 
-There are a few conditions an IP Asset must meet to be added into a group:
+### Условия добавления в группу
 
-1. The minting fee of that IP Asset must be set to 0
-2. It must have the same license terms of the group it is trying to join **or** no license terms at all. It can also have other license terms attached, as long as one of them is the same.
+Есть несколько условий, которым должен соответствовать IP-актив, чтобы быть добавленным в группу:
 
-### Groups Becoming Locked
+1. Комиссия за выпуск этого IP-актива должна быть равна 0.
+2. ктив должен иметь такие же лицензионные условия, как у группы, в которую он пытается войти, **или** вообще не иметь лицензионных условий. Он также может иметь дополнительные лицензионные условия, при условии, что одно из них совпадает с группой.
 
-There are a few cases in which a group becomes "locked", meaning you can't add/remove any more members:
+### Случаи, когда группы становятся заблокированными
 
-* once the group receives any type of payment
-* if a derivative is linked to the group (in other words, the group becomes a parent IP)
+Есть несколько ситуаций, при которых группа становится "заблокированной", то есть добавление/удаление участников становится невозможным:
 
-If any of these happen, you must create a new group if you wish to add/remove members.
+* Когда группа получает какой-либо платеж.
+* Если к группе привязан производный актив (т.е. группа становится "родительским" IP).
 
-> 📘 Example
+Если это произошло, для добавления/удаления участников необходимо создать новую группу.
+
+> 📘 Пример
 >
-> Lets say you have an AI bot that uses training data to continuously learn and produce better content. The training data is a Group IPA that is the root, and the AI bot is a derivative IPA of the training data. And any time the AI bot gets paid, the revenue flows back to the training data as revenue.
+> Представьте, что у вас есть ИИ-бот, который использует данные для обучения, чтобы улучшать своё содержание. Эти данные обучения – это групповой IP-актив, являющийся корневым, а сам ИИ-бот – это производный IP-актив от данных обучения.
+Каждый раз, когда ИИ-бот получает доход, средства возвращаются в данные обучения в виде роялти.
 >
-> Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.
+> Теперь вы хотите добавить больше данных обучения в группу. Однако группа уже заблокирована (поскольку к ней привязан производный актив). В таком случае вам нужно зарегистрировать новый групповой IP-актив в качестве корневого, а затем создать новый ИИ-бот как производный актив от нового корня.
