@@ -14,8 +14,6 @@ next:
 >
 > Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/LicenseRegistry.sol).
 
-The License Registry stores all license-related states within the protocol, including managing global state like registering new License Templates like the [Programmable IP License (PIL💊)](doc:programmable-ip-license), attaching licenses to individual [IP Assets](doc:ipasset), registering derivatives, and the like:
-
 Реестр Лицензий хранит все состояния, связанные с лицензиями в протоколе, включая управление глобальными состояниями, такими как регистрация новых шаблонов лицензий, например, [Программируемая Лицензия IP (PIL💊)](doc:programmable-ip-license), прикрепление лицензий к отдельным [IP-активам](doc:ipasset), регистрацию производных активов и тому подобное:
 
 ```sol LicenseRegistry.sol

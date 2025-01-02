@@ -15,8 +15,6 @@ next:
 >
 > [Готовые варианты условий PIL](https://docs.story.foundation/docs/pil-flavors-preset-policy).
 
-PIL is the first License Agreement for medial license developed by Story Protocol and inspired by [Token Bound License](https://james.grimmelmann.net/files/articles/token-bound-nft-license.pdf). If you haven't already, read the overview: [Programmable IP License (PIL💊)](doc:programmable-ip-license)
-
 PIL (Программируемая Лицензия IP) — это первая лицензия для медийных лицензий, разработанная Story Protocol и вдохновленная [Token Bound License](https://james.grimmelmann.net/files/articles/token-bound-nft-license.pdf). Если вы еще не знакомы, прочитайте обзор:[Программируемая Лицензия IP (PIL💊)](doc:programmable-ip-license).
 
 > 📘 Текст PIL
@@ -25,7 +23,6 @@ PIL (Программируемая Лицензия IP) — это первая
 
 # Условия на блокчейне
 
-Most PIL terms are on-chain. They are implemented in the `IPILicenseTemplate` contract as a `PILTerms` struct [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/IPILicenseTemplate.sol).
 Большинство условий PIL реализованы на блокчейне. Они включены в контракт `IPILicenseTemplate` как структура `PILTerms`. Ознакомьтесь с исходным кодом [здесь](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/IPILicenseTemplate.sol).
 
 ```sol IPILicenseTemplate.sol

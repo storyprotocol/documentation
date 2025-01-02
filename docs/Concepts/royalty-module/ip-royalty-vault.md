@@ -49,13 +49,12 @@ ERC-20 токен должен быть включен в белый списо�
 
 ## Как происходит распределение доходов
 
-This section will help explain how revenue flows from the time of payment to being claimed by the royalty token holder. For the purposes of explanation, we will use an example from the [Liquid Absolute Percentage (LAP)](doc:liquid-absolute-percentage), but it is the same for any royalty policy.
+
 Эта секция объясняет, как доход распределяется с момента оплаты до его получения владельцем Токенов Роялти. Рассмотрим пример, связанный с [Ликвидным Абсолютным Процентом (LAP)](doc:liquid-absolute-percentage), однако процесс идентичен для других Политик Роялти:
 
 Пример оплаты: IPA4 переводит IPA3 1 миллион USDC, вызывая функцию `payRoyaltyOnBehalf`.
 
-1. Revenue Tokens flow to the Royalty Module contract. This contract then splits up the tokens based on the **royalty stack** on the receiving IPA. In this case, IPA3 has a royalty stack of 15%, so 850k tokens flow to IP Royalty Vault 3, and 150k tokens flow to the LAP contract.
-Токены Дохода поступают в контракт Модуля Роялти, который распределяет их в соответствии со **стеком роялти** для получающего актива. Например, если стек роялти IPA3 составляет 15%, 850k USDC поступает в хранилище IPA3, а 150k – в контракт LAP.
+1. Токены Дохода поступают в контракт Модуля Роялти, который распределяет их в соответствии со **стеком роялти** для получающего актива. Например, если стек роялти IPA3 составляет 15%, 850k USDC поступает в хранилище IPA3, а 150k – в контракт LAP.
 
    ![](https://files.readme.io/be5dfdf9064320904ca27bc1f12a2475456064a19049b7d8fb2500d094746e1d-image.png)
 
@@ -68,10 +67,6 @@ This section will help explain how revenue flows from the time of payment to bei
    ![](https://files.readme.io/c3523d5de4a3129f07eeceff5ff577178c3b3161b35fa2b75ed6e8ef98191872-image.png)
 
 ### Внешние Политики Роялти
-
-Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For this to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. This can be particularly useful when used together with external royalty policies.
-
-Vaults can only claim from other vaults if those other vaults belong to IPs in the same derivative chain. If a vault owns royalty tokens from an IP but it is not an ancestor of that IP, it is not possible to claim rewards with those royalty tokens.
 
 Токены Дохода могут перемещаться из одного хранилища в другое с помощью функции `claimByTokenBatchAsSelf`, находящейся в контракте `IpRoyaltyVault.sol`. Однако для этого хранилище, запрашивающее токены, должно владеть Токенами Роялти хранилища, из которого оно запрашивает доход.
 

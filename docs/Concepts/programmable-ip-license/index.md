@@ -28,8 +28,6 @@ next:
 
 ## История создания
 
-We searched for a form of a "universal license" that could support these emerging activities at scale. Hat tip to [Creative Commons](https://creativecommons.org/mission/), [Arweave](https://mirror.xyz/0x64eA438bd2784F2C52a9095Ec0F6158f847182d9/AjNBmiD4A4Sw-ouV9YtCO6RCq0uXXcGwVJMB5cdfbhE), A16Z / [Can’t Be Evil,](https://a16zcrypto.com/posts/article/introducing-nft-licenses/) The [Token-Bound NFT License](https://james.grimmelmann.net/files/articles/token-bound-nft-license.pdf) and music rights organizations, among others. But we simply couldn't find one framework or agreement robust enough - so with our expert legal counsel (with special thanks to Ghaith Mahmood and Heather Liu) we created one ourselves! **Introducing the Story Protocol Programmable IP License (PIL:pill:), the first example of a [License Template](doc:license-template) on the protocol.**
-
 [Модуль Лицензирования](doc:licensing-module) Story Protocol (Licensing Module) был создан для поддержки новых форм творчества, таких как разрешённые ремиксы и совместное создание. Протокол поддерживает любые форматы медиа и проекты — от пользовательских видео и изображений до создания контента уровня Голливуда.
 
 Владельцы интеллектуальной собственности могут разрешать третьим сторонам использовать или развивать свои работы, предоставляя права по лицензии, будь то в коммерческих целях или на благо общества. В медиаиндустрии такие лицензии, как правило, представляют собой индивидуализированные контракты, которые зависят от формата медиа и нужд лицензиаров. Для их создания часто требуется юридическая экспертиза и значительные ресурсы.

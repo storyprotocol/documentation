@@ -18,7 +18,7 @@ next:
 >
 > Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/lib/Licensing.sol).
 
-Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `licenseTermsId` attached to that asset) which contains fields like a `mintingFee` and a `licensingHook`, as shown below.
+
 Вы можете опционально прикрепить `LicensingConfig` к IP-активу (для определённых `licenseTermsId`, связанных с этим активом), который содержит такие параметры, как `mintingFee` и `licensingHook`, как показано ниже.
 
 ```sol Licensing.sol
