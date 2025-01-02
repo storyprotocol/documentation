@@ -1,0 +1,8 @@
+- getdistributionparams
+- getdistributiondelegatorsdelegatoraddressvalidators
+- getdistributiondelegatorsdelegatoraddressrewardsvalidatoraddress
+- getdistributionvalidatorsvalidatoraddress
+- getdistributionvalidatorsvalidatoraddresscommission
+- getdistributionvalidatorsvalidatoraddressoutstandingrewards
+- getdistributionvalidatorsvalidatoraddressslashes
+- getdistributiondelegatorsdelegatoraddressrewards
