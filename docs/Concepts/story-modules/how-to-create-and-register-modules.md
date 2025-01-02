@@ -1,5 +1,5 @@
 ---
-title: How to Create and Register Modules
+title: Создание и Регистрация Модулей
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,13 +10,15 @@ metadata:
 next:
   description: ''
 ---
-This guide will walk you through the process of creating a Module and registering it with the Story Protocol, enabling you to contribute to its ecosystem.
+Это руководство проведет вас через процесс создания модуля и его регистрации в Story Protocol, чтобы вы могли внести свой вклад в экосистему.
 
-# How to Create a Module
 
-Creating a module is straightforward. You need to develop a contract and implement the `IModule` interface. While inheriting from `BaseModule` is recommended for convenience, it's not mandatory.
+# Как создать Модуль
 
-Below is an example of how to create a HookModule:
+
+Создание модуля довольно простое. Вам нужно разработать смарт-контракт и реализовать интерфейс `IModule`. Рекомендуется наследоваться от `BaseModule` для удобства, но это не обязательно.
+
+Ниже приведен пример создания HookModule (модуля хука):
 
 ```sol TokenGatedHook.sol
 // SPDX-License-Identifier: MIT
@@ -29,7 +31,7 @@ import { IHookModule } from "contracts/interfaces/modules/base/IHookModule.sol";
 import { BaseModule } from "contracts/modules/BaseModule.sol";
 
 /// @title Mock Token Gated Hook.
-/// @notice Hook for ensursing caller is the owner of an NFT token.
+/// @notice Хук, проверяющий, является ли вызывающий адрес владельцем NFT.
 contract TokenGatedHook is BaseModule, IHookModule {
     using ERC165Checker for address;
 
@@ -58,16 +60,16 @@ contract TokenGatedHook is BaseModule, IHookModule {
 
 ```
 
-# How to Register Your Module
+# Как зарегистрировать ваш Модуль
 
-After creating your module, the next step is to register it with the Story Protocol to make it available within its ecosystem. We have established a public GitHub repository at [here](https://github.com/storyprotocol/registered-modules) to facilitate the submission process. You are invited to register your module here. The Story Protocol team will conduct a thorough review of your submission. This process ensures that only safe and compliant modules are integrated into the ecosystem.
+После создания модуля следующим шагом будет его регистрация в Story Protocol, чтобы он стал доступен в экосистеме. Мы создали публичный репозиторий на GitHub для удобства подачи заявок [тут](https://github.com/storyprotocol/registered-modules). Вы можете зарегистрировать свой модуль здесь. Перед интеграцией в экосистему команда Story Protocol проведет тщательную проверку вашей заявки, чтобы убедиться, что ваш модуль безопасен и соответствует стандартам.
 
-## Steps to Register Your Module
+## Шаги для регистрации Модуля
 
-To get your module verified and listed in this repository, please follow these steps:
+Чтобы ваш модуль был проверен и добавлен в репозиторий, выполните следующие шаги:
 
-1. **Fork this[Repository](https://github.com/storyprotocol/registered-modules):** Begin by forking this repository to your own GitHub account.
-2. **Update the Module List:** Add your module's details to the appropriate JSON file according to module types in the repository. Ensure that you adhere to the following JSON structure:
+1. **Сделайте форк [Репозитория](https://github.com/storyprotocol/registered-modules):** Сначала сделайте форк этого репозитория в своем аккаунте GitHub.
+2. **Обновите список модулей:** Добавьте информацию о вашем модуле в соответствующий JSON-файл в репозитории, соблюдая следующую структуру:
 
 ```json
 
@@ -78,7 +80,7 @@ To get your module verified and listed in this repository, please follow these s
 }
 ```
 
-* Replace `YourModuleName`, `YourModuleAddress`, and `YourModuleBlockExplorerLink` with your module's name, its address, and the link to its block explorer page, respectively.
+* Замените `YourModuleName`, `YourModuleAddress`, и `YourModuleBlockExplorerLink` на название вашего модуля, его адрес и ссылку на его страницу в блокчейн-эксплорере.
 * Example:
 
 ```json json
@@ -89,7 +91,7 @@ To get your module verified and listed in this repository, please follow these s
 }
 ```
 
-3. **Create a Pull Request (PR)**: Once you have added your module, create a pull request against this repository. Utilize the provided PR template to ensure all necessary information is included.
-4. **Await Verification:** After your PR is submitted, it will be reviewed. Upon approval and merging of your PR, your module will be officially registered and recognized as safe for use within the StoryProtocol community.
+3. **Создайте Pull Request (PR)**: После того как вы добавите свой модуль, создайте pull request (PR) в этот репозиторий. Используйте предоставленный шаблон PR, чтобы включить всю необходимую информацию.
+4. **Ожидайте проверки:** После того как ваш PR будет подан, его проверят. После утверждения и слияния PR, ваш модуль будет официально зарегистрирован и признан безопасным для использования в сообществе Story Protocol.
 
-We look forward to seeing your contributions and expanding the StoryProtocol module ecosystem!
+Мы с нетерпением ждем ваших вкладов и расширения экосистемы модулей Story Protocol! 😊

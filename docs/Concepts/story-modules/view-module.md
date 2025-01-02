@@ -1,5 +1,5 @@
 ---
-title: View Module
+title: Модуль Просмотра
 excerpt: ''
 deprecated: false
 hidden: true
@@ -10,20 +10,20 @@ metadata:
 next:
   description: ''
 ---
-# Overview
+# Обзор
 
-The View Module, inheriting from the Module in Story Protocol, is designed for interpreting and displaying IP data. Its primary role is to function as a read-only module, focusing on the presentation of IP-related data in various accessible formats.
+Модуль Просмотра, наследующий от Модуля в Story Protocol, предназначен для интерпретации и отображения данных об интеллектуальной собственности (IP). Его основная роль — функционировать как модуль только для чтения, сосредотачиваясь на представлении данных, связанных с IP, в различных доступных форматах.
 
 <Image align="center" src="https://files.readme.io/3c35819-Untitled.png" />
 
-# Design
+# Структура
 
-The View Module is uniquely tailored to aggregate data from multiple namespaces within an IPAccount. This design enables it to present a comprehensive view of an IP, encompassing different data types and sources. It is structured to prioritize interpretability and user-friendly display of information.
+Модуль просмотра уникально настроен для агрегирования данных из нескольких пространств имен в IP-аккаунте. Такой подход позволяет предоставить комплексный обзор IP, охватывающий различные типы данных и источники. Структура модуля ориентирована на приоритет интерпретируемости и удобства отображения информации.
 
 <Image align="center" src="https://files.readme.io/53c890b-Screenshot_2024-01-29_at_22.35.55.png" />
 
-# Use Cases Example
+# Примеры использования
 
-* **Core Metadata Immutability:**Utilizes CoreMetadataModule to ensure the immutability of core IP metadata.
-* **User-Defined Metadata:** Employs UserMetadataModule for new metadata additions and UserMetadataViewModule for reading and showcasing data from Core and User Metadata.
-* **Metadata Upgrade/Migration:** Focuses on seamless data evolution with MetadataModuleV2 and MetadataViewModuleV2, combining information from original and upgraded metadata sources without the need for migration.
+* **Неизменность основных метаданных::** Использует CoreMetadataModule для обеспечения неизменности основных метаданных IP.
+* **Пользовательские метаданные:** Использует UserMetadataModule для добавления новых метаданных и UserMetadataViewModule для чтения и отображения данных из основных и пользовательских метаданных.
+* **Обновление/миграция метаданных:** Ориентирован на плавное обновление данных с помощью MetadataModuleV2 и MetadataViewModuleV2, комбинируя информацию из оригинальных и обновленных источников метаданных без необходимости миграции.
