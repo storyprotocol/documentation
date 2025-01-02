@@ -58,7 +58,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Dispute review process
+        Dispute review process (Human reviewer instructions)
       </th>
     </tr>
   </thead>
