@@ -1,5 +1,5 @@
 ---
-title: Base Module
+title: Базовый Модуль
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,21 +10,21 @@ metadata:
 next:
   description: ''
 ---
-The Base Module provides a standard set of must-have functionalities for all modules registered on Story Protocol. Anyone wishing to create and register a module on Story Protocol must inherit and override the Base Module.
+Базовый Модуль предоставляет стандартный набор обязательных функций для всех модулей, зарегистрированных в Story Protocol. Любой, кто хочет создать и зарегистрировать модуль в Story Protocol, должен унаследовать и переопределить Базовый Модуль.
 
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/BaseModule.sol).
+> Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/BaseModule.sol).
 
-# Key Features
+# Отличительные черты
 
-## Simplicity and Flexibility
+## Простота и гибкость
 
-The BaseModule is intentionally kept simple and generalized. It only implements the ERC165 interface, which is crucial for interface detection. This design choice allows for maximum flexibility when developing more specific modules within the Story Protocol.
+BaseModule намеренно создан простым и обобщенным. Он реализует только интерфейс ERC165, который необходим для определения интерфейсов. Такой подход обеспечивает максимальную гибкость при разработке более специализированных модулей в рамках Story Protocol.
 
-## ERC165 Interface Implementation
+## Реализация интерфейса ERC165
 
-By implementing the ERC165 interface, BaseModule allows other contracts to query whether it supports a specific interface. This feature is essential for ensuring compatibility and interoperability within the Story Protocol ecosystem and beyond.
+Реализуя интерфейс ERC165, BaseModule позволяет другим контрактам проверять, поддерживает ли он определенный интерфейс. Эта функция важна для обеспечения совместимости и взаимодействия внутри экосистемы Story Protocol и за ее пределами.
 
 ```sol BaseModule.sol
 abstract contract BaseModule is ERC165, IModule {
@@ -32,9 +32,9 @@ abstract contract BaseModule is ERC165, IModule {
 }
 ```
 
-## `supportsInterface` Function
+## Функция `supportsInterface`
 
-A key function in the BaseModule is `supportsInterface`, which overrides the ERC165's `supportsInterface` method. This function is crucial for interface detection, allowing the contract to declare support for both its own `IModule` interface and any other interfaces it might inherit.
+Ключевая функция в BaseModule — это `supportsInterface`, которая переопределяет метод `supportsInterface` из ERC165. Эта функция играет важную роль в определении интерфейсов, позволяя контракту заявлять о поддержке как собственного интерфейса `IModule`, так и любых других интерфейсов, которые он может наследовать.
 
 ```sol BaseModule.sol
 function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165, IERC165) returns (bool) {
