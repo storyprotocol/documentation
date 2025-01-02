@@ -22,7 +22,10 @@ The main components of the arbitration system are:
   * link to any parents
   * claim royalties
   * and all of its existing licenses become unusable
-* **Tags:** refers to which "labels" can be applied to IP Assets in the protocol. The allowed tags are whitelisted by protocol governance. The initial set of tags is planned to be:
+
+### Dispute Tags
+
+**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. The allowed tags are whitelisted by protocol governance. The initial set of tags is planned to be:
 
 <Table align={["left","left"]}>
   <thead>
