@@ -58,7 +58,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Dispute review process
+        Dispute review process (Human reviewer instructions)
       </th>
     </tr>
   </thead>
@@ -70,9 +70,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Inputs:
-        A. Showcase or pointer to the pre-existing IP that is being infringed upon by the disputed IP
-        B. Proof that the pre-existing IP has an earlier registration or public appearance date prior to the disputed IP registration date.
+        1. Proof of pre-existing IP with earlier registration date (onchain or offchain) and/or instructions on where/how to check it.
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -106,10 +104,9 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: PIL term that has been violated
-        B. text: description of the violation
-        C. text: proof of violation
+        1. PIL terms that have been violated
+        2. Description of the violations
+        3. Proof of the violations
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -125,13 +122,17 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
+
         Inputs:\
 
         A. text: description of each payment the disputed IP received that should have been shared with its royalty vault
         B. text: proof of payments with appropriate links
-=======
+
         A. text: description of each of each payment the disputed IP received that should have been shared with its ancestors
         B. text: proof of payments
+
+        1. Description of each payment the disputed IP received that should have been shared with its royalty vault
+        2. Proof of payments
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -154,10 +155,9 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Inputs:\
-        A. text: the content standard point that has been violated
-        B. text: description of the violation
-        C. text: proof of violation
+        1. The content standard point that has been violated
+        2. Description of the violation
+        3. Proof of violation
       </td>
 
       <td style={{ textAlign: "left" }}>

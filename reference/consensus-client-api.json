@@ -1,0 +1,4058 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Consensus Client Api",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Cosmos Origin"
+    },
+    {
+      "name": "Cosmos Origin/Staking"
+    },
+    {
+      "name": "Cosmos Origin/Auth"
+    },
+    {
+      "name": "Cosmos Origin/Bank"
+    },
+    {
+      "name": "Cosmos Origin/Distribution"
+    },
+    {
+      "name": "Cosmos Origin/Mint"
+    },
+    {
+      "name": "Story Extend"
+    },
+    {
+      "name": "Story Extend/Staking"
+    }
+  ],
+  "paths": {
+    "/staking/validators": {
+      "get": {
+        "summary": "GetValidators",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "pagination.key",
+            "in": "query",
+            "description": "key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.",
+            "required": false,
+            "example": "FPoybu9dO+FCSV562u9keKVgUwur",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.",
+            "required": false,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.count_total",
+            "in": "query",
+            "description": "count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination.reverse",
+            "in": "query",
+            "description": "reverse is set to true if results are to be returned in the descending order.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status enables to query for validators matching a given status.",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "validators": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "operator_address": {
+                                "type": "string"
+                              },
+                              "consensus_pubkey": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "value"
+                                ]
+                              },
+                              "status": {
+                                "type": "integer"
+                              },
+                              "tokens": {
+                                "type": "string"
+                              },
+                              "delegator_shares": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "object",
+                                "properties": {
+                                  "moniker": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "moniker"
+                                ]
+                              },
+                              "unbonding_time": {
+                                "type": "string"
+                              },
+                              "commission": {
+                                "type": "object",
+                                "properties": {
+                                  "commission_rates": {
+                                    "type": "object",
+                                    "properties": {
+                                      "rate": {
+                                        "type": "string"
+                                      },
+                                      "max_rate": {
+                                        "type": "string"
+                                      },
+                                      "max_change_rate": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "rate",
+                                      "max_rate",
+                                      "max_change_rate"
+                                    ]
+                                  },
+                                  "update_time": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "commission_rates",
+                                  "update_time"
+                                ]
+                              },
+                              "min_self_delegation": {
+                                "type": "string"
+                              },
+                              "support_token_type": {
+                                "type": "integer"
+                              },
+                              "rewards_tokens": {
+                                "type": "string"
+                              },
+                              "delegator_rewards_shares": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "operator_address",
+                              "consensus_pubkey",
+                              "status",
+                              "tokens",
+                              "delegator_shares",
+                              "description",
+                              "unbonding_time",
+                              "commission",
+                              "min_self_delegation",
+                              "rewards_tokens",
+                              "delegator_rewards_shares",
+                              "support_token_type"
+                            ]
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "total"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "validators",
+                        "pagination"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "validators": [
+                          {
+                            "operator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                            "consensus_pubkey": {
+                              "type": "tendermint/PubKeySecp256k1",
+                              "value": "A6KRGirXFYsv5oVQz8d8YIl0Nj23bXo2jLHui72y12Bi"
+                            },
+                            "status": 3,
+                            "tokens": "1000000",
+                            "delegator_shares": "1000000.000000000000000000",
+                            "description": {
+                              "moniker": "0x9DFC26A7662106EEEC5E87B20CBB690CFCE73A05"
+                            },
+                            "unbonding_time": "1970-01-01T00:00:00Z",
+                            "commission": {
+                              "commission_rates": {
+                                "rate": "0.070000000000000000",
+                                "max_rate": "0.100000000000000000",
+                                "max_change_rate": "0.010000000000000000"
+                              },
+                              "update_time": "2024-04-16T11:04:40.60280319Z"
+                            },
+                            "min_self_delegation": "1024000000000",
+                            "support_token_type": 1,
+                            "rewards_tokens": "1000000.000000000000000000",
+                            "delegator_rewards_shares": "1000000.000000000000000000"
+                          },
+                          {
+                            "operator_address": "0xcd5faabca5bea3c5fc5e2371c7b397604720c2c2",
+                            "consensus_pubkey": {
+                              "type": "tendermint/PubKeySecp256k1",
+                              "value": "A/9SMxZTnh3Rq96Eygg9MfB6g82euMXhjT5nMWrhLlyf"
+                            },
+                            "status": 3,
+                            "tokens": "1000000",
+                            "delegator_shares": "1000000.000000000000000000",
+                            "description": {
+                              "moniker": "0x99C28AE30CBEFEFF75E91C66692FE0BD9279B861"
+                            },
+                            "unbonding_time": "1970-01-01T00:00:00Z",
+                            "commission": {
+                              "commission_rates": {
+                                "rate": "0.070000000000000000",
+                                "max_rate": "0.100000000000000000",
+                                "max_change_rate": "0.010000000000000000"
+                              },
+                              "update_time": "2024-04-16T11:04:40.60280319Z"
+                            },
+                            "min_self_delegation": "1024000000000",
+                            "rewards_tokens": "500000.000000000000000000",
+                            "delegator_rewards_shares": "500000.000000000000000000"
+                          },
+                          {
+                            "operator_address": "0xcd29b70ff04c0aa386f7b3453df0e5ed3d4f67bb",
+                            "consensus_pubkey": {
+                              "type": "tendermint/PubKeySecp256k1",
+                              "value": "A9mdRUGE+sv2oD6jfrNvalDGmELqOtQgOKjVU3vRWyWU"
+                            },
+                            "status": 3,
+                            "tokens": "1000000",
+                            "delegator_shares": "1000000.000000000000000000",
+                            "description": {
+                              "moniker": "0x768A39103B552E7AE56635DD4E9B55922AAFC504"
+                            },
+                            "unbonding_time": "1970-01-01T00:00:00Z",
+                            "commission": {
+                              "commission_rates": {
+                                "rate": "0.070000000000000000",
+                                "max_rate": "0.100000000000000000",
+                                "max_change_rate": "0.010000000000000000"
+                              },
+                              "update_time": "2024-04-16T11:04:40.60280319Z"
+                            },
+                            "min_self_delegation": "1024000000000",
+                            "support_token_type": 1,
+                            "rewards_tokens": "1000000.000000000000000000",
+                            "delegator_rewards_shares": "1000000.000000000000000000"
+                          },
+                          {
+                            "operator_address": "0xc5c0beeac8b37ed52f6a675ee2154d926a88e3ec",
+                            "consensus_pubkey": {
+                              "type": "tendermint/PubKeySecp256k1",
+                              "value": "AqBVHHkyOfiie29Wrez6hMvC644kbZfPgXA1jFEs7Uwq"
+                            },
+                            "status": 3,
+                            "tokens": "1000000",
+                            "delegator_shares": "1000000.000000000000000000",
+                            "description": {
+                              "moniker": "0x0FC41199CE588948861A8DA86D725A5A073AE91A"
+                            },
+                            "unbonding_time": "1970-01-01T00:00:00Z",
+                            "commission": {
+                              "commission_rates": {
+                                "rate": "0.070000000000000000",
+                                "max_rate": "0.100000000000000000",
+                                "max_change_rate": "0.010000000000000000"
+                              },
+                              "update_time": "2024-04-16T11:04:40.60280319Z"
+                            },
+                            "min_self_delegation": "1024000000000",
+                            "rewards_tokens": "500000.000000000000000000",
+                            "delegator_rewards_shares": "500000.000000000000000000"
+                          }
+                        ],
+                        "pagination": {
+                          "total": "4"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/validators/{validator_addr}": {
+      "get": {
+        "summary": "GetValidatorByValidatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "validator_addr",
+            "in": "path",
+            "description": "validator_addr defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "validator": {
+                          "type": "object",
+                          "properties": {
+                            "operator_address": {
+                              "type": "string"
+                            },
+                            "consensus_pubkey": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "value"
+                              ]
+                            },
+                            "status": {
+                              "type": "integer"
+                            },
+                            "tokens": {
+                              "type": "string"
+                            },
+                            "delegator_shares": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "object",
+                              "properties": {
+                                "moniker": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "moniker"
+                              ]
+                            },
+                            "unbonding_time": {
+                              "type": "string"
+                            },
+                            "commission": {
+                              "type": "object",
+                              "properties": {
+                                "commission_rates": {
+                                  "type": "object",
+                                  "properties": {
+                                    "rate": {
+                                      "type": "string"
+                                    },
+                                    "max_rate": {
+                                      "type": "string"
+                                    },
+                                    "max_change_rate": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "rate",
+                                    "max_rate",
+                                    "max_change_rate"
+                                  ]
+                                },
+                                "update_time": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "commission_rates",
+                                "update_time"
+                              ]
+                            },
+                            "min_self_delegation": {
+                              "type": "string"
+                            },
+                            "support_token_type": {
+                              "type": "integer"
+                            },
+                            "rewards_tokens": {
+                              "type": "string"
+                            },
+                            "delegator_rewards_shares": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "operator_address",
+                            "consensus_pubkey",
+                            "status",
+                            "tokens",
+                            "delegator_shares",
+                            "description",
+                            "unbonding_time",
+                            "commission",
+                            "min_self_delegation",
+                            "support_token_type",
+                            "rewards_tokens",
+                            "delegator_rewards_shares"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "validator"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "validator": {
+                          "operator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                          "consensus_pubkey": {
+                            "type": "tendermint/PubKeySecp256k1",
+                            "value": "A6KRGirXFYsv5oVQz8d8YIl0Nj23bXo2jLHui72y12Bi"
+                          },
+                          "status": 3,
+                          "tokens": "1000000",
+                          "delegator_shares": "1000000.000000000000000000",
+                          "description": {
+                            "moniker": "0x9DFC26A7662106EEEC5E87B20CBB690CFCE73A05"
+                          },
+                          "unbonding_time": "1970-01-01T00:00:00Z",
+                          "commission": {
+                            "commission_rates": {
+                              "rate": "0.070000000000000000",
+                              "max_rate": "0.100000000000000000",
+                              "max_change_rate": "0.010000000000000000"
+                            },
+                            "update_time": "2024-04-16T11:04:40.60280319Z"
+                          },
+                          "min_self_delegation": "1024000000000",
+                          "support_token_type": 1,
+                          "rewards_tokens": "1000000.000000000000000000",
+                          "delegator_rewards_shares": "1000000.000000000000000000"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/validators/{validator_addr}/delegations": {
+      "get": {
+        "summary": "GetValidatorDelegationsByValidatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "validator_addr",
+            "in": "path",
+            "description": "validator_addr defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.key",
+            "in": "query",
+            "description": "key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.",
+            "required": false,
+            "example": "FPoybu9dO+FCSV562u9keKVgUwur",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.",
+            "required": false,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.count_total",
+            "in": "query",
+            "description": "count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination.reverse",
+            "in": "query",
+            "description": "reverse is set to true if results are to be returned in the descending order.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "delegation_responses": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "delegation": {
+                                "type": "object",
+                                "properties": {
+                                  "delegator_address": {
+                                    "type": "string"
+                                  },
+                                  "validator_address": {
+                                    "type": "string"
+                                  },
+                                  "shares": {
+                                    "type": "string"
+                                  },
+                                  "rewards_shares": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "delegator_address",
+                                  "validator_address",
+                                  "shares",
+                                  "rewards_shares"
+                                ]
+                              },
+                              "balance": {
+                                "type": "object",
+                                "properties": {
+                                  "denom": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "denom",
+                                  "amount"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "total"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "delegation_responses",
+                        "pagination"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "delegation_responses": [
+                          {
+                            "delegation": {
+                              "delegator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                              "validator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                              "shares": "1000000.000000000000000000",
+                              "rewards_shares": "1000000.000000000000000000"
+                            },
+                            "balance": {
+                              "denom": "stake",
+                              "amount": "1000000"
+                            }
+                          }
+                        ],
+                        "pagination": {
+                          "total": "1"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/delegations/{delegator_addr}": {
+      "get": {
+        "summary": "GetDelegationsByDelegatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.key",
+            "in": "query",
+            "description": "key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.",
+            "required": false,
+            "example": "FPoybu9dO+FCSV562u9keKVgUwur",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.",
+            "required": false,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.count_total",
+            "in": "query",
+            "description": "count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination.reverse",
+            "in": "query",
+            "description": "reverse is set to true if results are to be returned in the descending order.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "delegation_responses": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "delegation": {
+                                "type": "object",
+                                "properties": {
+                                  "delegator_address": {
+                                    "type": "string"
+                                  },
+                                  "validator_address": {
+                                    "type": "string"
+                                  },
+                                  "shares": {
+                                    "type": "string"
+                                  },
+                                  "rewards_shares": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "delegator_address",
+                                  "validator_address",
+                                  "shares",
+                                  "rewards_shares"
+                                ]
+                              },
+                              "balance": {
+                                "type": "object",
+                                "properties": {
+                                  "denom": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "denom",
+                                  "amount"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "total"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "delegation_responses",
+                        "pagination"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "delegation_responses": [
+                          {
+                            "delegation": {
+                              "delegator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                              "validator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                              "shares": "1000000.000000000000000000",
+                              "rewards_shares": "1000000.000000000000000000"
+                            },
+                            "balance": {
+                              "denom": "stake",
+                              "amount": "1000000"
+                            }
+                          }
+                        ],
+                        "pagination": {
+                          "total": "1"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/delegators/{delegator_addr}/redelegations": {
+      "get": {
+        "summary": "GetRedelegationsByDelegatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.key",
+            "in": "query",
+            "description": "key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.",
+            "required": false,
+            "example": "FPoybu9dO+FCSV562u9keKVgUwur",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.",
+            "required": false,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.count_total",
+            "in": "query",
+            "description": "count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination.reverse",
+            "in": "query",
+            "description": "reverse is set to true if results are to be returned in the descending order.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "src_validator_addr",
+            "in": "query",
+            "description": "src_validator_addr defines the validator address to redelegate from.",
+            "required": false,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dst_validator_addr",
+            "in": "query",
+            "description": "dst_validator_addr defines the validator address to redelegate to.",
+            "required": false,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/delegators/{delegator_addr}/validators": {
+      "get": {
+        "summary": "GetValidatorsByDelegatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.key",
+            "in": "query",
+            "description": "key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.",
+            "required": false,
+            "example": "FPoybu9dO+FCSV562u9keKVgUwur",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.",
+            "required": false,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.count_total",
+            "in": "query",
+            "description": "count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination.reverse",
+            "in": "query",
+            "description": "reverse is set to true if results are to be returned in the descending order.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "validators": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "operator_address": {
+                                "type": "string"
+                              },
+                              "consensus_pubkey": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "value"
+                                ]
+                              },
+                              "status": {
+                                "type": "integer"
+                              },
+                              "tokens": {
+                                "type": "string"
+                              },
+                              "delegator_shares": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "object",
+                                "properties": {
+                                  "moniker": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "moniker"
+                                ]
+                              },
+                              "unbonding_time": {
+                                "type": "string"
+                              },
+                              "commission": {
+                                "type": "object",
+                                "properties": {
+                                  "commission_rates": {
+                                    "type": "object",
+                                    "properties": {
+                                      "rate": {
+                                        "type": "string"
+                                      },
+                                      "max_rate": {
+                                        "type": "string"
+                                      },
+                                      "max_change_rate": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "rate",
+                                      "max_rate",
+                                      "max_change_rate"
+                                    ]
+                                  },
+                                  "update_time": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "commission_rates",
+                                  "update_time"
+                                ]
+                              },
+                              "min_self_delegation": {
+                                "type": "string"
+                              },
+                              "support_token_type": {
+                                "type": "integer"
+                              },
+                              "rewards_tokens": {
+                                "type": "string"
+                              },
+                              "delegator_rewards_shares": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "total"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "validators",
+                        "pagination"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "validators": [
+                          {
+                            "operator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                            "consensus_pubkey": {
+                              "type": "tendermint/PubKeySecp256k1",
+                              "value": "A6KRGirXFYsv5oVQz8d8YIl0Nj23bXo2jLHui72y12Bi"
+                            },
+                            "status": 3,
+                            "tokens": "1000000",
+                            "delegator_shares": "1000000.000000000000000000",
+                            "description": {
+                              "moniker": "0x9DFC26A7662106EEEC5E87B20CBB690CFCE73A05"
+                            },
+                            "unbonding_time": "1970-01-01T00:00:00Z",
+                            "commission": {
+                              "commission_rates": {
+                                "rate": "0.070000000000000000",
+                                "max_rate": "0.100000000000000000",
+                                "max_change_rate": "0.010000000000000000"
+                              },
+                              "update_time": "2024-04-16T11:04:40.60280319Z"
+                            },
+                            "min_self_delegation": "1024000000000",
+                            "support_token_type": 1,
+                            "rewards_tokens": "1000000.000000000000000000",
+                            "delegator_rewards_shares": "1000000.000000000000000000"
+                          }
+                        ],
+                        "pagination": {
+                          "total": "1"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/delegators/{delegator_addr}/validators/{validator_addr}": {
+      "get": {
+        "summary": "GetValidatorsByDelegatorAddressValidatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "validator_addr",
+            "in": "path",
+            "description": "validator_addr defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "validator": {
+                          "type": "object",
+                          "properties": {
+                            "operator_address": {
+                              "type": "string"
+                            },
+                            "consensus_pubkey": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "value"
+                              ]
+                            },
+                            "status": {
+                              "type": "integer"
+                            },
+                            "tokens": {
+                              "type": "string"
+                            },
+                            "delegator_shares": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "object",
+                              "properties": {
+                                "moniker": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "moniker"
+                              ]
+                            },
+                            "unbonding_time": {
+                              "type": "string"
+                            },
+                            "commission": {
+                              "type": "object",
+                              "properties": {
+                                "commission_rates": {
+                                  "type": "object",
+                                  "properties": {
+                                    "rate": {
+                                      "type": "string"
+                                    },
+                                    "max_rate": {
+                                      "type": "string"
+                                    },
+                                    "max_change_rate": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "rate",
+                                    "max_rate",
+                                    "max_change_rate"
+                                  ]
+                                },
+                                "update_time": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "commission_rates",
+                                "update_time"
+                              ]
+                            },
+                            "min_self_delegation": {
+                              "type": "string"
+                            },
+                            "support_token_type": {
+                              "type": "integer"
+                            },
+                            "rewards_tokens": {
+                              "type": "string"
+                            },
+                            "delegator_rewards_shares": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "operator_address",
+                            "consensus_pubkey",
+                            "status",
+                            "tokens",
+                            "delegator_shares",
+                            "description",
+                            "unbonding_time",
+                            "commission",
+                            "min_self_delegation",
+                            "support_token_type",
+                            "rewards_tokens",
+                            "delegator_rewards_shares"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "validator"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "validator": {
+                          "operator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                          "consensus_pubkey": {
+                            "type": "tendermint/PubKeySecp256k1",
+                            "value": "A6KRGirXFYsv5oVQz8d8YIl0Nj23bXo2jLHui72y12Bi"
+                          },
+                          "status": 3,
+                          "tokens": "1000000",
+                          "delegator_shares": "1000000.000000000000000000",
+                          "description": {
+                            "moniker": "0x9DFC26A7662106EEEC5E87B20CBB690CFCE73A05"
+                          },
+                          "unbonding_time": "1970-01-01T00:00:00Z",
+                          "commission": {
+                            "commission_rates": {
+                              "rate": "0.070000000000000000",
+                              "max_rate": "0.100000000000000000",
+                              "max_change_rate": "0.010000000000000000"
+                            },
+                            "update_time": "2024-04-16T11:04:40.60280319Z"
+                          },
+                          "min_self_delegation": "1024000000000",
+                          "support_token_type": 1,
+                          "rewards_tokens": "1000000.000000000000000000",
+                          "delegator_rewards_shares": "1000000.000000000000000000"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/delegators/{delegator_addr}/unbonding_delegations": {
+      "get": {
+        "summary": "GetUnbondingDelegationsByDelegatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.key",
+            "in": "query",
+            "description": "key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.",
+            "required": false,
+            "example": "FPoybu9dO+FCSV562u9keKVgUwur",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.",
+            "required": false,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.count_total",
+            "in": "query",
+            "description": "count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination.reverse",
+            "in": "query",
+            "description": "reverse is set to true if results are to be returned in the descending order.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/params": {
+      "get": {
+        "summary": "GetStakingParams",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "params": {
+                          "type": "object",
+                          "properties": {
+                            "unbonding_time": {
+                              "type": "string"
+                            },
+                            "max_validators": {
+                              "type": "integer"
+                            },
+                            "max_entries": {
+                              "type": "integer"
+                            },
+                            "historical_entries": {
+                              "type": "integer"
+                            },
+                            "bond_denom": {
+                              "type": "string"
+                            },
+                            "min_commission_rate": {
+                              "type": "string"
+                            },
+                            "min_delegation": {
+                              "type": "string"
+                            },
+                            "periods": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "duration": {
+                                    "type": "string"
+                                  },
+                                  "rewards_multiplier": {
+                                    "type": "string"
+                                  },
+                                  "period_type": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "duration",
+                                  "rewards_multiplier",
+                                  "period_type"
+                                ]
+                              }
+                            },
+                            "token_types": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "rewards_multiplier": {
+                                    "type": "string"
+                                  },
+                                  "token_type": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "rewards_multiplier"
+                                ]
+                              }
+                            },
+                            "singularity_height": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "unbonding_time",
+                            "max_validators",
+                            "max_entries",
+                            "historical_entries",
+                            "bond_denom",
+                            "min_commission_rate",
+                            "min_delegation",
+                            "periods",
+                            "token_types",
+                            "singularity_height"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "params"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "params": {
+                          "unbonding_time": "10000000000",
+                          "max_validators": 32,
+                          "max_entries": 14,
+                          "historical_entries": 10000,
+                          "bond_denom": "stake",
+                          "min_commission_rate": "0.050000000000000000",
+                          "min_delegation": "1024000000000",
+                          "periods": [
+                            {
+                              "duration": "0",
+                              "rewards_multiplier": "1.000000000000000000"
+                            },
+                            {
+                              "period_type": 1,
+                              "duration": "60000000000",
+                              "rewards_multiplier": "1.051000000000000000"
+                            },
+                            {
+                              "period_type": 2,
+                              "duration": "120000000000",
+                              "rewards_multiplier": "1.160000000000000000"
+                            },
+                            {
+                              "period_type": 3,
+                              "duration": "900000000000",
+                              "rewards_multiplier": "1.340000000000000000"
+                            }
+                          ],
+                          "token_types": [
+                            {
+                              "rewards_multiplier": "0.500000000000000000"
+                            },
+                            {
+                              "token_type": 1,
+                              "rewards_multiplier": "1.000000000000000000"
+                            }
+                          ],
+                          "singularity_height": "600"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/pool": {
+      "get": {
+        "summary": "GetStakingPool",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "pool": {
+                          "type": "object",
+                          "properties": {
+                            "not_bonded_tokens": {
+                              "type": "string"
+                            },
+                            "bonded_tokens": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "not_bonded_tokens",
+                            "bonded_tokens"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "pool"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "pool": {
+                          "not_bonded_tokens": "0",
+                          "bonded_tokens": "4000000"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/historical_info/{height}": {
+      "get": {
+        "summary": "GetHistoricalInfoByHeight",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "height",
+            "in": "path",
+            "description": "height defines at which height to query the historical info.",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "hist": {
+                          "type": "object",
+                          "properties": {
+                            "header": {
+                              "type": "object",
+                              "properties": {
+                                "version": {
+                                  "type": "object",
+                                  "properties": {}
+                                },
+                                "chain_id": {
+                                  "type": "string"
+                                },
+                                "height": {
+                                  "type": "string"
+                                },
+                                "time": {
+                                  "type": "string"
+                                },
+                                "last_block_id": {
+                                  "type": "object",
+                                  "properties": {
+                                    "part_set_header": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
+                                  },
+                                  "required": [
+                                    "part_set_header"
+                                  ]
+                                },
+                                "next_validators_hash": {
+                                  "type": "string"
+                                },
+                                "app_hash": {
+                                  "type": "string"
+                                },
+                                "proposer_address": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "version",
+                                "chain_id",
+                                "height",
+                                "time",
+                                "last_block_id",
+                                "next_validators_hash",
+                                "app_hash",
+                                "proposer_address"
+                              ]
+                            },
+                            "valset": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "operator_address": {
+                                    "type": "string"
+                                  },
+                                  "consensus_pubkey": {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "value": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "value"
+                                    ]
+                                  },
+                                  "status": {
+                                    "type": "integer"
+                                  },
+                                  "tokens": {
+                                    "type": "string"
+                                  },
+                                  "delegator_shares": {
+                                    "type": "string"
+                                  },
+                                  "description": {
+                                    "type": "object",
+                                    "properties": {
+                                      "moniker": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "moniker"
+                                    ]
+                                  },
+                                  "unbonding_time": {
+                                    "type": "string"
+                                  },
+                                  "commission": {
+                                    "type": "object",
+                                    "properties": {
+                                      "commission_rates": {
+                                        "type": "object",
+                                        "properties": {
+                                          "rate": {
+                                            "type": "string"
+                                          },
+                                          "max_rate": {
+                                            "type": "string"
+                                          },
+                                          "max_change_rate": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "rate",
+                                          "max_rate",
+                                          "max_change_rate"
+                                        ]
+                                      },
+                                      "update_time": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "commission_rates",
+                                      "update_time"
+                                    ]
+                                  },
+                                  "min_self_delegation": {
+                                    "type": "string"
+                                  },
+                                  "rewards_tokens": {
+                                    "type": "string"
+                                  },
+                                  "delegator_rewards_shares": {
+                                    "type": "string"
+                                  },
+                                  "support_token_type": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "operator_address",
+                                  "consensus_pubkey",
+                                  "status",
+                                  "tokens",
+                                  "delegator_shares",
+                                  "description",
+                                  "unbonding_time",
+                                  "commission",
+                                  "min_self_delegation",
+                                  "rewards_tokens",
+                                  "delegator_rewards_shares",
+                                  "support_token_type"
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "header",
+                            "valset"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "hist"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "hist": {
+                          "header": {
+                            "version": {},
+                            "chain_id": "odyssey-devnet-1",
+                            "height": "1",
+                            "time": "2024-04-16T11:04:40.60280319Z",
+                            "last_block_id": {
+                              "part_set_header": {}
+                            },
+                            "next_validators_hash": "c/hfqQWRx9lAlwThf6d425/LhM7cSsMZ50QnPDBbBdQ=",
+                            "app_hash": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+                            "proposer_address": "doo5EDtVLnrlZjXdTptVkiqvxQQ="
+                          },
+                          "valset": [
+                            {
+                              "operator_address": "0xc5c0beeac8b37ed52f6a675ee2154d926a88e3ec",
+                              "consensus_pubkey": {
+                                "type": "tendermint/PubKeySecp256k1",
+                                "value": "AqBVHHkyOfiie29Wrez6hMvC644kbZfPgXA1jFEs7Uwq"
+                              },
+                              "status": 3,
+                              "tokens": "1000000",
+                              "delegator_shares": "1000000.000000000000000000",
+                              "description": {
+                                "moniker": "0x0FC41199CE588948861A8DA86D725A5A073AE91A"
+                              },
+                              "unbonding_time": "1970-01-01T00:00:00Z",
+                              "commission": {
+                                "commission_rates": {
+                                  "rate": "0.070000000000000000",
+                                  "max_rate": "0.100000000000000000",
+                                  "max_change_rate": "0.010000000000000000"
+                                },
+                                "update_time": "2024-04-16T11:04:40.60280319Z"
+                              },
+                              "min_self_delegation": "1024000000000",
+                              "rewards_tokens": "500000.000000000000000000",
+                              "delegator_rewards_shares": "500000.000000000000000000"
+                            },
+                            {
+                              "operator_address": "0xcd29b70ff04c0aa386f7b3453df0e5ed3d4f67bb",
+                              "consensus_pubkey": {
+                                "type": "tendermint/PubKeySecp256k1",
+                                "value": "A9mdRUGE+sv2oD6jfrNvalDGmELqOtQgOKjVU3vRWyWU"
+                              },
+                              "status": 3,
+                              "tokens": "1000000",
+                              "delegator_shares": "1000000.000000000000000000",
+                              "description": {
+                                "moniker": "0x768A39103B552E7AE56635DD4E9B55922AAFC504"
+                              },
+                              "unbonding_time": "1970-01-01T00:00:00Z",
+                              "commission": {
+                                "commission_rates": {
+                                  "rate": "0.070000000000000000",
+                                  "max_rate": "0.100000000000000000",
+                                  "max_change_rate": "0.010000000000000000"
+                                },
+                                "update_time": "2024-04-16T11:04:40.60280319Z"
+                              },
+                              "min_self_delegation": "1024000000000",
+                              "support_token_type": 1,
+                              "rewards_tokens": "1000000.000000000000000000",
+                              "delegator_rewards_shares": "1000000.000000000000000000"
+                            },
+                            {
+                              "operator_address": "0xcd5faabca5bea3c5fc5e2371c7b397604720c2c2",
+                              "consensus_pubkey": {
+                                "type": "tendermint/PubKeySecp256k1",
+                                "value": "A/9SMxZTnh3Rq96Eygg9MfB6g82euMXhjT5nMWrhLlyf"
+                              },
+                              "status": 3,
+                              "tokens": "1000000",
+                              "delegator_shares": "1000000.000000000000000000",
+                              "description": {
+                                "moniker": "0x99C28AE30CBEFEFF75E91C66692FE0BD9279B861"
+                              },
+                              "unbonding_time": "1970-01-01T00:00:00Z",
+                              "commission": {
+                                "commission_rates": {
+                                  "rate": "0.070000000000000000",
+                                  "max_rate": "0.100000000000000000",
+                                  "max_change_rate": "0.010000000000000000"
+                                },
+                                "update_time": "2024-04-16T11:04:40.60280319Z"
+                              },
+                              "min_self_delegation": "1024000000000",
+                              "rewards_tokens": "500000.000000000000000000",
+                              "delegator_rewards_shares": "500000.000000000000000000"
+                            },
+                            {
+                              "operator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                              "consensus_pubkey": {
+                                "type": "tendermint/PubKeySecp256k1",
+                                "value": "A6KRGirXFYsv5oVQz8d8YIl0Nj23bXo2jLHui72y12Bi"
+                              },
+                              "status": 3,
+                              "tokens": "1000000",
+                              "delegator_shares": "1000000.000000000000000000",
+                              "description": {
+                                "moniker": "0x9DFC26A7662106EEEC5E87B20CBB690CFCE73A05"
+                              },
+                              "unbonding_time": "1970-01-01T00:00:00Z",
+                              "commission": {
+                                "commission_rates": {
+                                  "rate": "0.070000000000000000",
+                                  "max_rate": "0.100000000000000000",
+                                  "max_change_rate": "0.010000000000000000"
+                                },
+                                "update_time": "2024-04-16T11:04:40.60280319Z"
+                              },
+                              "min_self_delegation": "1024000000000",
+                              "support_token_type": 1,
+                              "rewards_tokens": "1000000.000000000000000000",
+                              "delegator_rewards_shares": "1000000.000000000000000000"
+                            }
+                          ]
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/validators/{validator_addr}/delegations/{delegator_addr}": {
+      "get": {
+        "summary": "GetDelegationByValidatorAddressDelegatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "validator_addr",
+            "in": "path",
+            "description": "validator_addr defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "delegation_response": {
+                          "type": "object",
+                          "properties": {
+                            "delegation": {
+                              "type": "object",
+                              "properties": {
+                                "delegator_address": {
+                                  "type": "string"
+                                },
+                                "validator_address": {
+                                  "type": "string"
+                                },
+                                "shares": {
+                                  "type": "string"
+                                },
+                                "rewards_shares": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "delegator_address",
+                                "validator_address",
+                                "shares",
+                                "rewards_shares"
+                              ]
+                            },
+                            "balance": {
+                              "type": "object",
+                              "properties": {
+                                "denom": {
+                                  "type": "string"
+                                },
+                                "amount": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "denom",
+                                "amount"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "delegation",
+                            "balance"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "delegation_response"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "delegation_response": {
+                          "delegation": {
+                            "delegator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                            "validator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                            "shares": "1000000.000000000000000000",
+                            "rewards_shares": "1000000.000000000000000000"
+                          },
+                          "balance": {
+                            "denom": "stake",
+                            "amount": "1000000"
+                          }
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/validators/{validator_addr}/unbonding_delegations": {
+      "get": {
+        "summary": "GetValidatorUnbondingDelegations",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "validator_addr",
+            "in": "path",
+            "description": "validator_addr defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.key",
+            "in": "query",
+            "description": "key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.",
+            "required": false,
+            "example": "FPoybu9dO+FCSV562u9keKVgUwur",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.",
+            "required": false,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.count_total",
+            "in": "query",
+            "description": "count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination.reverse",
+            "in": "query",
+            "description": "reverse is set to true if results are to be returned in the descending order.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "unbonding_responses": {
+                          "type": "null"
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {}
+                        }
+                      },
+                      "required": [
+                        "unbonding_responses",
+                        "pagination"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/validators/{validator_addr}/delegations/{delegator_addr}/unbonding_delegation": {
+      "get": {
+        "summary": "GetDelegatorUnbondingDelegation",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "validator_addr",
+            "in": "path",
+            "description": "validator_addr defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/auth/params": {
+      "get": {
+        "summary": "GetAuthParams",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "params": {
+                          "type": "object",
+                          "properties": {
+                            "max_memo_characters": {
+                              "type": "string"
+                            },
+                            "tx_sig_limit": {
+                              "type": "string"
+                            },
+                            "tx_size_cost_per_byte": {
+                              "type": "string"
+                            },
+                            "sig_verify_cost_ed25519": {
+                              "type": "string"
+                            },
+                            "sig_verify_cost_secp256k1": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "max_memo_characters",
+                            "tx_sig_limit",
+                            "tx_size_cost_per_byte",
+                            "sig_verify_cost_ed25519",
+                            "sig_verify_cost_secp256k1"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "params"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "params": {
+                          "max_memo_characters": "256",
+                          "tx_sig_limit": "7",
+                          "tx_size_cost_per_byte": "10",
+                          "sig_verify_cost_ed25519": "590",
+                          "sig_verify_cost_secp256k1": "1000"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/bank/params": {
+      "get": {
+        "summary": "GetBankParams",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Bank"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "params": {
+                          "type": "object",
+                          "properties": {}
+                        }
+                      },
+                      "required": [
+                        "params"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "params": {}
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/bank/supply/by_denom": {
+      "get": {
+        "summary": "GetSupplyByDenom",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Bank"
+        ],
+        "parameters": [
+          {
+            "name": "denom",
+            "in": "query",
+            "description": "denom is the coin denom to query balances for.",
+            "required": false,
+            "example": "stake",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "object",
+                          "properties": {
+                            "denom": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "denom",
+                            "amount"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "amount"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "amount": {
+                          "denom": "stake",
+                          "amount": "8000002"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/bank/balances/{address}/by_denom": {
+      "get": {
+        "summary": "GetBalancesByAddressDenom",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Bank"
+        ],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "description": "address is the address to query balances for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "denom",
+            "in": "query",
+            "description": "denom is the coin denom to query balances for.",
+            "required": false,
+            "example": "stake",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "balance": {
+                          "type": "object",
+                          "properties": {
+                            "denom": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "denom",
+                            "amount"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "balance"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "balance": {
+                          "denom": "stake",
+                          "amount": "0"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/bank/spendable_balances/{address}/by_denom": {
+      "get": {
+        "summary": "GetSpendableBalancesByAddressDenom",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Bank"
+        ],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "description": "address is the address to query balances for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "denom",
+            "in": "query",
+            "description": "denom is the coin denom to query balances for.",
+            "required": false,
+            "example": "stake",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "balance": {
+                          "type": "object",
+                          "properties": {
+                            "denom": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "denom",
+                            "amount"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "balance"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "balance": {
+                          "denom": "stake",
+                          "amount": "0"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/distribution/params": {
+      "get": {
+        "summary": "GetDistributionParams",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Distribution"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "params": {
+                          "type": "object",
+                          "properties": {
+                            "ubi": {
+                              "type": "string"
+                            },
+                            "base_proposer_reward": {
+                              "type": "string"
+                            },
+                            "bonus_proposer_reward": {
+                              "type": "string"
+                            },
+                            "withdraw_addr_enabled": {
+                              "type": "boolean"
+                            },
+                            "max_ubi": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "ubi",
+                            "base_proposer_reward",
+                            "bonus_proposer_reward",
+                            "withdraw_addr_enabled",
+                            "max_ubi"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "params"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "params": {
+                          "ubi": "0.065000000000000000",
+                          "base_proposer_reward": "0.000000000000000000",
+                          "bonus_proposer_reward": "0.000000000000000000",
+                          "withdraw_addr_enabled": true,
+                          "max_ubi": "0.200000000000000000"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/distribution/delegators/{delegator_address}/validators": {
+      "get": {
+        "summary": "GetDistributionValidatorsByDelegatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Distribution"
+        ],
+        "parameters": [
+          {
+            "name": "delegator_address",
+            "in": "path",
+            "description": "delegator_address defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "validators": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "validators"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "validators": [
+                          "0xdb8e606ad7c02f37e43d10a10126791dc94b0434"
+                        ]
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/distribution/delegators/{delegator_address}/rewards/{validator_address}": {
+      "get": {
+        "summary": "GetDelegatorRewardsByDelegatorAddressValidatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Distribution"
+        ],
+        "parameters": [
+          {
+            "name": "delegator_address",
+            "in": "path",
+            "description": "delegator_address defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "validator_address",
+            "in": "path",
+            "description": "validator_address defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "rewards": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "denom": {
+                                "type": "string"
+                              },
+                              "amount": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "rewards"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "rewards": [
+                          {
+                            "denom": "stake",
+                            "amount": "16994236.393259084134400000"
+                          }
+                        ]
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/distribution/validators/{validator_address}": {
+      "get": {
+        "summary": "GetDistributionValidatorByValidatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Distribution"
+        ],
+        "parameters": [
+          {
+            "name": "validator_address",
+            "in": "path",
+            "description": "validator_address defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "operator_address": {
+                          "type": "string"
+                        },
+                        "self_bond_rewards": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "denom": {
+                                "type": "string"
+                              },
+                              "amount": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "commission": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "denom": {
+                                "type": "string"
+                              },
+                              "amount": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "operator_address",
+                        "self_bond_rewards",
+                        "commission"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/distribution/validators/{validator_address}/commission": {
+      "get": {
+        "summary": "GetValidatorCommissionByValidatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Distribution"
+        ],
+        "parameters": [
+          {
+            "name": "validator_address",
+            "in": "path",
+            "description": "validator_address defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "commission": {
+                          "type": "object",
+                          "properties": {
+                            "commission": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "denom": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "required": [
+                            "commission"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "commission"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "commission": {
+                          "commission": [
+                            {
+                              "denom": "stake",
+                              "amount": "0.280833213274068782"
+                            }
+                          ]
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/distribution/validators/{validator_address}/outstanding_rewards": {
+      "get": {
+        "summary": "GetValidatorOutstandingRewardsByValidatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Distribution"
+        ],
+        "parameters": [
+          {
+            "name": "validator_address",
+            "in": "path",
+            "description": "validator_address defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "rewards": {
+                          "type": "object",
+                          "properties": {
+                            "rewards": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "denom": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "required": [
+                            "rewards"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "rewards"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "rewards": {
+                          "rewards": [
+                            {
+                              "denom": "stake",
+                              "amount": "0.339999880717017992"
+                            }
+                          ]
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/distribution/validators/{validator_address}/slashes": {
+      "get": {
+        "summary": "GetValidatorSlashesByValidatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Distribution"
+        ],
+        "parameters": [
+          {
+            "name": "validator_address",
+            "in": "path",
+            "description": "validator_address defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.key",
+            "in": "query",
+            "description": "key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.",
+            "required": false,
+            "example": "FPoybu9dO+FCSV562u9keKVgUwur",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.",
+            "required": false,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination.count_total",
+            "in": "query",
+            "description": "count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination.reverse",
+            "in": "query",
+            "description": "reverse is set to true if results are to be returned in the descending order.",
+            "required": false,
+            "example": "true",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "starting_height",
+            "in": "query",
+            "description": "starting_height defines the optional starting height to query the slashes.",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ending_height",
+            "in": "query",
+            "description": "ending_height defines the optional ending height to query the slashes.",
+            "required": false,
+            "example": "100",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "slashes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {}
+                        }
+                      },
+                      "required": [
+                        "slashes",
+                        "pagination"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "slashes": [],
+                        "pagination": {}
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/distribution/delegators/{delegator_address}/rewards": {
+      "get": {
+        "summary": "GetDelegatorRewardsByDelegatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Distribution"
+        ],
+        "parameters": [
+          {
+            "name": "delegator_address",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "rewards": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "validator_address": {
+                                "type": "string"
+                              },
+                              "reward": {
+                                "type": "null"
+                              }
+                            }
+                          }
+                        },
+                        "total": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "rewards",
+                        "total"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "rewards": [
+                          {
+                            "validator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                            "reward": {
+                              "denom": "stake",
+                              "amount": "16994236.393259084134400000"
+                            }
+                          }
+                        ],
+                        "total": null
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/mint/params": {
+      "get": {
+        "summary": "GetMintParams",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Cosmos Origin/Mint"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "params": {
+                          "type": "object",
+                          "properties": {
+                            "mint_denom": {
+                              "type": "string"
+                            },
+                            "inflations_per_year": {
+                              "type": "string"
+                            },
+                            "blocks_per_year": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "mint_denom",
+                            "inflations_per_year",
+                            "blocks_per_year"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "params"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "params": {
+                          "mint_denom": "stake",
+                          "inflations_per_year": "24625000000000000.000000000000000000",
+                          "blocks_per_year": "10368000"
+                        }
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/validators/{validator_addr}/delegators/{delegator_addr}/period_delegations": {
+      "get": {
+        "summary": "GetPeriodDelegationsByDelegatorAddress",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Story Extend/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "validator_addr",
+            "in": "path",
+            "description": "validator_addr defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "delegator_address": {
+                            "type": "string"
+                          },
+                          "validator_address": {
+                            "type": "string"
+                          },
+                          "period_delegation_id": {
+                            "type": "string"
+                          },
+                          "shares": {
+                            "type": "string"
+                          },
+                          "rewards_shares": {
+                            "type": "string"
+                          },
+                          "end_time": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": [
+                        {
+                          "delegator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                          "validator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                          "period_delegation_id": "0",
+                          "shares": "1000000.000000000000000000",
+                          "rewards_shares": "1000000.000000000000000000",
+                          "end_time": "2024-04-16T11:04:40.60280319Z"
+                        }
+                      ],
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/staking/validators/{validator_addr}/delegators/{delegator_addr}/period_delegations/{period_delegation_id}": {
+      "get": {
+        "summary": "GetPeriodDelegationByDelegatorAddressAndID",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Story Extend/Staking"
+        ],
+        "parameters": [
+          {
+            "name": "validator_addr",
+            "in": "path",
+            "description": "validator_addr defines the validator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "delegator_addr",
+            "in": "path",
+            "description": "delegator_addr defines the delegator address to query for.",
+            "required": true,
+            "example": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period_delegation_id",
+            "in": "path",
+            "description": "the id of delegation",
+            "required": true,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "object",
+                      "properties": {
+                        "delegator_address": {
+                          "type": "string"
+                        },
+                        "validator_address": {
+                          "type": "string"
+                        },
+                        "period_delegation_id": {
+                          "type": "string"
+                        },
+                        "shares": {
+                          "type": "string"
+                        },
+                        "rewards_shares": {
+                          "type": "string"
+                        },
+                        "end_time": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "delegator_address",
+                        "validator_address",
+                        "period_delegation_id",
+                        "shares",
+                        "rewards_shares",
+                        "end_time"
+                      ]
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "error"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 200,
+                      "msg": {
+                        "delegator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                        "validator_address": "0xdb8e606ad7c02f37e43d10a10126791dc94b0434",
+                        "period_delegation_id": "0",
+                        "shares": "1000000.000000000000000000",
+                        "rewards_shares": "1000000.000000000000000000",
+                        "end_time": "2024-04-16T11:04:40.60280319Z"
+                      },
+                      "error": ""
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {}
+  },
+  "servers": []
+}
