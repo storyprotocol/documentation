@@ -2,18 +2,18 @@
 title: How to Dispute an IP on Story
 excerpt: Learn how to dispute an IP on Story.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   robots: index
 ---
-* [Use the SDK](https://docs.story.foundation/docs/how-to-register-ip-on-story#using-the-sdk)
-* [Use a Smart Contract](https://docs.story.foundation/docs/how-to-register-ip-on-story#using-a-smart-contract)
+* [Use the SDK](https://docs.story.foundation/docs/how-to-dispute-ip-on-story#using-the-sdk)
+* [Use a Smart Contract](https://docs.story.foundation/docs/how-to-dispute-ip-on-story#using-a-smart-contract)
 
 # Using the SDK
 
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    Follow the completed code all the way through step 5a.
+    View the completed code for this tutorial.
   </Card>
 </Cards>
 
@@ -21,7 +21,11 @@ In this tutorial, you will learn how to dispute an IP on Story using the TypeScr
 
 ## The Explanation
 
-> 🚧 TODO
+There are many instances where you may want to dispute an IP - whether that IP is or is not owned by you. Disputing IP on Story is easy thanks to our [❌ Dispute Module](doc:dispute-module) and the [UMA Arbitration Policy](doc:uba-arbitration-policy).
+
+Let's say you register a drawing, and then someone else registers that drawing with 1 pixel off. You can dispute it along a `IMPROPER_REGISTRATION` tag, which communicates potential plagiarism.
+
+In this tutorial, you will simply learn how to flag an IP as being disputed.
 
 ## 0. Before you Start
 
@@ -65,7 +69,7 @@ const config: StoryConfig = {
 const client = StoryClient.newClient(config)
 ```
 
-## 2. Set up your IP Metadata
+## 2. Dispute an IP
 
 To dispute an IP Asset, you will need:
 
@@ -86,7 +90,7 @@ const disputeResponse = await client.dispute.raiseDispute({
 console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispute ID: ${disputeResponse.disputeId}`)
 ```
 
-## 6. Done!
+## 3. Done!
 
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
@@ -95,3 +99,5 @@ console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispu
 </Cards>
 
 # Using a Smart Contract
+
+> 🚧 Coming soon...
