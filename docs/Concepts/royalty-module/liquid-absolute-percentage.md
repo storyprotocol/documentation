@@ -1,5 +1,5 @@
 ---
-title: Liquid Absolute Percentage (LAP)
+title: Ликвидный Абсолютный Процент (LAP)
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,49 +10,48 @@ metadata:
 next:
   description: ''
 ---
-> ⏩ Skip the Read - 1 Minute Summary
+> ⏩ Читать не обязательно - 1-минутное саммари
 >
-> Let's come up with an example: An IP Asset ('C') is a child of 'B', and 'B' is a child of 'A', such that it goes A▶️B▶️C. 'A' specifies that any descendant must share 5% of their revenue with it. On the other hand, 'B' specifies that any descendants must share 10% of their revenue with it.
+> Представим пример: IP-актив "C" является производным от "B", а "B" – производным от "A", то есть A▶️B▶️C. "A" указывает, что любой потомок должен делиться 5% своего дохода с ним. В то же время "B" указывает, что любой потомок должен делиться 10% дохода с ним.
 >
-> Okay, great. Let's see what happens in two (independent) common scenarios:
+> Рассмотрим два независимых сценария:
 >
-> 1. **Minting a License** - 'C' mints a license from 'B' that costs 100 USDC. When 'C' pays 'B' 100 USDC to mint a license, 'A' claims 5 USDC from B. In the end, 'B' only gets 95 USDC.
-> 2. **Tipping Directly** - 'C' is a comic book that is super well written. Someone tips 100 USDC to 'C' because they love it. 'A' claims 5 USDC from 'C'. 'B' claims 10 USDC from 'C'. In the end, 'C' only gets 85 USDC.
+> 1. **Выпуск лицензии** – "C" выпускает лицензию от "B", которая стоит 100 USDC. Когда "C" платит "B" 100 USDC за выпуск лицензии, "A" получает 5 USDC от "B". В результате "B" получает только 95 USDC.
+> 2. **Прямой донат** – "C" – это супер качественный комикс. Кто-то отправляет 100 USDC "C" в знак признания. "A" получает 5 USDC от "C". "B" получает 10 USDC от "C". В итоге "C" остаётся 85 USDC.
 
-The Liquid Absolute Percentage (LAP) defines that each parent IP Asset can choose a minimum royalty percentage that all of its downstream IP Assets in a derivative chain will share from their monetary gains as defined in the license agreement.
+LAP определяет, что каждый родительский IP-актив может установить минимальный процент роялти, которым все его потомки в производной цепочке обязаны делиться от своей прибыли согласно лицензионному соглашению.
 
-## Prerequisites
+## Предварительные условия
 
-Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
+Перед продолжением убедитесь, что вы прочитали раздел с терминологией [Хранилища Роялти IP](doc:ip-royalty-vault).
 
-## Royalty Payment and Claiming Flow
+## Поток выплат и запрос роялти
 
-In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a % economic right over revenue made by IPA 3. Key notes to understand the derivative chain below:
+На изображении ниже IPA 1 и IPA 2 – будучи предками IPA 3 – имеют экономическое право на долю дохода, который получает IPA 3. Ключевые термины для понимания производной цепочки:
 
-* License Royalty Percentage - this percentage is selected by the user and it means the percentage that the user wants - according to LAP rules - in return for allowing other users to remix its IPA.
-* Royalty Stack - is the revenue an IPA has to pay all its ancestors. For LAP royalty stack = sum of parents royalty stack + sum of licenses percentages used to connect to each parent
-  * Royalty Stack IPA 2 = Royalty Stack IPA 1 + License Royalty % between IPAs 1 and 2 = 0% + 5% = 5%
-  * Royalty Stack IPA 3 = Royalty Stack IPA 2 + License Royalty % between IPAs 2 and 3 = 5% + 10% = 15%
-* Royalty Tokens flow to the IPA initially when a vault is deployed. The Royalty Tokens can be transferred to any other address and after that transfer any future royalty inflow will be claimable by that new address which now holds the RTs.
+* Процент лицензионных роялти – это процент, который пользователь выбирает для себя в соответствии с правилами LAP в обмен на разрешение другим пользователям использовать его IPA.
+  * Стек роялти IPA 2 = стек роялти IPA 1 + процент лицензионных роялти между IPA 1 и IPA 2 = 0% + 5% = 5%
+  * Стек роялти IPA 3 = стек роялти IPA 2 + процент лицензионных роялти между IPA 2 и IPA 3 = 5% + 10% = 15%
+* Токены Роялти распределяются в IPA сразу при развёртывании хранилища. Эти токены можно передавать на другие адреса, и все будущие выплаты роялти будут доступны для получения этим новым владельцем.
 
 ![](https://files.readme.io/dcfb36162a224000d960fe9d6ca451bf7679500a31e727fb7205d22cb3581391-image.png)
 
-Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivative chain as a derivative of IP Asset 3. An example flow sequence below:
+Теперь рассмотрим сценарий, в котором новый IP-актив 4 хочет присоединиться к производной цепочке как производный от IP-актива 3. Пример последовательности действий:
 
-1. IP Asset 4 pays 1M USDC in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
+1. Актив 4 выплачивает 1 млн USDC в роялти своему родителю IPA 3 через вызов функции `payRoyaltyOnBehalf`. Обратите внимание, что процесс роялти одинаков независимо от того, является ли это платой за выпуск лицензии или любой другой выплатой. Различие лишь в том, что лицензионная плата выплачивается через функцию `payLicenseMintingFee` и является обязательной при создании производного актива. После оплаты доля, равная проценту стека роялти IPA 3, отправляется в контракт политики роялти, а оставшаяся часть – в хранилище IPA 3.
 
 ![](https://files.readme.io/5b32b2bbdefe8e9d4c0a36016360b1b0bddaed899c889586df476ae736032478-image.png)
 
-2. Each ancestor can call `transferToVault` on the royalty policy contract to receive the amount each ancestor has the right to claim from a given descendant. Funds are moved to the ancestor's IP Royalty Vault.
-   1. 100k USDC are transferred to the IP Royalty Vault 2 since it the right to 10% of all IPA 2 descendants revenue
-   2. 50k USDC are transferred to the IP Royalty Vault 1 since it the right to 5% of all IPA 2 descendants revenue
+2. Каждый предок может вызвать функцию `transferToVault` в контракте политики роялти, чтобы получить свою долю, на которую он имеет право. Средства переводятся в хранилище роялти предков.
+   1. 100k USDC переводится в хранилище IPA 2, так как оно имеет право на 10% от доходов всех потомков IPA 2.
+   2. 50k USDC переводится в хранилище IPA 1, так как оно имеет право на 5% от доходов всех потомков IPA 2.
 
 ![](https://files.readme.io/76059536b28ba6daee35328f15baa4995850a5c54f00a1bcf863620e04a0eba3-image.png)
 
-3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
-   1. 50k USDC are claimed to the IPA 1 which holds 100% RT1
-   2. 100k USDC are claimed to the IPA 2 which holds 100% RT2
-   3. 850k USDC are claimed by IPA 3 which holds 100% RT3\
-      Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.
+3. На финальном этапе любой владелец токенов роялти может вызвать функции `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (для адресов, не являющихся хранилищами) или `claimRevenueByTokenBatchAsSelf` (если запрос выполняется хранилищем роялти) для получения дохода. В текущем примере:
+   1. 50k USDC запрашивается IPA 1, который владеет 100% RT1.
+   2. 100k USDC запрашивается IPA 2, который владеет 100% RT2.
+   3. 850k USDC запрашивается IPA 3, который владеет 100% RT3\
+      Примечание: Любой адрес, владеющий Токенами Роялти, может запрашивать выплаты, будь то смарт-контракт, IPA или стандартный адрес EOA.
 
 ![](https://files.readme.io/cdc8c8569c1cb6106542c7f663ee06059a28105f5b32671dfa77331071f0d128-image.png)
