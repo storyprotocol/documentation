@@ -1,14 +1,14 @@
 ---
-title: 🛠️ TypeScript SDK
+title: 🛠️ TypeScript SDK Guide
 excerpt: For TypeScript developers who want to build with Story.
 deprecated: false
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
   pages:
     - type: basic
       slug: typescript-sdk-setup
