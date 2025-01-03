@@ -438,43 +438,45 @@ The different relationship types that can be used for the `relationships` attrib
 ```
 ```json Physical Painting (RWA)
 {
-  "title": "CICLOPIROX OLAMINE, 2004",
-  "creators": [
+  title: "CICLOPIROX OLAMINE, 2004",
+  creators: [
     {
-      "name": "Damien Hirst",
-      "description": "Damien Hirst, a poster boy for the Young British Artists who rose to prominence in late 1980s London, is one of the most notorious artists of his generation. He has pushed the limits of fine art and good taste with sculptures that comprise dead animals submerged in formaldehyde; innumerable spot paintings that appear mass-produced and can sell for millions of dollars; and the exuberantly tacky For the Love of God (2007), a human skull studded with 8,601 diamonds. Through his installations, sculptures, drawings, and paintings, Hirst explores themes including religion, mortality, and desire. Since 1988, when the artist developed and curated “Freeze,” a groundbreaking exhibition of his work and that of his Goldsmiths College peers, he has been the subject of major shows at Tate Modern in London, the National Gallery of Art in Washington, D.C., and the Rijksmuseum in Amsterdam. In 2008, Hirst controversially staged “Beautiful Inside my Head Forever,” an auction in which he sold his work directly to the public and raked in around $200 million for himself. His individual works have sold for more than $10 million at auction.      ",
-      "socialMedia": [
+      name: "Damien Hirst",
+      contributionPercent: '100',
+      address: '0x0000000000000000000000000000000000000000',
+      description: "Damien Hirst, a poster boy for the Young British Artists who rose to prominence in late 1980s London, is one of the most notorious artists of his generation. He has pushed the limits of fine art and good taste with sculptures that comprise dead animals submerged in formaldehyde; innumerable spot paintings that appear mass-produced and can sell for millions of dollars; and the exuberantly tacky For the Love of God (2007), a human skull studded with 8,601 diamonds. Through his installations, sculptures, drawings, and paintings, Hirst explores themes including religion, mortality, and desire. Since 1988, when the artist developed and curated “Freeze,” a groundbreaking exhibition of his work and that of his Goldsmiths College peers, he has been the subject of major shows at Tate Modern in London, the National Gallery of Art in Washington, D.C., and the Rijksmuseum in Amsterdam. In 2008, Hirst controversially staged “Beautiful Inside my Head Forever,” an auction in which he sold his work directly to the public and raked in around $200 million for himself. His individual works have sold for more than $10 million at auction.      ",
+      socialMedia: [
         {
-          "platform": "Instagram",
-          "url": "https://www.instagram.com/damienhirst/"
+          platform: "Instagram",
+          url: "https://www.instagram.com/damienhirst/"
         },
         {
-          "platform": "Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Damien_Hirst"
+          platform: "Wikipedia",
+          url: "https://en.wikipedia.org/wiki/Damien_Hirst"
         }
       ]
     }
   ],
-  "attributes": [
+  attributes: [
     {
-      "key": "Materials",
-      "value": "Etching on Hahnemühle paper"
+      key: "Materials",
+      value: "Etching on Hahnemühle paper"
     },
     {
-      "key": "Size",
-      "value": "45 1/10 x 44 3/10 in | 114.5 x 112.5 cm"
+      key: "Size",
+      value: "45 1/10 x 44 3/10 in | 114.5 x 112.5 cm"
     },
     {
-      "key": "Edition",
-      "value": "Edition of 68"
+      key: "Edition",
+      value: "Edition of 68"
     },
     {
-      "key": "Signature",
-      "value": "Hand-signed by artist, Signed and numbered by the artist"
+      key: "Signature",
+      value: "Hand-signed by artist, Signed and numbered by the artist"
     },
     {
-      "key": "Certificate of authenticity",
-      "value": "link_to_certificate"
+      key: "Certificate of authenticity",
+      value: "link_to_certificate"
     }
   ]
 }
