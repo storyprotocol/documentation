@@ -1,16 +1,17 @@
 ---
-title: ❓ Concepts FAQ
-excerpt: Common technical questions related to our protocol documentation.
+title: ❓ FAQ Концепций
+excerpt: Распостранённые вопросы по нашей документации
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
-## *"What is the difference between License Tokens, Royalty Tokens, and Revenue Tokens?"*
+
+## _"В чём различие между Токенами Лицензии, Токенами Роялти и Токенами Дохода?"_
 
 <Table align={["left","left","left","left"]}>
   <thead>
@@ -20,76 +21,78 @@ next:
       </th>
 
       <th style={{ textAlign: "left" }}>
-        License Tokens
+        Токены Лицензии
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Royalty Tokens
+        Токены Роялти
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Revenue Tokens
+        Токены Дохода
       </th>
     </tr>
+
   </thead>
 
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        **Module**
+        **Модуль**
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [📜 Licensing Module](doc:licensing-module)
+        [📜 Модуль Лицензирования](doc:licensing-module)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [💸 Royalty Module](doc:royalty-module)
+        [💸 Модуль Роялти](doc:royalty-module)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [💸 Royalty Module](doc:royalty-module)
+        [💸 Модуль Роялти](doc:royalty-module)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        **Explanation**
+        **Объяснение**
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An ERC-721 NFT that gets minted from an IP Asset with specific license terms. It is essentially the license you hold that gives you access to use the associated IP Asset based on the terms in the License Token.  
+       NFT стандарта ERC-721, который выпускается на основе IP-актива с определенными условиями лицензии. Это, по сути, ваша лицензия, которая предоставляет доступ к использованию связанного IP-актива на условиях, указанных в Токене Лицензии.
 
-        A License Token is burned when it is used to register an IP Asset as a derivative of another.
+         Токен Лицензии сжигается, когда он используется для регистрации IP-актива в качестве производного от другого актива.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents the right of whoever owns them to claim 0.000001% of the gains ("*Revenue Tokens*") deposited into the IPA's Royalty Vault.
+        Каждый IP-актив связан с 100 000 000 Токенов Роялти, где каждый токен предоставляет владельцу право претендовать на 0,000001% прибыли , которая поступает в Хранилище Роялти IP.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        These are the tokens that are actually used for payment (ex. ETH, USDC, etc).  
+        Это токены, которые используются для фактических выплат (например, ETH, USDC и т.д.).
 
-        "*Royalty Tokens*" are used to claim these Revenue Tokens when an IP Asset earns them.
+        *"Токены Роялти"* используются для получения этих Токенов Дохода, если IP-актив зарабатывает их.
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        **Associated Docs**
+        **Связанные Документы**
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [License Token](doc:license-token)
+        [Токен Лицензии](doc:license-token)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [IP Royalty Vault](doc:ip-royalty-vault)
+        [Хранилище Роялти IP](doc:ip-royalty-vault)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [IP Royalty Vault](doc:ip-royalty-vault)
+        [Хранилище Роялти IP](doc:ip-royalty-vault)
       </td>
     </tr>
+
   </tbody>
 </Table>

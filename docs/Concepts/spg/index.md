@@ -1,5 +1,5 @@
 ---
-title: 📦 SPG
+title: 📦 Протоколный шлюз Story (SPG)
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,13 +10,13 @@ metadata:
 next:
   description: ''
 ---
-The Story Protocol Gateway (SPG) is a group of periphery/utility smart contracts, deployed on our protocol that **allows you to combine independent operations** - like registering an [🧩 IP Asset](doc:ip-asset) and attaching License Terms to that IP Asset - **into one transaction to make your life easier**.
+SPG (Story Protocol Gateway) — это набор периферийных/утилитарных смарт-контрактов, развернутых в рамках нашего протокола. Они позволяют **объединять независимые операции** (например, регистрацию [🧩 IP-актива](doc:ip-asset) и прикрепление лицензионных условий к этому IP-активу) **в одну транзакцию для упрощения процесса**.
 
-> 🗒️ Contracts
+> 🗒️ Контракты
 >
-> View the smart contracts [here](https://github.com/storyprotocol/protocol-periphery-v1/tree/main/contracts).
+> Ознакомьтесь со смарт-контрактами [тут](https://github.com/storyprotocol/protocol-periphery-v1/tree/main/contracts).
 
-For example, this `mintAndRegisterIpAndAttachPILTerms` is one of the functions in the SPG (more specifically in the "License Attachment Workflows") that allows you to mint an NFT, register it as an IP Asset, and attach License Terms to it all in one call:
+Функция `mintAndRegisterIpAndAttachPILTerms`, являющаяся частью SPG (в частности, "Workflow для прикрепления лицензий"), позволяет в одной транзакции создать NFT, зарегистрировать его как IP-актив и прикрепить к нему лицензионные условия.
 
 ```sol LicenseAttachmentWorkflows.sol
 function mintAndRegisterIpAndAttachPILTerms(
@@ -27,53 +27,53 @@ function mintAndRegisterIpAndAttachPILTerms(
 ) external onlyCallerWithMinterRole(nftContract) returns (address ipId, uint256 tokenId, uint256 licenseTermsId)
 ```
 
-## Supported Workflows
+## Поддерживаемые Workflow
 
-As mentioned above, there are many different functions we have created for you that combine multiple functions into one. Because we have created many of them, we have categorized them into different groups. These groups are called "workflows". 
+В SPG реализовано множество функций, которые объединяют несколько операций в одну. Для удобства они разделены на категории, называемые "Workflow".
 
-> 📘 Below Workflow Docs
+> 📘 Документация Workflow
 >
-> The below docs on the supported workflows is a copy + paste of [this document](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md). While we will try to keep the below list up to date, you can always go there for the latest version.
+> Приведенный ниже список Workflow — это копия [этого документа](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md). Мы будем стараться поддерживать его актуальность, однако для последней версии обращайтесь к оригинальному документу.
 
-### [Registration Workflows](../contracts/interfaces/workflows/IRegistrationWorkflows.sol)
+### [Workflow для регистрации](../contracts/interfaces/workflows/IRegistrationWorkflows.sol)
 
-* `createCollection`: Creates a SPGNFT Collection
-* `registerIp`: Registers an IP
-* `mintAndRegisterIp`: Mints a NFT → Registers it as an IP
+* `createCollection`: Создание коллекции SPGNFT.
+* `registerIp`:  Регистрация IP-актива.
+* `mintAndRegisterIp`: Создание NFT → Регистрация его как IP-актива.
 
-### [License Attachment Workflows](../contracts/interfaces/workflows/ILicenseAttachmentWorkflows.sol)
+### [Workflow для прикрепления лицензии](../contracts/interfaces/workflows/ILicenseAttachmentWorkflows.sol)
 
-* `registerPILTermsAndAttach`: Registers PIL terms → Attaches them to an IP
-* `registerIpAndAttachPILTerms`: Registers an IP → Registers PIL terms → Attaches them to the IP
-* `mintAndRegisterIpAndAttachPILTerms`: Mints a NFT → Registers it as an IP → Registers PIL terms → Attaches them to the IP
+* `registerPILTermsAndAttach`: Регистрация PIL-условий → Прикрепление их к IP.
+* `registerIpAndAttachPILTerms`:  Регистрация IP → Регистрация PIL-условий → Прикрепление их к IP.
+* `mintAndRegisterIpAndAttachPILTerms`: Создание NFT → Регистрация его как IP → Регистрация PIL-условий → Прикрепление их к IP.
 
-### [Derivative Workflows](../contracts/interfaces/workflows/IDerivativeWorkflows.sol)
+### [Workflow для производных активов](../contracts/interfaces/workflows/IDerivativeWorkflows.sol)
 
-* `registerIpAndMakeDerivative`: Registers an IP → Registers it as a derivative of another IP
-* `mintAndRegisterIpAndMakeDerivative`: Mints a NFT → Registers it as an IP → Registers the IP as a derivative of another IP
-* `registerIpAndMakeDerivativeWithLicenseTokens`: Registers an IP → Registers the IP as a derivative of another IP using the license tokens
-* `mintAndRegisterIpAndMakeDerivativeWithLicenseTokens`: Mints a NFT → Registers it as an IP → Registers the IP as a derivative of another IP using the license tokens
+* `registerIpAndMakeDerivative`: Регистрация IP → Определение его как производного от другого IP.
+* `mintAndRegisterIpAndMakeDerivative`: Создание NFT → Регистрация его как IP → Определение его как производного от другого IP.
+* `registerIpAndMakeDerivativeWithLicenseTokens`: Регистрация IP → Определение его как производного с использованием лицензионных токенов.
+* `mintAndRegisterIpAndMakeDerivativeWithLicenseTokens`: Создание NFT → Регистрация его как IP → Определение его как производного с использованием лицензионных токенов.
 
-### [Grouping Workflows](../contracts/interfaces/workflows/IGroupingWorkflows.sol)
+### [Workflow для группировки](../contracts/interfaces/workflows/IGroupingWorkflows.sol)
 
-* `mintAndRegisterIpAndAttachLicenseAndAddToGroup`: Mints a NFT → Registers it as an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
-* `registerIpAndAttachLicenseAndAddToGroup`: Registers an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
-* `registerGroupAndAttachLicense`: Registers a group IP → Attaches the given license terms to the group IP
+* `mintAndRegisterIpAndAttachLicenseAndAddToGroup`: Создание NFT → Регистрация его как IP → Прикрепление лицензионных условий → Добавление в группу IP.
+* `registerIpAndAttachLicenseAndAddToGroup`: Регистрация IP → Прикрепление лицензионных условий → Добавление в группу IP.
+* `registerGroupAndAttachLicense`: Регистрация группы IP → Прикрепление лицензионных условий к группе.
 * `registerGroupAndAttachLicenseAndAddIps`: Registers a group IP → Attaches the given license terms to the group IP → Adds existing IPs to the group IP
 
-### [Royalty Workflows](../contracts/interfaces/workflows/IRoyaltyWorkflows.sol)
+### [Workflow для роялти](../contracts/interfaces/workflows/IRoyaltyWorkflows.sol)
 
-* `transferToVaultAndSnapshotAndClaimByTokenBatch`: Transfers revenue tokens to ancestor IP’s royalty vault → Takes a snapshot of the royalty vault → Claims all available revenue tokens from the snapshot to the claimer’s wallet
-  * *Use Case*: For IP royalty token holders who want to claim both their direct revenue and royalties from descendant IPs.
-* `transferToVaultAndSnapshotAndClaimBySnapshotBatch`: Transfers revenue tokens to ancestor IP’s royalty vault → Takes a snapshot of the royalty vault → Claims all available revenue tokens from the new snapshot to the claimer’s wallet → Claims all available revenue tokens from each provided unclaimed snapshot to the claimer’s wallet
-  * *Use Case*: For IP royalty token holders who want to claim both direct revenue and descendant royalties from the latest snapshot and previously taken snapshots.
-* `snapshotAndClaimByTokenBatch`: Takes a snapshot of the royalty vault → Claims all available revenue tokens from the new snapshot to the claimer’s wallet
-  * *Use Case*: For IP royalty token holders who want to claim the current revenue in their IP’s royalty vault (which may or may not include descendant royalties).
-* `snapshotAndClaimBySnapshotBatch`: Takes a snapshot of the royalty vault → Claims all available revenue tokens from the new snapshot to the claimer’s wallet → Claims all available revenue tokens from each provided unclaimed snapshot to the claimer’s wallet
-  * *Use Case*: For IP royalty token holders who want to claim the current revenue in their IP’s royalty vault from the latest snapshot and previously taken snapshots.
+* `transferToVaultAndSnapshotAndClaimByTokenBatch`: Перевод доходных токенов в хранилище роялти IP → Создание снимка хранилища → Вывод доходов и роялти потомков IP.
+  * *Применение*: Для владельцев роялти-токенов, которые хотят вывести доходы и роялти от потомков.
+* `transferToVaultAndSnapshotAndClaimBySnapshotBatch`: Перевод токенов → Создание нового снимка → Вывод текущих доходов и доходов из предыдущих снимков.
+  * *Применение*: Для владельцев роялти, которые хотят получить доходы за текущий и прошлые периоды.
+* `snapshotAndClaimByTokenBatch`: Создание снимка (снепшота) → Вывод текущих доходов.
+  * *Применение*: Для владельцев роялти, которые хотят получить текущий доход.
+* `snapshotAndClaimBySnapshotBatch`: Создание снимка → Вывод доходов за текущий и предыдущие периоды.
+  * *Применение*: Для владельцев роялти, желающих получить доходы за все периоды.
 
-## Batching Calls
+## Объединение вызовов
 
-Although the SPG contains certain functions like `mintAndRegisterIpAndAttachPILTerms`, `registerIpAndAttachPILTerms`, and a bunch more, it would be tedious for us to continually update the contract to account for every single combination of possible interactions with an IP Asset.
+Несмотря на наличие функций, таких как `mintAndRegisterIpAndAttachPILTerms`и `registerIpAndAttachPILTerms`, их комбинации могут быть ограничены. Чтобы обеспечить максимальную гибкость, SPG предоставляет механизм "Multicall", позволяющий группировать вызовы в одну транзакцию.
 
-Instead, we have allowed for a "Multicall" mechanism where you can batch transactions how you like. For more info, see [Batch Function Calls](doc:batch-spg-function-calls).
+Подробнее про "Multicall" [Пакетные вызовы функций](doc:batch-spg-function-calls).

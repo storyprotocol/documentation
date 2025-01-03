@@ -1,30 +1,31 @@
 ---
-title: Hooks
-excerpt: Introduction of hooks in Story Protocol
+title: Хуки
+excerpt: Введение в Хуки в Story Protocol
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
-# Overview
 
-Hooks in Story Protocol are defined as a specialized interface that inherits from the Module framework. They are designed for developers to create custom implementations that integrate seamlessly with existing Modules.
+# Обзор
+
+Хуки в Story Protocol определяются как специализированный интерфейс, который наследуется от фреймворка Module. Они предназначены для того, чтобы разработчики могли создавать индивидуальные реализации, которые легко интегрируются с уже существующими модулями.
 
 <Image align="center" src="https://files.readme.io/2ea34f7-Screenshot_2024-02-05_at_16.09.49.png" />
 
-# Concept and Functionality
+# Концепция и функциональность
 
-While Modules are the backbone of the Story Protocol, executing actions and managing interactions, Hooks are distinct in their specific focus. They are tailored to verify conditions, an essential feature embodied in their `verify()` functionality. This design choice positions Hooks as a unique subset of Modules, specialized for particular tasks within the ecosystem.
+В то время как Модули являются основой Story Protocol, выполняя действия и управляя взаимодействиями, хуки отличаются своей узкой специализацией. Они предназначены для проверки условий, что особенно важно благодаря их функции `verify()`. Этот подход делает хуки уникальным подмножеством модулей, специально разработанных для выполнения определённых задач в экосистеме.
 
-# Design Philosophy
+# Философия проектирования
 
-From a structural standpoint, Hooks are not treated as separate entities from Modules. This decision avoids unnecessary complexity in the architecture. Viewing Hooks as specialized Modules allows for a simplified, efficient design that emphasizes clarity in roles and interactions.
+С точки зрения структуры, хуки не рассматриваются как отдельные сущности от модулей. Это позволяет избежать излишней сложности архитектуры. Рассматривая хуки как специализированные модули, удаётся создать простую и эффективную систему, в которой роли и взаимодействия максимально ясны.
 
-# Sample Token Gated Hook Module
+# Пример: Хук для проверки доступа на основе токенов
 
 ```coffeescript
 pragma solidity 0.8.23;
@@ -36,7 +37,7 @@ import { IHookModule } from "../../../contracts/interfaces/modules/base/IHookMod
 import { BaseModule } from "../../../contracts/modules/BaseModule.sol";
 
 /// @title Token Gated Hook.
-/// @notice Hook for ensursing caller is the owner of an NFT token.
+/// @notice Хук для проверки, является ли вызывающий адрес владельцем NFT.
 contract TokenGatedHook is BaseModule, IHookModule {
     using ERC165Checker for address;
 
@@ -65,7 +66,7 @@ contract TokenGatedHook is BaseModule, IHookModule {
 
 ```
 
-Using The `TokenGatedHook` as `commercializerChecker` with `LicensingModule` for use case that only allow mint license to licensee who own a specific NFT token. 
+Модуль `TokenGatedHook` может применяться в качестве `commercializerChecker` в LicensingModule (Модуль Лицензирования). В данном случае он позволяет выдавать лицензию только тем, кто владеет определённым токеном NFT.
 
 ```
         licensingModule.registerPolicyFrameworkManager(address(pilManager));
@@ -90,7 +91,7 @@ Using The `TokenGatedHook` as `commercializerChecker` with `LicensingModule` for
 
         MockTokenGatedHook tokenGatedHook = new MockTokenGatedHook();
         policyData.commercializerChecker = address(tokenGatedHook);
-        // address(this) doesn't hold token of NFT collection gatedNftBar, so the verification will fail
+       // address(this) не владеет токеном из коллекции gatedNftBar, поэтому проверка не будет пройдена.
         policyData.commercializerCheckerData = abi.encode(address(gatedNftBar));
         policyData.territories[0] = "territory1";
         policyData.distributionChannels[0] = "distributionChannel1";

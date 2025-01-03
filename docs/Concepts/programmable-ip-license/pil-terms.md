@@ -1,32 +1,33 @@
 ---
-title: PIL Terms
-excerpt: ''
+title: Условия PIL
+excerpt: ""
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
-> 👍 Easy Mode: We Have Preset PIL Terms
+
+> 👍 Упрощенный режим: У нас есть готовые условия PIL
 >
-> [Check the PIL Flavors here](https://docs.story.foundation/docs/pil-flavors-preset-policy).
+> [Готовые варианты условий PIL](https://docs.story.foundation/docs/pil-flavors-preset-policy).
 
-PIL is the first License Agreement for medial license developed by Story Protocol and inspired by [Token Bound License](https://james.grimmelmann.net/files/articles/token-bound-nft-license.pdf). If you haven't already, read the overview: [Programmable IP License (PIL💊)](doc:programmable-ip-license)
+PIL (Программируемая Лицензия IP) — это первая лицензия для медийных лицензий, разработанная Story Protocol и вдохновленная [Token Bound License](https://james.grimmelmann.net/files/articles/token-bound-nft-license.pdf). Если вы еще не знакомы, прочитайте обзор:[Программируемая Лицензия IP (PIL💊)](doc:programmable-ip-license).
 
-> 📘 PIL Legal Text
+> 📘 Текст PIL
 >
-> Check out the actual PIL legal text [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). It is very human readable for a legal text!
+> Ознакомьтесь с полным текстом PIL [здесь](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). Он написан простым и понятным языком как для юридического документа!
 
-# On-chain terms
+# Условия на блокчейне
 
-Most PIL terms are on-chain. They are implemented in the `IPILicenseTemplate` contract as a `PILTerms` struct [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/IPILicenseTemplate.sol).
+Большинство условий PIL реализованы на блокчейне. Они включены в контракт `IPILicenseTemplate` как структура `PILTerms`. Ознакомьтесь с исходным кодом [здесь](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/IPILicenseTemplate.sol).
 
 ```sol IPILicenseTemplate.sol
-/// @notice This struct defines the terms for a Programmable IP License (PIL).
-/// These terms can be attached to IP Assets.
+/// @notice Эта структура определяет условия для PIL.
+/// Эти условия могут быть применены к IP-активам.
 struct PILTerms {
   bool transferable;
   address royaltyPolicy;
@@ -48,23 +49,24 @@ struct PILTerms {
 }
 ```
 
-## Descriptions
+## Описание параметров
 
 <Table align={[null,"left",null]}>
   <thead>
     <tr>
       <th>
-        Parameter
+        Параметр
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Values
+        Значения
       </th>
 
       <th>
-        Description
+        Описание
       </th>
     </tr>
+
   </thead>
 
   <tbody>
@@ -78,7 +80,7 @@ struct PILTerms {
       </td>
 
       <td>
-        If false, the License Token cannot be transferred once it is minted to a recipient address.
+        Если False, токен лицензии нельзя будет передать другому адресу.
       </td>
     </tr>
 
@@ -88,11 +90,11 @@ struct PILTerms {
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Address
+        Адрес
       </td>
 
       <td>
-        The address of the royalty policy contract. The royalty policy must have been approved by Story Protocol in advance.
+        Адрес контракта политики роялти, который должен быть предварительно одобрен Story Protocol.
       </td>
     </tr>
 
@@ -106,7 +108,7 @@ struct PILTerms {
       </td>
 
       <td>
-        The fee to be paid when minting a license.
+        Комиссия за создание лицензии.
       </td>
     </tr>
 
@@ -120,7 +122,7 @@ struct PILTerms {
       </td>
 
       <td>
-        The expiration period of the license.
+        Срок действия лицензии (в блоках или секундах).
       </td>
     </tr>
 
@@ -134,7 +136,7 @@ struct PILTerms {
       </td>
 
       <td>
-        You can make money from using the original IP Asset, subject to limitations below.
+        Можно ли зарабатывать деньги, используя оригинал.
       </td>
     </tr>
 
@@ -148,7 +150,7 @@ struct PILTerms {
       </td>
 
       <td>
-        If true, people must give credit to the original work in their commercial application (eg. merch)
+        Требуется ли указание авторства при коммерческом использовании.
       </td>
     </tr>
 
@@ -158,11 +160,11 @@ struct PILTerms {
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Address
+        Адрес
       </td>
 
       <td>
-        Commercializers that are allowed to commercially exploit the original work. If zero address, then no restrictions are enforced.
+        Контракт, определяющий, кто может коммерчески использовать актив. Если адрес пустой, ограничений нет
       </td>
     </tr>
 
@@ -176,7 +178,7 @@ struct PILTerms {
       </td>
 
       <td>
-        The data to be passed to the commercializer checker contract.
+        Данные для проверки коммерциализации.
       </td>
     </tr>
 
@@ -190,9 +192,9 @@ struct PILTerms {
       </td>
 
       <td>
-        Amount of revenue (from any source, original & derivative) that must be shared with the licensor (a value of 10,000,000 == 10% of revenue share).  
+        Процент дохода, который должен быть передан лицензиару (например, 10,000,000 = 10%).
 
-        This will collect all revenue from tokens that are whitelisted in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50).
+        Весь доход от токенов которые внесены в белый список контракта [RoyaltyModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50).
       </td>
     </tr>
 
@@ -206,7 +208,7 @@ struct PILTerms {
       </td>
 
       <td>
-        If `commercialUse` is set to true, this value determines the maximum revenue you can earn from the original work.
+        Максимальный доход, который можно заработать на оригинале.
       </td>
     </tr>
 
@@ -220,7 +222,7 @@ struct PILTerms {
       </td>
 
       <td>
-        Indicates whether the licensee can create derivatives of his work or not.
+        Разрешено ли создавать производные работы.
       </td>
     </tr>
 
@@ -234,7 +236,7 @@ struct PILTerms {
       </td>
 
       <td>
-        If true, derivatives that are made must give credit to the original work.
+        Требуется ли указывать авторство для производных работ.
       </td>
     </tr>
 
@@ -248,7 +250,7 @@ struct PILTerms {
       </td>
 
       <td>
-        If true, the licensor must approve derivatives of the work.
+        Требуется ли одобрение от владельца для создания производных работ.
       </td>
     </tr>
 
@@ -262,7 +264,7 @@ struct PILTerms {
       </td>
 
       <td>
-        If true, derivatives of this derivative can be created indefinitely as long as they have the exact same terms.
+       	Производные работы могут быть использованы для создания новых производных только при соблюдении тех же условий.
       </td>
     </tr>
 
@@ -276,7 +278,7 @@ struct PILTerms {
       </td>
 
       <td>
-        If `commercialUse` is set to true, this value determines the maximum revenue you can earn from derivative works.
+        Максимальный доход от производных работ.
       </td>
     </tr>
 
@@ -290,7 +292,7 @@ struct PILTerms {
       </td>
 
       <td>
-        The ERC20 token to be used to pay the minting fee. The token must be registered in story protocol.
+        	Токен ERC20, используемый для оплаты лицензии. Токен должен быть зарегестрирован в Story.
       </td>
     </tr>
 
@@ -304,148 +306,132 @@ struct PILTerms {
       </td>
 
       <td>
-        The URI of the license terms, which can be used to fetch [off-chain license terms](https://docs.story.foundation/v1/docs/pil-for-devs-and-creators#off-chain-parameters-to-be-included-in-uri-field).
+       URI с дополнительными условиями [офф-чейн лицензии](https://docs.story.foundation/v1/docs/pil-for-devs-and-creators#off-chain-parameters-to-be-included-in-uri-field).
       </td>
     </tr>
+
   </tbody>
 </Table>
 
-# Off-chain terms to be included in `uri` field
+# Условия вне блокчейна (включаются в uri)
 
-Some PIL terms must be stored off-chain and passed in the `uri` field above. This is because these terms are often more lengthy and/or descriptive, so it would not make sense to store them on-chain.
+Некоторые параметры PIL хранятся вне блокчейна, поскольку они могут быть более длинными или описательными.
 
 <Table align={["left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
-        Parameter
+        Параметр
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Description
+        Описание
       </th>
     </tr>
+
   </thead>
 
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        Territory
+        Территория
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Limit usage of the IP to certain regions and/or countries.  
+        Указывает географические ограничения (по умолчанию глобально).
+    </tr>
 
-        By default, the IP can be used globally.
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        Каналы дистрибуции
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+Ограничивает использование IP в определенных форматах и каналах (по умолчанию доступно для всех каналов). Примеры: "телевидение", "физические товары", "видеоигры" и т.д.
+
+</td>
+</tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        Атрибуция
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Указывает, нужно ли упоминать автора (по умолчанию не требуется).
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        Channels of Distribution
+        Стандарты контента
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Restrict usage of the IP to certain media formats and use in certain channels of distribution.  
-
-        By default, the IP can be used across all possible channels of distribution.  
-
-        Examples: "television", "physical consumer products", "video games", etc.
+       Указывает стандарты для использования контента (по умолчанию ограничений нет). Примеры: "Без ненависти", "Подходит для всех возрастов", "Без наркотиков".
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        Attribution
+        Сублицензирование
       </td>
 
       <td style={{ textAlign: "left" }}>
-        If the original author should be credited for usage of the IP.  
-
-        By default, you do not need to provide credit to the original author.
+        Производные работы могут передавать те же права третьим лицам без подтверждения автора оригинала (по умолчанию запрещено).
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        Content Standards
+        Искусственный интеллект
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Set content standards around use of the IP.  
-
-        By default, no standards apply.  
-
-        Examples: "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons", "No-Pornography".
+        Разрешено ли использовать IP для разработки, обучения моделей ИИ (по умолчанию разрешено).
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        Sublicensable
+        Кроссплатформенность
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Derivative works can grant the same rights they received under this license to a 3rd party, without approval from the original licensor.  
-
-        By default, derivatives may not do so.
+       Можно ли использовать IP за пределами платформы, где она была опубликована (по умолчанию разрешено).
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        AI Learning Models
+        Применимое законодательство
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Whether or not the IP can be used to develop AI learning models.  
-
-        By default, the IP can be used for such development.
+        Указывает законы, регулирующие лицензию (по умолчанию Калифорния, США).
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        Restriction On Cross-Platform Use
+        Альтернативное разрешение споров
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Limit licensing and creation of derivative works solely on the app on which the IP is made available.  
-
-        By default, the IP can be used anywhere.
+       Секция 3.1 [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Beta_Final_2024_02_Plain_English.pdf).
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        Governing Law
+        Дополнительные параметры
       </td>
 
       <td style={{ textAlign: "left" }}>
-        The laws of a certain jurisdiction by which this license abides.  
-
-        By default, this is California, USA.
+        Лицензиар может добавлять дополнительные условия в этот раздел.
       </td>
     </tr>
 
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Alternative Dispute Resolution
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        Please see section 3.1 (s) [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Beta_Final_2024_02_Plain_English.pdf). 
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Additional License Parameters
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        There may be other terms the licensor would like to add and they can do so in this tag.
-      </td>
-    </tr>
   </tbody>
 </Table>

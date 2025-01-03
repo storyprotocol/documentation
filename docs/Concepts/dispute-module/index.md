@@ -1,5 +1,5 @@
 ---
-title: ❌ Dispute Module
+title: ❌ Модуль Споров
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,38 +10,30 @@ metadata:
 next:
   description: ''
 ---
-The Dispute Module creates a way for users to raise and resolve disputes through arbitration.
+Модуль споров даёт возможность пользователям начинать и разрешать споры через арбитраж.
 
-## Dispute Terminology
+## Терминология Споров
 
-The main components of the arbitration system are:
+Основными компонентами арбитражной системы являются:
 
-* **Arbitration Policies:** the arbitration policy refers to the set rules/process/entities that combined will decide on a dispute. Currently the only supported arbitration policy is the [UMA Arbitration Policy](doc:uma-arbitration-policy).
-* **Arbitration Penalty:** what happens to an IP Asset after it has been "tagged". An IPA is not deemed "tagged" unless the dispute is decided to be correct. Once tagged, an IPA will not be able to:
-  * mint licenses
-  * link to any parents
-  * claim royalties
-  * and all of its existing licenses become unusable
 
-### Dispute Tags
-
-**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. Tags must be whitelisted by protocol governance to be used in a disoute. The initial set of tags are planned to be:
-
-> 🚧 Version Warning
->
-> In protocol v1.2, the only whitelisted dispute tag is "PLAGIARISM" (`0x504c414749415249534d00000000000000000000000000000000000000000000` in base32).
->
-> The below tags will be available in protocol v1.3
+* **Арбитражная Политика:** Арбитражная политика относится к набору правил/процессов/субъектов, которые в совокупности будут принимать решение по спору. В настоящее время единственной поддерживаемой арбитражной политикой является [Арбитражная Политика UMA](doc:uma-arbitration-policy).
+* **Арбитражный штраф:** что происходит с IP-активом после того, как он был «помечен». IPA не считается «помеченным» до тех пор, пока спор не будет признан корректным. После того, как IPA будет помечен, он не сможет:
+  * создавать лицензии
+  * ссылаться на родителей (анг. parents)
+  * требовать роялти
+  * и все его существующие лицензии становятся непригодными для использования
+* **Тэги:** относится к тому, какие «метки» могут быть применены к IP-активам в протоколе. Разрешенные метки вносятся в белый список руководством протокола. Первоначальный набор меток планируется следующим образом:
 
 <Table align={["left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
-        Dispute Tag
+        Тэг
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Explanation
+        Объяснение
       </th>
     </tr>
   </thead>
@@ -53,7 +45,7 @@ The main components of the arbitration system are:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Refers to registration of IP that already exists.
+        Регистрация IP, которая уже существует
       </td>
     </tr>
 
@@ -61,22 +53,22 @@ The main components of the arbitration system are:
       <td style={{ textAlign: "left" }}>
         `IMPROPER_USAGE`
 
-        Examples (non-exhaustive):
-        Territory,
-        Channels of Distribution,
-        Expiration,
-        Irrevocable,
-        Attribution,
-        Derivatives,
-        Limitations on Creation of Derivatives,
-        Commercial Use,
-        Sublicensable,
-        Non-Transferable,
-        Restriction on Cross-Platform Use
+        Примеры (неисчерпывающие):
+        Территория,
+        Каналы распространения,
+        Срок действия,
+        Безвозвратность,
+        Атрибуция,
+        Производные,
+        Ограничения на создание производных,
+        Коммерческое использование,  
+        Сублицензируемая,
+        Непередаваемые,
+        Ограничение на кросс-платформенное использование
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.
+        Относится к ненадлежащему использованию IP-актива по нескольким пунктам (примеры слева). Более подробно эти пункты можно найти в юридическом документе [💊 Программируемая IP Лицензия (PIL)](doc:programmable-ip-license).
       </td>
     </tr>
 
@@ -86,7 +78,7 @@ The main components of the arbitration system are:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Refers to missing payments associated with an IP.
+        Отсутствие платежей, связанных с IP
       </td>
     </tr>
 
@@ -94,67 +86,68 @@ The main components of the arbitration system are:
       <td style={{ textAlign: "left" }}>
         `CONTENT_STANDARDS_VIOLATION`
 
-        No-Hate\
-        Suitable-for-All-Ages
-        No-Drugs-or-Weapons
-        No-Pornography
+        Без ненависти\
+        Подходит для всех возрастов
+        Без наркотиков и оружия
+        Без порнографии
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
+       Относится к «Без ненависти», «Подходит для всех возрастов», «Без наркотиков или оружия» и «Без порнографии». Более подробно эти пункты можно найти в юридическом документе [💊 Программируемая IP Лицензия (PIL)](doc:programmable-ip-license).
       </td>
     </tr>
   </tbody>
 </Table>
 
-## Dispute Process Flow
+## Процесс Рассмотрения Споров
 
 ![](https://files.readme.io/a1dc371-image.png)
 
-### Raise Dispute
+### Начать Спор
 
-The `raiseDispute` function is permissionless and allows any address to raise a dispute against any IP Asset registered on the protocol. The dispute initiator has to:
+Функция `raiseDispute` не требует особых разрешений и позволяет любому адресу возбудить спор против любого IP-актива, зарегистрированного в протоколе. Инициатор спора должен:
 
-1. Select which "tag" it is raising a dispute on which will be applied to the IP Asset if the arbitration decision is positive. This means an IP Asset is officially "tagged" only when the proposed tag is confirmed as correct ("positive decision" in the diagram above).
-2. Submit the dispute evidence for evaluation
-3. Other conditions custom to each arbitration policy - such as payment rules, etc.
+1. Выбрать «метку», по которой он поднимает спор, которая будет применена к IP-активу в случае положительного арбитражного решения. Это означает, что IP-актив официально «помечается» только тогда, когда предложенная метка подтверждается как правильная («положительное решение» на диаграмме выше).
+2. Представить доказательства спора для оценки
+3. Другие условия, индивидуальные для каждой арбитражной политики - например, правила оплаты и т. д.
 
-### Set Dispute Judgement
+### Вынести Решение По Спору
 
-The `setDisputeJudgement` can only be called by whitelisted addresses and allows the caller to set the dispute judgment. Can only be called once as dispute decisions are immutable. If 3rd parties want to offer the possibility for recourse they can do so on their end and relay the final judgment.
+Функция `setDisputeJudgement` может быть вызвана только адресами из белого списка и позволяет вызывающему установить решение по спору. Может быть вызвана только один раз, так как решения по спорам неизменяемы. Если третьи лица хотят предложить обращение в суд, они могут сделать это на своей стороне и передать окончательное решение.
 
-### Tag Derivative If Parent Infringed
+### Отметить Производные Если Родитель Нарушил Права
 
-If the `setDisputeJudgement` has tagged an IP as infringing then any address can call `tagDerivativeIfParentInfringed` to apply the same tag as the parent to the derivatives all the way down the derivative chain.
+Если `setDisputeJudgement` пометила IP как нарушающую авторские права, то любой адрес может вызвать `tagDerivativeIfParentInfringed`, чтобы применить ту же метку, что и к родителю, к производным по всей цепочке производных.
 
-> 📘 Looking Ahead
+> 📘 В перспективе
 >
-> In the future, the idea is that any derivative IP Asset of an infringed IP Asset would automatically be tagged without needed someone to call `tagDerivativeIfParentInfringed`. This is currently a limitation that we are aware of.
+>  В будущем предполагается, что любой производный объект IP от нарушевшего правила объекта IP будет автоматически маркироваться без необходимости вызывать `tagDerivativeIfParentInfringed`. В настоящее время это ограничение, о котором мы знаем.
 
-The derivatives are then tagged directly without any need for judgment given that it is considered that if a parent IP license has been infringed then all derivatives that come from that license are also implicitly in an infringement situation.
+Тогда производные помечаются напрямую, без необходимости суждения, поскольку считается, что если родительская лицензия IP была нарушена, то все производные, которые происходят из этой лицензии, также неявно находятся в ситуации нарушения.
 
-**Example**: IPA 7 is first tagged ("PLAGIARISM") as infringing via `setDisputeJudgement` after having gone through a dispute process. Only after that can IPAs 3, 1, and 0 can be tagged via `tagDerivativeIfParentInfringed` by any address without needing to go through a new dispute process.
+**Пример**: IP-актив 7 сначала помечается как нарушающий («PLAGIARISM») с помощью `setDisputeJudgement`. Только после того, как он прошёл через процесс спора, IPA 3, 1 и 0 могут быть помечены через `tagDerivativeIfParentInfringed` любым адресом без необходимости проходить через новый процесс спора.
+
 
 ![](https://files.readme.io/ee69754-image.png)
 
-### Resolve Dispute
+### Разрешение Спора
 
-Resolving a dispute removes the tag from the IP Asset. Since there are two ways in which a tag can be applied, there are two ways for it to be resolved:
+Разрешение спора удаляет метку с IP-актива. Поскольку существует два способа применения метки, есть два способа ее разрешения:
 
-1. Tag was applied via the`setDisputeJudgement` function
+1. Метка была применена с помощью функции `setDisputeJudgement`.
 
-In a case where a dispute judgment was positive, then a tag was applied. After the tag has been applied to an IP Asset, the **dispute initiator** can, if he/she believes the matter to be resolved and the tag to no longer apply, choose to remove it by calling `resolveDispute`. For example, if one party owed money to the dispute initiator and paid the full amount after the dispute judgment then the tag could be cleared and the IP Asset would have a clean slate again.
+В случае, если решение по спору было положительным, то есть была применена метка. После того как метка была применена к IP-активу, **инициатор спора** может, если он/она считает, что вопрос решен и метка больше не нужна, удалить ее, вызвав функцию `resolveDispute`. Например, если одна из сторон задолжала инициатору спора деньги и выплатила всю сумму после вынесения решения по спору, метка может быть удалена, и IP-актив снова будет чист.
 
-If the dispute initiator chooses to not resolve, then the tag that was defined in `setDisputeJudgement` remains in force.
+Если инициатор спора решает не разрешать спор, то тег, определенный в `setDisputeJudgement`, остается в силе.
 
-2. Tag was applied via the`tagDerivativeIfParentInfringed` function
+2. Метка была применена с помощью функции `tagDerivativeIfParentInfringed`.
 
-If an IP has been previously tagged as infringing via `tagDerivativeIfParentInfringed`, such tag can be removed via `resolveDispute` in a permissionless way as long as the parent is no longer considered an infringing IP Asset.
+Если IP была ранее помечена как нарушающая авторские права с помощью функции `tagDerivativeIfParentInfringed`, такая метка может быть удалена с помощью функции `resolveDispute` без каких-либо особых разрешений, если родитель больше не считается нарушающим права IP-активом.
 
-This mechanism of permissionless resolving disputes exists to make it easier to propagate down the derivative chain and remove infringement tags from derivative IPs when the parent has resolved its original dispute and is no longer considered as being in an infringing situation, and therefore neither are its derivatives.
+Этот механизм безусловного разрешения споров существует для того, чтобы облегчить распространение по цепочке производных и удаление меток нарушения с производных IP, когда родитель разрешил свой первоначальный спор и больше не считается нарушающим права, а значит, и его производные тоже.
 
-If no address chooses to resolve, then the tag that was applied from the parent to the derivative remains in force.
+Если ни один из адресов не решит разрешить спор, то тег, который был применен от родителя к производному, останется в силе.
 
-### Cancel Dispute
+### Отмена спора
 
-In a case where a dispute was raised but the matter has been resolved before the dispute judgment, the dispute initiator can cancel the dispute. However, depending on the conditions of each arbitration policy, there may be non-refundable fees that are not recouped on cancellation.
+В случае, когда спор был поднят, но вопрос был решен до вынесения решения по спору, инициатор спора может отменить спор. Однако в зависимости от условий каждой арбитражной политики могут быть предусмотрены невозвратные сборы, которые не возвращаются при отмене.

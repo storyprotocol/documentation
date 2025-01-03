@@ -1,69 +1,73 @@
 ---
-title: IP Royalty Vault
-excerpt: ''
+title: Хранилище Роялти IP
+excerpt: ""
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
-> ⏩ Skip the Read - 1 Minute Summary
+
+> ⏩ Читать не обязательно - 1-минутное саммари
 >
-> An IP Royalty Vault is a pool for all monetary inflows related to an IP Asset.
+> Хранилище Роялти IP – это пул, в котором хранятся все денежные поступления, связанные с IP-активом
 >
-> Every IP Asset has 100,000,000 Royalty Tokens associated with it, where each token represents the right to 0.000001% of that IPA's revenue (*"Revenue Tokens"*) stored in the pool.
+> Каждый IP-актив имеет 100,000,000 Токенов Роялти, где каждый токен представляет собой право на 0.000001% дохода этого актива («Токены Дохода»), хранящегося в пуле.
 >
-> Revenue Tokens are ERC-20 tokens used for payment (ex. USDC). These tokens must be whitelisted by the protocol to be used.
+> Токены Дохода – это токены стандарта ERC-20, используемые для оплаты (например, USDC). Для использования токены должны быть включены в белый список протокола.
 
-Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inflows related to an IP Asset's commercial exploration or from minting licenses. Anyone who holds Royalty Tokens (defined below) has the right to claim their share of this pool.
+Каждый IP-актив имеет свое Хранилище Роялти IP, которое служит пулом для всех денежных поступлений, связанных с коммерческой эксплуатацией IP или выдачей лицензий. Любой владелец Токенов Роялти имеет право требовать свою долю из этого пула.
 
-## Token Terminology
+## Терминология токенов
 
-1. Royalty Tokens - the IP Royalty Vault contract is also the ERC-20 contract for the Royalty Tokens of each IP Asset. This means the address of the IP Royalty Vault for an IP Asset is also the ERC-20 token address of the Royalty Tokens. Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of those gains. The holders of these Royalty Tokens can claim the Revenue Tokens (defined below) that are in the associated IP Royalty Vault.
-2. Revenue Tokens - these are the tokens used for payment (ie. ETH, USDC, etc). Royalty Tokens can be used to claim Revenue Tokens.
-   1. An ERC-20 token must be whitelisted by governance in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token in the Royalty Module.
+1. Токены Роялти – контракт Хранилища Роялти IP также является контрактом ERC-20 для Токенов Роялти каждого IP-актива. Это означает, что адрес Хранилища Роялти IP для IP-актива также является адресом Токенов Роялти. Каждый IP-актив имеет 100,000,000 Токенов Роялти, и каждый токен представляет 0.000001% дохода. Владельцы этих токенов могут требовать Токены Дохода (см. ниже), находящиеся в соответствующем Хранилище Роялти IP.
+2. Токены Дохода – это токены, используемые для оплаты (например, ETH, USDC и т.д.). Токены Роялти могут быть использованы для получения Токенов Дохода.
+   Токен ERC-20 должен быть включен в белый список управления в контракте [RoyaltyModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50), чтобы его можно было использовать как Токен Дохода.
 
-### Whitelisted Revenue Tokens
+### Токены Дохода из белого списка
 
-An ERC-20 token must be whitelisted by our protocol in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token. Here are the whitelisted tokens (you can mint tokens directly from the link):
+ERC-20 токен должен быть включен в белый список нашего протокола в контракте [RoyaltyModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50), чтобы быть использованным в качестве Токена Дохода. Вот список токенов из белого списка (вы можете сгенерировать токены по ссылке):
 
-| Token | Contract Address                             | Mint                                                                                                                        |
+| Токен | Адрес Контракта                              | Создать                                                                                                                     |
 | :---- | :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
-| SUSD  | `0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5` | <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5" target="_blank">Mint SUSD ↗️</a> |
+| SUSD  | `0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5` | <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5" target="_blank">Минт SUSD ↗️</a> |
 | WIP   | `0x1516000000000000000000000000000000000000` |                                                                                                                             |
 
-## How to obtain Royalty Tokens?
+## Как получить Токены Роялти
 
-When an IP Asset receives revenue, it is deposited into its IP Royalty Vault. In order to claim revenue from this vault, you must have the associated Royalty Tokens. Once any address owns Royalty Tokens of a given IP Asset, it is entitled to that % (% of the total supply of Royalty Tokens owned) of any future Revenue Token (that is whitelisted) received & in the IP Royalty Vault.
+Когда IP-актив получает доход, он помещается в его Хранилище Роялти IP. Чтобы получить доход из этого хранилища, необходимо обладать соответствующими Токенами Роялти. Любой адрес, владеющий Токенами Роялти для данного IP-актива, имеет право на соответствующий процент дохода (процент от общего количества токенов роялти, находящихся в обращении).
 
-There are two ways that trigger the IP Royalty Vault deployment and make the initial Royalty Token distribution - whichever comes first:
+Хранилище Роялти IP активируется, а Токены Роялти распределяются при выполнении одного из двух условий (в зависимости от того, что произойдет раньше):
 
-* IP mints a license token for the first time - the associated IP Account receives 100% of the Royalty Tokens
-* IP registers as a derivative - the associated IP Account receives y% of the Royalty Tokens and (100-y)% is sent to the Royalty Policy contracts that are part of the IP's ancestry. The y% is the amount the IP has to reserve/give to all its ancestors in order to create the derivative IP.
+- Выпуск лицензии: Если IP-актив впервые выпускает Токен Лицензии, связанный IP-аккаунт получает 100% токенов роялти.
+- Регистрация производного актива: Если IP-актив регистрируется как производный, связанный IP-аккаунт получает y% токенов роялти, а (100-y)% отправляется в контракты Политики Роялти, связанные с предшествующими активами в цепочке происхождения. y% – это доля, которую IP обязан зарезервировать для своих предшественников.
 
-Because Royalty Tokens are ERC-20, they can be transferred like any other token. Thus, the IP Account could send them to someone else, or even put them up for sale on the secondary market.
+Роялти Токены как токены ERC-20 могут быть отправлены кому-то или даже размещены на продажу на вторичном рынке.
 
-## How Revenue Flows
+## Как происходит распределение доходов
 
-This section will help explain how revenue flows from the time of payment to being claimed by the royalty token holder. For the purposes of explanation, we will use an example from the [Liquid Absolute Percentage (LAP)](doc:liquid-absolute-percentage), but it is the same for any royalty policy.
 
-Imagine we have a scenario where IPA4 tips IPA3 1M USDC by calling `payRoyaltyOnBehalf`.
+Эта секция объясняет, как доход распределяется с момента оплаты до его получения владельцем Токенов Роялти. Рассмотрим пример, связанный с [Ликвидным Абсолютным Процентом (LAP)](doc:liquid-absolute-percentage), однако процесс идентичен для других Политик Роялти:
 
-1. Revenue Tokens flow to the Royalty Module contract. This contract then splits up the tokens based on the **royalty stack** on the receiving IPA. In this case, IPA3 has a royalty stack of 15%, so 850k tokens flow to IP Royalty Vault 3, and 150k tokens flow to the LAP contract.
+Пример оплаты: IPA4 переводит IPA3 1 миллион USDC, вызывая функцию `payRoyaltyOnBehalf`.
+
+1. Токены Дохода поступают в контракт Модуля Роялти, который распределяет их в соответствии со **стеком роялти** для получающего актива. Например, если стек роялти IPA3 составляет 15%, 850k USDC поступает в хранилище IPA3, а 150k – в контракт LAP.
 
    ![](https://files.readme.io/be5dfdf9064320904ca27bc1f12a2475456064a19049b7d8fb2500d094746e1d-image.png)
-2. The LAP contract separates the payment to the ancestors by calling `transferToVault`. In this case, IPA2 deserves 100k (10% of IPA3's earnings) and IPA1 deserves 50k (5% of IPA3's earnings).
+
+2.  Контракт LAP распределяет оплату предшественникам, вызывая `transferToVault`. Например, IPA2 получает 100k (10% дохода IPA3), а IPA1 – 50k (5% дохода IPA3).
 
    ![](https://files.readme.io/1ad3a4827aa302dd94bcf45ebca6749b68821fcfaadb6a85c9b70b9c8d3f4af5-image.png)
-3. Now that the Revenue Tokens are in the IP Royalty Vaults, the associated Royalty Token holders can claim from the vaults. Remember, the Revenue Tokens get claimed to whoever holds the Royalty Tokens. In the most common case, they are in the IP Account since that's where they originate. To claim, you would call either `claimRevenueOnBehalfByTokenBatch` or `claimRevenueOnBehalf`.
+
+3.  Теперь Токены Дохода находятся в Хранилище Роялти IP. Владельцы соответствующих Токенов Роялти могут запросить их. Обычно они хранятся в IP-аккаунте, откуда и происходят. Для запроса необходимо вызвать `claimRevenueOnBehalfByTokenBatch` или `claimRevenueOnBehalf`
 
    ![](https://files.readme.io/c3523d5de4a3129f07eeceff5ff577178c3b3161b35fa2b75ed6e8ef98191872-image.png)
 
-### External Royalty Policies
+### Внешние Политики Роялти
 
-Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For this to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. This can be particularly useful when used together with external royalty policies.
+Токены Дохода могут перемещаться из одного хранилища в другое с помощью функции `claimByTokenBatchAsSelf`, находящейся в контракте `IpRoyaltyVault.sol`. Однако для этого хранилище, запрашивающее токены, должно владеть Токенами Роялти хранилища, из которого оно запрашивает доход.
 
-Vaults can only claim from other vaults if those other vaults belong to IPs in the same derivative chain. If a vault owns royalty tokens from an IP but it is not an ancestor of that IP, it is not possible to claim rewards with those royalty tokens.
+Это возможно только для хранилищ, принадлежащих активам в одной и той же цепочке производных. Если хранилище владеет Токенами Роялти актива, который не является его предком, получение дохода с этих токенов невозможно.

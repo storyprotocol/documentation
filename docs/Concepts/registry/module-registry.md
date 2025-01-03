@@ -1,5 +1,5 @@
 ---
-title: Module Registry
+title:  Реестр Модулей
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,10 +10,10 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/ModuleRegistry.sol).
+> Ознакомьтесь со смарт-контрактом [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/ModuleRegistry.sol).
 
-The Module Registry maintains and updates the global list of modules and hooks registered permissionlessly on Story. It can enable/disable modules on a per-IP Account basis for granular control over each IP Account's interaction with modules and hooks.
+Реестр модулей поддерживает и обновляет глобальный список модулей и хуков, зарегистрированных без разрешений в Story. Он позволяет включать/отключать модули для каждого IP-аккаунта индивидуально, обеспечивая детальный контроль над взаимодействием каждой учетной записи с модулями и хуками.
 
-**This module is likely not very important for you** unless you wish to dive into creating/reading modules.
+**Скорее всего, этот модуль не будет для вас особо важным**, если только вы не хотите углубиться в создание или изучение модулей.

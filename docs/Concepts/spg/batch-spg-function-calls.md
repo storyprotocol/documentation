@@ -1,5 +1,5 @@
 ---
-title: Batch Function Calls
+title: Пакетные вызовы функций
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,38 +10,38 @@ metadata:
 next:
   description: ''
 ---
-## Background
+## Предыстория
 
-Prior to this point, registering multiple IPs or performing other operations such as minting, attaching licensing terms, and registering derivatives requires separate transactions for each operation. This can be inefficient and costly. To streamline the process, you can batch multiple transactions into a single one. Two solutions are now available for this:
+До внедрения нового подхода регистрация нескольких объектов IP или выполнение других операций, таких как выпуск токенов, добавление лицензионных условий и регистрация производных, требовали отдельной транзакции для каждой операции. Это могло быть неэффективным и дорогостоящим. Для оптимизации процесса теперь доступно два способа объединения нескольких транзакций в одну:
 
-1. **Batch SPG function calls:** Use [SPG’s built-in `multicall` function](https://docs.story.foundation/docs/batch-spg-function-calls#1-batch-spg-function-calls-via-built-in-multicall-function).
-2. **Batch function calls beyond SPG:** Use the [Multicall3 Contract](https://docs.story.foundation/docs/batch-spg-function-calls#2-batch-function-calls-via-multicall3-contract).
+1. **Пакетные вызовы функций SPG:** Используйте встроенную функцию [`multicall`](https://docs.story.foundation/docs/batch-spg-function-calls#1-batch-spg-function-calls-via-built-in-multicall-function).
+2. **Пакетные вызовы функций за пределами SPG:** Используйте контракт [Multicall3](https://docs.story.foundation/docs/batch-spg-function-calls#2-batch-function-calls-via-multicall3-contract).
 
 ***
 
-## 1. Batch SPG Function Calls via Built-in `multicall` Function
+## 1. Пакетные вызовы функций SPG с использованием встроенной функции `multicall`
 
-SPG includes a `multicall` function that allows you to combine multiple read or write operations into a single transaction.
+SPG включает функцию `multicall`, которая позволяет объединить несколько операций чтения или записи в одну транзакцию.
 
-### Function Definition
+### Определение функции
 
-The `multicall` function accepts an array of encoded call data and returns an array of encoded results corresponding to each function call:
+Функция `multicall` принимает массив закодированных данных вызова и возвращает массив закодированных результатов, соответствующих каждому вызову функции:
 
 ```solidity
-/// @dev Executes a batch of function calls on this contract.
+/// @dev Выполняет пакетный вызов функций в этом контракте.
 function multicall(bytes[] calldata data) external virtual returns (bytes[] memory results);
 ```
 
-### Example Usage
+### Пример Использования
 
-Suppose you want to mint multiple NFTs, register them as IPs, and link them as derivatives to some parent IPs. 
+Допустим, вы хотите выпустить несколько NFT, зарегистрировать их как IP и связать их с производными объектами IP.
 
-To accomplish this, you can use SPG’s `multicall` function to batch the calls to the `mintAndRegisterIpAndMakeDerivative` function. 
+Для этого можно использовать функцию `multicall` SPG для пакетного вызова функции `mintAndRegisterIpAndMakeDerivative`.
 
-Here’s how you might do it:
+Пример использования:
 
 ```solidity
-// an SPG workflow contract: https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/workflows/DerivativeWorkflows.sol
+// контракт рабочего процесса SPG: https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/workflows/DerivativeWorkflows.sol
 contract DerivativeWorkflows {
     ...
     function mintAndRegisterIpAndMakeDerivative(
@@ -56,10 +56,10 @@ contract DerivativeWorkflows {
 }
 ```
 
-To batch call `mintAndRegisterIpAndMakeDerivative` using the `multicall` function:
+Пример пакетного вызова `mintAndRegisterIpAndMakeDerivative` с помощью функции `multicall`:
 
 ```javascript
-// batch mint, register, and make derivatives for multiple IPs
+// пакетное создание, регистрация и связывание производных для нескольких IP
 await DerivativeWorkflows.multicall([
   DerivativeWorkflows.contract.methods.mintAndRegisterIpAndMakeDerivative(
       nftContract1,
@@ -82,23 +82,23 @@ await DerivativeWorkflows.multicall([
       ipMetadata3,
   ).encodeABI(),
   ...
-  // Add more calls as needed
+   // Добавьте больше вызовов по мере необходимости
 ]);
 ```
 
 ***
 
-## 2. Batch Function Calls via Multicall3 Contract
+## 2. Пакетные вызовы функций через контракт Multicall3
 
-> 🚧 Warning
+> 🚧 Важно
 >
-> Note: The Multicall3 contract is not fully compatible with SPG functions that involve SPGNFT minting due to access control and context changes during Multicall execution. For such operations, use [SPG’s built-in multicall function.](https://docs.story.foundation/docs/batch-spg-function-calls#1-batch-spg-function-calls-via-built-in-multicall-function)
+> Контракт Multicall3 не полностью совместим с функциями SPG, связанными с выпуском SPGNFT, из-за особенностей контроля доступа и изменения контекста во время выполнения Multicall. Для таких операций используйте встроенную функцию [multicall SPG](https://docs.story.foundation/docs/batch-spg-function-calls#1-batch-spg-function-calls-via-built-in-multicall-function).
 
-The Multicall3 contract allows you to execute multiple calls within a single transaction and aggregate the results. The [`viem` library](https://viem.sh/docs/contract/multicall#multicall) provides native support for Multicall3.
+Контракт Multicall3 позволяет выполнить несколько вызовов функций в рамках одной транзакции и агрегировать результаты. Библиотека [`viem`](https://viem.sh/docs/contract/multicall#multicall) поддерживает Multicall3 на нативном уровне.
 
-### Story Odyssey Testnet Multicall3 Deployment Info
+### Информация о развертывании Multicall3 в тестовой сети Story Odyssey
 
-(Same address across all EVM chains)
+(Один и тот же адрес на всех сетях EVM)
 
 ```json
 {
@@ -109,70 +109,71 @@ The Multicall3 contract allows you to execute multiple calls within a single tra
 }
 ```
 
-### Main Functions
+### Основные функции
 
-To batch multiple function calls, you can use the following functions:
+Для пакетного вызова функций используйте следующие функции:
 
-1. **`aggregate3`**: Batches calls using the `Call3` struct.
-2. **`aggregate3Value`**: Similar to `aggregate3`, but also allows attaching a value to each call.
+1.**` aggregate3`**: Выполняет пакетный вызов с использованием структуры Call3.
+2. **`aggregate3Value`**: Аналогична `aggregate3`, но позволяет также прикреплять значение к каждому вызову.
 
 ```solidity
-/// @notice Aggregate calls, ensuring each returns success if required.
-/// @param calls An array of Call3 structs.
-/// @return returnData An array of Result structs.
+/// @notice Агрегирует вызовы, обеспечивая успех каждого, если это требуется.
+/// @param calls Массив структур Call3.
+/// @return returnData Массив структур Result.
 function aggregate3(Call3[] calldata calls) external payable returns (Result[] memory returnData);
 
-/// @notice Aggregate calls with an attached msg value.
-/// @param calls An array of Call3Value structs.
-/// @return returnData An array of Result structs.
+/// @notice Агрегирует вызовы с прикрепленным значением msg.
+/// @param calls Массив структур Call3Value.
+/// @return returnData Массив структур Result.
 function aggregate3Value(Call3Value[] calldata calls) external payable returns (Result[] memory returnData);
 ```
 
-### Struct Definitions
+### Определения структур
 
-* **Call3**: Used in `aggregate3`.
-* **Call3Value**: Used in `aggregate3Value`.
+
+* **Call3**: Используется в `aggregate3`.
+* **Call3Value**: Используется в `aggregate3Value`.
 
 ```solidity
 struct Call3 {
-  address target;      // Target contract to call.
-  bool allowFailure;   // If false, the multicall will revert if this call fails.
-  bytes callData;      // Data to call on the target contract.
+  address target;      // Адрес вызываемого контракта.
+  bool allowFailure;   // Если false, вызов Multicall завершится неудачей при ошибке.
+  bytes callData;      // Данные для вызова контракта.
 }
 
 struct Call3Value {
   address target;
   bool allowFailure;
-  uint256 value;       // Value (in wei) to send with the call.
-  bytes callData;      // Data to call on the target contract.
+  uint256 value;       // Значение (в wei), отправляемое с вызовом.
+  bytes callData;      // Данные для вызова контракта.
 }
 ```
 
-### Return Type
+### Тип возвращаемого значения
 
-* **Result**: Struct returned by both `aggregate3` and `aggregate3Value`.
+* **Result**: Структура возвращаемая `aggregate3` и `aggregate3Value`.
 
 ```solidity
 struct Result {
-  bool success;        // Whether the function call succeeded.
-  bytes returnData;    // Data returned from the function call.
+  bool success;        // Успешность вызова.
+  bytes returnData;    // Данные, возвращаемые функцией.
 }
 ```
 
-> 📘 Examples
+> 📘 Примеры
 >
-> For detailed examples in Solidity, TypeScript, and Python, see the [Multicall3 repository](https://github.com/mds1/multicall/tree/main/examples).
+> Для подробных примеров на Solidity, TypeScript и Python, см. [репозиторий Multicall3](https://github.com/mds1/multicall/tree/main/examples).
 
-### Limitations
+### Ограничения
 
-For a list of limitations when using Multicall3, refer to the [Multicall3 README](https://github.com/mds1/multicall/blob/main/README.md#batch-contract-writes).
+Список ограничений при использовании Multicall3 доступен в [Multicall3 README](https://github.com/mds1/multicall/blob/main/README.md#batch-contract-writes).
 
-### Additional Resources
+### Дополнительные ресурсы
 
-* [Multicall3 Documentation](https://github.com/mds1/multicall/blob/main/README.md)
-* [Multicall Documentation from Viem](https://viem.sh/docs/contract/multicall#multicall)
+* [Документация Multicall3](https://github.com/mds1/multicall/blob/main/README.md)
+* [Документация Multicall от Viem](https://viem.sh/docs/contract/multicall#multicall)
 
-### Full Multicall3 Interface
+### Полный интерфейс Multicall3
 
 ```solidity
 interface IMulticall3 {

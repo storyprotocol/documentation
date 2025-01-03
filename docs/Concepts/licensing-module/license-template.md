@@ -1,8 +1,7 @@
 ---
-title: License Template
+title: Шаблон Лицензии
 excerpt: >-
-  A legal framework, written in code ("programmable"), that defines various
-  licensing terms for an IP.
+  Юридическая структура, написанная в виде программируемого кода, которая определяет различные условия лицензирования для интеллектуальной собственности (IP).
 deprecated: false
 hidden: false
 metadata:
@@ -12,37 +11,37 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
+> 🗒️ Контракт
 >
-> View the smart contract for the [💊 Programmable IP License (PIL)](doc:programmable-ip-license), the first and currently only example of a License Template, [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/PILicenseTemplate.sol).
+> Ознакомиться со смарт контрактом [💊 Программируемой Лицензии IP (PIL)](doc:programmable-ip-license), первого и на данный момент единственного примера Шаблона лицензии, можно [тут](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/PILicenseTemplate.sol).
 
-A License Template is a legal framework, written in code ("programmable"), that defines various licensing terms for an IP. Such as:
+Шаблон лицензии — это юридическая структура, написанная в виде программируемого кода, которая определяет различные условия лицензирования для IP. Примеры таких условий:
 
-* "Is commercial use allowed?" - true/false (bool)
-* "Is the license transferrable?" - true/false (bool)
-* "If commercial, what % of royalty do I receive?" - number
+* "Разрешено ли коммерческое использование?" - true/false (bool)
+* "Можно ли передавать лицензию?" - true/false (bool)
+* "Если коммерческое использование разрешено, какой процент роялти я получу?" - number
 
-These terms and values differ per License Template.
+Эти условия и их значения различаются в зависимости от Шаблона лицензии.
 
-The first (and currently only) example of a License Template was developed by the Story team directly, and is called the Programmable IP License (PIL :pill:).
+Первый (и на данный момент единственный) пример Шаблона лицензии был разработан командой Story и называется Программируемая Лицензия интеллектуальной собственности (Programmable IP License, PIL 💊).
 
-> 💊 Programmable IP License Framework
+> 💊 Программируемая структура лицензии IP
 >
-> To learn about the first implementation of a License Template, [read this page](doc:programmable-ip-license-pil).
+> Чтобы узнать больше о первой реализации Шаблона лицензии [читайте эту страницу](doc:programmable-ip-license-pil).
 
-## License Template Requirements
+## Требования к Шаблонам лицензий
 
-License Templates are responsible for:
+Шаблоны лицензий обязаны:
 
-* Providing a link to the actual, off-chain, legal contract template, with all the parameters, their possible values, and the correspondent legalese, in `licenseTextUrl`.
-  * For a licensing framework to be compatible with Story Protocol, the legal text **must** be clear and parametrized, with each licensing parameter establishing the possible outcomes of each value.
-  * The parameter values in each License Template (called "License Template terms") drive the legal text for each license agreement.
-* Defining a `struct` with the particular definitions of the parameters in accordance, which must be encoded into the License Terms struct (described below).
-* Providing registration methods for the License Terms, and getters.
-* **Verifying** that both the **minter** and the address **linking a derivative are allowed by the License Template terms to perform those actions**. 
-  * These conditions could be enforced by the License Template itself or through hooks. They can range from limitations on the derivative creations, token-gating LNFT holders, creative control from licensors, KYC, etc. It's up to the implementation of each License Template.
-* **Verifying that the License Terms are compatible if a derivative has or will have multiple parents**
+* Предоставлять ссылку на фактический оффчейн-шаблон (англ. off-chain) юридического контракта со всеми параметрами, их возможными значениями и соответствующими юридическими формулировками в `licenseTextUrl`.
+  * Для того чтобы структура лицензирования была совместима с протоколом Story, юридический текст **должен** быть четким и параметризованным. Каждый параметр лицензии должен устанавливать возможные варианты его значений.
+  * Значения параметров в каждом Шаблоне Лицензии (так называемые "условия Шаблона Лицензии") определяют юридический текст для каждого лицензионного соглашения.
+* Определять `struct` с конкретными определениями параметров в соответствии с шаблоном, который должен быть закодирован в структуре условий лицензии (описано ниже).
+* Обеспечивать методы регистрации для условий лицензии и методы для их получения.
+* **Проверять**, что как **минтер** (анг. minter), так и адрес, **связывающий производное произведение, имеют право совершать такие действия согласно условиям Шаблона Лицензии**.
+  * Эти условия могут быть реализованы самим Шаблоном Лицензии или с использованием хуков. Они могут включать ограничения на создание производных произведений, ограничение доступа по токенам LNFT, творческий контроль от лицензиаров, KYC и т. д. Всё это зависит от реализации каждого конкретного Шаблона Лицензии.
+* **Проверять совместимость условий лицензии, если у производного произведения есть или будет несколько родителей.**
 
-## Create Your Own Template
+## Создайте свой собственный Шаблон
 
-You can create your own License Template (like the PIL), but it must be approved by the Story team to be fully embedded into the protocol.
+Вы можете создать свой собственный Шаблон лицензии (как PIL), но он должен быть одобрен командой Story, чтобы быть полностью встроенным в протокол.

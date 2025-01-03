@@ -1,5 +1,5 @@
 ---
-title: 🧩 IP Asset
+title: 🧩 IP Актив
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,50 +10,51 @@ metadata:
 next:
   description: ''
 ---
-> 🐦 Skip the Read
+> 🐦 Читать не обязательно
 >
-> Get a quick 1-minute overview of IP Assets [here](https://twitter.com/jacobmtucker/status/1785765362744889410).
+> Краткая 1-минутная выжимка про IP-активы тут [тут](https://twitter.com/jacobmtucker/status/1785765362744889410).
 
-IP Assets are the foundational programmable IP metadata on Story. Each IP Asset is an on-chain ERC-721 NFT (representing an IP). Yes, that means your Azuki or Pudgy Penguin is already eligible for registration into our protocol, and don't worry, there is no wrapping involved.
+IP-активы - это основополагающие программируемые IP-метаданные в Story. Каждый IP-актив - это ERC-721 NFT (представляющая IP). Да, это означает, что ваш Azuki или Pudgy Penguin уже может быть зарегистрирован в нашем протоколе, и не переживайте, никаких обёрток.
 
-If your IP is off-chain, you would simply mint an ERC-721 NFT to represent that IP first, and then register it as an IP Asset.
+Если ваша IP находится вне цепочки, вы просто сначала минтите (анг. mint) ERC-721 NFT для представления этой IP, а затем регистрируете её как IP-актив в Story.
 
-An IP Asset also has an associated [IP Account](doc:ip-account), which is a modified ERC-6551 (Token Bound Account) implementation. It is a separate contract bound to the IP Asset for controlling permissions around interactions with Story's modules or storing the IP's associated data.
+IP-актив также имеет связанный с ним [IP Аккаунт](doc:ip-account), который представляет собой модифицированную реализацию ERC-6551. Это отдельный контракт, связанный с IP-активом для контроля разрешений на взаимодействие с модулями Story или хранения связанных с IP данных.
 
-## Registering an IP Asset
+## Регистрация IP-актива
 
-An IP Asset is created by registering an ERC-721 NFT into Story's global [IP Asset Registry](doc:ip-asset-registry).
+IP-актив создается путем регистрации ERC-721 NFT в глобальном [Реестре IP Активов] Story (doc:ip-asset-registry).
 
-If you'd like to jump into code examples/tutorials, please see [How to Register IP on Story](doc:how-to-register-ip-on-story).
+Если вы хотите перейти к примерам кода/учебникам, пожалуйста, посмотрите [Как зарегистрировать IP в Story](doc:how-to-register-ip-on-story).
 
-## NFT vs. IP Metadata
+## Метаданные NFT vs IP
 
-On Story, your IP is an NFT that gets registered on the protocol as an IP Asset. However, both NFTs and IP Assets have their own metadata you can set, so what's the difference?
+В Story ваша IP - это NFT, которая регистрируется в протоколе как IP-актив. Однако и у NFT, и у IP-активов есть свои метаданные, которые вы можете установить сами, так в чем же разница?
 
-|         | Standard                                                                                     | What is it?                                                                                                                                                                          |
+
+|         | Стандарт                                                                                   | Что это?                                                                                                                                                                          |
 | :------ | :------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **NFT** | [Standard ERC721 NFT Metadata](https://github.com/ethereum/ercs/blob/master/ERCS/erc-721.md) | Things like name, image, collection info, etc                                                                                                                                        |
-| **IP**  | [IPA Metadata Standard](doc:ipa-metadata-standard)                                           | More specific to Story, this includes information about the author of the work, its relationship to other works, attributes like app-specific metadata & AI remixing attributes, etc |
+| **NFT** | [ERC721 Стандарт Метаданных](https://github.com/ethereum/ercs/blob/master/ERCS/erc-721.md) | Имя, картинка, информация о коллекции etc                                                                                                                                        |
+| **IP**  | [IPA Стандарт Метаданных](doc:ipa-metadata-standard)                                           | Более специфичные для Story данные, например информация об авторе работы, его связи с другими работами, атрибуты, такие как метаданные для конкретных приложений и атрибуты ремикширования AI, и т. д. |
 
-All other metadata, such as the ownership, legal, and economic details of an IP Asset are handled by our protocol directly. For example, the protocol stores data associated with parent-child relationships through the [📜 Licensing Module](doc:licensing-module), the monetary flow between IP Assets through the [💸 Royalty Module](doc:royalty-module), and the legal constraints/permissions of an IP Asset with the [💊 Programmable IP License (PIL)](doc:programmable-ip-license).
+Все остальные метаданные, такие как сведения о собственности, юридических и экономических аспектах IP-актива, обрабатываются нашим протоколом напрямую. Например, протокол хранит данные, связанные с отношениями между родителями и детьми (анг. parent-child), через [📜 Модуль Лицензирования](doc:licensing-module), денежные потоки между IP-активами через [💸 Модуль Роялти](doc:royalty-module), и юридические ограничения/разрешения IP-актива с помощью [💊 Программируемой IP Лицензии (PIL)](doc:programmable-ip-license).
 
-### Adding NFT & IP Metadata to IP Asset
+### Добавление метаданных NFT и IP к IP-активу
 
-> 📘 Working Code Example
+> 📘 Пример кода
 >
-> To see how to implement proper metadata for the NFT & IP, in both the SDK and smart contracts directly, check out [How to Register IP on Story](doc:how-to-register-ip-on-story).
+> Чтобы увидеть, как правильно реализовать метаданные для NFT и IP, как в SDK, так и в смарт-контрактах напрямую, ознакомьтесь с [Как зарегистрировать IP в Story](doc:how-to-register-ip-on-story).
 
-In practice, whether you are using the SDK or our smart contract directly, our protocol asks you to provide 4 different parameters:
+На практике, независимо от того, используете ли вы SDK или наш смарт-контракт напрямую, наш протокол просит вас предоставить 4 различных параметра:
 
-* View the `WorkflowStructs.sol` contract [here](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/lib/WorkflowStructs.sol).
+* Посмотреть контракт `WorkflowStructs.sol` [здесь](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/lib/WorkflowStructs.sol).
 
 ```sol WorkflowStructs.sol
-/// @notice Struct for metadata for NFT minting and IP registration.
-/// @dev Leave the nftMetadataURI empty if not minting an NFT.
-/// @param ipMetadataURI The URI of the metadata for the IP.
-/// @param ipMetadataHash The hash of the metadata for the IP.
-/// @param nftMetadataURI The URI of the metadata for the NFT.
-/// @param nftMetadataHash The hash of the metadata for the IP NFT.
+/// @notice Структура метаданных для минта NFT и регистрации IP.
+/// @dev  Оставьте nftMetadataURI пустым, если не минтите NFT.
+/// @param ipMetadataURI URI метаданных для IP.
+/// @param ipMetadataHash Хэш метаданных для IP.
+/// @param nftMetadataURI URI метаданных для NFT.
+/// @param nftMetadataHash Хэш метаданных для IP NFT.
 struct IPMetadata {
   string ipMetadataURI;
   bytes32 ipMetadataHash;
@@ -62,7 +63,7 @@ struct IPMetadata {
 }
 ```
 
-* `ipMetadataURI` - a URI pointing to a JSON object that follows the [IPA Metadata Standard](doc:ipa-metadata-standard)
-* `ipMetadataHash` - hash of the `ipMetadataURI` JSON object
-* `nftMetadataURI` - a URI pointing to a JSON object that follows the [Standard ERC721 NFT Metadata](https://github.com/ethereum/ercs/blob/master/ERCS/erc-721.md)
-* `nftMetadataHash` - hash the `nftMetadataURI` JSON object
+* `ipMetadataURI` -  URI, указывающий на JSON-объект, соотвествующий [IPA Стандарт Метаданных](doc:ipa-metadata-standard)
+* `ipMetadataHash` -  хэш JSON-объекта `ipMetadataURI`.
+* `nftMetadataURI` - URI, указывающий на JSON-объект, который следует [ERC721 Стандарт Метаданных](https://github.com/ethereum/ercs/blob/master/ERCS/erc-721.md)
+* `nftMetadataHash` - хэш JSON-объекта `nftMetadataURI`.

@@ -1,5 +1,5 @@
 ---
-title: IPA Metadata Standard
+title: IPA Стандарт Метаданных
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,27 +10,28 @@ metadata:
 next:
   description: ''
 ---
-> 🚧 Warning: Still Under Discussion
+> 🚧 Внимание: Все еще обсуждается
 >
-> We are still figuring out the best way to define an IPA Metadata Standard. For the sake of transparency, the following document is our thoughts so far but is subject to change as we progress towards releasing our public Mainnet.
+> Мы все еще пытаемся выяснить, как лучше определить стандарт метаданных IPA. В целях прозрачности нижеприведенный документ представляет собой наши мысли на данный момент, но может быть изменен по мере продвижения к выпуску нашего публичного Mainnet.
 
-This is the JSON metadata that is associated with an IP Asset, and gets stored inside of an IP Account. You must call `setMetadata(...)` inside of the IP Account in order to set the metadata, and then call `metadata()` to read it.
+Это JSON метаданные, которые ассоциируются с IP-активом и хранятся в IP-аккаунте. Вы должны вызвать `setMetadata(...)` внутри IP-аккаунта, чтобы установить метаданные, а затем вызвать `metadata()`, чтобы прочитать их.
 
-# Attributes & Structure
+
+# Параметры и Структура
 
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
-        Property Name
+        Название Параметра
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Type
+        Тип
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Description
+        Описание 
       </th>
     </tr>
   </thead>
@@ -46,7 +47,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Title of the IP
+        Заголовок IP.
       </td>
     </tr>
 
@@ -60,7 +61,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Description of the IP
+        Описание IP.
       </td>
     </tr>
 
@@ -74,7 +75,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Type of the IP Asset, can be defined arbitrarily by the creator. I.e. “character”, “chapter”, “location”, “items”, "music", etc
+        Тип IP-актива, может быть определен автором произвольно. Например, «персонаж», «глава», «локация», «предметы», «музыка» и т. д.
       </td>
     </tr>
 
@@ -88,7 +89,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        The detailed relationship info with the IPA’s direct parent asset, such as `APPEARS_IN`, `FINETUNED_FROM`, etc. See more examples [here](https://docs.story.foundation/docs/ipa-metadata-standard#relationship-types).
+        Подробная информация об отношениях с прямым родительским активом IPA, например `APPEARS_IN`, `FINETUNED_FROM` и т.д. Дополнительные примеры смотрите [здесь] (https://docs.story.foundation/docs/ipa-metadata-standard#relationship-types).
       </td>
     </tr>
 
@@ -102,9 +103,10 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Date/Time that the IP was created (either ISO8601 or unix format).
+        
+       Дата/Время создания IP (ISO8601 или unix формат).  
 
-        This dateCreated field can be used to specify historical dates that aren’t on-chain. For example, Harry Potter was published on June 26.
+        Это поле можно использовать для указания дат, которые не содержаться в блокчейне. Например, Гарри Поттер был опубликован 26 июня.
       </td>
     </tr>
 
@@ -118,7 +120,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Supporting image. Could be used as a “wrapper” image for things related to branding or watermarks.
+        Вспомогательное изображение. Может использоваться в качестве «оберточного» изображения для брендинга или водяных знаков.
       </td>
     </tr>
 
@@ -132,7 +134,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An array of information about the creators. Creator type defined below.
+        Массив информации о создателях. Тип "создатель" определен ниже.
       </td>
     </tr>
 
@@ -146,7 +148,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An array of supporting media. Media type defined below.
+        Массив вспомогательных носителей. Тип "носитель" определен ниже.
       </td>
     </tr>
 
@@ -160,7 +162,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An array of key-value pairs that can be used for arbitrary mappings. Attribute type defined below.
+        Массив пар ключ-значение, которые могут быть использованы для произвольного сопоставления. Тип атрибута определен ниже.
       </td>
     </tr>
 
@@ -174,7 +176,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        This is assigned to verified application from Story Protocol directly (on a request basis so far). We will map each App ID to a name
+        Присваивается проверенному приложению из Story Protocol напрямую (пока что на основе запроса). Мы сопоставим каждый идентификатор приложения с именем
       </td>
     </tr>
 
@@ -188,7 +190,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Any tags that can help surface this IPA
+        Любые теги, которые могут помочь в этом IPA.
       </td>
     </tr>
 
@@ -202,13 +204,13 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Allows you to set Do Not Train for a specific agent
+        Позволяет установить режим «Не обучать» для конкретного агента.
       </td>
     </tr>
   </tbody>
 </Table>
 
-## Type Definitions
+## Определения типов
 
 ```typescript IpCreator
 type IpCreator = {
@@ -260,11 +262,11 @@ type IPRobotTerms = {
 }
 ```
 
-## Relationship Types
+## Типы Отношений
 
-The different relationship types that can be used for the `relationships` attribute.
+Различные типы отношений, которые могут быть использованы для атрибута `relationships`.
 
-### Story Relationships
+### Отношения Story
 
 1. **APPEARS\_IN** - A character APPEARS\_IN a chapter.
 
@@ -307,7 +309,7 @@ The different relationship types that can be used for the `relationships` attrib
 20. **LEADS\_INTO** - An event LEADS\_INTO the climax.?\
     **PARALLEL - story** happening in parallel or around the same timeframe
 
-### AI Relationships
+### Отношения AI
 
 1. **TRAINED\_ON** - A model is TRAINED\_ON a dataset.
 
@@ -349,7 +351,7 @@ The different relationship types that can be used for the `relationships` attrib
 
 20. **ADAPTS\_TO** - A fine-tuned model ADAPTS\_TO new data.
 
-# Example Use Cases
+# Примеры Использования
 
 ```json Harry Potter
 {

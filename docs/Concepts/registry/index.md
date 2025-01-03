@@ -1,5 +1,5 @@
 ---
-title: 🗂️ Registry
+title: 🗂️ Реестр
 excerpt: ''
 deprecated: false
 hidden: false
@@ -10,26 +10,26 @@ metadata:
 next:
   description: ''
 ---
-The various registries on Story function as a primary directory/storage for the global states of the protocol. Obviously, they also contain functions to update that storage. 
+Различные реестры в Story функционируют как основная директория/хранилище для глобальных состояний протокола. Кроме того, они содержат функции для обновления этого хранилища.
 
-Unlike [IP Accounts](doc:ip-account), which manage the state of specific IPs, a **registry** oversees the broader states of the protocol.
+В отличие от [IP-аккаунтов](doc:ip-account), которые управляют состоянием конкретных IP, **реестр** отвечает за более широкие состояния протокола.
 
-# Types of Registries
+# Типы реестров
 
-Below are all of the registries on Story.
+Ниже перечислены все реестры в Story.
 
-## [IP Asset Registry](doc:ip-asset-registry)
+## [Реестр IP-активов](doc:ip-asset-registry)
 
-Responsible for registering IPs into the protocol.
+Отвечает за регистрацию IP в протоколе.
 
-## [Group IP Asset Registry](doc:group-ip-asset-registry)
+## [Реестр групповых IP-активов](doc:group-ip-asset-registry)
 
-Responsible for registering and maintaining Group IP Assets.
+Отвечает за регистрацию и поддержку групповых IP-активов.
 
-## [License Registry](doc:license-registry)
+## [Реестр лицензий](doc:license-registry)
 
-Stores all license-related states within the protocol, like attaching License Terms to IP Assets, registering derivatives, creating new License Templates, etc.
+Хранит все данные, связанные с лицензиями в протоколе, включая прикрепление условий лицензии к IP-активам, регистрацию производных работ, создание новых Шаблонов Лицензий и так далее.
 
-## [Module Registry](doc:module-registry)
+## [Реестр модулей](doc:module-registry)
 
-Maintains and updates the global list of modules and hooks registered permissionlessly on Story
+Поддерживает и обновляет глобальный список модулей и хуков, зарегистрированных без разрешений в Story.
