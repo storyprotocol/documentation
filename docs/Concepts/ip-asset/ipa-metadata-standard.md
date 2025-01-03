@@ -103,6 +103,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
+        
        Дата/Время создания IP (ISO8601 или unix формат).  
 
         Это поле можно использовать для указания дат, которые не содержаться в блокчейне. Например, Гарри Поттер был опубликован 26 июня.
@@ -215,11 +216,11 @@ next:
 type IpCreator = {
   name: string;
   address: Address;
+  contributionPercent: number; // add up to 100
   description?: string;
   image?: string;
   socialMedia?: IpCreatorSocial[];
   role?: string;
-  contributionPercent: number; // add up to 100
 }
 
 type IpCreatorSocial = {
@@ -306,7 +307,7 @@ type IPRobotTerms = {
 19. **INTERACTED\_WITH** - A character INTERACTED\_WITH another character.
 
 20. **LEADS\_INTO** - An event LEADS\_INTO the climax.?\
-    **PARALLEL - story** happening in parallel or around the same timeframe 
+    **PARALLEL - story** happening in parallel or around the same timeframe
 
 ### Отношения AI
 
@@ -354,121 +355,130 @@ type IPRobotTerms = {
 
 ```json Harry Potter
 {
-  "title": "Harry Potter and the Philosopher's Stone",
-  "image": "link_to_book_cover",
-  "createdAt": "1997-06-26T00:00:00", // June 26 1997
-  "ipType": "literature",
-  "creators": [
+  title: "Harry Potter and the Philosopher's Stone",
+  createdAt: "1997-06-26T00:00:00", // June 26 1997
+  ipType: "literature",
+  creators: [
     {
-      "name": "JK Rowling",
-      "description": "Author",
-      "socialMedia": [
+      name: "JK Rowling",
+      address: "0x0000000000000000000000000000000000000000",
+      description: "Author",
+      contributionPercent: "80",
+      socialMedia: [
         {
-          "platform": "Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/J._K._Rowling"
+          platform: "Wikipedia",
+          url: "https://en.wikipedia.org/wiki/J._K._Rowling"
         }
       ]
     },
     {
-      "name": "Thomas Taylor",
-      "description": "Illustrator"
+      name: "Thomas Taylor",
+      address: "0x0000000000000000000000000000000000000000",
+      description: "Illustrator",
+      contributionPercent: "15",
     },
     {
-      "name": "Bloomsbury Publishing",
-      "description": "Publisher",
-      "socialMedia": [
+      name: "Bloomsbury Publishing",
+      address: "0x0000000000000000000000000000000000000000",
+      description: "Publisher",
+      contributionPercent: "5",
+      socialMedia: [
         {
-          "platform": "Website",
-          "url": "https://www.bloomsbury.com/"
+          platform: "Website",
+          url: "https://www.bloomsbury.com/"
         }
       ]
     }
   ],
-  "media": [
+  media: [
     {
-      "name": "ePub",
-      "uri": "link_to_epub",
-      "mimeType": "application/epub+zip"
+      name: "ePub",
+      url: "link_to_epub",
+      mimeType: "application/epub+zip"
     },
     {
-      "name": "Book Summary PDF",
-      "uri": "link_to_book_summary_pdf",
-      "mimeType": "application/pdf"
+      name: "Book Summary PDF",
+      url: "link_to_book_summary_pdf",
+      mimeType: "application/pdf"
     }
   ],
-  "attributes": [
+  attributes: [
     {
-      "key": "ISBN",
-      "value": "978-0-7475-3269-0"
+      key: "ISBN",
+      value: "978-0-7475-3269-0"
     },
     {
-      "key": "Genre",
-      "value": "Fantasy"
+      key: "Genre",
+      value: "Fantasy"
     }
   ]
 }
-
 ```
 ```json Simple IP Character
 {
-  "title": "Kenta the Samurai Azuki",
-  "creators": [
+  title: "Kenta the Samurai Azuki",
+  creators: [
     {
-      "name": "Kaiser",
-      "bio": "Kaiser is an anime enthusiast.",
-      "socialMedia": [
+      name: "Kaiser",
+      address: "0x0000000000000000000000000000000000000000",
+      contributionPercent: "80",
+      description : "Kaiser is an anime enthusiast.",
+      socialMedia: [
         {
-          "platform": "Twitter",
-          "url": "https://twitter.com/kentathesamurai"
+          platform: "Twitter",
+          url: "https://twitter.com/kentathesamurai"
         }
       ]
     },
     {
-	    "name": "Azuki",
-	    "bio": "Creator of Azuki collection",
+      name: "Azuki",
+      contributionPercent: "20",
+      description: "Creator of Azuki collection",
     }
   ]
 }
 ```
 ```json Physical Painting (RWA)
 {
-  "title": "CICLOPIROX OLAMINE, 2004",
-  "creators": [
+  title: "CICLOPIROX OLAMINE, 2004",
+  creators: [
     {
-      "name": "Damien Hirst",
-      "description": "Damien Hirst, a poster boy for the Young British Artists who rose to prominence in late 1980s London, is one of the most notorious artists of his generation. He has pushed the limits of fine art and good taste with sculptures that comprise dead animals submerged in formaldehyde; innumerable spot paintings that appear mass-produced and can sell for millions of dollars; and the exuberantly tacky For the Love of God (2007), a human skull studded with 8,601 diamonds. Through his installations, sculptures, drawings, and paintings, Hirst explores themes including religion, mortality, and desire. Since 1988, when the artist developed and curated “Freeze,” a groundbreaking exhibition of his work and that of his Goldsmiths College peers, he has been the subject of major shows at Tate Modern in London, the National Gallery of Art in Washington, D.C., and the Rijksmuseum in Amsterdam. In 2008, Hirst controversially staged “Beautiful Inside my Head Forever,” an auction in which he sold his work directly to the public and raked in around $200 million for himself. His individual works have sold for more than $10 million at auction.      ",
-      "socialMedia": [
+      name: "Damien Hirst",
+      contributionPercent: '100',
+      address: '0x0000000000000000000000000000000000000000',
+      description: "Damien Hirst, a poster boy for the Young British Artists who rose to prominence in late 1980s London, is one of the most notorious artists of his generation. He has pushed the limits of fine art and good taste with sculptures that comprise dead animals submerged in formaldehyde; innumerable spot paintings that appear mass-produced and can sell for millions of dollars; and the exuberantly tacky For the Love of God (2007), a human skull studded with 8,601 diamonds. Through his installations, sculptures, drawings, and paintings, Hirst explores themes including religion, mortality, and desire. Since 1988, when the artist developed and curated “Freeze,” a groundbreaking exhibition of his work and that of his Goldsmiths College peers, he has been the subject of major shows at Tate Modern in London, the National Gallery of Art in Washington, D.C., and the Rijksmuseum in Amsterdam. In 2008, Hirst controversially staged “Beautiful Inside my Head Forever,” an auction in which he sold his work directly to the public and raked in around $200 million for himself. His individual works have sold for more than $10 million at auction.      ",
+      socialMedia: [
         {
-          "platform": "Instagram",
-          "url": "https://www.instagram.com/damienhirst/"
+          platform: "Instagram",
+          url: "https://www.instagram.com/damienhirst/"
         },
         {
-          "platform": "Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Damien_Hirst"
+          platform: "Wikipedia",
+          url: "https://en.wikipedia.org/wiki/Damien_Hirst"
         }
       ]
     }
   ],
-  "attributes": [
+  attributes: [
     {
-      "key": "Materials",
-      "value": "Etching on Hahnemühle paper"
+      key: "Materials",
+      value: "Etching on Hahnemühle paper"
     },
     {
-      "key": "Size",
-      "value": "45 1/10 x 44 3/10 in | 114.5 x 112.5 cm"
+      key: "Size",
+      value: "45 1/10 x 44 3/10 in | 114.5 x 112.5 cm"
     },
     {
-      "key": "Edition",
-      "value": "Edition of 68"
+      key: "Edition",
+      value: "Edition of 68"
     },
     {
-      "key": "Signature",
-      "value": "Hand-signed by artist, Signed and numbered by the artist"
+      key: "Signature",
+      value: "Hand-signed by artist, Signed and numbered by the artist"
     },
     {
-      "key": "Certificate of authenticity",
-      "value": "link_to_certificate"
+      key: "Certificate of authenticity",
+      value: "link_to_certificate"
     }
   ]
 }
@@ -476,34 +486,34 @@ type IPRobotTerms = {
 ```json Music
 // Example: https://explorer.story.foundation/ipa/0xD3eF4f98B91B5088FB4a840f539EfA4288703af0
 {
-  "title": "Rise Again",
-  "description": "This NFT certifies that Rise Again was created by srivatsan_qb (ID: 4123743b-8ba6-4028-a965-75b79a3ad424), with data securely fetched and verified using the Reclaim Protocol from Suno.com",
-  "ipType": "Music",
-  "creators": [
+  title: "Rise Again",
+  description: "This NFT certifies that Rise Again was created by srivatsan_qb (ID: 4123743b-8ba6-4028-a965-75b79a3ad424), with data securely fetched and verified using the Reclaim Protocol from Suno.com",
+  ipType: "Music",
+  creators: [
     {
-      "name": "srivatsan_qb",
-      "description": "Creator"
+      name: "srivatsan_qb",
+      description: "Creator"
     }
   ],
-  "media": [
+  media: [
     {
-      "name": "Rise Again",
-      "url": "https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3",
-      "mimeType": "audio/mpeg"
+      name: "Rise Again",
+      url: "https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3",
+      mimeType: "audio/mpeg"
     }
   ],
-  "attributes": [
+  attributes: [
     {
-      "key": "Artist",
-      "value": "srivatsan_qb"
+      key: "Artist",
+      value: "srivatsan_qb"
     },
     {
-      "key": "Artist ID",
-      "value": "4123743b-8ba6-4028-a965-75b79a3ad424"
+      key: "Artist ID",
+      value: "4123743b-8ba6-4028-a965-75b79a3ad424"
     },
     {
-      "key": "Source",
-      "value": "Suno.com"
+      key: "Source",
+      value: "Suno.com"
     }
   ]
 }

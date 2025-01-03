@@ -27,12 +27,12 @@ The `story` and `geth` binaries, which make up the clients required for running 
 
 ## System Specs
 
-| Hardware  | Requirement |
-| --------- | ----------- |
-| CPU       | 4 Cores     |
-| RAM       | 16 GB       |
-| Disk      | 200 GB      |
-| Bandwidth | 25 MBit/s   |
+| Hardware  | Requirement       |
+| --------- | ----------------- |
+| CPU       | 8 Cores           |
+| RAM       | 32 GB             |
+| Disk      | 500 GB NVMe Drive |
+| Bandwidth | 25 MBit/s         |
 
 On AWS, we recommend using the M6i, R6i, or C6i series.
 
