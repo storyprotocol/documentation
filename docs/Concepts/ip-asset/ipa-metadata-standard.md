@@ -484,34 +484,34 @@ The different relationship types that can be used for the `relationships` attrib
 ```json Music
 // Example: https://explorer.story.foundation/ipa/0xD3eF4f98B91B5088FB4a840f539EfA4288703af0
 {
-  "title": "Rise Again",
-  "description": "This NFT certifies that Rise Again was created by srivatsan_qb (ID: 4123743b-8ba6-4028-a965-75b79a3ad424), with data securely fetched and verified using the Reclaim Protocol from Suno.com",
-  "ipType": "Music",
-  "creators": [
+  title: "Rise Again",
+  description: "This NFT certifies that Rise Again was created by srivatsan_qb (ID: 4123743b-8ba6-4028-a965-75b79a3ad424), with data securely fetched and verified using the Reclaim Protocol from Suno.com",
+  ipType: "Music",
+  creators: [
     {
-      "name": "srivatsan_qb",
-      "description": "Creator"
+      name: "srivatsan_qb",
+      description: "Creator"
     }
   ],
-  "media": [
+  media: [
     {
-      "name": "Rise Again",
-      "url": "https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3",
-      "mimeType": "audio/mpeg"
+      name: "Rise Again",
+      url: "https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3",
+      mimeType: "audio/mpeg"
     }
   ],
-  "attributes": [
+  attributes: [
     {
-      "key": "Artist",
-      "value": "srivatsan_qb"
+      key: "Artist",
+      value: "srivatsan_qb"
     },
     {
-      "key": "Artist ID",
-      "value": "4123743b-8ba6-4028-a965-75b79a3ad424"
+      key: "Artist ID",
+      value: "4123743b-8ba6-4028-a965-75b79a3ad424"
     },
     {
-      "key": "Source",
-      "value": "Suno.com"
+      key: "Source",
+      value: "Suno.com"
     }
   ]
 }
