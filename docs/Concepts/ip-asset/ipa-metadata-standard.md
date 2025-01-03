@@ -102,7 +102,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Date/Time that the IP was created (either ISO8601 or unix format).  
+        Date/Time that the IP was created (either ISO8601 or unix format).
 
         This dateCreated field can be used to specify historical dates that aren’t on-chain. For example, Harry Potter was published on June 26.
       </td>
@@ -214,11 +214,11 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
 type IpCreator = {
   name: string;
   address: Address;
+  contributionPercent: number; // add up to 100
   description?: string;
   image?: string;
   socialMedia?: IpCreatorSocial[];
   role?: string;
-  contributionPercent: number; // add up to 100
 }
 
 type IpCreatorSocial = {
@@ -305,7 +305,7 @@ The different relationship types that can be used for the `relationships` attrib
 19. **INTERACTED\_WITH** - A character INTERACTED\_WITH another character.
 
 20. **LEADS\_INTO** - An event LEADS\_INTO the climax.?\
-    **PARALLEL - story** happening in parallel or around the same timeframe 
+    **PARALLEL - story** happening in parallel or around the same timeframe
 
 ### AI Relationships
 
@@ -353,78 +353,85 @@ The different relationship types that can be used for the `relationships` attrib
 
 ```json Harry Potter
 {
-  "title": "Harry Potter and the Philosopher's Stone",
-  "image": "link_to_book_cover",
-  "createdAt": "1997-06-26T00:00:00", // June 26 1997
-  "ipType": "literature",
-  "creators": [
+  title: "Harry Potter and the Philosopher's Stone",
+  createdAt: "1997-06-26T00:00:00", // June 26 1997
+  ipType: "literature",
+  creators: [
     {
-      "name": "JK Rowling",
-      "description": "Author",
-      "socialMedia": [
+      name: "JK Rowling",
+      address: "0x0000000000000000000000000000000000000000",
+      description: "Author",
+      contributionPercent: "80",
+      socialMedia: [
         {
-          "platform": "Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/J._K._Rowling"
+          platform: "Wikipedia",
+          url: "https://en.wikipedia.org/wiki/J._K._Rowling"
         }
       ]
     },
     {
-      "name": "Thomas Taylor",
-      "description": "Illustrator"
+      name: "Thomas Taylor",
+      address: "0x0000000000000000000000000000000000000000",
+      description: "Illustrator",
+      contributionPercent: "15",
     },
     {
-      "name": "Bloomsbury Publishing",
-      "description": "Publisher",
-      "socialMedia": [
+      name: "Bloomsbury Publishing",
+      address: "0x0000000000000000000000000000000000000000",
+      description: "Publisher",
+      contributionPercent: "5",
+      socialMedia: [
         {
-          "platform": "Website",
-          "url": "https://www.bloomsbury.com/"
+          platform: "Website",
+          url: "https://www.bloomsbury.com/"
         }
       ]
     }
   ],
-  "media": [
+  media: [
     {
-      "name": "ePub",
-      "uri": "link_to_epub",
-      "mimeType": "application/epub+zip"
+      name: "ePub",
+      url: "link_to_epub",
+      mimeType: "application/epub+zip"
     },
     {
-      "name": "Book Summary PDF",
-      "uri": "link_to_book_summary_pdf",
-      "mimeType": "application/pdf"
+      name: "Book Summary PDF",
+      url: "link_to_book_summary_pdf",
+      mimeType: "application/pdf"
     }
   ],
-  "attributes": [
+  attributes: [
     {
-      "key": "ISBN",
-      "value": "978-0-7475-3269-0"
+      key: "ISBN",
+      value: "978-0-7475-3269-0"
     },
     {
-      "key": "Genre",
-      "value": "Fantasy"
+      key: "Genre",
+      value: "Fantasy"
     }
   ]
 }
-
 ```
 ```json Simple IP Character
 {
-  "title": "Kenta the Samurai Azuki",
-  "creators": [
+  title: "Kenta the Samurai Azuki",
+  creators: [
     {
-      "name": "Kaiser",
-      "bio": "Kaiser is an anime enthusiast.",
-      "socialMedia": [
+      name: "Kaiser",
+      address: "0x0000000000000000000000000000000000000000",
+      contributionPercent: "80",
+      description : "Kaiser is an anime enthusiast.",
+      socialMedia: [
         {
-          "platform": "Twitter",
-          "url": "https://twitter.com/kentathesamurai"
+          platform: "Twitter",
+          url: "https://twitter.com/kentathesamurai"
         }
       ]
     },
     {
-	    "name": "Azuki",
-	    "bio": "Creator of Azuki collection",
+      name: "Azuki",
+      contributionPercent: "20",
+      description: "Creator of Azuki collection",
     }
   ]
 }
