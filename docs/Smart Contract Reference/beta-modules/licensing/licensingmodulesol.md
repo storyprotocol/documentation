@@ -158,7 +158,7 @@ function linkIpToParents(uint256[] licenseIds, address childIpId, bytes royaltyC
 ```
 
 Links an IP to the licensors listed in the license NFTs, if their policies allow it. Burns the license\
-NFTs in the proccess. The caller must be the owner of the IP asset and license NFTs.
+NFTs in the process. The caller must be the owner of the IP asset and license NFTs.
 
 #### Parameters
 

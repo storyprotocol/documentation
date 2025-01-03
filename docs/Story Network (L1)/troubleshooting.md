@@ -26,7 +26,7 @@ Let's build a healthy ecosystem.
 ## Failed to initialize database
 Error:
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly !! err="create db: failed to initialize database:
+ERRO !! Fatal error occurred, app died unexpectedly !! err="create db: failed to initialize database:
 ```
 Solution:
 * This indicates a corrupted database.
@@ -113,7 +113,7 @@ iptables -I INPUT -s localhost -j ACCEPT
 ## Found signature from the same key
 Error:
 ```bash
-panic: Faile to consensus  state: found signature from the same key
+panic: Failed to consensus  state: found signature from the same key
 ```
 
 Solution:
@@ -123,7 +123,7 @@ Solution:
 ## Failed to validate create flags: missing required flag(s): moniker
 Error:
 ```bash
-4-11-26 08:42:20.302 ERRO !! Fatal error occurred, app died️ unexpectedly !! err="failed to validate create flags: missing required flag(s): moniker" stacktrace="[errors.go:39 flags.go:173 validator.go:168 validator.go:384 command.go:985 command.go:1117 command.go:1041 command.go:1034 cmd.go:34 main.go:10 proc.go:271 asm_amd64.s:1695]"
+4-11-26 08:42:20.302 ERRO !! Fatal error occurred, app died unexpectedly !! err="failed to validate create flags: missing required flag(s): moniker" stacktrace="[errors.go:39 flags.go:173 validator.go:168 validator.go:384 command.go:985 command.go:1117 command.go:1041 command.go:1034 cmd.go:34 main.go:10 proc.go:271 asm_amd64.s:1695]"
 ```
 Solution:
 * You missed flag `--moniker`.
@@ -178,7 +178,7 @@ EOF
 ## Unknown flag: --home
 Error:
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly !! err="unknown flag: --home"
+ERRO !! Fatal error occurred, app died unexpectedly !! err="unknown flag: --home"
 ```
 Solution:
 * It looks like a misconfiguration. You must try to remove the `--home` flag from the startup command.
@@ -258,7 +258,7 @@ Solution:
 ## Home directory contains unexpected file
 Error:
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly !! err="home directory contains unexpected file(s), use --force to initialize anyway"
+ERRO !! Fatal error occurred, app died unexpectedly !! err="home directory contains unexpected file(s), use --force to initialize anyway"
 ```
 Solution:
 * This means that you have already initialized the node.
@@ -267,7 +267,7 @@ Solution:
 ##  Err="create comet node: create node
 Error:
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly ! err="create comet node: create node
+ERRO !! Fatal error occurred, app died unexpectedly ! err="create comet node: create node
 ```
 Solution:
 * It appears that your node is using incorrect versions.
@@ -287,7 +287,7 @@ Solution:
 ## Err="load engine JWT file: read jwt file
 Error:
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly !! err="load engine JWT file: read jwt file: open /root/.story/geth/odyssey/geth/jwtsecret: no such file or directory
+ERRO !! Fatal error occurred, app died unexpectedly !! err="load engine JWT file: read jwt file: open /root/.story/geth/odyssey/geth/jwtsecret: no such file or directory
 ```
 Solution:
 * It seems your node can't get `jwtsecret`.
@@ -364,7 +364,7 @@ sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers =./persistent_peers 
 ## Moniker must be valid non-empty
 Error:
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly ! err="create comet node: create node: info.Moniker must be valid non-empty 
+ERRO !! Fatal error occurred, app died unexpectedly ! err="create comet node: create node: info.Moniker must be valid non-empty 
 ```
 Solution:
 * Looks like a problem with your node moniker.
@@ -380,7 +380,7 @@ sudo nano ~/.story/story/config/config.toml
 ## Invalid address (26656)
 Error:
 ```bash
-Fatal error occurred, app died️ unexpectedly ! err="create comet node: create node: invalid address (26656):
+Fatal error occurred, app died unexpectedly ! err="create comet node: create node: invalid address (26656):
 ```
 Solution:
 * The logs report a connection failure on port `26656`.

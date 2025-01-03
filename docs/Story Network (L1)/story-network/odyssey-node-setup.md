@@ -281,14 +281,14 @@ WantedBy=multi-user.target
 If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
 
 * `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  * This will give you a list of consesus peers the node is sync’d with by moniker
+  * This will give you a list of consensus peers the node is sync’d with by moniker
 * `curl localhost:26657/health`
   * This will let you know if the node is healthy - `{}` indicates it is
 
 ### Common Issues
 
 1. `auth failure: secret conn failed: read tcp ${IP_A}:${PORT_A}->${IP_B}:{PORT_B}: i/o timeout`
-   * This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `exteral_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
+   * This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `external_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
 
 ### Automated Upgrades
 

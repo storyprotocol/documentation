@@ -74,7 +74,7 @@ The `tokenContract` identifies the address of the Story Protocol ERC-721 that wi
 
 **`bytes calldata tokenMetadata`**
 
-The `tokenMetadata` is used to specify any metadata that you would like to pass to the NFT collection for representing your newly minted IP. For the [Default IP Collection](doc:default-ip-collection) type, this field is required to be an abi-encoidng of the following struct:
+The `tokenMetadata` is used to specify any metadata that you would like to pass to the NFT collection for representing your newly minted IP. For the [Default IP Collection](doc:default-ip-collection) type, this field is required to be an abi-encoding of the following struct:
 
 ```
     /// @notice Attributes related to token-specific ERC-721 metadata.

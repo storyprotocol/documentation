@@ -108,7 +108,7 @@ Now you can `claimRevenue` as shown below. **Only the owner of the royalty token
 ```jsx ClaimRevenue.tsx
 import { useRoyalty } from "@story-protocol/react-sdk";
 
-export default async function ClaimReveue() {
+export default async function ClaimRevenue() {
   const { claimRevenue } = useRoyalty();
   
   const response = await claimRevenue({

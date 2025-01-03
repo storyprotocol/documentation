@@ -214,10 +214,10 @@ function _policyDerivativeTraitsToJson(struct PILPolicy policy) internal pure re
 | ------ | ---------------- | -------------------- |
 | policy | struct PILPolicy | The policy to encode |
 
-### \_verifyComercialUse
+### \_verifyCommercialUse
 
 ```solidity
-function _verifyComercialUse(struct PILPolicy policy, address royaltyPolicy, uint256 mintingFee, address mintingFeeToken) internal view
+function _verifyCommercialUse(struct PILPolicy policy, address royaltyPolicy, uint256 mintingFee, address mintingFeeToken) internal view
 ```
 
 *Checks the configuration of commercial use and throws if the policy is not compliant*

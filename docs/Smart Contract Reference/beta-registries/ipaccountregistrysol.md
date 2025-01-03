@@ -51,7 +51,7 @@ function registerIpAccount(uint256 chainId, address tokenContract, uint256 token
 
 Deploys an IPAccount contract with the IPAccount implementation and returns the address of the new IP
 
-*The IPAccount deployment deltegates to public ERC6551 Registry*
+*The IPAccount deployment delegates to public ERC6551 Registry*
 
 #### Parameters
 

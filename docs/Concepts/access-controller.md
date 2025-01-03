@@ -277,7 +277,7 @@ contract MockModule is IModule, AccessControlled {
 When a registry is called by a module, it can perform the access control check using AccessController. This check determines whether the callee module has permission to call the registry.
 
 ```solidity Solidity
-// called by StoryProtocl Admin
+// called by StoryProtocol Admin
 IAccessController(accessController).setGlobalPermission(address(0), address(module), address(registry), bytes4(0))) {
 
 ```

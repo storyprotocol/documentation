@@ -18,7 +18,7 @@ This section demonstrates how to mint a License Token for an IPA. You can only m
 
 > 📘 Max Number of Licenses
 >
-> If you're curious about setting the maximum number of licesnes that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
+> If you're curious about setting the maximum number of licenses that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
 
 ## Prerequisites
 

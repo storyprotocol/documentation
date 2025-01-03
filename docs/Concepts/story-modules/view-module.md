@@ -18,7 +18,7 @@ The View Module, inheriting from the Module in Story Protocol, is designed for i
 
 # Design
 
-The View Module is uniquely tailored to aggregate data from multiple namespaces within an IPAccount. This design enables it to present a comprehensive view of an IP, encompassing different data types and sources. It is structured to prioritize interpretability and user-friendly display of information.
+The View Module is uniquely tailored to aggregate data from multiple namespaces within an IPAccount. This design enables it to present a comprehensive view of an IP, encompassing different data types and sources. It is structured to prioritize interoperability and user-friendly display of information.
 
 <Image align="center" src="https://files.readme.io/53c890b-Screenshot_2024-01-29_at_22.35.55.png" />
 

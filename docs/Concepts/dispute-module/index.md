@@ -25,7 +25,7 @@ The main components of the arbitration system are:
 
 ### Dispute Tags
 
-**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. Tags must be whitelisted by protocol governance to be used in a disoute. The initial set of tags are planned to be:
+**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. Tags must be whitelisted by protocol governance to be used in a dispute. The initial set of tags are planned to be:
 
 > 🚧 Version Warning
 >
