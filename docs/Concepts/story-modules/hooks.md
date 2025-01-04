@@ -36,7 +36,7 @@ import { IHookModule } from "../../../contracts/interfaces/modules/base/IHookMod
 import { BaseModule } from "../../../contracts/modules/BaseModule.sol";
 
 /// @title Token Gated Hook.
-/// @notice Hook for ensursing caller is the owner of an NFT token.
+/// @notice Hook for ensuring caller is the owner of an NFT token.
 contract TokenGatedHook is BaseModule, IHookModule {
     using ERC165Checker for address;
 
