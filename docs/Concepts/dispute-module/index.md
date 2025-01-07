@@ -22,7 +22,16 @@ The main components of the arbitration system are:
   * link to any parents
   * claim royalties
   * and all of its existing licenses become unusable
-* **Tags:** refers to which "labels" can be applied to IP Assets in the protocol. The allowed tags are whitelisted by protocol governance. The initial set of tags is planned to be.
+
+### Dispute Tags
+
+**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. Tags must be whitelisted by protocol governance to be used in a disoute. The initial set of tags are planned to be:
+
+> 🚧 Version Warning
+>
+> In protocol v1.2, the only whitelisted dispute tag is "PLAGIARISM" (`0x504c414749415249534d00000000000000000000000000000000000000000000` in base32).
+>
+> The below tags will be available in protocol v1.3
 
 <Table align={["left","left"]}>
   <thead>
@@ -53,16 +62,16 @@ The main components of the arbitration system are:
         `IMPROPER_USAGE`
 
         Examples (non-exhaustive):
-        Territory
-        Channels of Distribution
-        Expiration
-        Irrevocable
-        Attribution
-        Derivatives
-        Limitations on Creation of Derivatives
-        Commercial Use
-        Sublicensable
-        Non-Transferable
+        Territory,
+        Channels of Distribution,
+        Expiration,
+        Irrevocable,
+        Attribution,
+        Derivatives,
+        Limitations on Creation of Derivatives,
+        Commercial Use,
+        Sublicensable,
+        Non-Transferable,
         Restriction on Cross-Platform Use
       </td>
 

@@ -1,0 +1,4 @@
+---
+title: Mint
+hidden: false
+---

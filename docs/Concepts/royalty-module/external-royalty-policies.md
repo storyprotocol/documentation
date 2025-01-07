@@ -17,13 +17,11 @@ There can be many flavors and variations of royalty distribution rules as we obs
 It is a smart contract that inherits a specific interface called `IExternalRoyaltyPolicy`, which defines the view function below:
 
 ```sol IExternalRoyaltyPolicy
-interface IExternalRoyaltyPolicy {
     /// @notice Returns the amount of royalty tokens required to link a child to a given IP asset
     /// @param ipId The ipId of the IP asset
     /// @param licensePercent The percentage of the license
     /// @return The amount of royalty tokens required to link a child to a given IP asset
     function getPolicyRtsRequiredToLink(address ipId, uint32 licensePercent) external view returns (uint32);
-}
 ```
 
 After developing your smart contract make sure it inherits the interface above and you can register your new External Royalty Policy by calling `registerExternalRoyaltyPolicy` function in RoyaltyModule.sol.
@@ -50,12 +48,12 @@ Every time there is a remix - the link between the parent and derivative has 2 d
 
 Following the example, when each remix is made and during the `onLinkToParents` function call in RoyaltyModule.sol the function
 
-`getPolicyRtsRequiredToLink(address ipId, uint32 licensePercent) external view returns (uint32)` 
+`getPolicyRtsRequiredToLink(address ipId, uint32 licensePercent) external view returns (uint32)`
 
 is called on the "Policy X" address. It should return the % of derivative's royalty tokens that the royalty policy demands for the link to happen. That share of royalty tokens are sent to the "Policy X" contract. In the example case:
 
-* "Policy X" receives 3% of RT2 token supply that it can then redistribute to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs.
-* "Policy X" receives 50% of RT3 token supply that it can then redistribute to its userbase.
+* "Policy X" receives 3% of RT2 token supply that it can then redistributed to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs. Therefore, instead of having to give 10% as the license percentage indicated it only gives 3%.
+* "Policy X" receives 50% of RT3 token supply that it can then redistributed to its userbase.
 
 ![](https://files.readme.io/33efb951a9be1339e849eb025d183a0f8d4f949f634ee5dfe1f13dac52c79bb0-image.png)
 
@@ -75,5 +73,5 @@ Let's explore both in the context of "Policy X". Let's say that from the 50% of 
 From the 1M USDC inflow to IP3 Royalty Vault:
 
 * 500k USDC are claimed by the IP Account 3 which had 50% of RT3 token supply
-* 100k USDC are claimed by the IP1 Royalty Vault which has 10% of RT3 token supply via `claimByTokenBatchAsSelf` and `claimBySnapshotBatchAsSelf` functions
-* 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This is amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.
+* 100k USDC are claimed by the IP1 Royalty Vault which has 10% of RT3 token supply via `claimByTokenBatchAsSelf`  function
+* 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.

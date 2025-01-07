@@ -38,7 +38,7 @@ Parameters:
 * `request.payerIpId`: The ID of the IP asset that pays the royalties.
 * `request.token`: The token to use to pay the royalties.
 * `request.amount`: The amount to pay.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
@@ -61,7 +61,7 @@ Parameters:
 * `request.account`: The address of the token holder.
 * `request.snapshotId`: The snapshot id.
 * `request.token`: The revenue token to claim.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type ClaimableRevenueResponse = bigint;
@@ -80,8 +80,8 @@ Parameters:
 * `request.snapshotIds`: The list of snapshot ids.
 * `request.royaltyVaultIpId`: The id of the royalty vault.
 * `request.token`: The revenue token to claim.
-* `request.account`: [Optional]The ipId of the IP Account you want to claim to instead of the wallet running the transaction.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.account`: \[Optional]The ipId of the IP Account you want to claim to instead of the wallet running the transaction.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type ClaimRevenueResponse = {
@@ -103,7 +103,7 @@ Parameters:
 
 * `request`: The request object that contains all data needed to snapshot.
 * `request.royaltyVaultIpId`: The id of the royalty vault.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type SnapshotResponse = {
@@ -128,8 +128,9 @@ Parameters:
   * `request.royaltyClaimDetails.childIpId`: The address of the child IP.
   * `request.royaltyClaimDetails.royaltyPolicy`: The address of the royalty policy.
   * `request.royaltyClaimDetails.currencyToken`: The address of the currency (revenue) token to claim.
-* `request.claimer`: [Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+  * `request.royaltyClaimDetails.amount`: Amount to claim.
+* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type TransferToVaultAndSnapshotAndClaimByTokenBatchResponse = {
@@ -156,8 +157,9 @@ Parameters:
   * `request.royaltyClaimDetails.childIpId`: The address of the child IP.
   * `request.royaltyClaimDetails.royaltyPolicy`: The address of the royalty policy.
   * `request.royaltyClaimDetails.currencyToken`: The address of the currency (revenue) token to claim.
-* `request.claimer`: [Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+  * `request.royaltyClaimDetails.amount`: Amount to claim.
+* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type TransferToVaultAndSnapshotAndClaimBySnapshotBatchResponse = {
@@ -180,8 +182,8 @@ Parameters:
 
 * `request.royaltyVaultIpId`: The address of the IP.
 * `request.currencyTokens`: The addresses of the currency (revenue) tokens to claim.
-* `request.claimer`: [Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type SnapshotAndClaimByTokenBatchResponse = {
@@ -205,8 +207,8 @@ Parameters:
 * `request.royaltyVaultIpId`: The address of the IP.
 * `request.unclaimedSnapshotIds`: The IDs of unclaimed snapshots to include in the claim.
 * `request.currencyTokens`: The addresses of the currency (revenue) tokens to claim.
-* `request.claimer`: [Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type SnapshotAndClaimBySnapshotBatchResponse = {

@@ -12,6 +12,14 @@ next:
 ---
 This section demonstrates how to mint a License Token for an IPA. You can only mint a License Token for an IPA if it has License Terms attached to it. A License Token is minted as an ERC721 token and contains the necessary licensing details.
 
+> 💰 Paid Licenses
+>
+> Note that some IP Assets may have license terms attached that require the user minting the license to pay a `mintingFee`. You can see an example of that soon.
+
+> 📘 Max Number of Licenses
+>
+> If you're curious about setting the maximum number of licesnes that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
+
 ## Prerequisites
 
 * [Setup](doc:python-sdk-setup) the client object.
@@ -29,11 +37,11 @@ To mint a License Token, we will need the:
 
 ```python Python
 response = story_client.License.mintLicenseTokens(
-    licensor_ip_id="0x431A7Cc86381F9bA437b575D3F9E931652fFbbdd",  # Licensor IP ID
-    license_template="0x260B6CB6284c89dbE660c0004233f7bB99B5edE7",  # License Template address
-    license_terms_id=2,  # License Terms ID
-    amount=1,  # Amount of license tokens to mint
-    receiver="0x14dC79964da2C08b23698B3D3cc7Ca32193d9955"  # Address of the receiver
+    licensor_ip_id="0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+    license_template="0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93",
+    license_terms_id=1,
+    amount=1,
+    receiver="0x14dC79964da2C08b23698B3D3cc7Ca32193d9955"
 )
 
 print(f"License Token minted at transaction hash {response['txHash']} License ID: {response['licenseTokenIds']}")
