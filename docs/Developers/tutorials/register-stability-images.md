@@ -139,7 +139,7 @@ import { createPublicGroup, uploadBlobToIPFS } from './utils/uploadToIpfs.ts'
 // (if you want to create more images in the future, you don't need to call this again)
 const groupId = await createPublicGroup()
 // convert the buffer to a blob
-const blob = new Blob([consenscedImageBuffer], { type: 'image/png' });
+const blob = new Blob([condensedImgBuffer], { type: 'image/png' });
 // store the blob on ipfs
 const imageCid = await uploadBlobToIPFS(blob, 'lighthouse.png', groupId);
 ```
