@@ -19,8 +19,6 @@ In this tutorial, you will learn how to:
 
 Let's say you generate an image using Stability AI. Without adding a proper license to your image, others could use it freely. In this tutorial, you will learn how to add a license to your Stability AI-Generated image so that if others want to use it, they must properly license it from you.
 
-In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset).
-
 ## 0. Before you Start
 
 There are a few steps you have to complete before you can start the tutorial.
