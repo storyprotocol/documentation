@@ -1,6 +1,6 @@
 ---
-title: Register Stability Images
-excerpt: Learn how to license Stability AI-Generated images on Story.
+title: Protect Stability Images
+excerpt: Learn how to license and protect Stability AI-Generated images on Story.
 deprecated: false
 hidden: true
 metadata:
