@@ -1,12 +1,19 @@
 ---
-title: Register Stability Images
-excerpt: Learn how to register and protect Stability AI-Generated images on Story.
+title: Register & Monetize Stability Images
+excerpt: >-
+  Learn how to register, protect, and monetize Stability AI-Generated images on
+  Story.
 deprecated: false
 hidden: false
 metadata:
   robots: index
 ---
-In this tutorial, you will learn how to register and protect Stability AI-Generated images by registering it on Story.
+In this tutorial, you will learn how to:
+
+1. Generate an image with Stability AI
+2. Upload your image to Pinata IPFS
+3. Register your image as IP on Story
+4. Attach License Terms to your IP
 
 ## The Explanation
 
@@ -264,7 +271,39 @@ const nftHash = createHash("sha256")
   .digest("hex");
 ```
 
-## 7. Register the NFT as an IP Asset
+## 7. Create License Terms
+
+When registering your image on Story, you can attach [License Terms](doc:license-terms) to the IP. These are real, legally binding terms enforced on-chain by the [📜 Licensing Module](doc:licensing-module), disputable by the [❌ Dispute Module](doc:dispute-module), and in the worst case, able to be enforced off-chain in court through traditional means.
+
+Let's say we want to monetize our image such that every time someone wants to use it (on merch, advertisement, or whatever) they have to pay an initial minting fee of 10 SUSD. Additionally, every time they earn revenue on derivative work, they owe 5% revenue back as royalty.
+
+```typescript main.ts
+import { LicenseTerms } from '@story-protocol/core-sdk';
+
+// previous code here ...
+
+const commercialRemixTerms: LicenseTerms = {
+  transferable: true,
+  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: BigInt(10),
+  expiration: BigInt(0),
+  commercialUse: true,
+  commercialAttribution: true, // must give us attribution
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: zeroAddress,
+  commercialRevShare: 5, // can claim 50% of derivative revenue
+  commercialRevCeiling: BigInt(0),
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: BigInt(0),
+  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  uri: '',
+}
+```
+
+## 8. Register an NFT as an IP Asset
 
 In this step, we will use the [📦 SPG](doc:spg) to combine minting and registering our NFT into one transaction call.
 
@@ -329,7 +368,7 @@ import { Address } from "viem";
 const response: CreateIpAssetWithPilTermsResponse =
   await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
     spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-    terms: [], // IP already has non-commercial social remixing terms. You can add more here.
+    terms: [commercialRemixTerms], // the terms we created in the previous step
     ipMetadata: {
       ipMetadataURI: process.env.PINATA_GATEWAY + '/files/' + ipIpfsHash,
       ipMetadataHash: `0x${ipHash}`,
@@ -347,4 +386,6 @@ console.log(
 );
 ```
 
-## 8. Done!
+## 9. Done!
+
+Congratulations! Now your image is registered on Story with commercial license terms.
