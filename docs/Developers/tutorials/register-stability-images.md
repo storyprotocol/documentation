@@ -107,7 +107,7 @@ import { PinataSDK } from 'pinata'
 
 const pinata = new PinataSDK({
   pinataJwt: process.env.PINATA_JWT,
-	// you can put your pinata gateway here, or leave it empty
+  // you can put your pinata gateway here, or leave it empty
   pinataGateway: process.env.PINATA_GATEWAY
 })
 
