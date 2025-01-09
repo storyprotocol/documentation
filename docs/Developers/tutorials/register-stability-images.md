@@ -2,7 +2,7 @@
 title: Register Stability Images
 excerpt: Learn how to register and protect Stability AI-Generated images on Story.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   robots: index
 ---
