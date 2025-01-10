@@ -23,7 +23,7 @@ struct InitParams {
     address[] targetAncestors; // the expected ancestors addresses of an ipId
     uint32[] targetRoyaltyAmount; // the expected royalties of each of the ancestors for a given ipId
     address[] parentAncestors1; // addresses of the ancestors of the first parent
-    address[] parentAncestors2; // addresses of the the ancestors of the second parent
+    address[] parentAncestors2; // addresses of the ancestors of the second parent
     uint32[] parentAncestorsRoyalties1; // the royalties of each of the first parent ancestors
     uint32[] parentAncestorsRoyalties2; // the royalties of each of the second parent ancestors
 }
