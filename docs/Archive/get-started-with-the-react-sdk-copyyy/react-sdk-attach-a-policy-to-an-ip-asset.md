@@ -14,7 +14,7 @@ next:
       slug: react-sdk-mint-a-license
       title: Mint a License
 ---
-This section demonstrates how to add an existing policy to an IPA. By creating such a policy, an IPA becomes eligible for licensing creation. Users who then wish to creative derivatives of the IP may then mint licenses, which can be burned to enroll their IPs as derivative IPAs of the original work.
+This section demonstrates how to add an existing policy to an IPA. By creating such a policy, an IPA becomes eligible for licensing creation. Users who then wish to create derivatives of the IP may then mint licenses, which can be burned to enroll their IPs as derivative IPAs of the original work.
 
 ## Prerequisites
 
