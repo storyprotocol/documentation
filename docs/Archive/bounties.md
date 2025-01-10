@@ -344,7 +344,7 @@ Story Protocol team reserves the right to reward less than the total number of a
 
 * There are no explicit UI/UX design requirements, but judges will appreciate smooth Developer Experience (DX) flows that are focused around providing a magical developer experience.
 
-* For this bounty, more emphasis will be put on how well integrated and functional the project is.
+* For this bounty, more emphasis will be put on how well-integrated and functional the project is.
 
 ### Judging Criteria
 
