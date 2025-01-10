@@ -75,7 +75,7 @@ The series processor is used for generating the data types under the management 
 
 ## IP Loader
 
-Before interacting with Story Protocol to create IP related data (IP Orgs, IP Asset, Relationship etc), the pipeline requires the IP Loader to generate the parameters to call Story Protocol SDK to perform the actions to create and config these entities. Once the parameters are generated, the pipeline will need store the parameters for the next step.
+Before interacting with Story Protocol to create IP related data (IP Orgs, IP Asset, Relationship etc), the pipeline requires the IP Loader to generate the parameters to call Story Protocol SDK to perform the actions to create and config these entities. Once the parameters are generated, the pipeline will need to store the parameters for the next step.
 
 ## IP Processor
 
