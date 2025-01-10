@@ -12,7 +12,7 @@ next:
 ---
 > 🚧 Beta release
 >
-> Story Protocol is still in beta and not production complete yet – this means that we could change interfaces, smart contract deployments and backend endpoints at any time without warning or notice to you. When Story Protocol is production ready, we will remove this warning and will ensure the production quality of the protocol and update the document at a regular basis with formal notice.
+> Story Protocol is still in beta and not production complete yet – this means that we could change interfaces, smart contract deployments and backend endpoints at any time without warning or notice to you. When Story Protocol is production ready, we will remove this warning and will ensure the production quality of the protocol and update the document on a regular basis with formal notice.
 
 Welcome builders! This section will help you orient yourself around the documentation and find the most relevant information, references and tutorials.
 
@@ -32,7 +32,7 @@ If you want to build smart contracts with Story Protocol or build Web3 applicati
 
 # For Everyone
 
-If you are a product manager, a founder or an entrepreneur who wants build a business related to IP, or an artist or an owner of properties that need to be protected, you can learn how you can achieve the goal of IP monitoring, protection and monetization with Story Protocol. Please refer to the [Ecosystem](doc:introduction) section to learn about the types of applications that people can build on top of Story Protocol.
+If you are a product manager, a founder or an entrepreneur who wants to build a business related to IP, or an artist or an owner of properties that need to be protected, you can learn how you can achieve the goal of IP monitoring, protection and monetization with Story Protocol. Please refer to the [Ecosystem](doc:introduction) section to learn about the types of applications that people can build on top of Story Protocol.
 
 # Builder Program
 
