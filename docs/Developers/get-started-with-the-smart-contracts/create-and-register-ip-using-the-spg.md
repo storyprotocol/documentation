@@ -32,7 +32,7 @@ contract ExampleSPGBundledMintAndRegistration {
   StoryProtocolGateway public immutable SPG;
   address public immutable DEFAULT_SPG_NFT;
   
-  constructor(address spg, addres defaultCollection, uint256 policyId) {
+  constructor(address spg, address defaultCollection, uint256 policyId) {
     SPG = StoryProtocolGateway(spg);
     DEFAULT_SPG_NFT = defaultCollection;
     POLICY_ID = policyId;
@@ -94,7 +94,7 @@ contract ExampleSPGBundledMintAndRemixing {
   StoryProtocolGateway public immutable SPG;
   address public immutable DEFAULT_SPG_NFT;
   
-  constructor(address spg, addres defaultCollection, uint256 defaultLicense) {
+  constructor(address spg, address defaultCollection, uint256 defaultLicense) {
     SPG = StoryProtocolGateway(spg);
     DEFAULT_SPG_NFT = defaultCollection;
     DEFAULT_LICENSE = defaultLicense;
