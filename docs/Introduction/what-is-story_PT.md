@@ -7,8 +7,8 @@ metadata:
   title: Story Documentation
   description: >-
     A documentação oficial do Story. Abrange a Story Network ("a Blockchain de Propriedade Intelectual do Mundo"), 
-nosso protocolo "Prova de Criatividade", 
-a Licença de Propriedade Intelectual Programável e muito mais.
+    nosso protocolo "Prova de Criatividade", 
+    a Licença de Propriedade Intelectual Programável e muito mais.
   image: https://files.readme.io/2d35525-header_story.png
   robots: index
 next:
