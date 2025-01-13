@@ -6,7 +6,11 @@ hidden: false
 metadata:
   robots: index
 ---
-Below are details on how to register and add terms to your AI Agent on Story.
+Below are details on how to:
+
+* Register an AI Agent as IP
+* Add License Terms to your AI Agent
+* Register Your Agent's Outputs as IP
 
 ## Registering an Agent
 
