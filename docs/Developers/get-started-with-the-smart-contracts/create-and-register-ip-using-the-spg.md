@@ -12,7 +12,7 @@ next:
 ---
 # Bundled IP minting and registration
 
-One common use case many developers will want is the ability to mint an IP as a ERC-721 and register or remix it in one go. This is especially relevant for registration of IP that does not yet exist on-chain, in which case you would first require an on-chain representation of your IP that is compatible with the protocol.
+One common use case many developers will want is the ability to mint an IP as an ERC-721 and register or remix it in one go. This is especially relevant for registration of IP that does not yet exist on-chain, in which case you would first require an on-chain representation of your IP that is compatible with the protocol.
 
 For these cases, we recommend using the Story Protocol SPG, which, besides offering more secure and convenient methods around remixing or registration of existing NFTs as IPAs, also offers a powerful minting engine through which you can directly create an ERC-721 representation of your IP while registering it into the protocol in a single interface.
 
