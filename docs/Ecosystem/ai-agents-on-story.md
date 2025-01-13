@@ -1,10 +1,13 @@
 ---
 title: AI Agents on Story
+excerpt: Learn how to register and add terms to your AI Agent on Story.
 deprecated: false
 hidden: false
 metadata:
   robots: index
 ---
+Below are details on how to register and add terms to your AI Agent on Story.
+
 ## Registering an Agent
 
 <Cards columns={1}>
@@ -34,3 +37,5 @@ Here is an example of what the IPA Metadata should look like for your AI Agent (
   tags: ["Benjamin", "Unleash Protocol", "Story", "AI Agent", "IPFI"],
 }
 ```
+
+## Adding Terms to your AI Agent
