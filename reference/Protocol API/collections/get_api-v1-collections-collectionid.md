@@ -1,5 +1,5 @@
 ---
-title: Get an Collection
+title: Get a Collection
 excerpt: Retrieve a Collection
 api:
   file: story-protocol-api-reference.json
