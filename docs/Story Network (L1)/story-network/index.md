@@ -150,7 +150,7 @@ Specifically for IP-related transactions like registering an IPA, minting a lice
 
 | Faucet                                                                                       | Amount  | Requirement    |
 | :------------------------------------------------------------------------------------------- | :------ | :------------- |
-| <a href="https://odyssey.faucet.story.foundation/" target="_blank">Story Faucet ↗️</a>       | 1 $IP   | Every 24 hours |
+| <a href="https://faucet.story.foundation/" target="_blank">Story Faucet ↗️</a>               | 1 $IP   | Every 24 hours |
 | <a href="https://faucet.quicknode.com/story/odyssey" target="_blank">Quicknode Faucet ↗️</a> | 1-2 $IP | Every 24 hours |
 
 ## :moneybag: Staking
