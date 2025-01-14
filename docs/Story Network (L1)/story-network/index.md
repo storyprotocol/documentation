@@ -142,9 +142,9 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
 
-| Explorer                                                                                          | URL                                         |
-| :------------------------------------------------------------------------------------------------ | :------------------------------------------ |
-| <a href="https://odyssey.explorer.story.foundation" target="_blank">Story Odyssey Explorer ↗️</a> | `https://odyssey.explorer.story.foundation` |
+| Explorer                                                                                  | URL                                 |
+| :---------------------------------------------------------------------------------------- | :---------------------------------- |
+| <a href="https://explorer.story.foundation" target="_blank">Story Odyssey Explorer ↗️</a> | `https://explorer.story.foundation` |
 
 ## :money_with_wings: Faucets
 
