@@ -59,7 +59,7 @@ When creating a derivative, the creator will want to answer the question: "How m
 To answer this question two concepts are important:
 
 1. Royalty Token - Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of the capital that enters each IP Royalty Vault. The holders of these Royalty Tokens can claim the Revenue Tokens that are in the associated IP Royalty Vault.
-2. Royalty Stack - is the percentage of IP revenue that has to be paid to ancestors via Whitelisted/Native royalty policies. External royalty policies do not use the royalty stack percentgae - only Whitelisted/Native royaltys policies do.
+2. Royalty Stack - is the percentage of IP revenue that has to be paid to ancestors via Whitelisted/Native royalty policies. External royalty policies do not use the royalty stack percentgae - only Whitelisted/Native royalties policies do.
 
 Let's imagine the scenario below:
 
