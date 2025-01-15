@@ -26,7 +26,7 @@ Here is an example of what the IP Metadata should look like for your AI Agent (u
 
 ```json
 {
- 	title: "Benjamin",
+  title: "Benjamin",
   description: "Benjamin is the official mascot of Unleash Protocol and the First IPFi AI Agent.",
   ipType: "AI Agent",
   creators: [
