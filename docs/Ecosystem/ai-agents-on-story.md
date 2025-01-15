@@ -31,7 +31,7 @@ Here is an example of what the IP Metadata should look like for your AI Agent (u
   ipType: "AI Agent",
   creators: [
     {
- 			name: "Unleash Protocol",
+      name: "Unleash Protocol",
       address: "0xBBE1725E1Fef9C2C20Ac6CB984bB0E970Ab18aa9",
       contributionPercent: 100,
       description: "Benjamin is the official mascot of Unleash Protocol and the First IPFi AI Agent.",
