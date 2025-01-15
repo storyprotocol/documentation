@@ -21,7 +21,7 @@ next:
   </Card>
 </Cards>
 
-In this tutorial, you will learn how to send money ("tip") an IP Asset using the TypeScript SDK.
+In this tutorial, you will learn how to send money ("tip") to an IP Asset using the TypeScript SDK.
 
 ## The Explanation
 
