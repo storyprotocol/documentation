@@ -25,7 +25,7 @@ The main components of the arbitration system are:
 
 ### Dispute Tags
 
-**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. Tags must be whitelisted by protocol governance to be used in a disoute. The initial set of tags are planned to be:
+**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. Tags must be whitelisted by protocol governance to be used in a dispute. The initial set of tags are planned to be:
 
 > 🚧 Version Warning
 >
@@ -53,7 +53,7 @@ The main components of the arbitration system are:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Refers to registration of IP that already exists.
+        Refers to the registration of IP that already exists.
       </td>
     </tr>
 
@@ -129,7 +129,7 @@ If the `setDisputeJudgement` has tagged an IP as infringing then any address can
 
 > 📘 Looking Ahead
 >
-> In the future, the idea is that any derivative IP Asset of an infringed IP Asset would automatically be tagged without needed someone to call `tagDerivativeIfParentInfringed`. This is currently a limitation that we are aware of.
+> In the future, the idea is that any derivative IP Asset of an infringed IP Asset would automatically be tagged without needing someone to call `tagDerivativeIfParentInfringed`. This is currently a limitation that we are aware of.
 
 The derivatives are then tagged directly without any need for judgment given that it is considered that if a parent IP license has been infringed then all derivatives that come from that license are also implicitly in an infringement situation.
 
