@@ -156,7 +156,7 @@ There are two ways to do this step. Either:
 
 ### 5a. Mint an NFT and register it separately
 
-In this step, we will first mint an NFT and then register it as a IP Asset.
+In this step, we will first mint an NFT and then register it as an IP Asset.
 
 **You can mint an NFT on Story however you want, as long as it is an ERC-721 and you have the NFT contract address and token ID**. Below, you will use an example NFT contract address we've created to do the minting.
 
