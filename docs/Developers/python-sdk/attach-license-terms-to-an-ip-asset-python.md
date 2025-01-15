@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-This section demonstrates how to add License Terms to an IPA. By attaching terms, an IPA becomes eligible for licensing creation. Users who then wish to creative derivatives of the IP may then mint licenses, which can be burned to enroll their IPs as derivative IPAs of the original work.
+This section demonstrates how to add License Terms to an IPA. By attaching terms, an IPA becomes eligible for licensing creation. Users who then wish to create derivatives of the IP may then mint licenses, which can be burned to enroll their IPs as derivative IPAs of the original work.
 
 > 📘 Note
 >
