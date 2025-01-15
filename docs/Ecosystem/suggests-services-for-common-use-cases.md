@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-As you build applications in the world of IP, you'll find you might uncover use-cases that require additional corollary services. Our core protocol is purposefully kept generic and focused on the core mechanics of intellectual property. If you require services such as duplicate asset detection, relative rarity scoring, NSFW detection, and the like, we suggest you integrate with dedicated services that special in this. Below is an ecosystem services list categorized by function.
+As you build applications in the world of IP, you'll find you might uncover use-cases that require additional corollary services. Our core protocol is purposefully kept generic and focused on the core mechanics of intellectual property. If you require services such as duplicate asset detection, relative rarity scoring, NSFW detection, and the like, we suggest you integrate with dedicated services that specialize in this. Below is an ecosystem services list categorized by function.
 
 ### Image scoring: infringement, rarity and NSFW tagging
 
