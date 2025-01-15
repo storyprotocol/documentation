@@ -16,7 +16,7 @@ In Story Protocol, an IP is recognized as any ERC-721 compatible NFT. Yes, that 
 
 *Only once an ERC-721 is registered into Story Protocol's global IP asset registry, is a corresponding IP record generated for that original IP. We refer to this globally unique record as the IP Asset, and the original ERC-721 as the IP.*
 
-Also, one last important detail to note: Once registered, not only does every IP (ERC-721) have a IPA (record) associated with it, but also an IP Account, which is a separate contract bound to the original IP for controlling permissions around interactions with Story Protocol's modules. You can think of the IPA as the record keeper for the IP, and the IP Account as its permissions manager.
+Also, one last important detail to note: Once registered, not only does every IP (ERC-721) have an IPA (record) associated with it, but also an IP Account, which is a separate contract bound to the original IP for controlling permissions around interactions with Story Protocol's modules. You can think of the IPA as the record keeper for the IP, and the IP Account as its permissions manager.
 
 Now that we've covered what an IPA is, let's go over how you might register your IP via the IP Asset Registry.
 
