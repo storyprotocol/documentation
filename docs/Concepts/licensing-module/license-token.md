@@ -32,7 +32,7 @@ In order to mint a private License Token, the owner of a root IP Asset can issue
 
 License Tokens might be transferrable or not, depending on the values of the License Terms terms they point to.
 
-Once a non-transferrable License Token is minted to a recipient, it is locked there forever.
+Once a non-transferable License Token is minted to a recipient, it is locked there forever.
 
 ## Registering a Derivative
 
