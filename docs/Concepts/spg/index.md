@@ -50,13 +50,13 @@ As mentioned above, there are many different functions we have created for you t
 ### [Derivative Workflows](../contracts/interfaces/workflows/IDerivativeWorkflows.sol)
 
 * `registerIpAndMakeDerivative`: Registers an IP → Registers it as a derivative of another IP
-* `mintAndRegisterIpAndMakeDerivative`: Mints a NFT → Registers it as an IP → Registers the IP as a derivative of another IP
+* `mintAndRegisterIpAndMakeDerivative`: Mints an NFT → Registers it as an IP → Registers the IP as a derivative of another IP
 * `registerIpAndMakeDerivativeWithLicenseTokens`: Registers an IP → Registers the IP as a derivative of another IP using the license tokens
-* `mintAndRegisterIpAndMakeDerivativeWithLicenseTokens`: Mints a NFT → Registers it as an IP → Registers the IP as a derivative of another IP using the license tokens
+* `mintAndRegisterIpAndMakeDerivativeWithLicenseTokens`: Mints an NFT → Registers it as an IP → Registers the IP as a derivative of another IP using the license tokens
 
 ### [Grouping Workflows](../contracts/interfaces/workflows/IGroupingWorkflows.sol)
 
-* `mintAndRegisterIpAndAttachLicenseAndAddToGroup`: Mints a NFT → Registers it as an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
+* `mintAndRegisterIpAndAttachLicenseAndAddToGroup`: Mints an NFT → Registers it as an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
 * `registerIpAndAttachLicenseAndAddToGroup`: Registers an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
 * `registerGroupAndAttachLicense`: Registers a group IP → Attaches the given license terms to the group IP
 * `registerGroupAndAttachLicenseAndAddIps`: Registers a group IP → Attaches the given license terms to the group IP → Adds existing IPs to the group IP
