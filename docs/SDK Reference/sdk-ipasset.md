@@ -137,7 +137,7 @@ Parameters:
   * `request.terms.derivativesApproval`: Indicates whether the licensor must approve derivatives of the work before they can be linked to the licensor IP ID or not.
   * `request.terms.derivativesReciprocal`: Indicates whether the licensee must license derivatives of the work under the same terms or not.
   * `request.terms.derivativeRevCeiling`: The maximum revenue that can be generated from the derivative use of the work.
-  * `request.terms.currency`: The ERC20 token to be used to pay the minting fee. the token must be registered in story protocol.
+  * `request.terms.currency`: The ERC20 token to be used to pay the minting fee. the token must be registered in Story Protocol.
   * `request.terms.uri`: The URI of the license terms, which can be used to fetch the offchain license terms.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI`: \[Optional] The URI of the metadata for the IP.
