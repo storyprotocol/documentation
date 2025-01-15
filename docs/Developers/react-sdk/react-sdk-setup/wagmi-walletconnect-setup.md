@@ -67,7 +67,7 @@ if (!projectId) throw new Error("Project ID is not defined");
 
 const metadata = {
   name: "Artcast",
-  description: "Create and remix each others AI-generated images.",
+  description: "Create and remix each other's AI-generated images.",
   url: "https://artcast.ai", // origin must match your domain & subdomain
   icons: ["https://artcast.ai/logo.png"],
 };
