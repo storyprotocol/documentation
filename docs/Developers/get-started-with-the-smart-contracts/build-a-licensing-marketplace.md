@@ -107,6 +107,6 @@ Here is an explanation of the steps involved:
 For your Frontend to interact with the protocol, it must first get approval to do so. For the case of IP registration, there are two ways of doing this:
 
 * **Direct approval for registration by the NFT owner**
-  * A user who wishes to use your contract for registration simply has to call `setApprovalForAll` on the `ipAssetRegistry` contract, which grants your contract the permissions to directly register on their behalf
+  * A user who wishes to use your contract for registration simply has to call `setApprovalForAll` on the `ipAssetRegistry` contract, which grants your contract the permission to directly register on their behalf
 * **Direct approval for registration by the Story Protocol DAO**
   * This applies for all IP workloads that extend outside of the simple process of registration. To be granted approval, you must first make a proposal to XXX, which will then grant your contract permissions via the access controller.
