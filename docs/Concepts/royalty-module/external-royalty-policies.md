@@ -52,7 +52,7 @@ Following the example, when each remix is made and during the `onLinkToParents` 
 
 is called on the "Policy X" address. It should return the % of derivative's royalty tokens that the royalty policy demands for the link to happen. That share of royalty tokens are sent to the "Policy X" contract. In the example case:
 
-* "Policy X" receives 3% of RT2 token supply that it can then redistributed to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs. Therefore, instead of having to give 10% as the license percentage indicated it only gives 3%.
+* "Policy X" receives 3% of RT2 token supply that it can then be redistributed to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs. Therefore, instead of having to give 10% as the license percentage indicated it only gives 3%.
 * "Policy X" receives 50% of RT3 token supply that it can then redistributed to its userbase.
 
 ![](https://files.readme.io/33efb951a9be1339e849eb025d183a0f8d4f949f634ee5dfe1f13dac52c79bb0-image.png)
@@ -62,7 +62,7 @@ is called on the "Policy X" address. It should return the % of derivative's roya
 There are two ways in which an External Royalty Policy can redistribute value back to its users:
 
 1. Send Royalty Tokens directly to its users
-2. Keep the Royalty Tokens in the External Royalty Policy contract and have users claim Revenue Tokens through the the said contract
+2. Keep the Royalty Tokens in the External Royalty Policy contract and have users claim Revenue Tokens through the said contract
 
 Let's explore both in the context of "Policy X". Let's say that from the 50% of RT3 token supply "Policy X" received - 40% are kept in the "Policy X" contract and 10% are sent to an ancestor royalty vault (IP1).
 
