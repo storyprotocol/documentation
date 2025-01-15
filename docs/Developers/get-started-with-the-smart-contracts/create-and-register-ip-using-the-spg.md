@@ -12,11 +12,11 @@ next:
 ---
 # Bundled IP minting and registration
 
-One common use case many developers will want is the ability to mint an IP as a ERC-721 and register or remix it in one go. This is especially relevant for registration of IP that does not yet exist on-chain, in which case you would first require an on-chain representation of your IP that is compatible with the protocol.
+One common use case many developers will want is the ability to mint an IP as an ERC-721 and register or remix it in one go. This is especially relevant for registration of IP that does not yet exist on-chain, in which case you would first require an on-chain representation of your IP that is compatible with the protocol.
 
 For these cases, we recommend using the Story Protocol SPG, which, besides offering more secure and convenient methods around remixing or registration of existing NFTs as IPAs, also offers a powerful minting engine through which you can directly create an ERC-721 representation of your IP while registering it into the protocol in a single interface.
 
-Usually, you will likely not require your own custom ERC-721 collection for your IP, and simply want to perform ad-hoc registration of an off-chain asset. For these cases, we recommend using the **SPG default ERC-721 collection**, an ERC-721 that treats every NFT as an independent entity with its own customizable metadata, and also includes native support for rendering IP attribution within its `tokenURI()`. This means that these NFTs actually show you all details related to IP attribution, along with its own core metadata. Let's start by examining two core use-cases:
+Usually, you will likely not require your own custom ERC-721 collection for your IP, and simply want to perform ad-hoc registration of an off-chain asset. For these cases, we recommend using the **SPG default ERC-721 collection**, an ERC-721 that treats every NFT as an independent entity with its own customizable metadata, and also includes native support for rendering IP attribution within its `tokenURI()`. This means that these NFTs actually show you all the details related to IP attribution, along with its own core metadata. Let's start by examining two core use-cases:
 
 ## Bundled IP minting and registration with the SPG default ERC-721 collection
 
@@ -94,7 +94,7 @@ contract ExampleSPGBundledMintAndRemixing {
   StoryProtocolGateway public immutable SPG;
   address public immutable DEFAULT_SPG_NFT;
   
-  constructor(address spg, addres defaultCollection, uint256 defaultLicense) {
+  constructor(address spg, address defaultCollection, uint256 defaultLicense) {
     SPG = StoryProtocolGateway(spg);
     DEFAULT_SPG_NFT = defaultCollection;
     DEFAULT_LICENSE = defaultLicense;
@@ -149,7 +149,7 @@ Because the SPG is a minting engine itself, it actually supports creation of cus
 
 *Note: If you want something even more customizable, we recommend simply creating your own ERC-721 collection, and then leveraging the default`registerIp` or `registerDerivativeIp` SPG functions (or `register` if you were to call the IPA registry directly).*
 
-Configuring your custom collection is actually very simple! All you need to do is choose one of the SPG supported collection types, and pass in settings related to your collection. Here is sample code for IP minting and registration that utilizes a custom collection for doing so:
+Configuring your custom collection is actually very simple! All you need to do is choose one of the SPG supported collection types, and pass in settings related to your collection. Here is a sample code for IP minting and registration that utilizes a custom collection for doing so:
 
 ```
 import { StoryProtocolGateway } from "@story-protocol/periphery/StoryProtocolGateway.sol";
