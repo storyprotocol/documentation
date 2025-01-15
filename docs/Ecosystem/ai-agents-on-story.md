@@ -44,7 +44,7 @@ Here is an example of what the IP Metadata should look like for your AI Agent (u
 
 ## Adding Terms to your AI Agent
 
-Upon registering your AI Agent, you can add license terms to it. However you can add more license terms to your AI Agent afterwards as well. Here is an example of how you attach commercial license terms to your agnet using the SDK:
+Upon registering your AI Agent, you can add license terms to it. However you can add more license terms to your AI Agent afterwards as well. Here is an example of how you attach commercial license terms to your agent using the SDK:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
@@ -79,4 +79,4 @@ console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
 
 ## Registering your Agent's Outputs
 
-In the same way you registered your AI Agent on Story, you can register its outputs as well. For example, if you agent produces images and you want to register your image, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial.
+In the same way you registered your AI Agent on Story, you can register its outputs as well. For example, if your agent produces images and you want to register your image, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial.
