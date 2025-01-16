@@ -55,7 +55,7 @@ RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 5. Install the dependencies:
 
 ```Text Terminal
-npm install @story-protocol/core-sdk pinata viem axios sharp form-data
+npm install @story-protocol/core-sdk pinata-web3 viem axios sharp form-data
 ```
 
 ## 1. Generate an Image
@@ -108,7 +108,7 @@ In a separate file, create two functions:
 2. `uploadBlobToIPFS`: uploads our buffer to IPFS in the public group
 
 ```javascript utils/uploadToIpfs.ts
-import { PinataSDK } from 'pinata'
+import { PinataSDK } from 'pinata-web3'
 
 const pinata = new PinataSDK({
   pinataJwt: process.env.PINATA_JWT,
