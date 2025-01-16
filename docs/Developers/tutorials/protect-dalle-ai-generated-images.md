@@ -200,34 +200,34 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 > Instead of doing this, you could technically write your own contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). But an easy way to create a collection that implements `ISPGNFT` is just to call the `createCollection` function in the SPG contract using the SDK, as shown below.
 
 ```typescript utils/createSpgNftCollection.ts
-import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
-import { http, Account, Address } from 'viem'
-import { privateKeyToAccount } from 'viem/accounts'
+import { zeroAddress } from 'viem'
+import { client } from './utils'
 
-const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
-const account: Account = privateKeyToAccount(privateKey)
+const main = async function () {
+  // Create a new SPG NFT collection
+  //
+  // NOTE: Use this code to create a new SPG NFT collection. You can then use the
+  // `newCollection.spgNftContract` address as the `spgNftContract` argument in
+  // functions like `mintAndRegisterIpAssetWithPilTerms`, which you'll see later.
+  //
+  // You will mostly only have to do this once. Once you get your nft contract address,
+  // you can use it in SPG functions.
+  //
+  const newCollection = await client.nftClient.createNFTCollection({
+    name: 'Test NFT',
+    symbol: 'TEST',
+    isPublicMinting: true,
+    mintOpen: true,
+    mintFeeRecipient: zeroAddress,
+    contractURI: '',
+    txOptions: { waitForTransaction: true },
+  })
 
-const config: StoryConfig = {
-  account: account,
-  transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: 'odyssey',
+  console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
+  console.log(`NFT contract address: ${newCollection.spgNftContract}`)
 }
-const client = StoryClient.newClient(config)
 
-const newCollection = await client.nftClient.createNFTCollection({
-  name: 'Dall-E NFTs',
-  symbol: 'DALLE',
-  isPublicMinting: true,
-  mintOpen: true,
-  mintFeeRecipient: zeroAddress,
-  contractURI: '',
-  txOptions: { waitForTransaction: true },
-})
-
-console.log(
-  `New SPG NFT collection created at transaction hash ${newCollection.txHash}`,
-  `SPG NFT contract address: ${newCollection.spgNftContract}`
-)
+main()
 ```
 
 Run this file and look at the console output. Copy the SPG NFT contract address and add that value as `SPG_NFT_CONTRACT_ADDRESS` to your `.env` file:
