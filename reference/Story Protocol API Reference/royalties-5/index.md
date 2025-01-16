@@ -1,0 +1,4 @@
+---
+title: Royalties
+hidden: false
+---
