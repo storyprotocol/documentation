@@ -102,10 +102,7 @@ const condensedImgBuffer = await sharp(response.data)
 
 Now that we have our image, we need to store it on IPFS so we can get a URL back to access it. In this tutorial we'll be using [Pinata](https://pinata.cloud/), a decentralized storage solution that makes storing images easy.
 
-In a separate file, create two functions:
-
-1. `createPublicGroup`: so we can make our stored images public
-2. `uploadBlobToIPFS`: uploads our buffer to IPFS in the public group
+In a separate file, create a function `uploadBlobToIPFS` that uploads our buffer to IPFS:
 
 ```javascript utils/uploadToIpfs.ts
 import { PinataSDK } from 'pinata-web3'
@@ -116,37 +113,25 @@ const pinata = new PinataSDK({
   pinataGateway: process.env.PINATA_GATEWAY
 })
 
-// create a group so we can store public images
-export async function createPublicGroup() {
-  const group = await pinata.groups.create({
-    name: 'Public Stability Images',
-    isPublic: true,
-  })
-  return group.id
-}
-
 // upload our image to ipfs by putting it in a public group
-export async function uploadBlobToIPFS(blob: Blob, fileName: string, groupId: string): Promise<string> {
+export async function uploadBlobToIPFS(blob: Blob, fileName: string): Promise<string> {
   const file = new File([blob], fileName, { type: 'image/png' })
-  const { cid } = await pinata.upload.file(file).group(groupId)
-  return cid
+  const { IpfsHash } = await pinata.upload.file(file)
+  return IpfsHash
 }
 ```
 
-Back in the main file, use the `createPublicGroup` function we implemented to create a public space where we can store our images, and then call the `uploadBlobToIPFS` function to store our image in that public group:
+Back in the main file, call the `uploadBlobToIPFS` function to store our image:
 
 ```typescript main.ts
 import { createPublicGroup, uploadBlobToIPFS } from './utils/uploadToIpfs.ts'
 
 // previous code here ...
 
-// only have to call this function once
-// (if you want to create more images in the future, you don't need to call this again)
-const groupId = await createPublicGroup()
 // convert the buffer to a blob
 const blob = new Blob([condensedImgBuffer], { type: 'image/png' });
 // store the blob on ipfs
-const imageCid = await uploadBlobToIPFS(blob, 'lighthouse.png', groupId);
+const imageCid = await uploadBlobToIPFS(blob, 'lighthouse.png');
 ```
 
 ## 3. Set up your Story Config
@@ -246,8 +231,8 @@ In the `uploadToIpfs.ts` file, create a function to upload your IP & NFT Metadat
 // previous code here ...
 
 export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
-  const { cid } = await pinata.upload.json(jsonMetadata)
-	return cid
+  const { IpfsHash } = await pinata.upload.json(jsonMetadata)
+	return IpfsHash
 }
 ```
 
@@ -314,33 +299,35 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 > Instead of doing this, you could technically write your own contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). But an easy way to create a collection that implements `ISPGNFT` is just to call the `createCollection` function in the SPG contract using the SDK, as shown below.
 
 ```typescript utils/createSpgNftCollection.ts
-import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
-import { http } from 'viem
+import { zeroAddress } from 'viem'
+import { client } from './utils'
 
-const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
-const account: Account = privateKeyToAccount(privateKey)
+const main = async function () {
+    // Create a new SPG NFT collection
+    //
+    // NOTE: Use this code to create a new SPG NFT collection. You can then use the
+    // `newCollection.spgNftContract` address as the `spgNftContract` argument in
+    // functions like `mintAndRegisterIpAssetWithPilTerms` in the
+    // `main.ts` file.
+    //
+    // You will mostly only have to do this once. Once you get your nft contract address,
+    // you can use it in SPG functions.
+    //
+    const newCollection = await client.nftClient.createNFTCollection({
+        name: 'Test NFT',
+        symbol: 'TEST',
+        isPublicMinting: true,
+        mintOpen: true,
+        mintFeeRecipient: zeroAddress,
+        contractURI: '',
+        txOptions: { waitForTransaction: true },
+    })
 
-const config: StoryConfig = {
-  account: account,
-  transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: 'odyssey',
+    console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
+    console.log(`NFT contract address: ${newCollection.spgNftContract}`)
 }
-const client = StoryClient.newClient(config)
 
-const newCollection = await client.nftClient.createNFTCollection({
-  name: 'Stability NFTs',
-  symbol: 'SNFT',
-  isPublicMinting: true,
-  mintOpen: true,
-  mintFeeRecipient: zeroAddress,
-  contractURI: '',
-  txOptions: { waitForTransaction: true },
-})
-
-console.log(
-  `New SPG NFT collection created at transaction hash ${newCollection.txHash}`,
-  `SPG NFT contract address: ${newCollection.spgNftContract}`
-)
+main()
 ```
 
 Run this file and look at the console output. Copy the SPG NFT contract address and add that value as `SPG_NFT_CONTRACT_ADDRESS` to your `.env` file:
@@ -358,13 +345,11 @@ The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset)
 * Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
 ```typescript main.ts
-import { CreateIpAssetWithPilTermsResponse } from "@story-protocol/core-sdk";
 import { Address } from "viem";
 
 // previous code here ...
 
-const response: CreateIpAssetWithPilTermsResponse =
-  await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
+const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
     spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
     terms: [commercialRemixTerms], // the terms we created in the previous step
     ipMetadata: {
