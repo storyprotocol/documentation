@@ -201,7 +201,8 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 
 ```typescript utils/createSpgNftCollection.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
-import { http } from 'viem
+import { http, Account, Address } from 'viem'
+import { privateKeyToAccount } from 'viem/accounts'
 
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
 const account: Account = privateKeyToAccount(privateKey)
