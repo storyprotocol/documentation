@@ -51,7 +51,7 @@ RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 5. Install the dependencies:
 
 ```Text Terminal
-npm install @story-protocol/core-sdk @pinata/sdk viem openai
+npm install @story-protocol/core-sdk pinata-web3 viem
 ```
 
 ## 1. Generate an Image
