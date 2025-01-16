@@ -283,9 +283,11 @@ Once the loop completed, the final `console.log` will look like:
 }
 ```
 
-You can paste the `sample` into your browser and see the final result!
+You can paste the `sample` into your browser and see the final result! Make sure to save this image as it will disappear eventually.
 
 ## 4. Set up your Story Config
+
+Next we will register this image on Story as an [🧩 IP Asset](doc:ip-asset) in order to monetize and license the IP.
 
 * Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
@@ -323,7 +325,7 @@ const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
   attributes: [
     {
       key: 'Model',
-      value: 'dall-e-2',
+      value: 'FLUX 1.1 [pro] ultra Finetune',
     },
     {
       key: 'Prompt',
@@ -364,7 +366,7 @@ const nftMetadata = {
 }
 ```
 
-## 5. Upload your IP and NFT Metadata to IPFS
+## 7. Upload your IP and NFT Metadata to IPFS
 
 In a separate file, create a function to upload your IP & NFT Metadata objects to IPFS:
 
@@ -396,7 +398,7 @@ const nftHash = createHash("sha256")
   .digest("hex");
 ```
 
-## 6. Register the NFT as an IP Asset
+## 8. Register the NFT as an IP Asset
 
 In this step, we will use the [📦 SPG](doc:spg) to combine minting and registering our NFT into one transaction call.
 
@@ -479,4 +481,4 @@ console.log(
 );
 ```
 
-## 7. Done!
+## 9. Done!
