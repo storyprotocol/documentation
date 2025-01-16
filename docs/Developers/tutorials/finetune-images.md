@@ -57,7 +57,7 @@ RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 5. Install the dependencies:
 
 ```Text Terminal
-npm install @story-protocol/core-sdk axios
+npm install @story-protocol/core-sdk axios pinata-web3 viem
 ```
 
 ## 1. Compile the Training Data
