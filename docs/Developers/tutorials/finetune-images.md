@@ -371,11 +371,14 @@ const nftMetadata = {
 In a separate file, create a function to upload your IP & NFT Metadata objects to IPFS:
 
 ```javascript utils/uploadToIpfs.ts
-const pinataSDK = require("@pinata/sdk");
+import { PinataSDK } from "pinata-web3";
 
-export async function uploadJSONToIPFS(jsonMetadata): Promise<string> {
-  const pinata = new pinataSDK({ pinataJWTKey: process.env.PINATA_JWT });
-  const { IpfsHash } = await pinata.pinJSONToIPFS(jsonMetadata);
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT,
+});
+
+export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
+  const { IpfsHash } = await pinata.upload.json(jsonMetadata);
   return IpfsHash;
 }
 ```
@@ -412,7 +415,7 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 
 ```typescript utils/createSpgNftCollection.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
-import { http } from 'viem
+import { http } from 'viem'
 
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
 const account: Account = privateKeyToAccount(privateKey)
