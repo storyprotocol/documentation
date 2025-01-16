@@ -2,19 +2,23 @@
 title: Finetune Images on Story
 excerpt: >-
   Learn how to use the FLUX Finetuning API to finetune images and then register
-  the output on Story.
+  the output on Story in TypeScript.
 deprecated: false
 hidden: true
 metadata:
   robots: index
 ---
-In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generated images by registering it on Story.
+In this tutorial, you will use the FLUX Finetuning API to take a bunch of input images and finetune an AI to create similar images for you along with a prompt, and then grow, monetize, and protect the output IP on Story.
+
+> 📘 This Tutorial is in TypeScript
+>
+> Steps 1-3 of this tutorial are based on the [FLUX Finetuning Beta Guide](https://docs.bfl.ml/finetuning/), which contains examples for calling their API in Python, however I have rewritten them in TypeScript.
 
 ## The Explanation
 
-Let's say you generate an image using AI. Without adding a proper license to your image, others could use it freely. In this tutorial, you will learn how to add a license to your DALL·E 2 AI-Generated image so that if others want to use it, they must properly license it from you.
+Generative text-to-image models often do not fully capture a creator’s unique vision, and have insufficient knowledge about specific objects, brands or visual styles. With the FLUX Pro Finetuning API, creators can use existing images to finetune an AI to create similar images, along with a prompt.
 
-In order to register that IP on Story, you first need to mint an NFT to represent that IP, and then register that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset).
+When an image is created, we will register it as IP on Story in order to grow, monetize, and protect the IP.
 
 ## 0. Before you Start
 
@@ -32,17 +36,19 @@ WALLET_PRIVATE_KEY=
 PINATA_JWT=
 ```
 
-3. Go to [OpenAI](https://platform.openai.com/settings/organization/api-keys) and create a new API key. Add the new key to your `.env` file:
+3. Go to [BFL](https://api.us1.bfl.ai/auth/profile) and create a new API key. Add the new key to your `.env` file:
 
-> 🚧 OpenAI Credits
+> 🚧 BFL Credits
 >
-> In order to generate an image, you'll need OpenAI credits. If you just created an account, you will probably have a free trial that will give you a few credits to start with.
+> In order to generate an image, you'll need BFL credits. If you just created an account, you will need to purchase credits [here](https://api.us1.bfl.ai/auth/profile).
+>
+> You can also see the pricing for each of the API endpoints [here](https://docs.bfl.ml/pricing/).
 
 ```yaml .env
-OPENAI_API_KEY=
+BFL_API_KEY=
 ```
 
-4. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
+4. Add your preferred Story RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
 RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
@@ -51,27 +57,235 @@ RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 5. Install the dependencies:
 
 ```Text Terminal
-npm install @story-protocol/core-sdk @pinata/sdk viem openai
+npm install @story-protocol/core-sdk axios
 ```
 
-## 1. Generate an Image
+## 1. Compile the Training Data
+
+In order to create a finetune, we'll need the input training data!
+
+1. Create a folder in your project called `images`. In that folder, add a bunch of images that you want your finetune to train on. *Supported formats: JPG, JPEG, PNG, and WebP. Also recommended to use more than 5 images.*
+2. Add Text Descriptions (Optional): In the same folder, create text files with descriptions for your images. Text files should share the same name as their corresponding images. *Example: if your image is "sample.jpg", create "sample.txt"*
+3. Compress your folder into a ZIP file. It should be named `images.zip`
+
+## 2) Create a Finetune
+
+In order to generate an image using a similar style as input images, we need to create a **finetune**. Think of a finetune as an AI that knows all of your input images and can then start producing new ones.
+
+Let's make a function that calls FLUX's `/v1/finetune` API route.
+
+> 📘 Official Docs
+>
+> In order to learn what each of the parameters in the payload are, see the official `/v1/finetune` API docs [here](https://api.us1.bfl.ai/scalar#tag/tasks/POST/v1/finetune).
 
 ```typescript main.ts
-import OpenAI from 'openai'
+interface FinetunePayload {
+  finetune_comment: string;
+  trigger_word: string;
+  file_data: string;
+  iterations: number;
+  mode: string;
+  learning_rate: number;
+  captioning: boolean;
+  priority: string;
+  lora_rank: number;
+  finetune_type: string;
+}
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-})
+async function requestFinetuning(
+  zipPath: string,
+  finetuneComment: string,
+  triggerWord = "TOK",
+  mode = "general",
+  iterations = 300,
+  learningRate = 0.00001,
+  captioning = true,
+  priority = "quality",
+  finetuneType = "full",
+  loraRank = 32
+) {
+  if (!fs.existsSync(zipPath)) {
+    throw new Error(`ZIP file not found at ${zipPath}`);
+  }
 
-const image = await openai.images.generate({ 
-  model: 'dall-e-2', 
-  prompt: 'A cute baby sea otter' 
-});
+  const modes = ["character", "product", "style", "general"];
+  if (!modes.includes(mode)) {
+    throw new Error(`Invalid mode. Must be one of: ${modes.join(", ")}`);
+  }
 
-console.log(image.data[0].url) // the url to the newly created image
+  const fileData = fs.readFileSync(zipPath);
+  const encodedZip = Buffer.from(fileData).toString("base64");
+
+  const url = "https://api.us1.bfl.ai/v1/finetune";
+  const headers = {
+    "Content-Type": "application/json",
+    "X-Key": process.env.BFL_API_KEY,
+  };
+
+  const payload: FinetunePayload = {
+    finetune_comment: finetuneComment,
+    trigger_word: triggerWord,
+    file_data: encodedZip,
+    iterations,
+    mode,
+    learning_rate: learningRate,
+    captioning,
+    priority,
+    lora_rank: loraRank,
+    finetune_type: finetuneType,
+  };
+
+  try {
+    const response = await axios.post(url, payload, { headers });
+    return response.data;
+  } catch (error) {
+    throw new Error(`Finetune request failed: ${error}`);
+  }
+}
 ```
 
-## 2. Set up your Story Config
+Next, call the `requestFinetuning` function we just made:
+
+```typescript main.ts
+const finetune = await requestFinetuning(
+  "./images.zip",
+  "my-first-finetune",
+  "TOK",
+  "general",
+  300,
+  0.00001,
+  true,
+  "quality",
+  "full",
+  32
+);
+```
+
+This will return something that looks like:
+
+```json
+{ 
+  finetune_id: '6fc5e628-6f56-48ec-93cb-c6a6b22bf5a' 
+}
+```
+
+This is your `finetune_id`, and will be used to create images in the following steps.
+
+## 3. Run Inference
+
+Now that we have trained a finetune, we will use the model to create images. "Running an inference" simply means using our new model (identified by its `finetune_id`), which is trained on our images, to create new images.
+
+There are several different inference endpoints we can use, each with [their own pricing](https://docs.bfl.ml/pricing/) (found at the bottom of the page). For this tutorial, I'll be using the `/v1/flux-pro-1.1-ultra-finetuned` endpoint, which is documented [here](https://api.us1.bfl.ai/scalar#tag/tasks/POST/v1/flux-pro-1.1-ultra-finetuned).
+
+Here is how we can call this endpoint:
+
+```typescript main.ts
+async function finetuneInference(
+  finetuneId: string,
+  prompt: string,
+  finetuneStrength = 1.2,
+  endpoint = "flux-pro-1.1-ultra-finetuned",
+  additionalParams: Record<string, any> = {}
+) {
+  const url = `https://api.us1.bfl.ai/v1/${endpoint}`;
+  const headers = {
+    "Content-Type": "application/json",
+    "X-Key": process.env.BFL_API_KEY,
+  };
+
+  const payload = {
+    finetune_id: finetuneId,
+    finetune_strength: finetuneStrength,
+    prompt,
+    ...additionalParams,
+  };
+
+  try {
+    const response = await axios.post(url, payload, { headers });
+    return response.data;
+  } catch (error) {
+    throw new Error(`Finetune inference failed: ${error}`);
+  }
+}
+```
+
+Next, call the `finetuneInference` function we just made:
+
+```typescript main.ts
+const inference = await finetuneInference(
+  "6fc5e628-6f56-48ec-93cb-c6a6b22bf5a", // the finetune_id we got above
+  "A picture of an orange."
+);
+```
+
+This will return something that looks like:
+
+```json
+{
+  id: '023a1507-369e-46e0-bd6d-1f3446d7d5f2',
+  status: 'Pending',
+  result: null,
+  progress: null
+}
+```
+
+As you can see, the status is still pending. We must wait until the generation is ready to view our image. To do this, we will need a function to fetch our new inference to see if its ready and view the details about it:
+
+```typescript main.ts
+async function getInference(id: string) {
+  const url = "https://api.us1.bfl.ai/v1/get_result";
+  const headers = {
+    "Content-Type": "application/json",
+    "X-Key": process.env.BFL_API_KEY,
+  };
+
+  try {
+    const response = await axios.get(url, { headers, params: { id } });
+    return response.data;
+  } catch (error) {
+    throw new Error(`Inference retrieval failed: ${error}`);
+  }
+}
+```
+
+In our code, lets add a loop that continuously fetches the inference until it's ready. When it's ready, we will view the new image.
+
+```typescript main.ts
+// already called this
+const inference = await finetuneInference(
+  "6fc5e628-6f56-48ec-93cb-c6a6b22bf5a",
+  "A picture of an orange."
+);
+
+let inferenceData = await getInference(inference.id);
+while (inferenceData.status != "Ready") {
+  console.log("Waiting for inference to complete...");
+  // wait 5 seconds
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+  // fetch the inference again
+  inferenceData = await getInference(inference.id);
+}
+// now the inference is ready
+console.log(inferenceData);
+```
+
+Once the loop completed, the final `console.log` will look like:
+
+```json
+{
+  id: '023a1507-369e-46e0-bd6d-1f3446d7d5f2',
+  status: 'Ready',
+  result: {
+    sample: 'https://delivery-us1.bfl.ai/results/746585f8d1b341f3a8735ababa563ac1/sample.jpeg?se=2025-01-16T19%3A50%3A11Z&sp=r&sv=2024-11-04&sr=b&rsct=image/jpeg&sig=pPtWnntLqc49hfNnGPgTf4BzS6MZcBgHayrYkKe%2BZIc%3D',
+    prompt: 'A picture of an orange.'
+  },
+  progress: null
+}
+```
+
+You can paste the `sample` into your browser and see the final result!
+
+## 4. Set up your Story Config
 
 * Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
@@ -93,7 +307,7 @@ const config: StoryConfig = {
 const client = StoryClient.newClient(config);
 ```
 
-## 3. Set up your IP Metadata
+## 5. Set up your IP Metadata
 
 View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for your IP. You can use the `generateIpMetadata` function to properly format your metadata and ensure it is of the correct type, as shown below:
 
@@ -126,7 +340,7 @@ const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
 })
 ```
 
-## 4. Set up your NFT Metadata
+## 6. Set up your NFT Metadata
 
 The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.org/EIPS/eip-721).
 
