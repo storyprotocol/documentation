@@ -245,23 +245,21 @@ The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset)
 * Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
 ```typescript main.ts
-import { CreateIpAssetWithPilTermsResponse } from "@story-protocol/core-sdk";
 import { Address } from "viem";
 
 // previous code here ...
 
-const response: CreateIpAssetWithPilTermsResponse =
-  await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
-    spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-    terms: [], // IP already has non-commercial social remixing terms. You can add more here.
-    ipMetadata: {
-      ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
-      ipMetadataHash: `0x${ipHash}`,
-      nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
-      nftMetadataHash: `0x${nftHash}`,
-    },
-    txOptions: { waitForTransaction: true },
-  });
+const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
+  spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
+  terms: [], // IP already has non-commercial social remixing terms. You can add more here.
+  ipMetadata: {
+    ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
+    ipMetadataHash: `0x${ipHash}`,
+    nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
+    nftMetadataHash: `0x${nftHash}`,
+  },
+  txOptions: { waitForTransaction: true },
+});
 
 console.log(
   `Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`
