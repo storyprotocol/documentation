@@ -60,7 +60,7 @@ RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 4. Install the dependencies:
 
 ```Text Terminal
-npm install @story-protocol/core-sdk @pinata/sdk viem
+npm install @story-protocol/core-sdk pinata-web3 viem
 ```
 
 ## 1. Set up your Story Config
@@ -113,8 +113,8 @@ The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.o
 // previous code here...
 
 const nftMetadata = {
-  name: 'Test NFT',
-  description: 'This is a test NFT',
+  name: 'Ownership NFT',
+  description: 'This is an NFT representing owernship of our IP Asset.',
   image: 'https://picsum.photos/200',
 }
 ```
@@ -124,11 +124,14 @@ const nftMetadata = {
 In a separate file, create a function to upload your IP & NFT Metadata objects to IPFS:
 
 ```javascript utils/uploadToIpfs.ts
-const pinataSDK = require('@pinata/sdk')
+import { PinataSDK } from "pinata-web3";
 
-export async function uploadJSONToIPFS(jsonMetadata): Promise<string> {
-    const pinata = new pinataSDK({ pinataJWTKey: process.env.PINATA_JWT })
-    const { IpfsHash } = await pinata.pinJSONToIPFS(jsonMetadata)
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT,
+});
+
+export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
+    const { IpfsHash } = await pinata.upload.json(jsonMetadata)
     return IpfsHash
 }
 ```
