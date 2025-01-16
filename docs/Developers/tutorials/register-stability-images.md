@@ -307,8 +307,7 @@ const main = async function () {
     //
     // NOTE: Use this code to create a new SPG NFT collection. You can then use the
     // `newCollection.spgNftContract` address as the `spgNftContract` argument in
-    // functions like `mintAndRegisterIpAssetWithPilTerms` in the
-    // `main.ts` file.
+    // functions like `mintAndRegisterIpAssetWithPilTerms`, which you'll see later.
     //
     // You will mostly only have to do this once. Once you get your nft contract address,
     // you can use it in SPG functions.
@@ -350,16 +349,16 @@ import { Address } from "viem";
 // previous code here ...
 
 const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
-    spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-    terms: [commercialRemixTerms], // the terms we created in the previous step
-    ipMetadata: {
-      ipMetadataURI: process.env.PINATA_GATEWAY + '/files/' + ipIpfsHash,
-      ipMetadataHash: `0x${ipHash}`,
-      nftMetadataURI: process.env.PINATA_GATEWAY + '/files/' + nftIpfsHash,
-      nftMetadataHash: `0x${nftHash}`,
-    },
-    txOptions: { waitForTransaction: true },
-  });
+  spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
+  terms: [commercialRemixTerms], // the terms we created in the previous step
+  ipMetadata: {
+    ipMetadataURI: process.env.PINATA_GATEWAY + '/files/' + ipIpfsHash,
+    ipMetadataHash: `0x${ipHash}`,
+    nftMetadataURI: process.env.PINATA_GATEWAY + '/files/' + nftIpfsHash,
+    nftMetadataHash: `0x${nftHash}`,
+  },
+  txOptions: { waitForTransaction: true },
+});
 
 console.log(
   `Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`
