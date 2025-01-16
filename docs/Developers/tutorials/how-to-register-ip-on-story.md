@@ -69,7 +69,7 @@ In a `utils.ts` file, add the following code to set up your Story Config:
 
 * Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-```javascript utils.ts
+```typescript utils.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
 import { http } from 'viem'
 import { privateKeyToAccount, Address, Account } from 'viem/accounts'
@@ -91,7 +91,7 @@ View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your m
 
 In a `main.ts` file, use the `generateIpMetadata` function to properly format your metadata and ensure it is of the correct type, as shown below:
 
-```javascript main.ts
+```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
 import { client } from './utils'
 
@@ -116,7 +116,7 @@ main();
 
 The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.org/EIPS/eip-721).
 
-```javascript main.ts
+```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
 import { client } from './utils'
 
@@ -137,7 +137,7 @@ main();
 
 In a separate `uploadToIpfs` file, create a function to upload your IP & NFT Metadata objects to IPFS:
 
-```javascript uploadToIpfs.ts
+```typescript uploadToIpfs.ts
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -146,13 +146,13 @@ const pinata = new PinataSDK({
 
 export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
   const { IpfsHash } = await pinata.upload.json(jsonMetadata);
-	return IpfsHash;
+  return IpfsHash;
 }
 ```
 
 You can then use that function to upload your metadata, as shown below:
 
-```javascript main.ts
+```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
 import { client } from './utils'
 import { uploadJSONToIPFS } from './uploadToIpfs'
@@ -449,7 +449,7 @@ async function main() {
   })
   
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
-	console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`)
+  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`)
 }
 
 main();
