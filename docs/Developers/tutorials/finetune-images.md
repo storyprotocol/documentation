@@ -68,7 +68,7 @@ In order to create a finetune, we'll need the input training data!
 2. Add Text Descriptions (Optional): In the same folder, create text files with descriptions for your images. Text files should share the same name as their corresponding images. *Example: if your image is "sample.jpg", create "sample.txt"*
 3. Compress your folder into a ZIP file. It should be named `images.zip`
 
-## 2) Create a Finetune
+## 2. Create a Finetune
 
 In order to generate an image using a similar style as input images, we need to create a **finetune**. Think of a finetune as an AI that knows all of your input images and can then start producing new ones.
 
