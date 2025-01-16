@@ -1,8 +1,10 @@
 ---
-title: Protect DALL·E AI-Generated Images (COPY)
-excerpt: Learn how to license and protect DALL·E AI-Generated images on Story.
+title: Finetune Images on Story
+excerpt: >-
+  Learn how to use the FLUX Finetuning API to finetune images and then register
+  the output on Story.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   robots: index
 ---
