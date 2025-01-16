@@ -42,7 +42,7 @@ When an IP Asset receives revenue, it is deposited into its IP Royalty Vault. In
 There are two ways that trigger the IP Royalty Vault deployment and make the initial Royalty Token distribution - whichever comes first:
 
 1. A License Token is minted from an IP for the first time: the associated IP Account (the parent's IP Account) receives 100% of the Royalty Tokens
-2. An IP registers as a derivative: the associated IP Account (the child's IP Account) receives 100% Royalty Tokens, and then distributes x% of it to ancestors based on the License Terms.
+2. An IP registers as a derivative: the associated IP Account (the child's IP Account) receives 100% Royalty Tokens, and then distributes x% of it to ancestors based on the License Terms
 
 Because Royalty Tokens are ERC-20, they can be transferred like any other token. Thus, the IP Account could send them to someone else, or even put them up for sale on the secondary market.
 
