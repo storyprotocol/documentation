@@ -7,7 +7,7 @@ metadata:
 ---
 > 📘 Optional: Official WalletConnect Docs
 >
-> Check out the official Wagmi + WalletConnect installation docs[here](https://docs.walletconnect.com/appkit/next/core/installation).
+> Check out the official Wagmi + WalletConnect installation docs [here](https://docs.walletconnect.com/appkit/next/core/installation).
 
 ## Install the Dependencies
 
