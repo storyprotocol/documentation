@@ -40,7 +40,6 @@ import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { PropsWithChildren } from "react";
 import { odyssey } from "@story-protocol/core-sdk";
-import { createWalletClient, type Chain } from "viem";
 
 // setup wagmi
 const config = createConfig({
