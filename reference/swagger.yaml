@@ -1,0 +1,2176 @@
+definitions:
+  protocolv1.Collection:
+    properties:
+      assetCount:
+        type: string
+      blockNumber:
+        type: string
+      blockTimestamp:
+        type: string
+      cancelledDisputeCount:
+        type: string
+      id:
+        type: string
+      judgedDisputeCount:
+        type: string
+      licensesCount:
+        type: string
+      raisedDisputeCount:
+        type: string
+      resolvedDisputeCount:
+        type: string
+    type: object
+  protocolv1.CollectionQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        type: object
+    type: object
+  protocolv1.CollectionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.Collection'
+    type: object
+  protocolv1.CollectionsRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv1.CollectionQueryOptions'
+    type: object
+  protocolv1.CollectionsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.Collection'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.DetailedIPLicenseTermsRequestBody:
+    type: object
+  protocolv1.Dispute:
+    properties:
+      arbitrationPolicy:
+        type: string
+      blockNumber:
+        type: string
+      blockTimestamp:
+        type: string
+      currentTag:
+        type: string
+      data:
+        type: string
+      evidenceLink:
+        type: string
+      id:
+        type: string
+      initiator:
+        type: string
+      targetIpId:
+        type: string
+      targetTag:
+        type: string
+    type: object
+  protocolv1.DisputeResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.Dispute'
+    type: object
+  protocolv1.DisputesResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.Dispute'
+        type: array
+    type: object
+  protocolv1.IPAssetEdgeResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.IpAssetEdge'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.IPLicenseTerm:
+    properties:
+      blockNumber:
+        type: string
+      blockTime:
+        type: string
+      id:
+        type: string
+      ipId:
+        type: string
+      licenseTemplate:
+        type: string
+      licenseTermsId:
+        type: string
+    type: object
+  protocolv1.IPLicenseTermsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.IPLicenseTerm'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.IpAssetEdge:
+    properties:
+      blockNumber:
+        type: string
+      blockTime:
+        type: string
+      ipId:
+        type: string
+      licenseTemplate:
+        type: string
+      licenseTermsId:
+        type: string
+      licenseTokenId:
+        type: string
+      parentIpId:
+        type: string
+      transactionHash:
+        type: string
+      transactionIndex:
+        type: string
+    type: object
+  protocolv1.IpAssetMetadata:
+    properties:
+      id:
+        type: string
+      metadataHash:
+        type: string
+      metadataJson: {}
+      metadataUri:
+        type: string
+      nftMetadataHash:
+        type: string
+      nftTokenUri:
+        type: string
+      registrationDate:
+        type: string
+    type: object
+  protocolv1.LicenseMintingFeePaid:
+    properties:
+      amount:
+        type: string
+      blockNumber:
+        type: string
+      blockTimestamp:
+        type: string
+      id:
+        type: string
+      payer:
+        type: string
+      receiverIpId:
+        type: string
+      token:
+        type: string
+    type: object
+  protocolv1.LicenseMintingFeePaidResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.LicenseMintingFeePaid'
+    type: object
+  protocolv1.LicenseMintingFeePaidsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.LicenseMintingFeePaid'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.LicenseTemplate:
+    properties:
+      blockNumber:
+        type: string
+      blockTime:
+        type: string
+      id:
+        type: string
+      metadataUri:
+        type: string
+      name:
+        type: string
+    type: object
+  protocolv1.LicenseTemplateResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.LicenseTemplate'
+    type: object
+  protocolv1.LicenseTemplatesResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.LicenseTemplate'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.LicenseTerm:
+    properties:
+      blockNumber:
+        type: string
+      blockTime:
+        type: string
+      id:
+        type: string
+      licenseTemplate:
+        type: string
+      licenseTerms:
+        items:
+          additionalProperties: {}
+          type: object
+        type: array
+      terms:
+        $ref: '#/definitions/protocolv1.Term'
+    type: object
+  protocolv1.LicenseTermResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.LicenseTerm'
+    type: object
+  protocolv1.LicenseTermsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.LicenseTerm'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.LicenseToken:
+    properties:
+      blockNumber:
+        type: string
+      blockTime:
+        type: string
+      burntAt:
+        type: string
+      id:
+        type: string
+      licenseTemplate:
+        type: string
+      licenseTermsId:
+        type: string
+      licensorIpId:
+        type: string
+      owner:
+        type: string
+      transferable:
+        type: string
+    type: object
+  protocolv1.LicenseTokenResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.LicenseToken'
+    type: object
+  protocolv1.LicenseTokensResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.LicenseToken'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.Module:
+    properties:
+      blockNumber:
+        type: string
+      blockTimestamp:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: string
+      module:
+        type: string
+      name:
+        type: string
+    type: object
+  protocolv1.ModuleResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.Module'
+    type: object
+  protocolv1.ModulesResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.Module'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.Permission:
+    properties:
+      blockNumber:
+        type: string
+      blockTimestamp:
+        type: string
+      func:
+        type: string
+      id:
+        type: string
+      permission:
+        type: string
+      signer:
+        type: string
+      to:
+        type: string
+      uuid:
+        type: string
+    type: object
+  protocolv1.PermissionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.Permission'
+    type: object
+  protocolv1.PermissionsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.Permission'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.RoyaltyPay:
+    properties:
+      amount:
+        type: string
+      blockNumber:
+        type: string
+      blockTimestamp:
+        type: string
+      id:
+        type: string
+      payerIpId:
+        type: string
+      receiverIpId:
+        type: string
+      sender:
+        type: string
+      token:
+        type: string
+    type: object
+  protocolv1.RoyaltyPayResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.RoyaltyPay'
+    type: object
+  protocolv1.RoyaltyPaysResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.RoyaltyPay'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv1.Term:
+    properties:
+      commercialAttribution:
+        type: boolean
+      commercialRevCeiling:
+        type: integer
+      commercialRevShare:
+        type: integer
+      commercialUse:
+        type: boolean
+      commercializerChecker:
+        type: string
+      commercializerCheckerData:
+        type: string
+      currency:
+        type: string
+      defaultMintingFee:
+        type: integer
+      derivativeRevCeiling:
+        type: integer
+      derivativesAllowed:
+        type: boolean
+      derivativesApproval:
+        type: boolean
+      derivativesAttribution:
+        type: boolean
+      derivativesReciprocal:
+        type: boolean
+      expiration:
+        type: integer
+      royaltyPolicy:
+        type: string
+      transferable:
+        type: boolean
+      uri:
+        type: string
+    type: object
+  protocolv1.Transaction:
+    properties:
+      actionType:
+        type: string
+      blockNumber:
+        type: string
+      blockTimestamp:
+        type: string
+      createdAt:
+        type: string
+      id:
+        type: string
+      initiator:
+        type: string
+      ipId:
+        type: string
+      logIndex:
+        type: string
+      resourceId:
+        type: string
+      resourceType:
+        type: string
+      transactionIndex:
+        type: string
+      tx_hash:
+        type: string
+    type: object
+  protocolv1.TransactionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv1.Transaction'
+    type: object
+  protocolv1.TransactionsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv1.Transaction'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv2.DetailedTerms:
+    properties:
+      id:
+        type: string
+      ipId:
+        type: string
+      licenseTemplate:
+        $ref: '#/definitions/protocolv1.LicenseTemplate'
+      licenseTemplateId:
+        type: string
+      terms:
+        $ref: '#/definitions/protocolv1.Term'
+    type: object
+  protocolv2.DetailedTermsDefaultResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv2.DetailedTerms'
+    type: object
+  protocolv2.DetailedTermsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv2.DetailedTerms'
+        type: array
+    type: object
+  protocolv2.DisputeQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+          targetIpId:
+            type: string
+        type: object
+    type: object
+  protocolv2.DisputeRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.DisputeQueryOptions'
+    type: object
+  protocolv2.IPAsset:
+    properties:
+      ancestorCount:
+        type: integer
+        format: uint256
+      blockNumber:
+        type: string
+      blockTimestamp:
+        type: string
+      childIpIds:
+        type: string
+      childrenCount:
+        type: integer
+      contractVersion:
+        type: string
+      descendantCount:
+        type: integer
+      id:
+        type: string
+      ipId:
+        type: string
+      isGroup:
+        type: boolean
+      nftMetadata:
+        $ref: '#/definitions/protocolv2.NftMetadata'
+      parentCount:
+        type: integer
+      parentIpIds:
+        type: string
+      rootIpIds:
+        items:
+          type: string
+        type: array
+      transactionHash:
+        type: string
+    type: object
+  protocolv2.IPAssetResponse:
+    properties:
+      data:
+        $ref: '#/definitions/protocolv2.IPAsset'
+    type: object
+  protocolv2.IPAssetsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv2.IPAsset'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv2.IPGroup:
+    properties:
+      group_id:
+        type: string
+      ip_count:
+        type: integer
+    type: object
+  protocolv2.IPGroupEdge:
+    properties:
+      block_number:
+        type: string
+      block_time:
+        type: string
+      group_id:
+        type: string
+      ip_id:
+        type: string
+      transaction_hash:
+        type: string
+    type: object
+  protocolv2.IPGroupEdgesQueryOptions:
+    properties:
+      ipAssetIds:
+        items:
+          type: string
+        type: array
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      tokenContractIds:
+        items:
+          type: string
+        type: array
+      tokenIds:
+        items:
+          type: string
+        type: array
+      where:
+        properties:
+          blockNumber:
+            type: string
+          groupId:
+            type: string
+        type: object
+    type: object
+  protocolv2.IPGroupEdgesRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.IPGroupEdgesQueryOptions'
+    type: object
+  protocolv2.IPGroupEdgesResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv2.IPGroupEdge'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv2.IPGroupsQueryOptions:
+    properties:
+      ipAssetIds:
+        items:
+          type: string
+        type: array
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      tokenContractIds:
+        items:
+          type: string
+        type: array
+      tokenIds:
+        items:
+          type: string
+        type: array
+      where:
+        properties:
+          groupId:
+            type: string
+        type: object
+    type: object
+  protocolv2.IPGroupsRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.IPGroupsQueryOptions'
+    type: object
+  protocolv2.IPGroupsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/protocolv2.IPGroup'
+        type: array
+      next:
+        type: string
+      prev:
+        type: string
+    type: object
+  protocolv2.IPLicenseTermsQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+          ipId:
+            type: string
+        type: object
+    type: object
+  protocolv2.IPLicenseTermsRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.IPLicenseTermsQueryOptions'
+    type: object
+  protocolv2.IpAssetEdgeQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          ipId:
+            type: string
+          licenseTermsId:
+            type: string
+          licenseTokenId:
+            type: string
+          parentIpId:
+            type: string
+          transactionHash:
+            type: string
+        type: object
+    type: object
+  protocolv2.IpAssetEdgeRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.IpAssetEdgeQueryOptions'
+    type: object
+  protocolv2.IpAssetQueryOptions:
+    properties:
+      ipAssetIds:
+        items:
+          type: string
+        type: array
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      tokenContractIds:
+        items:
+          type: string
+        type: array
+      tokenIds:
+        items:
+          type: string
+        type: array
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+          ipId:
+            type: string
+          tokenContract:
+            type: string
+          tokenId:
+            type: string
+        type: object
+    type: object
+  protocolv2.IpAssetRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.IpAssetQueryOptions'
+    type: object
+  protocolv2.LicenseMintingFeePaidQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+          receiverIpId:
+            type: string
+        type: object
+    type: object
+  protocolv2.LicenseMintingFeePaidRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.LicenseMintingFeePaidQueryOptions'
+    type: object
+  protocolv2.LicenseTemplatesQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+        type: object
+    type: object
+  protocolv2.LicenseTemplatesRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.LicenseTemplatesQueryOptions'
+    type: object
+  protocolv2.LicenseTermsQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+        type: object
+    type: object
+  protocolv2.LicenseTermsRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.LicenseTermsQueryOptions'
+    type: object
+  protocolv2.LicenseTokenQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+          licenseTermsId:
+            type: string
+          licensorIpId:
+            type: string
+        type: object
+    type: object
+  protocolv2.LicenseTokenRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.LicenseTokenQueryOptions'
+    type: object
+  protocolv2.ModuleQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+        type: object
+    type: object
+  protocolv2.ModuleRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.ModuleQueryOptions'
+    type: object
+  protocolv2.NftMetadata:
+    properties:
+      chainId:
+        type: string
+      imageUrl:
+        type: string
+      name:
+        type: string
+      tokenContract:
+        type: string
+      tokenId:
+        type: string
+      tokenUri:
+        type: string
+    type: object
+  protocolv2.PermissionQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+          ipAccount:
+            type: string
+          ipAccountOwner:
+            type: string
+          to:
+            type: string
+          uuid:
+            type: string
+        type: object
+    type: object
+  protocolv2.PermissionRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.PermissionQueryOptions'
+    type: object
+  protocolv2.RoyaltyPayQueryOptions:
+    properties:
+      orderBy:
+        type: string
+      orderDirection:
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+          payerIpId:
+            type: string
+          receiverIpId:
+            type: string
+        type: object
+    type: object
+  protocolv2.RoyaltyPayRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.RoyaltyPayQueryOptions'
+    type: object
+  protocolv2.TransactionRequestBody:
+    properties:
+      options:
+        $ref: '#/definitions/protocolv2.TrxQueryOptions'
+    type: object
+  protocolv2.TrxQueryOptions:
+    properties:
+      orderBy:
+        enum:
+        - id
+        - blockNumber
+        - ipId
+        - resourceType
+        type: string
+      orderDirection:
+        enum:
+        - asc
+        - desc
+        type: string
+      pagination:
+        properties:
+          after:
+            type: string
+          before:
+            type: string
+          limit:
+            type: integer
+        type: object
+      where:
+        properties:
+          blockNumber:
+            type: string
+          id:
+            type: string
+          ipId:
+            type: string
+          resourceType:
+            type: string
+          transactionHash:
+            type: string
+        type: object
+    type: object
+host: api.storyprotocol.net
+info:
+  contact: {}
+  title: Story Protocol API Reference
+  version: v1
+paths:
+  /api/v2/assets:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of IPAssets
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.IpAssetRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv2.IPAssetsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List IPAssets
+      tags:
+      - IPAssets
+  /api/v2/assets/{assetId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve an IPAsset
+      parameters:
+      - description: Asset ID
+        in: path
+        name: assetId
+        required: true
+        type: string
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv2.IPAssetResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get an IPAsset
+      tags:
+      - IPAssets
+  /api/v2/assets/{assetId}/metadata:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve metadata for an IPAsset
+      parameters:
+      - description: Asset ID
+        in: path
+        name: assetId
+        required: true
+        type: string
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.IpAssetMetadata'
+      security:
+      - ApiKeyAuth: []
+      summary: Get metadata for an IPAsset
+      tags:
+      - IPAssets
+  /api/v2/assets/edges:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of IP Edges
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.IpAssetEdgeRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/protocolv1.IPAssetEdgeResponse'
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: List IP Edges
+      tags:
+      - IPAssets
+  /api/v2/collections:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of Collections
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv1.CollectionsRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.CollectionsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List Collections
+      tags:
+      - Collections
+  /api/v2/collections/{collectionId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a Collection
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Collection ID
+        in: path
+        name: collectionId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.CollectionResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get an Collection
+      tags:
+      - Collections
+  /api/v2/detailed-ip-license-terms:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve detailed IP License Terms associated with list of IP ID
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv1.DetailedIPLicenseTermsRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv2.DetailedTermsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List detailed ip license term
+      tags:
+      - IPLicenseTerms
+  /api/v2/disputes:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of Disputes
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.DisputeRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.DisputesResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List Disputes
+      tags:
+      - Disputes
+  /api/v2/disputes/{disputeId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a Dispute
+      parameters:
+      - description: Dispute ID
+        in: path
+        name: disputeId
+        required: true
+        type: string
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.DisputeResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a Dispute
+      tags:
+      - Disputes
+  /api/v2/ip_group_edges:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve an IPGroup edges
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.IPGroupEdgesRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv2.IPGroupEdgesResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List a IPGroup's edges
+      tags:
+      - IPGroup
+  /api/v2/ip_groups:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve an IPGroup
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.IPGroupsRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv2.IPGroupsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List IP groups
+      tags:
+      - IPGroup
+  /api/v2/licenses/ip/terms:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of IPLicenseTerms
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.IPLicenseTermsRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.IPLicenseTermsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List IPLicenseTerms
+      tags:
+      - IPLicenseTerms
+  /api/v2/licenses/ip/terms/{ipId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve IP License Terms associated with an IP ID
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: IP ID
+        in: path
+        name: ipId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.IPLicenseTermsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get IP License Terms for an IP
+      tags:
+      - IPLicenseTerms
+  /api/v2/licenses/mintingfees:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of LicenseMintingFeePaids
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.LicenseMintingFeePaidRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.LicenseMintingFeePaidsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List LicenseMintingFeePays
+      tags:
+      - Licenses
+  /api/v2/licenses/mintingfees/{licenseMintingFeePaidId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a LicenseMintingFeePay
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: LicenseMintingFeePay ID
+        in: path
+        name: licenseMintingFeePaidId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.LicenseMintingFeePaidResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a LicenseMintingFeePay
+      tags:
+      - Licenses
+  /api/v2/licenses/templates:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of LicenseTemplates
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.LicenseTemplatesRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.LicenseTemplatesResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List LicenseTemplates
+      tags:
+      - LicenseTemplates
+  /api/v2/licenses/templates/{licenseTemplateId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a LicenseTemplate
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: LicenseTemplate ID
+        in: path
+        name: licenseTemplateId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.LicenseTemplateResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a LicenseTemplate
+      tags:
+      - LicenseTemplates
+  /api/v2/licenses/terms:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of LicenseTerms
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.LicenseTermsRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.LicenseTermsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List LicenseTerms
+      tags:
+      - LicenseTerms
+  /api/v2/licenses/terms/{licenseTermId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a LicenseTerm
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: LicenseTerm ID
+        in: path
+        name: licenseTermId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.LicenseTermResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a LicenseTerm
+      tags:
+      - LicenseTerms
+  /api/v2/licenses/terms/default:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv2.DetailedTermsDefaultResponse'
+  /api/v2/licenses/tokens:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of LicenseTokens
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.LicenseTokenRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.LicenseTokensResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List LicenseTokens
+      tags:
+      - LicenseTokens
+  /api/v2/licenses/tokens/{licenseTokenId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a LicenseToken
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: License Token ID
+        in: path
+        name: licenseTokenId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.LicenseTokenResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get an LicenseToken
+      tags:
+      - LicenseTokens
+  /api/v2/modules:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of Modules
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.ModuleRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.ModulesResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List Modules
+      tags:
+      - Modules
+  /api/v2/modules/{moduleId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a Module
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Module ID
+        in: path
+        name: moduleId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.ModuleResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a Module
+      tags:
+      - Modules
+  /api/v2/permissions:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of Permissions
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.PermissionRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.PermissionsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List Permissions
+      tags:
+      - Permissions
+  /api/v2/permissions/{permissionId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a Permission
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Permission ID
+        in: path
+        name: permissionId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.PermissionResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a Permission
+      tags:
+      - Permissions
+  /api/v2/royalties/payments:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of RoyaltyPays
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: Query Parameters (
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.RoyaltyPayRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.RoyaltyPaysResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List RoyaltyPays
+      tags:
+      - Royalties
+  /api/v2/royalties/payments/{royaltyPayId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a RoyaltyPay
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: RoyaltyPay ID
+        in: path
+        name: royaltyPayId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.RoyaltyPayResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a RoyaltyPay
+      tags:
+      - Royalties
+  /api/v2/transactions:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of Transactions
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: 'Query Parameters must be wrapped in '
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.TransactionRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.TransactionsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List Transactions
+      tags:
+      - Transactions
+  /api/v2/transactions/{trxId}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a Transaction
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: trxId
+        required: true
+        type: string
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.TransactionResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a Transaction
+      tags:
+      - Transactions
+  /api/v2/transactions/latest:
+    post:
+      consumes:
+      - application/json
+      description: Retrieve a paginated, filtered list of Latest Transactions
+      parameters:
+      - default: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+        description: API Key
+        in: header
+        name: X-Api-Key
+        required: true
+        type: string
+      - default: "1516"
+        description: Chain Destination
+        in: header
+        name: X-Chain
+        required: true
+        type: string
+      - description: 'Query Parameters (orderBy can be: id, blockNumber, blockTime,
+          actionType, initiator, ipId, resourceId, resourceType)'
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/protocolv2.TransactionRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/protocolv1.TransactionsResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List Latest Transactions
+      tags:
+      - Transactions
+swagger: "2.0"
