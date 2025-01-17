@@ -373,7 +373,7 @@ async function main() {
 
 In this step, instead of minting an NFT and then registering it separately (2 different transactions), we will use the [📦 SPG](doc:spg) to combine them into one transaction call for convenience.
 
-First, in a separate script, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
+First, in a separate file `createSpgNftCollection.ts`, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
 
 > ❓ Why do we have to do this?
 >
@@ -385,7 +385,7 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 import { zeroAddress } from 'viem'
 import { client } from './utils'
 
-async function main() {
+async function createSpgNftCollection() {
   // Create a new SPG NFT collection
   //
   // NOTE: Use this code to create a new SPG NFT collection. You can then use the
@@ -409,7 +409,7 @@ async function main() {
   console.log(`NFT contract address: ${newCollection.spgNftContract}`)
 }
 
-main();
+createSpgNftCollection();
 ```
 
 Look at the console output, and copy the SPG NFT contract address. Add that value as `SPG_NFT_CONTRACT_ADDRESS` to your `.env` file:
