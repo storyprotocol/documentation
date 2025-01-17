@@ -1,8 +1,0 @@
----
-title: List Disputes
-excerpt: Retrieve a paginated, filtered list of Disputes
-api:
-  file: swagger.yaml
-  operationId: post_api-v2-disputes
-hidden: false
----
