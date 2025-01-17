@@ -1,5 +1,5 @@
 ---
-title: WalletConnect Setup
+title: Reown (WalletConnect) Setup
 deprecated: false
 hidden: false
 metadata:
@@ -7,7 +7,7 @@ metadata:
 ---
 > 📘 Optional: Official WalletConnect Docs
 >
-> Check out the official Wagmi + WalletConnect installation docs [here](https://docs.walletconnect.com/appkit/next/core/installation).
+> Check out the official Wagmi + Reown installation docs [here](https://docs.walletconnect.com/appkit/next/core/installation).
 
 ## Install the Dependencies
 
@@ -30,92 +30,115 @@ Before diving into the example, make sure you have two things setup:
 
 You can then configure your DApp with help from the following example:
 
-```jsx Web3Providers.tsx
-"use client";
-import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
-import { cookieStorage, createStorage, http, useWalletClient } from "wagmi";
-import React, { PropsWithChildren, ReactNode } from "react";
-import { createWeb3Modal } from "@web3modal/wagmi/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { State, WagmiProvider } from "wagmi";
-import { odyssey } from "@story-protocol/core-sdk";
+```jsx config/index.tsx
+import { cookieStorage, createStorage, http } from '@wagmi/core'
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
+import { mainnet, arbitrum } from '@reown/appkit/networks'
 
-// Get projectId from https://cloud.walletconnect.com
-const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;
+// Get projectId from https://cloud.reown.com
+export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
 
-if (!projectId) throw new Error("Project ID is not defined");
-
-const metadata = {
-  name: "Test App",
-  description: "This is a test app",
-  url: "https://docs.story.foundation", // origin must match your domain & subdomain
-  icons: ["https://artcast.ai/logo.png"],
-};
-
-// Create wagmiConfig
-const chains = [odyssey] as const;
-const config = defaultWagmiConfig({
-  chains,
-  projectId,
-  metadata,
-  ssr: true,
-  storage: createStorage({
-    storage: cookieStorage,
-  }),
-});
-
-// Setup queryClient
-const queryClient = new QueryClient();
-
-// Create modal
-createWeb3Modal({
-  metadata,
-  //@ts-ignore
-  wagmiConfig: config,
-  projectId,
-  enableAnalytics: true, // Optional - defaults to your Cloud configuration
-});
-
-export default function Web3Providers({
-  children,
-  initialState,
-}: {
-  children: ReactNode;
-  initialState?: State;
-}) {
-  return (
-    <WagmiProvider config={config} initialState={initialState}>
-      <QueryClientProvider client={queryClient}>
-        {children}
-      </QueryClientProvider>
-    </WagmiProvider>
-  );
+if (!projectId) {
+  throw new Error('Project ID is not defined')
 }
-```
-```jsx layout.tsx
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { PropsWithChildren } from "react";
-import Web3Providers from "./Web3Providers";
 
-const inter = Inter({ subsets: ["latin"] });
+export const networks = [mainnet, arbitrum]
+
+//Set up the Wagmi Adapter (Config)
+export const wagmiAdapter = new WagmiAdapter({
+  storage: createStorage({
+    storage: cookieStorage
+  }),
+  ssr: true,
+  projectId,
+  networks
+})
+
+export const config = wagmiAdapter.wagmiConfig
+```
+```jsx context/index.tsx
+'use client'
+
+import { wagmiAdapter, projectId } from '@/config'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { createAppKit } from '@reown/appkit/react'
+import { mainnet, arbitrum } from '@reown/appkit/networks'
+import React, { type ReactNode } from 'react'
+import { cookieToInitialState, WagmiProvider, type Config } from 'wagmi'
+
+// Set up queryClient
+const queryClient = new QueryClient()
+
+if (!projectId) {
+  throw new Error('Project ID is not defined')
+}
+
+// Set up metadata
+const metadata = {
+  name: 'appkit-example',
+  description: 'AppKit Example',
+  url: 'https://appkitexampleapp.com', // origin must match your domain & subdomain
+  icons: ['https://avatars.githubusercontent.com/u/179229932']
+}
+
+// Create the modal
+const modal = createAppKit({
+  adapters: [wagmiAdapter],
+  projectId,
+  networks: [mainnet, arbitrum],
+  defaultNetwork: mainnet,
+  metadata: metadata,
+  features: {
+    analytics: true // Optional - defaults to your Cloud configuration
+  }
+})
+
+function ContextProvider({ children, cookies }: { children: ReactNode; cookies: string | null }) {
+  const initialState = cookieToInitialState(wagmiAdapter.wagmiConfig as Config, cookies)
+
+  return (
+    <WagmiProvider config={wagmiAdapter.wagmiConfig as Config} initialState={initialState}>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </WagmiProvider>
+  )
+}
+
+export default ContextProvider
+```
+```jsx app/layout.tsx
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+
+const inter = Inter({ subsets: ['latin'] })
+
+import { headers } from 'next/headers' // added
+import ContextProvider from '@/context'
 
 export const metadata: Metadata = {
-  title: "Example",
-  description: "This is an Example DApp",
-};
+  title: 'AppKit Example App',
+  description: 'Powered by Reown'
+}
 
 export default function RootLayout({
   children
-}: PropsWithChildren) {
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+
+  const headersObj = await headers();
+  const cookies = headersObj.get('cookie')
+
   return (
     <html lang="en">
-      <body>
-        <Web3Providers>{children}</Web3Providers>
+      <body className={inter.className}>
+        <ContextProvider cookies={cookies}>
+          <appkit-button />
+          {children}
+        </ContextProvider>
       </body>
     </html>
-  );
+  )
 }
 ```
 ```jsx TestComponent.tsx
