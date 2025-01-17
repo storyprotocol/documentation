@@ -5,7 +5,7 @@ hidden: false
 metadata:
   robots: index
 ---
-> 📘 Optional: Official Docs
+> 📘 Optional: Official WalletConnect Docs
 >
 > Check out the official Wagmi + WalletConnect installation docs[here](https://docs.walletconnect.com/appkit/next/core/installation).
 
