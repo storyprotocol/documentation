@@ -1,4 +1,0 @@
----
-title: IPAssets
-hidden: false
----
