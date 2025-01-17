@@ -12,7 +12,7 @@ metadata:
 ## Install the Dependencies
 
 ```shell npm
-npm install --save @story-protocol/core-sdk @web3modal/wagmi wagmi viem @tanstack/react-query
+npm install --save @story-protocol/core-sdk @reown/appkit @reown/appkit-adapter-wagmi wagmi viem @tanstack/react-query
 ```
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
