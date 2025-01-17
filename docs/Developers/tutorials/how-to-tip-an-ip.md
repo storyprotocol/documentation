@@ -56,27 +56,29 @@ npm install @story-protocol/core-sdk viem
 
 ## 1. Set up your Story Config
 
+In a `utils.ts` file, add the following code to set up your Story Config:
+
 * Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-```javascript main.ts
+```typescript utils.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
 import { http } from 'viem'
 import { privateKeyToAccount, Address, Account } from 'viem/accounts'
 
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
-const account: Account = privateKeyToAccount(privateKey)
+export const account: Account = privateKeyToAccount(privateKey)
 
 const config: StoryConfig = {  
   account: account,  
   transport: http(process.env.RPC_PROVIDER_URL),  
   chainId: 'odyssey',  
 }  
-const client = StoryClient.newClient(config)
+export const client = StoryClient.newClient(config)
 ```
 
 ## 2. Tipping the Derivative IP Asset
 
-Now we will use the `payRoyaltyOnBehalf` function to pay the derivative asset. In this case:
+Now create a `main.ts` file. We will use the `payRoyaltyOnBehalf` function to pay the derivative asset. In this case:
 
 1. `receiverIpId` is the `ipId` of the derivative asset
 2. `payerIpId` is `zeroAddress` because the payer is a 3rd party (someone that thinks Mickey Mouse with a hat on him is cool), and not necessarily another IP Asset
@@ -84,16 +86,21 @@ Now we will use the `payRoyaltyOnBehalf` function to pay the derivative asset. I
 4. `amount` is 2, since the person tipping wants to send 2 SUSD
 
 ```typescript main.ts
-import { PayRoyaltyOnBehalfResponse } from '@story-protocol/core-sdk'
+import { client } from './utils'
+import { zeroAaddress } from 'viem'
 
-const response: PayRoyaltyOnBehalfResponse = await client.royalty.payRoyaltyOnBehalf({
-  receiverIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a',
-  payerIpId: zeroAddress,
-  token: '0x91f6F05B08c16769d3c85867548615d270C42fC7',
-  amount: 2,
-  txOptions: { waitForTransaction: true },
-})
-console.log(`Paid royalty at transaction hash ${response.txHash}`)
+async function main() {
+   const response = await client.royalty.payRoyaltyOnBehalf({
+    receiverIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a',
+    payerIpId: zeroAddress,
+    token: '0x91f6F05B08c16769d3c85867548615d270C42fC7',
+    amount: 2,
+    txOptions: { waitForTransaction: true },
+  })
+  console.log(`Paid royalty at transaction hash ${response.txHash}`) 
+}
+
+main();
 ```
 
 ## 3. Parent Claiming Due Revenue
@@ -110,20 +117,27 @@ We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the du
 6. `amount` is 1, since the parent should have 1 SUSD available to claim
 
 ```typescript main.ts
-import { TransferToVaultAndSnapshotAndClaimByTokenBatchResponse } from '@story-protocol/core-sdk'
+import { client } from './utils'
+import { zeroAaddress } from 'viem'
 
-const response: TransferToVaultAndSnapshotAndClaimByTokenBatchResponse = await client.royalty.transferToVaultAndSnapshotAndClaimByTokenBatch({
-  ancestorIpId: '0x42595dA29B541770D9F9f298a014bF912655E183',
-  claimer: '0x42595dA29B541770D9F9f298a014bF912655E183',
-  royaltyClaimDetails: [{ 
-    childIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a', 
-    royaltyPolicy: '0x793Df8d32c12B0bE9985FFF6afB8893d347B6686', 
-    currencyToken: '0x91f6F05B08c16769d3c85867548615d270C42fC7', 
-    amount: 1 
-  }],
-  txOptions: { waitForTransaction: true },
-})
-console.log(`Claimed revenue: ${response.amountsClaimed} at snapshotId ${response.snapshotId}`)
+async function main() {
+  // previous code here ...
+
+  const response = await client.royalty.transferToVaultAndSnapshotAndClaimByTokenBatch({
+    ancestorIpId: '0x42595dA29B541770D9F9f298a014bF912655E183',
+    claimer: '0x42595dA29B541770D9F9f298a014bF912655E183',
+    royaltyClaimDetails: [{ 
+      childIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a', 
+      royaltyPolicy: '0x793Df8d32c12B0bE9985FFF6afB8893d347B6686', 
+      currencyToken: '0x91f6F05B08c16769d3c85867548615d270C42fC7', 
+      amount: 1 
+    }],
+    txOptions: { waitForTransaction: true },
+  })
+  console.log(`Claimed revenue: ${response.amountsClaimed} at snapshotId ${response.snapshotId}`)
+}
+
+main();
 ```
 
 ## 4. Done!
