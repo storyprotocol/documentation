@@ -73,77 +73,8 @@ export const client = StoryClient.newClient(config);
 
 We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
 
-We recommend first [setting up wagmi](https://wagmi.sh/react/getting-started) in your application as a Web3 provider. Next, you must install a wallet service like [RainbowKit](https://www.rainbowkit.com/) (you can also use Dynamic, WalletConnect, or any other) so that users can log in to their preferred wallet. Ultimately you will end up with something that looks like this:
+We recommend using wagmi as a Web3 provider and then installing a wallet service like Dynamic, RainbowKit, or WalletConnect. We provide an example for all 3:
 
-> :information_source: Make sure to have `RPC_PROVIDER_URL` for your desired chain set up in your .env file. You can use the public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#explorers).
->
-> :information_source: Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your .env file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
-
-```jsx Web3Providers.tsx
-"use client";
-import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { WagmiProvider } from "wagmi";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { PropsWithChildren } from "react";
-import { odyssey } from "@story-protocol/core-sdk";
-
-const config = getDefaultConfig({
-  appName: "Test Story App",
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
-  chains: [odyssey],
-  ssr: true, // If your dApp uses server side rendering (SSR)
-});
-
-const queryClient = new QueryClient();
-
-export default function Web3Providers({ children }: PropsWithChildren) {
-  return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>{children}</RainbowKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
-  );
-}
-```
-```jsx layout.tsx
-import Web3Providers from "./Web3Providers";
-
-export default function RootLayout({
-  children
-}) {
-  return (
-    <html lang="en">
-      <body>
-        <Web3Providers>{children}</Web3Providers>
-      </body>
-    </html>
-  );
-}
-```
-```jsx TestComponent.tsx
-import { custom } from 'viem';
-import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
-import { useWalletClient } from "wagmi";
-
-export default function TestComponent() {
-  const { data: wallet } = useWalletClient();
-  
-  function setupStoryClient(): StoryClient | null {
-    if (!wallet) return null;
-    
-    const config: StoryConfig = {
-      wallet: wallet,
-      transport: custom(wallet.transport),
-      chainId: "odyssey"
-    };
-    const client = StoryClient.newClient(config); 
-    return client;
-  }
-  
-  return (
-    {/* */} 
-  )
-}
-```
+* [Dynamic Setup Tutorial](doc:dynamic-setup)
+* [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
+* [WalletConnect Setup Tutorial](doc:walletconnect-setup)
