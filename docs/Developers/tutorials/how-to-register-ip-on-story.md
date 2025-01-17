@@ -121,7 +121,7 @@ import { IpMetadata } from '@story-protocol/core-sdk'
 import { client } from './utils'
 
 async function main() {
-  // previous code here...
+  // previous code here ...
 
   const nftMetadata = {
     name: 'Ownership NFT',
@@ -159,7 +159,7 @@ import { uploadJSONToIPFS } from './uploadToIpfs'
 import { createHash } from 'crypto'
 
 async function main() {
-  // previous code here...
+  // previous code here ...
 
   const ipIpfsHash = await uploadJSONToIPFS(ipMetadata)
   const ipHash = createHash('sha256').update(JSON.stringify(ipMetadata)).digest('hex')
@@ -348,7 +348,7 @@ import { Address } from 'viem'
 import { mintNFT } from './mintNFT'
 
 async function main() {
-  // previous code here...
+  // previous code here ...
 
   const tokenId = await mintNFT(account.address, `https://ipfs.io/ipfs/${nftIpfsHash}`)
   const response = await client.ipAsset.registerIpAndAttachPilTerms({
@@ -434,7 +434,7 @@ import { createHash } from 'crypto'
 import { Address } from 'viem'
 
 async function main() {
-  // previous code here...
+  // previous code here ...
 
   const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
     spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
