@@ -7,7 +7,7 @@ metadata:
 ---
 > 📘 Optional: Official RainbowKit Docs
 >
-> Check out the official Wagmi + RainbowKit installation docs[here](https://www.rainbowkit.com/docs/installation).
+> Check out the official Wagmi + RainbowKit installation docs [here](https://www.rainbowkit.com/docs/installation).
 
 ## Install the Dependencies
 
