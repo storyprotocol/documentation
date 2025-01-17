@@ -7,7 +7,7 @@ metadata:
 ---
 > 📘 Optional: Official Dynamic Docs
 >
-> Check out the official Wagmi + Dynamic installation docs[here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi).
+> Check out the official Wagmi + Dynamic installation docs [here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi).
 
 ## Install the Dependencies
 
