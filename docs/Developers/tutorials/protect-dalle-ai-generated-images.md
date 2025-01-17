@@ -211,7 +211,7 @@ main();
 
 In this step, we will use the [📦 SPG](doc:spg) to combine minting and registering our NFT into one transaction call.
 
-First, in a separate script, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
+First, in a separate file `createSpgNftCollection.ts`, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
 
 > ❓ Why do we have to do this?
 >
@@ -219,7 +219,7 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 >
 > Instead of doing this, you could technically write your own contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). But an easy way to create a collection that implements `ISPGNFT` is just to call the `createCollection` function in the SPG contract using the SDK, as shown below.
 
-```typescript utils/createSpgNftCollection.ts
+```typescript createSpgNftCollection.ts
 import { zeroAddress } from 'viem'
 import { client } from './utils'
 
