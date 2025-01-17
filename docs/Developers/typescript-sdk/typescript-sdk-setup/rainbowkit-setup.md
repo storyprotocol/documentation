@@ -66,6 +66,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Web3Providers from "./Web3Providers";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -80,7 +81,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Web3Providers>{children}</Web3Providers>
+        <Web3Providers>
+          <ConnectButton />
+          {children}
+        </Web3Providers>
       </body>
     </html>
   );
