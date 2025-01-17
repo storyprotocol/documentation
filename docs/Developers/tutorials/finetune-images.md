@@ -9,7 +9,7 @@ metadata:
   robots: index
 ---
 <Cards columns={1}>
-  <Card title="Completed Code" href="" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Completed Code" href="https://github.com/jacob-tucker/finetune-story-flux" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     View the completed code for this tutorial.
   </Card>
 </Cards>
