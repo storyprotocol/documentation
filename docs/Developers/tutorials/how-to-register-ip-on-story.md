@@ -341,7 +341,7 @@ Now we can call that `mintNFT` function to get a `tokenId`, and then register th
 
 ```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
-import { client } from './utils'
+import { client, account } from './utils'
 import { uploadJSONToIPFS } from './uploadToIpfs'
 import { createHash } from 'crypto'
 import { Address } from 'viem'
