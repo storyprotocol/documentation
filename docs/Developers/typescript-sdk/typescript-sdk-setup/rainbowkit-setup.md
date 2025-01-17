@@ -5,14 +5,14 @@ hidden: false
 metadata:
   robots: index
 ---
-> 📘 Optional: Official Docs
+> 📘 Optional: Official RainbowKit Docs
 >
 > Check out the official Wagmi + RainbowKit installation docs[here](https://www.rainbowkit.com/docs/installation).
 
 ## Install the Dependencies
 
 ```shell npm
-npm install --save @story-protocol/react-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
+npm install --save @story-protocol/core-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
