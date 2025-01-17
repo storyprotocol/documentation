@@ -7,7 +7,7 @@ metadata:
 ---
 > 📘 Optional: Official Dynamic Docs
 >
-> Check out the official Wagmi + Dynamic installation docs [here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi).
+> Check out the official Wagmi + Dynamic installation docs [here](https://docs.dynamic.xyz/react-sdk/using-wagmi).
 
 ## Install the Dependencies
 
@@ -32,7 +32,8 @@ You can then configure your DApp with help from the following example:
 
 ```jsx Web3Providers.tsx
 "use client";
-import { http, createConfig, WagmiProvider } from "wagmi";
+import { createConfig, WagmiProvider } from "wagmi";
+import { http } from 'viem';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
@@ -78,6 +79,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Web3Providers from "./Web3Providers";
+import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -92,7 +94,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Web3Providers>{children}</Web3Providers>
+        <Web3Providers>
+          <DynamicWidget />
+          {children}
+        </Web3Providers>
       </body>
     </html>
   );
