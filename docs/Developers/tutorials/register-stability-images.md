@@ -346,7 +346,7 @@ main();
 
 In this step, we will use the [📦 SPG](doc:spg) to combine minting and registering our NFT into one transaction call.
 
-First, in a separate script, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
+First, in a separate file `createSpgNftCollection.ts`, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
 
 > ❓ Why do we have to do this?
 >
@@ -354,35 +354,35 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 >
 > Instead of doing this, you could technically write your own contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). But an easy way to create a collection that implements `ISPGNFT` is just to call the `createCollection` function in the SPG contract using the SDK, as shown below.
 
-```typescript utils/createSpgNftCollection.ts
+```typescript createSpgNftCollection.ts
 import { zeroAddress } from 'viem'
 import { client } from './utils'
 
-const main = async function () {
-    // Create a new SPG NFT collection
-    //
-    // NOTE: Use this code to create a new SPG NFT collection. You can then use the
-    // `newCollection.spgNftContract` address as the `spgNftContract` argument in
-    // functions like `mintAndRegisterIpAssetWithPilTerms`, which you'll see later.
-    //
-    // You will mostly only have to do this once. Once you get your nft contract address,
-    // you can use it in SPG functions.
-    //
-    const newCollection = await client.nftClient.createNFTCollection({
-        name: 'Test NFT',
-        symbol: 'TEST',
-        isPublicMinting: true,
-        mintOpen: true,
-        mintFeeRecipient: zeroAddress,
-        contractURI: '',
-        txOptions: { waitForTransaction: true },
-    })
+async function createSpgNftCollection() {
+  // Create a new SPG NFT collection
+  //
+  // NOTE: Use this code to create a new SPG NFT collection. You can then use the
+  // `newCollection.spgNftContract` address as the `spgNftContract` argument in
+  // functions like `mintAndRegisterIpAssetWithPilTerms`, which you'll see later.
+  //
+  // You will mostly only have to do this once. Once you get your nft contract address,
+  // you can use it in SPG functions.
+  //
+  const newCollection = await client.nftClient.createNFTCollection({
+    name: 'Test NFT',
+    symbol: 'TEST',
+    isPublicMinting: true,
+    mintOpen: true,
+    mintFeeRecipient: zeroAddress,
+    contractURI: '',
+    txOptions: { waitForTransaction: true },
+  })
 
-    console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
-    console.log(`NFT contract address: ${newCollection.spgNftContract}`)
+  console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
+  console.log(`NFT contract address: ${newCollection.spgNftContract}`)
 }
 
-main()
+createSpgNftCollection();
 ```
 
 Run this file and look at the console output. Copy the SPG NFT contract address and add that value as `SPG_NFT_CONTRACT_ADDRESS` to your `.env` file:
@@ -400,28 +400,35 @@ The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset)
 * Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
 ```typescript main.ts
-import { Address } from "viem";
+import fs from "fs";
+import axios from "axios";
+import FormData from "form-data";
+import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
+import { IpMetadata } from "@story-protocol/core-sdk";
+import { createHash } from "crypto";
+import { LicenseTerms } from '@story-protocol/core-sdk';
+import { zeroAddress, Address } from 'viem';
 
-// previous code here ...
+async function main() {
+  // previous code here ...
 
-const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
-  spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-  terms: [commercialRemixTerms], // the terms we created in the previous step
-  ipMetadata: {
-    ipMetadataURI: process.env.PINATA_GATEWAY + '/files/' + ipIpfsHash,
-    ipMetadataHash: `0x${ipHash}`,
-    nftMetadataURI: process.env.PINATA_GATEWAY + '/files/' + nftIpfsHash,
-    nftMetadataHash: `0x${nftHash}`,
-  },
-  txOptions: { waitForTransaction: true },
-});
+  const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
+    spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
+    terms: [commercialRemixTerms], // the terms we created in the previous step
+    ipMetadata: {
+      ipMetadataURI: process.env.PINATA_GATEWAY + '/files/' + ipIpfsHash,
+      ipMetadataHash: `0x${ipHash}`,
+      nftMetadataURI: process.env.PINATA_GATEWAY + '/files/' + nftIpfsHash,
+      nftMetadataHash: `0x${nftHash}`,
+    },
+    txOptions: { waitForTransaction: true },
+  });
 
-console.log(
-  `Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`
-);
-console.log(
-  `View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`
-);
+  console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
+  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`); 
+}
+
+main();
 ```
 
 ## 9. Done!
