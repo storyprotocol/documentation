@@ -8,6 +8,12 @@ hidden: true
 metadata:
   robots: index
 ---
+<Cards columns={1}>
+  <Card title="Completed Code" href="" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    View the completed code for this tutorial.
+  </Card>
+</Cards>
+
 In this tutorial, you will use the FLUX Finetuning API to take a bunch of images of Story's mascot "Ippy" and finetune an AI model to create similar images along with a prompt. Then you will monetize and protect the output IP on Story.
 
 > 📘 This Tutorial is in TypeScript
@@ -149,6 +155,10 @@ async function requestFinetuning(
 
 Next, create a file named `submitTrainingTask.ts` and call the `requestFinetuning` function we just made:
 
+> 🚧 Warning: This is expensive!
+>
+> Creating a new finetune is expensive, ranging from $2-$6 at the time of me writing this tutorial. Please review the "FLUX PRO FINETUNE: TRAINING" section on the [pricing page](https://docs.bfl.ml/pricing/).
+
 ```typescript submitTrainingTask.ts
 import { requestFinetuning } from "./flux";
 
@@ -222,7 +232,7 @@ async function finetuneInference(
 }
 ```
 
-Next, create a file named `runInferenceAndRegister.ts` and call the `finetuneInference` function we just made:
+Next, create a file named `runInferenceAndRegister.ts` and call the `finetuneInference` function we just made. The first parameter should be the `finetune_id` we got from running the script above, and the second parameter is a prompt to generate a new image.
 
 ```typescript runInferenceAndRegister.ts
 import { finetuneInference } from './flux'
