@@ -104,6 +104,7 @@ View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your m
 ```javascript main.ts
 import OpenAI from 'openai'
 import { IpMetadata } from "@story-protocol/core-sdk";
+import { client, account } from './utils'
 
 async function main() {
   // previous code here ...
@@ -142,6 +143,7 @@ The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.o
 ```javascript main.ts
 import OpenAI from 'openai'
 import { IpMetadata } from "@story-protocol/core-sdk";
+import { client, account } from './utils'
 
 async function main() {
   // previous code here ...
@@ -188,6 +190,7 @@ You can then use that function to upload your metadata, as shown below:
 ```javascript main.ts
 import OpenAI from 'openai'
 import { IpMetadata } from "@story-protocol/core-sdk";
+import { client, account } from './utils'
 import { uploadJSONToIPFS } from "./utils/uploadToIpfs";
 import { createHash } from "crypto";
 
@@ -267,6 +270,7 @@ The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset)
 ```typescript main.ts
 import OpenAI from 'openai'
 import { IpMetadata } from "@story-protocol/core-sdk";
+import { client, account } from './utils'
 import { uploadJSONToIPFS } from "./utils/uploadToIpfs";
 import { createHash } from "crypto";
 import { Address } from "viem";
