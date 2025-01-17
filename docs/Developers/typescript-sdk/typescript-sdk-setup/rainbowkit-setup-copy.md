@@ -1,5 +1,5 @@
 ---
-title: RainbowKit Setup (COPY)
+title: WalletConnect Setup
 deprecated: false
 hidden: false
 metadata:
@@ -7,12 +7,12 @@ metadata:
 ---
 > 📘 Optional: Official Docs
 >
-> Check out the official Wagmi + RainbowKit installation docs[here](https://www.rainbowkit.com/docs/installation).
+> Check out the official Wagmi + WalletConnect installation docs[here](https://docs.walletconnect.com/appkit/next/core/installation).
 
 ## Install the Dependencies
 
 ```shell npm
-npm install --save @story-protocol/react-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
+npm install --save @story-protocol/react-sdk @web3modal/wagmi wagmi viem @tanstack/react-query
 ```
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
@@ -32,29 +32,61 @@ You can then configure your DApp with help from the following example:
 
 ```jsx Web3Providers.tsx
 "use client";
-import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { WagmiProvider } from "wagmi";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { PropsWithChildren } from "react";
+import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
+import { cookieStorage, createStorage, http, useWalletClient } from "wagmi";
+import React, { PropsWithChildren, ReactNode } from "react";
+import { createWeb3Modal } from "@web3modal/wagmi/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { State, WagmiProvider } from "wagmi";
 import { odyssey } from "@story-protocol/core-sdk";
 
-const config = getDefaultConfig({
-  appName: "Test Story App",
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
-  chains: [odyssey],
-  ssr: true, // If your dApp uses server side rendering (SSR)
+// Get projectId from https://cloud.walletconnect.com
+const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;
+
+if (!projectId) throw new Error("Project ID is not defined");
+
+const metadata = {
+  name: "Test App",
+  description: "This is a test app",
+  url: "https://docs.story.foundation", // origin must match your domain & subdomain
+  icons: ["https://artcast.ai/logo.png"],
+};
+
+// Create wagmiConfig
+const chains = [odyssey] as const;
+const config = defaultWagmiConfig({
+  chains,
+  projectId,
+  metadata,
+  ssr: true,
+  storage: createStorage({
+    storage: cookieStorage,
+  }),
 });
 
+// Setup queryClient
 const queryClient = new QueryClient();
 
-export default function Web3Providers({ children }: PropsWithChildren) {
+// Create modal
+createWeb3Modal({
+  metadata,
+  //@ts-ignore
+  wagmiConfig: config,
+  projectId,
+  enableAnalytics: true, // Optional - defaults to your Cloud configuration
+});
+
+export default function Web3Providers({
+  children,
+  initialState,
+}: {
+  children: ReactNode;
+  initialState?: State;
+}) {
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={config} initialState={initialState}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
-          {children}
-        </RainbowKitProvider>
+        {children}
       </QueryClientProvider>
     </WagmiProvider>
   );
