@@ -4,7 +4,7 @@ excerpt: >-
   Learn how to use the FLUX Finetuning API to finetune images and then register
   the output on Story in TypeScript.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   robots: index
 ---
