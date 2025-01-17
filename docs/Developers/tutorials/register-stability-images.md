@@ -62,28 +62,34 @@ npm install @story-protocol/core-sdk pinata-web3 viem axios sharp form-data
 
 You can follow the [Stability API Reference](https://platform.stability.ai/docs/api-reference) to use the model of your choice. For this tutorial, we'll be using Stability's **Stable Image Core** generate endpoint to generate an image. The below is taken directly from their documentation.
 
+Create a `main.ts` file and add the following code:
+
 ```typescript main.ts
-import fs from "node:fs";
+import fs from "fs";
 import axios from "axios";
 import FormData from "form-data";
 
-const payload = {
-  prompt: 'Lighthouse on a cliff overlooking the ocean',
-  output_format: 'png',
+async function main() {
+  const payload = {
+    prompt: 'Lighthouse on a cliff overlooking the ocean',
+    output_format: 'png',
+  }
+
+  const response = await axios.postForm(
+    `https://api.stability.ai/v2beta/stable-image/generate/core`,
+    axios.toFormData(payload, new FormData()),
+    {
+      validateStatus: undefined,
+      responseType: 'arraybuffer',
+      headers: {
+        Authorization: `Bearer ${process.env.STABILITY_API_KEY}`,
+        Accept: 'image/*',
+      },
+    }
+  ) 
 }
 
-const response = await axios.postForm(
-  `https://api.stability.ai/v2beta/stable-image/generate/core`,
-  axios.toFormData(payload, new FormData()),
-  {
-    validateStatus: undefined,
-    responseType: 'arraybuffer',
-    headers: {
-      Authorization: `Bearer ${process.env.STABILITY_API_KEY}`,
-      Accept: 'image/*',
-    },
-  }
-)
+main();
 ```
 
 ## 1.5. (Optional) Condense the Image
@@ -91,20 +97,28 @@ const response = await axios.postForm(
 Stability generates images that are heavy in size, and therefore expensive to store. Optionally, we can condense the produced image for faster loading speeds and less expensive storage costs.
 
 ```typescript main.ts
-// previous code here ...
+import fs from "fs";
+import axios from "axios";
+import FormData from "form-data";
 
-const condensedImgBuffer = await sharp(response.data)
-  .png({ quality: 10 }) // Adjust the quality value as needed (between 0 and 100)
-  .toBuffer()
+async function main() {
+  // previous code here ...
+
+  const condensedImgBuffer = await sharp(response.data)
+    .png({ quality: 10 }) // Adjust the quality value as needed (between 0 and 100)
+    .toBuffer() 
+}
+
+main();
 ```
 
 ## 2. Store Image in IPFS
 
 Now that we have our image, we need to store it on IPFS so we can get a URL back to access it. In this tutorial we'll be using [Pinata](https://pinata.cloud/), a decentralized storage solution that makes storing images easy.
 
-In a separate file, create a function `uploadBlobToIPFS` that uploads our buffer to IPFS:
+In a separate file `uploadToIpfs.ts`, create a function `uploadBlobToIPFS` that uploads our buffer to IPFS:
 
-```javascript utils/uploadToIpfs.ts
+```typescript uploadToIpfs.ts
 import { PinataSDK } from 'pinata-web3'
 
 const pinata = new PinataSDK({
@@ -124,75 +138,88 @@ export async function uploadBlobToIPFS(blob: Blob, fileName: string): Promise<st
 Back in the main file, call the `uploadBlobToIPFS` function to store our image:
 
 ```typescript main.ts
-import { createPublicGroup, uploadBlobToIPFS } from './utils/uploadToIpfs.ts'
+import fs from "fs";
+import axios from "axios";
+import FormData from "form-data";
+import { uploadBlobToIPFS } from './uploadToIpfs.ts'
 
-// previous code here ...
+async function main() {
+  // previous code here ...
 
-// convert the buffer to a blob
-const blob = new Blob([condensedImgBuffer], { type: 'image/png' });
-// store the blob on ipfs
-const imageCid = await uploadBlobToIPFS(blob, 'lighthouse.png');
+  // convert the buffer to a blob
+  const blob = new Blob([condensedImgBuffer], { type: 'image/png' });
+  // store the blob on ipfs
+  const imageCid = await uploadBlobToIPFS(blob, 'lighthouse.png'); 
+}
+
+main();
 ```
 
 ## 3. Set up your Story Config
 
-Now that we have generated and stored our image, we can register the image as IP on Story. First, let's set up our config.
+Now that we have generated and stored our image, we can register the image as IP on Story. First, let's set up our config. In a `utils.ts` file, add the following code:
 
 * Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-```javascript main.ts
+```typescript utils.ts
 import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 import { http } from "viem";
 import { privateKeyToAccount, Address, Account } from "viem/accounts";
 
-// previous code here ...
-
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`;
-const account: Account = privateKeyToAccount(privateKey);
+export const account: Account = privateKeyToAccount(privateKey);
 
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
   chainId: "odyssey",
 };
-const client = StoryClient.newClient(config);
+export const client = StoryClient.newClient(config);
 ```
 
 ## 4. Set up your IP Metadata
 
 View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct the metadata for your IP. You can use the `generateIpMetadata` function to properly format your metadata and ensure it is of the correct type, as shown below:
 
-```javascript main.ts
+```typescript main.ts
+import fs from "fs";
+import axios from "axios";
+import FormData from "form-data";
+import { uploadBlobToIPFS } from './uploadToIpfs.ts'
 import { IpMetadata } from "@story-protocol/core-sdk";
 
-// previous code here...
+async function main() {
+  // previous code here ...
 
-const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
-  title: 'Lighthousd',
-  description: 'A lighthouse image generated by Stability Stable Image Core',
-  ipType: 'image',
-  attributes: [
-    {
-      key: 'Model',
-      value: 'Stability',
-    },
-    {
-      key: 'Service',
-      value: 'Stable Image Core'
-    },
-    {
-      key: 'Prompt',
-      value: 'Lighthouse on a cliff overlooking the ocean',
-    },
-  ],
-  creators: [
-    {
-      name: 'Jacob Tucker',
-      contributionPercent: 100,
-      address: account.address,
-    },
-  ],
-})
+  const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
+    title: 'Lighthousd',
+    description: 'A lighthouse image generated by Stability Stable Image Core',
+    ipType: 'image',
+    attributes: [
+      {
+        key: 'Model',
+        value: 'Stability',
+      },
+      {
+        key: 'Service',
+        value: 'Stable Image Core'
+      },
+      {
+        key: 'Prompt',
+        value: 'Lighthouse on a cliff overlooking the ocean',
+      },
+    ],
+    creators: [
+      {
+        name: 'Jacob Tucker',
+        contributionPercent: 100,
+        address: account.address,
+      },
+    ],
+  }) 
+}
+
+main();
 ```
 
 ## 5. Set up your NFT Metadata
@@ -200,58 +227,76 @@ const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
 The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.org/EIPS/eip-721).
 
 ```javascript main.ts
-// previous code here...
+import fs from "fs";
+import axios from "axios";
+import FormData from "form-data";
+import { uploadBlobToIPFS } from './uploadToIpfs.ts'
+import { IpMetadata } from "@story-protocol/core-sdk";
 
-const nftMetadata = {
-  name: 'NFT representing ownership of our image',
-  description: 'This NFT represents ownership of the image generated by Stability',
-  image: process.env.PINATA_GATEWAY + '/files/' + imageCid,
-  attributes: [
-    {
-      key: 'Model',
-      value: 'Stability',
-    },
-    {
-      key: 'Service',
-      value: 'Stable Image Core'
-    },
-    {
-      key: 'Prompt',
-      value: 'Lighthouse on a cliff overlooking the ocean',
-    },
-  ]
+async function main() {
+  // previous code here ...
+
+  const nftMetadata = {
+    name: 'Ownership NFT',
+    description: 'This NFT represents ownership of the image generated by Stability',
+    image: process.env.PINATA_GATEWAY + '/files/' + imageCid,
+    attributes: [
+      {
+        key: 'Model',
+        value: 'Stability',
+      },
+      {
+        key: 'Service',
+        value: 'Stable Image Core'
+      },
+      {
+        key: 'Prompt',
+        value: 'Lighthouse on a cliff overlooking the ocean',
+      },
+    ]
+  } 
 }
+
+main();
 ```
 
 ## 6. Upload your IP and NFT Metadata to IPFS
 
 In the `uploadToIpfs.ts` file, create a function to upload your IP & NFT Metadata objects to IPFS:
 
-```javascript utils/uploadToIpfs.ts
+```typescript uploadToIpfs.ts
 // previous code here ...
 
 export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
   const { IpfsHash } = await pinata.upload.json(jsonMetadata)
-	return IpfsHash
+  return IpfsHash
 }
 ```
 
 You can then use that function to upload your metadata, as shown below:
 
-```javascript main.ts
-import { uploadJSONToIPFS } from "./utils/uploadToIpfs";
+```typescript main.ts
+import fs from "fs";
+import axios from "axios";
+import FormData from "form-data";
+import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
+import { IpMetadata } from "@story-protocol/core-sdk";
 import { createHash } from "crypto";
 
-// previous code here...
+async function main() {
+  // previous code here ...
 
-const ipIpfsHash = await uploadJSONToIPFS(ipMetadata);
-const ipHash = createHash("sha256")
-  .update(JSON.stringify(ipMetadata))
-  .digest("hex");
-const nftIpfsHash = await uploadJSONToIPFS(nftMetadata);
-const nftHash = createHash("sha256")
-  .update(JSON.stringify(nftMetadata))
-  .digest("hex");
+  const ipIpfsHash = await uploadJSONToIPFS(ipMetadata);
+  const ipHash = createHash("sha256")
+    .update(JSON.stringify(ipMetadata))
+    .digest("hex");
+  const nftIpfsHash = await uploadJSONToIPFS(nftMetadata);
+  const nftHash = createHash("sha256")
+    .update(JSON.stringify(nftMetadata))
+    .digest("hex");
+}
+
+main();
 ```
 
 ## 7. Create License Terms
@@ -261,29 +306,40 @@ When registering your image on Story, you can attach [License Terms](doc:license
 Let's say we want to monetize our image such that every time someone wants to use it (on merch, advertisement, or whatever) they have to pay an initial minting fee of 10 SUSD. Additionally, every time they earn revenue on derivative work, they owe 5% revenue back as royalty.
 
 ```typescript main.ts
+import fs from "fs";
+import axios from "axios";
+import FormData from "form-data";
+import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
+import { IpMetadata } from "@story-protocol/core-sdk";
+import { createHash } from "crypto";
 import { LicenseTerms } from '@story-protocol/core-sdk';
+import { zeroAddress } from 'viem';
 
-// previous code here ...
+async function main() {
+  // previous code here ...
 
-const commercialRemixTerms: LicenseTerms = {
-  transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(10),
-  expiration: BigInt(0),
-  commercialUse: true,
-  commercialAttribution: true, // must give us attribution
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 5, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
-  derivativesApproval: false,
-  derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
-  uri: '',
+  const commercialRemixTerms: LicenseTerms = {
+    transferable: true,
+    royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+    defaultMintingFee: BigInt(10),
+    expiration: BigInt(0),
+    commercialUse: true,
+    commercialAttribution: true, // must give us attribution
+    commercializerChecker: zeroAddress,
+    commercializerCheckerData: zeroAddress,
+    commercialRevShare: 5, // can claim 50% of derivative revenue
+    commercialRevCeiling: BigInt(0),
+    derivativesAllowed: true,
+    derivativesAttribution: true,
+    derivativesApproval: false,
+    derivativesReciprocal: true,
+    derivativeRevCeiling: BigInt(0),
+    currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+    uri: '',
+  } 
 }
+
+main();
 ```
 
 ## 8. Register an NFT as an IP Asset
