@@ -466,7 +466,7 @@ First, in a separate `createSpgNftCollection.ts` file, you must create a new SPG
 import { zeroAddress } from 'viem'
 import { client } from './utils'
 
-async function main() {
+async function createSpgNftCollection() {
   // Create a new SPG NFT collection
   //
   // NOTE: Use this code to create a new SPG NFT collection. You can then use the
@@ -490,7 +490,7 @@ async function main() {
   console.log(`NFT contract address: ${newCollection.spgNftContract}`)
 }
 
-main();
+createSpgNftCollection();
 ```
 
 Run this file and look at the console output. Copy the SPG NFT contract address and add that value as `SPG_NFT_CONTRACT_ADDRESS` to your `.env` file:
@@ -508,24 +508,33 @@ The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset)
 * Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
 ```typescript runInferenceAndRegister.ts
+import { finetuneInference, getInference } from './flux'
+import { IpMetadata } from "@story-protocol/core-sdk";
+import { client, account } from './utils'
+import { uploadJSONToIPFS } from "./uploadToIpfs";
+import { createHash } from "crypto";
 import { Address } from "viem";
 
-// previous code here ...
+async function runInferenceAndRegister() {
+  // previous code here ...
 
-const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
-  spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-  terms: [], // IP already has non-commercial social remixing terms. You can add more here.
-  ipMetadata: {
-    ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
-    ipMetadataHash: `0x${ipHash}`,
-    nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
-    nftMetadataHash: `0x${nftHash}`,
-  },
-  txOptions: { waitForTransaction: true },
-});
+  const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
+    spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
+    terms: [], // IP already has non-commercial social remixing terms. You can add more here.
+    ipMetadata: {
+      ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
+      ipMetadataHash: `0x${ipHash}`,
+      nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
+      nftMetadataHash: `0x${nftHash}`,
+    },
+    txOptions: { waitForTransaction: true },
+  });
 
-console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
-console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`);
+  console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
+  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`); 
+}
+
+runInferenceAndRegister();
 ```
 
 ## 9. Done!
