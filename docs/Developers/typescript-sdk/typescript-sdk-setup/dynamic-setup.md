@@ -105,7 +105,7 @@ import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 // example of how you would now use the fully setup sdk
 
-export default async function TestComponent() {
+export default function TestComponent() {
   const { data: wallet } = useWalletClient();
   
   async function setupStoryClient(): Promise<StoryClient> {
