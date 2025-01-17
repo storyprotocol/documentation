@@ -223,7 +223,7 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 import { zeroAddress } from 'viem'
 import { client } from './utils'
 
-const main = async function () {
+async function main() {
   // Create a new SPG NFT collection
   //
   // NOTE: Use this code to create a new SPG NFT collection. You can then use the
@@ -247,7 +247,7 @@ const main = async function () {
   console.log(`NFT contract address: ${newCollection.spgNftContract}`)
 }
 
-main()
+main();
 ```
 
 Run this file and look at the console output. Copy the SPG NFT contract address and add that value as `SPG_NFT_CONTRACT_ADDRESS` to your `.env` file:
