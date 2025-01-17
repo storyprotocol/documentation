@@ -51,22 +51,24 @@ npm install @story-protocol/core-sdk viem
 
 ## 1. Set up your Story Config
 
+In a `utils.ts` file, add the following code to set up your Story Config:
+
 * Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-```javascript main.ts
+```typescript utils.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
 import { http } from 'viem'
 import { privateKeyToAccount, Address, Account } from 'viem/accounts'
 
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
-const account: Account = privateKeyToAccount(privateKey)
+export const account: Account = privateKeyToAccount(privateKey)
 
 const config: StoryConfig = {  
   account: account,  
   transport: http(process.env.RPC_PROVIDER_URL),  
   chainId: 'odyssey',  
-}  
-const client = StoryClient.newClient(config)
+}
+export const client = StoryClient.newClient(config)
 ```
 
 ## 2. Dispute an IP
@@ -77,17 +79,23 @@ To dispute an IP Asset, you will need:
 * the `targetTag` that you are applying to the dispute. Check out the [list of tags](https://docs.story.foundation/docs/dispute-module#/dispute-tags) that can be applied.
 * a `cid` (Content Identifier) is a unique identifier in IPFS, including CID v0 (base58) and CID v1 (base32). It represents the dispute evidence you must provide, as described [here](https://docs.story.foundation/docs/uma-arbitration-policy#/dispute-evidence-submission-guidelines) (we use a test one below).
 
-```javascript main.ts
-// previous code here...
+Create a `main.ts` file and add the code below:
 
-const disputeResponse = await client.dispute.raiseDispute({
-  targetIpId: '0x6b42d065aDCDA6fA83B59ad731841360dC5321fB',
-  // this is "PLAGIARISM" in base32, and is currently the only whitelisted
-  // tag for protocol v1.2
-  targetTag: '0x504c414749415249534d00000000000000000000000000000000000000000000',
-  cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
-})
-console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispute ID: ${disputeResponse.disputeId}`)
+```typescript main.ts
+import { client } from './utils'
+
+async function main() {
+  const disputeResponse = await client.dispute.raiseDispute({
+    targetIpId: '0x6b42d065aDCDA6fA83B59ad731841360dC5321fB',
+    // this is "PLAGIARISM" in base32, and is currently the only whitelisted
+    // tag for protocol v1.2
+    targetTag: '0x504c414749415249534d00000000000000000000000000000000000000000000',
+    cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+  })
+  console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispute ID: ${disputeResponse.disputeId}`) 
+}
+
+main();
 ```
 
 ## 3. Done!
