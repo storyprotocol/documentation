@@ -1,5 +1,6 @@
 ---
 title: Reown (WalletConnect) Setup
+excerpt: Learn how to setup Reown (WalletConnect) in your Story DApp.
 deprecated: false
 hidden: false
 metadata:
