@@ -1,5 +1,6 @@
 ---
 title: Dynamic Setup
+excerpt: Learn how to setup Dynamic Wallet in your Story DApp.
 deprecated: false
 hidden: false
 metadata:
