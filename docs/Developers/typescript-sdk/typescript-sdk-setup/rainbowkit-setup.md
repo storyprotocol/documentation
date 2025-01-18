@@ -1,5 +1,6 @@
 ---
 title: RainbowKit Setup
+excerpt: Learn how to setup RainbowKit Wallet in your Story DApp.
 deprecated: false
 hidden: false
 metadata:
