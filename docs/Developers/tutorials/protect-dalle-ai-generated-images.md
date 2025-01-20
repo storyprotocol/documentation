@@ -75,6 +75,8 @@ async function main() {
 
   console.log(image.data[0].url) // the url to the newly created image 
 }
+
+main();
 ```
 
 ## 2. Set up your Story Config
