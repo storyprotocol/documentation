@@ -11,120 +11,120 @@ next:
   description: ''
 ---
 <details>
-<summary>What are the hardware requirements?</summary>
+  <summary>What are the hardware requirements?</summary>
 
-<br />
+  <br />
 
-See the <a href="https://docs.storyprotocol.xyz/docs/node-setup#system-specs">system specs</a>
+  See the <a href="https://docs.story.foundation/docs/node-setup#system-specs">system specs</a>
 </details>
 
 ***
 
 <details>
-<summary>What's the max expected TPS?</summary>
+  <summary>What's the max expected TPS?</summary>
 
-<br />
+  <br />
 
-\~700
+  \~700
 </details>
 
 ***
 
 <details>
-<summary>Is it fully EVM-compatible? Is there any customization already being made on the IP blockchain? Or are there any coming customization to be applied?</summary>
+  <summary>Is it fully EVM-compatible? Is there any customization already being made on the IP blockchain? Or are there any coming customization to be applied?</summary>
 
-<br />
+  <br />
 
-Yes, it’s EVM-compatible. Story’s execution client is a fork of Geth with our custom precompiles, which enhance the IP graph's performance while maintaining strict EVM compatibility. Other Ethereum execution clients, such as RETH and Erigon, can be supported later.
+  Yes, it’s EVM-compatible. Story’s execution client is a fork of Geth with our custom precompiles, which enhance the IP graph's performance while maintaining strict EVM compatibility. Other Ethereum execution clients, such as RETH and Erigon, can be supported later.
 </details>
 
 ***
 
 <details>
-<summary>Which is your consensus mechanism?</summary>
+  <summary>Which is your consensus mechanism?</summary>
 
-<br />
+  <br />
 
-Our consensus mechanism is CometBFT
+  Our consensus mechanism is CometBFT
 </details>
 
 ***
 
 <details>
-<summary>Batches support? Limit on batch request?</summary>
+  <summary>Batches support? Limit on batch request?</summary>
 
-<br />
+  <br />
 
-Batch RPCs are supported - for Geth there is a 1K limit and on the consensus side there is 10 request limit
+  Batch RPCs are supported - for Geth there is a 1K limit and on the consensus side there is 10 request limit
 </details>
 
 ***
 
 <details>
-<summary>WS connections? (if yes, how do they work)</summary>
+  <summary>WS connections? (if yes, how do they work)</summary>
 
-<br />
+  <br />
 
-Yes, WS is enabled on the execution client, and is recommended for subscription use-cases. It is open on port 8546
+  Yes, WS is enabled on the execution client, and is recommended for subscription use-cases. It is open on port 8546
 </details>
 
 ***
 
 <details>
-<summary>How many different paths does node serves (several path with diff methods RPC)?</summary>
+  <summary>How many different paths does node serves (several path with diff methods RPC)?</summary>
 
-<br />
+  <br />
 
-Please see Geth’s latest JSON-RPC documentation for a full comprehensive list <a href="https://ethereum.org/en/developers/docs/apis/json-rpc/#web3_clientversion">here</a>. In the future, we may add more.
+  Please see Geth’s latest JSON-RPC documentation for a full comprehensive list <a href="https://ethereum.org/en/developers/docs/apis/json-rpc/#web3_clientversion">here</a>. In the future, we may add more.
 </details>
 
 ***
 
 <details>
-<summary>Caching rules for RPC method?</summary>
+  <summary>Caching rules for RPC method?</summary>
 
-<br />
+  <br />
 
-We recommend employing standard in-memory caching with a 1-10 min TTL based on the RPC method
+  We recommend employing standard in-memory caching with a 1-10 min TTL based on the RPC method
 </details>
 
 ***
 
 <details>
-<summary>What is the best method to get latest block and check node is healthy and in sync?</summary>
+  <summary>What is the best method to get latest block and check node is healthy and in sync?</summary>
 
-<br />
+  <br />
 
-Use `eth_syncing` RPC call on the execution client to check if the node is sync and `eth_blockNumber` for getting the latest block
+  Use `eth_syncing` RPC call on the execution client to check if the node is sync and `eth_blockNumber` for getting the latest block
 </details>
 
 ***
 
 <details>
-<summary>What are the heaviest RPC methods? How much time does it take to respond to request with such method?</summary>
+  <summary>What are the heaviest RPC methods? How much time does it take to respond to request with such method?</summary>
 
-<br />
+  <br />
 
-`eth_call` / `eth_getLogs` / `eth_getBlockByNumber` \
-We are still running latency tests to get a sense of response times.
+  `eth_call` / `eth_getLogs` / `eth_getBlockByNumber` \
+  We are still running latency tests to get a sense of response times.
 </details>
 
 ***
 
 <details>
-<summary>Is archive node provisioning a requirement? If yes how big?</summary>
+  <summary>Is archive node provisioning a requirement? If yes how big?</summary>
 
-<br />
+  <br />
 
-No, not at the moment.
+  No, not at the moment.
 </details>
 
 ***
 
 <details>
-<summary>Are there snapshots available for full / archive?</summary>
+  <summary>Are there snapshots available for full / archive?</summary>
 
-<br />
+  <br />
 
-Not yet, but we are working on it.
+  Not yet, but we are working on it.
 </details>
