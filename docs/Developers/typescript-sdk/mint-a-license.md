@@ -14,11 +14,11 @@ This section demonstrates how to mint a License Token for an IPA. You can only m
 
 > 💰 Paid Licenses
 >
-> Note that some IP Assets may have license terms attached that require the user minting the license to pay a `mintingFee`. You can see an example of that in the <a href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/commercialExample.ts" target="_blank">TypeScript Tutorial</a>.
+> Note that some IP Assets may have license terms attached that require the user minting the license to pay a `mintingFee`. You can see an example of that in the <a href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" target="_blank">TypeScript Tutorial</a>.
 
 > 📘 Max Number of Licenses
 >
-> If you're curious about setting the maximum number of licesnes that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
+> If you're curious about setting the maximum number of licenses that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
 
 ## Prerequisites
 
