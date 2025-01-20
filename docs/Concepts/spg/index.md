@@ -12,10 +12,6 @@ next:
 ---
 The Story Protocol Gateway (SPG) is a group of periphery/utility smart contracts, deployed on our protocol that **allows you to combine independent operations** - like registering an [🧩 IP Asset](doc:ip-asset) and attaching License Terms to that IP Asset - **into one transaction to make your life easier**.
 
-> 🗒️ Contracts
->
-> View the smart contracts [here](https://github.com/storyprotocol/protocol-periphery-v1/tree/main/contracts).
-
 For example, this `mintAndRegisterIpAndAttachPILTerms` is one of the functions in the SPG (more specifically in the `LicenseAttachmentWorkflows.sol`) that allows you to mint an NFT, register it as an IP Asset, and attach License Terms to it all in one call:
 
 ```sol LicenseAttachmentWorkflows.sol
@@ -32,9 +28,13 @@ function mintAndRegisterIpAndAttachPILTerms(
 
 As mentioned above, there are many different functions we have created for you that combine multiple functions into one. We have categorized them into different groups. These groups are called "workflows".
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md" icon="fa-eyes" target="_blank">
     Click here to view all of the supported workflows.
+  </Card>
+
+  <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/tree/main/contracts/workflows" icon="fa-scroll" target="_blank">
+    Click here to view the workflow smart contracts.
   </Card>
 </Cards>
 
