@@ -29,11 +29,11 @@ function mintAndRegisterIpAndAttachPILTerms(
 As mentioned above, there are many different functions we have created for you that combine multiple functions into one. We have categorized them into different groups. These groups are called "workflows".
 
 <Cards columns={2}>
-  <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md" icon="fa-eyes" icon-color="white" target="_blank">
+  <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md" icon="fa-eyes" iconColor="white" target="_blank">
     Click here to view all of the supported workflows.
   </Card>
 
-  <Card title="Smart Contracts" href="https://github.com/storyprotocol/protocol-periphery-v1/tree/main/contracts/workflows" icon="fa-scroll" icon-color="#ccb092" target="_blank">
+  <Card title="Smart Contracts" href="https://github.com/storyprotocol/protocol-periphery-v1/tree/main/contracts/workflows" icon="fa-scroll" iconColor="#ccb092" target="_blank">
     Click here to view the workflow smart contracts.
   </Card>
 </Cards>
