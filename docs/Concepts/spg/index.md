@@ -16,61 +16,27 @@ The Story Protocol Gateway (SPG) is a group of periphery/utility smart contracts
 >
 > View the smart contracts [here](https://github.com/storyprotocol/protocol-periphery-v1/tree/main/contracts).
 
-For example, this `mintAndRegisterIpAndAttachPILTerms` is one of the functions in the SPG (more specifically in the "License Attachment Workflows") that allows you to mint an NFT, register it as an IP Asset, and attach License Terms to it all in one call:
+For example, this `mintAndRegisterIpAndAttachPILTerms` is one of the functions in the SPG (more specifically in the `LicenseAttachmentWorkflows.sol`) that allows you to mint an NFT, register it as an IP Asset, and attach License Terms to it all in one call:
 
 ```sol LicenseAttachmentWorkflows.sol
 function mintAndRegisterIpAndAttachPILTerms(
-  address nftContract,
+  address spgNftContract,
   address recipient,
-  IPMetadata calldata ipMetadata,
-  PILTerms calldata terms
-) external onlyCallerWithMinterRole(nftContract) returns (address ipId, uint256 tokenId, uint256 licenseTermsId)
+  WorkflowStructs.IPMetadata calldata ipMetadata,
+  WorkflowStructs.LicenseTermsData[] calldata licenseTermsData,
+  bool allowDuplicates
+) external onlyMintAuthorized(spgNftContract) returns (address ipId, uint256 tokenId, uint256[] memory licenseTermsIds)
 ```
 
-## Supported Workflows
+## All Supported Workflows
 
-As mentioned above, there are many different functions we have created for you that combine multiple functions into one. Because we have created many of them, we have categorized them into different groups. These groups are called "workflows". 
+As mentioned above, there are many different functions we have created for you that combine multiple functions into one. We have categorized them into different groups. These groups are called "workflows".
 
-> 📘 Below Workflow Docs
->
-> The below docs on the supported workflows is a copy + paste of [this document](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md). While we will try to keep the below list up to date, you can always go there for the latest version.
-
-### [Registration Workflows](../contracts/interfaces/workflows/IRegistrationWorkflows.sol)
-
-* `createCollection`: Creates a SPGNFT Collection
-* `registerIp`: Registers an IP
-* `mintAndRegisterIp`: Mints a NFT → Registers it as an IP
-
-### [License Attachment Workflows](../contracts/interfaces/workflows/ILicenseAttachmentWorkflows.sol)
-
-* `registerPILTermsAndAttach`: Registers PIL terms → Attaches them to an IP
-* `registerIpAndAttachPILTerms`: Registers an IP → Registers PIL terms → Attaches them to the IP
-* `mintAndRegisterIpAndAttachPILTerms`: Mints a NFT → Registers it as an IP → Registers PIL terms → Attaches them to the IP
-
-### [Derivative Workflows](../contracts/interfaces/workflows/IDerivativeWorkflows.sol)
-
-* `registerIpAndMakeDerivative`: Registers an IP → Registers it as a derivative of another IP
-* `mintAndRegisterIpAndMakeDerivative`: Mints a NFT → Registers it as an IP → Registers the IP as a derivative of another IP
-* `registerIpAndMakeDerivativeWithLicenseTokens`: Registers an IP → Registers the IP as a derivative of another IP using the license tokens
-* `mintAndRegisterIpAndMakeDerivativeWithLicenseTokens`: Mints a NFT → Registers it as an IP → Registers the IP as a derivative of another IP using the license tokens
-
-### [Grouping Workflows](../contracts/interfaces/workflows/IGroupingWorkflows.sol)
-
-* `mintAndRegisterIpAndAttachLicenseAndAddToGroup`: Mints a NFT → Registers it as an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
-* `registerIpAndAttachLicenseAndAddToGroup`: Registers an IP → Attaches the given license terms to the IP → Adds the IP to a group IP
-* `registerGroupAndAttachLicense`: Registers a group IP → Attaches the given license terms to the group IP
-* `registerGroupAndAttachLicenseAndAddIps`: Registers a group IP → Attaches the given license terms to the group IP → Adds existing IPs to the group IP
-
-### [Royalty Workflows](../contracts/interfaces/workflows/IRoyaltyWorkflows.sol)
-
-* `transferToVaultAndSnapshotAndClaimByTokenBatch`: Transfers revenue tokens to ancestor IP’s royalty vault → Takes a snapshot of the royalty vault → Claims all available revenue tokens from the snapshot to the claimer’s wallet
-  * *Use Case*: For IP royalty token holders who want to claim both their direct revenue and royalties from descendant IPs.
-* `transferToVaultAndSnapshotAndClaimBySnapshotBatch`: Transfers revenue tokens to ancestor IP’s royalty vault → Takes a snapshot of the royalty vault → Claims all available revenue tokens from the new snapshot to the claimer’s wallet → Claims all available revenue tokens from each provided unclaimed snapshot to the claimer’s wallet
-  * *Use Case*: For IP royalty token holders who want to claim both direct revenue and descendant royalties from the latest snapshot and previously taken snapshots.
-* `snapshotAndClaimByTokenBatch`: Takes a snapshot of the royalty vault → Claims all available revenue tokens from the new snapshot to the claimer’s wallet
-  * *Use Case*: For IP royalty token holders who want to claim the current revenue in their IP’s royalty vault (which may or may not include descendant royalties).
-* `snapshotAndClaimBySnapshotBatch`: Takes a snapshot of the royalty vault → Claims all available revenue tokens from the new snapshot to the claimer’s wallet → Claims all available revenue tokens from each provided unclaimed snapshot to the claimer’s wallet
-  * *Use Case*: For IP royalty token holders who want to claim the current revenue in their IP’s royalty vault from the latest snapshot and previously taken snapshots.
+<Cards columns={1}>
+  <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md" icon="fa-eyes" target="_blank">
+    Click here to view all of the supported workflows.
+  </Card>
+</Cards>
 
 ## Batching Calls
 
