@@ -18,7 +18,9 @@ next:
 
 # Introducing the World's IP Blockchain
 
-Story is a purpose-built layer 1 blockchain designed specifically for intellectual property. It tokenizes any type of IP; whether that’s an idea, an image, a real world asset, a song, an AI model, an NFT, image rights or anything in between. By embedding usage terms, attribution, and royalty agreements directly into the blockchain, Story provides a transparent, decentralized solution for IP management. This enables IP holders to protect their work, collaborate seamlessly, and unlock more revenue opportunities in an AI-powered economy.
+Story is a purpose-built layer 1 blockchain designed specifically for intellectual property.
+
+Story tokenizes any type of IP; whether that’s an idea, an image, a real world asset, a song, an AI model, an NFT or anything in-between. By embedding usage terms, attribution, and royalty agreements directly into the blockchain, Story provides a transparent, decentralized solution for IP management. This enables IP holders to protect their work, collaborate on IP seamlessly, and unlock revenue opportunities in an AI-powered economy.
 
 > ⏩ Skip the Read - 1 Minute Summary
 >
@@ -30,7 +32,7 @@ When IP owners share their work online, it’s easy for others to use or change 
 
 Additionally, the sheer speed and superabundance of AI-generated media is outpacing the current IP system that was designed for physical replication. In many cases, [AI is trained on and is producing copyrighted data](https://twitter.com/BriannaWu/status/1823833723764084846).
 
-Story fixes this by providing a way for creators to share their work with built-in protection. When someone (including an AI model) uses a song, image, or any creative work that’s registered on Story, the system automatically tracks who the original owner is and makes sure they get credited. Plus, if that work generates revenue—say someone remixes a song and it earns money—the original owner automatically receives their fair share.
+Story fixes this by providing a way for creators to share their work with built-in protection. When someone (including an AI model) uses a song, image, or any creative work that’s registered on Story, the system automatically tracks who the original owner is and makes sure they get credited. Plus, if that work generates revenue—say someone remixes a song and it earns money—the original owner automatically receives their fair share based on license terms that were set on-chain.
 
 ## The "How"
 
@@ -54,7 +56,7 @@ Creators can register their IP as [🧩 IP Assets](doc:ip-asset) on our protocol
 1. an on-chain NFT. This could be an existing NFT like [Azuki](https://www.azuki.com/en) that itself is the IP, or a new NFT specifically minted to represent some off-chain IP like a real-world asset.
 2. its associated IP Account, which is a modified ERC-6551 (Token Bound Account) implementation.
 
-To interact with IP Assets within the protocol, we use “**modules**” such as the licensing, royalty, and dispute modules. For example, the owner of an IP Asset can set **terms** on their IP such as whether or not derivative works can use the IP commercially (and at what cost). Creators of derivative works can then seamlessly extend their work by minting “**License Tokens**” - outlined by the terms and also represented as NFTs themselves - using the [Licensing Module](doc:licensing-module), create revenue streams from derivative works using the [Royalty Module](doc:royalty-module), or raise a dispute using the [Dispute Module](doc:dispute-module).
+To interact with IP Assets within the protocol, we use “**modules**” such as the licensing, royalty, and dispute modules. For example, the owner of an IP Asset can set **terms** on their IP such as whether or not derivative works can use the IP commercially (and at what cost). Creators of derivative works can then seamlessly extend their work by minting “**License Tokens**” - outlined by the terms and also represented as NFTs themselves - using the [📜 Licensing Module](doc:licensing-module), create revenue streams from derivative works using the [💸 Royalty Module](doc:royalty-module), or raise a dispute using the [❌ Dispute Module](doc:dispute-module).
 
 ### Programmable IP License
 
