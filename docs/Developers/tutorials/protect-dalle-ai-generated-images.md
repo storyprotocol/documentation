@@ -63,16 +63,18 @@ In a `main.ts` file, add the following code to generate an image:
 ```typescript main.ts
 import OpenAI from 'openai'
 
-const openai = new OpenAI({
+async function main() {
+  const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-})
+  })
 
-const image = await openai.images.generate({ 
-  model: 'dall-e-2', 
-  prompt: 'A cute baby sea otter' 
-});
+  const image = await openai.images.generate({ 
+    model: 'dall-e-2', 
+    prompt: 'A cute baby sea otter' 
+  });
 
-console.log(image.data[0].url) // the url to the newly created image
+  console.log(image.data[0].url) // the url to the newly created image 
+}
 ```
 
 ## 2. Set up your Story Config
