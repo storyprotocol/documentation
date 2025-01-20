@@ -129,7 +129,7 @@ If the `setDisputeJudgement` has tagged an IP as infringing then any address can
 
 > 📘 Looking Ahead
 >
-> In the future, the idea is that any derivative IP Asset of an infringed IP Asset would automatically be tagged without needed someone to call `tagDerivativeIfParentInfringed`. This is currently a limitation that we are aware of.
+> In the future, the idea is that any derivative IP Asset of an infringed IP Asset would automatically be tagged without needing someone to call `tagDerivativeIfParentInfringed`. This is currently a limitation that we are aware of.
 
 The derivatives are then tagged directly without any need for judgment given that it is considered that if a parent IP license has been infringed then all derivatives that come from that license are also implicitly in an infringement situation.
 
