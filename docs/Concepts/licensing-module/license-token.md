@@ -20,9 +20,7 @@ A **License Token** is represented as an **ERC-721 NFT** and contains the specif
 
 Once License Terms are attached to an IP Asset, it becomes public so that anyone can mint a License Token for those terms. A License Token is burned when it is used to register another IP as a derivative of the original IP Asset.
 
-<Image alt="A diagram showing what happens when a License Token is minted." align="center" src="https://files.readme.io/2c2938f-Screenshot_2024-05-07_at_18.42.00.png">
-  A diagram showing what happens when a License Token is minted.
-</Image>
+<Image align="center" alt="A diagram showing what happens when a License Token is minted." border={false} caption="A diagram showing what happens when a License Token is minted." src="https://files.readme.io/2c2938f-Screenshot_2024-05-07_at_18.42.00.png" />
 
 ## Private Licenses
 
@@ -32,7 +30,7 @@ In order to mint a private License Token, the owner of a root IP Asset can issue
 
 License Tokens might be transferrable or not, depending on the values of the License Terms terms they point to.
 
-Once a non-transferrable License Token is minted to a recipient, it is locked there forever.
+Once a non-transferable License Token is minted to a recipient, it is locked there forever.
 
 ## Registering a Derivative
 
