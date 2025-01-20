@@ -3,18 +3,19 @@ name: Combine Markdown Files
 on:
   push:
     branches:
-      - v1.2 # Trigger on push to the main branch (adjust as needed)
+      - v1.2
 
 jobs:
   combine-md-files:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the code
       - name: Check out the repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 0
 
-      # Step 2: Run the script to combine markdown files
       - name: Combine .md files
         run: |
           find . -type f -name "*.md" \
@@ -27,11 +28,10 @@ jobs:
             -not -name "combined.md.yml" \
             -exec cat {} + > combined.md
 
-      # Step 3: Commit and push the changes
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add combined.md
           git commit -m "Update combined.md [skip ci]" || echo "No changes to commit"
-          git push
+          git push "https://${{ secrets.PAT_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" v1.2
