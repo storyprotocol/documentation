@@ -62,7 +62,7 @@ is called on the "Policy X" address. It should return the % of derivative's roya
 There are two ways in which an External Royalty Policy can redistribute value back to its users:
 
 1. Send Royalty Tokens directly to its users
-2. Keep the Royalty Tokens in the External Royalty Policy contract and have users claim Revenue Tokens through the the said contract
+2. Keep the Royalty Tokens in the External Royalty Policy contract and have users claim Revenue Tokens through the said contract
 
 Let's explore both in the context of "Policy X". Let's say that from the 50% of RT3 token supply "Policy X" received - 40% are kept in the "Policy X" contract and 10% are sent to an ancestor royalty vault (IP1).
 
