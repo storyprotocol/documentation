@@ -186,11 +186,11 @@ struct PILTerms {
       </td>
 
       <td style={{ textAlign: "left" }}>
-        # [0-100,000,000]
+        # \[0-100,000,000]
       </td>
 
       <td>
-        Amount of revenue (from any source, original & derivative) that must be shared with the licensor (a value of 10,000,000 == 10% of revenue share).  
+        Amount of revenue (from any source, original & derivative) that must be shared with the licensor (a value of 10,000,000 == 10% of revenue share).
 
         This will collect all revenue from tokens that are whitelisted in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50).
       </td>
@@ -334,7 +334,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Limit usage of the IP to certain regions and/or countries.  
+        Limit usage of the IP to certain regions and/or countries.
 
         By default, the IP can be used globally.
       </td>
@@ -346,9 +346,9 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Restrict usage of the IP to certain media formats and use in certain channels of distribution.  
+        Restrict usage of the IP to certain media formats and use in certain channels of distribution.
 
-        By default, the IP can be used across all possible channels of distribution.  
+        By default, the IP can be used across all possible channels of distribution.
 
         Examples: "television", "physical consumer products", "video games", etc.
       </td>
@@ -360,7 +360,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        If the original author should be credited for usage of the IP.  
+        If the original author should be credited for usage of the IP.
 
         By default, you do not need to provide credit to the original author.
       </td>
@@ -372,9 +372,9 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Set content standards around use of the IP.  
+        Set content standards around use of the IP.
 
-        By default, no standards apply.  
+        By default, no standards apply.
 
         Examples: "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons", "No-Pornography".
       </td>
@@ -386,7 +386,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Derivative works can grant the same rights they received under this license to a 3rd party, without approval from the original licensor.  
+        Derivative works can grant the same rights they received under this license to a 3rd party, without approval from the original licensor.
 
         By default, derivatives may not do so.
       </td>
@@ -398,7 +398,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Whether or not the IP can be used to develop AI learning models.  
+        Whether or not the IP can be used to develop AI learning models.
 
         By default, the IP can be used for such development.
       </td>
@@ -410,7 +410,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Limit licensing and creation of derivative works solely on the app on which the IP is made available.  
+        Limit licensing and creation of derivative works solely on the app on which the IP is made available.
 
         By default, the IP can be used anywhere.
       </td>
@@ -422,7 +422,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        The laws of a certain jurisdiction by which this license abides.  
+        The laws of a certain jurisdiction by which this license abides.
 
         By default, this is California, USA.
       </td>
@@ -434,7 +434,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Please see section 3.1 (s) [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Beta_Final_2024_02_Plain_English.pdf). 
+        Please see section 3.1 (s) [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf).
       </td>
     </tr>
 
