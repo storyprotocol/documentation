@@ -2,7 +2,7 @@
 title: Helpful Resources
 excerpt: ''
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
