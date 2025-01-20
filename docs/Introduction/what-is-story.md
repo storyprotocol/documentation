@@ -60,7 +60,7 @@ To interact with IP Assets within the protocol, we use “**modules**” such as
 
 ### Programmable IP License
 
-Although on-chain, an IPA’s terms and minted License Tokens are enforced by an off-chain legal contract called the [Programmable IP License (PIL💊)](doc:programmable-ip-license-pil), which allows anyone to offramp tokenized IP into the off-chain legal system and outlines real legal terms for how creators can remix, monetize, and create derivatives of their IP. *The protocol, or more specifically the IP Assets and modules described above, are what automate and enforce those terms on-chain*, creating a mapping between the legal world (PIL) and the blockchain.
+Although on-chain, an IP's usage terms and minted licenses are enforced by an off-chain legal contract called the [Programmable IP License (PIL💊)](doc:programmable-ip-license-pil), which allows anyone to offramp tokenized IP into the off-chain legal system and outlines real legal terms for how creators can remix, monetize, and create derivatives of their IP. *The protocol, or more specifically the IP Assets and modules described above, are what automate and enforce those terms on-chain*, creating a mapping between the legal world (PIL) and the blockchain.
 
 Like USDC enables redemption for fiat, the PIL enables redemption for IP.
 
