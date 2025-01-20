@@ -152,4 +152,4 @@ main();
 
 > 🚧 Not Completed
 >
-> A full written tutorial is coming soon. For now, you can see a code example at the bottom of [this file in our boilerplate](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/IPARoyalty.t.sol).
+> A full written tutorial is coming soon. For now, you can see a code example at the bottom of [this file in our boilerplate](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/5_Royalty.t.sol).
