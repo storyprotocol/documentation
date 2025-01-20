@@ -205,6 +205,20 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
         Allows you to set Do Not Train for a specific agent
       </td>
     </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        N/A
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        N/A
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        You can include other values as well.
+      </td>
+    </tr>
   </tbody>
 </Table>
 
