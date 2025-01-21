@@ -10,9 +10,11 @@ metadata:
 next:
   description: ''
 ---
-If you haven't already, read the overview: [Programmable IP License (PIL💊)](doc:programmable-ip-license)
+<Cards columns={3}>
+  <Card title="Preset PIL Terms" href="https://docs.story.foundation/docs/programmable-ip-license" icon="fa-pill">
+    If you haven't already, read the overview Programmable IP License (PIL💊) overview.
+  </Card>
 
-<Cards columns={2}>
   <Card title="Preset PIL Terms" href="https://docs.story.foundation/docs/pil-flavors" icon="fa-thumbs-up" iconColor="#51af51">
     Since there are so many possible combinations of the PIL, we have created preset "flavors" for you to use while developing.
   </Card>
@@ -24,7 +26,7 @@ If you haven't already, read the overview: [Programmable IP License (PIL💊)](d
 
 # On-chain terms
 
-Most PIL terms are on-chain. They are implemented in the `IPILicenseTemplate` contract as a `PILTerms` struct [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/IPILicenseTemplate.sol).
+Most PIL terms are on-chain. They are implemented in the `IPILicenseTemplate.sol` contract as a `PILTerms` struct [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/IPILicenseTemplate.sol).
 
 ```sol IPILicenseTemplate.sol
 /// @notice This struct defines the terms for a Programmable IP License (PIL).
