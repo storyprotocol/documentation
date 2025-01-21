@@ -1,6 +1,6 @@
 ---
 title: Register License Terms
-excerpt: ''
+excerpt: Learn how to register new License Terms in Python.
 deprecated: false
 hidden: true
 metadata:
