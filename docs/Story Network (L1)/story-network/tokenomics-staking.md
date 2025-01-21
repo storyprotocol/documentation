@@ -424,9 +424,9 @@ emit Deposit(
 
 If staking\_period is 0, it uses flexible staking.
 
-* 1 = 7 days
-* 2 = 14 days
-* 3 = 21 days
+* 1 = 90 days
+* 2 = 360 days
+* 3 = 540 days
 
 Verifications:
 
