@@ -12,7 +12,11 @@ metadata:
 next:
   description: ''
 ---
-In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. 
+In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK.
+
+> 📢 Justin Bieber is coming to Story!
+>
+> "Peaches" by Justin Bieber is one of the first RWAs coming to Story. Check out the announcement [here](https://x.com/StoryProtocol/status/1881713146274156951)!
 
 ## First...
 
