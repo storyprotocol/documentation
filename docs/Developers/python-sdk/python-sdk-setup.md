@@ -70,7 +70,3 @@ account = web3.eth.account.from_key(private_key)
 # Create StoryClient instance
 story_client = StoryClient(web3, account, 1516)
 ```
-
-## Set Up JSON-RPC Account (ex. Metamask)
-
-The second way is to delay signing to a JSON-RPC account like Metamask. This requires creating a request that allows communication between your frontend and your Python backend. You can then use the account obtained from this request in a manner similar to the private key setup described above.
