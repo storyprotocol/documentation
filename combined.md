@@ -2479,17 +2479,19 @@ response = story_client.License.mintLicenseTokens(
 print(f"License Token minted at transaction hash {response['txHash']} License ID: {response['licenseTokenIds']}")
 ```
 ```python Request Type
-MintLicenseTokensRequest = {
+mint_license_tokens_request = {
   'licensor_ip_id': str,
   'license_template': str,
   'license_terms_id': int,
   'amount': int,
   'receiver': str,
-  'tx_options': dict
+  'max_minting_fee': int, # optional
+  'max_revenue_share': int, # optional
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-MintLicenseTokensResponse = {
+mint_license_tokens_response = {
   'txHash': str,
   'licenseTokenIds': list
 }
