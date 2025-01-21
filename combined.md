@@ -3649,7 +3649,7 @@ const nftMetadata = {
 
 ## Done!
 
-When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x4044731f1F7265FCDf11ED553d9BB4cBD21eD2D0) on our explorer.
+When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x0c299a18b96b14489409f58C2773413Fc4fb05d6) on our explorer.
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!
 
