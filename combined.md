@@ -2706,7 +2706,7 @@ RegisterDerivativeResponse = {
 ```
 
 
-# Attach Terms to an IP Asset in Python
+# Attach Terms to an IPA
 This section demonstrates how to add License Terms to an IPA. By attaching terms, an IPA becomes eligible for licensing creation. Users who then wish to creative derivatives of the IP may then mint licenses, which can be burned to enroll their IPs as derivative IPAs of the original work.
 
 > 📘 Note
@@ -2716,40 +2716,37 @@ This section demonstrates how to add License Terms to an IPA. By attaching terms
 There are a few different ways you can do this, depending on what works best for you:
 
 1. Attach Existing License Terms to Existing IP Asset
-2. Register New IP Asset and Attach License Terms (COMING SOON)
-3. Register New Terms and Attach to an Existing IP Asset (COMING SOON)
+2. *Register New IP Asset and Attach License Terms (COMING SOON)*
+3. *Register New Terms and Attach to an Existing IP Asset (COMING SOON)*
 4. Mint NFT, Register as IP Asset, and Attach Terms
 
 ## Prerequisites
 
 * [Setup](doc:python-sdk-setup) the client object.
 
-# Attach License Terms
+# Attach Existing License Terms to Existing IP Asset
 
 Below is a code example to add License Terms to our IP Asset:
 
 ```python Python
-try:
-  response = story_client.License.attachLicenseTerms(
-    ip_id="0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721", 
-    license_template="0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93", 
-    license_terms_id=1
-    print(f"Attached License Terms to IPA at transaction hash {response['txHash']}.")
-  )
-except Exception as e:
-  print("License Terms already attached to this IPA")
+response = story_client.License.attachLicenseTerms(
+  ip_id="0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721", 
+  license_template="0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93", 
+  license_terms_id=1
+)
+print(f"Attached License Terms to IPA at transaction hash {response['txHash']}.")
 ```
 ```python Request Type
 AttachLicenseTermsRequest = {
-    'ip_id': str,
-    'license_template': str,
-    'license_terms_id': int,
-    'tx_options': dict
+  'ip_id': str,
+  'license_template': str,
+  'license_terms_id': int,
+  'tx_options': dict
 }
 ```
 ```python Response Type
 AttachLicenseTermsResponse = {
-    'txHash': str
+  'txHash': str
 }
 ```
 
