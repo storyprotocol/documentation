@@ -80,12 +80,13 @@ const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
 In your `nftMetadata`, **in order for the music to actually be played on our explorer** you must set a `media` parameter, and then you can also set some `attributes` that look something like this:
 
 * Again, make sure to replace the `media.url` with the one we created in step 0!
+* For the `image`, you can use any URL to an image. [picsum](https://picsum.photos)  is a website that generates random images, or you can use the image from your Suno song.
 
 ```typescript main.ts
 const nftMetadata = {
   name: 'Test NFT',
   description: 'This is a test NFT',
-  image: 'https://picsum.photos/200',
+  image: 'https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg',
   media: [
     {
       name: 'Rise Again',
