@@ -12,7 +12,7 @@ metadata:
 next:
   description: ''
 ---
-In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK.
+In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer. You can see an example final result [here](https://explorer.story.foundation/ipa/0x8b8aEd4ff474A5E9B14699623f2a2BB71603BD87).
 
 > 📢 Justin Bieber is coming to Story!
 >
