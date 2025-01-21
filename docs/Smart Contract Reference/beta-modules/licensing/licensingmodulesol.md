@@ -92,7 +92,7 @@ The policy data and its integrity must be verified by the policy framework manag
 
 | Name | Type                    | Description                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------- |
-| pol  | struct Licensing.Policy | The Licensing policy data. MUST have same policy framework as the caller address |
+| pol  | struct Licensing.Policy | The Licensing policy data. MUST have the same policy framework as the caller address |
 
 #### Return Values
 
