@@ -26,7 +26,7 @@ jobs:
             -not -path "./docs/Ecosystem/*" \
             -not -name "combined.md" \
             -not -name "combined.md.yml" \
-            -exec cat {} + > combined.md
+            -exec sh -c 'cat "$1"; echo -e "\n"' sh {} \; > combined.md
 
       - name: Commit and push changes
         run: |
