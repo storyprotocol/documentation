@@ -18,13 +18,28 @@ In this tutorial, you will learn how to properly register music as IP on Story u
 >
 > "Peaches" by Justin Bieber is one of the first RWAs coming to Story. Check out the announcement [here](https://x.com/StoryProtocol/status/1881713146274156951)!
 
-## First...
+## 0. Create a Song
 
-Most of this tutorial is covered in [How to Register IP on Story](doc:how-to-register-ip-on-story). Complete that tutorial first, and then come back here.
+Before we register music on Story, you'll obviously need some music! If you already have music, make sure you have a link to the music file directly. For example, `https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3`. If you don't already have this, you can upload your music file to IPFS:
 
-## Next...
+If you want to create a test song, go to [Suno](https://suno.com), which is an awesome platform for AI-generated music. We can get a test song by:
+
+1. Inputting a prompt to create a song
+2. Click on the final result, which should take you to a URL like `https://suno.com/song/8bcba6bc-3f60-4921-b148-f32a59086a4c`
+3. Copy the the `SONG_ID` in the URL (`8bcba6bc-3f60-4921-b148-f32a59086a4c`)
+4. Copy the following URL: `https://cdn1.suno.ai/${SONG_ID}.mp3`, making sure to replace `SONG_ID` with your own.
+
+This is the URL we'll use in step 2.
+
+## 1. Complete the "How to Register IP" Tutorial
+
+Most of what we need to do is already covered in [How to Register IP on Story](doc:how-to-register-ip-on-story). Complete that tutorial first, and then come back here.
+
+## 2. Change Metadata
 
 The only difference is how you set your metadata. In your `ipMetadata`, you can set a few extra related parameters (`ipType`, `media`, `attributes`, `creators`) like so:
+
+* Make sure to replace the `media.url` with the one we created in step 0!
 
 ```typescript main.ts
 const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
@@ -64,6 +79,8 @@ const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
 
 In your `nftMetadata`, **in order for the music to actually be played on our explorer** you must set a `media` parameter, and then you can also set some `attributes` that look something like this:
 
+* Again, make sure to replace the `media.url` with the one we created in step 0!
+
 ```typescript main.ts
 const nftMetadata = {
   name: 'Test NFT',
@@ -93,8 +110,8 @@ const nftMetadata = {
 }
 ```
 
-## Done!
+## 3. Done!
 
-When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x0c299a18b96b14489409f58C2773413Fc4fb05d6) on our explorer.
+When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x8b8aEd4ff474A5E9B14699623f2a2BB71603BD87) on our explorer.
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!
