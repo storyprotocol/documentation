@@ -2759,15 +2759,15 @@ response = story_client.License.attachLicenseTerms(
 print(f"Attached License Terms to IPA at transaction hash {response['txHash']}.")
 ```
 ```python Request Type
-AttachLicenseTermsRequest = {
+attach_license_terms_request = {
   'ip_id': str,
   'license_template': str,
   'license_terms_id': int,
-  'tx_options': dict
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-AttachLicenseTermsResponse = {
+attach_license_terms_response = {
   'txHash': str
 }
 ```
