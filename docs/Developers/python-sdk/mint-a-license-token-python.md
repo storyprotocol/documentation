@@ -1,6 +1,6 @@
 ---
-title: Mint a License Token in Python
-excerpt: ''
+title: Mint a License Token
+excerpt: Learn how to mint a License Token from an IP Asset in Python.
 deprecated: false
 hidden: true
 metadata:
@@ -30,35 +30,35 @@ This section demonstrates how to mint a License Token for an IPA. You can only m
 To mint a License Token, we will need the:
 
 * `licensor_ip_id` - the ipId of the IPA we are minting a License Token from
-* `license_template` - the address of the license template
+* `license_template` - the address of the license template (which is just the address of the PILTemplate)
 * `license_terms_id` - the id of the License Terms (ex. "1" for Non-Commercial Social Remixing)
-* `amount` - # of License Tokens to be minted (usually 1, unless the minter decides to mint a batch and distribute it in another way later on)
+* `amount` - # of License Tokens to be minted (usually 1)
 * `receiver` - wallet receiving the License Token, usually the wallet address that is executing the transaction
 
 ```python Python
 response = story_client.License.mintLicenseTokens(
-    licensor_ip_id="0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-    license_template="0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93",
-    license_terms_id=1,
-    amount=1,
-    receiver="0x14dC79964da2C08b23698B3D3cc7Ca32193d9955"
+  licensor_ip_id="0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+  license_template="0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93",
+  license_terms_id=1,
+  amount=1,
+  receiver="0x14dC79964da2C08b23698B3D3cc7Ca32193d9955"
 )
 
 print(f"License Token minted at transaction hash {response['txHash']} License ID: {response['licenseTokenIds']}")
 ```
 ```python Request Type
 MintLicenseTokensRequest = {
-    'licensor_ip_id': str,
-    'license_template': str,
-    'license_terms_id': int,
-    'amount': int,
-    'receiver': str,
-    'tx_options': dict
+  'licensor_ip_id': str,
+  'license_template': str,
+  'license_terms_id': int,
+  'amount': int,
+  'receiver': str,
+  'tx_options': dict
 }
 ```
 ```python Response Type
 MintLicenseTokensResponse = {
-    'txHash': str,
-    'licenseTokenIds': list
+  'txHash': str,
+  'licenseTokenIds': list
 }
 ```
