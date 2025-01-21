@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-*This library provides functions for handling meta transactions in the Story Protocol.*
+*This library provides functions for handling meta-transactions in the Story Protocol.*
 
 ### EIP712\_DOMAIN\_VERSION
 
