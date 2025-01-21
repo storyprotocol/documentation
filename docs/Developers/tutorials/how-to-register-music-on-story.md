@@ -12,21 +12,21 @@ metadata:
 next:
   description: ''
 ---
-In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer. You can see an example final result [here](https://explorer.story.foundation/ipa/0x8b8aEd4ff474A5E9B14699623f2a2BB71603BD87).
+In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer. You can see an example final result <a href="https://explorer.story.foundation/ipa/0xC627E15bD2C44fC3221065E7ebdCfe61411fF5CA" target="_blank">here</a>.
 
 > 📢 Justin Bieber is coming to Story!
 >
-> "Peaches" by Justin Bieber is one of the first RWAs coming to Story. Check out the announcement [here](https://x.com/StoryProtocol/status/1881713146274156951)!
+> "Peaches" by Justin Bieber is one of the first RWAs coming to Story. Check out the announcement <a href="https://x.com/StoryProtocol/status/1881713146274156951" target="_blank">here</a>!
 
 ## 0. Create a Song
 
-Before we register music on Story, you'll obviously need some music! If you already have music, make sure you have a link to the music file directly. For example, `https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3`. If you don't already have this, you can upload your music file to IPFS:
+Before we register music on Story, you'll obviously need some music! If you already have music, make sure you have a link to the music file directly. For example, `https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3`. If you don't already have this, you can upload your music file to IPFS:
 
 If you want to create a test song, go to [Suno](https://suno.com), which is an awesome platform for AI-generated music. We can get a test song by:
 
 1. Inputting a prompt to create a song
-2. Click on the final result, which should take you to a URL like `https://suno.com/song/8bcba6bc-3f60-4921-b148-f32a59086a4c`
-3. Copy the the `SONG_ID` in the URL (`8bcba6bc-3f60-4921-b148-f32a59086a4c`)
+2. Click on the final result, which should take you to a URL like `https://suno.com/song/dcd3076f-3aa5-400b-ba5d-87d30f27c311`
+3. Copy the the `SONG_ID` in the URL (`dcd3076f-3aa5-400b-ba5d-87d30f27c311`)
 4. Copy the following URL: `https://cdn1.suno.ai/${SONG_ID}.mp3`, making sure to replace `SONG_ID` with your own.
 
 This is the URL we'll use in step 2.
@@ -49,14 +49,14 @@ const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
   media: [
     {
       name: 'Rise Again',
-      url: 'https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3',
+      url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
       mimeType: 'audio/mpeg',
     },
   ],
   attributes: [
     {
       key: 'Artist',
-      value: 'srivatsan_qb',
+      value: 'amazedneurofunk956',
     },
     {
       key: 'Artist ID',
@@ -90,14 +90,14 @@ const nftMetadata = {
   media: [
     {
       name: 'Rise Again',
-      url: 'https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3',
+      url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
       mimeType: 'audio/mpeg',
     },
   ],
   attributes: [
     {
       key: 'Artist',
-      value: 'srivatsan_qb',
+      value: 'amazedneurofunk956',
     },
     {
       key: 'Artist ID',
@@ -113,6 +113,6 @@ const nftMetadata = {
 
 ## 3. Done!
 
-When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x8b8aEd4ff474A5E9B14699623f2a2BB71603BD87) on our explorer.
+When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0xC627E15bD2C44fC3221065E7ebdCfe61411fF5CA) on our explorer.
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!
