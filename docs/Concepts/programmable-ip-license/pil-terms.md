@@ -10,15 +10,17 @@ metadata:
 next:
   description: ''
 ---
-> 👍 Easy Mode: We Have Preset PIL Terms
->
-> [Check the PIL Flavors here](https://docs.story.foundation/docs/pil-flavors-preset-policy).
+If you haven't already, read the overview: [Programmable IP License (PIL💊)](doc:programmable-ip-license)
 
-PIL is the first License Agreement for medial license developed by Story Protocol and inspired by [Token Bound License](https://james.grimmelmann.net/files/articles/token-bound-nft-license.pdf). If you haven't already, read the overview: [Programmable IP License (PIL💊)](doc:programmable-ip-license)
+<Cards columns={1}>
+  <Card title="Preset PIL Terms" href="https://docs.story.foundation/docs/pil-flavors" icon="fa-thumbs-up" iconColor="#51af51">
+    Since there are so many possible combinations of the PIL, we have created preset "flavors" for you to use while developing.
+  </Card>
 
-> 📘 PIL Legal Text
->
-> Check out the actual PIL legal text [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf). It is very human readable for a legal text!
+  <Card title="PIL Legal Text" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    Check out the actual PIL legal text. It is very human-readable for a legal text!
+  </Card>
+</Cards>
 
 # On-chain terms
 
