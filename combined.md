@@ -2268,17 +2268,31 @@ response = story_client.License.registerPILTerms(**license_terms)
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterCommercialUsePILRequest = {
-    'default_minting_fee': int,
-    'currency': str,
-    'royalty_policy': str,
-    'tx_options': dict
+RegisterPILTermsRequest = {
+  'transferable': bool,
+  'royalty_policy': str,
+  'default_minting_fee': int,
+  'expiration': int,
+  'commercial_use': bool,
+  'commercial_attribution': bool,
+  'commercializer_checker': str,
+  'commercializer_checker_data': str,
+  'commercial_rev_share': int,
+  'commercial_rev_ceiling': int,
+  'derivatives_allowed': bool,
+  'derivatives_attribution': bool,
+  'derivatives_approval': bool,
+  'derivatives_reciprocal': bool,
+  'derivative_rev_ceiling': int,
+  'currency': str,
+  'uri': str,
+  'tx_options': dict
 }
 ```
 ```python Response Type
-RegisterPILResponse = {
-    'txHash': str,
-    'licenseTermsId': int
+RegisterPILTermsResponse = {
+  'txHash': str,
+  'licenseTermsId': int
 }
 ```
 
@@ -2297,16 +2311,16 @@ print(f"PIL Terms registered at transaction hash {response['txHash']} License Te
 ```
 ```python Request Type
 RegisterCommercialUsePILRequest = {
-    'default_minting_fee': int,
-    'currency': str,
-    'royalty_policy': str,
-    'tx_options': dict
+  'default_minting_fee': int,
+  'currency': str,
+  'royalty_policy': str,
+  'tx_options': dict
 }
 ```
 ```python Response Type
-RegisterPILResponse = {
-    'txHash': str,
-    'licenseTermsId': int
+RegisterCommercialUsePILResponse = {
+  'txHash': str,
+  'licenseTermsId': int
 }
 ```
 
@@ -2326,17 +2340,17 @@ print(f"PIL Terms registered at transaction hash {response['txHash']} License Te
 ```
 ```python Request Type
 RegisterCommercialRemixPILRequest = {
-    'default_minting_fee': int,
-    'currency': str,
-    'commercial_rev_share': int,
-    'royalty_policy': str,
-    'tx_options': dict
+  'default_minting_fee': int,
+  'currency': str,
+  'commercial_rev_share': int,
+  'royalty_policy': str,
+  'tx_options': dict
 }
 ```
 ```python Response Type
-RegisterPILResponse = {
-    'txHash': str,
-    'licenseTermsId': int
+RegisterCommercialRemixPILResponse = {
+  'txHash': str,
+  'licenseTermsId': int
 }
 ```
 
@@ -2355,13 +2369,13 @@ print(f"PIL Terms registered at transaction hash {response['txHash']} License Te
 ```
 ```python Request Type
 RegisterNonComSocialRemixingPILRequest = {
-    'tx_options': dict
+  'tx_options': dict
 }
 ```
 ```python Response Type
-RegisterPILResponse = {
-    'txHash': str,
-    'licenseTermsId': int
+RegisterNonComSocialRemixingPILResponse = {
+  'txHash': str,
+  'licenseTermsId': int
 }
 ```
 
