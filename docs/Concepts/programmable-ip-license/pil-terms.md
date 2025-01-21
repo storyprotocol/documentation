@@ -11,8 +11,8 @@ next:
   description: ''
 ---
 <Cards columns={3}>
-  <Card title="Read the Overview" href="https://docs.story.foundation/docs/programmable-ip-license" icon="fa-pills">
-    If you haven't already, read the overview Programmable IP License (PIL💊) overview.
+  <Card title="Read the Overview" href="https://docs.story.foundation/docs/programmable-ip-license" icon="fa-pills" iconColor="yellow">
+    If you haven't already, read the Programmable IP License (PIL💊) overview.
   </Card>
 
   <Card title="Preset PIL Terms" href="https://docs.story.foundation/docs/pil-flavors" icon="fa-thumbs-up" iconColor="#51af51">
