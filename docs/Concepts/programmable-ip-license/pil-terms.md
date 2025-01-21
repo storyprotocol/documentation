@@ -12,7 +12,7 @@ next:
 ---
 If you haven't already, read the overview: [Programmable IP License (PIL💊)](doc:programmable-ip-license)
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="Preset PIL Terms" href="https://docs.story.foundation/docs/pil-flavors" icon="fa-thumbs-up" iconColor="#51af51">
     Since there are so many possible combinations of the PIL, we have created preset "flavors" for you to use while developing.
   </Card>
