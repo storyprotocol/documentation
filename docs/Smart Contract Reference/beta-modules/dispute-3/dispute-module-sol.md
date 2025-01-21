@@ -27,7 +27,7 @@ Returns the string identifier associated with the module.
 bytes32 IN_DISPUTE
 ```
 
-Tag to represent the dispute is in dispute state waiting for judgement
+Tag to represent the dispute is in dispute state waiting for judgment
 
 ### IP\_ASSET\_REGISTRY
 
@@ -211,7 +211,7 @@ Sets the dispute judgement on a given dispute. Only whitelisted arbitration rela
 | --------- | ------- | ------------------------------------- |
 | disputeId | uint256 | The dispute id                        |
 | decision  | bool    | The decision of the dispute           |
-| data      | bytes   | The data to set the dispute judgement |
+| data      | bytes   | The data to set the dispute judgment |
 
 ### cancelDispute
 
