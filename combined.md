@@ -96,6 +96,8 @@ We will support a few ways, including the [Dispute Module](doc:dispute-module), 
 A more nuanced answer to this (one that we're constantly exploring/improving upon) is there may be additional ways to deter IP infringement. For example, a staking validation mechanism where users could stake tokens on a piece of IP being valid, and if it were to be disputed and marked as copyright, the tokens get slashed and distributed to the creator who was harmed. Additionally we've thought of introducing external IP infringement detection services directly into our L1 at the lowest level that could flag or automatically mark IP as potential infringement the moment its registered.
 
 Ultimately Story is not a system built to prevent bad actors, rather it is meant to help facilitate honest actors to more easily register their IP, remix from others, and set proper terms for their work. The protocol is permissionless and stopping bad actors entirely would be near impossible, but we can try to disincentivize them as best we can. Much like how the pirating of media plummeted when Apple Music, Spotify, and Netflix made such media more accessible by creating a "path of least resistance", we see a similar future with Story & IP.
+-e 
+
 ---
 title: What is Story
 excerpt: Introduction to Story
@@ -170,7 +172,9 @@ Think of it like this: Suppose you upload a song to Story. Now, anyone can see t
 
 **Example #2**: Let’s say a scientist uploads an image dataset to be used by artificial intelligence (AI) models for research. Through Story, that dataset is registered, so if any company uses it to train their AI, the original scientist is credited. If that dataset then contributes to a profitable AI application, Story ensures a fair share goes to the original contributor.
 
-With Story, you can share your work freely, knowing that wherever it goes, it’s tracked and fairly credited back to you. The idea is to create a fair environment for sharing, building upon, and growing creative work.---
+With Story, you can share your work freely, knowing that wherever it goes, it’s tracked and fairly credited back to you. The idea is to create a fair environment for sharing, building upon, and growing creative work.-e 
+
+---
 title: Explain Like I'm Five
 excerpt: An easy to understand overview of Story.
 deprecated: false
@@ -185,6 +189,8 @@ next:
 <Image alt="Credit to the original tweet [here](https://x.com/devrelius/status/1812865477657694513)." align="center" src="https://files.readme.io/0de1024-quick-story-overview.png">
   Credit to the original tweet [here](https://x.com/devrelius/status/1812865477657694513).
 </Image>
+-e 
+
 ---
 title: Quickstart
 excerpt: Start building on Story quickly.
@@ -348,6 +354,8 @@ Our smart contract tutorial will show you exactly how to claim royalty from a ch
 > 📘 Learn More
 >
 > For more information on royalty and how it functions, check out the [💸 Royalty Module](doc:royalty-module).
+-e 
+
 ---
 title: 🛠️ TypeScript SDK Guide
 excerpt: For TypeScript developers who want to build with Story.
@@ -408,7 +416,9 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 - <span style={{color: "#1971c2"}}>Blue</span>: [Mint a License Token](doc:mint-a-license)
 - <span style={{color: "#f08c00"}}>Orange</span>: [Register a Derivative](doc:register-a-derivative)
 
-You can also check out [Pay an IPA](doc:pay-ipa) and [Claim Revenue](doc:claim-revenue) to interact with the [💸 Royalty Module](doc:royalty-module) with the SDK.---
+You can also check out [Pay an IPA](doc:pay-ipa) and [Claim Revenue](doc:claim-revenue) to interact with the [💸 Royalty Module](doc:royalty-module) with the SDK.-e 
+
+---
 title: Register an IP Asset
 excerpt: Learn how to Register an NFT as an IP Asset in TypeScript.
 deprecated: false
@@ -569,7 +579,9 @@ export type RegisterIpResponse = {
   ipId?: Address;
   tokenId?: bigint;
 };
-```---
+```-e 
+
+---
 title: Mint a License Token
 excerpt: Learn how to mint a License Token from an IP Asset on TypeScript.
 deprecated: false
@@ -634,7 +646,9 @@ export type MintLicenseTokensResponse = {
 };
 ```
 
-Setting `waitForTransaction: true` in the transaction options will return the `licenseTokenId` of the newly minted license(s).---
+Setting `waitForTransaction: true` in the transaction options will return the `licenseTokenId` of the newly minted license(s).-e 
+
+---
 title: Pay an IPA
 excerpt: Learn how to pay an IP Asset in TypeScript.
 deprecated: false
@@ -737,7 +751,9 @@ export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
   encodedTxData?: EncodedTxData;
 };
-```---
+```-e 
+
+---
 title: Register a Derivative
 excerpt: >-
   Learn how to register a derivative/remix IP Asset as a child of another in
@@ -1056,6 +1072,8 @@ export type RegisterIpResponse = {
   tokenId?: bigint;
 };
 ```
+-e 
+
 ---
 title: Attach Terms to an IPA
 excerpt: Learn how to Attach License Terms to an IP Asset in TypeScript.
@@ -1291,7 +1309,9 @@ export type MintAndRegisterIpAssetWithPilTermsResponse = {
   tokenId?: bigint;
   licenseTermsIds?: bigint[];
 };
-```---
+```-e 
+
+---
 title: Claim Revenue
 excerpt: Learn how to claim due revenue from a child IP Asset in TypeScript.
 deprecated: false
@@ -1348,6 +1368,8 @@ export type TransferToVaultAndSnapshotAndClaimByTokenBatchResponse = {
   amountsClaimed?: bigint;
 };
 ```
+-e 
+
 ---
 title: TypeScript SDK Setup
 excerpt: ''
@@ -1427,7 +1449,9 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 
 * [Dynamic Setup Tutorial](doc:dynamic-setup)
 * [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
-* [WalletConnect Setup Tutorial](doc:walletconnect-setup)---
+* [WalletConnect Setup Tutorial](doc:walletconnect-setup)-e 
+
+---
 title: RainbowKit Setup
 excerpt: Learn how to setup RainbowKit Wallet in your Story DApp.
 deprecated: false
@@ -1562,7 +1586,9 @@ export default function TestComponent() {
     {/* */} 
   )
 }
-```---
+```-e 
+
+---
 title: Dynamic Setup
 excerpt: Learn how to setup Dynamic Wallet in your Story DApp.
 deprecated: false
@@ -1709,7 +1735,9 @@ export default function TestComponent() {
     {/* */} 
   )
 }
-```---
+```-e 
+
+---
 title: Reown (WalletConnect) Setup
 excerpt: Learn how to setup Reown (WalletConnect) in your Story DApp.
 deprecated: false
@@ -1895,7 +1923,9 @@ export default function TestComponent() {
     {/* */} 
   )
 }
-```---
+```-e 
+
+---
 title: Register License Terms
 excerpt: Learn how to register new License Terms in TypeScript.
 deprecated: false
@@ -2116,6 +2146,8 @@ export type RegisterPILResponse = {
 ```
 
 Setting `waitForTransaction: true` in the transaction options will return the `licenseTermsId` value.
+-e 
+
 ---
 title: SPG Functions
 excerpt: ''
@@ -2260,6 +2292,8 @@ register_derivative_ip_response = {
     'ipId': str
 }
 ```
+-e 
+
 ---
 title: 🐍 Python SDK
 excerpt: For Python developers who want to build with Story.
@@ -2281,7 +2315,9 @@ Along the way, you will learn how to:
 * [Python SDK Setup](doc:python-sdk-setup)
 * [Register PIL Terms](doc:register-pil-terms-python)
 * [Attach License Terms to an IP Asset](doc:attach-license-terms-to-an-ip-asset-python)
-* [Mint a License Token](doc:mint-a-license-token-python)---
+* [Mint a License Token](doc:mint-a-license-token-python)-e 
+
+---
 title: Register PIL Terms in Python
 excerpt: ''
 deprecated: false
@@ -2423,7 +2459,9 @@ RegisterPILResponse = {
     'txHash': str,
     'licenseTermsId': int
 }
-```---
+```-e 
+
+---
 title: Mint a License Token in Python
 excerpt: ''
 deprecated: false
@@ -2486,7 +2524,9 @@ MintLicenseTokensResponse = {
     'txHash': str,
     'licenseTokenIds': list
 }
-```---
+```-e 
+
+---
 title: Python SDK Setup
 excerpt: ''
 deprecated: false
@@ -2561,7 +2601,9 @@ story_client = StoryClient(web3, account, 1516)
 
 ## Set Up JSON-RPC Account (ex. Metamask)
 
-The second way is to delay signing to a JSON-RPC account like Metamask. This requires creating a request that allows communication between your frontend and your Python backend. You can then use the account obtained from this request in a manner similar to the private key setup described above.---
+The second way is to delay signing to a JSON-RPC account like Metamask. This requires creating a request that allows communication between your frontend and your Python backend. You can then use the account obtained from this request in a manner similar to the private key setup described above.-e 
+
+---
 title: Collect & Claim Royalty in Python
 excerpt: ''
 deprecated: false
@@ -2659,6 +2701,8 @@ ClaimRevenueResponse = {
     'claimableToken': int
 }
 ```
+-e 
+
 ---
 title: Register an IP Asset in Python
 excerpt: ''
@@ -2722,6 +2766,8 @@ After we run the above code, the console output will look like:
 Root IPA created at transaction hash 0xa3e1caa7c2124b1550d459abc739291cb1be77ac73b99c097707878ac4ef57ae,
 IPA ID: 0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721
 ```
+-e 
+
 ---
 title: Register an IPA as a Derivative in Python
 excerpt: ''
@@ -2813,6 +2859,8 @@ RegisterDerivativeResponse = {
     'txHash': str
 }
 ```
+-e 
+
 ---
 title: Attach Terms to an IP Asset in Python
 excerpt: ''
@@ -2930,7 +2978,9 @@ MintAndRegisterIpAssetWithPilTermsResponse = {
     'tokenId': int,
     'licenseTermsIds': list
 }
-```---
+```-e 
+
+---
 title: Releases Page
 excerpt: ''
 deprecated: false
@@ -2989,6 +3039,8 @@ next:
     </tr>
   </tbody>
 </Table>
+-e 
+
 ---
 title: Training Data
 excerpt: Learn how to license and protect DALL·E AI-Generated images on Story.
@@ -3259,7 +3311,9 @@ console.log(
 );
 ```
 
-## 7. Done!---
+## 7. Done!-e 
+
+---
 title: 📘 Tutorials
 excerpt: A list of follow-along developer tutorials.
 deprecated: false
@@ -3288,7 +3342,9 @@ next:
 
 * [Protect DALL·E AI-Generated Images](doc:protect-dalle-ai-generated-images)
 * [Register & Monetize Stability Images](doc:register-stability-images)
-* [Finetune Images on Story](doc:finetune-images)---
+* [Finetune Images on Story](doc:finetune-images)-e 
+
+---
 title: Register & Monetize Stability Images
 excerpt: >-
   Learn how to register, protect, and monetize Stability AI-Generated images on
@@ -3728,7 +3784,9 @@ main();
 
 ## 9. Done!
 
-Congratulations! Now your image is registered on Story with commercial license terms.---
+Congratulations! Now your image is registered on Story with commercial license terms.-e 
+
+---
 title: How to Register Music on Story
 excerpt: >-
   Learn how to properly register music on Story as an IP Asset using the
@@ -3827,7 +3885,9 @@ const nftMetadata = {
 
 When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x4044731f1F7265FCDf11ED553d9BB4cBD21eD2D0) on our explorer.
 
-You can see the explorer recognizes the metadata format, and you can play the song directly on the page!---
+You can see the explorer recognizes the metadata format, and you can play the song directly on the page!-e 
+
+---
 title: Finetune Images on Story
 excerpt: >-
   Learn how to use the FLUX Finetuning API to finetune images and then register
@@ -4376,7 +4436,9 @@ async function runInferenceAndRegister() {
 runInferenceAndRegister();
 ```
 
-## 9. Done!---
+## 9. Done!-e 
+
+---
 title: How to Register IP on Story
 excerpt: Learn how to add IP & NFT metadata to an IP Asset using the Typescript SDK.
 deprecated: false
@@ -4980,7 +5042,9 @@ contract IPARegistrar {
         );
     }
 }
-```---
+```-e 
+
+---
 title: How to Dispute an IP on Story
 excerpt: Learn how to dispute an IP on Story.
 deprecated: false
@@ -5090,7 +5154,9 @@ main();
 
 # Using a Smart Contract
 
-> 🚧 Coming soon...---
+> 🚧 Coming soon...-e 
+
+---
 title: How to Tip an IP
 excerpt: Learn how to tip an IP Asset using the SDK and Smart Contracts.
 deprecated: false
@@ -5244,7 +5310,9 @@ main();
 
 > 🚧 Not Completed
 >
-> A full written tutorial is coming soon. For now, you can see a code example at the bottom of [this file in our boilerplate](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/5_Royalty.t.sol).---
+> A full written tutorial is coming soon. For now, you can see a code example at the bottom of [this file in our boilerplate](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/5_Royalty.t.sol).-e 
+
+---
 title: Protect DALL·E AI-Generated Images
 excerpt: Learn how to license and protect DALL·E AI-Generated images on Story.
 deprecated: false
@@ -5551,7 +5619,9 @@ async function main() {
 main();
 ```
 
-## 7. Done!---
+## 7. Done!-e 
+
+---
 title: ⚙️ Smart Contracts
 excerpt: For smart contract developers who wish to build on top of Story directly.
 deprecated: false
@@ -5611,6 +5681,8 @@ forge script <script_file> \
   --verifier blockscout \
   --verifier-url <blockscout_homepage_explorer_url>/api/
 ```
+-e 
+
 ---
 title: Register an NFT as an IP Asset
 excerpt: ''
@@ -5768,6 +5840,8 @@ To test this out, simply run the following command:
 ```shell
 forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
 ```
+-e 
+
 ---
 title: Remix an IP Asset
 excerpt: ''
@@ -5911,6 +5985,8 @@ To test this out, simply run the following command:
 ```shell
 forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/4_IPARemix.t.sol
 ```
+-e 
+
 ---
 title: Using an Example
 excerpt: ''
@@ -6221,6 +6297,8 @@ forge create \
 If everything worked correctly, you should see something like `Deployed to: 0xfb0923D531C1ca54AB9ee10CB8364b23d0C7F47d` in the console. Paste that address into [the explorer](https://odyssey.storyscan.xyz/) and see your verified contract!
 
 # Great job! :)
+-e 
+
 ---
 title: Claiming Royalty
 excerpt: ''
@@ -6398,6 +6476,8 @@ To test this out, simply run the following command:
 ```shell
 forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/5_Royalty.t.sol
 ```
+-e 
+
 ---
 title: Mint NFTs as IP Assets using the Story Protocol Gateway (SPG)
 excerpt: ''
@@ -6632,6 +6712,8 @@ Let us examine the `_getOrCreateCustomCollection()` internal function we wrote a
 For the setting, `start` refers to when minting can begin for the collection, with `end` referring to the when it will terminate (0 means it will run indefinitely until the max supply is reached). In addition, we specify the name, symbol, and maximum supply. The metadata provider is an abstraction used by SPG ERC-721s for metadata rendering. You may choose to implement your own, as long as it conforms to the `IERC721MetadataProvider` interface, but we recommend simply passing in the Story Protocol default metadata provider (*refer to the deployments document for what this address is*).
 
 *Note: For version`v0.1-beta`, the SPG only supports one type of collection, the `SP_DEFAULT_COLLECTION`, and only supports public mints by default.*
+-e 
+
 ---
 title: Mint a License Token from an IP Asset
 excerpt: ''
@@ -6752,6 +6834,8 @@ To test this out, simply run the following command:
 ```shell
 forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/3_LicenseToken.t.sol
 ```
+-e 
+
 ---
 title: Register an NFT as an IP Asset
 excerpt: ''
@@ -6931,6 +7015,8 @@ contract IPARegistrarTest is Test {
 ```
 
 Using these primitives around delegation can allow you to build powerful apps that simplifies the UX around user-managed NFT registration. Again, it is important to note that for all other module interactions, delegation requires a very different process, which you can read in [Delegate IPA calls](doc:granting-ip-permissions-to-a-relayer-or-3rd-party-module).
+-e 
+
 ---
 title: Attach License Terms to an IP Asset
 excerpt: ''
@@ -7051,6 +7137,8 @@ To test this out, simply run the following command:
 ```shell
 forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
 ```
+-e 
+
 ---
 title: Setup Your Own Project
 excerpt: ''
@@ -7123,6 +7211,8 @@ ds-test/=node_modules/ds-test/src/
 ```
 
  Now we are ready to build a simple test registration contract.
+-e 
+
 ---
 title: Register License Terms
 excerpt: ''
@@ -7232,6 +7322,8 @@ To test this out, simply run the following command:
 ```shell
 forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/1_LicenseTerms.t.sol
 ```
+-e 
+
 ---
 title: Build a periphery contract
 excerpt: ''
@@ -7344,6 +7436,8 @@ For your Frontend to interact with the protocol, it must first get approval to d
   * A user who wishes to use your contract for registration simply has to call `setApprovalForAll` on the `ipAssetRegistry` contract, which grants your contract the permissions to directly register on their behalf
 * **Direct approval for registration by the Story Protocol DAO**
   * This applies for all IP workloads that extend outside of the simple process of registration. To be granted approval, you must first make a proposal to XXX, which will then grant your contract permissions via the access controller.
+-e 
+
 ---
 title: 🐍 Python SDK (COPY)
 excerpt: For Python developers who want to build with Story.
@@ -7370,7 +7464,9 @@ Along the way, you will learn how to:
 * [Attach License Terms to an IP Asset](doc:attach-license-terms-to-an-ip-asset-python)
 * [Mint a License Token](doc:mint-a-license-token-python)
 * [Register an IPA as a Derivative](doc:register-an-ipa-as-a-derivative-python)
-* [Collect & Claim Royalty](doc:collect-claim-royalty-python)---
+* [Collect & Claim Royalty](doc:collect-claim-royalty-python)-e 
+
+---
 title: Deployed Smart Contracts
 excerpt: ''
 deprecated: false
@@ -7439,7 +7535,9 @@ next:
 ## Misc
 
 * **Multicall3**: 0xcA11bde05977b3631167028862bE2a173976CA11
-* **Default License Terms ID** (Non-Commercial Social Remixing): 1---
+* **Default License Terms ID** (Non-Commercial Social Remixing): 1-e 
+
+---
 title: Helpful Resources
 excerpt: ''
 deprecated: false
@@ -7467,7 +7565,9 @@ Learn the TypeScript SDK by running extremely straightforward & easy scripts con
 
 ## :building_construction: <a href="https://storykit.vercel.app/" target="_blank">StoryKit</a>
 
-Open-source React widgets to interact with Story Protocol.---
+Open-source React widgets to interact with Story Protocol.-e 
+
+---
 title: Version Matrix
 excerpt: ''
 deprecated: false
@@ -7544,6 +7644,8 @@ A version matrix showing the **currently available protocol versions** for diffe
 </Table>
 
 *v1.3 of the protocol is being deployed soon. Once deployed, SDK and API will support after.*
+-e 
+
 ---
 title: ⚛️ React SDK
 excerpt: For React developers who want to build with Story.
@@ -7573,6 +7675,8 @@ Along the way, you will learn how to:
 * [Mint a License Token in React](doc:mint-a-license-token-react)
 * [Register an IPA as a Derivative in React](doc:register-an-ipa-as-a-derivative-react)
 * [Collect & Claim Royalty in React](doc:collect-claim-royalty-react)
+-e 
+
 ---
 title: Mint a License Token in React
 excerpt: ''
@@ -7649,6 +7753,8 @@ export type MintLicenseTokensResponse = {
 ```
 
 Setting `waitForTransaction: true` in the transaction options will return the `licenseTokenId` of the newly minted license(s).
+-e 
+
 ---
 title: Attach Terms to an IP Asset in React
 excerpt: ''
@@ -7713,6 +7819,8 @@ export type AttachLicenseTermsResponse = {
 ```
 
 *Note:[Non-Commercial Social Remixing](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) License Terms are attached **by default** to every IP Asset.*
+-e 
+
 ---
 title: React SDK Setup
 excerpt: ''
@@ -7746,6 +7854,8 @@ You can set up the `StoryProvider`, which is needed for the React SDK, any way y
 ## [Wagmi + RainbowKit Setup](doc:wagmi-rainbowkit-setup)
 
 ## [Wagmi + WalletConnect Setup](doc:wagmi-walletconnect-setup)
+-e 
+
 ---
 title: Wagmi + WalletConnect Setup
 excerpt: ''
@@ -7939,6 +8049,8 @@ export default async function TestComponent() {
   )
 }
 ```
+-e 
+
 ---
 title: Wagmi + RainbowKit Setup
 excerpt: ''
@@ -8100,6 +8212,8 @@ export default async function TestComponent() {
   )
 }
 ```
+-e 
+
 ---
 title: Wagmi + Dynamic Setup
 excerpt: ''
@@ -8295,6 +8409,8 @@ export default async function TestComponent() {
   )
 }
 ```
+-e 
+
 ---
 title: Register an IP Asset in React
 excerpt: ''
@@ -8392,6 +8508,8 @@ IPA ID: 0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721
 # Create an NFT and Register it as an IP Asset
 
 To mint an NFT and register it as an IP Asset all in one transaction, you can use the `mintAndRegisterIpAssetWithPilTerms` function provided by the SPG [here](https://docs.story.foundation/docs/spg-functions-react#mint--register--metadata--attach-terms).
+-e 
+
 ---
 title: Register an IPA as a Derivative in React
 excerpt: ''
@@ -8512,6 +8630,8 @@ export type RegisterDerivativeResponse = {
 # Register and Make Derivative
 
 To register an IP Asset and link it as a derivative of another IP Asset all in one transaction, you can use the `registerDerivativeIp` function provided by the SPG [here](https://docs.story.foundation/docs/spg-functions-react#register--derivative). If you also want to mint an NFT in the same transaction (you don't have one to register already), you can also use the `mintAndRegisterIpAndMakeDerivative` function provided by the SPG [here](https://docs.story.foundation/docs/spg-functions#mint--register--derivative).
+-e 
+
 ---
 title: Register PIL Terms in React
 excerpt: ''
@@ -8669,6 +8789,8 @@ export type RegisterPILResponse = {
 ```
 
 Setting `waitForTransaction: true` in the transaction options will return the `licenseTermsId` value.
+-e 
+
 ---
 title: Collect & Claim Royalty in React
 excerpt: ''
@@ -8814,6 +8936,8 @@ export type ClaimRevenueResponse = {
 ```
 
 Setting `waitForTransaction: true` in the transaction options will return the `claimableToken`.
+-e 
+
 ---
 title: SPG Functions in React
 excerpt: ''
@@ -9122,6 +9246,8 @@ export type RegisterIpAndMakeDerivativeResponse = {
   ipId?: Address;
 };
 ```
+-e 
+
 ---
 title: 📦 SPG
 excerpt: ''
@@ -9166,7 +9292,9 @@ As mentioned above, there are many different functions we have created for you t
 
 Although the SPG contains certain functions like `mintAndRegisterIpAndAttachPILTerms`, `registerIpAndAttachPILTerms`, and a bunch more, it would be tedious for us to continually update the contract to account for every single combination of possible interactions with an IP Asset.
 
-Instead, we have allowed for a "Multicall" mechanism where you can batch transactions how you like. For more info, see [Batch Function Calls](doc:batch-spg-function-calls).---
+Instead, we have allowed for a "Multicall" mechanism where you can batch transactions how you like. For more info, see [Batch Function Calls](doc:batch-spg-function-calls).-e 
+
+---
 title: Batch Function Calls
 excerpt: ''
 deprecated: false
@@ -9400,6 +9528,8 @@ interface IMulticall3 {
   function tryBlockAndAggregate(bool requireSuccess, Call[] calldata calls) external payable returns (uint256 blockNumber, bytes32 blockHash, Result[] memory returnData);
 }
 ```
+-e 
+
 ---
 title: Liquid Absolute Percentage (LAP)
 excerpt: ''
@@ -9457,7 +9587,9 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
    3. 850k USDC are claimed by IPA 3 which holds 100% RT3\
       Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.
 
-![](https://files.readme.io/cdc8c8569c1cb6106542c7f663ee06059a28105f5b32671dfa77331071f0d128-image.png)---
+![](https://files.readme.io/cdc8c8569c1cb6106542c7f663ee06059a28105f5b32671dfa77331071f0d128-image.png)-e 
+
+---
 title: 💸 Royalty Module
 excerpt: Learn how revenue flows between parent and child IP on Story.
 deprecated: false
@@ -9545,7 +9677,9 @@ In the image below there is an example of a one million USDC payment made to IP2
 
 The derivative chain can assume multiple configurations.
 
-Each IP Asset is restricted to a total royalty % of 100%. It will revert when minting a license that would make the IPA reserve more than 100% of its royalty tokens for ancestors, since this would make no sense.---
+Each IP Asset is restricted to a total royalty % of 100%. It will revert when minting a license that would make the IPA reserve more than 100% of its royalty tokens for ancestors, since this would make no sense.-e 
+
+---
 title: External Royalty Policies
 excerpt: ''
 deprecated: false
@@ -9621,7 +9755,9 @@ From the 1M USDC inflow to IP3 Royalty Vault:
 
 * 500k USDC are claimed by the IP Account 3 which had 50% of RT3 token supply
 * 100k USDC are claimed by the IP1 Royalty Vault which has 10% of RT3 token supply via `claimByTokenBatchAsSelf`  function
-* 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.---
+* 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.-e 
+
+---
 title: Liquid Relative Percentage (LRP)
 excerpt: ''
 deprecated: false
@@ -9682,7 +9818,9 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
    3. 900k USDC are claimed by IPA 3 which holds 100% RT3\
       Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.
 
-![](https://files.readme.io/b39ed27190ace760f4b8cb788fdf5ad28e93e3d3f3a5c5b23b122c9a812564bd-image.png)---
+![](https://files.readme.io/b39ed27190ace760f4b8cb788fdf5ad28e93e3d3f3a5c5b23b122c9a812564bd-image.png)-e 
+
+---
 title: IP Royalty Vault
 excerpt: ''
 deprecated: false
@@ -9750,7 +9888,9 @@ Imagine we have a scenario where IPA4 tips IPA3 1M USDC by calling `payRoyaltyOn
 
 Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For this to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. This can be particularly useful when used together with external royalty policies.
 
-Vaults can only claim from other vaults if those other vaults belong to IPs in the same derivative chain. If a vault owns royalty tokens from an IP but it is not an ancestor of that IP, it is not possible to claim rewards with those royalty tokens.---
+Vaults can only claim from other vaults if those other vaults belong to IPs in the same derivative chain. If a vault owns royalty tokens from an IP but it is not an ancestor of that IP, it is not possible to claim rewards with those royalty tokens.-e 
+
+---
 title: 🧱 Modules
 excerpt: ''
 deprecated: false
@@ -9783,6 +9923,8 @@ Responsible for handling the dispute of wrongfully registered or misbehaved IP A
 ## [👥 Grouping Module](doc:grouping-module)
 
 Responsible for handling groups of IPAs.
+-e 
+
 ---
 title: Base Module
 excerpt: ''
@@ -9826,6 +9968,8 @@ function supportsInterface(bytes4 interfaceId) public view virtual override(ERC1
     return interfaceId == type(IModule).interfaceId || super.supportsInterface(interfaceId);
 }
 ```
+-e 
+
 ---
 title: Hooks
 excerpt: Introduction of hooks in Story Protocol
@@ -9937,6 +10081,8 @@ Using The `TokenGatedHook` as `commercializerChecker` with `LicensingModule` for
         licensingModule.addPolicyToIp(ipId1, policyId);
         licensingModule.mintLicense(policyId, ipId1, 1, licenseHolder, "");
 ```
+-e 
+
 ---
 title: View Module
 excerpt: ''
@@ -9966,6 +10112,8 @@ The View Module is uniquely tailored to aggregate data from multiple namespaces 
 * **Core Metadata Immutability:**Utilizes CoreMetadataModule to ensure the immutability of core IP metadata.
 * **User-Defined Metadata:** Employs UserMetadataModule for new metadata additions and UserMetadataViewModule for reading and showcasing data from Core and User Metadata.
 * **Metadata Upgrade/Migration:** Focuses on seamless data evolution with MetadataModuleV2 and MetadataViewModuleV2, combining information from original and upgraded metadata sources without the need for migration.
+-e 
+
 ---
 title: How to Create and Register Modules
 excerpt: ''
@@ -10061,6 +10209,8 @@ To get your module verified and listed in this repository, please follow these s
 4. **Await Verification:** After your PR is submitted, it will be reviewed. Upon approval and merging of your PR, your module will be officially registered and recognized as safe for use within the StoryProtocol community.
 
 We look forward to seeing your contributions and expanding the StoryProtocol module ecosystem!
+-e 
+
 ---
 title: ❓ Concepts FAQ
 excerpt: Common technical questions related to our protocol documentation.
@@ -10156,6 +10306,8 @@ next:
     </tr>
   </tbody>
 </Table>
+-e 
+
 ---
 title: 👥 Grouping Module
 excerpt: ''
@@ -10224,7 +10376,9 @@ If any of these happen, you must create a new group if you wish to add/remove me
 >
 > Let's say you have an AI bot that uses training data to continuously learn and produce better content. The training data is a Group IPA that is the root, and the AI bot is a derivative IPA of the training data. And any time the AI bot gets paid, the revenue flows back to the training data as revenue.
 >
-> Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.---
+> Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.-e 
+
+---
 title: ❌ Dispute Module
 excerpt: ''
 deprecated: false
@@ -10383,7 +10537,9 @@ If no address chooses to resolve, then the tag that was applied from the parent 
 
 ### Cancel Dispute
 
-In a case where a dispute was raised but the matter has been resolved before the dispute judgment, the dispute initiator can cancel the dispute. However, depending on the conditions of each arbitration policy, there may be non-refundable fees that are not recouped on cancellation.---
+In a case where a dispute was raised but the matter has been resolved before the dispute judgment, the dispute initiator can cancel the dispute. However, depending on the conditions of each arbitration policy, there may be non-refundable fees that are not recouped on cancellation.-e 
+
+---
 title: UMA Arbitration Policy
 excerpt: ''
 deprecated: false
@@ -10548,7 +10704,9 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
 > 📘 Note
 >
-> As the process is still experimental, we can expect iteration and fine-tuning on the contents/formats of how the evidence should be submitted.---
+> As the process is still experimental, we can expect iteration and fine-tuning on the contents/formats of how the evidence should be submitted.-e 
+
+---
 title: 🔒 Access Controller
 excerpt: ''
 deprecated: false
@@ -10848,6 +11006,8 @@ contract MockRegistry {
 > 📘 The IPAccount's permissions will be revoked upon transfer of ownership.
 >
 > The permissions associated with the IPAccount are exclusively linked to its current owner. When the ownership of the IPAccount is transferred to a new individual, the existing permissions granted to the previous owner are automatically revoked. This ensures that only the current, legitimate owner has access to these permissions. If, in the future, the IPAccount ownership is transferred back to the original owner, the permissions that were initially revoked will be reinstated, restoring the original owner's access and control.
+-e 
+
 ---
 title: 📜 Licensing Module
 excerpt: Learn about creating & attaching real legal license to your IP on Story.
@@ -10894,6 +11054,8 @@ The following document will walk through all of the major components of the Lice
 * [License Token](doc:license-token)
 * [License Registry](doc:license-registry)
 * [License Config / Hook](doc:license-config-hook)
+-e 
+
 ---
 title: License Token
 excerpt: >-
@@ -10946,7 +11108,9 @@ A License Token is burned when it is used to register another IP as a derivative
 
 You can also register a derivative directly, without the need for a License Token. Remember that if License Terms are attached to an IP Asset it is public to mint the License Token anyway, so this is simply a convenient way to go about it, thus skipping the middle step of minting a License Token.
 
-<Image align="center" src="https://files.readme.io/02181c4-Screenshot_2024-05-07_at_18.51.15.png" />---
+<Image align="center" src="https://files.readme.io/02181c4-Screenshot_2024-05-07_at_18.51.15.png" />-e 
+
+---
 title: License Config / Hook
 excerpt: >-
   An optional hook that can be attached to an entire IP Asset or specific
@@ -11115,6 +11279,8 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
 
   </tbody>
 </Table>
+-e 
+
 ---
 title: License Template
 excerpt: >-
@@ -11163,6 +11329,8 @@ License Templates are responsible for:
 ## Create Your Own Template
 
 You can create your own License Template (like the PIL), but it must be approved by the Story team to be fully embedded into the protocol.
+-e 
+
 ---
 title: License Terms
 excerpt: >-
@@ -11209,7 +11377,9 @@ On the other hand, derivative IP Assets inherit their License Terms from the par
 
 ## Expiration
 
-License Terms support an `expiration` time. Once License Terms expire, any derivatives that abide by that license will no longer be able to generate revenue or create further derivatives. If an IP Asset is a derivative of multiple parents, it will expire when the soonest expiration time between the two parents is reached.---
+License Terms support an `expiration` time. Once License Terms expire, any derivatives that abide by that license will no longer be able to generate revenue or create further derivatives. If an IP Asset is a derivative of multiple parents, it will expire when the soonest expiration time between the two parents is reached.-e 
+
+---
 title: 🔍 Overview
 excerpt: ''
 deprecated: false
@@ -11262,6 +11432,8 @@ The various registries on Story function as a primary directory/storage for the 
 The PIL is a real, off-chain legal contract that defines certain **License Terms** for how an IP Asset can be legally licensed. For example, how an IP Asset is commercialized or remixed, and who is allowed to do that and under what conditions.
 
 We have mapped these same terms on-chain so you can easily attach terms to your IP Asset for others to seamlessly and transparently license your IP.
+-e 
+
 ---
 title: 🧩 IP Asset
 excerpt: ''
@@ -11329,7 +11501,9 @@ struct IPMetadata {
 * `ipMetadataURI` - a URI pointing to a JSON object that follows the [IPA Metadata Standard](doc:ipa-metadata-standard)
 * `ipMetadataHash` - hash of the `ipMetadataURI` JSON object
 * `nftMetadataURI` - a URI pointing to a JSON object that follows the [Standard ERC721 NFT Metadata](https://github.com/ethereum/ercs/blob/master/ERCS/erc-721.md)
-* `nftMetadataHash` - hash the `nftMetadataURI` JSON object---
+* `nftMetadataHash` - hash the `nftMetadataURI` JSON object-e 
+
+---
 title: IP Modifications & Restrictions
 deprecated: false
 exerpt: Learn about the modifications and restrictions for IP Assets.
@@ -11455,7 +11629,9 @@ In addition, [Group IPAs](doc:grouping-module) are subject to the following addi
 | Action                       | Restriction                                                                                                                                                                        |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Add IP Asset to a Group      | You can only add an IP Asset to a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it.      |
-| Remove IP Asset from a Group | You can only remove an IP Asset from a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it. |---
+| Remove IP Asset from a Group | You can only remove an IP Asset from a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it. |-e 
+
+---
 title: IPA Metadata Standard
 excerpt: ''
 deprecated: false
@@ -11986,7 +12162,9 @@ The different relationship types that can be used for the `relationships` attrib
     }
   ]
 }
-```---
+```-e 
+
+---
 title: 💊 Programmable IP License (PIL)
 excerpt: Story Programmable IP License
 deprecated: false
@@ -12038,7 +12216,9 @@ We are excited to collect feedback and collaborate with IP owners to unlock the 
   <Card title="PIL Legal Text" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
     Check out the actual PIL legal text. It is very human-readable for a legal text!
   </Card>
-</Cards>---
+</Cards>-e 
+
+---
 title: PIL Terms
 excerpt: ''
 deprecated: false
@@ -12492,7 +12672,9 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       </td>
     </tr>
   </tbody>
-</Table>---
+</Table>-e 
+
+---
 title: PIL Flavors (examples)
 excerpt: ''
 deprecated: false
@@ -12836,7 +13018,9 @@ Someone registers their Azuki on Story. By default, that IP Asset has Non-Commer
 
 The owner of IPA1 then decides that others can create derivatives of their work and commercialize them, but they must pay a 10 USDC minting fee and share 10% of all revenue earned. So, someone wants to commercialize IPA1 by putting it on a t-shirt. They pay the 10 USDC minting fee to get a License Token and burn it to create their own derivative, which changes the background color to red. They then put the remixed image on a t-shirt and sell it. 10% of revenue earned by that t-shirt must be sent on-chain to IPA1.
 
-A third person wants to commercialize the remix by putting it in a TV advertisement, but they want to change the hair color to white. So, they pay a 10 USDC minting fee (of which, 1 USDC gets sent back to IPA1) to create their own derivative. They then put the remixed image in a TV ad. 10% of revenue earned by that t-shirt must be sent on-chain to IPA4, of which 10% will be distributed back to IPA1.---
+A third person wants to commercialize the remix by putting it in a TV advertisement, but they want to change the hair color to white. So, they pay a 10 USDC minting fee (of which, 1 USDC gets sent back to IPA1) to create their own derivative. They then put the remixed image in a TV ad. 10% of revenue earned by that t-shirt must be sent on-chain to IPA4, of which 10% will be distributed back to IPA1.-e 
+
+---
 title: 🗂️ Registry
 excerpt: ''
 deprecated: false
@@ -12871,6 +13055,8 @@ Stores all license-related states within the protocol, like attaching License Te
 ## [Module Registry](doc:module-registry)
 
 Maintains and updates the global list of modules and hooks registered permissionlessly on Story
+-e 
+
 ---
 title: License Registry
 excerpt: ''
@@ -12925,6 +13111,8 @@ function registerDerivativeIp(address childIpId, address[] calldata parentIpIds,
 ```
 
 This function allows you to register an IP Asset as a derivative of another IP Asset, unlocking things like claimable royalty flows from the [Royalty Module](doc:royalty-module).
+-e 
+
 ---
 title: Group IP Asset Registry
 excerpt: ''
@@ -12968,6 +13156,8 @@ function removeGroupMember(address groupId, address[] calldata ipIds) external o
 ```
 
 Removes registered IPAs from a Group IPA.
+-e 
+
 ---
 title: Module Registry
 excerpt: ''
@@ -12987,6 +13177,8 @@ next:
 The Module Registry maintains and updates the global list of modules and hooks registered permissionlessly on Story. It can enable/disable modules on a per-IP Account basis for granular control over each IP Account's interaction with modules and hooks.
 
 **This module is likely not very important for you** unless you wish to dive into creating/reading modules.
+-e 
+
 ---
 title: IP Asset Registry
 excerpt: ''
@@ -13012,6 +13204,8 @@ function register(uint256 chainid, address tokenContract, uint256 tokenId) exter
 ```
 
 This function registers an ERC-721 NFT as a new IP Asset on Story.
+-e 
+
 ---
 title: ⚙️ IP Account
 excerpt: ''
@@ -13044,6 +13238,8 @@ An IP Account mainly does two things:
 ## `execute` and `executeWithSig`
 
 A key feature of IP Account is the generic `execute()` function, which allows calling arbitrary modules within Story via encoded bytes data (thus extensible for future modules). Additionally, there is a `executeWithSig()` function that enables users to sign transactions and have others execute on their behalf for seamless UX.
+-e 
+
 ---
 title: Troubleshooting
 excerpt: ''
@@ -13460,6 +13656,8 @@ Solution:
 ```bash
 iptables -I INPUT -s localhost -j ACCEPT 
 ```
+-e 
+
 ---
 title: Story Network Guide
 excerpt: ''
@@ -13668,7 +13866,9 @@ Metrics:
 * [Wallet Setup](doc:odyssey-wallet-setup)
 * [Node Setup](doc:odyssey-node-setup)
 * [Validator Operations](doc:odyssey-validator-operations)
-* [Tokenomics & Staking](doc:tokenomics-staking)---
+* [Tokenomics & Staking](doc:tokenomics-staking)-e 
+
+---
 title: Node Setup
 excerpt: ''
 deprecated: false
@@ -13964,7 +14164,9 @@ If you would like to check the status of `story` while it is running, it is help
 
 To manage consensus client upgrades more easily, especially for hard forks, we recommend using [Cosmovisor](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html), which allows you to automate the process of upgrading client binaries without having to restart your client.
 
-To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a  guide to help you with the setup of automated upgrades with Cosmovisor.---
+To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a  guide to help you with the setup of automated upgrades with Cosmovisor.-e 
+
+---
 title: Wallet Setup
 excerpt: ''
 deprecated: false
@@ -13999,7 +14201,9 @@ Go to our [faucet](https://odyssey.faucet.story.foundation)  and click "Add Stor
 
 4. Once the network is successfully added, you'll see Story Odyssey Testnet displayed at the top of your MetaMask, as highlighted in the image. This indicates that you are now connected to the newly added network. You can view your token balance, transactions, and other details specific to this network.
 
-<Image align="center" src="https://files.readme.io/8be24335cf8efc077bc5deec303faec30ccf9d13dc4d7d14f360a159696626c6-newtype_2024-11-15_at_19.47.07.png" />---
+<Image align="center" src="https://files.readme.io/8be24335cf8efc077bc5deec303faec30ccf9d13dc4d7d14f360a159696626c6-newtype_2024-11-15_at_19.47.07.png" />-e 
+
+---
 title: Tokenomics & Staking
 excerpt: ''
 deprecated: false
@@ -14608,7 +14812,9 @@ emit RemoveOperator({
 Verification:
 
 1. Verify sender is the delegator
-2. Verify key and address is correctly formatted---
+2. Verify key and address is correctly formatted-e 
+
+---
 title: Validator Operations
 excerpt: ''
 deprecated: false
@@ -14926,6 +15132,8 @@ rm ~/.story/story/config/priv_validator_key.json
 ***IMPORTANT: Before you proceed, make sure you STOPPED your validator on the old server and do not start it again there.***
 
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
+-e 
+
 ---
 title: Network FAQ
 excerpt: Common questions related to our L1 (Story Network).
@@ -15055,7 +15263,9 @@ next:
   <br />
 
   Not yet, but we are working on it.
-</details>---
+</details>-e 
+
+---
 title: Group
 excerpt: GroupClient allows you to create groups and add IP Assets to them.
 deprecated: false
@@ -15208,6 +15418,8 @@ export type RegisterGroupAndAttachLicenseAndAddIpsResponse = {
   groupId?: Address;
 };
 ```
+-e 
+
 ---
 title: License
 excerpt: ''
@@ -15468,6 +15680,8 @@ export type SetLicensingConfigResponse = {
   success?: boolean;
 };
 ```
+-e 
+
 ---
 title: Overview
 excerpt: ''
@@ -15492,6 +15706,8 @@ By using the SDK, you can interact with the protocol through your dApp to perfor
 * [Manage Groups](doc:sdk-group)
 
 For a step-by-step tutorial, we encourage you to explore the [🛠️ TypeScript SDK tutorial](doc:typescript-sdk). For documentation on specific or more advanced usages of the SDK, please consult this reference.
+-e 
+
 ---
 title: IP Asset
 excerpt: IPAssetClient allows you to create, get, and list IP Assets within Story.
@@ -15936,7 +16152,9 @@ export type RegisterIpResponse = {
   encodedTxData?: EncodedTxData;
   ipId?: Address;
 };
-```---
+```-e 
+
+---
 title: Royalty
 excerpt: ''
 deprecated: false
@@ -16167,7 +16385,9 @@ Get the royalty vault proxy address of given royaltyVaultIpId.
 
 Parameters:
 
-* `royaltyVaultIpId`: the `ipId` associated with the royalty vault.---
+* `royaltyVaultIpId`: the `ipId` associated with the royalty vault.-e 
+
+---
 title: NFT Client
 excerpt: Used to mint a new SPG collection.
 deprecated: false
@@ -16215,6 +16435,8 @@ export type CreateNFTCollectionResponse = {
   spgNftContract?: Address; // the address of the newly created contract
 };
 ```
+-e 
+
 ---
 title: Permissions
 excerpt: ''
@@ -16370,6 +16592,8 @@ export type SetPermissionsResponse = {
   success?: boolean;
 };
 ```
+-e 
+
 ---
 title: Dispute
 excerpt: ''
@@ -16455,6 +16679,8 @@ export type ResolveDisputeResponse = {
   encodedTxData?: EncodedTxData;
 };
 ```
+-e 
+
 # **Story Documentation**
 
 This repository contains the official documentation for **Story**, a purpose-built layer 1 blockchain designed specifically for intellectual property.
@@ -16464,3 +16690,9 @@ This repository contains the official documentation for **Story**, a purpose-bui
 ## Proposing Changes
 
 If you see any issues with the docs or would like to add/modify them, please open a Pull Request and tag @jacob-tucker :)
+
+## Train AI on our Docs
+
+If you want to train an AI on our docs, you can use the `combined.md` file. It contains all of our docs in a single `.md` file, and is updated automatically every time a change is made to the repo.
+-e 
+
