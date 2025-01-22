@@ -3878,7 +3878,7 @@ async function submitTrainingTask() {
     32
   );
 
-  console.log("Finetune ID:", response.id);
+  console.log("Finetune ID:", response);
 }
 
 submitTrainingTask();
@@ -3895,6 +3895,10 @@ This will log something that looks like:
 This is your `finetune_id`, and will be used to create images in the following steps.
 
 ## 3. Run Inference
+
+> 🚧 Take a break! Wait \~1 minute
+>
+> Before running this step, you have to wait a few minutes for your finetune to actually complete. Otherwise the API will return errors. It usually takes \~1 minute.
 
 Now that we have trained a finetune, we will use the model to create images. "Running an inference" simply means using our new model (identified by its `finetune_id`), which is trained on our images, to create new images.
 
