@@ -174,7 +174,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        This is assigned to verified application from Story Protocol directly (on a request basis so far). We will map each App ID to a name
+        This is assigned to verified applications from Story Protocol directly (on a request basis so far). We will map each App ID to a name
       </td>
     </tr>
 
