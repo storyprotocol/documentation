@@ -294,7 +294,7 @@ struct PILTerms {
       </td>
 
       <td>
-        The ERC20 token to be used to pay the minting fee. The token must be registered in story protocol.
+        The ERC20 token to be used to pay the minting fee. The token must be registered in Story Protocol.
       </td>
     </tr>
 
