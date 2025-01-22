@@ -1,6 +1,6 @@
 ---
 title: Register License Terms
-excerpt: ''
+excerpt: Learn how to register new License Terms in Python.
 deprecated: false
 hidden: true
 metadata:
@@ -53,7 +53,7 @@ response = story_client.License.registerPILTerms(**license_terms)
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterPILTermsRequest = {
+register_pil_terms_request = {
   'transferable': bool,
   'royalty_policy': str,
   'default_minting_fee': int,
@@ -71,11 +71,11 @@ RegisterPILTermsRequest = {
   'derivative_rev_ceiling': int,
   'currency': str,
   'uri': str,
-  'tx_options': dict
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-RegisterPILTermsResponse = {
+register_pil_terms_response = {
   'txHash': str,
   'licenseTermsId': int
 }
@@ -95,15 +95,15 @@ response = story_client.License.registerCommercialUsePIL(
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterCommercialUsePILRequest = {
+register_commercial_use_pil_request = {
   'default_minting_fee': int,
   'currency': str,
-  'royalty_policy': str,
-  'tx_options': dict
+  'royalty_policy': str, # optional
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-RegisterCommercialUsePILResponse = {
+register_commercial_use_pil_response = {
   'txHash': str,
   'licenseTermsId': int
 }
@@ -124,16 +124,16 @@ response = story_client.License.registerCommercialRemixPIL(
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterCommercialRemixPILRequest = {
+register_commercial_remix_pil_request = {
   'default_minting_fee': int,
   'currency': str,
   'commercial_rev_share': int,
   'royalty_policy': str,
-  'tx_options': dict
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-RegisterCommercialRemixPILResponse = {
+register_commercial_remix_pil_response = {
   'txHash': str,
   'licenseTermsId': int
 }
@@ -153,12 +153,12 @@ response = story_client.License.registerNonComSocialRemixingPIL()
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterNonComSocialRemixingPILRequest = {
-  'tx_options': dict
+register_non_com_social_remixing_pil_request = {
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-RegisterNonComSocialRemixingPILResponse = {
+register_non_com_social_remixing_pil_response = {
   'txHash': str,
   'licenseTermsId': int
 }

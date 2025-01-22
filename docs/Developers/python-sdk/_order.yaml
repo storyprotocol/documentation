@@ -1,8 +1,8 @@
 - python-sdk-setup
 - register-an-nft-as-an-ip-asset-python
 - register-pil-terms-python
-- attach-license-terms-to-an-ip-asset-python
-- mint-a-license-token-python
+- attach-terms-to-an-ip-asset-python
+- mint-a-license-python
 - register-an-ipa-as-a-derivative-python
 - collect-claim-royalty-python
 - spg-functions-python

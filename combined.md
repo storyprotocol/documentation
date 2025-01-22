@@ -2268,7 +2268,7 @@ response = story_client.License.registerPILTerms(**license_terms)
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterPILTermsRequest = {
+register_pil_terms_request = {
   'transferable': bool,
   'royalty_policy': str,
   'default_minting_fee': int,
@@ -2286,11 +2286,11 @@ RegisterPILTermsRequest = {
   'derivative_rev_ceiling': int,
   'currency': str,
   'uri': str,
-  'tx_options': dict
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-RegisterPILTermsResponse = {
+register_pil_terms_response = {
   'txHash': str,
   'licenseTermsId': int
 }
@@ -2310,15 +2310,15 @@ response = story_client.License.registerCommercialUsePIL(
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterCommercialUsePILRequest = {
+register_commercial_use_pil_request = {
   'default_minting_fee': int,
   'currency': str,
-  'royalty_policy': str,
-  'tx_options': dict
+  'royalty_policy': str, # optional
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-RegisterCommercialUsePILResponse = {
+register_commercial_use_pil_response = {
   'txHash': str,
   'licenseTermsId': int
 }
@@ -2339,16 +2339,16 @@ response = story_client.License.registerCommercialRemixPIL(
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterCommercialRemixPILRequest = {
+register_commercial_remix_pil_request = {
   'default_minting_fee': int,
   'currency': str,
   'commercial_rev_share': int,
   'royalty_policy': str,
-  'tx_options': dict
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-RegisterCommercialRemixPILResponse = {
+register_commercial_remix_pil_response = {
   'txHash': str,
   'licenseTermsId': int
 }
@@ -2368,68 +2368,14 @@ response = story_client.License.registerNonComSocialRemixingPIL()
 print(f"PIL Terms registered at transaction hash {response['txHash']} License Terms ID: {response['licenseTermsId']}")
 ```
 ```python Request Type
-RegisterNonComSocialRemixingPILRequest = {
-  'tx_options': dict
+register_non_com_social_remixing_pil_request = {
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-RegisterNonComSocialRemixingPILResponse = {
+register_non_com_social_remixing_pil_response = {
   'txHash': str,
   'licenseTermsId': int
-}
-```
-
-# Mint a License Token in Python
-This section demonstrates how to mint a License Token for an IPA. You can only mint a License Token for an IPA if it has License Terms attached to it. A License Token is minted as an ERC721 token and contains the necessary licensing details.
-
-> 💰 Paid Licenses
->
-> Note that some IP Assets may have license terms attached that require the user minting the license to pay a `mintingFee`. You can see an example of that soon.
-
-> 📘 Max Number of Licenses
->
-> If you're curious about setting the maximum number of licesnes that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
-
-## Prerequisites
-
-* [Setup](doc:python-sdk-setup) the client object.
-* An IPA that has License Terms added. Learn how to add License Terms to an IPA [here](doc:attach-license-terms-to-an-ip-asset-python).
-
-# Mint License
-
-To mint a License Token, we will need the:
-
-* `licensor_ip_id` - the ipId of the IPA we are minting a License Token from
-* `license_template` - the address of the license template
-* `license_terms_id` - the id of the License Terms (ex. "1" for Non-Commercial Social Remixing)
-* `amount` - # of License Tokens to be minted (usually 1, unless the minter decides to mint a batch and distribute it in another way later on)
-* `receiver` - wallet receiving the License Token, usually the wallet address that is executing the transaction
-
-```python Python
-response = story_client.License.mintLicenseTokens(
-    licensor_ip_id="0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-    license_template="0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93",
-    license_terms_id=1,
-    amount=1,
-    receiver="0x14dC79964da2C08b23698B3D3cc7Ca32193d9955"
-)
-
-print(f"License Token minted at transaction hash {response['txHash']} License ID: {response['licenseTokenIds']}")
-```
-```python Request Type
-MintLicenseTokensRequest = {
-    'licensor_ip_id': str,
-    'license_template': str,
-    'license_terms_id': int,
-    'amount': int,
-    'receiver': str,
-    'tx_options': dict
-}
-```
-```python Response Type
-MintLicenseTokensResponse = {
-    'txHash': str,
-    'licenseTokenIds': list
 }
 ```
 
@@ -2493,6 +2439,62 @@ account = web3.eth.account.from_key(private_key)
 
 # Create StoryClient instance
 story_client = StoryClient(web3, account, 1516)
+```
+
+# Mint a License Token
+This section demonstrates how to mint a License Token for an IPA. You can only mint a License Token for an IPA if it has License Terms attached to it. A License Token is minted as an ERC721 token and contains the necessary licensing details.
+
+> 💰 Paid Licenses
+>
+> Note that some IP Assets may have license terms attached that require the user minting the license to pay a `mintingFee`. You can see an example of that soon.
+
+> 📘 Max Number of Licenses
+>
+> If you're curious about setting the maximum number of licesnes that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
+
+## Prerequisites
+
+* [Setup](doc:python-sdk-setup) the client object.
+* An IPA that has License Terms added. Learn how to add License Terms to an IPA [here](doc:attach-license-terms-to-an-ip-asset-python).
+
+# Mint License
+
+To mint a License Token, we will need the:
+
+* `licensor_ip_id` - the ipId of the IPA we are minting a License Token from
+* `license_template` - the address of the license template (which is just the address of the PILTemplate)
+* `license_terms_id` - the id of the License Terms (ex. "1" for Non-Commercial Social Remixing)
+* `amount` - # of License Tokens to be minted (usually 1)
+* `receiver` - wallet receiving the License Token, usually the wallet address that is executing the transaction
+
+```python Python
+response = story_client.License.mintLicenseTokens(
+  licensor_ip_id="0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+  license_template="0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93",
+  license_terms_id=1,
+  amount=1,
+  receiver="0x14dC79964da2C08b23698B3D3cc7Ca32193d9955"
+)
+
+print(f"License Token minted at transaction hash {response['txHash']} License ID: {response['licenseTokenIds']}")
+```
+```python Request Type
+mint_license_tokens_request = {
+  'licensor_ip_id': str,
+  'license_template': str,
+  'license_terms_id': int,
+  'amount': int,
+  'receiver': str,
+  'max_minting_fee': int, # optional
+  'max_revenue_share': int, # optional
+  'tx_options': dict # optional
+}
+```
+```python Response Type
+mint_license_tokens_response = {
+  'txHash': str,
+  'licenseTokenIds': list
+}
 ```
 
 # Collect & Claim Royalty in Python
@@ -2584,7 +2586,7 @@ ClaimRevenueResponse = {
 ```
 
 
-# Register an IP Asset in Python
+# Register an IP Asset
 This section demonstrates how to register an IP Asset using the Python SDK. There are generally two methods of IP registration:
 
 1. Register an existing NFT as an IP Asset
@@ -2594,21 +2596,30 @@ This section demonstrates how to register an IP Asset using the Python SDK. Ther
 
 * [Setup](doc:python-sdk-setup) the client object.
 
-# Register an Existing NFT as an IP Asset
+> 📘 Default License Terms
+>
+> Note that every single IP Asset registered on Story automatically has [Non-Commercial Social Remixing License Terms](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing)  attached to it.
+>
+> If it's a root IP Asset (meaning it has no more parents), you can attach more License Terms to it later. Please see [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset-python) for more info.
+
+# Register an NFT as an IP Asset
 
 You can register your NFT as an IP Asset by simply calling `story_client.IPAsset.register()` and passing in the token's contract address and token ID, like so:
 
-> :information_source: If the provided `token_id` from the `token_Contract` has already been registered, the `response` object will contain the `ipId` of the existing IP Asset and a `txHash` as `None`
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
 
 ```python Python
 response = story_client.IPAsset.register(
-    token_contract="0xd516482bef63Ff19Ed40E4C6C2e626ccE04e19ED", # your NFT contract address
-    token_id=12, # your NFT token ID
-    metadata={
-        'metadataURI': "test-uri", #uri of IP metadata
-        'metadataHash': web3.to_hex(web3.keccak(text="test-metadata-hash")), #hash of IP metadata
-        'nftMetadataHash': web3.to_hex(web3.keccak(text="test-nft-metadata-hash")) #hash of NFT metadata
-    }
+  nft_contract="0xd516482bef63Ff19Ed40E4C6C2e626ccE04e19ED", # your NFT contract address
+  token_id=12, # your NFT token ID
+  ip_metadata={
+    'ipMetadataURI': "test-uri", #uri of IP metadata
+    'ipMetadataHash': web3.to_hex(web3.keccak(text="test-metadata-hash")), #hash of IP metadata
+    'nftMetadataURI': "test-uri", #uri of NFT metadata
+    'nftMetadataHash': web3.to_hex(web3.keccak(text="test-nft-metadata-hash")) #hash of NFT metadata
+  }
 )
 
 print(f"Root IPA created at transaction hash {response['txHash']}")
@@ -2616,17 +2627,17 @@ print(f"IPA ID: {response['ipId']}")
 ```
 ```python Request Type
 register_request = {
-    'token_contract': str,
-    'token_id': int,
-    'metadata': dict,
-    'deadline': int,
-    'tx_options': dict
+  'nft_contract': str,
+  'token_id': int,
+  'ip_metadata': dict, # optional
+  'deadline': int, # optional
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
 register_response = {
-    'txHash': str,
-    'ipId': str
+  'txHash': str,
+  'ipId': str
 }
 ```
 
@@ -2636,7 +2647,6 @@ After we run the above code, the console output will look like:
 Root IPA created at transaction hash 0xa3e1caa7c2124b1550d459abc739291cb1be77ac73b99c097707878ac4ef57ae,
 IPA ID: 0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721
 ```
-
 
 # Register an IPA as a Derivative in Python
 This section demonstrates how to register an IP Asset as a derivative of another. There are generally three methods of registering an IPA remix:
@@ -2751,15 +2761,15 @@ response = story_client.License.attachLicenseTerms(
 print(f"Attached License Terms to IPA at transaction hash {response['txHash']}.")
 ```
 ```python Request Type
-AttachLicenseTermsRequest = {
+attach_license_terms_request = {
   'ip_id': str,
   'license_template': str,
   'license_terms_id': int,
-  'tx_options': dict
+  'tx_options': dict # optional
 }
 ```
 ```python Response Type
-AttachLicenseTermsResponse = {
+attach_license_terms_response = {
   'txHash': str
 }
 ```

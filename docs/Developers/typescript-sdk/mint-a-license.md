@@ -1,6 +1,6 @@
 ---
 title: Mint a License Token
-excerpt: Learn how to mint a License Token from an IP Asset on TypeScript.
+excerpt: Learn how to mint a License Token from an IP Asset in TypeScript.
 deprecated: false
 hidden: false
 metadata:
