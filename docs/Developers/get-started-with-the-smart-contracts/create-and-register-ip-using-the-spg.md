@@ -16,7 +16,7 @@ One common use case many developers will want is the ability to mint an IP as a 
 
 For these cases, we recommend using the Story Protocol SPG, which, besides offering more secure and convenient methods around remixing or registration of existing NFTs as IPAs, also offers a powerful minting engine through which you can directly create an ERC-721 representation of your IP while registering it into the protocol in a single interface.
 
-Usually, you will likely not require your own custom ERC-721 collection for your IP, and simply want to perform ad-hoc registration of an off-chain asset. For these cases, we recommend using the **SPG default ERC-721 collection**, an ERC-721 that treats every NFT as an independent entity with its own customizable metadata, and also includes native support for rendering IP attribution within its `tokenURI()`. This means that these NFTs actually show you all details related to IP attribution, along with its own core metadata. Let's start by examining two core use-cases:
+Usually, you will likely not require your own custom ERC-721 collection for your IP, and simply want to perform ad-hoc registration of an off-chain asset. For these cases, we recommend using the **SPG default ERC-721 collection**, an ERC-721 that treats every NFT as an independent entity with its own customizable metadata, and also includes native support for rendering IP attribution within its `tokenURI()`. This means that these NFTs actually show you all the details related to IP attribution, along with its own core metadata. Let's start by examining two core use-cases:
 
 ## Bundled IP minting and registration with the SPG default ERC-721 collection
 
@@ -145,7 +145,7 @@ Here, we call the `mintAndRegisterDerivativeIp` function of the SPG, which allow
 
 ## Bundled IP minting and registration with custom SPG ERC-721 collections
 
-Because the SPG is a minting engine itself, it actually supports creation of custom IP collections out-of-the-box that allows you to perform bundled mint-backed registrations. In this section, we'll go over how you can leverage the SPG to create your own collection and use it for minting and registration of IP assets.
+Because the SPG is a minting engine itself, it actually supports the creation of custom IP collections out-of-the-box that allows you to perform bundled mint-backed registrations. In this section, we'll go over how you can leverage the SPG to create your own collection and use it for minting and registration of IP assets.
 
 *Note: If you want something even more customizable, we recommend simply creating your own ERC-721 collection, and then leveraging the default`registerIp` or `registerDerivativeIp` SPG functions (or `register` if you were to call the IPA registry directly).*
 
