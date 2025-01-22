@@ -53,7 +53,7 @@ The main components of the arbitration system are:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Refers to registration of IP that already exists.
+        Refers to the registration of IP that already exists.
       </td>
     </tr>
 
