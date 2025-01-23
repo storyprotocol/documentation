@@ -14,7 +14,47 @@ metadata:
   <Card title="LayerZero" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
     LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
   </Card>
+
+  <Card title="Debridge" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
+    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  </Card>
+
+  <Card title="Stargate" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
+    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  </Card>
 </Cards>
+
+## RPC
+
+quicknode
+
+nodefleet
+
+blockpi
+
+## Onramp/Offramp
+
+<Cards columns={1}>
+  <Card title="Transak" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
+    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  </Card>
+
+  <Card title="Halliday" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
+    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  </Card>
+</Cards>
+
+## explorer
+
+hemera
+
+blockscout
+
+aura network
+
+stakeme
+
+node guru
 
 ## Indexers/Data
 
@@ -32,11 +72,23 @@ metadata:
   </Card>
 </Cards>
 
-## Oracles/Automation
+## Oracles/VRF
 
 <Cards columns={1}>
   <Card title="Gelato" href="https://www.gelato.network/" icon="fa-home" iconColor="#ff3b57" target="_blank">
-    Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated
+    Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated.
+  </Card>
+
+  <Card title="Redstone" href="https://www.redstone.finance/" icon="fa-home" iconColor="#ae0722" target="_blank">
+    Modular oracles for DeFi.
+  </Card>
+
+  <Card title="Pyth" href="https://www.pyth.network/" icon="fa-home" iconColor="#e6dafe" target="_blank">
+    Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems.
+  </Card>
+
+  <Card title="Uma" href="https://uma.xyz/" icon="fa-home" iconColor="#fe4d4c" target="_blank">
+    A decentralized truth machine.
   </Card>
 </Cards>
 
@@ -46,6 +98,8 @@ metadata:
   <Card title="Protofire" href="https://protofire.io/" icon="fa-home" iconColor="#f54704" target="_blank">
     Protofire boosts TVL and usage for Web3 projects with our Dev DAO, reducing costs and enhancing quality.
   </Card>
+
+  wagmi
 </Cards>
 
 ## Wallets/AA
@@ -62,4 +116,15 @@ metadata:
   <Card title="ZeroDev" href="https://zerodev.app/" icon="fa-home" iconColor="#23a4f0" target="_blank">
     ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
   </Card>
+
+  <Card title="Tomo" href="https://zerodev.app/" icon="fa-home" iconColor="#23a4f0" target="_blank">
+    ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
+  </Card>
+
+  <Card title="Privy" href="https://zerodev.app/" icon="fa-home" iconColor="#23a4f0" target="_blank">
+    ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
+  </Card>
+
+  keplr
+  turnkey
 </Cards>
