@@ -6878,17 +6878,17 @@ Metrics:
 
 ## Cross-chain
 
-<Cards columns={1}>
+<Cards columns={3}>
   <Card title="LayerZero" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
     LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
   </Card>
 
-  <Card title="Debridge" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
-    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  <Card title="deBridge" href="https://debridge.finance/" icon="fa-home" iconColor="#fbff3a" target="_blank">
+    Blazingly fast bridging for anyone that likes to be one step ahead.
   </Card>
 
-  <Card title="Stargate" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
-    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  <Card title="Stargate" href="https://stargate.finance/" icon="fa-home" iconColor="#ffffff" target="_blank">
+    Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi.
   </Card>
 </Cards>
 
@@ -6974,7 +6974,7 @@ node guru
 
 ## Wallets/AA
 
-<Cards columns={3}>
+<Cards columns={4}>
   <Card title="Dynamic" href="https://www.dynamic.xyz/" icon="fa-home" iconColor="#4779ff" target="_blank">
     Dynamic offers a suite of tools for effortless log in, wallet creation and user management. Designed for users. Built for developers.
   </Card>
@@ -6987,16 +6987,21 @@ node guru
     ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
   </Card>
 
-  <Card title="Tomo" href="https://zerodev.app/" icon="fa-home" iconColor="#23a4f0" target="_blank">
-    ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
+  <Card title="Tomo" href="https://tomo.inc/" icon="fa-home" iconColor="#f21f7f" target="_blank">
+    The all-in-one wallet designed to bring the mass adoption.
   </Card>
 
-  <Card title="Privy" href="https://zerodev.app/" icon="fa-home" iconColor="#23a4f0" target="_blank">
-    ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
+  <Card title="Privy" href="https://www.privy.io/" icon="fa-home" iconColor="#000000" target="_blank">
+    Privy is a powerful authentication and key management platform to securely onboard, activate, and manage your users at scale.
   </Card>
 
-  keplr
-  turnkey
+  <Card title="Keplr" href="https://www.keplr.app/" icon="fa-home" iconColor="#0657fa" target="_blank">
+    Introducing Keplr, the fast, simple, secure wallet that plugs you into any blockchains and apps wherever you go. Pioneering its ways in the multichain future from day one.
+  </Card>
+
+  <Card title="Turnkey" href="https://www.turnkey.com/" icon="fa-home" iconColor="#000000" target="_blank">
+    Secure, flexible, and scalable wallet infrastructure.
+  </Card>
 </Cards>
 
 # Mint a License Token
