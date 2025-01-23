@@ -190,7 +190,7 @@ struct PILTerms {
       </td>
 
       <td style={{ textAlign: "left" }}>
-        # \[0-100,000,000]
+        \[0-100,000,000]
       </td>
 
       <td>
