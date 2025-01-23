@@ -27,7 +27,7 @@ Returns the string identifier associated with the module.
 bytes32 IN_DISPUTE
 ```
 
-Tag to represent the dispute is in dispute state waiting for judgement
+Tag to represent the dispute is in dispute state waiting for judgment
 
 ### IP\_ASSET\_REGISTRY
 

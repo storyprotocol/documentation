@@ -52,7 +52,7 @@ Following the example, when each remix is made and during the `onLinkToParents` 
 
 is called on the "Policy X" address. It should return the % of derivative's royalty tokens that the royalty policy demands for the link to happen. That share of royalty tokens are sent to the "Policy X" contract. In the example case:
 
-* "Policy X" receives 3% of RT2 token supply that it can then redistributed to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs. Therefore, instead of having to give 10% as the license percentage indicated it only gives 3%.
+* "Policy X" receives 3% of RT2 token supply that it can then be redistributed to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs. Therefore, instead of having to give 10% as the license percentage indicated it only gives 3%.
 * "Policy X" receives 50% of RT3 token supply that it can then redistributed to its userbase.
 
 ![](https://files.readme.io/33efb951a9be1339e849eb025d183a0f8d4f949f634ee5dfe1f13dac52c79bb0-image.png)

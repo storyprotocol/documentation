@@ -1,7 +1,7 @@
 ---
 title: IP Modifications & Restrictions
 deprecated: false
-exerpt: Learn about the modifications and restrictions for IP Assets.
+excerpt: Learn about the modifications and restrictions for IP Assets.
 hidden: false
 metadata:
   title: ''

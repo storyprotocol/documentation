@@ -26,7 +26,7 @@ The PIL is the first and currently only example of a [License Template](doc:lice
 * `mintingFee`  - the cost of minting a license to use my work in your own works.
 * `derivativesAttribution` - does someone have to credit me in their derivative works?
 
-In code, these terms form a struct that represent their legal off-chain counterparts. To see all of the terms defined by the PIL and their associated explanations in code, see [PIL Terms](doc:pil-terms).
+In code, these terms form a struct that represents their legal off-chain counterparts. To see all of the terms defined by the PIL and their associated explanations in code, see [PIL Terms](doc:pil-terms).
 
 To see example configurations ("flavors") of the PIL, see [PIL Flavors (examples)](doc:pil-flavors).
 

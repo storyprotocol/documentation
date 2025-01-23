@@ -52,7 +52,7 @@ Cancels an ongoing dispute
 
 Parameters:
 
-* `request.disputeId`: The ID of the dispute to be cancelled.
+* `request.disputeId`: The ID of the dispute to be canceled.
 * `request.data`: [Optional] Additional data used in the cancellation process.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 

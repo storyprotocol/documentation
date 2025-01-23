@@ -48,7 +48,7 @@ Story Protocol team reserves the right to reward less than the total number of a
 
 * We prefer usage that covers more functions in the protocol, from registration of IP to licensing.
 
-### What does success look like? What are possible features that we are looking for?
+### What does success look like? What are the possible features that we are looking for?
 
 * Ideally a submission has a clear use-case for Story Protocol and is thoughtfully integrated such that it makes sense from both a technical and use-case perspective. 
 
@@ -146,7 +146,7 @@ Story Protocol team reserves the right to reward less than the total number of a
 
 * Only DeFi related submissions qualify, and judging will be based on how thoughtful the integration is and how centric Intellectual Property and native Story Protocol functionality is to the project. 
 
-### What does success look like? What are possible features that we are looking for?
+### What does success look like? What are the possible features that we are looking for?
 
 * Ideally a submission has a clear use-case for increasing liquidity of intellectual property or new monetization models for creators. 
 
@@ -238,7 +238,7 @@ Story Protocol team reserves the right to reward less than the total number of a
 
 * Judging will be based on how thoughtful the integration is and how centric Intellectual Property and native Story Protocol functionality is to the project. 
 
-### What does success look like? What are possible features that we are looking for?
+### What does success look like? What are the possible features that we are looking for?
 
 * Ideally a submission has a clear use-case for simplifying and helping register intellectual property on Story Protocol on existing tools/apps/services. For example, a custom GPT, a browser extension, or a plugin for popular sites such as WordPress. Use of AI and other state of the art technologies are encouraged!
 
@@ -332,7 +332,7 @@ Story Protocol team reserves the right to reward less than the total number of a
 
 * Judging will be based on how thoughtful the integration is and how centric Intellectual Property and native Story Protocol functionality is to the project. 
 
-### What does success look like? What are possible features that we are looking for?
+### What does success look like? What are the possible features that we are looking for?
 
 * Ideally a submission has a clear use-case for simplifying and helping developers build on / use Story Protocol.
 
@@ -410,7 +410,7 @@ Story Protocol team reserves the right to reward less than the total number of a
 
 * Register it on Story Protocol and share it on social media… Proof of Meme!
 
-### What does success look like? What are possible features that we are looking for?
+### What does success look like? What are the possible features that we are looking for?
 
 * The meme is registered on Story Protocol as an IP
 

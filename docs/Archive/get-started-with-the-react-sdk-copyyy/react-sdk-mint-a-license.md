@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-This section demonstrates how to mint a license for an IP asset. You can only mint a license for an IP asset if it has a policy added to its configuration. A license is minted as an ERC1155 token and contains the necessary licensing details.
+This section demonstrates how to mint a license for an IP asset. You can only mint a license for an IP asset if a policy has been added to its configuration. A license is minted as an ERC1155 token and contains the necessary licensing details.
 
 ## Prerequisites
 
