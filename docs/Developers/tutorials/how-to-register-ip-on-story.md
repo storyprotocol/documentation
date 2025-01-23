@@ -39,25 +39,26 @@ Let's say you have some off-chain IP (ex. a book, a character, a drawing, etc). 
 
 There are a few steps you have to complete before you can start the tutorial.
 
-1. Add your Story Network Testnet wallet's private key to `.env` file:
+1. You will need to install [Node.js](https://nodejs.org/en/download) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). If you've coded before, you likely have these.
+2. Add your Story Network Testnet wallet's private key to `.env` file:
 
 ```yaml .env
 WALLET_PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
 ```
 
-2. Go to [Pinata](https://pinata.cloud/) and create a new API key. Add the JWT to your `.env` file:
+3. Go to [Pinata](https://pinata.cloud/) and create a new API key. Add the JWT to your `.env` file:
 
 ```yaml .env
 PINATA_JWT=<YOUR_PINATA_JWT>
 ```
 
-3. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
+4. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
 RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 ```
 
-4. Install the dependencies:
+5. Install the dependencies:
 
 ```Text Terminal
 npm install @story-protocol/core-sdk pinata-web3 viem
