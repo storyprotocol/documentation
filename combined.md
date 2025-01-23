@@ -6874,7 +6874,7 @@ Metrics:
 * [Tokenomics & Staking](doc:tokenomics-staking)
 
 # Infrastructure Partners
-# Infrastructure Providers
+# Infrastructure
 
 ## Cross-chain
 
@@ -6916,9 +6916,19 @@ Metrics:
 
 ## Wallets/AA
 
-* [Dynamic](https://www.dynamic.xyz/)
-* [Pimlico](https://www.pimlico.io/)
-* [ZeroDev](https://zerodev.app/)
+<Cards columns={3}>
+  <Card title="Dynamic" href="https://www.dynamic.xyz/" icon="fa-home" target="_blank">
+    Dynamic offers a suite of tools for effortless log in, wallet creation and user management. Designed for users. Built for developers.
+  </Card>
+
+  <Card title="Pimlico" href="https://www.pimlico.io/" icon="fa-home" target="_blank">
+    The world's most popular account abstraction infrastructure platform
+  </Card>
+
+  <Card title="ZeroDev" href="https://zerodev.app/" icon="fa-home" target="_blank">
+    ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
+  </Card>
+</Cards>
 
 # Mint a License Token
 This section demonstrates how to mint a License Token for an IPA. You can only mint a License Token for an IPA if it has License Terms attached to it. A License Token is minted as an ERC721 token and contains the necessary licensing details.
