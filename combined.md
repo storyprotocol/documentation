@@ -1398,6 +1398,7 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 * [Dynamic Setup Tutorial](doc:dynamic-setup)
 * [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
 * [WalletConnect Setup Tutorial](doc:walletconnect-setup)
+* [Tomo Setup Tutorial](doc:tomo-setup)
 
 # RainbowKit Setup
 > 📘 Optional: Official RainbowKit Docs
@@ -1421,7 +1422,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
-2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your .env file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
+2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 You can then configure your DApp with help from the following example:
 
@@ -1687,7 +1688,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
-2. Make sure to have `NEXT_PUBLIC_DYNAMIC_ENV_ID` set up in your .env file. Do this by logging into [Dynamic](https://app.dynamic.xyz/) and creating a project.
+2. Make sure to have `NEXT_PUBLIC_DYNAMIC_ENV_ID` set up in your `.env` file. Do this by logging into [Dynamic](https://app.dynamic.xyz/) and creating a project.
 
 You can then configure your DApp with help from the following example:
 
@@ -1829,7 +1830,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
-2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your .env file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
+2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 You can then configure your DApp with help from the following example:
 
