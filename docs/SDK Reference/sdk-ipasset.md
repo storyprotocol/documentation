@@ -123,7 +123,7 @@ Parameters:
 * `request.spgNftContract`: The address of the NFT collection.
 * `request.terms[]`: The array of license terms to be attached.
   * `request.terms.transferable`: Indicates whether the license is transferable or not.
-  * `request.terms.royaltyPolicy`: The address of the royalty policy contract which required to StoryProtocol in advance.
+  * `request.terms.royaltyPolicy`: The address of the royalty policy contract which is required to StoryProtocol in advance.
   * `request.terms.mintingFee`: The fee to be paid when minting a license.
   * `request.terms.expiration`: The expiration period of the license.
   * `request.terms.commercialUse`: Indicates whether the work can be used commercially or not.
