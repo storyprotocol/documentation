@@ -1,11 +1,12 @@
 ---
 title: Infrastructure Partners
+excerpt: A list of infrastructure partners & tools.
 deprecated: false
 hidden: true
 metadata:
   robots: index
 ---
-# Infrastructure Providers
+# Infrastructure
 
 ## Cross-chain
 
@@ -47,6 +48,16 @@ metadata:
 
 ## Wallets/AA
 
-* [Dynamic](https://www.dynamic.xyz/)
-* [Pimlico](https://www.pimlico.io/)
-* [ZeroDev](https://zerodev.app/)
+<Cards columns={3}>
+  <Card title="Dynamic" href="https://www.dynamic.xyz/" icon="fa-home" target="_blank">
+    Dynamic offers a suite of tools for effortless log in, wallet creation and user management. Designed for users. Built for developers.
+  </Card>
+
+  <Card title="Pimlico" href="https://www.pimlico.io/" icon="fa-home" target="_blank">
+    The world's most popular account abstraction infrastructure platform
+  </Card>
+
+  <Card title="ZeroDev" href="https://zerodev.app/" icon="fa-home" target="_blank">
+    ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
+  </Card>
+</Cards>
