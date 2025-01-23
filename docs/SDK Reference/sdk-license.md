@@ -55,7 +55,7 @@ The license terms must be attached to the IP before calling this function. But i
 
 IP owners can mint license tokens for their IPs for arbitrary license terms without attaching the license terms to IP.
 
-It might require the caller pay the minting fee, depending on the license terms or configured by the iP owner. The minting fee is paid in the minting fee token specified in the license terms or configured by the IP owner. IP owners can configure the minting fee of their IPs or configure the minting fee module to determine the minting fee.
+It might require the caller pay the minting fee, depending on the license terms or configured by the IP owner. The minting fee is paid in the minting fee token specified in the license terms or configured by the IP owner. IP owners can configure the minting fee of their IPs or configure the minting fee module to determine the minting fee.
 
 | Method              | Type                                                                        |
 | ------------------- | --------------------------------------------------------------------------- |
