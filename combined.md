@@ -6942,7 +6942,7 @@ node guru
 
 ## Oracles/VRF
 
-<Cards columns={1}>
+<Cards columns={4}>
   <Card title="Gelato" href="https://www.gelato.network/" icon="fa-home" iconColor="#ff3b57" target="_blank">
     Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated.
   </Card>
@@ -6960,14 +6960,16 @@ node guru
   </Card>
 </Cards>
 
-## Tools
+## Dev Tools
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="Protofire" href="https://protofire.io/" icon="fa-home" iconColor="#f54704" target="_blank">
     Protofire boosts TVL and usage for Web3 projects with our Dev DAO, reducing costs and enhancing quality.
   </Card>
 
-  wagmi
+  <Card title="Wagmi" href="https://wagmi.sh/" icon="fa-home" iconColor="#000000" target="_blank">
+    Type Safe, Extensible, and Modular by design. Build high-performance blockchain frontends.
+  </Card>
 </Cards>
 
 ## Wallets/AA
