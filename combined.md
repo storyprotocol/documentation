@@ -6911,7 +6911,9 @@ Metrics:
 ## Tools
 
 <Cards columns={1}>
-  <Card title="Protofire" href="https://protofire.io/" icon="fa-home" iconColor="#f54704" target="_blank" />
+  <Card title="Protofire" href="https://protofire.io/" icon="fa-home" iconColor="#f54704" target="_blank">
+    Protofire boosts TVL and usage for Web3 projects with our Dev DAO, reducing costs and enhancing quality.
+  </Card>
 </Cards>
 
 ## Wallets/AA
