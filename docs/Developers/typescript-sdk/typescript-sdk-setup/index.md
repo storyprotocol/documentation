@@ -78,3 +78,4 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 * [Dynamic Setup Tutorial](doc:dynamic-setup)
 * [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
 * [WalletConnect Setup Tutorial](doc:walletconnect-setup)
+* [Tomo Setup Tutorial](doc:tomo-setup)
