@@ -48,7 +48,7 @@ constructor(address governance) public
 function registerModuleType(string name, bytes4 interfaceId) external
 ```
 
-Registers a new module type in the registry associate with an interface.
+Registers a new module type in the registry associated with an interface.
 
 *Enforced to be only callable by the protocol admin in governance.*
 
