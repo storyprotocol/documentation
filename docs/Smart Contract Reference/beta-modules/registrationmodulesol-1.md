@@ -14,7 +14,7 @@ next:
 
 **The RegistrationModule will get phased out post-beta, so we recommend using the IPAssetRegistry for registering IP assets!**
 
-The registration module is responsible for registration of IP into the protocol. During registration, this module will register an IP into the protocol, create a resolver, and bind to it any licenses and terms specified by the IP registrant (IP account owner).
+The registration module is responsible for the registration of IP into the protocol. During registration, this module will register an IP into the protocol, create a resolver, and bind to it any licenses and terms specified by the IP registrant (IP account owner).
 
 ### name
 
