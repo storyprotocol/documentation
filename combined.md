@@ -1529,15 +1529,15 @@ export default function TestComponent() {
 }
 ```
 
-# RainbowKit Setup (COPY)
-> 📘 Optional: Official RainbowKit Docs
+# Tomo Setup
+> 📘 Optional: Official TomoEVMKit Docs
 >
-> Check out the official Wagmi + RainbowKit installation docs [here](https://www.rainbowkit.com/docs/installation).
+> Check out the official Wagmi + TomoEVMKit installation docs [here](https://docs.tomo.inc/tomo-sdk/tomoevmkit/quick-start).
 
 ## Install the Dependencies
 
 ```shell npm
-npm install --save @story-protocol/core-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
+npm install --save @story-protocol/core-sdk @tomo-inc/tomo-evm-kit wagmi viem @tanstack/react-query
 ```
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
@@ -1551,14 +1551,15 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
-2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your .env file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
+2. Make sure to have `NEXT_PUBLIC_TOMO_CLIENT_ID` set up in your `.env` file. Do this by logging into the [Tomo Dashboard](https://dashboard.tomo.inc/) and creating a project.
+3. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 You can then configure your DApp with help from the following example:
 
 ```jsx Web3Providers.tsx
 "use client";
-import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import '@tomo-inc/tomo-evm-kit/styles.css';
+import { getDefaultConfig, TomoEVMKitProvider } from "@tomo-inc/tomo-evm-kit";
 import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
@@ -1566,6 +1567,7 @@ import { odyssey } from "@story-protocol/core-sdk";
 
 const config = getDefaultConfig({
   appName: "Test Story App",
+  clientId: process.env.NEXT_PUBLIC_TOMO_CLIENT_ID as string,
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
   chains: [odyssey],
   ssr: true, // If your dApp uses server side rendering (SSR)
@@ -1577,9 +1579,9 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <TomoEVMKitProvider>
           {children}
-        </RainbowKitProvider>
+        </TomoEVMKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
@@ -1591,7 +1593,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Web3Providers from "./Web3Providers";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useConnectModal } from '@tomo-inc/tomo-evm-kit';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -1603,11 +1605,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children
 }: PropsWithChildren) {
+  const { openConnectModal } = useConnectModal();
+  
   return (
     <html lang="en">
       <body>
         <Web3Providers>
-          <ConnectButton />
+          <button onClick={openConnectModal}>
+            Connect Wallet
+          </button>
           {children}
         </Web3Providers>
       </body>
