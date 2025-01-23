@@ -33,11 +33,17 @@ metadata:
 
 ## Oracles/Automation
 
-* [Gelato](https://www.gelato.network/)
+<Cards columns={1}>
+  <Card title="Gelato" href="https://www.gelato.network/" icon="fa-home" target="_blank">
+    Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated
+  </Card>
+</Cards>
 
 ## Tools
 
-* [Protofire](https://protofire.io/)
+<Cards columns={1}>
+  <Card title="Protofire" href="https://protofire.io/" icon="fa-home" target="_blank" />
+</Cards>
 
 ## Wallets/AA
 
