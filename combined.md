@@ -11023,19 +11023,20 @@ For the purposes of this example, we will assume the child is already registered
 
 There are a few steps you have to complete before you can start the tutorial.
 
-1. Add your Story Network Testnet wallet's private key to `.env` file:
+1. You will need to install [Node.js](https://nodejs.org/en/download) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). If you've coded before, you likely have these.
+2. Add your Story Network Testnet wallet's private key to `.env` file:
 
 ```text env
 WALLET_PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
 ```
 
-2. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
+3. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```text env
 RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 ```
 
-3. Install the dependencies:
+4. Install the dependencies:
 
 ```Text Terminal
 npm install @story-protocol/core-sdk viem
