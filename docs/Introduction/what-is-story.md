@@ -9,7 +9,8 @@ metadata:
     The official Story documentation. Covering Story Network ("the World's IP
     Blockchain"), our "Proof-of-Creativity" protocol, the Programmable IP
     License, and more.
-  image: https://files.readme.io/2d35525-header_story.png
+  image: >-
+    https://files.readme.io/e1a3fd5d68c26134f6ad350b2e8db6218fc09a6c51050a7606c876212bbe30e6-story-banner.png
   robots: index
 next:
   description: ''
