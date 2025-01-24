@@ -23,7 +23,9 @@ The Liquid Relative Percentage (LRP) royalty policy defines that each parent IP 
 
 ## Prerequisites
 
-Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.ads
+Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
+
+The License Royalty % in this page correspond to the same value as the `commercialRevShare` on the PIL terms.
 
 ## Royalty Payment and Claiming Flow
 
