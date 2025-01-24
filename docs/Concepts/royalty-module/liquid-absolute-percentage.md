@@ -23,7 +23,9 @@ The Liquid Absolute Percentage (LAP) defines that each parent IP Asset can choos
 
 ## Prerequisites
 
-Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.sdadsa
+Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
+
+The License Royalty % in this page correspond to the same value as the `commercialRevShare` on the PIL terms.
 
 ## Royalty Payment and Claiming Flow
 
