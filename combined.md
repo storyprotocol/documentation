@@ -15502,9 +15502,9 @@ As stated in the Whitepaper:
 > to be used. Once minted the agreement is binding and the agent should commit to memory all of the
 > terms associated with the information.
 >
-> (a) **Payment** (optional): depending on the license agreement terms chosen, some agents will require\
-> an upfront payment in order to mint a license. Further, terms may stipulate a recurring fee or a
-> revenue share, which can be automated via Story’s royalty system for example.
+> * **Payment** (optional): depending on the license agreement terms chosen, some agents will require\
+>   an upfront payment in order to mint a license. Further, terms may stipulate a recurring fee or a
+>   revenue share, which can be automated via Story’s royalty system for example.
 
 <br />
 
