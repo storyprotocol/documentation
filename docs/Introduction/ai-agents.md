@@ -23,7 +23,7 @@ This page is all about AI Agents. We have prepared a way for you to use our docu
 Below you will find two sections:
 
 1. **Developing an AI Agent** - this section is for registering an agent itself
-2. **Facilitating Agent:left_right_arrow: Agent Interactions** - this section is for implementing the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
+2. **Facilitating Agent:left_right_arrow:Agent Interactions** - this section is for implementing the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
 
 # Developing an Agent
 
