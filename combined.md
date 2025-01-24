@@ -6840,32 +6840,6 @@ Metrics:
 * Geth: 6060
 * Story: 26660
 
-## Infrastructure Providers
-
-### Cross-chain
-
-* [LayerZero](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts#odyssey-testnet)
-
-### Indexers/Data
-
-* [Simplehash](https://simplehash.com/)
-* [Goldsky](https://goldsky.com/)
-* [Zettablock](https://zettablock.com/)
-
-### Oracles/Automation
-
-* [Gelato](https://www.gelato.network/)
-
-### Tools
-
-* [Protofire](https://protofire.io/)
-
-### Wallets/AA
-
-* [Dynamic](https://www.dynamic.xyz/)
-* [Pimlico](https://www.pimlico.io/)
-* [ZeroDev](https://zerodev.app/)
-
 # Further Sections
 
 * [Wallet Setup](doc:odyssey-wallet-setup)
