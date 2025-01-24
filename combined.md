@@ -1342,6 +1342,8 @@ The Liquid Relative Percentage (LRP) royalty policy defines that each parent IP 
 
 Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
 
+The License Royalty % in this page correspond to the same value as the `commercialRevShare` on the PIL terms.
+
 ## Royalty Payment and Claiming Flow
 
 In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a % economic right over revenue made by IPA 3. Key notes to understand the derivative chain below:
