@@ -15493,6 +15493,21 @@ const response = await client.ipAsset.registerPilTermsAndAttach({
 console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
 ```
 
+## Mint a License
+
+As stated in the Whitepaper:
+
+> **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
+> agreement token) that encapsulates the terms and rules by which the information being provided is
+> to be used. Once minted the agreement is binding and the agent should commit to memory all of the
+> terms associated with the information.
+>
+> (a) **Payment** (optional): depending on the license agreement terms chosen, some agents will require\
+> an upfront payment in order to mint a license. Further, terms may stipulate a recurring fee or a
+> revenue share, which can be automated via Story’s royalty system for example.
+
+<br />
+
 ## Registering your Agent's Outputs
 
 In the same way you registered your AI Agent on Story, you can register its outputs as well. For example, if you agent produces images and you want to register your image, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial.
