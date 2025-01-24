@@ -23,7 +23,7 @@ The Liquid Absolute Percentage (LAP) defines that each parent IP Asset can choos
 
 ## Prerequisites
 
-Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
+Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.sdadsa
 
 ## Royalty Payment and Claiming Flow
 
