@@ -2,7 +2,7 @@
 title: Infrastructure Partners
 excerpt: A list of infrastructure partners & tools.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   robots: index
 ---
