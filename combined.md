@@ -4524,7 +4524,7 @@ struct PILTerms {
       </td>
 
       <td>
-        The address of the royalty policy contract. The royalty policy must have been approved by Story Protocol in advance.
+        The address of the royalty policy contract.
       </td>
     </tr>
 
