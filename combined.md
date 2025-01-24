@@ -6892,17 +6892,9 @@ Metrics:
   </Card>
 </Cards>
 
-## RPC
-
-quicknode
-
-nodefleet
-
-blockpi
-
 ## Onramp/Offramp
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="Transak" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
     LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
   </Card>
@@ -6911,18 +6903,6 @@ blockpi
     LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
   </Card>
 </Cards>
-
-## explorer
-
-hemera
-
-blockscout
-
-aura network
-
-stakeme
-
-node guru
 
 ## Indexers/Data
 
@@ -6942,7 +6922,7 @@ node guru
 
 ## Oracles/VRF
 
-<Cards columns={4}>
+<Cards columns={3}>
   <Card title="Gelato" href="https://www.gelato.network/" icon="fa-home" iconColor="#ff3b57" target="_blank">
     Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated.
   </Card>
@@ -6974,7 +6954,7 @@ node guru
 
 ## Wallets/AA
 
-<Cards columns={4}>
+<Cards columns={3}>
   <Card title="Dynamic" href="https://www.dynamic.xyz/" icon="fa-home" iconColor="#4779ff" target="_blank">
     Dynamic offers a suite of tools for effortless log in, wallet creation and user management. Designed for users. Built for developers.
   </Card>
