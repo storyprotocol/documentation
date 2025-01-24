@@ -27,12 +27,12 @@ metadata:
 ## Onramp/Offramp
 
 <Cards columns={2}>
-  <Card title="Transak" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
-    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  <Card title="Transak" href="https://transak.com/" icon="fa-home" iconColor="#1461db" target="_blank">
+    Enable users to buy or sell crypto from your app.
   </Card>
 
-  <Card title="Halliday" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
-    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  <Card title="Halliday" href="https://halliday.xyz/" icon="fa-home" iconColor="#392df8" target="_blank">
+    The Commerce Automation Network for Modular Chains.
   </Card>
 </Cards>
 
