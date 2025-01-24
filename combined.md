@@ -15420,13 +15420,17 @@ This page is all about AI Agents. We have prepared a way for you to use our docu
   </Card>
 </Cards>
 
+Below you will find two sections:
+
+1. **Developing an AI Agent** - this section is for registering an agent itself
+2. **Facilitating Agent:left_right_arrow: Agent Interactions** - this section is for implementing the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
+
 # Developing an Agent
 
 Below are details on how to:
 
 * Register an AI Agent as IP
 * Add License Terms to your AI Agent
-* Register Your Agent's Outputs as IP
 
 ## Registering an Agent
 
@@ -15460,7 +15464,7 @@ Here is an example of what the IP Metadata should look like for your AI Agent (u
 
 ## Adding Terms to your AI Agent
 
-Upon registering your AI Agent, you can add license terms to it. However you can add more license terms to your AI Agent afterwards as well. Here is an example of how you attach commercial license terms to your agnet using the SDK:
+Upon registering your AI Agent, you can add license terms to it. However you can add more license terms to your AI Agent afterwards as well. Here is an example of how you attach commercial license terms to your agent using the SDK:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
@@ -15486,18 +15490,117 @@ const commercialRemixTerms: LicenseTerms = {
 }
 
 const response = await client.ipAsset.registerPilTermsAndAttach({
-  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721', // the ipId of your AI Agent
+  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721',
   terms: [commercialRemixTerms],
   txOptions: { waitForTransaction: true },
 })
 console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
 ```
+```typescript Request Type
+export type RegisterPilTermsAndAttachRequest = {
+  ipId: Address;
+  terms: RegisterPILTermsRequest[];
+  deadline?: string | number | bigint;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type RegisterPilTermsAndAttachResponse = {
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+  licenseTermsIds?: bigint[];
+};
+```
+
+# Facilitating Agent :left_right_arrow: Agent Interactions
+
+Below are details on how to actually implement the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
+
+## Registering your Agent's Outputs
+
+In the same way you registered your AI Agent on Story, you can register its outputs as well. For example, if your agent produces images and you want to register your image, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial.
+
+## Creating Agreement Terms
+
+As described in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>, agents will negotiate on what agreement terms are appropriate for the requested task:
+
+> 2 **Terms formulation**: The provider agent will consider the request and choose an appropriate set of\
+> license terms for the information being requested. The terms system used should be programmable in
+> nature to facilitate the parsing and formulation of the terms, such as Story’s Programmable IP License
+> (PIL)\[6].
+>
+> 3 **Negotiation** (optional): The agents may have an optional negotiation phase where terms may be\
+> altered until they are deemed appropriate for both parties.
+>
+> * **Counter terms** (optional): During this step, the requester agent who is unsatisfied with the\
+>   initial proposed terms can issue a counterproposal set of terms. Both agents have access to a
+>   standardized terms system, enabling them to reference, add, or remove specific clauses without
+>   ambiguity. These counter terms may include modifications to pricing, usage rights, durations,
+>   licensing restrictions, or any other negotiated variables. By using a consistent, machine-readable
+>   format for their counter terms, agents can seamlessly iterate and respond to each other’s proposals,
+>   ensuring that the negotiation process remains logically coherent and easy to follow.
+> * **Revised terms** (optional): After receiving counter terms, the provider agent can present revised\
+>   terms, taking into account the requested modifications while retaining non-negotiable core principles. The agents effectively refine the licensing conditions through successive rounds of structured
+>   interaction, where each iteration refines points of contention into more acceptable middle grounds.
+>   Because both parties rely on the same underlying terms specification, these revisions maintain
+>   internal consistency and simplify the comparison of multiple drafts over time. This mechanism
+>   ensures that both agents can converge toward an agreement that accurately reflects their mutual
+>   understanding and commercial intentions.
+> * *This process could have multiple iterations until an agreement is reached*
+
+Once agents agree on the terms, they can be created and attached to the registered asset with the SDK:
+
+```typescript TypeScript
+import { LicenseTerms } from '@story-protocol/core-sdk';
+
+const commercialRemixTerms: LicenseTerms = {
+  transferable: true,
+  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: BigInt(0),
+  expiration: BigInt(0),
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: zeroAddress,
+  commercialRevShare: 50, // can claim 50% of derivative revenue
+  commercialRevCeiling: BigInt(0),
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: BigInt(0),
+  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  uri: '',
+}
+
+const response = await client.ipAsset.registerPilTermsAndAttach({
+  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721', // the ipId of the asset we're attaching to
+  terms: [commercialRemixTerms],
+  txOptions: { waitForTransaction: true },
+})
+console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
+```
+```typescript Request Type
+export type RegisterPilTermsAndAttachRequest = {
+  ipId: Address;
+  terms: RegisterPILTermsRequest[];
+  deadline?: string | number | bigint;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type RegisterPilTermsAndAttachResponse = {
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+  licenseTermsIds?: bigint[];
+};
+```
 
 ## Mint a License
 
-As stated in the Whitepaper:
+As stated in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
 
-> **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
+> 4 **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
 > agreement token) that encapsulates the terms and rules by which the information being provided is
 > to be used. Once minted the agreement is binding and the agent should commit to memory all of the
 > terms associated with the information.
@@ -15506,11 +15609,38 @@ As stated in the Whitepaper:
 >   an upfront payment in order to mint a license. Further, terms may stipulate a recurring fee or a
 >   revenue share, which can be automated via Story’s royalty system for example.
 
-<br />
+Here is how that can be done in the SDK:
 
-## Registering your Agent's Outputs
+```typescript TypeScript
+const response = await client.license.mintLicenseTokens({
+   licenseTermsId: "1", // the license terms id that are attached to the `licensorIpId`
+   licensorIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba", // the ipId of the asset
+   receiver: "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", // who receives the minted license
+   amount: 1, // the amount of licenses to mint
+   txOptions: { waitForTransaction: true }
+});
 
-In the same way you registered your AI Agent on Story, you can register its outputs as well. For example, if you agent produces images and you want to register your image, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial.
+console.log(`License Token minted at transaction hash ${response.txHash}, License IDs: ${response.licenseTokenIds}`)
+```
+```typescript Request Type
+export type MintLicenseTokensRequest = {
+  licensorIpId: Address;
+  licenseTermsId: string | number | bigint;
+  licenseTemplate?: Address;
+  amount?: number | string | bigint;
+  receiver?: Address;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type MintLicenseTokensResponse = {
+  licenseTokenIds?: bigint[];
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+};
+```
+
+Now, the requesting agent has a license token that can be held, giving it the rights to use the provided asset based on the attached terms.
 
 # FAQ
 ## *"Is on-chain IP real?"*
