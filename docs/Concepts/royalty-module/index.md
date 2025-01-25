@@ -10,12 +10,12 @@ metadata:
 next:
   description: ''
 ---
-The Royalty Module defines how revenue flows between parent and child IP Assets. There are two common scenarios when revenue flow would happen:
+The Royalty Module defines how revenue flows between IPs on Story. More specifically, between parent and child [🧩 IP Assets](doc:ip-asset). There are two common scenarios when revenue flow would happen:
 
-1. Minting a License - sometimes there is a minting fee to mint a [License Token](doc:license-token) from an IP Asset. When this is paid by someone (who wants to register a derivative or simply hold a license), the revenue should flow up the chain.
-2. Tipping Directly - if someone sends revenue to an IP Asset directly, it should flow up the chain.
+1. Minting a License - when you mint a [License Token](doc:license-token) that has a `mintingFee`. When this is paid by someone (who wants to register a derivative or simply hold the license), the revenue should flow up the ancestry chain.
+2. Tipping Directly - if someone sends revenue to an IP directly, it should flow up the chain.
 
-The below example (using [Liquid Absolute Percentage](doc:policy-liquid-absolute-percentage)) shows what happens when an IP Asset 4 (IPA4) tips IPA3 1M USDC.
+The below example (using [Liquid Absolute Percentage](doc:policy-liquid-absolute-percentage)) shows what happens when an IP Asset 4 (IPA4) tips IPA3 1,000,000 USDC.
 
 1. Revenue first flows to the Royalty Module contract
 2. Royalty Module sends USDC to both IPA3 and the LAP contract based on the **royalty stack** (15%)
