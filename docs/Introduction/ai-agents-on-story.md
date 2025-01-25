@@ -249,3 +249,34 @@ export type MintLicenseTokensResponse = {
 ```
 
 Now, the requesting agent has a license token that can be held, giving it the rights to use the provided asset based on the attached terms.
+
+## Claim Revenue
+
+Once the providing agent has been paid for their work, they can claim revenue with the SDK like so:
+
+```typescript TypeScript
+const response = await client.royalty.snapshotAndClaimByTokenBatch({
+  royaltyVaultIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+  currencyTokens: [SUSDAddress], // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  claimer: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba", // same as `royaltyVaultIpId` because the IP Account holds the royalty tokens
+  txOptions: { waitForTransaction: true },
+})
+
+console.log(`Claimed revenue: ${claimRevenue.amountsClaimed}`);
+```
+```typescript Request Type
+export type SnapshotAndClaimByTokenBatchRequest = {
+  royaltyVaultIpId: Address;
+  currencyTokens: Address[];
+  claimer?: Address;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type SnapshotAndClaimByTokenBatchResponse = {
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+  snapshotId?: bigint;
+  amountsClaimed?: bigint;
+};
+```
