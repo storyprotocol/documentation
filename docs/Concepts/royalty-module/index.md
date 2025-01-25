@@ -50,9 +50,7 @@ These policies can be registered in a permission-less way and stipulate their ow
 
 * [External Royalty Policies](doc:external-royalty-policies)
 
-<br />
-
-#### Royalty Token % vs Royalty Stack %
+## Royalty Token % vs Royalty Stack %
 
 When creating a derivative, the creator will want to answer the question: "How much percentage of my IP earnings will I keep and how much will go to ancestor IPs?
 
@@ -77,8 +75,6 @@ In the image below there is an example of a one million USDC payment made to IP2
 * RT Holder A - From the one million USDC payment gets 100k USDC. Royalty Stack percentage is paid first and RT Holder A has 100% of Royalty Tokens of IP1 so gets to keep the whole 100k USDC.
 * RT Holder B - From the one million USDC payment gets 180k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. B has 20% of Royalty Tokens of IP2 so it receives 900k USDC \* 20% = 180k.
 * RT Holder C - From the one million USDC payment gets 720k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. C has 80% of Royalty Tokens of IP2 so it receives 900k USDC \* 80% = 720k.
-
-<br />
 
 ## Derivative Chain Configurations
 
