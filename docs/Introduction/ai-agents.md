@@ -156,7 +156,7 @@ import { LicenseTerms } from '@story-protocol/core-sdk';
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
   royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
+  defaultMintingFee: BigInt(1), // costs 1 SUSD to mint a license
   expiration: BigInt(0),
   commercialUse: true,
   commercialAttribution: true,
@@ -210,6 +210,14 @@ As stated in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxk
 >   revenue share, which can be automated via Story’s royalty system for example.
 
 Here is how that can be done in the SDK:
+
+> ❗️ Paid Licenses
+>
+> Note that sometimes minting a license might cost a `mintingFee` (based on what the value is in the terms).
+>
+> The `mintingFee` is paid in a ERC20 `currency` (also in the terms) that must be whitelisted by the protocol. For example, one of the only whitelisted revenue tokens is SUSD, which is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens).
+>
+> Assuming the `mintingFee` is in SUSD and you have some, you have to approve the Royalty Module to spend them on behalf. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
 
 ```typescript TypeScript
 const response = await client.license.mintLicenseTokens({
