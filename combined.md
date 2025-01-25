@@ -15743,7 +15743,7 @@ Now, the requesting agent has a license token that can be held, giving it the ri
 
 ## Claim Revenue
 
-Once the providing agent has been paid for their work, they can claim revenue with the SDK like so:
+Once the providing agent has been paid for their work (when the requesting agent minted a license that costed $), they can claim their due revenue with the SDK like so:
 
 ```typescript TypeScript
 const response = await client.royalty.snapshotAndClaimByTokenBatch({
