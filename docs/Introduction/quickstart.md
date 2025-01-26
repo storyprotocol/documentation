@@ -47,7 +47,7 @@ Let's start with the most basic question: *"What does it take to register IP on 
 
 To register IP on Story, you'll first need an NFT. If your IP is an ERC-721 NFT (ex. an Azuki or Pudgy Penguin on Story), you're already set. If not, you must mint an NFT to represent your off-chain IP. And don't worry, we'll help you do this in the following tutorials.
 
-Next you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](doc:ip-asset). An "IP Asset" is your IP registered on Story, empowered by:
+Next, you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](doc:ip-asset). An "IP Asset" is your IP registered on Story, empowered by:
 
 * all of Story's [🧱 Modules](doc:story-modules) like transparent licensing, automatic royalty payments, and disputing of wrongfully registered IP
 * IP protection through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
@@ -66,7 +66,7 @@ To answer that question, please see [NFT vs. IP Metadata](https://docs.story.fou
 
 You may be wondering, *"How do I take advantage of Story's on-chain licensing? How do I make sure my registered IP has a license ready to go?"*
 
-Before you attach any sort of licenses or license terms to your [🧩 IP Asset](doc:ip-asset), it would be best to first understand what the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) actually is. This "PIL" is what defines the available [License Terms](doc:license-terms) on Story, which in turn - when attached to an IP Asset - is what defines how others can use (commercially, create derivatives, etc) that IP Asset.
+Before you attach any licenses or license terms to your [🧩 IP Asset](doc:ip-asset), it would be best to first understand what the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) actually is. This "PIL" is what defines the available [License Terms](doc:license-terms) on Story, which, in turn, when attached to an IP Asset, defines how others can use (commercially, create derivatives, etc) that IP Asset.
 
 Our SDK tutorial will show you exactly how to attach license terms to your IP Asset:
 
@@ -117,7 +117,7 @@ Let's start with the most basic question: *"What does it take to register IP on 
 
 To register IP on Story, you'll first need an NFT. If your IP is an ERC-721 NFT (ex. an Azuki or Pudgy Penguin on Story), you're already set. If not, you must mint an NFT to represent your off-chain IP. And don't worry, we'll help you do this in the following tutorial.
 
-Next you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](doc:ip-asset). An "IP Asset" is your IP registered on Story, empowered by:
+Next, you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](doc:ip-asset). An "IP Asset" is your IP registered on Story, empowered by:
 
 * all of Story's [🧱 Modules](doc:story-modules) like transparent licensing, automatic royalty payments, and disputing of wrongfully registered IP
 * IP protection through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
@@ -136,7 +136,7 @@ To answer that question, please see [NFT vs. IP Metadata](https://docs.story.fou
 
 You may be wondering, *"How do I take advantage of Story's on-chain licensing? How do I make sure my registered IP has a license ready to go?"*
 
-Before you attach any sort of licenses or license terms to your [🧩 IP Asset](doc:ip-asset), it would be best to first understand what the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) actually is. This "PIL" is what defines the available [License Terms](doc:license-terms) on Story, which in turn - when attached to an IP Asset - is what defines how others can use (commercially, create derivatives, etc) that IP Asset.
+Before you attach any licenses or license terms to your [🧩 IP Asset](doc:ip-asset), it would be best to first understand what the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) actually is. This "PIL" is what defines the available [License Terms](doc:license-terms) on Story, which, in turn, when attached to an IP Asset, defines how others can use (commercially, create derivatives, etc) that IP Asset.
 
 Our smart contract tutorial will show you exactly how to attach license terms to your IP Asset:
 

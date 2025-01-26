@@ -36,9 +36,9 @@ With Story, Azuki & Pudgy holders can register their IP as **IP Assets** and the
 
 ## *"What are the challenges?"*
 
-The natural question arises: "*What if I'm a bad actor and I ignore all of this and just Right Click Save As?*"
+The natural question arises: "*What if I'm a bad actor and I ignore all of this and just Right-Click Save As?*"
 
-First, its underestimated the extent to which people want to follow the law. This is why PIL is so important - all of the\
+First, it's underestimated the extent to which people want to follow the law. This is why PIL is so important - all of the\
 IP is not just on-chain, it is tied to a real legal contract! If people rip off your IP, they can be sued in court. However this "happy path" doesn't always happen. When things go wrong, we want to provide as many layers of escalation before resorting to off-chain arbitration.
 
 Thus, we've created the [Dispute Module](doc:dispute-module) that allows anyone to flag violating content on-chain. If the dispute is\
@@ -93,6 +93,6 @@ Similarly, the dispute module can check if an IP has been flagged due to its anc
 
 We will support a few ways, including the [Dispute Module](doc:dispute-module), to deter IP infringement. For example if someone were to register someone else's IP, it could be disputed on-chain. And in the worst case, it would be brought to court just as it works in the traditional legal system today.
 
-A more nuanced answer to this (one that we're constantly exploring/improving upon) is there may be additional ways to deter IP infringement. For example, a staking validation mechanism where users could stake tokens on a piece of IP being valid, and if it were to be disputed and marked as copyright, the tokens get slashed and distributed to the creator who was harmed. Additionally we've thought of introducing external IP infringement detection services directly into our L1 at the lowest level that could flag or automatically mark IP as potential infringement the moment its registered.
+A more nuanced answer to this (one that we're constantly exploring/improving upon) is there may be additional ways to deter IP infringement. For example, a staking validation mechanism where users could stake tokens on a piece of IP being valid, and if it were to be disputed and marked as copyright, the tokens get slashed and distributed to the creator who was harmed. Additionally we've thought of introducing external IP infringement detection services directly into our L1 at the lowest level that could flag or automatically mark IP as potential infringement the moment it's registered
 
 Ultimately Story is not a system built to prevent bad actors, rather it is meant to help facilitate honest actors to more easily register their IP, remix from others, and set proper terms for their work. The protocol is permissionless and stopping bad actors entirely would be near impossible, but we can try to disincentivize them as best we can. Much like how the pirating of media plummeted when Apple Music, Spotify, and Netflix made such media more accessible by creating a "path of least resistance", we see a similar future with Story & IP.
