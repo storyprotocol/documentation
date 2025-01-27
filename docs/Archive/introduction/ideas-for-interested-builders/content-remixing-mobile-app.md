@@ -2,7 +2,7 @@
 title: Content Remixing Mobile App
 excerpt: Instagram filter before the social part
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
