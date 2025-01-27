@@ -6869,8 +6869,6 @@ Metrics:
 * [Tokenomics & Staking](doc:tokenomics-staking)
 
 # Infrastructure Partners
-# Infrastructure
-
 ## Cross-chain
 
 <Cards columns={3}>
