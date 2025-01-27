@@ -43,9 +43,11 @@ Next we can initiate the SDK Client. There are two ways to do this:
   </Card>
 </Cards>
 
-> :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
->
-> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use the public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#explorers).
+Before continuing with the code below:
+
+1. Make sure to have `WALLET_PRIVATE_KEY` set up in your `.env` file.
+2. Make sure to have `RPC_PROVIDER_URL` set up in your `.env` file.
+   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
 
 ```typescript index.ts
 import { http } from 'viem';
