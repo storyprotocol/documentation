@@ -15837,7 +15837,7 @@ With Story, you can share your work freely, knowing that wherever it goes, it’
 You want to start building on Story quickly... so let's get started!
 
 * [I'm building an app](https://docs.story.foundation/docs/quickstart#app-developers)
-* [I'm a smart contract developer](https://docs.story.foundation/docs/quickstart#smart-contract-developers) 
+* [I'm a smart contract developer](https://docs.story.foundation/docs/quickstart#smart-contract-developers)
 
 > 📘 Looking to read up on Story first?
 >
@@ -15855,7 +15855,7 @@ If you want to deploy an app using Story, this section is for you.
 
 ## :building_construction: Story Network Infra
 
-The [Story Network Guide](doc:story-network) provides all RPC, explorer, and faucet info. 
+The [Story Network Guide](doc:story-network) provides all RPC, explorer, and faucet info.
 
 ## :computer: Use our SDKs
 
@@ -15876,9 +15876,11 @@ Next you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](do
 * all of Story's [🧱 Modules](doc:story-modules) like transparent licensing, automatic royalty payments, and disputing of wrongfully registered IP
 * IP protection through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
 
-To actually do this in code, our SDK tutorial will show you exactly how to do these things:
-
-* [Register an IP Asset](doc:register-an-ip-asset)
+<Cards columns={1}>
+  <Card title="Register IP on Story" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#/using-the-sdk" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Learn how to register IP on Story using the TypeScript SDK.
+  </Card>
+</Cards>
 
 ### Difference Between IP Metadata vs. NFT Metadata
 
@@ -15946,9 +15948,11 @@ Next you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](do
 * all of Story's [🧱 Modules](doc:story-modules) like transparent licensing, automatic royalty payments, and disputing of wrongfully registered IP
 * IP protection through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
 
-To actually do this in your smart contract, follow our smart contract tutorial:
-
-* [Register an NFT as an IP Asset](doc:sc-tutorial-registering-an-ip-asset)
+<Cards columns={1}>
+  <Card title="Register IP on Story" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#/using-a-smart-contract" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Learn how to register IP on Story using the smart contracts.
+  </Card>
+</Cards>
 
 ### Difference Between IP Metadata vs. NFT Metadata
 
@@ -15985,5 +15989,4 @@ Our smart contract tutorial will show you exactly how to claim royalty from a ch
 > 📘 Learn More
 >
 > For more information on royalty and how it functions, check out the [💸 Royalty Module](doc:royalty-module).
-
 
