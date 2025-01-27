@@ -2,7 +2,7 @@
 title: Introduction
 excerpt: Explore the Story Ecosystem
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
