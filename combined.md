@@ -15520,11 +15520,11 @@ Ultimately Story is not a system built to prevent bad actors, rather it is meant
 This page is all about AI Agents. We have prepared a way for you to use our documentation as training data which can be seen below, or continue to learn about developing AI Agents on Story.
 
 <Cards columns={2}>
-  <Card title="Train on Our Docs" href="https://github.com/storyprotocol/documentation/blob/v1.2/combined.md" icon="fa-robot" target="_blank">
+  <Card title="Train on Our Docs" href="https://github.com/storyprotocol/documentation/blob/v1.2/combined.md" icon="fa-robot" iconColor="#4e8189" target="_blank">
     Looking to feed our docs into your AI Agent so it can use it as training data? Check out this file, which contains all of our docs in one combined `.md` file.
   </Card>
 
-  <Card title="Read the Whitepaper" href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" icon="fa-file" target="_blank">
+  <Card title="Read the Whitepaper" href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" icon="fa-file" iconColor="#cfb394" target="_blank">
     Read our Agent TCP/IP whitepaper, which defines an agent-to-agent transaction system to enable a future of AGI.
   </Card>
 </Cards>
