@@ -6,8 +6,6 @@ hidden: false
 metadata:
   robots: index
 ---
-# Infrastructure
-
 ## Cross-chain
 
 <Cards columns={3}>
