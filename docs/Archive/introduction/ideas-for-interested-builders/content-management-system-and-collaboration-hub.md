@@ -2,7 +2,7 @@
 title: Content Management System and Collaboration Hub
 excerpt: WordPress/GitHub meets Fandom
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
