@@ -1,5 +1,5 @@
 ---
-title: 📦 SPG
+title: 📦 SPG (Periphery)
 excerpt: ''
 deprecated: false
 hidden: false
