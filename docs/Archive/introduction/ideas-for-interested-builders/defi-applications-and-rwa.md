@@ -2,7 +2,7 @@
 title: DeFi Applications and RWA
 excerpt: ''
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
