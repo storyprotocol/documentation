@@ -126,7 +126,7 @@ async function requestFinetuning(
   const fileData = fs.readFileSync(zipPath);
   const encodedZip = Buffer.from(fileData).toString("base64");
 
-  const url = "https://api.us1.bfl.ai/v1/finetune";
+  const url = "";
   const headers = {
     "Content-Type": "application/json",
     "X-Key": process.env.BFL_API_KEY,
