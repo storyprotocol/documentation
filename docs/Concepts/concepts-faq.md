@@ -58,7 +58,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An ERC-721 NFT that gets minted from an IP Asset with specific license terms. It is essentially the license you hold that gives you access to use the associated IP Asset based on the terms in the License Token.  
+        An ERC-721 NFT that gets minted from an IP Asset with specific license terms. It is essentially the license you hold that gives you access to use the associated IP Asset based on the terms in the License Token.
 
         A License Token is burned when it is used to register an IP Asset as a derivative of another.
       </td>
@@ -68,7 +68,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        These are the tokens that are actually used for payment (ex. ETH, USDC, etc).  
+        These are the tokens that are actually used for payment (ex. $WIP).
 
         "*Royalty Tokens*" are used to claim these Revenue Tokens when an IP Asset earns them.
       </td>
