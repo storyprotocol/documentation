@@ -2787,7 +2787,7 @@ IP Accounts are smart contracts that are tied to an IP Asset, and do two main th
 
 The address of the IP Account is the IP Asset's identifier (the `ipId`).
 
-## [🧱 Modules](doc:modules-1)
+## [🧱 Modules](doc:story-modules)
 
 Modules are customizable smart contracts that define and extend the functionality of IP Accounts. Modules empower developers to create functions and interactions for each IP to make IPs truly programmable.
 
