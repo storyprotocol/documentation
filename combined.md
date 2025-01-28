@@ -11172,11 +11172,18 @@ export const client = StoryClient.newClient(config)
 
 ## 2. Tipping the Derivative IP Asset
 
-Now create a `main.ts` file. We will use the `payRoyaltyOnBehalf` function to pay the derivative asset. In this case:
+Now create a `main.ts` file. We will use the `payRoyaltyOnBehalf` function to pay the derivative asset.
 
-1. `receiverIpId` is the `ipId` of the derivative asset
+Now, before you actually pay the IP Asset, you will need to do a few things:
+
+1. Obviously, we will need some SUSD to pay with. Mint some SUSD tokens by running [this](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19) transaction (10 is good).
+2. Next, you have to allow the `RoyaltyModule.sol` contract to spend those tokens on your behalf so it can properly distribute royalties to ancestor IPs. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the spender is `0xEa6eD700b11DfF703665CCAF55887ca56134Ae3B` (this is the Odyssey v1.2 address of `RoyaltyModule.sol` found [here](doc:deployed-smart-contracts)) and the value is >= 2 (that's the amount we're paying in the script).
+
+Now we can call the `payRoyaltyOnBehalf` function. In this case:
+
+1. `receiverIpId` is the `ipId` of the derivative (child) asset
 2. `payerIpId` is `zeroAddress` because the payer is a 3rd party (someone that thinks Mickey Mouse with a hat on him is cool), and not necessarily another IP Asset
-3. `token` is the address of SUSD, which is currently the only [whitelisted revenue token](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+3. `token` is the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 4. `amount` is 2, since the person tipping wants to send 2 SUSD
 
 ```typescript main.ts
@@ -11197,9 +11204,32 @@ async function main() {
 main();
 ```
 
-## 3. Parent Claiming Due Revenue
+## 3. Child Claiming Due Revenue
 
-At this point we have already finished the tutorial: we learned how to tip an IP Asset. But what if the parent wants to claim their due revenue? In this example, the parent should be able to claim 1 SUSD since the child earned 2 SUSD and the `commercialRevShare = 50` in the license terms.
+At this point we have already finished the tutorial: we learned how to tip an IP Asset. But what if the child and parent want to claim their due revenue?
+
+The child has been paid 2 SUSD. But remember, it shares 50% of its revenue with the parent IP because of the `commercialRevenue = 50` in the license terms.
+
+The child IP can claim its 1 SUSD by calling the `snapshotAndClaimByTokenBatch` function:
+
+* `royaltyVaultIpId` is the `ipId` of the IP Asset thats associated with the royalty vault that has the funds in it (more simply, this is just the child's `ipId`)
+* `currencyTokens` is an array that contains the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+* `claimer` is the address that holds the royalty tokens associated with the child's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the child asset
+
+```typescript main.ts
+const response = await client.royalty.snapshotAndClaimByTokenBatch({
+  royaltyVaultIpId: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
+  currencyTokens: ["0x91f6F05B08c16769d3c85867548615d270C42fC7"],
+  claimer: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
+  txOptions: { waitForTransaction: true },
+})
+
+console.log(`Claimed revenue: ${response.amountsClaimed}`);
+```
+
+## 4. Parent Claiming Due Revenue
+
+Continuing, the parent should be able to claim its revenue as well. In this example, the parent should be able to claim 1 SUSD since the child earned 2 SUSD and the `commercialRevShare = 50` in the license terms.
 
 We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the due revenue tokens.
 
@@ -11207,7 +11237,7 @@ We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the du
 2. `claimer` is the address that holds the royalty tokens associated with the parent's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the parent asset
 3. `childIpId` is obviously the `ipId` of the child asset
 4. `royaltyPolicy` is the address of the royalty policy. As explained in [💸 Royalty Module](doc:royalty-module), this is either `RoyaltyPolicyLAP` or `RoyaltyPolicyLRP`, depending on the license terms. In this case, let's assume the license terms specify a `RoyaltyPolicyLAP`. Simply go to [Deployed Smart Contracts](doc:deployed-smart-contracts) and find the correct address.
-5. `currencyToken` is the address of SUSD, which is currently the only [whitelisted revenue token](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+5. `currencyToken` is the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 6. `amount` is 1, since the parent should have 1 SUSD available to claim
 
 ```typescript main.ts
@@ -11234,7 +11264,7 @@ async function main() {
 main();
 ```
 
-## 4. Done!
+## 5. Done!
 
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
