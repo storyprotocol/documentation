@@ -41,7 +41,7 @@ Modules are customizable smart contracts that define and extend the functionalit
 
 We already have a few core modules:
 
-1. \[📜 Licensing Module]\(doc:licensing-module): create parent\<->child relationships between IPs, enabling derivatives of IPs that are restricted by the agreements in the license terms (must give attribution, share 10% revenue, etc)
+1. [📜 Licensing Module](doc:licensing-module): create parent\<->child relationships between IPs, enabling derivatives of IPs that are restricted by the agreements in the license terms (must give attribution, share 10% revenue, etc)
 2. [💸 Royalty Module](doc:royalty-module): automate revenue flow between IPs, abiding by the negotiated revenue sharing in license terms
 3. [❌ Dispute Module](doc:dispute-module): facilitates the disputing and flagging of IP
 4. [👥 Grouping Module](doc:grouping-module): allows for IPs to be grouped together
