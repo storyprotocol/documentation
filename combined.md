@@ -15755,9 +15755,9 @@ Here is how that can be done in the SDK:
 >
 > Note that sometimes minting a license might cost a `mintingFee` (based on what the value is in the terms).
 >
-> The `mintingFee` is paid in a ERC20 `currency` (also in the terms) that must be whitelisted by the protocol. For example, one of the only whitelisted revenue tokens is SUSD, which is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens).
+> The `mintingFee` is paid in a ERC20 `currency` (also in the terms) that must be whitelisted by the protocol. For example, one of the only whitelisted revenue tokens is SUSD, which can be minted for test purposes [here](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19).
 >
-> Assuming the `mintingFee` is in SUSD and you have some, you have to approve the Royalty Module to spend them on behalf. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
+> Assuming the `mintingFee` is in SUSD and you have some, you have to approve the `RoyaltyModule.sol` contract to spend them on your behalf. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule.sol` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
 
 ```typescript TypeScript
 const response = await client.license.mintLicenseTokens({
@@ -15802,7 +15802,7 @@ const response = await client.royalty.snapshotAndClaimByTokenBatch({
   txOptions: { waitForTransaction: true },
 })
 
-console.log(`Claimed revenue: ${claimRevenue.amountsClaimed}`);
+console.log(`Claimed revenue: ${response.amountsClaimed}`);
 ```
 ```typescript Request Type
 export type SnapshotAndClaimByTokenBatchRequest = {
