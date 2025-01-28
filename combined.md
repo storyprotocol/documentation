@@ -1547,10 +1547,10 @@ Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inf
 
 An ERC-20 token must be whitelisted by our protocol in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token. Here are the whitelisted tokens (you can mint tokens directly from the link):
 
-| Token | Contract Address                             | Mint                                                                                                                        |
-| :---- | :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
-| SUSD  | `0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5` | <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5" target="_blank">Mint SUSD ↗️</a> |
-| WIP   | `0x1516000000000000000000000000000000000000` |                                                                                                                             |
+| Token | Contract Address                             | Mint                                                                                                                                                      |
+| :---- | :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SUSD  | `0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5` | <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19" target="_blank">Mint SUSD ↗️</a> |
+| WIP   | `0x1516000000000000000000000000000000000000` |                                                                                                                                                           |
 
 ## How to obtain Royalty Tokens?
 
