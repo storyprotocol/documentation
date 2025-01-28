@@ -6871,6 +6871,13 @@ Metrics:
 * [Tokenomics & Staking](doc:tokenomics-staking)
 
 # Infrastructure Partners
+## RPC Providers
+
+\<Cards columns=\{2}>
+&#x20; \<Card title="QuickNode" href="https\://www\.quicknode.com/chains/story" icon="fa-home" target="\_blank">
+QuickNode provides hosted Story RPC nodes under their free and paid plans, granting flexible and reliable access to the network. For high-throughput or mission-critical applications, \<a href="https\://www\.quicknode.com/clusters">Dedicated Clusters\</a> deliver premium performance with unmetered billing, elevated rate limits, and robust infrastructure.  \</Card>
+\</Cards>
+
 ## Cross-chain
 
 <Cards columns={3}>
