@@ -11279,6 +11279,55 @@ const response = await client.ipAsset.registerIpAndMakeDerivativeWithLicenseToke
 })
 ```
 
+# `client.license`
+
+## `mintLicenseTokens`
+
+The function now has 2 extra parameters:
+
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0 then no limit.
+2. `maxRevenueShare`: The maximum revenue share percentage allowed for minting the License Tokens. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
+
+Example:
+
+```typescript TypeScript
+const response = await client.license.mintLicenseTokens({
+  licensorIpId: "0x",
+  licenseTermsId: "1",
+  maxMintingFee: BigInt(0),
+  maxRevenueShare: 100_000_000,
+})
+```
+
+# `client.royalty`
+
+Updated document coming soon!
+
+# `client.dispute`
+
+## `raiseDispute`
+
+The function now has 2 extra parameters:
+
+1. `bond`: The bond size.
+2. `liveness`: The liveness time.
+
+The following parameters have been removed:
+
+1. `data`
+
+Example:
+
+```typescript TypeScript
+const response = await client.dispute.raiseDispute({
+  targetIpId: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  cid: "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR",
+  targetTag: "tag",
+  bond: 0,
+  liveness: 2592000,
+})
+```
+
 # Version Matrix
 A version matrix showing the **currently available protocol versions** for different developer tools on both of our testnet networks. *Updated daily*.
 
