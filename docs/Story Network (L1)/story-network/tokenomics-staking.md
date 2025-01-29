@@ -18,7 +18,7 @@ This document walks through the staking specification for Story. The goal is to 
 
 ## Genesis
 
-The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team. Tokens for investors, the core team, and a portion of those of the foundation and ecosystem will start out locked.
+The Story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team. Tokens for investors, the core team, and a portion of those of the foundation and ecosystem will start out locked.
 
 ## Locked vs Unlocked tokens
 
@@ -46,7 +46,7 @@ New emissions will flow to two places:
 
 ## Token burn
 
-Since story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
+Since Story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
 
 # Staking
 
@@ -107,15 +107,15 @@ After the staking period ends, users can choose not to unstake. In this case, th
 
 ## Create validator
 
-To become a validator, the validator must first run a validator node based on the latest released story binaries, then call the CreateValidator function with an initial staking amount, moniker, and commission rate. It also needs to set the max commission rate and max commission rate change to make sure it doesn’t change the commission rate later dramatically. The minimum commission rate that a validator can set is 5%.
+To become a validator, the validator must first run a validator node based on the latest released Story binaries, then call the CreateValidator function with an initial staking amount, moniker, and commission rate. It also needs to set the max commission rate and max commission rate change to make sure it doesn’t change the commission rate later dramatically. The minimum commission rate that a validator can set is 5%.
 
-The initial staking amount needs to be larger than a threshold, which is 1024 IP. The amount will be deducted from the caller’s wallet. It can only be staked to a flexible period.
+The initial staking amount needs to be larger than the threshold, which is 1024 IP. The amount will be deducted from the caller’s wallet. It can only be staked to a flexible period.
 
 If a validator tries to call create validator function the second time, it will be ignored.
 
 ## Update validator commission
 
-This operation allows validators to edit their validator commission rate. If the updated commission rate is larger than max commission rate or the commission rate change delta is larger than max commission rate change, the operation will fail.
+This operation allows validators to edit their validator commission rate. If the updated commission rate is larger than the max commission rate or the commission rate change delta is larger than the max commission rate change, the operation will fail.
 
 A fee of 1 IP will be charged for updating a validator to prevent spamming. The fee will be burnt by the contract.
 
@@ -125,9 +125,9 @@ The commission rate can only be updated once per day. It will not throw an error
 
 Both the validator and delegator can stake tokens to a validator. A validator can stake to itself, which is called self-delegation. Users can decide if they want to stake with a fixed staking period or stake without a period (flexible staking).
 
-If a fixed period is chosen, a delegation id will be returned to the users. Users must use this delegation id to unstake tokens from this stake operation. If flexible staking is chosen, the returned delegation id will be 0.
+If a fixed period is chosen, a delegation ID will be returned to the users. Users must use this delegation ID to unstake tokens from this stake operation. If flexible staking is chosen, the returned delegation ID will be 0.
 
-The staking amount needs to be larger than a threshold, which is 1024 IP.
+The staking amount needs to be larger than the threshold, which is 1024 IP.
 
 If a delegator delegates to a non-existent validator, the tokens will NOT be refunded.
 
@@ -145,17 +145,17 @@ The unstaking request will first go through the unbonding process, which is 14 d
 
 Partial unstake of a delegation is supported. For example, if a 1-year long delegation has 1 million tokens, after 1 year, users can unstake 500k from this delegation and keep the remaining staked to continue earning rewards.
 
-Unstake can fail if the validator, delegator and delegation id passed in is incorrect.
+Unstake can fail if the validator, delegator, and delegation ID passed in is incorrect.
 
 Unstake can also fail if the maximum concurrent unbonding request (currently 14) has been reached for the validator/delegator pair.
 
-If the unstake amount passed in is larger than the total unstakable tokens, the current total unstakable amounts will be unstaked. For example, if users unstake 1024 IP and only have 1023 IP stake, 1023 IP will be withdrawn.
+If the unstake amount passed in is larger than the total unstakable tokens, the current total unstakable amounts will be unstaked. For example, if users unstake 1024 IP and only have 1023 IP staked, 1023 IP will be withdrawn.
 
 If a validator exits, by either being offline and getting jailed, or not having enough stakes to be in the top 64 validator set, the delegators can unstake their tokens if the tokens are not in a staking period or their staking period is mature. Otherwise, delegators must wait until the staking period matures to unstake.
 
 ## Redelegate
 
-Redelegate operation allows a delegator to move its staked tokens from one validator to another. The tokens can be redelegated to the new validator immediately and start earning rewards. However, the redelegated tokens are still subject to the unbonding process, IF the source validator is in the active validator set or unbonding from the active validator set. During this 14 days unbounding time, it will be slashed if the original validator gets slashed.
+Redelegate operation allows a delegator to move its staked tokens from one validator to another. The tokens can be redelegated to the new validator immediately and start earning rewards. However, the redelegated tokens are still subject to the unbonding process, IF the source validator is in the active validator set or unbonding from the active validator set. During this 14-day unbounding time, it will be slashed if the original validator gets slashed.
 
 A fee of 1 IP will be charged for redelegation to prevent spamming. The fee will be burnt by the contract.
 
@@ -163,7 +163,7 @@ The minimum redelegation amount is 1024 IP. If a delegator’s initial stake is 
 
 Similarly to unstaking, if the redelegation amount passed in is larger than the total redelegatable tokens, the total redelegatable amounts will be redelegated. If the remaining balance after redelegation is less than 1024 IP, all remaining tokens will be redelegated together.
 
-The delegation id will stay the same after the redelegation.
+The delegation ID will stay the same after the redelegation.
 
 Redelegation has its own maximum ongoing unbonding transaction limit per delegator/source validator/destination validator pair, which is also 14.
 
@@ -188,7 +188,7 @@ Slashing penalizes bad behaviors on the validators by slashing out a fraction of
 
 A validator will also get jailed after self-undelegation if the validator’s remaining self-delegation amount is smaller than the minimum self-delegation (1024 IP).
 
-A jailed validator cannot participate in the consensus and earn any reward. But they can unjail themselves after a cooldown time, which is currently set to 10 minutes. After 10 minutes, it can call story’s staking contract to unjail itself IF their stake is more than minimum stake amount (1024 IP), after which it can participate in the consensus again if it’s still within the top 64 validators.
+A jailed validator cannot participate in the consensus and earn any reward. But they can unjail themselves after a cooldown time, which is currently set to 10 minutes. After 10 minutes, it can call Story’s staking contract to unjail itself IF its stake is more than the minimum stake amount (1024 IP), after which it can participate in the consensus again if it’s still within the top 64 validators.
 
 A jailed validator can still withdraw all their stakes.
 
@@ -214,13 +214,13 @@ Each function will include an additional unformatted `data` input field to accom
 
 ## Validator and delegator key format
 
-Validator and delegator public keys are secp256k1 keys. The keys have a 33 bytes compressed version and 65 bytes uncompressed version. When interacting with the story's smart contracts, a 65 bytes uncompressed key is used to identify validators and delegators. When using story’s staking APIs, the bech32 address that can be derived from the compressed key is used.
+Validator and delegator public keys are secp256k1 keys. The keys have a 33 bytes compressed version and 65 bytes uncompressed version. When interacting with the Story's smart contracts, a 65-byte uncompressed key is used to identify validators and delegators. When using Story’s staking APIs, the bech32 address that can be derived from the compressed key is used.
 
 # Rewards
 
 ## Rewards Pool Allocation
 
-For every block, a fixed proportion of token inflation will go to the rewards distribution pool, which will be shared among all 64 active validators according to each of their share weights. *These allocated tokens will then be shared among the validator and its delegators in a fashion described by the next section.* The validator share weight is calculated based on the total token staking amount, and whether or not the token staking type is locked or unlocked.
+For every block, a fixed proportion of token inflation will go to the rewards distribution pool, which will be shared among all 64 active validators according to each of their share weights. *These allocated tokens will then be shared among the validator and its delegators in a fashion described in the next section.* The validator share weight is calculated based on the total token staking amount, and whether or not the token staking type is locked or unlocked.
 
 As an example, assume that we have 100 tokens allocated for the validator rewards distribution pool, and assume that we only have 3 active validators:
 
@@ -253,7 +253,7 @@ where
 
 ## Validator And Delegator Rewards
 
-Total rewards allocations (*whose calculations are shown in the prior section*) for each validator are shared between the validator itself and all of its delegators:
+Total reward allocations (*whose calculations are shown in the prior section*) for each validator are shared between the validator itself and all of its delegators:
 
 * The validator takes a fixed percentage commission, set by the validator itself
 * Remaining rewards are distributed among delegators according to their share weights
@@ -272,7 +272,7 @@ To calculate how many tokens each delegator receives, we first calculate each of
 * delegatorB with 10 \* 1 = 10 shares
 * delegatorC with 10 \* 2 = 20 shares
 
-With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each delegator, noting that the total number of tokens to be distributed among delegators is give by 100 - (100 \* 0.20) = 80:
+With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each delegator, noting that the total number of tokens to be distributed among delegators is given by 100 - (100 \* 0.20) = 80:
 
 * delegatorA with 80 \* (10 / 40) = 20 tokens
 * delegatorB with 80 \* (10 / 40) = 20 tokens
@@ -308,7 +308,7 @@ In every block, a percentage (currently 0% at Genesis) of the newly minted token
 
 ## Distribution process
 
-Every month, the story foundation will get the validator consensus participation rate based on the on-chain metrics for the previous month and calculate how many UBI tokens each validator can claim and set this in the UBI pool contract. Each validator then can claim the token from the UBI pool contract.
+Every month, the Story foundation will get the validator consensus participation rate based on the on-chain metrics for the previous month and calculate how many UBI tokens each validator can claim and set this in the UBI pool contract. Each validator then can claim the token from the UBI pool contract.
 
 The UBI calculation and claim process shall be verifiable by the public.
 
@@ -318,7 +318,7 @@ The UBI contract address: **0xcccccc0000000000000000000000000000000002**
 
 The first 1,580,851 blocks after the genesis is called Singularity, during which everyone can create a validator and stake tokens but the active validator set will only have the genesis validators. There is also no new token emission, hence no reward. Unstake and redelegate are also not supported.
 
-The Genesis validator set consists of 8 validators, setup by the foundation and trusted staking institutions. 4 of them support locked tokens and the other 4 support unlocked tokens. Each of them has an initial stake of 0.001 IP. Each of them will set a commission rate. During the Singularity, the genesis valdiators will need to self delegate at least 1024 IP to perform validator operations like editing validator commission rate.
+The Genesis validator set consists of 8 validators, setup by the foundation and trusted staking institutions. 4 of them support locked tokens, and the other 4 support unlocked tokens. Each of them has an initial stake of 0.001 IP. Each of them will set a commission rate. During the Singularity, the genesis valdiators will need to self-delegate at least 1024 IP to perform validator operations like editing validator commission rate.
 
 After Singularity, the top 64 validator nodes with the highest stakes will be selected to participate in consensus and receive rewards.
 
