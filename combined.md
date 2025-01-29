@@ -10829,8 +10829,8 @@ This function now has 3 extra parameters under derivative data:
 
 1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
    1. **Recommended for simplicity**: `0`
-2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
-   1. **Recommended for simplicity**: `100_000_000`
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100.
+   1. **Recommended for simplicity**: `100`
 3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
    1. **Recommended for simplicity**: `100_000_000`
 
@@ -10842,7 +10842,7 @@ const derivData: DerivativeData = {
   licenseTermsIds: ["1"],
   maxMintingFee: BitInt(0), // disabled
   maxRts: 100_000_000, // default
-  maxRevenueShare: 100_000_000, // default
+  maxRevenueShare: 100, // default
 };
 
 const response = await client.ipAsset.registerDerivativeIp({
@@ -10869,8 +10869,8 @@ This function also has 3 extra parameters under derivative data:
 
 1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
    1. **Recommended for simplicity**: `0`
-2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
-   1. **Recommended for simplicity**: `100_000_000`
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100.
+   1. **Recommended for simplicity**: `100`
 3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
    1. **Recommended for simplicity**: `100_000_000`
 
@@ -10882,7 +10882,7 @@ const derivData: DerivativeData = {
   licenseTermsIds: ["1"],
   maxMintingFee: BitInt(0), // disabled
   maxRts: 100_000_000, // default
-  maxRevenueShare: 100_000_000, // default
+  maxRevenueShare: 100, // default
 };
 
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
@@ -11028,7 +11028,7 @@ The function now has 2 extra parameters:
 
 1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
    1. **Recommended for simplicity**: `0`
-2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100.
    1. **Recommended for simplicity**: `100_000_000`
 
 Example:
@@ -11038,7 +11038,7 @@ const response = await client.license.mintLicenseTokens({
   licensorIpId: "0x",
   licenseTermsId: "1",
   maxMintingFee: BigInt(0),
-  maxRevenueShare: 100_000_000,
+  maxRevenueShare: 100,
 })
 ```
 
