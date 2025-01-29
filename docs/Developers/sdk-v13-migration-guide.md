@@ -8,7 +8,11 @@ metadata:
 ---
 Welcome to the v1.2 -> v1.3 SDK migration guide. Below, you can find the changes you must take to integrate with the v1.3 SDK.
 
-# `client.ipAsset`
+> ❓ Need 1-on-1 help?
+>
+> Contact @jacobmtucker on Telegram.
+
+# client.ipAsset
 
 ## `registerDerivative`
 
@@ -369,11 +373,11 @@ const response = await client.license.mintLicenseTokens({
 })
 ```
 
-# `client.royalty`
+# client.royalty
 
 Updated document coming soon!
 
-# `client.dispute`
+# client.dispute
 
 ## `raiseDispute`
 
