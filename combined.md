@@ -10932,6 +10932,9 @@ Learn the TypeScript SDK by running extremely straightforward & easy scripts con
 
 Open-source React widgets to interact with Story Protocol.
 
+# SDK v1.3 MIGRATION GUIDE
+Welcome to the v1.2 -> v1.3 SDK migration guide. Below, you can find the changes you must take to integrate with the v1.3 SDK.
+
 # Version Matrix
 A version matrix showing the **currently available protocol versions** for different developer tools on both of our testnet networks. *Updated daily*.
 
