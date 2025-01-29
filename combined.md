@@ -11305,7 +11305,9 @@ const response = await client.license.mintLicenseTokens({
 
 # client.royalty
 
-Updated document coming soon!
+> 🚧 Coming soon!
+>
+> We don't have the updated v1.3 SDK ready yet for royalty. However, royalty in v1.3 is MUCH easier. Instead of many different royalty functions, we have combined them all into a `claimAllRevenue` function. Migration instructions coming soon.
 
 # client.dispute
 
