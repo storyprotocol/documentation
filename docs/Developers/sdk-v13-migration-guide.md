@@ -18,9 +18,12 @@ Welcome to the v1.2 -> v1.3 SDK migration guide. Below, you can find the changes
 
 This function now has 3 extra parameters:
 
-1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0 then no limit.
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
+   1. **Recommended for simplicity**: `0`
 2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
-3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+   1. **Recommended for simplicity**: `100_000_000`
+3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
 
 Example:
 
@@ -39,7 +42,8 @@ const response = await client.ipAsset.registerDerivative({
 
 The function now has 1 extra parameter:
 
-1. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+1. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
 
 Example:
 
@@ -171,9 +175,12 @@ const response = await client.ipAsset.registerIpAndAttachPilTerms({
 
 This function now has 3 extra parameters under derivative data:
 
-1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0 then no limit.
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
+   1. **Recommended for simplicity**: `0`
 2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
-3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+   1. **Recommended for simplicity**: `100_000_000`
+3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
 
 Example:
 
@@ -207,9 +214,12 @@ The function now has 1 extra parameter:
 
 This function also has 3 extra parameters under derivative data:
 
-1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0 then no limit.
-2. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
-3. `maxRevenueShare`: The maximum revenue share percentage allowed for minting the License Tokens. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
+   1. **Recommended for simplicity**: `0`
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
+   1. **Recommended for simplicity**: `100_000_000`
+3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
 
 Example:
 
@@ -310,7 +320,8 @@ const response = await client.ipAsset.registerPilTermsAndAttach({
 The function now has 2 extra parameters:
 
 1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
-2. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+2. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
 
 Example:
 
@@ -334,7 +345,8 @@ const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLice
 
 The function now has 1 extra parameter:
 
-1. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+1. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
 
 Example:
 
@@ -359,8 +371,10 @@ const response = await client.ipAsset.registerIpAndMakeDerivativeWithLicenseToke
 
 The function now has 2 extra parameters:
 
-1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0 then no limit.
-2. `maxRevenueShare`: The maximum revenue share percentage allowed for minting the License Tokens. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
+   1. **Recommended for simplicity**: `0`
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100,000,000 (where 100,000,000 represents 100%).
+   1. **Recommended for simplicity**: `100_000_000`
 
 Example:
 
