@@ -3760,6 +3760,8 @@ IP Assets can be modified/customized a few ways. For example, by [setting the Li
 
       <td>
         Cannot **decrease** `commercialRevShare` percentage. You can only increase it.
+
+        However, you **can** set it to 0 to disable the overwrite.
       </td>
 
       <td style={{ textAlign: "left" }}>
