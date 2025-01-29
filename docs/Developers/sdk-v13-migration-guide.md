@@ -60,6 +60,7 @@ const response = await client.ipAsset.registerDerivativeWithLicenseTokens({
 The function now has 1 extra parameter:
 
 1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
+   1. **Recommended for simplicity**: `true`
 
 The function has also modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
 
@@ -211,6 +212,7 @@ const response = await client.ipAsset.registerDerivativeIp({
 The function now has 1 extra parameter:
 
 1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
+   1. **Recommended for simplicity**: `true`
 
 This function also has 3 extra parameters under derivative data:
 
@@ -250,6 +252,7 @@ const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
 The function now has 1 extra parameter:
 
 1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
+   1. **Recommended for simplicity**: `true`
 
 Example:
 
@@ -320,6 +323,7 @@ const response = await client.ipAsset.registerPilTermsAndAttach({
 The function now has 2 extra parameters:
 
 1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
+   1. **Recommended for simplicity**: `true`
 2. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
    1. **Recommended for simplicity**: `100_000_000`
 
