@@ -212,9 +212,9 @@ A fee of 1 IP will be charged for adding an operator.
 
 Each function will include an additional unformatted `data` input field to accommodate potential future changes. It can avoid changing user interfaces in the future.
 
-## Validator and delegator key format
+## Validator key format
 
-Validator and delegator public keys are secp256k1 keys. The keys have a 33 bytes compressed version and 65 bytes uncompressed version. When interacting with the story's smart contracts, a 65 bytes uncompressed key is used to identify validators and delegators. When using story’s staking APIs, the bech32 address that can be derived from the compressed key is used.
+Validator public keys are secp256k1 keys. The keys have a 33 bytes compressed version and 65 bytes uncompressed version. When interacting with the story's smart contracts, a 33 bytes compressed key is used to identify validators.
 
 # Rewards
 
