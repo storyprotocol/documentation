@@ -13810,7 +13810,7 @@ Back in our `registerIp.ts` file, add the following code. It will mint an NFT, r
 
 * Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
-```typescript inference.ts
+```typescript story/registerIp.ts
 import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { uploadJSONToIPFS } from "../pinata/uploadToIpfs";
@@ -13869,6 +13869,12 @@ main();
 ```
 
 ## 12. Done!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/jacob-tucker/finetune-story-flux" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    View the completed code for this tutorial.
+  </Card>
+</Cards>
 
 # Mint a License Token
 This section demonstrates how to mint a License Token for an IPA. You can only mint a License Token for an IPA if it has License Terms attached to it. A License Token is minted as an ERC721 token and contains the necessary licensing details.
