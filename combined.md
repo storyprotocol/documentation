@@ -13325,13 +13325,13 @@ In order to create a finetune, we'll need the input training data!
 
 In order to generate an image using a similar style as input images, we need to create a **finetune**. Think of a finetune as an AI that knows all of your input images and can then start producing new ones.
 
-Let's make a function that calls FLUX's `/v1/finetune` API route. Create a `flux.ts` file and add the following code:
+Let's make a function that calls FLUX's `/v1/finetune` API route. Create a `flux` folder, and inside that folder add a file named `requestFinetuning.ts` and add the following code:
 
 > 📘 Official Docs
 >
 > In order to learn what each of the parameters in the payload are, see the official `/v1/finetune` API docs [here](https://api.us1.bfl.ai/scalar#tag/tasks/POST/v1/finetune).
 
-```typescript flux.ts
+```typescript flux/requestFinetuning.ts
 import axios from "axios";
 import fs from "fs";
 
@@ -13348,7 +13348,7 @@ interface FinetunePayload {
   finetune_type: string;
 }
 
-async function requestFinetuning(
+export async function requestFinetuning(
   zipPath: string,
   finetuneComment: string,
   triggerWord = "TOK",
@@ -13400,33 +13400,21 @@ async function requestFinetuning(
 }
 ```
 
-Next, create a file named `submitTrainingTask.ts` and call the `requestFinetuning` function we just made:
+Next, create a file named `train.ts` and call the `requestFinetuning` function we just made:
 
 > 🚧 Warning: This is expensive!
 >
 > Creating a new finetune is expensive, ranging from $2-$6 at the time of me writing this tutorial. Please review the "FLUX PRO FINETUNE: TRAINING" section on the [pricing page](https://docs.bfl.ml/pricing/).
 
-```typescript submitTrainingTask.ts
-import { requestFinetuning } from "./flux";
+```typescript train.ts
+import { requestFinetuning } from "./flux/requestFinetuning";
 
-async function submitTrainingTask() {
-  const response = await requestFinetuning(
-    "../images.zip",
-    "ippy-finetune",
-    "TOK",
-    "general",
-    300,
-    0.00001,
-    true,
-    "quality",
-    "full",
-    32
-  );
-
-  console.log("Finetune ID:", response);
+async function main() {
+  const response = await requestFinetuning("./images.zip", "ippy-finetune");
+  console.log(response);
 }
 
-submitTrainingTask();
+main();
 ```
 
 This will log something that looks like:
@@ -13439,22 +13427,75 @@ This will log something that looks like:
 
 This is your `finetune_id`, and will be used to create images in the following steps.
 
-## 3. Run Inference
+## 3. Wait for Finetune
 
-> 🚧 Take a break! Wait \~1 minute
+Before we can generate images with our finetuned model, we have to wait for FLUX to finish training!
+
+In our `flux` folder, create a file named `finetune-progress.ts` and add the following code:
+
+> 📘 Official Docs
 >
-> Before running this step, you have to wait a few minutes for your finetune to actually complete. Otherwise the API will return errors. It usually takes \~1 minute.
+> In order to learn what each of the parameters in the payload are, see the official `/v1/get_result` API docs [here](https://api.us1.bfl.ai/scalar#tag/utility/GET/v1/get_result).
+
+```typescript flux/finetuneProgress.ts
+import axios from "axios";
+
+export async function finetuneProgress(finetuneId: string) {
+  const url = "https://api.us1.bfl.ai/v1/get_result";
+  const headers = {
+    "Content-Type": "application/json",
+    "X-Key": process.env.BFL_API_KEY,
+  };
+  try {
+    const response = await axios.get(url, {
+      headers,
+      params: { id: finetuneId },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(`Finetune progress failed: ${error}`);
+  }
+}
+```
+
+Next, create a file named `finetune-progress.ts` and call the `finetuneProgress` function we just made:
+
+```typescript finetune-progress.ts
+import { finetuneProgress } from "./flux/finetuneProgress";
+
+// input your finetune_id here
+const FINETUNE_ID = '';
+
+async function main() {
+  const progress = await finetuneProgress(FINETUNE_ID);
+  console.log(progress);
+}
+
+main();
+```
+
+This will log an object that contains the status of the training. If it is no longer "Pending", you are ready to go!
+
+## 4. Run Inference
+
+> 🚧 Warning: This costs $!
+>
+> Although very cheap, running an inference does cost money, ranging from $0.06-0.07 at the time of me writing this tutorial. Please review the "FLUX PRO FINETUNE: INFERENCE" section on the [pricing page](https://docs.bfl.ml/pricing/).
 
 Now that we have trained a finetune, we will use the model to create images. "Running an inference" simply means using our new model (identified by its `finetune_id`), which is trained on our images, to create new images.
 
 There are several different inference endpoints we can use, each with [their own pricing](https://docs.bfl.ml/pricing/) (found at the bottom of the page). For this tutorial, I'll be using the `/v1/flux-pro-1.1-ultra-finetuned` endpoint, which is documented [here](https://api.us1.bfl.ai/scalar#tag/tasks/POST/v1/flux-pro-1.1-ultra-finetuned).
 
-In our `flux.ts` file, add the following code:
+In our `flux` folder, create a `finetuneInference.ts` file and add the following code:
 
-```typescript flux.ts
-// previous code here ...
+> 📘 Official Docs
+>
+> In order to learn what each of the parameters in the payload are, see the official `/v1/flux-pro-1.1-ultra-finetuned` API docs [here](https://api.us1.bfl.ai/scalar#tag/tasks/POST/v1/flux-pro-1.1-ultra-finetuned).
 
-async function finetuneInference(
+```typescript flux/finetineInference.ts
+import axios from "axios";
+
+export async function finetuneInference(
   finetuneId: string,
   prompt: string,
   finetuneStrength = 1.2,
@@ -13483,21 +13524,22 @@ async function finetuneInference(
 }
 ```
 
-Next, create a file named `runInferenceAndRegister.ts` and call the `finetuneInference` function we just made. The first parameter should be the `finetune_id` we got from running the script above, and the second parameter is a prompt to generate a new image.
+Next, create a file named `inference.ts` and call the `finetuneInference` function we just made. The first parameter should be the `finetune_id` we got from running the script above, and the second parameter is a prompt to generate a new image.
 
-```typescript runInferenceAndRegister.ts
-import { finetuneInference } from './flux'
+```typescript inference.ts
+import { finetuneInference } from './flux/finetuneInference'
 
-async function runInferenceAndRegister() {
-  const inference = await finetuneInference(
-    "6fc5e628-6f56-48ec-93cb-c6a6b22bf5a", // the finetune_id we got above
-    "A picture of Ippy being really happy."
-  );
-  
+// input your finetune_id here
+const FINETUNE_ID = '';
+// add your prompt here
+const PROMPT = "A picture of Ippy being really happy."
+
+async function main() {
+  const inference = await finetuneInference(FINETUNE_ID, PROMPT);
   console.log(inference)
 }
 
-runInferenceAndRegister();
+main();
 ```
 
 This will log something that looks like:
@@ -13512,6 +13554,8 @@ This will log something that looks like:
 ```
 
 As you can see, the status is still pending. We must wait until the generation is ready to view our image. To do this, we will need a function to fetch our new inference to see if its ready and view the details about it.
+
+## 5. Waiting for Inference
 
 In our `flux.ts` file, add the following code:
 
