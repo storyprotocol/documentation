@@ -228,7 +228,18 @@ async function main() {
 main();
 ```
 
-This will log an object that contains the status of the training. If it is no longer "Pending", you are ready to go!
+This will log something that looks like:
+
+```json
+{
+  id: '023a1507-369e-46e0-bd6d-1f3446d7d5f2',
+  status: 'Pending',
+  result: null,
+  progress: null
+}
+```
+
+As you can see, the status is still pending. We must wait until the training is 'Ready' before we can move on to the next step.
 
 ## 4. Run Inference
 
