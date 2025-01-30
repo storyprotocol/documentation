@@ -19,25 +19,14 @@ The `story` and `geth` binaries, which make up the clients required for running 
 
 - **`story-geth`execution client:**
   - Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  - Latest Stable Binary (v0.10.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.10.1)
+  - Latest Stable Binary (v0.11.0): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.11.0)
 - **`story`consensus client:**
   - Releases link: [**Click here**](https://github.com/piplabs/story/releases)
   - Latest Stable Binary (v0.13.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.13.0)
 
 **_IMPORTANT: For the Odyssey testnet, it is crucial to start with version v0.12.0, as this version is required before applying any subsequent upgrades. Download this version first to ensure compatibility with the testnet environment. Also, verify that you are downloading the binary matching your system architecture_**
 
-## Prerequisites
-
-For optimal performance and reliability, we recommend running your node on either:
-
-- A Virtual Private Server (VPS)
-- A dedicated Linux-based machine
-
-### System Requirements
-
-- Operating System: Ubuntu 22.04 LTS or later
-
-### System Specs
+## System Specs
 
 | Hardware  | Requirement       |
 | --------- | ----------------- |
@@ -45,6 +34,8 @@ For optimal performance and reliability, we recommend running your node on eithe
 | RAM       | 32 GB             |
 | Disk      | 500 GB NVMe Drive |
 | Bandwidth | 25 MBit/s         |
+
+On AWS, we recommend using the M6i, R6i, or C6i series.
 
 ## Ports
 
@@ -88,63 +79,11 @@ mv story-linux-amd64 story
 
 This allows you to execute the program directly using the story command in your terminal. For the remainder of this documentation, we will use the `story` name convention.
 
-### Dependencies setup
+## Prerequisites
 
-```
-sudo apt update && sudo apt-get update
-sudo apt install -y \
-  curl \
-  git \
-  make \
-  jq \
-  build-essential \
-  gcc \
-  unzip \
-  wget \
-  lz4 \
-  aria2 \
-  gh
-```
-
-### Go Dependencies
-
-```
-cd $HOME && \
-ver="1.22.0" && \
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
-sudo rm -rf /usr/local/go && \
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
-rm "go$ver.linux-amd64.tar.gz" && \
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile && \
-source ~/.bash_profile && \
-go version
-```
-
-Make sure you see `go version go1.22.0 xxx`
+We do suggest using a VPS for your node setup or linux based machine.
 
 ## Execution Client Setup (`story-geth`)
-
-### Download the binary
-
-```
-cd $HOME && \
-wget {geth-all-1.0.0-9d3f9d4.tar.gz}
-# Extract the binaries
-tar -xvzf geth-all-1.0.0-9d3f9d4.tar.gz
-tar -xvf geth-linux-arm64-1.0.0-9d3f9d4.tar
-chmod +x geth-linux-arm64-1.0.0-9d3f9d4/geth
-sudo mv ./geth-linux-arm64-1.0.0-9d3f9d4/geth $HOME/go/bin/story-geth
-source $HOME/.bashrc
-story-geth version
-```
-
-You will see the version of the geth binary.
-
-```
-Geth
-version: 1.0.0-stable
-...
-```
 
 1. (Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
 
@@ -198,55 +137,70 @@ This will connect you to the IPC server from which you can run some helpful quer
    sudo xattr -rd com.apple.quarantine ./story
    ```
 
-### Cosmovisor installation
+2. Initialize the `story` client with the following command:
 
-For updating the story client, we recommend using Cosmovisor.
+   ```bash
+   ./story init --network odyssey
+   ```
 
-1. Install Cosmovisor
+   - By default, this uses your username for the moniker (the human-readable identifier for your node), you may override this by passing in `--moniker ${NODE_MONIKER}`
+   - If you would like to initialize the node using your own data directory, you can pass in `--home ${STORY_DATA_DIR}`
+   - If you already have config and data files, and would like to re-initialize from scratch, you can add the `--clean` flag
 
-```bash
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
-cosmovisor version
-```
+3. Now, you may run `story` with the following command:
 
-2. Configure Cosmovisor
+   ```bash
+   ./story run
+   ```
 
-```bash
-# Set daemon configuration
-export DAEMON_NAME=story
-export DAEMON_HOME=$HOME/.story/story
-export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
-sudo mkdir -p $DAEMON_HOME/cosmovisor/backup $DAEMON_HOME/data
+**_IMPORTANT: If you are setting up a new node, you must start with version v0.12.0_**, as this base version is required before applying any subsequent upgrades. Afterward, install each subsequent upgrade in order. Follow these steps carefully:
 
+1. Download [version v0.12.0](https://github.com/piplabs/story/releases/tag/v0.12.0), ensuring you select the binary that matches your system architecture.
+2. Initialize and run version v0.12.0 following the initialization and run instructions provided above.
+3. Download and upgrade to the following releases using [this guide](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a):
+   1. [v0.12.1 ](https://github.com/piplabs/story/releases/tag/v0.12.1) upgrade at height 322000
 
-# Persist configuration
-echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
-echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
-echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
-echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
-```
+Note: currently you might see a bunch of `Stopping peer for error` logs - this is a known issue around peer connection stability with our bootnodes that we are currently fixing - for now please ignore it and rest assured that it does not impact block progression.
 
-### Install Story Client
+_If you ever run into issues and would like to try re-joining the network**WHILE PRESERVING YOUR KEY,** run the following:_
 
 ```bash
-cd $HOME
-tar -xvzf story-all-1.0.0-2dd5638.tar.gz
-tar -xvf story-linux-amd64-1.0.0-2dd5638.tar
-chmod +x story-linux-amd64-1.0.0-2dd5638/story
-sudo mv story-linux-amd64-1.0.0-2dd5638/story $HOME/go/bin/story
-source $HOME/.bashrc
-story version
+rm -rf ${STORY_DATA_ROOT}/data/* && \
+echo '{"height": "0", "round": 0, "step": 0}' > ${STORY_DATA_ROOT}/data/priv_validator_state.json && \
+./story run
 ```
 
-You should expect to see version 1.0.0-stable
+- Mac OS X:
+  ```bash
+  rm -rf ~/Library/Story/story/data/* && \
+  echo '{"height": "0", "round": 0, "step": 0}' > ~/Library/Story/story/data/priv_validator_state.json && \
+  ./story run
+  ```
+- Linux:
+  ```bash
+  rm -rf ~/.story/story/data/* && \
+  echo '{"height": "0", "round": 0, "step": 0}' > ~/.story/story/data/priv_validator_state.json && \
+  ./story run
+  ```
 
-### Init Story with Cosmovisor
+\*If you ever run into issues and would like to try joining the network from a **COMPLETELY** fresh state, run the following (**\*WARNING: THIS WILL DELETE YOUR`priv_validator_key.json` FILE )**
 
 ```bash
-cosmovisor init ./story
-cosmovisor run init --network story --moniker ${moniker_name}
-cosmovisor version
+rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
 ```
+
+- Mac OS X:
+  - `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
+- Linux:
+  - `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
+
+To quickly check if the node is syncing, you could
+
+- Check the geth RPC endpoint to see if blocks are increasing:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+  ```
+- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
 
 ### Clear State
 
@@ -283,71 +237,51 @@ Below we list a sample `Systemd` configuration you may use on Linux
 
 ```bash
 # geth
-sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
 [Unit]
-Description=Story Geth Client
-After=network.target
-
-[Service]
-User=${user}
-ExecStart=${path_to_geth_binary} --story --syncmode full
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=4096
-
-[Install]
-WantedBy=multi-user.target
-EOF
-```
-
-```bash
-# story
-sudo tee /etc/systemd/system/cosmovisor.service > /dev/null <<EOF
-[Unit]
-Description=Cosmovisor
+Description=Node-Geth
 After=network.target
 
 [Service]
 Type=simple
-User=$USER
-Group=$GROUP
-ExecStart=/usr/local/bin/cosmovisor run run \
---api-enable \
---api-address=0.0.0.0:1317
-Restart=on-failure
-RestartSec=5s
-LimitNOFILE=65535
-Environment="DAEMON_NAME=$DAEMON_NAME"
-Environment="DAEMON_HOME=$DAEMON_HOME"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
-WorkingDirectory=$DAEMON_HOME
+Restart=always
+RestartSec=1
+User=${USER_NAME}
+WorkingDirectory=${YOUR_HOME_DIR}
+ExecStart=geth --odyssey  --syncmode full
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=node-geth
+StartLimitInterval=0
+LimitNOFILE=65536
+LimitNPROC=65536
 
 [Install]
 WantedBy=multi-user.target
-EOF
-
 ```
 
-### Start Service
-
 ```bash
-# Load the systemd for story client
-sudo systemctl daemon-reload
-sudo systemctl enable cosmovisor
-sudo systemctl start cosmovisor
+# story
+[Unit]
+Description=Node-story
+After=network.target node-geth.service
 
-# Monitor logs
-journalctl -u cosmovisor -f -o cat
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=ec2-user
+WorkingDirectory=${YOUR_HOME_DIR}
+ExecStart=story run
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=node-story
+StartLimitInterval=0
+LimitNOFILE=65536
+LimitNPROC=65536
 
-# Load the systemd for geth client
-sudo systemctl daemon-reload
-sudo systemctl enable story-geth
-sudo systemctl start story-geth
+[Install]
+WantedBy=multi-user.target
 
-# Monitor logs
-journalctl -u story-geth -f -o cat
 ```
 
 ### Debugging
