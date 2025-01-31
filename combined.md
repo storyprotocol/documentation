@@ -5478,293 +5478,6 @@ iptables -I INPUT -s localhost -j ACCEPT
 ```
 
 
-# Node Setup
-This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
-
-![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
-
-The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
-
-* **`story-geth`execution client:**
-  * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  * Latest Stable Binary (v0.10.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.10.1)
-* **`story`consensus client:**
-  * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  * Latest Stable Binary (v0.13.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.13.0)
-
-***IMPORTANT: For the Odyssey testnet, it is crucial to start with version v0.12.0, as this version is required before applying any subsequent upgrades. Download this version first to ensure compatibility with the testnet environment. Also, verify that you are downloading the binary matching your system architecture***
-
-## System Specs
-
-| Hardware  | Requirement       |
-| --------- | ----------------- |
-| CPU       | 8 Cores           |
-| RAM       | 32 GB             |
-| Disk      | 500 GB NVMe Drive |
-| Bandwidth | 25 MBit/s         |
-
-On AWS, we recommend using the M6i, R6i, or C6i series.
-
-## Ports
-
-*Ensure all ports needed for your node functionality are needed, described below*
-
-* `story-geth`
-  * 8545
-    * Required if you want your node to interface via JSON-RPC API over HTTP
-  * 8546
-    * Required for websockets interaction
-  * 30303 (TCP + API)
-    * MUST be open for p2p communication
-* `story`
-  * 26656
-    * MUST be open for consensus p2p communication
-  * 26657
-    * Required if you want your node interfacing for Tendermint RPC
-  * 26660
-    * Needed if you want to expose prometheus metrics
-
-## Default Folder
-
-By default, we setup the following default data folders for consensus and execution clients:
-
-* Mac OS X
-  * `story` data root: `~/Library/Story/story`
-  * `story-geth` data root: `~/Library/Story/geth`
-* Linux
-  * `story` data root: `~/.story/story`
-  * `story-geth` data root:  `~/.story/geth`
-
-*For the remainder of this tutorial, we will refer to the`story` data root as `${STORY_DATA_ROOT}` and the `geth` data root as `${GETH_DATA_ROOT}`.*
-
-*You are able to override these configs on the`story` client side by passing `--home ${STORY_CONFIG_FOLDER}`. Similarly, for `geth`, you may use `--config ${GETH_CONFIG_FOLDER}`. For information on how overrides work, view our readme on [setting up a private network](https://github.com/piplabs/story?tab=readme-ov-file#creating-a-private-network).*
-
-When downloading the Story binaries, note that the file name will vary based on your operating system. For example, on a Linux system with an AMD64 architecture, the binary might be named `story-linux-amd64` or `geth-linux-amd`. This naming convention helps with compatibility identification, but for simplicity, we recommend renaming the binary file to story after download.
-
-```
-mv story-linux-amd64 story
-```
-
-This allows you to execute the program directly using the story command in your terminal. For the remainder of this documentation, we will use the `story` name convention.
-
-## Execution Client Setup (`story-geth`)
-
-1. (Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-   ```bash
-   sudo xattr -rd com.apple.quarantine ./geth
-   ```
-2. You may now run `geth` with the following command:
-
-   ```bash
-   ./geth --odyssey --syncmode full
-   ```
-
-   * Currently, `snap` sync mode, the default, is still undergoing development
-
-### Clear State
-
-If you ever run into issues and would like to try joining the network from a cleared state, run the following:
-
-```bash
-rm -rf ${GETH_DATA_ROOT} && ./geth --odyssey --syncmode full
-```
-
-* Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --odyssey --syncmode full`
-* Linux: `rm -rf ~/.story/geth/* && ./geth --odyssey --syncmode full`
-
-### Debugging
-
-If you would like to check the status of `geth` while it is running, it is helpful to communicate via its built-in IPC-RPC server by running the following:
-
-```bash
-geth attach ${GETH_DATA_ROOT}/geth.ipc
-```
-
-* Mac OS X:
-  * `geth attach ~/Library/Story/geth/odyssey/geth.ipc`
-* Linux:
-  * `geth attach ~/.story/geth/odyssey/geth.ipc`
-
-This will connect you to the IPC server from which you can run some helpful queries:
-
-* `eth.blockNumber` will print out the latest block geth is sync’d to - if this is `undefined` there is likely a peer connection or syncing issue
-* `admin.peers` will print out a list of other `geth` nodes your client is connected to - if this is blank there is a peer connectivity issue
-* `eth.syncing` will return `true` if geth is in the process of syncing, `false` otherwise
-
-## Consensus Client Setup (`story`)
-
-1. (Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-   ```bash
-   sudo xattr -rd com.apple.quarantine ./story
-   ```
-2. Initialize the `story` client with the following command:
-
-   ```bash
-   ./story init --network odyssey 
-   ```
-
-   * By default, this uses your username for the moniker (the human-readable identifier for your node), you may override this by passing in `--moniker ${NODE_MONIKER}`
-   * If you would like to initialize the node using your own data directory, you can pass in `--home ${STORY_DATA_DIR}`
-   * If you already have config and data files, and would like to re-initialize from scratch, you can add the `--clean` flag
-3. Now, you may run `story` with the following command:
-
-   ```bash
-   ./story run
-   ```
-
-***IMPORTANT: If you are setting up a new node, you must start with version v0.12.0***, as this base version is required before applying any subsequent upgrades. Afterward, install each subsequent upgrade in order. Follow these steps carefully:
-
-1. Download [version v0.12.0](https://github.com/piplabs/story/releases/tag/v0.12.0), ensuring you select the binary that matches your system architecture.
-2. Initialize and run version v0.12.0 following the initialization and run instructions provided above.
-3. Download and upgrade to the following releases using [this guide](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a):
-   1. [v0.12.1 ](https://github.com/piplabs/story/releases/tag/v0.12.1) upgrade at height 322000
-
-Note: currently you might see a bunch of `Stopping peer for error` logs - this is a known issue around peer connection stability with our bootnodes that we are currently fixing - for now please ignore it and rest assured that it does not impact block progression.
-
-*If you ever run into issues and would like to try re-joining the network**WHILE PRESERVING YOUR KEY,** run the following:*
-
-```bash
-rm -rf ${STORY_DATA_ROOT}/data/* && \
-echo '{"height": "0", "round": 0, "step": 0}' > ${STORY_DATA_ROOT}/data/priv_validator_state.json && \
-./story run
-```
-
-* Mac OS X:
-  ```bash
-  rm -rf ~/Library/Story/story/data/* && \
-  echo '{"height": "0", "round": 0, "step": 0}' > ~/Library/Story/story/data/priv_validator_state.json && \
-  ./story run
-  ```
-* Linux:
-  ```bash
-  rm -rf ~/.story/story/data/* && \
-  echo '{"height": "0", "round": 0, "step": 0}' > ~/.story/story/data/priv_validator_state.json && \
-  ./story run
-  ```
-
-\*If you ever run into issues and would like to try joining the network from a **COMPLETELY** fresh state, run the following (**\*WARNING: THIS WILL DELETE YOUR`priv_validator_key.json` FILE )**
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
-```
-
-* Mac OS X:
-  * `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
-* Linux:
-  * `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
-
-To quickly check if the node is syncing, you could
-
-* Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-
-### Clear State
-
-If you ever run into issues and would like to try joining the network from a fresh state, run the following:
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
-```
-
-* Mac OS X:
-  * `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
-* Linux:
-  * `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
-
-To quickly check if the node is syncing, you could
-
-* Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-
-### Custom Configuration
-
-To override your own node settings, you can do the following:
-
-* `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
-* `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
-* `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
-
-### Custom Automation
-
-Below we list a sample `Systemd` configuration you may use on Linux
-
-```bash
-# geth
-[Unit]
-Description=Node-Geth
-After=network.target
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=${USER_NAME}
-WorkingDirectory=${YOUR_HOME_DIR}
-ExecStart=geth --odyssey  --syncmode full
-StandardOutput=journal
-StandardError=journal
-SyslogIdentifier=node-geth
-StartLimitInterval=0
-LimitNOFILE=65536
-LimitNPROC=65536
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-# story
-[Unit]
-Description=Node-story
-After=network.target node-geth.service
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=ec2-user
-WorkingDirectory=${YOUR_HOME_DIR}
-ExecStart=story run
-StandardOutput=journal
-StandardError=journal
-SyslogIdentifier=node-story
-StartLimitInterval=0
-LimitNOFILE=65536
-LimitNPROC=65536
-
-[Install]
-WantedBy=multi-user.target
-
-```
-
-### Debugging
-
-If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
-
-* `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  * This will give you a list of consesus peers the node is sync’d with by moniker
-* `curl localhost:26657/health`
-  * This will let you know if the node is healthy - `{}` indicates it is
-
-### Common Issues
-
-1. `auth failure: secret conn failed: read tcp ${IP_A}:${PORT_A}->${IP_B}:{PORT_B}: i/o timeout`
-   * This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `exteral_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
-
-### Automated Upgrades
-
-To manage consensus client upgrades more easily, especially for hard forks, we recommend using [Cosmovisor](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html), which allows you to automate the process of upgrading client binaries without having to restart your client.
-
-To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a  guide to help you with the setup of automated upgrades with Cosmovisor.
-
 # Tokenomics & Staking
 # Purpose
 
@@ -6086,6 +5799,379 @@ Story’s staking contract will handle all validators/delegators related operati
 
 The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
+# Node Setup
+
+This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
+
+![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
+
+The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
+
+- **`story-geth`execution client:**
+  - Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
+  - Latest Stable Binary (v1.0.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.1)
+- **`story`consensus client:**
+  - Releases link: [**Click here**](https://github.com/piplabs/story/releases)
+  - Latest Stable Binary (v1.0.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.0.0)
+
+# Story Node Installation Guide
+
+## Pre-Installation Checklist
+
+- [ ] Verify system meets hardware requirements
+- [ ] Operating system: Ubuntu 22.04 LTS
+- [ ] Required ports are available
+- [ ] Sufficient disk space available
+- [ ] Root or sudo access
+
+## Quick Reference
+
+- Installation time: ~30 minutes
+- Network: Homer Testnet
+- Required versions:
+  - story-geth: v1.0.1
+  - story: v1.0.0
+
+## 1. System Preparation
+
+### 1.1 System Requirements
+
+For optimal performance and reliability, we recommend running your node on either:
+
+- A Virtual Private Server (VPS)
+- A dedicated Linux-based machine
+
+### System Specs
+
+| Hardware  | Requirement       |
+| --------- | ----------------- |
+| CPU       | 8 Cores           |
+| RAM       | 32 GB             |
+| Disk      | 500 GB NVMe Drive |
+| Bandwidth | 25 MBit/s         |
+
+### 1.2 Required Ports
+
+_Ensure all ports needed for your node functionality are needed, described below_
+
+- `story-geth`
+  - 8545
+    - Required if you want your node to interface via JSON-RPC API over HTTP
+  - 8546
+    - Required for websockets interaction
+  - 30303 (TCP + API)
+    - MUST be open for p2p communication
+- `story`
+  - 26656
+    - MUST be open for consensus p2p communication
+  - 26657
+    - Required if you want your node interfacing for Tendermint RPC
+  - 26660
+    - Needed if you want to expose prometheus metrics
+
+## 1.3 Install Dependencies
+
+```bash
+# Update system
+sudo apt update && sudo apt-get update
+
+# Install required packages
+sudo apt install -y \
+  curl \
+  git \
+  make \
+  jq \
+  build-essential \
+  gcc \
+  unzip \
+  wget \
+  lz4 \
+  aria2 \
+  gh
+```
+
+### 1.4 Install Go
+
+For Odyssey, we need to install Go 1.22.0
+
+```bash
+# Download and install Go 1.22.0
+cd $HOME
+
+# Set Go version
+GO_VERSION="1.22.0"
+
+# Download Go binary
+wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Remove existing Go installation and extract new version
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Clean up downloaded archive
+rm "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Add Go to PATH
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
+
+# Verify installation
+go version
+```
+
+## 2. Story Node Installation
+
+### 2.1 Install Story-Geth
+
+1. Download and setup binary
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/story-geth
+source $HOME/.bashrc
+
+# Verify installation
+story-geth version
+```
+
+You will see the version of the geth binary.
+
+```
+Geth
+version: 1.0.1-stable
+...
+
+```
+
+(Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./geth
+```
+
+2. Configure and start service
+
+```bash
+# Setup systemd service
+sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+[Unit]
+Description=Story Geth Client
+After=network.target
+
+[Service]
+User=${user}
+ExecStart=${path_to_geth_binary} --story --syncmode full
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Start service
+sudo systemctl daemon-reload
+sudo systemctl enable story-geth
+sudo systemctl start story-geth
+
+# Verify service status
+sudo systemctl status story-geth
+```
+
+### 2.2 Install Story Consensus Client
+
+#### Cosmovisor installation
+
+For updating the story client, we recommend using Cosmovisor.
+
+1. Install Cosmovisor
+
+```bash
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
+cosmovisor version
+```
+
+2. Configure Cosmovisor
+
+```bash
+# Set daemon configuration
+export DAEMON_NAME=story
+export DAEMON_HOME=$HOME/.story/story
+export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
+sudo mkdir -p \
+  $DAEMON_HOME/cosmovisor/backup \
+  $DAEMON_HOME/data
+
+
+# Persist configuration
+echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
+echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
+echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
+```
+
+#### Install Story Client
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/story
+source $HOME/.bashrc
+story version
+```
+
+> You should expect to see version 1.0.0-stable
+
+(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./story
+```
+
+#### Init Story with Cosmovisor
+
+```bash
+cosmovisor init ./story
+cosmovisor run init --network story --moniker ${moniker_name}
+cosmovisor version
+```
+
+#### Clear State
+
+If you ever run into issues and would like to try joining the network from a fresh state, run the following:
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+```
+
+- Mac OS X:
+  - `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+- Linux:
+  - `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+
+To quickly check if the node is syncing, you could
+
+- Check the geth RPC endpoint to see if blocks are increasing:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+  ```
+- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+
+#### Custom Configuration
+
+To override your own node settings, you can do the following:
+
+- `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
+- `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
+- `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
+
+#### Custom Automation
+
+Below we list a sample `Systemd` configuration you may use on Linux
+
+```bash
+# story
+sudo tee /etc/systemd/system/cosmovisor.service > /dev/null <<EOF
+[Unit]
+Description=Cosmovisor
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+Group=$GROUP
+ExecStart=/usr/local/bin/cosmovisor run run \
+--api-enable \
+--api-address=0.0.0.0:1317
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=65535
+Environment="DAEMON_NAME=$DAEMON_NAME"
+Environment="DAEMON_HOME=$DAEMON_HOME"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
+WorkingDirectory=$DAEMON_HOME
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+```
+
+#### Start the service
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable cosmovisor
+sudo systemctl start cosmovisor
+
+# Monitor logs
+journalctl -u cosmovisor -f -o cat
+```
+
+#### Debugging
+
+If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
+
+- `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
+  - This will give you a list of consesus peers the node is sync'd with by moniker
+- `curl localhost:26657/health`
+  - This will let you know if the node is healthy - `{}` indicates it is
+
+## 3. Verify Installation
+
+### 3.1 Check Geth Status
+
+```bash
+# Check sync status
+curl -X POST -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  http://localhost:8545
+
+```
+
+### 3.2 Check Consensus Client
+
+```bash
+# Check node status
+curl localhost:26657/status
+
+# Check peer connections
+curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
+```
+
+## Clean status
+
+If you ever run into issues and would like to try joining the
+network from a cleared state, run the following:
+
+### Geth
+
+```bash
+rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
+```
+
+- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story 
+--syncmode full`
+- Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode 
+full`
+
+### Story
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+```
+
+- Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+- Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+
+
 # Wallet Setup
 # Option 1: Button Click
 
@@ -6113,10 +6199,11 @@ Go to our [faucet](https://odyssey.faucet.story.foundation)  and click "Add Stor
 <Image align="center" src="https://files.readme.io/8be24335cf8efc077bc5deec303faec30ccf9d13dc4d7d14f360a159696626c6-newtype_2024-11-15_at_19.47.07.png" />
 
 # Validator Operations
+
 ## Quick Links
 
-* [Story Geth Releases](https://github.com/piplabs/story-geth/releases)
-* [Story Releases](https://github.com/piplabs/story/releases/)  
+- [Story Geth Releases](https://github.com/piplabs/story-geth/releases)
+- [Story Releases](https://github.com/piplabs/story/releases/)
 
 # Overview
 
@@ -6128,16 +6215,16 @@ This section will guide you through how you can run your own validator. Validato
 
 Before proceeding, it is important to familiarize yourself with the difference between a delegator and a validator:
 
-* A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
-* A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves. 
+- A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
+- A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves.
 
-In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (*you may see the[Faucet page](doc:faucet) for details on how to fund an account).* **We recommend using your delegator account for all below operations.**
+In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (_you may see the[Faucet page](doc:faucet) for details on how to fund an account)._ **We recommend using your delegator account for all below operations.**
 
 > 📘 Note
 >
 > You may also issue transactions as the validator itself. To get the EVM private key corresponding to your validator, please refer to the [Validator Key Export](https://docs.story.foundation/docs/validator-operations#validator-key-export) section.
 
-The `.env` file should look like the following *(make sure not to add a 0x prefix):*
+The `.env` file should look like the following _(make sure not to add a 0x prefix):_
 
 ```bash
 # ~/.env
@@ -6151,7 +6238,7 @@ With this, you are all set to perform different validator operations! Below, we 
 By default, when you run `./story init` a validator key is created for you. To view your validator key, run the following command:
 
 ```bash
-./story validator export
+./story validator export [flags]
 ```
 
 This will print out your validator public key file in compressed and uncompressed formats. By default, we use the hex-encoded compressed key for public identification.
@@ -6165,15 +6252,13 @@ Validator Address: storyvaloper1p470h0jtph4n5hztallp8vznq8ehylsw9vpddx
 Delegator Address: story1p470h0jtph4n5hztallp8vznq8ehylswtr4vxd
 ```
 
-In addition, if you want to export the derived EVM private key of your validator into the default data config directory, please run the following:
+**Available Flags:**
 
-```bash
-./story validator export --export-evm-key
-```
+- `--export-evm-key`: (string) Exports the derived EVM private key of your validator into the default data config directory
+- `--export-evm-key-path`: (string) Specifies a different download location for the derived EVM private key of your validator
+- `--keyfile`: (string) Path to the Tendermint key file (default "/home/ubuntu/.story/story/config/priv_validator_key.json")
 
-* You may add `--evm-key-path` to specify a different download location
-
-*If you would like to issue transactions as your validator, and not as a delegator, you may export the key to your`.env` file and ensure it has IP sent to it, e.g. via`./story validator export --export-evm-key --evm-key-path .env`*
+_If you would like to issue transactions as your validator, and not as a delegator, you may export the key to your`.env` file and ensure it has IP sent to it, e.g. via`./story validator export --export-evm-key --evm-key-path .env`_
 
 ## Validator Creation
 
@@ -6183,23 +6268,23 @@ To create a new validator, run the following command:
 ./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME}
 ```
 
-This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. *Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!*
+This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. _Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!_
 
 Below is a list of optional flags to further customize your validator setup:
 
 **Available Flags:**
 
-* `--stake`: Sets the amount the validator will self-delegate in wei (default is `1024000000000000000000` wei).
-* `--moniker`: Defines a custom name for the validator, visible to users on the network.
-* `--chain-id`: Specifies the Chain ID for the transaction. By default, this is set to `1516`.
-* `--commission-rate`: Sets the validator's commission rate in bips (1% = 100 bips). For instance, `1000` represents a 10% commission (default is `1000`).
-* `--explorer`: Specifies the URL of the blockchain explorer (default: [https://odyssey.storyscan.xyz](https://odyssey.storyscan.xyz)).
-* `--keyfile`: Points to the path of the Tendermint key file (default: `/home/node_story_odyssey/.story/story/config/priv_validator_key.json`).
-* `--max-commission-change-rate`: Sets the maximum rate at which the validator's commission can change, in bips. For example, `100` represents a maximum change of 1% (default is `1000`).
-* `--max-commission-rate`: Defines the maximum commission rate the validator can charge, in bips. For instance, `5000` allows a 50% maximum rate (default is `5000`).
-* `--private-key`: Uses a specified private key for signing the transaction. If not set, the key in `priv_validator_key.json` will be used.
-* `--rpc`: Sets the RPC URL to connect to the network (default: [https://odyssey.storyrpc.io](https://odyssey.storyrpc.io)).
-* `--unlocked`: Determines if unlocked token staking is supported (`true` for unlocked staking, `false` for locked staking). By default, this is set to `true`.
+- `--stake`: Sets the amount the validator will self-delegate in wei (default is `1024000000000000000000` wei).
+- `--moniker`: Defines a custom name for the validator, visible to users on the network.
+- `--chain-id`: Specifies the Chain ID for the transaction. By default, this is set to `1516`.
+- `--commission-rate`: Sets the validator's commission rate in bips (1% = 100 bips). For instance, `1000` represents a 10% commission (default is `1000`).
+- `--explorer`: Specifies the URL of the blockchain explorer (default: [https://odyssey.storyscan.xyz](https://odyssey.storyscan.xyz)).
+- `--keyfile`: Points to the path of the Tendermint key file (default: `/home/node_story_odyssey/.story/story/config/priv_validator_key.json`).
+- `--max-commission-change-rate`: Sets the maximum rate at which the validator's commission can change, in bips. For example, `100` represents a maximum change of 1% (default is `1000`).
+- `--max-commission-rate`: Defines the maximum commission rate the validator can charge, in bips. For instance, `5000` allows a 50% maximum rate (default is `5000`).
+- `--private-key`: Uses a specified private key for signing the transaction. If not set, the key in `priv_validator_key.json` will be used.
+- `--rpc`: Sets the RPC URL to connect to the network (default: [https://odyssey.storyrpc.io](https://odyssey.storyrpc.io)).
+- `--unlocked`: Determines if unlocked token staking is supported (`true` for unlocked staking, `false` for locked staking). By default, this is set to `true`.
 
 ### Example creation command use
 
@@ -6215,7 +6300,7 @@ Below is a list of optional flags to further customize your validator setup:
 
 ### Verifying your validator
 
-Once created, please use the `Explorer URL` to confirm the transaction. If successful, you should see your validator pub key (*found in your`priv_validator_key.json` file)* listed as part of the following endpoint:
+Once created, please use the `Explorer URL` to confirm the transaction. If successful, you should see your validator pub key (_found in your`priv_validator_key.json` file)_ listed as part of the following endpoint:
 
 ```bash
 curl https://testnet.storyrpc.io/validators | jq .
@@ -6233,10 +6318,21 @@ To stake to an existing validator, run the following command:
    --stake ${AMOUNT_TO_STAKE_IN_WEI}
 ```
 
-* Note that your own `${VALIDATOR_PUB_KEY_IN_HEX}`may be found by running the `./story validator export` command as the `Compressed Public Key (hex)`. 
-* You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid
+- Note that your own `${VALIDATOR_PUB_KEY_IN_HEX}`may be found by running the `./story validator export` command as the `Compressed Public Key (hex)`.
+- You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid
 
 Once staked, you may use the `Explorer URL` to confirm the transaction. As mentioned earlier, you may use our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to confirm the new voting power of the validator.
+
+**Available Flags:**
+
+- `--validator-pubkey`: (string) The public key of the validator to stake to
+- `--stake`: (string) The amount of IP to stake in wei
+- `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+- `--explorer`: (string) URL of the blockchain explorer
+- `--help`, `-h`: Display help information for stake command
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network
+- `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
 
 ### Example staking command use
 
@@ -6260,6 +6356,17 @@ This will unstake `${AMOUNT_TO_UNSTAKE_IN_WEI}` IP from the selected validator. 
 
 Like in the staking operation, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the newly reduced voting power of the validator.
 
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+- `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+- `--explorer`: (string) URL of the blockchain explorer (default: "https://storyscan.xyz")
+- `--help`, `-h`: Help for unstake command
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network (default: "https://storyrpc.io")
+- `--unstake`: (string) Amount to unstake in wei
+- `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+
 ### Example unstaking command use
 
 ```bash
@@ -6282,6 +6389,18 @@ To stake on behalf of another delegator, run the following command:
 This will stake `${AMOUNT_TO_STAKE_IN_WEI}` IP to the validator on behalf of the provided delegator. You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
 
 Like in the other staking operations, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the increased voting power of the validator.
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+- `--delegator-address`: (string) Delegator's EVM address
+- `--explorer`: (string) URL of the blockchain explorer (default: "https://storyscan.xyz")
+- `--help`, `-h`: Help for stake-on-behalf command
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network (default: "https://storyrpc.io")
+- `--stake`: (string) Amount for the validator to self-delegate in wei
+- `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
+- `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
 
 ### Example Stake-on-behalf command use
 
@@ -6307,6 +6426,17 @@ This will unstake `${AMOUNT_TO_STAKE_IN_WEI}` IP from the validator on behalf of
 
 Like in the other staking operations, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the decreased voting power of the validator.
 
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+- `--delegator-address`: (string) Delegator's EVM address
+- `--explorer`: (string) URL of the blockchain explorer (default: "https://storyscan.xyz")
+- `--help`, `-h`: Help for unstake-on-behalf command
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network (default: "https://storyrpc.io")
+- `--unstake`: (string) Amount to unstake in wei
+- `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+
 ### Example Unstake-on-behalf command use
 
 ```bash
@@ -6322,16 +6452,116 @@ In case a validator becomes jailed, for example if it experiences substantial do
 
 ```Text Bash
 ./story validator unjail \
-  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX}
+  --private-key ${PRIVATE_KEY}
 ```
 
 Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction
+- `--explorer`: (string) URL of the blockchain explorer
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network
 
 ### Example unjail command use
 
 ```bash
 ./story validator unjail \
   --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+```
+
+## Validator Unjail-on-behalf
+
+If you are an authorized operator, you may unjail a validator on their behalf using the following command:
+
+```bash
+./story validator unjail-on-behalf \
+  --private-key ${PRIVATE_KEY}
+  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX}
+```
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction
+- `--explorer`: (string) URL of the blockchain explorer
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network
+- `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+
+### Example unjail-on-behalf command use
+
+```bash
+./story validator unjail-on-behalf \
+  --private-key 0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef \
+  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+```
+
+## Validator Redelegate
+
+To redelegate from one validator to another, run the following command:
+
+```bash
+./story validator redelegate \
+  --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
+  --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
+  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+```
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default 1514)
+- `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+- `--explorer`: (string) URL of the blockchain explorer (default "https://storyscan.xyz")
+- `--help`, `-h`: Help for redelegate command
+- `--private-key`: (string) Private key used for the transaction
+- `--redelegate`: (string) Amount to redelegate in wei
+- `--rpc`: (string) RPC URL to connect to the network (default "https://storyrpc.io")
+- `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
+- `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
+
+### Example redelegate command use
+
+```bash
+./story validator redelegate \
+  --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+  --redelegate 1024000000000000000000
+```
+
+## Validator Redelegate-on-behalf
+
+If you are an authorized operator, you may redelegate from one validator to another on behalf of a delegator using the following command:
+
+```bash
+./story validator redelegate-on-behalf \
+  --delegator-address ${DELEGATOR_EVM_ADDRESS} \
+  --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
+  --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
+  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+```
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default 1514)
+- `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+- `--delegator-address`: (string) Delegator's EVM address
+- `--explorer`: (string) URL of the blockchain explorer (default "https://storyscan.xyz")
+- `--help`, `-h`: Help for redelegate-on-behalf command
+- `--private-key`: (string) Private key used for the transaction
+- `--redelegate`: (string) Amount to redelegate in wei
+- `--rpc`: (string) RPC URL to connect to the network (default "https://storyrpc.io")
+- `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
+- `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
+
+### Example redelegate-on-behalf command use
+
+```bash
+./story validator redelegate-on-behalf \
+  --delegator-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+  --redelegate 1024000000000000000000
 ```
 
 ## Add Operator
@@ -6416,9 +6646,305 @@ rm ~/.story/story/config/priv_validator_key.json
 
 3. Locate the `priv_validator_key.json` file in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
 
-***IMPORTANT: Before you proceed, make sure you STOPPED your validator on the old server and do not start it again there.***
+**_IMPORTANT: Before you proceed, make sure you STOPPED your validator on the old server and do not start it again there._**
 
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
+
+
+# Node Setup
+
+This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
+
+![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
+
+The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
+
+- **`story-geth`execution client:**
+  - Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
+  - Latest Stable Binary (v0.11.0): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.11.0)
+- **`story`consensus client:**
+  - Releases link: [**Click here**](https://github.com/piplabs/story/releases)
+  - Latest Stable Binary (v0.13.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.13.0)
+
+**_IMPORTANT: For the Odyssey testnet, it is crucial to start with version v0.12.0, as this version is required before applying any subsequent upgrades. Download this version first to ensure compatibility with the testnet environment. Also, verify that you are downloading the binary matching your system architecture_**
+
+## System Specs
+
+| Hardware  | Requirement       |
+| --------- | ----------------- |
+| CPU       | 8 Cores           |
+| RAM       | 32 GB             |
+| Disk      | 500 GB NVMe Drive |
+| Bandwidth | 25 MBit/s         |
+
+On AWS, we recommend using the M6i, R6i, or C6i series.
+
+## Ports
+
+_Ensure all ports needed for your node functionality are needed, described below_
+
+- `story-geth`
+  - 8545
+    - Required if you want your node to interface via JSON-RPC API over HTTP
+  - 8546
+    - Required for websockets interaction
+  - 30303 (TCP + API)
+    - MUST be open for p2p communication
+- `story`
+  - 26656
+    - MUST be open for consensus p2p communication
+  - 26657
+    - Required if you want your node interfacing for Tendermint RPC
+  - 26660
+    - Needed if you want to expose prometheus metrics
+
+## Default Folder
+
+By default, we setup the following default data folders for consensus and execution clients:
+
+- Mac OS X
+  - `story` data root: `~/Library/Story/story`
+  - `story-geth` data root: `~/Library/Story/geth`
+- Linux
+  - `story` data root: `~/.story/story`
+  - `story-geth` data root: `~/.story/geth`
+
+_For the remainder of this tutorial, we will refer to the`story` data root as `${STORY_DATA_ROOT}` and the `geth` data root as `${GETH_DATA_ROOT}`._
+
+_You are able to override these configs on the`story` client side by passing `--home ${STORY_CONFIG_FOLDER}`. Similarly, for `geth`, you may use `--config ${GETH_CONFIG_FOLDER}`. For information on how overrides work, view our readme on [setting up a private network](https://github.com/piplabs/story?tab=readme-ov-file#creating-a-private-network)._
+
+When downloading the Story binaries, note that the file name will vary based on your operating system. For example, on a Linux system with an AMD64 architecture, the binary might be named `story-linux-amd64` or `geth-linux-amd`. This naming convention helps with compatibility identification, but for simplicity, we recommend renaming the binary file to story after download.
+
+```
+mv story-linux-amd64 story
+```
+
+This allows you to execute the program directly using the story command in your terminal. For the remainder of this documentation, we will use the `story` name convention.
+
+## Prerequisites
+
+We do suggest using a VPS for your node setup or linux based machine.
+
+## Execution Client Setup (`story-geth`)
+
+1. (Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+   ```bash
+   sudo xattr -rd com.apple.quarantine ./geth
+   ```
+
+2. You may now run `geth` with the following command:
+
+   ```bash
+   ./geth --odyssey --syncmode full
+   ```
+
+   - Currently, `snap` sync mode, the default, is still undergoing development
+
+### Clear State
+
+If you ever run into issues and would like to try joining the network from a cleared state, run the following:
+
+```bash
+rm -rf ${GETH_DATA_ROOT} && ./geth --odyssey --syncmode full
+```
+
+- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --odyssey --syncmode full`
+- Linux: `rm -rf ~/.story/geth/* && ./geth --odyssey --syncmode full`
+
+### Debugging
+
+If you would like to check the status of `geth` while it is running, it is helpful to communicate via its built-in IPC-RPC server by running the following:
+
+```bash
+geth attach ${GETH_DATA_ROOT}/geth.ipc
+```
+
+- Mac OS X:
+  - `geth attach ~/Library/Story/geth/odyssey/geth.ipc`
+- Linux:
+  - `geth attach ~/.story/geth/odyssey/geth.ipc`
+
+This will connect you to the IPC server from which you can run some helpful queries:
+
+- `eth.blockNumber` will print out the latest block geth is sync’d to - if this is `undefined` there is likely a peer connection or syncing issue
+- `admin.peers` will print out a list of other `geth` nodes your client is connected to - if this is blank there is a peer connectivity issue
+- `eth.syncing` will return `true` if geth is in the process of syncing, `false` otherwise
+
+## Consensus Client Setup (`story`)
+
+1. (Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+   ```bash
+   sudo xattr -rd com.apple.quarantine ./story
+   ```
+
+2. Initialize the `story` client with the following command:
+
+   ```bash
+   ./story init --network odyssey
+   ```
+
+   - By default, this uses your username for the moniker (the human-readable identifier for your node), you may override this by passing in `--moniker ${NODE_MONIKER}`
+   - If you would like to initialize the node using your own data directory, you can pass in `--home ${STORY_DATA_DIR}`
+   - If you already have config and data files, and would like to re-initialize from scratch, you can add the `--clean` flag
+
+3. Now, you may run `story` with the following command:
+
+   ```bash
+   ./story run
+   ```
+
+**_IMPORTANT: If you are setting up a new node, you must start with version v0.12.0_**, as this base version is required before applying any subsequent upgrades. Afterward, install each subsequent upgrade in order. Follow these steps carefully:
+
+1. Download [version v0.12.0](https://github.com/piplabs/story/releases/tag/v0.12.0), ensuring you select the binary that matches your system architecture.
+2. Initialize and run version v0.12.0 following the initialization and run instructions provided above.
+3. Download and upgrade to the following releases using [this guide](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a):
+   1. [v0.12.1 ](https://github.com/piplabs/story/releases/tag/v0.12.1) upgrade at height 322000
+
+Note: currently you might see a bunch of `Stopping peer for error` logs - this is a known issue around peer connection stability with our bootnodes that we are currently fixing - for now please ignore it and rest assured that it does not impact block progression.
+
+_If you ever run into issues and would like to try re-joining the network**WHILE PRESERVING YOUR KEY,** run the following:_
+
+```bash
+rm -rf ${STORY_DATA_ROOT}/data/* && \
+echo '{"height": "0", "round": 0, "step": 0}' > ${STORY_DATA_ROOT}/data/priv_validator_state.json && \
+./story run
+```
+
+- Mac OS X:
+  ```bash
+  rm -rf ~/Library/Story/story/data/* && \
+  echo '{"height": "0", "round": 0, "step": 0}' > ~/Library/Story/story/data/priv_validator_state.json && \
+  ./story run
+  ```
+- Linux:
+  ```bash
+  rm -rf ~/.story/story/data/* && \
+  echo '{"height": "0", "round": 0, "step": 0}' > ~/.story/story/data/priv_validator_state.json && \
+  ./story run
+  ```
+
+\*If you ever run into issues and would like to try joining the network from a **COMPLETELY** fresh state, run the following (**\*WARNING: THIS WILL DELETE YOUR`priv_validator_key.json` FILE )**
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
+```
+
+- Mac OS X:
+  - `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
+- Linux:
+  - `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
+
+To quickly check if the node is syncing, you could
+
+- Check the geth RPC endpoint to see if blocks are increasing:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+  ```
+- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+
+### Clear State
+
+If you ever run into issues and would like to try joining the network from a fresh state, run the following:
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
+```
+
+- Mac OS X:
+  - `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
+- Linux:
+  - `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
+
+To quickly check if the node is syncing, you could
+
+- Check the geth RPC endpoint to see if blocks are increasing:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+  ```
+- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+
+### Custom Configuration
+
+To override your own node settings, you can do the following:
+
+- `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
+- `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
+- `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
+
+### Custom Automation
+
+Below we list a sample `Systemd` configuration you may use on Linux
+
+```bash
+# geth
+[Unit]
+Description=Node-Geth
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=${USER_NAME}
+WorkingDirectory=${YOUR_HOME_DIR}
+ExecStart=geth --odyssey  --syncmode full
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=node-geth
+StartLimitInterval=0
+LimitNOFILE=65536
+LimitNPROC=65536
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+# story
+[Unit]
+Description=Node-story
+After=network.target node-geth.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=ec2-user
+WorkingDirectory=${YOUR_HOME_DIR}
+ExecStart=story run
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=node-story
+StartLimitInterval=0
+LimitNOFILE=65536
+LimitNPROC=65536
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+### Debugging
+
+If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
+
+- `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
+  - This will give you a list of consesus peers the node is sync’d with by moniker
+- `curl localhost:26657/health`
+  - This will let you know if the node is healthy - `{}` indicates it is
+
+### Common Issues
+
+1. `auth failure: secret conn failed: read tcp ${IP_A}:${PORT_A}->${IP_B}:{PORT_B}: i/o timeout`
+   - This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `exteral_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
+
+### Automated Upgrades
+
+To manage consensus client upgrades more easily, especially for hard forks, we recommend using [Cosmovisor](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html), which allows you to automate the process of upgrading client binaries without having to restart your client.
+
+To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a guide to help you with the setup of automated upgrades with Cosmovisor.
 
 
 # Story Network Guide
