@@ -38,7 +38,7 @@ Next we can initiate the SDK Client. There are two ways to do this:
 ## Set Up Private Key Account
 
 <Cards columns={1}>
-  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/v1.3/scripts/utils/utils.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Check out the TypeScript Tutorial for a working example of how to set up the Story SDK Client.
   </Card>
 </Cards>
@@ -47,7 +47,7 @@ Before continuing with the code below:
 
 1. Make sure to have `WALLET_PRIVATE_KEY` set up in your `.env` file.
 2. Make sure to have `RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
 
 ```typescript index.ts
 import { http } from 'viem';
@@ -60,18 +60,12 @@ const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account, // the account object from above
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: 'odyssey'
+  chainId: 'aeneid'
 };
 export const client = StoryClient.newClient(config);
 ```
 
 ## Set Up JSON-RPC Account (ex. Metamask)
-
-<Cards columns={1}>
-  <Card title="Working Example" href="https://github.com/jacob-tucker/story-developer-sandbox/blob/main/lib/context/AppContext.tsx" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    Check out the Developer Sandbox for a working example of how to set up the Story SDK Client in a frontend setting.
-  </Card>
-</Cards>
 
 We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
 
