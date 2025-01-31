@@ -88,7 +88,7 @@ const licenseTerms: LicenseTerms = {
 };
 
 const licensingConfig: LicensingConfig = {
-  isSet: true,
+  isSet: false,
   mintingFee: BigInt(0),
   licensingHook: zeroAddress,
   hookData: zeroHash,
@@ -144,7 +144,7 @@ const licenseTerms: LicenseTerms = {
 };
 
 const licensingConfig: LicensingConfig = {
-  isSet: true,
+  isSet: false,
   mintingFee: BigInt(0),
   licensingHook: zeroAddress,
   hookData: zeroHash,
@@ -297,7 +297,7 @@ const licenseTerms: LicenseTerms = {
 };
 
 const licensingConfig: LicensingConfig = {
-  isSet: true,
+  isSet: false,
   mintingFee: BigInt(0),
   licensingHook: zeroAddress,
   hookData: zeroHash,
