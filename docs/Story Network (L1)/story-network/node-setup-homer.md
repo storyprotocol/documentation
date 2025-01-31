@@ -137,7 +137,7 @@ go version
 
 ```bash
 cd $HOME
-wget https://github.com/piplabs/story/releases/download/v1.0.1/geth-linux-amd64
+wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
 sudo mv ./geth-linux-amd64 story-geth
 sudo chmod +x story-geth
 sudo mv ./story-geth $HOME/go/bin/story-geth
@@ -173,7 +173,7 @@ After=network.target
 
 [Service]
 User=${user}
-ExecStart=${path_to_geth_binary} --homer --syncmode full
+ExecStart=${path_to_geth_binary} --story --syncmode full
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
@@ -227,7 +227,7 @@ echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
 
 ```bash
 cd $HOME
-wget https://github.com/piplabs/story/releases/download/v1.0.1/story-linux-amd64
+wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
 sudo mv story-linux-amd64 story
 sudo chmod +x story
 sudo mv ./story $HOME/go/bin/story
@@ -247,7 +247,7 @@ sudo xattr -rd com.apple.quarantine ./story
 
 ```bash
 cosmovisor init ./story
-cosmovisor run init --network homer --moniker ${moniker_name}
+cosmovisor run init --network story --moniker ${moniker_name}
 cosmovisor version
 ```
 
@@ -256,13 +256,13 @@ cosmovisor version
 If you ever run into issues and would like to try joining the network from a fresh state, run the following:
 
 ```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network homer && ./story run
+rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
 ```
 
 - Mac OS X:
-  - `rm -rf ~/Library/Story/story/* && ./story init --network homer && ./story run`
+  - `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
 - Linux:
-  - `rm -rf ~/.story/story/* && ./story init --network homer && ./story run`
+  - `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
 
 To quickly check if the node is syncing, you could
 
@@ -344,9 +344,6 @@ curl -X POST -H "Content-Type: application/json" \
   --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
   http://localhost:8545
 
-# Check peer connections
-geth attach ~/.story/geth/homer/geth.ipc
-> admin.peers
 ```
 
 ### 3.2 Check Consensus Client
@@ -367,19 +364,19 @@ network from a cleared state, run the following:
 ### Geth
 
 ```bash
-rm -rf ${GETH_DATA_ROOT} && ./geth --homer --syncmode full
+rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
 ```
 
-- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --homer 
+- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story 
 --syncmode full`
-- Linux: `rm -rf ~/.story/geth/* && ./geth --homer --syncmode 
+- Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode 
 full`
 
 ### Story
 
 ```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network homer && ./story run
+rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
 ```
 
-- Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network homer && ./story run`
-- Linux: `rm -rf ~/.story/story/* && ./story init --network homer && ./story run`
+- Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+- Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
