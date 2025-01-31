@@ -92,17 +92,9 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         `IMPROPER_USAGE`
 
         Examples (non-exhaustive):\
-        Territory
-        Channels of Distribution
-        Expiration
-        Irrevocable
-        Attribution
-        Derivatives
-        Limitations on Creation of Derivatives
-        Commercial Use
-        Sublicensable
-        Non-Transferable
-        Restriction on Cross-Platform Use
+        Territory, Channels of Distribution,
+        Expiration, Irrevocable, Attribution,
+        Derivatives, Limitations on Creation of Derivatives, Commercial Use, Sublicensable, Non-Transferable, Restriction on Cross-Platform Use
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -145,10 +137,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         `CONTENT_STANDARDS_VIOLATION`
 
-        No-Hate,\
-        Suitable-for-All-Ages,
-        No-Drugs-or-Weapons,
-        No-Pornography
+        No-Hate, Suitable-for-All-Ages, No-Drugs-or-Weapons, No-Pornography
       </td>
 
       <td style={{ textAlign: "left" }}>
