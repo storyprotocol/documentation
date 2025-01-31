@@ -126,15 +126,14 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. Description of each payment the disputed IP received that should have been shared with its royalty vault
-        2. Proof of payments
+        A. Description of each payment the disputed IP received that should have been shared with its royalty vault and/or its ancestors but it were not
+
+        B. Proof of those payments that were not properly shared as royalties
       </td>
 
       <td style={{ textAlign: "left" }}>
         1. Check veracity of the proof of payments by checking on the associated platforms when possible using input A and B
         2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on blockchain explorer
-
-        <br />
       </td>
     </tr>
 
