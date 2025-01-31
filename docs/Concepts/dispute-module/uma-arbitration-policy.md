@@ -28,7 +28,7 @@ This arbitration policy is a dispute resolution mechanism that uses UMA’s opti
 
 ## Dispute Evidence Submission Guidelines
 
-When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that UMA will use & read from to make a judgement on the dispute.
+When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that oracle participants will use & read from to make a judgement on the dispute.
 
 ### Document Characteristics
 
