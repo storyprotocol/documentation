@@ -124,14 +124,22 @@ The child IP can claim its 1 SUSD by calling the `snapshotAndClaimByTokenBatch` 
 * `claimer` is the address that holds the royalty tokens associated with the child's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the child asset
 
 ```typescript main.ts
-const response = await client.royalty.snapshotAndClaimByTokenBatch({
-  royaltyVaultIpId: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
-  currencyTokens: ["0x91f6F05B08c16769d3c85867548615d270C42fC7"],
-  claimer: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
-  txOptions: { waitForTransaction: true },
-})
+import { client } from './utils'
+import { zeroAaddress } from 'viem'
 
-console.log(`Claimed revenue: ${response.amountsClaimed}`);
+async function main() {
+  // previous code here ...
+  const response = await client.royalty.snapshotAndClaimByTokenBatch({
+    royaltyVaultIpId: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
+    currencyTokens: ["0x91f6F05B08c16769d3c85867548615d270C42fC7"],
+    claimer: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
+    txOptions: { waitForTransaction: true },
+  })
+
+  console.log(`Claimed revenue: ${response.amountsClaimed}`);
+}
+
+main();
 ```
 
 ## 4. Parent Claiming Due Revenue
