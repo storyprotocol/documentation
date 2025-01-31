@@ -3847,6 +3847,10 @@ This arbitration policy is a dispute resolution mechanism that uses UMA’s opti
 
 When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that oracle participants will use & read from to make a judgement on the dispute.
 
+### Burden of Proof
+
+In all disputes related with the UMA arbitration policy, the burden of proof lies with the party creating the dispute. This means that the disputer must provide clear, compelling, and verifiable evidence to prove the dispute beyond reasonable doubt. Disputes that do not meet this high bar can be counter-disputed with the initial disputing party losing their bond.
+
 ### Document Characteristics
 
 Every document should have the following characteristics:
@@ -3855,7 +3859,7 @@ Every document should have the following characteristics:
 
 * It should be uploaded on IPFS.
 
-* It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
+* It should not take the reviewer more than 1 hour to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
 Depending on what the type of the Dispute Tag is, you also need to include extra evidence:
 
