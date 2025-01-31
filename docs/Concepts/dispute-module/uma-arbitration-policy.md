@@ -18,25 +18,21 @@ next:
 >
 > For detailed information on how UMA's dispute resolution works, [visit their website](https://uma.xyz/).
 
-This arbitration policy is a dispute resolution mechanism that uses UMA’s optimistic oracle to verify disputes. Below we share a high-level overview of how the UMA dispute process works.
+This arbitration policy is a dispute resolution mechanism that follows [UMA's](https://uma.xyz/) rules. Below we share a high-level overview of how the UMA dispute process works.
 
 ## Smart Contract Flow Diagram
 
 ![](https://files.readme.io/e0dfb0a226bdd29ab3adede7d1df7d6662497331e1b92319ee1ad8344dc5dfa3-image.png)
 
-1. Raise Dispute - The first step to initiate a dispute against an IP Asset is to call the `raiseDispute` function on [DisputeModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/dispute/DisputeModule.sol). This function will in turn call `assertTruth` on UMA's `OptimisticOracleV3.sol`. To initiate a dispute the dispute initiator will need to post a bond of at least the minimum bond amount defined by UMA for the selected currency. Note that this bond will be lost if the dispute is deemed not verifiably correct by the oracle.
-2. (Optional) Dispute Assertion / Counter Dispute - After the `raiseDispute` call there is a period of time called liveness in which a counter dispute can be submitted. The liveness period is split in two parts: (i) the first part of the liveness period in which only the IP owner can counter dispute and (ii) a second part in which any address can counter dispute - which can be done by calling `disputeAssertion` on `ArbitrationPolicyUMA.sol`. To counter a dispute the caller will need to post a bond of the same amount and currency that was used by the dispute initiator when raising a dispute. Note that this bond will be lost if the original dispute is deemed to be verifiably correct by the oracle.
+1. Raise Dispute - The first step to initiate a dispute against an IP Asset is to call the `raiseDispute` function on [DisputeModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/dispute/DisputeModule.sol). This function will in turn call `assertTruth` on UMA's `OptimisticOracleV3.sol`. To initiate a dispute the dispute initiator will need to post a bond of at least the minimum bond defined by UMA for the selected currency.
+2. (Optional) Dispute Assertion / Counter Dispute - After the `raiseDispute` call there is a period of time called liveness in which a counter dispute can be submitted. The liveness period is split in two parts: (i) the first part of the liveness period in which only the IP owner can counter dispute and (ii) a second part in which any address can counter dispute - which can be done by calling `disputeAssertion` on `ArbitrationPolicyUMA.sol`. To counter a dispute the caller will need to post a bond of the same amount and currency that was used by the dispute initiator when raising a dispute.
 3. Settle Assertion
    1. If nobody submitted a counter dispute then when the liveness period is over, any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
    2. If somebody has submitted a counter dispute before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
 
 ## Dispute Evidence Submission Guidelines
 
-When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that oracle participants will use & read from to make a judgement on the dispute.
-
-### Burden of Proof
-
-In all disputes related with the UMA arbitration policy, the burden of proof lies with the party creating the dispute. This means that the disputer must provide clear, compelling, and verifiable evidence to prove the dispute beyond reasonable doubt. Disputes that do not meet this high bar can be counter-disputed with the initial disputing party losing their bond.
+When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that UMA will use & read from to make a judgement on the dispute.
 
 ### Document Characteristics
 
@@ -46,7 +42,7 @@ Every document should have the following characteristics:
 
 * It should be uploaded on IPFS.
 
-* It should not take the reviewer more than 1 hour to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
+* It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
 Depending on what the type of the Dispute Tag is, you also need to include extra evidence:
 
@@ -74,9 +70,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        A. Showcase or pointer to the pre-existing IP that is being infringed upon by the disputed IP
-
-        B. Proof of public display of the pre-existing IP at an earlier date than the infringing IP (onchain or offchain) and/or instructions on where/how to check it
+        1. Proof of pre-existing IP with earlier registration date (onchain or offchain) and/or instructions on where/how to check it.
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -84,8 +78,8 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
            * Mickey Mouse with 1 pixel difference is an infringement
            * Mickey Mouse with a new hat is an infringement unless it’s a derivative of Mickey Mouse
         2. Check the registration date of the pre-existing IP using input B
-        3. Confirm that the disputed IP has a later registration date
-        4. Confirm that the disputed IP is not a derivative of the pre-existing IP
+        3. Confirm that the disputed IP has a later registration date by checking on the Hub
+        4. Confirm that the disputed IP is not a derivative of the pre-existing IP by checking on the Hub
 
         <br />
       </td>
@@ -96,25 +90,23 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         `IMPROPER_USAGE`
 
         Examples (non-exhaustive):\
-        Territory,
-        Channels of Distribution,
-        Expiration,
-        Irrevocable,
-        Attribution,
-        Derivatives,
-        Limitations on Creation of Derivatives,
-        Commercial Use,
-        Sublicensable,
-        Non-Transferable,
+        Territory
+        Channels of Distribution
+        Expiration
+        Irrevocable
+        Attribution
+        Derivatives
+        Limitations on Creation of Derivatives
+        Commercial Use
+        Sublicensable
+        Non-Transferable
         Restriction on Cross-Platform Use
       </td>
 
       <td style={{ textAlign: "left" }}>
-        A. PIL term that has been violated
-
-        B. Description of the violation
-
-        C. Proof of the violation
+        1. PIL terms that have been violated
+        2. Description of the violations
+        3. Proof of the violations
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -130,9 +122,8 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        A. Description of each payment the disputed IP received that should have been shared with its royalty vault or its ancestors but it was not
-
-        B. Proof of payments
+        1. Description of each payment the disputed IP received that should have been shared with its royalty vault
+        2. Proof of payments
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -147,15 +138,16 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         `CONTENT_STANDARDS_VIOLATION`
 
-        No-Hate, Suitable-for-All-Ages, No-Drugs-or-Weapons, No-Pornography
+        No-Hate\
+        Suitable-for-All-Ages
+        No-Drugs-or-Weapons
+        No-Pornography
       </td>
 
       <td style={{ textAlign: "left" }}>
-        A. The content standard point that has been violated
-
-        B. Description of the violation
-
-        C. Proof of violation
+        1. The content standard point that has been violated
+        2. Description of the violation
+        3. Proof of violation
       </td>
 
       <td style={{ textAlign: "left" }}>
