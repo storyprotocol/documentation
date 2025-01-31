@@ -11285,7 +11285,8 @@ Open-source React widgets to interact with Story Protocol.
   </Tab>
 
   <Tab title="Aeneid Testnet">
-    Here's content that's only inside the second Tab.
+    * MERC20: 0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E
+      * <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19" target="_blank">Mint Mock ERC20 ↗️</a>
   </Tab>
 </Tabs>
 
