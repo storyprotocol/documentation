@@ -70,13 +70,15 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. Proof of pre-existing IP with earlier registration date (onchain or offchain) and/or instructions on where/how to check it.
+        A. Showcase or pointer to the pre-existing IP that is being infringed upon by the disputed IP
+
+        B. Proof of public display of the pre-existing IP at an earlier date than the infringing IP (onchain or offchain) and/or instructions on where/how to check it
       </td>
 
       <td style={{ textAlign: "left" }}>
         1. Check if the pre-existing  is the same or very similar to the disputed IP using input A
            * Mickey Mouse with 1 pixel difference is an infringement
-           * Mickey Mouse with a new hat is an infringement unless it’s a derivative of Mickey Mouse
+           * Mickey Mouse with a new hat is an infringement unless it’s a derivative of the original Mickey Mouse with an appropriate license
         2. Check the registration date of the pre-existing IP using input B
         3. Confirm that the disputed IP has a later registration date by checking on the Hub
         4. Confirm that the disputed IP is not a derivative of the pre-existing IP by checking on the Hub
