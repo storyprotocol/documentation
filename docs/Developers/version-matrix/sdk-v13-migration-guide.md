@@ -64,6 +64,8 @@ The function now has 1 extra parameter:
 
 The function has also modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
 
+:warning: This function will now fail if you do not provide any license terms. For that, just use `mintAndRegisterIp` instead.
+
 Example:
 
 ```typescript TypeScript
@@ -119,6 +121,8 @@ const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
 ## `registerIpAndAttachPilTerms`
 
 The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
+
+:warning: This function will now fail if you do not provide any license terms. For that, just use `register` instead.
 
 Example:
 
@@ -272,6 +276,8 @@ const response = await client.ipAsset.mintAndRegisterIp({
 ## `registerPilTermsAndAttach`
 
 The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
+
+:warning: This function will now fail if you do not provide any license terms. There is no reason you would be providing empty terms anyway.
 
 Example:
 
