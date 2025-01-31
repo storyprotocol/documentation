@@ -42,7 +42,7 @@ A version matrix showing the **currently available protocol versions** for diffe
       <td style={{ textAlign: "left" }}>
         *v1.3 coming soon*
 
-        This will be ready on February 7th. **However you can begin anticipating changes based on the[SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide).**
+        This will be ready on February 7th. **However you can begin anticipating changes based on the** [SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide)
       </td>
     </tr>
 
