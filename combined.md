@@ -11631,6 +11631,7 @@ A version matrix showing the **currently available protocol versions** for diffe
         *v1.3 coming soon*
 
         This will be ready on February 7th.
+        **However you can begin anticipating changes based on the[SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide).**
       </td>
     </tr>
 
