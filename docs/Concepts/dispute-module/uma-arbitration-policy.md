@@ -10,10 +10,6 @@ metadata:
 next:
   description: ''
 ---
-> 🚧 Warning: Only in v1.3
->
-> The UMA Arbitration Policy is only available in v1.3 of our protocol, which is not yet documented.
-
 > 📘 UMA
 >
 > For detailed information on how UMA's dispute resolution works, [visit their website](https://uma.xyz/).
