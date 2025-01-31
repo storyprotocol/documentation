@@ -20,11 +20,11 @@ A version matrix showing the **currently available protocol versions** for diffe
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Odyssey
+        Odyssey Testnet
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Aeneid
+        Aeneid Testnet
       </th>
     </tr>
   </thead>
