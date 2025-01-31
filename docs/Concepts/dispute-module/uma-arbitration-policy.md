@@ -130,7 +130,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        A. Description of each payment the disputed IP received that should have been shared with its royalty vault or its ancestors but it was not.
+        A. Description of each payment the disputed IP received that should have been shared with its royalty vault or its ancestors but it was not
 
         B. Proof of payments
       </td>
