@@ -14,7 +14,7 @@ next:
 >
 > For detailed information on how UMA's dispute resolution works, [visit their website](https://uma.xyz/).
 
-This arbitration policy is a dispute resolution mechanism that follows [UMA's](https://uma.xyz/) rules. Below we share a high-level overview of how the UMA dispute process works.
+This arbitration policy is a dispute resolution mechanism that uses UMA’s optimistic oracle to verify disputes. Below we share a high-level overview of how the UMA dispute process works.
 
 ## Smart Contract Flow Diagram
 
