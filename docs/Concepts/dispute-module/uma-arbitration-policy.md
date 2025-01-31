@@ -148,9 +148,9 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. The content standard point that has been violated
-        2. Description of the violation
-        3. Proof of violation
+        A. The content standard point that has been violated
+
+        B. Description of the violationC. Proof of violation
       </td>
 
       <td style={{ textAlign: "left" }}>
