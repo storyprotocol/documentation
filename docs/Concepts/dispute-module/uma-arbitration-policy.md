@@ -34,6 +34,10 @@ This arbitration policy is a dispute resolution mechanism that uses UMA’s opti
 
 When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that oracle participants will use & read from to make a judgement on the dispute.
 
+### Burden of Proof
+
+In all disputes related with the UMA arbitration policy, the burden of proof lies with the party creating the dispute. This means that the disputer must provide clear, compelling, and verifiable evidence to prove the dispute beyond reasonable doubt. Disputes that do not meet this high bar can be counter-disputed with the initial disputing party losing their bond.
+
 ### Document Characteristics
 
 Every document should have the following characteristics:
