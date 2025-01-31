@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-A group of functions provided by the [Story Protocol Gateway (SPG) contract](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/StoryProtocolGateway.sol), which is essentially a way to combine independent operations like [Register an NFT as an IP Asset](doc:register-an-nft-as-an-ip-asset-python) and [Attach License Terms to an IP Asset](doc:attach-license-terms-to-an-ip-asset-python) into one transaction to make your life easier.
+A group of functions provided by the [Story Protocol Gateway (SPG) contract](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/SPGNFT.sol), which is essentially a way to combine independent operations like [Register an NFT as an IP Asset](doc:register-an-nft-as-an-ip-asset-python) and [Attach License Terms to an IP Asset](doc:attach-license-terms-to-an-ip-asset-python) into one transaction to make your life easier.
 
 > 🚧 Warning!
 >
