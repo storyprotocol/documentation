@@ -50,7 +50,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://rpc.odyssey.storyrpc.io/`
+        `https://aeneid.storyrpc.io`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -82,57 +82,15 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://odyssey.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
+        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://odyssey.storyscan.xyz/`
+        `https://aeneid.storyscan.xyz/`
       </td>
 
       <td style={{ textAlign: "left" }}>
         :white_check_mark:
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        <a href="https://odyssey.story.explorers.guru/" target="_blank">Nodes.Guru Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://odyssey.story.explorers.guru/`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        <a href="https://www.okx.com/web3/explorer/story-odyssey" target="_blank">OKX Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://www.okx.com/web3/explorer/story-odyssey`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        <a href="https://story.aurascan.io/" target="_blank">Story Scan by Aura Network ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://story.aurascan.io/`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
       </td>
     </tr>
   </tbody>
@@ -142,22 +100,27 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
 
-| Explorer                                                                                  | URL                                 |
-| :---------------------------------------------------------------------------------------- | :---------------------------------- |
-| <a href="https://explorer.story.foundation" target="_blank">Story Odyssey Explorer ↗️</a> | `https://explorer.story.foundation` |
+> 🚧 Coming soon!
+
+| Explorer | URL |
+| :------- | :-- |
+| N/A      | N/A |
 
 ## :money_with_wings: Faucets
 
-| Faucet                                                                                       | Amount  | Requirement    |
-| :------------------------------------------------------------------------------------------- | :------ | :------------- |
-| <a href="https://faucet.story.foundation/" target="_blank">Story Faucet ↗️</a>               | 1 $IP   | Every 24 hours |
-| <a href="https://faucet.quicknode.com/story/odyssey" target="_blank">Quicknode Faucet ↗️</a> | 1-2 $IP | Every 24 hours |
+> 🚧 Coming soon!
+
+| Faucet | Amount | Requirement |
+| :----- | :----- | :---------- |
+| N/A    | N/A    | N/A         |
 
 ## :moneybag: Staking
 
-| Dashboard                                                                           |
-| :---------------------------------------------------------------------------------- |
-| <a href="https://staking.story.foundation/" target="_blank">Story Validators ↗️</a> |
+> 🚧 Coming soon!
+
+| Dashboard |
+| :-------- |
+| N/A       |
 
 ## Ports
 
