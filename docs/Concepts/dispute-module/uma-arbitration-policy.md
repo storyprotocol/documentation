@@ -134,6 +134,8 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         1. Check veracity of the proof of payments by checking on the associated platforms when possible using input A and B
         2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on the blockchain explorer
+
+        <br />
       </td>
     </tr>
 
