@@ -6,7 +6,13 @@ hidden: false
 metadata:
   robots: index
 ---
-# Infrastructure
+## RPC Providers
+
+<Cards columns={1}>
+  <Card title="QuickNode" href="https://www.quicknode.com/chains/story" icon="fa-home" target="_blank">
+    QuickNode provides hosted Story RPC nodes under their free and paid plans, granting flexible and reliable access to the network. For high-throughput or mission-critical applications, Dedicated Clusters deliver premium performance with unmetered billing, elevated rate limits, and robust infrastructure.
+  </Card>
+</Cards>
 
 ## Cross-chain
 

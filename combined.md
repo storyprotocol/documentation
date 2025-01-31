@@ -1,3 +1,24 @@
+# Ecosystem
+Story provides a versatile framework to manage the entire lifecycle of IP development, enabling features like provenance, contribution tracking, frictionless licensing, and revenue sharing. The protocol has been designed with modularity and extensibility in mind, allowing developers to build a diverse array of applications on top of it, including generative AI, fandom platforms, gaming, franchise management, DeFi, social media, and DAO.
+
+The [Story Explorer](https://explorer.story.foundation/) provides a comprehensive view of transactions on-chain and is there to assist in debugging during development.
+
+Additionally, we are sharing some applications that can be built under the ecosystem, and you are welcome to share your bold ideas and applications built with Story Protocol.
+
+* [Content Remixing Mobile App](doc:content-remixing-mobile-app)
+* [Content Management System and Collaboration Hub](doc:content-management-system-and-collaboration-hub)
+* [IP Licensing Platform](doc:ip-licensing-platform)
+* [AI-generated Assets Marketplace](doc:ai-generated-assets-marketplace)
+* [DeFi Applications and RWA](doc:defi-applications-and-rwa)
+* [Capital Formation Platform](doc:capital-formation-platform)
+* [External Hooks](doc:external-hooks)
+
+# Join Story Academy
+
+The Story Academy is a builder program designed to support, mentor, and accelerate promising entrepreneurs and innovative projects building on Story. We will provide technical expertise, marketing know-how, grants, and investor network introductions matching the level of ambition and execution capability of each admitted project. If you're a visionary builder already working on or planning to build a project on top of Story, we want to talk to you.
+
+[Learn more about Story Academy](https://www.story.foundation/academy)
+
 # License
 ## LicenseClient
 
@@ -1342,6 +1363,8 @@ The Liquid Relative Percentage (LRP) royalty policy defines that each parent IP 
 
 Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
 
+The License Royalty % in this page correspond to the same value as the `commercialRevShare` on the PIL terms.
+
 ## Royalty Payment and Claiming Flow
 
 In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a % economic right over revenue made by IPA 3. Key notes to understand the derivative chain below:
@@ -1379,12 +1402,12 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 ![](https://files.readme.io/b39ed27190ace760f4b8cb788fdf5ad28e93e3d3f3a5c5b23b122c9a812564bd-image.png)
 
 # 💸 Royalty Module
-The Royalty Module defines how revenue flows between parent and child IP Assets. There are two common scenarios when revenue flow would happen:
+The Royalty Module defines how revenue flows between IPs on Story. More specifically, between parent and child [🧩 IP Assets](doc:ip-asset). There are two common scenarios when revenue flow would happen:
 
-1. Minting a License - sometimes there is a minting fee to mint a [License Token](doc:license-token) from an IP Asset. When this is paid by someone (who wants to register a derivative or simply hold a license), the revenue should flow up the chain.
-2. Tipping Directly - if someone sends revenue to an IP Asset directly, it should flow up the chain.
+1. Minting a License - when you mint a [License Token](doc:license-token) that has a `mintingFee`. When this is paid by someone (who wants to register a derivative or simply hold the license), the revenue should flow up the ancestry chain.
+2. Tipping Directly - if someone sends revenue to an IP directly, it should flow up the chain.
 
-The below example (using [Liquid Absolute Percentage](doc:policy-liquid-absolute-percentage)) shows what happens when an IP Asset 4 (IPA4) tips IPA3 1M USDC.
+The below example (using [Liquid Absolute Percentage](doc:policy-liquid-absolute-percentage)) shows what happens when an IP Asset 4 (IPA4) tips IPA3 1,000,000 USDC.
 
 1. Revenue first flows to the Royalty Module contract
 2. Royalty Module sends USDC to both IPA3 and the LAP contract based on the **royalty stack** (15%)
@@ -1419,9 +1442,7 @@ These policies can be registered in a permission-less way and stipulate their ow
 
 * [External Royalty Policies](doc:external-royalty-policies)
 
-<br />
-
-#### Royalty Token % vs Royalty Stack %
+## Royalty Token % vs Royalty Stack %
 
 When creating a derivative, the creator will want to answer the question: "How much percentage of my IP earnings will I keep and how much will go to ancestor IPs?
 
@@ -1447,8 +1468,6 @@ In the image below there is an example of a one million USDC payment made to IP2
 * RT Holder B - From the one million USDC payment gets 180k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. B has 20% of Royalty Tokens of IP2 so it receives 900k USDC \* 20% = 180k.
 * RT Holder C - From the one million USDC payment gets 720k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. C has 80% of Royalty Tokens of IP2 so it receives 900k USDC \* 80% = 720k.
 
-<br />
-
 ## Derivative Chain Configurations
 
 ![](https://files.readme.io/79bd27f-image.png)
@@ -1472,6 +1491,8 @@ The Liquid Absolute Percentage (LAP) defines that each parent IP Asset can choos
 ## Prerequisites
 
 Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
+
+The License Royalty % in this page correspond to the same value as the `commercialRevShare` on the PIL terms.
 
 ## Royalty Payment and Claiming Flow
 
@@ -1526,10 +1547,10 @@ Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inf
 
 An ERC-20 token must be whitelisted by our protocol in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token. Here are the whitelisted tokens (you can mint tokens directly from the link):
 
-| Token | Contract Address                             | Mint                                                                                                                        |
-| :---- | :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
-| SUSD  | `0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5` | <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5" target="_blank">Mint SUSD ↗️</a> |
-| WIP   | `0x1516000000000000000000000000000000000000` |                                                                                                                             |
+| Token | Contract Address                             | Mint                                                                                                                                                      |
+| :---- | :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SUSD  | `0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5` | <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19" target="_blank">Mint SUSD ↗️</a> |
+| WIP   | `0x1516000000000000000000000000000000000000` |                                                                                                                                                           |
 
 ## How to obtain Royalty Tokens?
 
@@ -1631,7 +1652,7 @@ From the 1M USDC inflow to IP3 Royalty Vault:
 * 100k USDC are claimed by the IP1 Royalty Vault which has 10% of RT3 token supply via `claimByTokenBatchAsSelf`  function
 * 400k USDC are claimed by "Policy X" which has 40 of RT3 token supply. This amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.
 
-# 📦 SPG
+# 📦 SPG (Periphery)
 The Story Protocol Gateway (SPG) is a group of periphery/utility smart contracts, deployed on our protocol that **allows you to combine independent operations** - like registering an [🧩 IP Asset](doc:ip-asset) and attaching License Terms to that IP Asset - **into one transaction to make your life easier**.
 
 For example, this `mintAndRegisterIpAndAttachPILTerms` is one of the functions in the SPG (more specifically in the `LicenseAttachmentWorkflows.sol`) that allows you to mint an NFT, register it as an IP Asset, and attach License Terms to it all in one call:
@@ -1651,7 +1672,7 @@ function mintAndRegisterIpAndAttachPILTerms(
 As mentioned above, there are many different functions we have created for you that combine multiple functions into one. We have categorized them into different groups. These groups are called "workflows".
 
 <Cards columns={2}>
-  <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md" icon="fa-eyes" iconColor="white" target="_blank">
+  <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md" icon="fa-eyes" iconColor="grey" target="_blank">
     Click here to view all of the supported workflows.
   </Card>
 
@@ -1940,7 +1961,7 @@ interface IMulticall3 {
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An ERC-721 NFT that gets minted from an IP Asset with specific license terms. It is essentially the license you hold that gives you access to use the associated IP Asset based on the terms in the License Token.  
+        An ERC-721 NFT that gets minted from an IP Asset with specific license terms. It is essentially the license you hold that gives you access to use the associated IP Asset based on the terms in the License Token.
 
         A License Token is burned when it is used to register an IP Asset as a derivative of another.
       </td>
@@ -1950,7 +1971,7 @@ interface IMulticall3 {
       </td>
 
       <td style={{ textAlign: "left" }}>
-        These are the tokens that are actually used for payment (ex. ETH, USDC, etc).  
+        These are the tokens that are actually used for payment (ex. $WIP).
 
         "*Royalty Tokens*" are used to claim these Revenue Tokens when an IP Asset earns them.
       </td>
@@ -1975,7 +1996,6 @@ interface IMulticall3 {
     </tr>
   </tbody>
 </Table>
-
 
 # How to Create and Register Modules
 This guide will walk you through the process of creating a Module and registering it with the Story Protocol, enabling you to contribute to its ecosystem.
@@ -2410,7 +2430,6 @@ On the other hand, derivative IP Assets inherit their License Terms from the par
 License Terms support an `expiration` time. Once License Terms expire, any derivatives that abide by that license will no longer be able to generate revenue or create further derivatives. If an IP Asset is a derivative of multiple parents, it will expire when the soonest expiration time between the two parents is reached.
 
 # License Config / Hook
-
 ## License Config
 
 > 🗒️ Contract
@@ -2452,7 +2471,12 @@ struct LicensingConfig {
 }
 ```
 
-Fields like the `mintingFee` and `commercialRevShare` overwrite their duplicate in the license terms themselves. A benefit of this is that derivative IP Assets, which normally cannot change their license terms, are able to overwrite certain fields.
+What do some of these mean?
+
+1. `isSet` - if this is false, the license config is completely ignored
+2. `disabled` - if this is true, then no licenses can be minted and no more derivatives can be attached at all
+
+Fields like the `mintingFee` and `commercialRevShare` overwrite their duplicate in the license terms themselves. **A benefit of this is that derivative IP Assets, which normally cannot change their license terms, are able to overwrite certain fields.**
 
 The `licensingHook` is an address to a smart contract that implements the `ILicensingHook.sol` interface, which contains a `beforeMintLicenseTokens` function which will be run before a user mints a License Token. This means you can insert logic to be run upon minting a license.
 
@@ -2476,7 +2500,7 @@ You can also attach the License Config to an IP Asset as a whole, so it will exe
 
 ### Restrictions
 
-If you update the License Config, you cannot decrease the `commercialRevShare` percentage. You can only increase it.
+See [IP Modifications & Restrictions](https://docs.story.foundation/docs/ipa-modifications#/) for the various restrictions on setting the License Config.
 
 ## Licensing Hook
 
@@ -2529,7 +2553,6 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
         Importance
       </th>
     </tr>
-
   </thead>
 
   <tbody>
@@ -2562,10 +2585,8 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
         Lowest Priority
       </td>
     </tr>
-
   </tbody>
 </Table>
-
 
 # License Token
 > 🗒️ Contract
@@ -2742,7 +2763,7 @@ If any of these happen, you must create a new group if you wish to add/remove me
 > Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.
 
 # 🔍 Overview
-Story's "Proof-of-Creativity" protocol introduces a revolutionary open **Programmable IP layer**, elevating IP to a first-class entity in the blockchain ecosystem. At the heart of this system is the [🧩 IP Asset](doc:ip-asset) and its associated [⚙️ IP Account](doc:ip-account), a smart contract designed to serve as the core identity for each IP. This account-centric approach enables the storage and management of IP-related data, as well as the execution of diverse functions to manipulate that data via [🧱 Modules](doc:story-modules).
+A piece of Intellectual Property is represented as an [🧩 IP Asset](doc:ip-asset) and its associated [⚙️ IP Account](doc:ip-account), a smart contract designed to serve as the core identity for each IP. We also have various [🧱 Modules](doc:story-modules)to add functionality to IP Assets, like creating derivatives of them, disputing IP, and automating revenue flow between them.
 
 # Architecture
 
@@ -2752,38 +2773,41 @@ Let's briefly introduce the layers mentioned in the above diagram:
 
 ## [🧩 IP Asset](doc:ip-asset)
 
-An IP Asset is an on-chain NFT, which represents an IP. If your IP is already on-chain (like an Azuki or Pudgy Penguin), it is already ready to be registered on Story. If your IP is off-chain, you would simply mint an NFT to represent it and then register it as an IP Asset on Story.
+When you want to bring an IP on-chain, you mint an ERC-721 NFT. This NFT represents **ownership** over your IP.
 
-Upon registering an NFT as an IP Asset, an associated IP Account is created.
+Then, you **register** the NFT in our protocol through the [IP Asset Registry](doc:ip-asset-registry). This deploys an [⚙️ IP Account](doc:ip-account), effectively creating an "IP Asset". The address of that contract is the identifier for the IP Asset (the `ipId`).
+
+The underlying NFT can be traded/sold like any other NFT, and the new owner will own the IP Asset and all revenue associated with it.
 
 ## [⚙️ IP Account](doc:ip-account)
 
 IP Accounts are smart contracts that are tied to an IP Asset, and do two main things:
 
-1. Store its associated IP Asset's data (such as the associated License Tokens and Royalty Tokens) created from an IP
+1. Store the associated IP Asset's data, such as the associated licenses and royalties created from the IP
 2. Facilitates the utilization of this data by various modules. For example, licensing, revenue/royalty sharing, remixing, and other critical features are made possible due to the IP Account's programmability.
 
-## [🧱 Modules](doc:modules-1)
+The address of the IP Account is the IP Asset's identifier (the `ipId`).
+
+## [🧱 Modules](doc:story-modules)
 
 Modules are customizable smart contracts that define and extend the functionality of IP Accounts. Modules empower developers to create functions and interactions for each IP to make IPs truly programmable.
 
 We already have a few core modules:
 
-1. [📜 Licensing Module](doc:licensing-module)
-2. [💸 Royalty Module](doc:royalty-module)
-3. [❌ Dispute Module](doc:dispute-module)
-4. [👥 Grouping Module](doc:grouping-module)
+1. [📜 Licensing Module](doc:licensing-module): create parent\<->child relationships between IPs, enabling derivatives of IPs that are restricted by the agreements in the license terms (must give attribution, share 10% revenue, etc)
+2. [💸 Royalty Module](doc:royalty-module): automate revenue flow between IPs, abiding by the negotiated revenue sharing in license terms
+3. [❌ Dispute Module](doc:dispute-module): facilitates the disputing and flagging of IP
+4. [👥 Grouping Module](doc:grouping-module): allows for IPs to be grouped together
 
 ## [🗂️ Registry](doc:registry)
 
-The various registries on Story function as a primary directory/storage for the global states of the protocol. Unlike IP Accounts, which manage the state of specific IPs, a registry oversees the broader states of the protocol.
+The various registries on our protocol function as a primary directory/storage for the global states of the protocol. Unlike IP Accounts, which manage the state of specific IPs, a registry oversees the broader states of the protocol.
 
 ## [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
 
-The PIL is a real, off-chain legal contract that defines certain **License Terms** for how an IP Asset can be legally licensed. For example, how an IP Asset is commercialized or remixed, and who is allowed to do that and under what conditions.
+The PIL is a real, off-chain legal contract that defines certain **License Terms** for how an IP Asset can be legally licensed. For example, how an IP Asset is commercialized, remixed, or attributed, and who is allowed to do that and under what conditions.
 
 We have mapped these same terms on-chain so you can easily attach terms to your IP Asset for others to seamlessly and transparently license your IP.
-
 
 # 🔒 Access Controller
 <Image align="center" src="https://files.readme.io/ff607ff-Screenshot_2024-01-23_at_14.30.19.png" />
@@ -3737,6 +3761,8 @@ IP Assets can be modified/customized a few ways. For example, by [setting the Li
 
       <td>
         Cannot **decrease** `commercialRevShare` percentage. You can only increase it.
+
+        However, you **can** set it to 0 to disable the overwrite.
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -5452,293 +5478,6 @@ iptables -I INPUT -s localhost -j ACCEPT
 ```
 
 
-# Node Setup
-This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
-
-![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
-
-The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
-
-* **`story-geth`execution client:**
-  * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  * Latest Stable Binary (v0.10.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.10.1)
-* **`story`consensus client:**
-  * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  * Latest Stable Binary (v0.13.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.13.0)
-
-***IMPORTANT: For the Odyssey testnet, it is crucial to start with version v0.12.0, as this version is required before applying any subsequent upgrades. Download this version first to ensure compatibility with the testnet environment. Also, verify that you are downloading the binary matching your system architecture***
-
-## System Specs
-
-| Hardware  | Requirement       |
-| --------- | ----------------- |
-| CPU       | 8 Cores           |
-| RAM       | 32 GB             |
-| Disk      | 500 GB NVMe Drive |
-| Bandwidth | 25 MBit/s         |
-
-On AWS, we recommend using the M6i, R6i, or C6i series.
-
-## Ports
-
-*Ensure all ports needed for your node functionality are needed, described below*
-
-* `story-geth`
-  * 8545
-    * Required if you want your node to interface via JSON-RPC API over HTTP
-  * 8546
-    * Required for websockets interaction
-  * 30303 (TCP + API)
-    * MUST be open for p2p communication
-* `story`
-  * 26656
-    * MUST be open for consensus p2p communication
-  * 26657
-    * Required if you want your node interfacing for Tendermint RPC
-  * 26660
-    * Needed if you want to expose prometheus metrics
-
-## Default Folder
-
-By default, we setup the following default data folders for consensus and execution clients:
-
-* Mac OS X
-  * `story` data root: `~/Library/Story/story`
-  * `story-geth` data root: `~/Library/Story/geth`
-* Linux
-  * `story` data root: `~/.story/story`
-  * `story-geth` data root:  `~/.story/geth`
-
-*For the remainder of this tutorial, we will refer to the`story` data root as `${STORY_DATA_ROOT}` and the `geth` data root as `${GETH_DATA_ROOT}`.*
-
-*You are able to override these configs on the`story` client side by passing `--home ${STORY_CONFIG_FOLDER}`. Similarly, for `geth`, you may use `--config ${GETH_CONFIG_FOLDER}`. For information on how overrides work, view our readme on [setting up a private network](https://github.com/piplabs/story?tab=readme-ov-file#creating-a-private-network).*
-
-When downloading the Story binaries, note that the file name will vary based on your operating system. For example, on a Linux system with an AMD64 architecture, the binary might be named `story-linux-amd64` or `geth-linux-amd`. This naming convention helps with compatibility identification, but for simplicity, we recommend renaming the binary file to story after download.
-
-```
-mv story-linux-amd64 story
-```
-
-This allows you to execute the program directly using the story command in your terminal. For the remainder of this documentation, we will use the `story` name convention.
-
-## Execution Client Setup (`story-geth`)
-
-1. (Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-   ```bash
-   sudo xattr -rd com.apple.quarantine ./geth
-   ```
-2. You may now run `geth` with the following command:
-
-   ```bash
-   ./geth --odyssey --syncmode full
-   ```
-
-   * Currently, `snap` sync mode, the default, is still undergoing development
-
-### Clear State
-
-If you ever run into issues and would like to try joining the network from a cleared state, run the following:
-
-```bash
-rm -rf ${GETH_DATA_ROOT} && ./geth --odyssey --syncmode full
-```
-
-* Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --odyssey --syncmode full`
-* Linux: `rm -rf ~/.story/geth/* && ./geth --odyssey --syncmode full`
-
-### Debugging
-
-If you would like to check the status of `geth` while it is running, it is helpful to communicate via its built-in IPC-RPC server by running the following:
-
-```bash
-geth attach ${GETH_DATA_ROOT}/geth.ipc
-```
-
-* Mac OS X:
-  * `geth attach ~/Library/Story/geth/odyssey/geth.ipc`
-* Linux:
-  * `geth attach ~/.story/geth/odyssey/geth.ipc`
-
-This will connect you to the IPC server from which you can run some helpful queries:
-
-* `eth.blockNumber` will print out the latest block geth is sync’d to - if this is `undefined` there is likely a peer connection or syncing issue
-* `admin.peers` will print out a list of other `geth` nodes your client is connected to - if this is blank there is a peer connectivity issue
-* `eth.syncing` will return `true` if geth is in the process of syncing, `false` otherwise
-
-## Consensus Client Setup (`story`)
-
-1. (Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-   ```bash
-   sudo xattr -rd com.apple.quarantine ./story
-   ```
-2. Initialize the `story` client with the following command:
-
-   ```bash
-   ./story init --network odyssey 
-   ```
-
-   * By default, this uses your username for the moniker (the human-readable identifier for your node), you may override this by passing in `--moniker ${NODE_MONIKER}`
-   * If you would like to initialize the node using your own data directory, you can pass in `--home ${STORY_DATA_DIR}`
-   * If you already have config and data files, and would like to re-initialize from scratch, you can add the `--clean` flag
-3. Now, you may run `story` with the following command:
-
-   ```bash
-   ./story run
-   ```
-
-***IMPORTANT: If you are setting up a new node, you must start with version v0.12.0***, as this base version is required before applying any subsequent upgrades. Afterward, install each subsequent upgrade in order. Follow these steps carefully:
-
-1. Download [version v0.12.0](https://github.com/piplabs/story/releases/tag/v0.12.0), ensuring you select the binary that matches your system architecture.
-2. Initialize and run version v0.12.0 following the initialization and run instructions provided above.
-3. Download and upgrade to the following releases using [this guide](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a):
-   1. [v0.12.1 ](https://github.com/piplabs/story/releases/tag/v0.12.1) upgrade at height 322000
-
-Note: currently you might see a bunch of `Stopping peer for error` logs - this is a known issue around peer connection stability with our bootnodes that we are currently fixing - for now please ignore it and rest assured that it does not impact block progression.
-
-*If you ever run into issues and would like to try re-joining the network**WHILE PRESERVING YOUR KEY,** run the following:*
-
-```bash
-rm -rf ${STORY_DATA_ROOT}/data/* && \
-echo '{"height": "0", "round": 0, "step": 0}' > ${STORY_DATA_ROOT}/data/priv_validator_state.json && \
-./story run
-```
-
-* Mac OS X:
-  ```bash
-  rm -rf ~/Library/Story/story/data/* && \
-  echo '{"height": "0", "round": 0, "step": 0}' > ~/Library/Story/story/data/priv_validator_state.json && \
-  ./story run
-  ```
-* Linux:
-  ```bash
-  rm -rf ~/.story/story/data/* && \
-  echo '{"height": "0", "round": 0, "step": 0}' > ~/.story/story/data/priv_validator_state.json && \
-  ./story run
-  ```
-
-\*If you ever run into issues and would like to try joining the network from a **COMPLETELY** fresh state, run the following (**\*WARNING: THIS WILL DELETE YOUR`priv_validator_key.json` FILE )**
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
-```
-
-* Mac OS X:
-  * `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
-* Linux:
-  * `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
-
-To quickly check if the node is syncing, you could
-
-* Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-
-### Clear State
-
-If you ever run into issues and would like to try joining the network from a fresh state, run the following:
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
-```
-
-* Mac OS X:
-  * `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
-* Linux:
-  * `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
-
-To quickly check if the node is syncing, you could
-
-* Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-
-### Custom Configuration
-
-To override your own node settings, you can do the following:
-
-* `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
-* `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
-* `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
-
-### Custom Automation
-
-Below we list a sample `Systemd` configuration you may use on Linux
-
-```bash
-# geth
-[Unit]
-Description=Node-Geth
-After=network.target
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=${USER_NAME}
-WorkingDirectory=${YOUR_HOME_DIR}
-ExecStart=geth --odyssey  --syncmode full
-StandardOutput=journal
-StandardError=journal
-SyslogIdentifier=node-geth
-StartLimitInterval=0
-LimitNOFILE=65536
-LimitNPROC=65536
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-# story
-[Unit]
-Description=Node-story
-After=network.target node-geth.service
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=ec2-user
-WorkingDirectory=${YOUR_HOME_DIR}
-ExecStart=story run
-StandardOutput=journal
-StandardError=journal
-SyslogIdentifier=node-story
-StartLimitInterval=0
-LimitNOFILE=65536
-LimitNPROC=65536
-
-[Install]
-WantedBy=multi-user.target
-
-```
-
-### Debugging
-
-If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
-
-* `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  * This will give you a list of consesus peers the node is sync’d with by moniker
-* `curl localhost:26657/health`
-  * This will let you know if the node is healthy - `{}` indicates it is
-
-### Common Issues
-
-1. `auth failure: secret conn failed: read tcp ${IP_A}:${PORT_A}->${IP_B}:{PORT_B}: i/o timeout`
-   * This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `exteral_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
-
-### Automated Upgrades
-
-To manage consensus client upgrades more easily, especially for hard forks, we recommend using [Cosmovisor](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html), which allows you to automate the process of upgrading client binaries without having to restart your client.
-
-To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a  guide to help you with the setup of automated upgrades with Cosmovisor.
-
 # Tokenomics & Staking
 # Purpose
 
@@ -5942,9 +5681,9 @@ A fee of 1 IP will be charged for adding an operator.
 
 Each function will include an additional unformatted `data` input field to accommodate potential future changes. It can avoid changing user interfaces in the future.
 
-## Validator and delegator key format
+## Validator key format
 
-Validator and delegator public keys are secp256k1 keys. The keys have a 33 bytes compressed version and 65 bytes uncompressed version. When interacting with the story's smart contracts, a 65 bytes uncompressed key is used to identify validators and delegators. When using story’s staking APIs, the bech32 address that can be derived from the compressed key is used.
+Validator public keys are secp256k1 keys. The keys have a 33 bytes compressed version and 65 bytes uncompressed version. When interacting with the story's smart contracts, a 33 bytes compressed key is used to identify validators.
 
 # Rewards
 
@@ -6058,286 +5797,379 @@ Slashing/Jail won’t happen during Singularity.
 
 Story’s staking contract will handle all validators/delegators related operations. It’s deployed to address: **0xcccccc0000000000000000000000000000000001**
 
-Below are the interface definitions
+The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
-## Create validator
+# Node Setup - Homer
 
-```
-function createValidator(  
-  bytes validatorUncmpPubkey,  
-  string moniker,  
-  uint32 commissionRate,  
-  uint32 maxCommissionRate,  
-  uint32 maxCommissionChangeRate,  
-  bool supportsUnlocked,  
-  bytes data  
-)
+This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
 
-function createValidatorOnBehalf(  
-  bytes validatorUncmpPubkey,  
-  string moniker,  
-  uint32 commissionRate,  
-  uint32 maxCommissionRate,  
-  uint32 maxCommissionChangeRate,  
-  bool supportsUnlocked,  
-  bytes data  
-)
+![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
 
-emit CreateValidator({  
-  validatorUncmpPubkey,  
-  moniker,  
-  stakeAmount,  
-  commissionRate,  
-  maxCommissionRate,  
-  maxCommissionChangeRate,  
-  supportsUnlocked,  // 1 unlocked, 0 locked  
-  operatorAddress,   // the wallet that sends this tx  
-  data: data,  
-});
-```
+The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
 
-Verifications:
+- **`story-geth`execution client:**
+  - Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
+  - Latest Stable Binary (v1.0.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.1)
+- **`story`consensus client:**
+  - Releases link: [**Click here**](https://github.com/piplabs/story/releases)
+  - Latest Stable Binary (v1.0.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.0.0)
 
-1. Verify sender is the validator if not creating validator on behalf
-2. Verify keys are correctly formatted
-3. Verify the amount and rate are valid
-4. Verify token type: only locked or unlocked, translate to 0 and 1
-5. The amount needs to be rounded to gwei
-6. The amount needs to be more than the minimum staking amount.
+# Story Node Installation Guide
 
-## UpdateValidatorCommission
+## Pre-Installation Checklist
 
-```
-function updateValidatorCommission(  
-  bytes validatorUncmpPubkey,  
-  uint32 commissionRate  
-)
+- [ ] Verify system meets hardware requirements
+- [ ] Operating system: Ubuntu 22.04 LTS
+- [ ] Required ports are available
+- [ ] Sufficient disk space available
+- [ ] Root or sudo access
 
-emit UpdateValidatorCommission({  
-  validatorUncmpPubkey,  
-  commissionRate  
-});
-```
+## Quick Reference
 
-Verifications:
+- Installation time: ~30 minutes
+- Network: Homer Testnet
+- Required versions:
+  - story-geth: v1.0.1
+  - story: v1.0.0
 
-1. Verify sender is the validator
-2. Verify commission rate is valid
+## 1. System Preparation
 
-## Stake
+### 1.1 System Requirements
 
-```
-function stake(  
-  bytes calldata delegatorUncmpPubkey,  
-  bytes calldata validatorUncmpPubkey,  
-  IIPTokenStaking.StakingPeriod stakingPeriod,  
-  bytes data  
-) uint256 delegationId
+For optimal performance and reliability, we recommend running your node on either:
 
-function stakeOnBehalf(  
-  bytes calldata delegatorUncmpPubkey,  
-  bytes calldata validatorUncmpPubkey,  
-  IIPTokenStaking.StakingPeriod stakingPeriod,  
-  bytes data  
-) uint256 delegationId
+- A Virtual Private Server (VPS)
+- A dedicated Linux-based machine
 
-emit Deposit(
-  delegatorUncmpPubkey, 
-  validatorUnCmpPubkey, 
-  stakeAmount, 
-  stakingPeriod, 
-  delegationId, 
-  operatorAddress, 
-  data
-);
-```
+### System Specs
 
-If staking\_period is 0, it uses flexible staking.
+| Hardware  | Requirement       |
+| --------- | ----------------- |
+| CPU       | 8 Cores           |
+| RAM       | 32 GB             |
+| Disk      | 500 GB NVMe Drive |
+| Bandwidth | 25 MBit/s         |
 
-* 1 = 90 days
-* 2 = 360 days
-* 3 = 540 days
+### 1.2 Required Ports
 
-Verifications:
+_Ensure all ports needed for your node functionality are needed, described below_
 
-1. Verify sender is the delegator if not staking on behalf
-2. Verify keys are correctly formatted
-3. Verify the amount and rate are valid.
-4. Amount needs to be rounded to gwei
-5. Verify the staking period is valid
-6. The amount needs to be more than the minimum staking amount.
+- `story-geth`
+  - 8545
+    - Required if you want your node to interface via JSON-RPC API over HTTP
+  - 8546
+    - Required for websockets interaction
+  - 30303 (TCP + API)
+    - MUST be open for p2p communication
+- `story`
+  - 26656
+    - MUST be open for consensus p2p communication
+  - 26657
+    - Required if you want your node interfacing for Tendermint RPC
+  - 26660
+    - Needed if you want to expose prometheus metrics
 
-## Unstake
+## 1.3 Install Dependencies
 
-```
-function unstake(  
-  bytes calldata delegatorUncmpPubkey,  
-  bytes calldata validatorUncmpPubkey,  
-  bytes delegationId,  
-  uint256 amount,  
-  bytes data  
-)
+```bash
+# Update system
+sudo apt update && sudo apt-get update
 
-function unstakeOnBehalf(  
-  bytes calldata delegatorUncmpPubkey,  
-  bytes calldata validatorUncmpPubkey,  
-  bytes delegationId,  
-  uint256 amount,  
-  bytes data  
-)
-
-emit Withdraw(
-  delegatorUncmpPubkey, 
-  validatorUncmpPubkey, 
-  amount, 
-  delegationId, 
-  operatorAddress, 
-  data
-);
+# Install required packages
+sudo apt install -y \
+  curl \
+  git \
+  make \
+  jq \
+  build-essential \
+  gcc \
+  unzip \
+  wget \
+  lz4 \
+  aria2 \
+  gh
 ```
 
-Verifications:
+### 1.4 Install Go
 
-1. Verify sender is the delegator if not unstaking on behalf
-2. Verify keys are correctly formatted
-3. Verify the amount is a valid number
-4. Verify delegation id is a valid number
+For Odyssey, we need to install Go 1.22.0
 
-## Redelegate
+```bash
+# Download and install Go 1.22.0
+cd $HOME
 
-```
-function redelegate(  
-  bytes delegatorUncmpPubkey;  
-  bytes validatorUncmpSrcPubkey;  
-  bytes validatorUncmpDstPubkey;  
-  uint256 delegationId,  
-  uint256 amount;  
-)
+# Set Go version
+GO_VERSION="1.22.0"
 
-function redelegateOnBehalf(  
-  bytes delegatorUncmpPubkey;  
-  bytes validatorUncmpSrcPubkey;  
-  bytes validatorUncmpDstPubkey;  
-  uint256 delegationId,  
-  uint256 amount;  
-)
+# Download Go binary
+wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
 
-emit Redelegate(
-  delegatorUncmpPubkey, 
-  validatorUncmpSrcPubkey, 
-  validatorUncmpDstPubkey, 
-  delegationId,
-  operatorAddress, 
-  amount
-);
+# Remove existing Go installation and extract new version
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Clean up downloaded archive
+rm "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Add Go to PATH
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
+
+# Verify installation
+go version
 ```
 
-Verifications:
+## 2. Story Node Installation
 
-1. Verify sender is the delegator if not delegating on behalf
-2. Verify keys are correctly formatted
-3. Verify the amount is a valid number
-4. Verify delegation id is a valid number
+### 2.1 Install Story-Geth
 
-## Unjail
+1. Download and setup binary
 
-```
-function unjail(  
-  bytes calldata validatorUncmpPubkey,  
-  bytes data  
-)
+```bash
+cd $HOME
+wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/story-geth
+source $HOME/.bashrc
 
-function unjailOnBehalf(  
-  bytes calldata validatorUncmpPubkey,  
-  bytes data  
-)
-
-emit Unjail(
-  msg.sender, 
-  validatorUncmpPubkey, 
-  data
-);
+# Verify installation
+story-geth version
 ```
 
-Verification:
-
-1. Verify sender is the validator if not unjailing on behalf
-2. Verify correct unjail fee
-
-## Set withdrawal address
+You will see the version of the geth binary.
 
 ```
-function setWithdrawalAddress(  
-  bytes calldata delegatorUncmpPubkey,  
-  address newWithdrawalAddress  
-)
-
-emit SetWithdrawalAddress({  
-  delegatorUncmpPubkey,  
-  executionAddress  
-});
-```
-
-Verification:
-
-1. Verify sender is the delegator
-2. Verify key and address is correctly formatted
-
-## Set reward address
+Geth
+version: 1.0.1-stable
+...
 
 ```
-function setRewardAddress(  
-  bytes calldata delegatorUncmpPubkey,  
-  address newRewardAddress  
-)
 
-emit SetRewardAddress({  
-  delegatorUncmpPubkey,  
-  executionAddress  
-});
+(Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./geth
 ```
 
-Verification:
+2. Configure and start service
 
-1. Verify sender is the delegator
-2. Verify key and address is correctly formatted
+```bash
+# Setup systemd service
+sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+[Unit]
+Description=Story Geth Client
+After=network.target
 
-## Add operator
+[Service]
+User=${user}
+ExecStart=${path_to_geth_binary} --story --syncmode full
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
 
-```
-function addOperator(  
-  bytes calldata delegatorUncmpPubkey,  
-  address operator  
-)
-emit AddOperator({  
-  delegatorUncmpPubkey,  
-  operator  
-});
-```
+[Install]
+WantedBy=multi-user.target
+EOF
 
-Verification:
+# Start service
+sudo systemctl daemon-reload
+sudo systemctl enable story-geth
+sudo systemctl start story-geth
 
-1. Verify sender is the delegator
-2. Verify key and address is correctly formatted
-
-## Remove operator
-
-```
-function removeOperator(  
-  bytes calldata delegatorUncmpPubkey,  
-  address operator  
-)
-
-emit RemoveOperator({  
-  delegatorUncmpPubkey,  
-  operator  
-});
+# Verify service status
+sudo systemctl status story-geth
 ```
 
-Verification:
+### 2.2 Install Story Consensus Client
 
-1. Verify sender is the delegator
-2. Verify key and address is correctly formatted
+#### Cosmovisor installation
+
+For updating the story client, we recommend using Cosmovisor.
+
+1. Install Cosmovisor
+
+```bash
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
+cosmovisor version
+```
+
+2. Configure Cosmovisor
+
+```bash
+# Set daemon configuration
+export DAEMON_NAME=story
+export DAEMON_HOME=$HOME/.story/story
+export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
+sudo mkdir -p \
+  $DAEMON_HOME/cosmovisor/backup \
+  $DAEMON_HOME/data
+
+
+# Persist configuration
+echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
+echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
+echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
+```
+
+#### Install Story Client
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/story
+source $HOME/.bashrc
+story version
+```
+
+> You should expect to see version 1.0.0-stable
+
+(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./story
+```
+
+#### Init Story with Cosmovisor
+
+```bash
+cosmovisor init ./story
+cosmovisor run init --network story --moniker ${moniker_name}
+cosmovisor version
+```
+
+#### Clear State
+
+If you ever run into issues and would like to try joining the network from a fresh state, run the following:
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+```
+
+- Mac OS X:
+  - `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+- Linux:
+  - `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+
+To quickly check if the node is syncing, you could
+
+- Check the geth RPC endpoint to see if blocks are increasing:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+  ```
+- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+
+#### Custom Configuration
+
+To override your own node settings, you can do the following:
+
+- `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
+- `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
+- `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
+
+#### Custom Automation
+
+Below we list a sample `Systemd` configuration you may use on Linux
+
+```bash
+# story
+sudo tee /etc/systemd/system/cosmovisor.service > /dev/null <<EOF
+[Unit]
+Description=Cosmovisor
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+Group=$GROUP
+ExecStart=/usr/local/bin/cosmovisor run run \
+--api-enable \
+--api-address=0.0.0.0:1317
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=65535
+Environment="DAEMON_NAME=$DAEMON_NAME"
+Environment="DAEMON_HOME=$DAEMON_HOME"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
+WorkingDirectory=$DAEMON_HOME
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+```
+
+#### Start the service
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable cosmovisor
+sudo systemctl start cosmovisor
+
+# Monitor logs
+journalctl -u cosmovisor -f -o cat
+```
+
+#### Debugging
+
+If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
+
+- `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
+  - This will give you a list of consesus peers the node is sync'd with by moniker
+- `curl localhost:26657/health`
+  - This will let you know if the node is healthy - `{}` indicates it is
+
+## 3. Verify Installation
+
+### 3.1 Check Geth Status
+
+```bash
+# Check sync status
+curl -X POST -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  http://localhost:8545
+
+```
+
+### 3.2 Check Consensus Client
+
+```bash
+# Check node status
+curl localhost:26657/status
+
+# Check peer connections
+curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
+```
+
+## Clean status
+
+If you ever run into issues and would like to try joining the
+network from a cleared state, run the following:
+
+### Geth
+
+```bash
+rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
+```
+
+- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story 
+--syncmode full`
+- Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode 
+full`
+
+### Story
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+```
+
+- Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+- Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
 
 # Wallet Setup
 # Option 1: Button Click
@@ -6366,10 +6198,11 @@ Go to our [faucet](https://odyssey.faucet.story.foundation)  and click "Add Stor
 <Image align="center" src="https://files.readme.io/8be24335cf8efc077bc5deec303faec30ccf9d13dc4d7d14f360a159696626c6-newtype_2024-11-15_at_19.47.07.png" />
 
 # Validator Operations
+
 ## Quick Links
 
-* [Story Geth Releases](https://github.com/piplabs/story-geth/releases)
-* [Story Releases](https://github.com/piplabs/story/releases/)  
+- [Story Geth Releases](https://github.com/piplabs/story-geth/releases)
+- [Story Releases](https://github.com/piplabs/story/releases/)
 
 # Overview
 
@@ -6381,16 +6214,16 @@ This section will guide you through how you can run your own validator. Validato
 
 Before proceeding, it is important to familiarize yourself with the difference between a delegator and a validator:
 
-* A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
-* A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves. 
+- A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
+- A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves.
 
-In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (*you may see the[Faucet page](doc:faucet) for details on how to fund an account).* **We recommend using your delegator account for all below operations.**
+In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded (_you may see the[Faucet page](doc:faucet) for details on how to fund an account)._ **We recommend using your delegator account for all below operations.**
 
 > 📘 Note
 >
 > You may also issue transactions as the validator itself. To get the EVM private key corresponding to your validator, please refer to the [Validator Key Export](https://docs.story.foundation/docs/validator-operations#validator-key-export) section.
 
-The `.env` file should look like the following *(make sure not to add a 0x prefix):*
+The `.env` file should look like the following _(make sure not to add a 0x prefix):_
 
 ```bash
 # ~/.env
@@ -6404,7 +6237,7 @@ With this, you are all set to perform different validator operations! Below, we 
 By default, when you run `./story init` a validator key is created for you. To view your validator key, run the following command:
 
 ```bash
-./story validator export
+./story validator export [flags]
 ```
 
 This will print out your validator public key file in compressed and uncompressed formats. By default, we use the hex-encoded compressed key for public identification.
@@ -6418,15 +6251,13 @@ Validator Address: storyvaloper1p470h0jtph4n5hztallp8vznq8ehylsw9vpddx
 Delegator Address: story1p470h0jtph4n5hztallp8vznq8ehylswtr4vxd
 ```
 
-In addition, if you want to export the derived EVM private key of your validator into the default data config directory, please run the following:
+**Available Flags:**
 
-```bash
-./story validator export --export-evm-key
-```
+- `--export-evm-key`: (string) Exports the derived EVM private key of your validator into the default data config directory
+- `--export-evm-key-path`: (string) Specifies a different download location for the derived EVM private key of your validator
+- `--keyfile`: (string) Path to the Tendermint key file (default "/home/ubuntu/.story/story/config/priv_validator_key.json")
 
-* You may add `--evm-key-path` to specify a different download location
-
-*If you would like to issue transactions as your validator, and not as a delegator, you may export the key to your`.env` file and ensure it has IP sent to it, e.g. via`./story validator export --export-evm-key --evm-key-path .env`*
+_If you would like to issue transactions as your validator, and not as a delegator, you may export the key to your`.env` file and ensure it has IP sent to it, e.g. via`./story validator export --export-evm-key --evm-key-path .env`_
 
 ## Validator Creation
 
@@ -6436,23 +6267,23 @@ To create a new validator, run the following command:
 ./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME}
 ```
 
-This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. *Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!*
+This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. _Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!_
 
 Below is a list of optional flags to further customize your validator setup:
 
 **Available Flags:**
 
-* `--stake`: Sets the amount the validator will self-delegate in wei (default is `1024000000000000000000` wei).
-* `--moniker`: Defines a custom name for the validator, visible to users on the network.
-* `--chain-id`: Specifies the Chain ID for the transaction. By default, this is set to `1516`.
-* `--commission-rate`: Sets the validator's commission rate in bips (1% = 100 bips). For instance, `1000` represents a 10% commission (default is `1000`).
-* `--explorer`: Specifies the URL of the blockchain explorer (default: [https://odyssey.storyscan.xyz](https://odyssey.storyscan.xyz)).
-* `--keyfile`: Points to the path of the Tendermint key file (default: `/home/node_story_odyssey/.story/story/config/priv_validator_key.json`).
-* `--max-commission-change-rate`: Sets the maximum rate at which the validator's commission can change, in bips. For example, `100` represents a maximum change of 1% (default is `1000`).
-* `--max-commission-rate`: Defines the maximum commission rate the validator can charge, in bips. For instance, `5000` allows a 50% maximum rate (default is `5000`).
-* `--private-key`: Uses a specified private key for signing the transaction. If not set, the key in `priv_validator_key.json` will be used.
-* `--rpc`: Sets the RPC URL to connect to the network (default: [https://odyssey.storyrpc.io](https://odyssey.storyrpc.io)).
-* `--unlocked`: Determines if unlocked token staking is supported (`true` for unlocked staking, `false` for locked staking). By default, this is set to `true`.
+- `--stake`: Sets the amount the validator will self-delegate in wei (default is `1024000000000000000000` wei).
+- `--moniker`: Defines a custom name for the validator, visible to users on the network.
+- `--chain-id`: Specifies the Chain ID for the transaction. By default, this is set to `1516`.
+- `--commission-rate`: Sets the validator's commission rate in bips (1% = 100 bips). For instance, `1000` represents a 10% commission (default is `1000`).
+- `--explorer`: Specifies the URL of the blockchain explorer (default: [https://odyssey.storyscan.xyz](https://odyssey.storyscan.xyz)).
+- `--keyfile`: Points to the path of the Tendermint key file (default: `/home/node_story_odyssey/.story/story/config/priv_validator_key.json`).
+- `--max-commission-change-rate`: Sets the maximum rate at which the validator's commission can change, in bips. For example, `100` represents a maximum change of 1% (default is `1000`).
+- `--max-commission-rate`: Defines the maximum commission rate the validator can charge, in bips. For instance, `5000` allows a 50% maximum rate (default is `5000`).
+- `--private-key`: Uses a specified private key for signing the transaction. If not set, the key in `priv_validator_key.json` will be used.
+- `--rpc`: Sets the RPC URL to connect to the network (default: [https://odyssey.storyrpc.io](https://odyssey.storyrpc.io)).
+- `--unlocked`: Determines if unlocked token staking is supported (`true` for unlocked staking, `false` for locked staking). By default, this is set to `true`.
 
 ### Example creation command use
 
@@ -6468,7 +6299,7 @@ Below is a list of optional flags to further customize your validator setup:
 
 ### Verifying your validator
 
-Once created, please use the `Explorer URL` to confirm the transaction. If successful, you should see your validator pub key (*found in your`priv_validator_key.json` file)* listed as part of the following endpoint:
+Once created, please use the `Explorer URL` to confirm the transaction. If successful, you should see your validator pub key (_found in your`priv_validator_key.json` file)_ listed as part of the following endpoint:
 
 ```bash
 curl https://testnet.storyrpc.io/validators | jq .
@@ -6486,10 +6317,21 @@ To stake to an existing validator, run the following command:
    --stake ${AMOUNT_TO_STAKE_IN_WEI}
 ```
 
-* Note that your own `${VALIDATOR_PUB_KEY_IN_HEX}`may be found by running the `./story validator export` command as the `Compressed Public Key (hex)`. 
-* You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid
+- Note that your own `${VALIDATOR_PUB_KEY_IN_HEX}`may be found by running the `./story validator export` command as the `Compressed Public Key (hex)`.
+- You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid
 
 Once staked, you may use the `Explorer URL` to confirm the transaction. As mentioned earlier, you may use our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to confirm the new voting power of the validator.
+
+**Available Flags:**
+
+- `--validator-pubkey`: (string) The public key of the validator to stake to
+- `--stake`: (string) The amount of IP to stake in wei
+- `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+- `--explorer`: (string) URL of the blockchain explorer
+- `--help`, `-h`: Display help information for stake command
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network
+- `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
 
 ### Example staking command use
 
@@ -6513,6 +6355,17 @@ This will unstake `${AMOUNT_TO_UNSTAKE_IN_WEI}` IP from the selected validator. 
 
 Like in the staking operation, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the newly reduced voting power of the validator.
 
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+- `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+- `--explorer`: (string) URL of the blockchain explorer (default: "https://storyscan.xyz")
+- `--help`, `-h`: Help for unstake command
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network (default: "https://storyrpc.io")
+- `--unstake`: (string) Amount to unstake in wei
+- `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+
 ### Example unstaking command use
 
 ```bash
@@ -6535,6 +6388,18 @@ To stake on behalf of another delegator, run the following command:
 This will stake `${AMOUNT_TO_STAKE_IN_WEI}` IP to the validator on behalf of the provided delegator. You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
 
 Like in the other staking operations, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the increased voting power of the validator.
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+- `--delegator-address`: (string) Delegator's EVM address
+- `--explorer`: (string) URL of the blockchain explorer (default: "https://storyscan.xyz")
+- `--help`, `-h`: Help for stake-on-behalf command
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network (default: "https://storyrpc.io")
+- `--stake`: (string) Amount for the validator to self-delegate in wei
+- `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
+- `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
 
 ### Example Stake-on-behalf command use
 
@@ -6560,6 +6425,17 @@ This will unstake `${AMOUNT_TO_STAKE_IN_WEI}` IP from the validator on behalf of
 
 Like in the other staking operations, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the decreased voting power of the validator.
 
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+- `--delegator-address`: (string) Delegator's EVM address
+- `--explorer`: (string) URL of the blockchain explorer (default: "https://storyscan.xyz")
+- `--help`, `-h`: Help for unstake-on-behalf command
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network (default: "https://storyrpc.io")
+- `--unstake`: (string) Amount to unstake in wei
+- `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+
 ### Example Unstake-on-behalf command use
 
 ```bash
@@ -6575,16 +6451,116 @@ In case a validator becomes jailed, for example if it experiences substantial do
 
 ```Text Bash
 ./story validator unjail \
-  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX}
+  --private-key ${PRIVATE_KEY}
 ```
 
 Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction
+- `--explorer`: (string) URL of the blockchain explorer
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network
 
 ### Example unjail command use
 
 ```bash
 ./story validator unjail \
   --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+```
+
+## Validator Unjail-on-behalf
+
+If you are an authorized operator, you may unjail a validator on their behalf using the following command:
+
+```bash
+./story validator unjail-on-behalf \
+  --private-key ${PRIVATE_KEY}
+  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX}
+```
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction
+- `--explorer`: (string) URL of the blockchain explorer
+- `--private-key`: (string) Private key used for the transaction
+- `--rpc`: (string) RPC URL to connect to the network
+- `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+
+### Example unjail-on-behalf command use
+
+```bash
+./story validator unjail-on-behalf \
+  --private-key 0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef \
+  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+```
+
+## Validator Redelegate
+
+To redelegate from one validator to another, run the following command:
+
+```bash
+./story validator redelegate \
+  --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
+  --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
+  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+```
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default 1514)
+- `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+- `--explorer`: (string) URL of the blockchain explorer (default "https://storyscan.xyz")
+- `--help`, `-h`: Help for redelegate command
+- `--private-key`: (string) Private key used for the transaction
+- `--redelegate`: (string) Amount to redelegate in wei
+- `--rpc`: (string) RPC URL to connect to the network (default "https://storyrpc.io")
+- `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
+- `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
+
+### Example redelegate command use
+
+```bash
+./story validator redelegate \
+  --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+  --redelegate 1024000000000000000000
+```
+
+## Validator Redelegate-on-behalf
+
+If you are an authorized operator, you may redelegate from one validator to another on behalf of a delegator using the following command:
+
+```bash
+./story validator redelegate-on-behalf \
+  --delegator-address ${DELEGATOR_EVM_ADDRESS} \
+  --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
+  --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
+  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+```
+
+**Available Flags:**
+
+- `--chain-id`: (int) Chain ID to use for the transaction (default 1514)
+- `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+- `--delegator-address`: (string) Delegator's EVM address
+- `--explorer`: (string) URL of the blockchain explorer (default "https://storyscan.xyz")
+- `--help`, `-h`: Help for redelegate-on-behalf command
+- `--private-key`: (string) Private key used for the transaction
+- `--redelegate`: (string) Amount to redelegate in wei
+- `--rpc`: (string) RPC URL to connect to the network (default "https://storyrpc.io")
+- `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
+- `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
+
+### Example redelegate-on-behalf command use
+
+```bash
+./story validator redelegate-on-behalf \
+  --delegator-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+  --redelegate 1024000000000000000000
 ```
 
 ## Add Operator
@@ -6669,10 +6645,305 @@ rm ~/.story/story/config/priv_validator_key.json
 
 3. Locate the `priv_validator_key.json` file in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
 
-***IMPORTANT: Before you proceed, make sure you STOPPED your validator on the old server and do not start it again there.***
+**_IMPORTANT: Before you proceed, make sure you STOPPED your validator on the old server and do not start it again there._**
 
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
 
+
+# Node Setup - Odyssey
+
+This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
+
+![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
+
+The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
+
+- **`story-geth`execution client:**
+  - Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
+  - Latest Stable Binary (v0.11.0): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.11.0)
+- **`story`consensus client:**
+  - Releases link: [**Click here**](https://github.com/piplabs/story/releases)
+  - Latest Stable Binary (v0.13.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.13.0)
+
+**_IMPORTANT: For the Odyssey testnet, it is crucial to start with version v0.12.0, as this version is required before applying any subsequent upgrades. Download this version first to ensure compatibility with the testnet environment. Also, verify that you are downloading the binary matching your system architecture_**
+
+## System Specs
+
+| Hardware  | Requirement       |
+| --------- | ----------------- |
+| CPU       | 8 Cores           |
+| RAM       | 32 GB             |
+| Disk      | 500 GB NVMe Drive |
+| Bandwidth | 25 MBit/s         |
+
+On AWS, we recommend using the M6i, R6i, or C6i series.
+
+## Ports
+
+_Ensure all ports needed for your node functionality are needed, described below_
+
+- `story-geth`
+  - 8545
+    - Required if you want your node to interface via JSON-RPC API over HTTP
+  - 8546
+    - Required for websockets interaction
+  - 30303 (TCP + API)
+    - MUST be open for p2p communication
+- `story`
+  - 26656
+    - MUST be open for consensus p2p communication
+  - 26657
+    - Required if you want your node interfacing for Tendermint RPC
+  - 26660
+    - Needed if you want to expose prometheus metrics
+
+## Default Folder
+
+By default, we setup the following default data folders for consensus and execution clients:
+
+- Mac OS X
+  - `story` data root: `~/Library/Story/story`
+  - `story-geth` data root: `~/Library/Story/geth`
+- Linux
+  - `story` data root: `~/.story/story`
+  - `story-geth` data root: `~/.story/geth`
+
+_For the remainder of this tutorial, we will refer to the`story` data root as `${STORY_DATA_ROOT}` and the `geth` data root as `${GETH_DATA_ROOT}`._
+
+_You are able to override these configs on the`story` client side by passing `--home ${STORY_CONFIG_FOLDER}`. Similarly, for `geth`, you may use `--config ${GETH_CONFIG_FOLDER}`. For information on how overrides work, view our readme on [setting up a private network](https://github.com/piplabs/story?tab=readme-ov-file#creating-a-private-network)._
+
+When downloading the Story binaries, note that the file name will vary based on your operating system. For example, on a Linux system with an AMD64 architecture, the binary might be named `story-linux-amd64` or `geth-linux-amd`. This naming convention helps with compatibility identification, but for simplicity, we recommend renaming the binary file to story after download.
+
+```
+mv story-linux-amd64 story
+```
+
+This allows you to execute the program directly using the story command in your terminal. For the remainder of this documentation, we will use the `story` name convention.
+
+## Prerequisites
+
+We do suggest using a VPS for your node setup or linux based machine.
+
+## Execution Client Setup (`story-geth`)
+
+1. (Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+   ```bash
+   sudo xattr -rd com.apple.quarantine ./geth
+   ```
+
+2. You may now run `geth` with the following command:
+
+   ```bash
+   ./geth --odyssey --syncmode full
+   ```
+
+   - Currently, `snap` sync mode, the default, is still undergoing development
+
+### Clear State
+
+If you ever run into issues and would like to try joining the network from a cleared state, run the following:
+
+```bash
+rm -rf ${GETH_DATA_ROOT} && ./geth --odyssey --syncmode full
+```
+
+- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --odyssey --syncmode full`
+- Linux: `rm -rf ~/.story/geth/* && ./geth --odyssey --syncmode full`
+
+### Debugging
+
+If you would like to check the status of `geth` while it is running, it is helpful to communicate via its built-in IPC-RPC server by running the following:
+
+```bash
+geth attach ${GETH_DATA_ROOT}/geth.ipc
+```
+
+- Mac OS X:
+  - `geth attach ~/Library/Story/geth/odyssey/geth.ipc`
+- Linux:
+  - `geth attach ~/.story/geth/odyssey/geth.ipc`
+
+This will connect you to the IPC server from which you can run some helpful queries:
+
+- `eth.blockNumber` will print out the latest block geth is sync’d to - if this is `undefined` there is likely a peer connection or syncing issue
+- `admin.peers` will print out a list of other `geth` nodes your client is connected to - if this is blank there is a peer connectivity issue
+- `eth.syncing` will return `true` if geth is in the process of syncing, `false` otherwise
+
+## Consensus Client Setup (`story`)
+
+1. (Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+   ```bash
+   sudo xattr -rd com.apple.quarantine ./story
+   ```
+
+2. Initialize the `story` client with the following command:
+
+   ```bash
+   ./story init --network odyssey
+   ```
+
+   - By default, this uses your username for the moniker (the human-readable identifier for your node), you may override this by passing in `--moniker ${NODE_MONIKER}`
+   - If you would like to initialize the node using your own data directory, you can pass in `--home ${STORY_DATA_DIR}`
+   - If you already have config and data files, and would like to re-initialize from scratch, you can add the `--clean` flag
+
+3. Now, you may run `story` with the following command:
+
+   ```bash
+   ./story run
+   ```
+
+**_IMPORTANT: If you are setting up a new node, you must start with version v0.12.0_**, as this base version is required before applying any subsequent upgrades. Afterward, install each subsequent upgrade in order. Follow these steps carefully:
+
+1. Download [version v0.12.0](https://github.com/piplabs/story/releases/tag/v0.12.0), ensuring you select the binary that matches your system architecture.
+2. Initialize and run version v0.12.0 following the initialization and run instructions provided above.
+3. Download and upgrade to the following releases using [this guide](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a):
+   1. [v0.12.1 ](https://github.com/piplabs/story/releases/tag/v0.12.1) upgrade at height 322000
+
+Note: currently you might see a bunch of `Stopping peer for error` logs - this is a known issue around peer connection stability with our bootnodes that we are currently fixing - for now please ignore it and rest assured that it does not impact block progression.
+
+_If you ever run into issues and would like to try re-joining the network**WHILE PRESERVING YOUR KEY,** run the following:_
+
+```bash
+rm -rf ${STORY_DATA_ROOT}/data/* && \
+echo '{"height": "0", "round": 0, "step": 0}' > ${STORY_DATA_ROOT}/data/priv_validator_state.json && \
+./story run
+```
+
+- Mac OS X:
+  ```bash
+  rm -rf ~/Library/Story/story/data/* && \
+  echo '{"height": "0", "round": 0, "step": 0}' > ~/Library/Story/story/data/priv_validator_state.json && \
+  ./story run
+  ```
+- Linux:
+  ```bash
+  rm -rf ~/.story/story/data/* && \
+  echo '{"height": "0", "round": 0, "step": 0}' > ~/.story/story/data/priv_validator_state.json && \
+  ./story run
+  ```
+
+\*If you ever run into issues and would like to try joining the network from a **COMPLETELY** fresh state, run the following (**\*WARNING: THIS WILL DELETE YOUR`priv_validator_key.json` FILE )**
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
+```
+
+- Mac OS X:
+  - `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
+- Linux:
+  - `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
+
+To quickly check if the node is syncing, you could
+
+- Check the geth RPC endpoint to see if blocks are increasing:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+  ```
+- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+
+### Clear State
+
+If you ever run into issues and would like to try joining the network from a fresh state, run the following:
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
+```
+
+- Mac OS X:
+  - `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
+- Linux:
+  - `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
+
+To quickly check if the node is syncing, you could
+
+- Check the geth RPC endpoint to see if blocks are increasing:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+  ```
+- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+
+### Custom Configuration
+
+To override your own node settings, you can do the following:
+
+- `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
+- `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
+- `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
+
+### Custom Automation
+
+Below we list a sample `Systemd` configuration you may use on Linux
+
+```bash
+# geth
+[Unit]
+Description=Node-Geth
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=${USER_NAME}
+WorkingDirectory=${YOUR_HOME_DIR}
+ExecStart=geth --odyssey  --syncmode full
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=node-geth
+StartLimitInterval=0
+LimitNOFILE=65536
+LimitNPROC=65536
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+# story
+[Unit]
+Description=Node-story
+After=network.target node-geth.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=ec2-user
+WorkingDirectory=${YOUR_HOME_DIR}
+ExecStart=story run
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=node-story
+StartLimitInterval=0
+LimitNOFILE=65536
+LimitNPROC=65536
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+### Debugging
+
+If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
+
+- `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
+  - This will give you a list of consesus peers the node is sync’d with by moniker
+- `curl localhost:26657/health`
+  - This will let you know if the node is healthy - `{}` indicates it is
+
+### Common Issues
+
+1. `auth failure: secret conn failed: read tcp ${IP_A}:${PORT_A}->${IP_B}:{PORT_B}: i/o timeout`
+   - This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `exteral_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
+
+### Automated Upgrades
+
+To manage consensus client upgrades more easily, especially for hard forks, we recommend using [Cosmovisor](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html), which allows you to automate the process of upgrading client binaries without having to restart your client.
+
+To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a guide to help you with the setup of automated upgrades with Cosmovisor.
 
 # Story Network Guide
 > 🚧 We are still in testnet!
@@ -6848,7 +7119,13 @@ Metrics:
 * [Tokenomics & Staking](doc:tokenomics-staking)
 
 # Infrastructure Partners
-# Infrastructure
+## RPC Providers
+
+<Cards columns={1}>
+  <Card title="QuickNode" href="https://www.quicknode.com/chains/story" icon="fa-home" target="_blank">
+    QuickNode provides hosted Story RPC nodes under their free and paid plans, granting flexible and reliable access to the network. For high-throughput or mission-critical applications, Dedicated Clusters deliver premium performance with unmetered billing, elevated rate limits, and robust infrastructure.
+  </Card>
+</Cards>
 
 ## Cross-chain
 
@@ -10903,80 +11180,12 @@ Learn the TypeScript SDK by running extremely straightforward & easy scripts con
 
 Open-source React widgets to interact with Story Protocol.
 
-# Version Matrix
-A version matrix showing the **currently available protocol versions** for different developer tools on both of our testnet networks. *Updated daily*.
-
-<Table align={["left","left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Iliad
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Odyssey
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        SDK
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [v1.2](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.2.0-rc.0)
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [v1.2](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.2.0-rc.1)
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        API
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [v1.1](https://docs.story.foundation/reference/api-introduction)
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [v1.2](https://docs.story.foundation/reference/api-introduction)
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Protocol
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [v1.2](https://docs.story.foundation/docs/deployed-smart-contracts#core-protocol-contracts)
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [v1.2](https://docs.story.foundation/docs/deployed-smart-contracts#core-protocol-contracts)
-      </td>
-    </tr>
-  </tbody>
-</Table>
-
-*v1.3 of the protocol is being deployed soon. Once deployed, SDK and API will support after.*
-
-
 # Deployed Smart Contracts
 ## Core Protocol Contracts
 
 * View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-core-v1/tree/main)
 
-```json Odyssey (Story Testnet) v1.2
+```json Odyssey Testnet v1.2
 {
   "AccessController": "0xf709c8001E94e2ca6F98b7fFBCd5BD3943E46D81",
   "CoreMetadataModule": "0x89630Ccf23277417FBdfd3076C702F5248267e78",
@@ -11003,12 +11212,41 @@ A version matrix showing the **currently available protocol versions** for diffe
   "RoyaltyPolicyLRP": "0x7D2d9af4E4ab14Afcfd86436BC348928B40963Dd"
 }
 ```
+```json Aneid Testnet v1.3
+{
+  "AccessController": "0xcCF37d0a503Ee1D4C11208672e622ed3DFB2275a",
+  "ArbitrationPolicyUMA": "0xfFD98c3877B8789124f02C7E8239A4b0Ef11E936",
+  "CoreMetadataModule": "0x6E81a25C99C6e8430aeC7353325EB138aFE5DC16",
+  "CoreMetadataViewModule": "0xB3F88038A983CeA5753E11D144228Ebb5eACdE20",
+  "DisputeModule": "0x9b7A9c70AFF961C799110954fc06F3093aeb94C5",
+  "EvenSplitGroupPool": "0xf96f2c30b41Cb6e0290de43C8528ae83d4f33F89",
+  "GroupNFT": "0x4709798FeA84C84ae2475fF0c25344115eE1529f",
+  "GroupingModule": "0x69D3a7aa9edb72Bc226E745A7cCdd50D947b69Ac",
+  "IPAccountImplBeacon": "0x9825cc7A398D9C3dDD66232A8Ec76d5b05422581",
+  "IPAccountImplBeaconProxy": "0x00b800138e4D82D1eea48b414d2a2A8Aee9A33b1",
+  "IPAccountImplCode": "0x9D34DB355f346f1b39De91c1dDa9229c4360AB77",
+  "IPAssetRegistry": "0x77319B4031e6eF1250907aa00018B8B1c67a244b",
+  "IPGraphACL": "0x1640A22a8A086747cD377b73954545e2Dfcc9Cad",
+  "IpRoyaltyVaultBeacon": "0x6928ba25Aa5c410dd855dFE7e95713d83e402AA6",
+  "IpRoyaltyVaultImpl": "0x7FC01351BE845b7C876aD3282A29bDD3ecfeC233",
+  "LicenseRegistry": "0x529a750E02d8E2f15649c13D69a465286a780e24",
+  "LicenseToken": "0xFe3838BFb30B34170F00030B52eA4893d8aAC6bC",
+  "LicensingModule": "0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f",
+  "ModuleRegistry": "0x022DBAAeA5D8fB31a0Ad793335e39Ced5D631fa5",
+  "PILicenseTemplate": "0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316",
+  "ProtocolAccessManager": "0xFdece7b8a2f55ceC33b53fd28936B4B1e3153d53",
+  "ProtocolPauseAdmin": "0xdd661f55128A80437A0c0BDA6E13F214A3B2EB24",
+  "RoyaltyModule": "0xD2f60c40fEbccf6311f8B47c4f2Ec6b040400086",
+  "RoyaltyPolicyLAP": "0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E",
+  "RoyaltyPolicyLRP": "0x9156e603C949481883B1d3355c6f1132D191fC41"
+}
+```
 
 ## Periphery Contracts
 
 * View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-periphery-v1)
 
-```json Odyssey (Story Testnet) v1.2
+```json Odyssey Testnet v1.2
 {
   "DerivativeWorkflows": "0xa8815CEB96857FFb8f5F8ce920b1Ae6D70254C7B",
   "GroupingWorkflows": "0xcd754994eBE5Ce16D432C1f936f98ac0d4aABA0e",
@@ -11019,12 +11257,38 @@ A version matrix showing the **currently available protocol versions** for diffe
   "SPGNFTImpl": "0x32c03CD2B4CC3456aCD86C7d5BA8E0405665DbF9"
 }
 ```
+```json Aeneid Testnet v1.3
+{
+  "DerivativeWorkflows": "0x9e2d496f72C547C2C535B167e06ED8729B374a4f",
+  "GroupingWorkflows": "0xD7c0beb3aa4DCD4723465f1ecAd045676c24CDCd",
+  "LicenseAttachmentWorkflows": "0xcC2E862bCee5B6036Db0de6E06Ae87e524a79fd8",
+  "LockLicenseHook": "0x5D874d4813c4A8A9FB2AB55F30cED9720AEC0222",
+  "OwnableERC20Beacon": "0x9a81C447C0b4C47d41d94177AEea3511965d3Bc9",
+  "OwnableERC20Template": "0x37DbEbcFe991901C4F255E7a3C4F7D3B45EAEDe9",
+  "RegistrationWorkflows": "0xbe39E1C756e921BD25DF86e7AAa31106d1eb0424",
+  "RoyaltyTokenDistributionWorkflows": "0xa38f42B8d33809917f23997B8423054aAB97322C",
+  "RoyaltyWorkflows": "0x9515faE61E0c0447C6AC6dEe5628A2097aFE1890",
+  "SPGNFTBeacon": "0xD2926B9ecaE85fF59B6FB0ff02f568a680c01218",
+  "SPGNFTImpl": "0x6Cfa03Bc64B1a76206d0Ea10baDed31D520449F5",
+  "TokenizerModule": "0xAC937CeEf893986A026f701580144D9289adAC4C",
+  "TotalLicenseTokenLimitHook": "0xB72C9812114a0Fc74D49e01385bd266A75960Cda"
+}
+```
 
 ## Whitelisted Revenue Tokens
 
-* SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
-  * <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
-* WIP: 0x1516000000000000000000000000000000000000
+<Tabs>
+  <Tab title="Odyssey Testnet">
+    * SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
+      * <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
+    * WIP: 0x1516000000000000000000000000000000000000
+  </Tab>
+
+  <Tab title="Aeneid Testnet">
+    * MERC20: 0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E
+      * <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19" target="_blank">Mint Mock ERC20 ↗️</a>
+  </Tab>
+</Tabs>
 
 ## Misc
 
@@ -11151,11 +11415,18 @@ export const client = StoryClient.newClient(config)
 
 ## 2. Tipping the Derivative IP Asset
 
-Now create a `main.ts` file. We will use the `payRoyaltyOnBehalf` function to pay the derivative asset. In this case:
+Now create a `main.ts` file. We will use the `payRoyaltyOnBehalf` function to pay the derivative asset.
 
-1. `receiverIpId` is the `ipId` of the derivative asset
+Now, before you actually pay the IP Asset, you will need to do a few things:
+
+1. Obviously, we will need some SUSD to pay with. Mint some SUSD tokens by running [this](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19) transaction (10 is good).
+2. Next, you have to allow the `RoyaltyModule.sol` contract to spend those tokens on your behalf so it can properly distribute royalties to ancestor IPs. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the spender is `0xEa6eD700b11DfF703665CCAF55887ca56134Ae3B` (this is the Odyssey v1.2 address of `RoyaltyModule.sol` found [here](doc:deployed-smart-contracts)) and the value is >= 2 (that's the amount we're paying in the script).
+
+Now we can call the `payRoyaltyOnBehalf` function. In this case:
+
+1. `receiverIpId` is the `ipId` of the derivative (child) asset
 2. `payerIpId` is `zeroAddress` because the payer is a 3rd party (someone that thinks Mickey Mouse with a hat on him is cool), and not necessarily another IP Asset
-3. `token` is the address of SUSD, which is currently the only [whitelisted revenue token](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+3. `token` is the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 4. `amount` is 2, since the person tipping wants to send 2 SUSD
 
 ```typescript main.ts
@@ -11176,9 +11447,32 @@ async function main() {
 main();
 ```
 
-## 3. Parent Claiming Due Revenue
+## 3. Child Claiming Due Revenue
 
-At this point we have already finished the tutorial: we learned how to tip an IP Asset. But what if the parent wants to claim their due revenue? In this example, the parent should be able to claim 1 SUSD since the child earned 2 SUSD and the `commercialRevShare = 50` in the license terms.
+At this point we have already finished the tutorial: we learned how to tip an IP Asset. But what if the child and parent want to claim their due revenue?
+
+The child has been paid 2 SUSD. But remember, it shares 50% of its revenue with the parent IP because of the `commercialRevenue = 50` in the license terms.
+
+The child IP can claim its 1 SUSD by calling the `snapshotAndClaimByTokenBatch` function:
+
+* `royaltyVaultIpId` is the `ipId` of the IP Asset thats associated with the royalty vault that has the funds in it (more simply, this is just the child's `ipId`)
+* `currencyTokens` is an array that contains the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+* `claimer` is the address that holds the royalty tokens associated with the child's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the child asset
+
+```typescript main.ts
+const response = await client.royalty.snapshotAndClaimByTokenBatch({
+  royaltyVaultIpId: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
+  currencyTokens: ["0x91f6F05B08c16769d3c85867548615d270C42fC7"],
+  claimer: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
+  txOptions: { waitForTransaction: true },
+})
+
+console.log(`Claimed revenue: ${response.amountsClaimed}`);
+```
+
+## 4. Parent Claiming Due Revenue
+
+Continuing, the parent should be able to claim its revenue as well. In this example, the parent should be able to claim 1 SUSD since the child earned 2 SUSD and the `commercialRevShare = 50` in the license terms.
 
 We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the due revenue tokens.
 
@@ -11186,7 +11480,7 @@ We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the du
 2. `claimer` is the address that holds the royalty tokens associated with the parent's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the parent asset
 3. `childIpId` is obviously the `ipId` of the child asset
 4. `royaltyPolicy` is the address of the royalty policy. As explained in [💸 Royalty Module](doc:royalty-module), this is either `RoyaltyPolicyLAP` or `RoyaltyPolicyLRP`, depending on the license terms. In this case, let's assume the license terms specify a `RoyaltyPolicyLAP`. Simply go to [Deployed Smart Contracts](doc:deployed-smart-contracts) and find the correct address.
-5. `currencyToken` is the address of SUSD, which is currently the only [whitelisted revenue token](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+5. `currencyToken` is the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 6. `amount` is 1, since the parent should have 1 SUSD available to claim
 
 ```typescript main.ts
@@ -11213,7 +11507,7 @@ async function main() {
 main();
 ```
 
-## 4. Done!
+## 5. Done!
 
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
@@ -13125,13 +13419,13 @@ In order to create a finetune, we'll need the input training data!
 
 In order to generate an image using a similar style as input images, we need to create a **finetune**. Think of a finetune as an AI that knows all of your input images and can then start producing new ones.
 
-Let's make a function that calls FLUX's `/v1/finetune` API route. Create a `flux.ts` file and add the following code:
+Let's make a function that calls FLUX's `/v1/finetune` API route. Create a `flux` folder, and inside that folder add a file named `requestFinetuning.ts` and add the following code:
 
 > 📘 Official Docs
 >
 > In order to learn what each of the parameters in the payload are, see the official `/v1/finetune` API docs [here](https://api.us1.bfl.ai/scalar#tag/tasks/POST/v1/finetune).
 
-```typescript flux.ts
+```typescript flux/requestFinetuning.ts
 import axios from "axios";
 import fs from "fs";
 
@@ -13148,7 +13442,7 @@ interface FinetunePayload {
   finetune_type: string;
 }
 
-async function requestFinetuning(
+export async function requestFinetuning(
   zipPath: string,
   finetuneComment: string,
   triggerWord = "TOK",
@@ -13200,33 +13494,21 @@ async function requestFinetuning(
 }
 ```
 
-Next, create a file named `submitTrainingTask.ts` and call the `requestFinetuning` function we just made:
+Next, create a file named `train.ts` and call the `requestFinetuning` function we just made:
 
 > 🚧 Warning: This is expensive!
 >
 > Creating a new finetune is expensive, ranging from $2-$6 at the time of me writing this tutorial. Please review the "FLUX PRO FINETUNE: TRAINING" section on the [pricing page](https://docs.bfl.ml/pricing/).
 
-```typescript submitTrainingTask.ts
-import { requestFinetuning } from "./flux";
+```typescript train.ts
+import { requestFinetuning } from "./flux/requestFinetuning";
 
-async function submitTrainingTask() {
-  const response = await requestFinetuning(
-    "../images.zip",
-    "ippy-finetune",
-    "TOK",
-    "general",
-    300,
-    0.00001,
-    true,
-    "quality",
-    "full",
-    32
-  );
-
-  console.log("Finetune ID:", response);
+async function main() {
+  const response = await requestFinetuning("./images.zip", "ippy-finetune");
+  console.log(response);
 }
 
-submitTrainingTask();
+main();
 ```
 
 This will log something that looks like:
@@ -13239,22 +13521,86 @@ This will log something that looks like:
 
 This is your `finetune_id`, and will be used to create images in the following steps.
 
-## 3. Run Inference
+## 3. Wait for Finetune
 
-> 🚧 Take a break! Wait \~1 minute
+Before we can generate images with our finetuned model, we have to wait for FLUX to finish training!
+
+In our `flux` folder, create a file named `finetune-progress.ts` and add the following code:
+
+> 📘 Official Docs
 >
-> Before running this step, you have to wait a few minutes for your finetune to actually complete. Otherwise the API will return errors. It usually takes \~1 minute.
+> In order to learn what each of the parameters in the payload are, see the official `/v1/get_result` API docs [here](https://api.us1.bfl.ai/scalar#tag/utility/GET/v1/get_result).
+
+```typescript flux/finetuneProgress.ts
+import axios from "axios";
+
+export async function finetuneProgress(finetuneId: string) {
+  const url = "https://api.us1.bfl.ai/v1/get_result";
+  const headers = {
+    "Content-Type": "application/json",
+    "X-Key": process.env.BFL_API_KEY,
+  };
+  try {
+    const response = await axios.get(url, {
+      headers,
+      params: { id: finetuneId },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(`Finetune progress failed: ${error}`);
+  }
+}
+```
+
+Next, create a file named `finetune-progress.ts` and call the `finetuneProgress` function we just made:
+
+```typescript finetune-progress.ts
+import { finetuneProgress } from "./flux/finetuneProgress";
+
+// input your finetune_id here
+const FINETUNE_ID = '';
+
+async function main() {
+  const progress = await finetuneProgress(FINETUNE_ID);
+  console.log(progress);
+}
+
+main();
+```
+
+This will log something that looks like:
+
+```json
+{
+  id: '023a1507-369e-46e0-bd6d-1f3446d7d5f2',
+  status: 'Pending',
+  result: null,
+  progress: null
+}
+```
+
+As you can see, the status is still pending. We must wait until the training is 'Ready' before we can move on to the next step.
+
+## 4. Run Inference
+
+> 🚧 Warning: This costs money.
+>
+> Although very cheap, running an inference does cost money, ranging from $0.06-0.07 at the time of me writing this tutorial. Please review the "FLUX PRO FINETUNE: INFERENCE" section on the [pricing page](https://docs.bfl.ml/pricing/).
 
 Now that we have trained a finetune, we will use the model to create images. "Running an inference" simply means using our new model (identified by its `finetune_id`), which is trained on our images, to create new images.
 
 There are several different inference endpoints we can use, each with [their own pricing](https://docs.bfl.ml/pricing/) (found at the bottom of the page). For this tutorial, I'll be using the `/v1/flux-pro-1.1-ultra-finetuned` endpoint, which is documented [here](https://api.us1.bfl.ai/scalar#tag/tasks/POST/v1/flux-pro-1.1-ultra-finetuned).
 
-In our `flux.ts` file, add the following code:
+In our `flux` folder, create a `finetuneInference.ts` file and add the following code:
 
-```typescript flux.ts
-// previous code here ...
+> 📘 Official Docs
+>
+> In order to learn what each of the parameters in the payload are, see the official `/v1/flux-pro-1.1-ultra-finetuned` API docs [here](https://api.us1.bfl.ai/scalar#tag/tasks/POST/v1/flux-pro-1.1-ultra-finetuned).
 
-async function finetuneInference(
+```typescript flux/finetineInference.ts
+import axios from "axios";
+
+export async function finetuneInference(
   finetuneId: string,
   prompt: string,
   finetuneStrength = 1.2,
@@ -13283,21 +13629,22 @@ async function finetuneInference(
 }
 ```
 
-Next, create a file named `runInferenceAndRegister.ts` and call the `finetuneInference` function we just made. The first parameter should be the `finetune_id` we got from running the script above, and the second parameter is a prompt to generate a new image.
+Next, create a file named `inference.ts` and call the `finetuneInference` function we just made. The first parameter should be the `finetune_id` we got from running the script above, and the second parameter is a prompt to generate a new image.
 
-```typescript runInferenceAndRegister.ts
-import { finetuneInference } from './flux'
+```typescript inference.ts
+import { finetuneInference } from './flux/finetuneInference'
 
-async function runInferenceAndRegister() {
-  const inference = await finetuneInference(
-    "6fc5e628-6f56-48ec-93cb-c6a6b22bf5a", // the finetune_id we got above
-    "A picture of Ippy being really happy."
-  );
-  
+// input your finetune_id here
+const FINETUNE_ID = '';
+// add your prompt here
+const PROMPT = "A picture of Ippy being really happy."
+
+async function main() {
+  const inference = await finetuneInference(FINETUNE_ID, PROMPT);
   console.log(inference)
 }
 
-runInferenceAndRegister();
+main();
 ```
 
 This will log something that looks like:
@@ -13313,12 +13660,16 @@ This will log something that looks like:
 
 As you can see, the status is still pending. We must wait until the generation is ready to view our image. To do this, we will need a function to fetch our new inference to see if its ready and view the details about it.
 
-In our `flux.ts` file, add the following code:
+In our `flux` folder, create a file named `getInference.ts` and add the following code:
 
-```typescript flux.ts
-// previous code here ...
+> 📘 Official Docs
+>
+> In order to learn what each of the parameters in the payload are, see the official `/v1/get_result` API docs [here](https://api.us1.bfl.ai/scalar#tag/utility/GET/v1/get_result).
 
-async function getInference(id: string) {
+```typescript flux/getInference.ts
+import axios from "axios";
+
+export async function getInference(id: string) {
   const url = "https://api.us1.bfl.ai/v1/get_result";
   const headers = {
     "Content-Type": "application/json",
@@ -13334,16 +13685,19 @@ async function getInference(id: string) {
 }
 ```
 
-Back in our `runInferenceAndRegister.ts` file, lets add a loop that continuously fetches the inference until it's ready. When it's ready, we will view the new image.
+Back in our `inference.ts` file, lets add a loop that continuously fetches the inference until it's ready. When it's ready, we will view the new image.
 
-```typescript runInferenceAndRegister.ts
-import { finetuneInference, getInference } from './flux'
+```typescript inference.ts
+import { finetuneInference } from './flux/finetuneInference'
+import { getInference } from './flux/getInference'
 
-async function runInferenceAndRegister() {
-  const inference = await finetuneInference(
-    "6fc5e628-6f56-48ec-93cb-c6a6b22bf5a", // the finetune_id we got above
-    "A picture of Ippy being really happy."
-  );
+// input your finetune_id here
+const FINETUNE_ID = '';
+// add your prompt here
+const PROMPT = "A picture of Ippy being really happy."
+
+async function main() {
+  const inference = await finetuneInference(FINETUNE_ID, PROMPT);
   
   let inferenceData = await getInference(inference.id);
   while (inferenceData.status != "Ready") {
@@ -13357,7 +13711,7 @@ async function runInferenceAndRegister() {
   console.log(inferenceData);
 }
 
-runInferenceAndRegister();
+main();
 ```
 
 Once the loop completed, the final log will look like:
@@ -13376,13 +13730,13 @@ Once the loop completed, the final log will look like:
 
 You can paste the `sample` into your browser and see the final result! Make sure to save this image as it will disappear eventually.
 
-## 4. Set up your Story Config
+## 5. Set up your Story Config
 
-Next we will register this image on Story as an [🧩 IP Asset](doc:ip-asset) in order to monetize and license the IP. In a `utils.ts` file, add the following code to set up your Story Config:
+Next we will register this image on Story as an [🧩 IP Asset](doc:ip-asset) in order to monetize and license the IP. Create a `story` folder and add a `utils.ts` file. In there, add the following code to set up your Story Config:
 
 * Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-```typescript utils.ts
+```typescript story/utils.ts
 import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 import { http } from "viem";
 import { privateKeyToAccount, Address, Account } from "viem/accounts";
@@ -13398,18 +13752,17 @@ const config: StoryConfig = {
 export const client = StoryClient.newClient(config);
 ```
 
-## 5. Set up your IP Metadata
+## 6. Set up your IP Metadata
+
+In your `story` folder, create a `registerIp.ts` file.
 
 View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct the metadata for your IP. You can use the `generateIpMetadata` function to properly format your metadata and ensure it is of the correct type, as shown below:
 
-```typescript runInferenceAndRegister.ts
-import { finetuneInference, getInference } from './flux'
+```typescript story/registerIp.ts
 import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 
-async function runInferenceAndRegister() {
-  // previous code here ...
-
+export async function registerIp(inference) {
   const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
     title: 'Happy Ippy',
     description: "An image of Ippy being really happy, generated by FLUX's 1.1 [pro] ultra Finetune",
@@ -13433,20 +13786,17 @@ async function runInferenceAndRegister() {
     ],
   })
 }
-
-runInferenceAndRegister();
 ```
 
-## 6. Set up your NFT Metadata
+## 7. Set up your NFT Metadata
 
-The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.org/EIPS/eip-721).
+In the `registerIp.ts` file, configure your NFT Metadata, which follows the [ERC-721 Metadata Standard](https://eips.ethereum.org/EIPS/eip-721).
 
-```typescript runInferenceAndRegister.ts
-import { finetuneInference, getInference } from './flux'
+```typescript story/registerIp.ts
 import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 
-async function runInferenceAndRegister() {
+export async function registerIp(inference) {
   // previous code here...
 
   const nftMetadata = {
@@ -13465,15 +13815,13 @@ async function runInferenceAndRegister() {
     ],
   }
 }
-
-runInferenceAndRegister();
 ```
 
-## 7. Upload your IP and NFT Metadata to IPFS
+## 8. Upload your IP and NFT Metadata to IPFS
 
-In a separate file, create a function to upload your IP & NFT Metadata objects to IPFS:
+In a new `pinata` folder, create a `uploadToIpfs` file and create a function to upload your IP & NFT Metadata objects to IPFS:
 
-```typescript uploadToIpfs.ts
+```typescript pinata/uploadToIpfs.ts
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -13488,14 +13836,13 @@ export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
 
 You can then use that function to upload your metadata, as shown below:
 
-```typescript runInferenceAndRegister.ts
-import { finetuneInference, getInference } from './flux'
+```typescript story/registerIp.ts
 import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
-import { uploadJSONToIPFS } from "./uploadToIpfs";
+import { uploadJSONToIPFS } from "../pinata/uploadToIpfs";
 import { createHash } from "crypto";
 
-async function runInferenceAndRegister() {
+export async function registerIp(inference) {
   // previous code here...
 
   const ipIpfsHash = await uploadJSONToIPFS(ipMetadata);
@@ -13507,15 +13854,13 @@ async function runInferenceAndRegister() {
     .update(JSON.stringify(nftMetadata))
     .digest("hex");
 }
-
-runInferenceAndRegister();
 ```
 
-## 8. Register the NFT as an IP Asset
+## 9. Register the NFT as an IP Asset
 
 In this step, we will use the [📦 SPG](doc:spg) to combine minting and registering our NFT into one transaction call.
 
-First, in a separate `createSpgNftCollection.ts` file, you must create a new SPG NFT collection. You can do this with the SDK (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
+First, in your `story` folder, create a separate `createSpgNftCollection.ts` file and add the following code:
 
 > ❓ Why do we have to do this?
 >
@@ -13523,7 +13868,7 @@ First, in a separate `createSpgNftCollection.ts` file, you must create a new SPG
 >
 > Instead of doing this, you could technically write your own contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). But an easy way to create a collection that implements `ISPGNFT` is just to call the `createCollection` function in the SPG contract using the SDK, as shown below.
 
-```typescript createSpgNftCollection.ts
+```typescript story/createSpgNftCollection.ts
 import { zeroAddress } from 'viem'
 import { client } from './utils'
 
@@ -13564,19 +13909,20 @@ SPG_NFT_CONTRACT_ADDRESS=
 >
 > You only have to do the above step **once**. Once you have your SPG NFT contract address, you can register any amount of IPs and will **not** have to do this again.
 
-The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
+## 10. Finish our Register Function
+
+Back in our `registerIp.ts` file, add the following code. It will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
 * Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
-```typescript runInferenceAndRegister.ts
-import { finetuneInference, getInference } from './flux'
+```typescript story/registerIp.ts
 import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
-import { uploadJSONToIPFS } from "./uploadToIpfs";
+import { uploadJSONToIPFS } from "../pinata/uploadToIpfs";
 import { createHash } from "crypto";
 import { Address } from "viem";
 
-async function runInferenceAndRegister() {
+export async function registerIp(inference) {
   // previous code here ...
 
   const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
@@ -13594,11 +13940,534 @@ async function runInferenceAndRegister() {
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
   console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`); 
 }
-
-runInferenceAndRegister();
 ```
 
-## 9. Done!
+## 11. Register our Inference
+
+Now that we have completed our `registerIp` function, let's add it to our `inference.ts` file:
+
+```typescript inference.ts
+import { finetuneInference } from './flux/finetuneInference'
+import { getInference } from './flux/getInference'
+import { registerIp } from './story/registerIp'
+
+const FINETUNE_ID = '';
+const PROMPT = "A picture of Ippy being really happy."
+
+async function main() {
+  const inference = await finetuneInference(FINETUNE_ID, PROMPT);
+  
+  let inferenceData = await getInference(inference.id);
+  while (inferenceData.status != "Ready") {
+    console.log("Waiting for inference to complete...");
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    inferenceData = await getInference(inference.id);
+  }
+  // now the inference data is ready
+  console.log(inferenceData);
+  
+  // add the function here
+  await registerIp(inferenceData);
+}
+
+main();
+```
+
+## 12. Done!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/jacob-tucker/finetune-story-flux" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    View the completed code for this tutorial.
+  </Card>
+</Cards>
+
+# SDK v1.3 MIGRATION GUIDE
+Welcome to the v1.2 -> v1.3 SDK migration guide. Below, you can find the changes you must take to integrate with the v1.3 SDK.
+
+> ❓ Need 1-on-1 help?
+>
+> Contact @jacobmtucker on Telegram.
+
+# client.ipAsset
+
+## `registerDerivative`
+
+This function now has 3 extra parameters:
+
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
+   1. **Recommended for simplicity**: `0`
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100.
+   1. **Recommended for simplicity**: `100`
+3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
+
+Example:
+
+```typescript TypeScript
+const response = await client.ipAsset.registerDerivative({
+  childIpId: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+  licenseTermsIds: ["1"],
+  maxMintingFee: BigInt(0), // disabled
+  maxRts: 100_000_000, // default
+  maxRevenueShare: 100, // default
+});
+```
+
+## `registerDerivativeWithLicenseTokens`
+
+The function now has 1 extra parameter:
+
+1. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
+
+Example:
+
+```typescript TypeScript
+const response = await client.ipAsset.registerDerivativeWithLicenseTokens({
+  childIpId: "0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4",
+  licenseTokenIds: ["1"],
+  maxRts: 100_000_000, // default
+});
+```
+
+## `mintAndRegisterIpAssetWithPilTerms`
+
+The function now has 1 extra parameter:
+
+1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
+   1. **Recommended for simplicity**: `true`
+
+The function has also modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
+
+Example:
+
+```typescript TypeScript
+const licenseTerms: LicenseTerms = {
+  transferable: true,
+  royaltyPolicy: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  defaultMintingFee: BigInt(1),
+  expiration: BigInt(0),
+  commercialUse: true,
+  commercialAttribution: false,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: zeroAddress,
+  commercialRevShare: 0,
+  commercialRevCeiling: BigInt(0),
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: BigInt(0),
+  currency: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  uri: "",
+};
+
+const licensingConfig: LicensingConfig = {
+  isSet: true,
+  mintingFee: BigInt(0),
+  licensingHook: zeroAddress,
+  hookData: zeroHash,
+  commercialRevShare: 0,
+  disabled: false,
+  expectMinimumGroupRewardShare: 0,
+  expectGroupRewardPool: zeroAddress,
+};
+
+const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
+  spgNftContract: "0x",
+  licenseTermsData: [
+    {
+      terms: licenseTerms,
+      licensingConfig,
+    },
+  ],
+  allowDuplicates: true,
+  ipMetadata: {
+    ipMetadataURI: "https://",
+    ipMetadataHash: toHex("metadata", { size: 32 }),
+    nftMetadataURI: "https://",
+    nftMetadataHash: toHex("nftMetadata", { size: 32 }),
+  },
+});
+```
+
+## `registerIpAndAttachPilTerms`
+
+The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
+
+Example:
+
+```typescript TypeScript
+const licenseTerms: LicenseTerms = {
+  transferable: true,
+  royaltyPolicy: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  defaultMintingFee: BigInt(1),
+  expiration: BigInt(0),
+  commercialUse: true,
+  commercialAttribution: false,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: zeroAddress,
+  commercialRevShare: 0,
+  commercialRevCeiling: BigInt(0),
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: BigInt(0),
+  currency: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  uri: "",
+};
+
+const licensingConfig: LicensingConfig = {
+  isSet: true,
+  mintingFee: BigInt(0),
+  licensingHook: zeroAddress,
+  hookData: zeroHash,
+  commercialRevShare: 0,
+  disabled: false,
+  expectMinimumGroupRewardShare: 0,
+  expectGroupRewardPool: zeroAddress,
+};
+
+const response = await client.ipAsset.registerIpAndAttachPilTerms({
+  nftContract: "0x",
+  tokenId: "3",
+  ipMetadata: {
+    ipMetadataURI: "https://",
+    ipMetadataHash: toHex("metadata", { size: 32 }),
+    nftMetadataURI: "https://",
+    nftMetadataHash: toHex("nftMetadata", { size: 32 }),
+  },
+  licenseTermsData: [
+    {
+      terms: licenseTerms,
+      licensingConfig,
+    },
+  ],
+});
+```
+
+## `registerDerivativeIp`
+
+This function now has 3 extra parameters under derivative data:
+
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
+   1. **Recommended for simplicity**: `0`
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100.
+   1. **Recommended for simplicity**: `100`
+3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
+
+Example:
+
+```typescript TypeScript
+const derivData: DerivativeData = {
+  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+  licenseTermsIds: ["1"],
+  maxMintingFee: BitInt(0), // disabled
+  maxRts: 100_000_000, // default
+  maxRevenueShare: 100, // default
+};
+
+const response = await client.ipAsset.registerDerivativeIp({
+  nftContract: "0x",
+  tokenId: "3",
+  derivData,
+  ipMetadata: {
+    ipMetadataURI: "https://",
+    ipMetadataHash: toHex("metadata", { size: 32 }),
+    nftMetadataURI: "https://",
+    nftMetadataHash: toHex("nftMetadata", { size: 32 }),
+  },
+})
+```
+
+## `mintAndRegisterIpAndMakeDerivative`
+
+The function now has 1 extra parameter:
+
+1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
+   1. **Recommended for simplicity**: `true`
+
+This function also has 3 extra parameters under derivative data:
+
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
+   1. **Recommended for simplicity**: `0`
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100.
+   1. **Recommended for simplicity**: `100`
+3. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
+
+Example:
+
+```typescript TypeScript
+const derivData: DerivativeData = {
+  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+  licenseTermsIds: ["1"],
+  maxMintingFee: BitInt(0), // disabled
+  maxRts: 100_000_000, // default
+  maxRevenueShare: 100, // default
+};
+
+const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
+  spgNftContract: "0x",
+  derivData,
+  allowDuplicates: true,
+  ipMetadata: {
+    ipMetadataURI: "https://",
+    ipMetadataHash: toHex("metadata", { size: 32 }),
+    nftMetadataURI: "https://",
+    nftMetadataHash: toHex("nftMetadata", { size: 32 }),
+  },
+})
+```
+
+## `mintAndRegisterIp`
+
+The function now has 1 extra parameter:
+
+1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
+   1. **Recommended for simplicity**: `true`
+
+Example:
+
+```typescript TypeScript
+const response = await client.ipAsset.mintAndRegisterIp({
+  spgNftContract: "0x",
+  ipMetadata: {
+    ipMetadataURI: "https://",
+    ipMetadataHash: toHex("metadata", { size: 32 }),
+    nftMetadataURI: "https://",
+    nftMetadataHash: toHex("nftMetadata", { size: 32 }),
+  },
+  allowDuplicates: false,
+})
+```
+
+## `registerPilTermsAndAttach`
+
+The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
+
+Example:
+
+```typescript TypeScript
+const licenseTerms: LicenseTerms = {
+  transferable: true,
+  royaltyPolicy: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  defaultMintingFee: BigInt(1),
+  expiration: BigInt(0),
+  commercialUse: true,
+  commercialAttribution: false,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: zeroAddress,
+  commercialRevShare: 0,
+  commercialRevCeiling: BigInt(0),
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: BigInt(0),
+  currency: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  uri: "",
+};
+
+const licensingConfig: LicensingConfig = {
+  isSet: true,
+  mintingFee: BigInt(0),
+  licensingHook: zeroAddress,
+  hookData: zeroHash,
+  commercialRevShare: 0,
+  disabled: false,
+  expectMinimumGroupRewardShare: 0,
+  expectGroupRewardPool: zeroAddress,
+};
+
+const response = await client.ipAsset.registerPilTermsAndAttach({
+  ipId: "0x",
+  licenseTermsData: [
+    {
+      terms: licenseTerms,
+      licensingConfig,
+    },
+  ],
+})
+```
+
+## `mintAndRegisterIpAndMakeDerivativeWithLicenseTokens`
+
+The function now has 2 extra parameters:
+
+1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
+   1. **Recommended for simplicity**: `true`
+2. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
+
+Example:
+
+```typescript TypeScript
+const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLicenseTokens({
+  spgNftContract: "0x",
+  licenseTokenIds: ["12"],
+  ipMetadata: {
+    ipMetadataURI: "",
+    ipMetadataHash: toHex(0, { size: 32 }),
+    nftMetadataHash: toHex("nftMetadata", { size: 32 }),
+    nftMetadataURI: "",
+  },
+  recipient: "0x73fcb515cee99e4991465ef586cfe2b072ebb512",
+  maxRts: 100_000_000,
+  allowDuplicates: true,
+})
+```
+
+## `registerIpAndMakeDerivativeWithLicenseTokens`
+
+The function now has 1 extra parameter:
+
+1. `maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000.
+   1. **Recommended for simplicity**: `100_000_000`
+
+Example:
+
+```typescript TypeScript
+const response = await client.ipAsset.registerIpAndMakeDerivativeWithLicenseTokens({
+  nftContract: "0x",
+  maxRts: 100_000_000,
+  tokenId: "3",
+  licenseTokenIds: ["12"],
+  ipMetadata: {
+    ipMetadataURI: "",
+    ipMetadataHash: toHex(0, { size: 32 }),
+    nftMetadataHash: toHex("nftMetadata", { size: 32 }),
+    nftMetadataURI: "",
+  },
+})
+```
+
+# `client.license`
+
+## `mintLicenseTokens`
+
+The function now has 2 extra parameters:
+
+1. `maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit.
+   1. **Recommended for simplicity**: `0`
+2. `maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100.
+   1. **Recommended for simplicity**: `100_000_000`
+
+Example:
+
+```typescript TypeScript
+const response = await client.license.mintLicenseTokens({
+  licensorIpId: "0x",
+  licenseTermsId: "1",
+  maxMintingFee: BigInt(0),
+  maxRevenueShare: 100,
+})
+```
+
+# client.royalty
+
+> 🚧 Coming soon!
+>
+> We don't have the updated v1.3 SDK ready yet for royalty. However, royalty in v1.3 is MUCH easier. Instead of many different royalty functions, we have combined them all into a `claimAllRevenue` function. Migration instructions coming soon.
+
+# client.dispute
+
+## `raiseDispute`
+
+The function now has 2 extra parameters:
+
+1. `bond`: The bond size.
+2. `liveness`: The liveness time.
+
+The following parameters have been removed:
+
+1. `data`
+
+Example:
+
+```typescript TypeScript
+const response = await client.dispute.raiseDispute({
+  targetIpId: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  cid: "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR",
+  targetTag: "tag",
+  bond: 0,
+  liveness: 2592000,
+})
+```
+
+# Version Matrix
+A version matrix showing the **currently available protocol versions** for different developer tools on both of our testnet networks. *Updated daily*.
+
+<Table align={["left","left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Odyssey Testnet
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Aeneid Testnet
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        SDK
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        [v1.2](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.2.0-rc.4)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        *v1.3 coming soon*
+
+        This will be ready on February 7th. **However you can begin anticipating changes based on the** [SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        Protocol
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        [v1.2](https://github.com/storyprotocol/protocol-core-v1/tree/v1.2.3)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        *v1.3 coming soon*
+
+        This will be ready in a few hours.
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        API
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        [v1.2](https://docs.story.foundation/reference/api-introduction)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        *v1.3 coming soon*
+
+        This will be ready on February 3rd.
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 # Mint a License Token
 This section demonstrates how to mint a License Token for an IPA. You can only mint a License Token for an IPA if it has License Terms attached to it. A License Token is minted as an ERC721 token and contains the necessary licensing details.
@@ -14764,10 +15633,9 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
+   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
-
-You can then configure your DApp with help from the following example:
 
 ```jsx Web3Providers.tsx
 "use client";
@@ -14894,10 +15762,9 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
+   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_DYNAMIC_ENV_ID` set up in your `.env` file. Do this by logging into [Dynamic](https://app.dynamic.xyz/) and creating a project.
-
-You can then configure your DApp with help from the following example:
 
 ```jsx Web3Providers.tsx
 "use client";
@@ -15036,10 +15903,9 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
+   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
-
-You can then configure your DApp with help from the following example:
 
 ```jsx config/index.tsx
 import { cookieStorage, createStorage, http } from '@wagmi/core'
@@ -15230,9 +16096,11 @@ Next we can initiate the SDK Client. There are two ways to do this:
   </Card>
 </Cards>
 
-> :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
->
-> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use the public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#explorers).
+Before continuing with the code below:
+
+1. Make sure to have `WALLET_PRIVATE_KEY` set up in your `.env` file.
+2. Make sure to have `RPC_PROVIDER_URL` set up in your `.env` file.
+   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
 
 ```typescript index.ts
 import { http } from 'viem';
@@ -15288,11 +16156,10 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
+   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_TOMO_CLIENT_ID` set up in your `.env` file. Do this by logging into the [Tomo Dashboard](https://dashboard.tomo.inc/) and creating a project.
 3. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
-
-You can then configure your DApp with help from the following example:
 
 ```jsx Web3Providers.tsx
 "use client";
@@ -15403,96 +16270,6 @@ export default function TestComponent() {
 }
 ```
 
-# For AI Agents
-This page is all about AI Agents. We have prepared a way for you to use our documentation as training data which can be seen below, or continue to learn about developing AI Agents on Story.
-
-<Cards columns={2}>
-  <Card title="Train on Our Docs" href="https://github.com/storyprotocol/documentation/blob/v1.2/combined.md" icon="fa-robot" iconColor="white" target="_blank">
-    Looking to feed our docs into your AI Agent so it can use it as training data? Check out this file, which contains all of our docs in one combined `.md` file.
-  </Card>
-
-  <Card title="Read the Whitepaper" href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" icon="fa-file" iconColor="white" target="_blank">
-    Read our Agent TCP/IP whitepaper, which defines an agent-to-agent transaction system to enable a future of AGI.
-  </Card>
-</Cards>
-
-# Developing an Agent
-
-Below are details on how to:
-
-* Register an AI Agent as IP
-* Add License Terms to your AI Agent
-* Register Your Agent's Outputs as IP
-
-## Registering an Agent
-
-<Cards columns={1}>
-  <Card title="Example Agent" href="https://explorer.story.foundation/ipa/0x123C52537C98d6064bF7BbdC7D4A93A9D9c8E43A" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    View an example Agent named Benjamin, registered on our explorer, here.
-  </Card>
-</Cards>
-
-In order to register an AI Agent (or any IP) on Story, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial. The only difference for AI Agents is how you structure your IP Metadata, which should follow the [IPA Metadata Standard](https://docs.story.foundation/docs/ipa-metadata-standard#/).
-
-Here is an example of what the IP Metadata should look like for your AI Agent (using Benjamin as an example):
-
-```json
-{
-  title: "Benjamin",
-  description: "Benjamin is the official mascot of Unleash Protocol and the First IPFi AI Agent.",
-  ipType: "AI Agent",
-  creators: [
-    {
-      name: "Unleash Protocol",
-      address: "0xBBE1725E1Fef9C2C20Ac6CB984bB0E970Ab18aa9",
-      contributionPercent: 100,
-      description: "Benjamin is the official mascot of Unleash Protocol and the First IPFi AI Agent.",
-      socialMedia: [{ platform: "twitter", url: "https://x.com/BenjaminOnIP" }]
-    }
-  ],
-  tags: ["Benjamin", "Unleash Protocol", "Story", "AI Agent", "IPFI"],
-}
-```
-
-## Adding Terms to your AI Agent
-
-Upon registering your AI Agent, you can add license terms to it. However you can add more license terms to your AI Agent afterwards as well. Here is an example of how you attach commercial license terms to your agnet using the SDK:
-
-```typescript TypeScript
-import { LicenseTerms } from '@story-protocol/core-sdk';
-
-const commercialRemixTerms: LicenseTerms = {
-  transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
-  commercialUse: true,
-  commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
-  derivativesApproval: false,
-  derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
-  uri: '',
-}
-
-const response = await client.ipAsset.registerPilTermsAndAttach({
-  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721', // the ipId of your AI Agent
-  terms: [commercialRemixTerms],
-  txOptions: { waitForTransaction: true },
-})
-console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
-```
-
-## Registering your Agent's Outputs
-
-In the same way you registered your AI Agent on Story, you can register its outputs as well. For example, if you agent produces images and you want to register your image, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial.
-
 # FAQ
 ## *"Is on-chain IP real?"*
 
@@ -15588,6 +16365,312 @@ Ultimately Story is not a system built to prevent bad actors, rather it is meant
 </Image>
 
 
+# For AI Agents
+This page is all about AI Agents. We have prepared a way for you to use our documentation as training data which can be seen below, or continue to learn about developing AI Agents on Story.
+
+<Cards columns={2}>
+  <Card title="Train on Our Docs" href="https://github.com/storyprotocol/documentation/blob/v1.2/combined.md" icon="fa-robot" iconColor="#4e8189" target="_blank">
+    Looking to feed our docs into your AI Agent so it can use it as training data? Check out this file, which contains all of our docs in one combined `.md` file.
+  </Card>
+
+  <Card title="Read the Whitepaper" href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" icon="fa-file" iconColor="#cfb394" target="_blank">
+    Read our Agent TCP/IP whitepaper, which defines an agent-to-agent transaction system to enable a future of AGI.
+  </Card>
+</Cards>
+
+Below you will find two sections:
+
+1. **Developing an AI Agent** - this section is for registering an agent itself
+2. **Implementing ATCP/IP** - this section is for implementing the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
+
+# Developing an Agent
+
+Below are details on how to:
+
+* Register an AI Agent as IP
+* Add License Terms to your AI Agent
+
+## Registering an Agent
+
+<Cards columns={1}>
+  <Card title="Example Agent" href="https://explorer.story.foundation/ipa/0x123C52537C98d6064bF7BbdC7D4A93A9D9c8E43A" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    View an example Agent named Benjamin, registered on our explorer, here.
+  </Card>
+</Cards>
+
+In order to register an AI Agent (or any IP) on Story, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial. The only difference for AI Agents is how you structure your IP Metadata, which should follow the [IPA Metadata Standard](https://docs.story.foundation/docs/ipa-metadata-standard#/).
+
+Here is an example of what the IP Metadata should look like for your AI Agent (using Benjamin as an example):
+
+```json
+{
+  title: "Benjamin",
+  description: "Benjamin is the official mascot of Unleash Protocol and the First IPFi AI Agent.",
+  ipType: "AI Agent",
+  creators: [
+    {
+      name: "Unleash Protocol",
+      address: "0xBBE1725E1Fef9C2C20Ac6CB984bB0E970Ab18aa9",
+      contributionPercent: 100,
+      description: "Benjamin is the official mascot of Unleash Protocol and the First IPFi AI Agent.",
+      socialMedia: [{ platform: "twitter", url: "https://x.com/BenjaminOnIP" }]
+    }
+  ],
+  tags: ["Benjamin", "Unleash Protocol", "Story", "AI Agent", "IPFI"],
+}
+```
+
+## Adding Terms to your AI Agent
+
+Upon registering your AI Agent, you can add license terms to it. However you can add more license terms to your AI Agent afterwards as well. Here is an example of how you attach commercial license terms to your agent using the SDK:
+
+```typescript TypeScript
+import { LicenseTerms } from '@story-protocol/core-sdk';
+
+const commercialRemixTerms: LicenseTerms = {
+  transferable: true,
+  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: BigInt(0),
+  expiration: BigInt(0),
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: zeroAddress,
+  commercialRevShare: 50, // can claim 50% of derivative revenue
+  commercialRevCeiling: BigInt(0),
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: BigInt(0),
+  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  uri: '',
+}
+
+const response = await client.ipAsset.registerPilTermsAndAttach({
+  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721',
+  terms: [commercialRemixTerms],
+  txOptions: { waitForTransaction: true },
+})
+console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
+```
+```typescript Request Type
+export type RegisterPilTermsAndAttachRequest = {
+  ipId: Address;
+  terms: RegisterPILTermsRequest[];
+  deadline?: string | number | bigint;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type RegisterPilTermsAndAttachResponse = {
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+  licenseTermsIds?: bigint[];
+};
+```
+
+# Implementing ATCP/IP
+
+Below are details on how to actually implement the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
+
+## Registering your Agent's Outputs
+
+In order to register an agent's outputs (or really any IP) on Story, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story#/) tutorial. The only difference is how you structure your IP Metadata, which should follow the [IPA Metadata Standard](https://docs.story.foundation/docs/ipa-metadata-standard#/).
+
+You can also check out more specific tutorials that demonstrate how to register images generated by DALL·E or Stability:
+
+* [Protect DALL·E AI-Generated Images](doc:protect-dalle-ai-generated-images)
+* [Register & Monetize Stability Images](doc:register-stability-images)
+
+Here is an example of what the IP Metadata should look like for your generated IP:
+
+```json
+{
+  title: 'Image of a Baby Sea Otter',
+  description: 'An image generated by Dall-E 2',
+  ipType: 'image',
+  attributes: [
+    {
+      key: 'Model',
+      value: 'dall-e-2',
+    },
+    {
+      key: 'Prompt',
+      value: 'A cute baby sea otter',
+    },
+  ],
+  creators: [
+    {
+      name: 'Jacob Tucker',
+      contributionPercent: 100,
+      address: account.address,
+    },
+  ]
+}
+```
+
+## Creating Agreement Terms
+
+As described in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>, agents will negotiate on what agreement terms are appropriate for the requested task:
+
+> 2 **Terms formulation**: The provider agent will consider the request and choose an appropriate set of\
+> license terms for the information being requested. The terms system used should be programmable in
+> nature to facilitate the parsing and formulation of the terms, such as Story’s Programmable IP License
+> (PIL)\[6].
+>
+> 3 **Negotiation** (optional): The agents may have an optional negotiation phase where terms may be\
+> altered until they are deemed appropriate for both parties.
+>
+> * **Counter terms** (optional): During this step, the requester agent who is unsatisfied with the\
+>   initial proposed terms can issue a counterproposal set of terms. Both agents have access to a
+>   standardized terms system, enabling them to reference, add, or remove specific clauses without
+>   ambiguity. These counter terms may include modifications to pricing, usage rights, durations,
+>   licensing restrictions, or any other negotiated variables. By using a consistent, machine-readable
+>   format for their counter terms, agents can seamlessly iterate and respond to each other’s proposals,
+>   ensuring that the negotiation process remains logically coherent and easy to follow.
+> * **Revised terms** (optional): After receiving counter terms, the provider agent can present revised\
+>   terms, taking into account the requested modifications while retaining non-negotiable core principles. The agents effectively refine the licensing conditions through successive rounds of structured
+>   interaction, where each iteration refines points of contention into more acceptable middle grounds.
+>   Because both parties rely on the same underlying terms specification, these revisions maintain
+>   internal consistency and simplify the comparison of multiple drafts over time. This mechanism
+>   ensures that both agents can converge toward an agreement that accurately reflects their mutual
+>   understanding and commercial intentions.
+> * *This process could have multiple iterations until an agreement is reached*
+
+Once agents agree on the terms, they can be created and attached to the registered asset with the SDK:
+
+```typescript TypeScript
+import { LicenseTerms } from '@story-protocol/core-sdk';
+
+const commercialRemixTerms: LicenseTerms = {
+  transferable: true,
+  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: BigInt(1), // costs 1 SUSD to mint a license
+  expiration: BigInt(0),
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: zeroAddress,
+  commercialRevShare: 50, // can claim 50% of derivative revenue
+  commercialRevCeiling: BigInt(0),
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: BigInt(0),
+  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  uri: '',
+}
+
+const response = await client.ipAsset.registerPilTermsAndAttach({
+  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721', // the ipId of the asset we're attaching to
+  terms: [commercialRemixTerms],
+  txOptions: { waitForTransaction: true },
+})
+console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
+```
+```typescript Request Type
+export type RegisterPilTermsAndAttachRequest = {
+  ipId: Address;
+  terms: RegisterPILTermsRequest[];
+  deadline?: string | number | bigint;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type RegisterPilTermsAndAttachResponse = {
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+  licenseTermsIds?: bigint[];
+};
+```
+
+## Mint a License
+
+As stated in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
+
+> 4 **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
+> agreement token) that encapsulates the terms and rules by which the information being provided is
+> to be used. Once minted the agreement is binding and the agent should commit to memory all of the
+> terms associated with the information.
+>
+> * **Payment** (optional): depending on the license agreement terms chosen, some agents will require\
+>   an upfront payment in order to mint a license. Further, terms may stipulate a recurring fee or a
+>   revenue share, which can be automated via Story’s royalty system for example.
+
+Here is how that can be done in the SDK:
+
+> ❗️ Paid Licenses
+>
+> Note that sometimes minting a license might cost a `mintingFee` (based on what the value is in the terms).
+>
+> The `mintingFee` is paid in a ERC20 `currency` (also in the terms) that must be whitelisted by the protocol. For example, one of the only whitelisted revenue tokens is SUSD, which can be minted for test purposes [here](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19).
+>
+> Assuming the `mintingFee` is in SUSD and you have some, you have to approve the `RoyaltyModule.sol` contract to spend them on your behalf. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule.sol` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
+
+```typescript TypeScript
+const response = await client.license.mintLicenseTokens({
+   licenseTermsId: "1", // the license terms id that are attached to the `licensorIpId`
+   licensorIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba", // the ipId of the asset
+   receiver: "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", // who receives the minted license
+   amount: 1, // the amount of licenses to mint
+   txOptions: { waitForTransaction: true }
+});
+
+console.log(`License Token minted at transaction hash ${response.txHash}, License IDs: ${response.licenseTokenIds}`)
+```
+```typescript Request Type
+export type MintLicenseTokensRequest = {
+  licensorIpId: Address;
+  licenseTermsId: string | number | bigint;
+  licenseTemplate?: Address;
+  amount?: number | string | bigint;
+  receiver?: Address;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type MintLicenseTokensResponse = {
+  licenseTokenIds?: bigint[];
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+};
+```
+
+Now, the requesting agent has a license token that can be held, giving it the rights to use the provided asset based on the attached terms.
+
+## Claim Revenue
+
+Once the providing agent has been paid for their work (when the requesting agent minted a license that costed $), they can claim their due revenue with the SDK like so:
+
+```typescript TypeScript
+const response = await client.royalty.snapshotAndClaimByTokenBatch({
+  royaltyVaultIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+  currencyTokens: [SUSDAddress], // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  claimer: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba", // same as `royaltyVaultIpId` because the IP Account holds the royalty tokens
+  txOptions: { waitForTransaction: true },
+})
+
+console.log(`Claimed revenue: ${response.amountsClaimed}`);
+```
+```typescript Request Type
+export type SnapshotAndClaimByTokenBatchRequest = {
+  royaltyVaultIpId: Address;
+  currencyTokens: Address[];
+  claimer?: Address;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type SnapshotAndClaimByTokenBatchResponse = {
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+  snapshotId?: bigint;
+  amountsClaimed?: bigint;
+};
+```
+
 # What is Story
 <Image align="center" src="https://files.readme.io/30567679bc8ee50fe55d31b026f751e3535b21f9b2ed52ae7a6777cfd094ee5c-image_6.png" />
 
@@ -15653,7 +16736,7 @@ With Story, you can share your work freely, knowing that wherever it goes, it’
 You want to start building on Story quickly... so let's get started!
 
 * [I'm building an app](https://docs.story.foundation/docs/quickstart#app-developers)
-* [I'm a smart contract developer](https://docs.story.foundation/docs/quickstart#smart-contract-developers) 
+* [I'm a smart contract developer](https://docs.story.foundation/docs/quickstart#smart-contract-developers)
 
 > 📘 Looking to read up on Story first?
 >
@@ -15671,7 +16754,7 @@ If you want to deploy an app using Story, this section is for you.
 
 ## :building_construction: Story Network Infra
 
-The [Story Network Guide](doc:story-network) provides all RPC, explorer, and faucet info. 
+The [Story Network Guide](doc:story-network) provides all RPC, explorer, and faucet info.
 
 ## :computer: Use our SDKs
 
@@ -15692,9 +16775,11 @@ Next you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](do
 * all of Story's [🧱 Modules](doc:story-modules) like transparent licensing, automatic royalty payments, and disputing of wrongfully registered IP
 * IP protection through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
 
-To actually do this in code, our SDK tutorial will show you exactly how to do these things:
-
-* [Register an IP Asset](doc:register-an-ip-asset)
+<Cards columns={1}>
+  <Card title="Register IP on Story" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#/using-the-sdk" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Learn how to register IP on Story using the TypeScript SDK.
+  </Card>
+</Cards>
 
 ### Difference Between IP Metadata vs. NFT Metadata
 
@@ -15762,9 +16847,11 @@ Next you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](do
 * all of Story's [🧱 Modules](doc:story-modules) like transparent licensing, automatic royalty payments, and disputing of wrongfully registered IP
 * IP protection through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
 
-To actually do this in your smart contract, follow our smart contract tutorial:
-
-* [Register an NFT as an IP Asset](doc:sc-tutorial-registering-an-ip-asset)
+<Cards columns={1}>
+  <Card title="Register IP on Story" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#/using-a-smart-contract" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Learn how to register IP on Story using the smart contracts.
+  </Card>
+</Cards>
 
 ### Difference Between IP Metadata vs. NFT Metadata
 
@@ -15801,5 +16888,4 @@ Our smart contract tutorial will show you exactly how to claim royalty from a ch
 > 📘 Learn More
 >
 > For more information on royalty and how it functions, check out the [💸 Royalty Module](doc:royalty-module).
-
 

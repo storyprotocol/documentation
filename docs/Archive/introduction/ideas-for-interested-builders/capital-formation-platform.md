@@ -2,7 +2,7 @@
 title: Capital Formation Platform
 excerpt: Better governance and incentive alignment
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: >-

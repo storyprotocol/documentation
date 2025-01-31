@@ -2,7 +2,7 @@
 title: External Services for Common Use-Cases
 excerpt: ''
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''

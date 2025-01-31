@@ -2,7 +2,7 @@
 title: AI-generated Assets Marketplace
 excerpt: Shutterstock/Getty Images for AI assets
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''

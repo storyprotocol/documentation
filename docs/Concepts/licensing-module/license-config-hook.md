@@ -6,13 +6,12 @@ excerpt: >-
 deprecated: false
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
-
 ## License Config
 
 > 🗒️ Contract
@@ -54,7 +53,12 @@ struct LicensingConfig {
 }
 ```
 
-Fields like the `mintingFee` and `commercialRevShare` overwrite their duplicate in the license terms themselves. A benefit of this is that derivative IP Assets, which normally cannot change their license terms, are able to overwrite certain fields.
+What do some of these mean?
+
+1. `isSet` - if this is false, the license config is completely ignored
+2. `disabled` - if this is true, then no licenses can be minted and no more derivatives can be attached at all
+
+Fields like the `mintingFee` and `commercialRevShare` overwrite their duplicate in the license terms themselves. **A benefit of this is that derivative IP Assets, which normally cannot change their license terms, are able to overwrite certain fields.**
 
 The `licensingHook` is an address to a smart contract that implements the `ILicensingHook.sol` interface, which contains a `beforeMintLicenseTokens` function which will be run before a user mints a License Token. This means you can insert logic to be run upon minting a license.
 
@@ -78,7 +82,7 @@ You can also attach the License Config to an IP Asset as a whole, so it will exe
 
 ### Restrictions
 
-If you update the License Config, you cannot decrease the `commercialRevShare` percentage. You can only increase it.
+See [IP Modifications & Restrictions](https://docs.story.foundation/docs/ipa-modifications#/) for the various restrictions on setting the License Config.
 
 ## Licensing Hook
 
@@ -131,7 +135,6 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
         Importance
       </th>
     </tr>
-
   </thead>
 
   <tbody>
@@ -164,6 +167,5 @@ Note that it returns the `totalMintingFee`. You may be wondering, "I can set the
         Lowest Priority
       </td>
     </tr>
-
   </tbody>
 </Table>

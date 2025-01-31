@@ -2,7 +2,7 @@
 title: Ideas for Builders
 excerpt: ''
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''

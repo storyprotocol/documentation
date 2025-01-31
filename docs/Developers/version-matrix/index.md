@@ -2,7 +2,7 @@
 title: Version Matrix
 excerpt: ''
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   title: ''
   description: ''
@@ -20,11 +20,11 @@ A version matrix showing the **currently available protocol versions** for diffe
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Iliad
+        Odyssey Testnet
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Odyssey
+        Aeneid Testnet
       </th>
     </tr>
   </thead>
@@ -36,25 +36,13 @@ A version matrix showing the **currently available protocol versions** for diffe
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [v1.2](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.2.0-rc.0)
+        [v1.2](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.2.0-rc.4)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [v1.2](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.2.0-rc.1)
-      </td>
-    </tr>
+        *v1.3 coming soon*
 
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        API
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [v1.1](https://docs.story.foundation/reference/api-introduction)
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [v1.2](https://docs.story.foundation/reference/api-introduction)
+        This will be ready on February 7th. **However you can begin anticipating changes based on the** [SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide)
       </td>
     </tr>
 
@@ -64,14 +52,30 @@ A version matrix showing the **currently available protocol versions** for diffe
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [v1.2](https://docs.story.foundation/docs/deployed-smart-contracts#core-protocol-contracts)
+        [v1.2](https://github.com/storyprotocol/protocol-core-v1/tree/v1.2.3)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [v1.2](https://docs.story.foundation/docs/deployed-smart-contracts#core-protocol-contracts)
+        *v1.3 coming soon*
+
+        This will be ready in a few hours.
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        API
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        [v1.2](https://docs.story.foundation/reference/api-introduction)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        *v1.3 coming soon*
+
+        This will be ready on February 3rd.
       </td>
     </tr>
   </tbody>
 </Table>
-
-*v1.3 of the protocol is being deployed soon. Once deployed, SDK and API will support after.*

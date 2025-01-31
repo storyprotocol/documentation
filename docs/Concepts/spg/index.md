@@ -1,5 +1,5 @@
 ---
-title: 📦 SPG
+title: 📦 SPG (Periphery)
 excerpt: ''
 deprecated: false
 hidden: false
@@ -29,7 +29,7 @@ function mintAndRegisterIpAndAttachPILTerms(
 As mentioned above, there are many different functions we have created for you that combine multiple functions into one. We have categorized them into different groups. These groups are called "workflows".
 
 <Cards columns={2}>
-  <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md" icon="fa-eyes" iconColor="white" target="_blank">
+  <Card title="View all Workflows" href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/docs/WORKFLOWS.md" icon="fa-eyes" iconColor="grey" target="_blank">
     Click here to view all of the supported workflows.
   </Card>
 
