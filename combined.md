@@ -3897,8 +3897,8 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
            * Mickey Mouse with 1 pixel difference is an infringement
            * Mickey Mouse with a new hat is an infringement unless it’s a derivative of Mickey Mouse
         2. Check the registration date of the pre-existing IP using input B
-        3. Confirm that the disputed IP has a later registration date by checking on the Hub
-        4. Confirm that the disputed IP is not a derivative of the pre-existing IP by checking on the Hub
+        3. Confirm that the disputed IP has a later registration date
+        4. Confirm that the disputed IP is not a derivative of the pre-existing IP
 
         <br />
       </td>
