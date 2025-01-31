@@ -117,6 +117,8 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         1. Read the associated PIL term description on the PIL license official document using input A
         2. Read the violation description using input B
         3. Decide on the veracity of the proof presented by checking on associated platforms when possible using input C
+
+        <br />
       </td>
     </tr>
 
