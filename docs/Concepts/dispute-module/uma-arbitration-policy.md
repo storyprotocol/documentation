@@ -106,9 +106,11 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. PIL terms that have been violated
-        2. Description of the violations
-        3. Proof of the violations
+        A. PIL term that has been violated
+
+        B. Description of the violation
+
+        C. Proof of the violation
       </td>
 
       <td style={{ textAlign: "left" }}>
