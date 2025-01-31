@@ -74,9 +74,9 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        A. Showcase or pointer to the pre-existing IP that is being infringed upon by the disputed IP.
+        A. Showcase or pointer to the pre-existing IP that is being infringed upon by the disputed IP
 
-        B. Proof of public display of the pre-existing IP at an earlier date than the infringing IP (onchain or offchain) and/or instructions on where/how to check it.
+        B. Proof of public display of the pre-existing IP at an earlier date than the infringing IP (onchain or offchain) and/or instructions on where/how to check it
       </td>
 
       <td style={{ textAlign: "left" }}>
