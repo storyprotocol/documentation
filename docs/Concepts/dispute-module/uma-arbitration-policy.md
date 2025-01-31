@@ -32,7 +32,7 @@ When raising a dispute or making a counter dispute, both parties can submit disp
 
 ### Burden of Proof
 
-In all disputes with UMA arbitration policy, the burden of proof lies with the party creating the dispute. This means that the disputer must provide clear, compelling, and verifiable evidence to prove the dispute beyond reasonable doubt. Disputes that do not meet this high bar can be counter-disputed with the initial disputing party losing their bond.
+In all disputes with UMA arbitration policy, the burden of proof lies with the party creating the dispute. This means that the disputer must provide clear, compelling, and verifiable evidence to prove the dispute beyond reasonable doubt. Disputes that do not meet this high bar can be counter-disputed with the disputing party losing their bond.
 
 ### Document Characteristics
 
