@@ -18,7 +18,7 @@ Base contract for policy framework managers.
 string name
 ```
 
-Returns the name to be show in license NFT (LNFT) metadata
+Returns the name to be shown in license NFT (LNFT) metadata
 
 ### licenseTextUrl
 
