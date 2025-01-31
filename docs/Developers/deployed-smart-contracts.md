@@ -110,17 +110,13 @@ next:
   <Tab title="Odyssey Testnet">
     * SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
       * <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
-      * WIP: 0x1516000000000000000000000000000000000000
+    * WIP: 0x1516000000000000000000000000000000000000
   </Tab>
 
   <Tab title="Aeneid Testnet">
     Here's content that's only inside the second Tab.
   </Tab>
 </Tabs>
-
-* SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
-  * <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
-* WIP: 0x1516000000000000000000000000000000000000
 
 ## Misc
 
