@@ -3921,7 +3921,9 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         A. PIL term that has been violated
 
-        B. Description of the violationC. Proof of the violation
+        B. Description of the violation
+
+        C. Proof of the violation
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -3937,7 +3939,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        A. Description of each payment the disputed IP received that should have been shared with its royalty vault
+        A. Description of each payment the disputed IP received that should have been shared with its royalty vault or its ancestors but it was not.
 
         B. Proof of payments
       </td>
