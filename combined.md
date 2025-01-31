@@ -5799,7 +5799,7 @@ Story’s staking contract will handle all validators/delegators related operati
 
 The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
-# Node Setup
+# Node Setup - Homer
 
 This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
 
@@ -6170,7 +6170,6 @@ rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
 
 - Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
 - Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
-
 
 # Wallet Setup
 # Option 1: Button Click
@@ -6651,7 +6650,7 @@ rm ~/.story/story/config/priv_validator_key.json
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
 
 
-# Node Setup
+# Node Setup - Odyssey
 
 This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
 
@@ -6945,7 +6944,6 @@ If you would like to check the status of `story` while it is running, it is help
 To manage consensus client upgrades more easily, especially for hard forks, we recommend using [Cosmovisor](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html), which allows you to automate the process of upgrading client binaries without having to restart your client.
 
 To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a guide to help you with the setup of automated upgrades with Cosmovisor.
-
 
 # Story Network Guide
 > 🚧 We are still in testnet!
