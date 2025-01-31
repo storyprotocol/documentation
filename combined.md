@@ -3937,9 +3937,9 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. <br />
-        2. Description of each payment the disputed IP received that should have been shared with its royalty vault
-        3. Proof of payments
+        A. Description of each payment the disputed IP received that should have been shared with its royalty vault
+
+        B. Proof of payments
       </td>
 
       <td style={{ textAlign: "left" }}>
