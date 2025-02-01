@@ -10,7 +10,6 @@ metadata:
 next:
   description: ''
 ---
-
 <Cards columns={2}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/Example.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     See the completed code.
@@ -48,25 +47,25 @@ Create a new file under `./src/Example.sol` and paste the following:
 pragma solidity ^0.8.26;
 
 import { IPAssetRegistry } from "@storyprotocol/core/registries/IPAssetRegistry.sol";
-import { RegistrationWorkflows } from "@storyprotocol/periphery/workflows/RegistrationWorkflows.sol";
-import { WorkflowStructs } from "@storyprotocol/periphery/lib/WorkflowStructs.sol";
 import { LicenseRegistry } from "@storyprotocol/core/registries/LicenseRegistry.sol";
 import { LicensingModule } from "@storyprotocol/core/modules/licensing/LicensingModule.sol";
 import { PILicenseTemplate } from "@storyprotocol/core/modules/licensing/PILicenseTemplate.sol";
 import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol";
 import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
+import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
-import { SUSD } from "./mocks/SUSD.sol";
 import { SimpleNFT } from "./mocks/SimpleNFT.sol";
 
+import { ERC721Holder } from "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
+
 /// @notice Register an NFT as an IP Account.
-contract Example {
+contract Example is ERC721Holder {
     IPAssetRegistry public immutable IP_ASSET_REGISTRY;
     LicenseRegistry public immutable LICENSE_REGISTRY;
     LicensingModule public immutable LICENSING_MODULE;
     PILicenseTemplate public immutable PIL_TEMPLATE;
     RoyaltyPolicyLAP public immutable ROYALTY_POLICY_LAP;
-    SUSD public immutable SUSD_TOKEN;
+    MockERC20 public immutable MERC20;
     SimpleNFT public immutable SIMPLE_NFT;
 
     constructor(
@@ -74,25 +73,25 @@ contract Example {
         address licensingModule,
         address pilTemplate,
         address royaltyPolicyLAP,
-        address susdToken
+        address merc20
     ) {
         IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
         LICENSING_MODULE = LicensingModule(licensingModule);
         PIL_TEMPLATE = PILicenseTemplate(pilTemplate);
         ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(royaltyPolicyLAP);
-        SUSD_TOKEN = SUSD(susdToken);
+        MERC20 = MockERC20(merc20);
         // Create a new Simple NFT collection
         SIMPLE_NFT = new SimpleNFT("Simple IP NFT", "SIM");
     }
 
     /// @notice Mint an NFT, register it as an IP Asset, and attach License Terms to it.
     /// @param receiver The address that will receive the NFT/IPA.
-    /// @return ipId The address of the IP Account.
     /// @return tokenId The token ID of the NFT representing ownership of the IPA.
+    /// @return ipId The address of the IP Account.
     /// @return licenseTermsId The ID of the license terms.
     function mintAndRegisterAndCreateTermsAndAttach(
         address receiver
-    ) external returns (address ipId, uint256 tokenId, uint256 licenseTermsId) {
+    ) external returns (uint256 tokenId, address ipId, uint256 licenseTermsId) {
         // We mint to this contract so that it has permissions
         // to attach license terms to the IP Asset.
         // We will later transfer it to the intended `receiver`
@@ -105,7 +104,7 @@ contract Example {
                 mintingFee: 0,
                 commercialRevShare: 10 * 10 ** 6, // 10%
                 royaltyPolicy: address(ROYALTY_POLICY_LAP),
-                currencyToken: address(SUSD_TOKEN)
+                currencyToken: address(MERC20)
             })
         );
 
@@ -133,7 +132,7 @@ In this next section, we will combine a few of the later tutorials into one. We 
 
 ### Writing our Contract
 
-In your `Example.sol` contract, add the following function:
+In your `Example.sol` contract, add the following function at the bottom:
 
 ```sol Example.sol
 /// @notice Mint and register a new child IPA, mint a License Token
@@ -142,14 +141,13 @@ In your `Example.sol` contract, add the following function:
 /// @param licenseTermsId The ID of the license terms you will
 /// mint a license token from.
 /// @param receiver The address that will receive the NFT/IPA.
-/// @return childIpId The address of the child IPA.
 /// @return childTokenId The token ID of the NFT representing ownership of the child IPA.
-/// @return licenseTokenId The ID of the license token.
+/// @return childIpId The address of the child IPA.
 function mintLicenseTokenAndRegisterDerivative(
   address parentIpId,
   uint256 licenseTermsId,
   address receiver
-) external returns (address childIpId, uint256 childTokenId, uint256 licenseTokenId) {
+) external returns (uint256 childTokenId, address childIpId) {
   // We mint to this contract so that it has permissions
   // to register itself as a derivative of another
   // IP Asset.
@@ -158,7 +156,7 @@ function mintLicenseTokenAndRegisterDerivative(
   childIpId = IP_ASSET_REGISTRY.register(block.chainid, address(SIMPLE_NFT), childTokenId);
 
   // mint a license token from the parent
-  licenseTokenId = LICENSING_MODULE.mintLicenseTokens({
+  uint256 licenseTokenId = LICENSING_MODULE.mintLicenseTokens({
     licensorIpId: parentIpId,
     licenseTemplate: address(PIL_TEMPLATE),
     licenseTermsId: licenseTermsId,
@@ -166,7 +164,9 @@ function mintLicenseTokenAndRegisterDerivative(
     // mint the license token to this contract so it can
     // use it to register as a derivative of the parent
     receiver: address(this),
-    royaltyContext: "" // for PIL, royaltyContext is empty string
+    royaltyContext: "", // for PIL, royaltyContext is empty string
+    maxMintingFee: 0,
+    maxRevenueShare: 0
   });
 
   uint256[] memory licenseTokenIds = new uint256[](1);
@@ -177,7 +177,8 @@ function mintLicenseTokenAndRegisterDerivative(
   LICENSING_MODULE.registerDerivativeWithLicenseTokens({
     childIpId: childIpId,
     licenseTokenIds: licenseTokenIds,
-    royaltyContext: "" // empty for PIL
+    royaltyContext: "", // empty for PIL
+    maxRts: 0
   });
 
   // transfer the NFT to the receiver so it owns the child IPA
@@ -203,82 +204,81 @@ import { Example } from "../src/Example.sol";
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/Example.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/Example.t.sol
 contract ExampleTest is Test {
-    address internal alice = address(0xa11ce);
-    address internal bob = address(0xb0b);
-    // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
-    // Protocol Core - IPAssetRegistry
-    address internal ipAssetRegistry = 0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095;
-    // Protocol Core - LicenseRegistry
-    address internal licenseRegistry = 0xBda3992c49E98392e75E78d82B934F3598bA495f;
-    // Protocol Core - LicensingModule
-    address internal licensingModule = 0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae;
-    // Protocol Core - PILicenseTemplate
-    address internal pilTemplate = 0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93;
-    // Protocol Core - RoyaltyPolicyLAP
-    address internal royaltyPolicyLAP = 0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6;
-    // Mock - SUSD
-    address internal susd = 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5;
+  address internal alice = address(0xa11ce);
+  address internal bob = address(0xb0b);
+  // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
+  // Protocol Core - IPAssetRegistry
+  address internal ipAssetRegistry = 0x77319B4031e6eF1250907aa00018B8B1c67a244b;
+  // Protocol Core - LicenseRegistry
+  address internal licenseRegistry = 0x529a750E02d8E2f15649c13D69a465286a780e24;
+  // Protocol Core - LicensingModule
+  address internal licensingModule = 0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f;
+  // Protocol Core - PILicenseTemplate
+  address internal pilTemplate = 0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316;
+  // Protocol Core - RoyaltyPolicyLAP
+  address internal royaltyPolicyLAP = 0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E;
+  // Mock - MERC20
+  address internal merc20 = 0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E;
 
-    SimpleNFT public SIMPLE_NFT;
-    Example public EXAMPLE;
+  SimpleNFT public SIMPLE_NFT;
+  Example public EXAMPLE;
 
-    function setUp() public {
-        // this is only for testing purposes
-        // due to our IPGraph precompile not being
-        // deployed on the fork
-        vm.etch(address(0x0101), address(new MockIPGraph()).code);
+  function setUp() public {
+    // this is only for testing purposes
+    // due to our IPGraph precompile not being
+    // deployed on the fork
+    vm.etch(address(0x0101), address(new MockIPGraph()).code);
 
-        EXAMPLE = new Example(ipAssetRegistry, licensingModule, pilTemplate, royaltyPolicyLAP, susd);
-        SIMPLE_NFT = SimpleNFT(EXAMPLE.SIMPLE_NFT());
-    }
+    EXAMPLE = new Example(ipAssetRegistry, licensingModule, pilTemplate, royaltyPolicyLAP, merc20);
+    SIMPLE_NFT = SimpleNFT(EXAMPLE.SIMPLE_NFT());
+  }
 
-    function test_mintAndRegisterAndCreateTermsAndAttach() public {
-        LicenseRegistry LICENSE_REGISTRY = LicenseRegistry(licenseRegistry);
-        IPAssetRegistry IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
+  function test_mintAndRegisterAndCreateTermsAndAttach() public {
+    LicenseRegistry LICENSE_REGISTRY = LicenseRegistry(licenseRegistry);
+    IPAssetRegistry IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
 
-        uint256 expectedTokenId = SIMPLE_NFT.nextTokenId();
-        address expectedIpId = IP_ASSET_REGISTRY.ipId(block.chainid, address(SIMPLE_NFT), expectedTokenId);
+    uint256 expectedTokenId = SIMPLE_NFT.nextTokenId();
+    address expectedIpId = IP_ASSET_REGISTRY.ipId(block.chainid, address(SIMPLE_NFT), expectedTokenId);
 
-        (address ipId, uint256 tokenId, uint256 licenseTermsId) = EXAMPLE.mintAndRegisterAndCreateTermsAndAttach(alice);
+    (uint256 tokenId, address ipId, uint256 licenseTermsId) = EXAMPLE.mintAndRegisterAndCreateTermsAndAttach(alice);
 
-        assertEq(tokenId, expectedTokenId);
-        assertEq(ipId, expectedIpId);
-        assertEq(SIMPLE_NFT.ownerOf(tokenId), alice);
+    assertEq(tokenId, expectedTokenId);
+    assertEq(ipId, expectedIpId);
+    assertEq(SIMPLE_NFT.ownerOf(tokenId), alice);
 
-        assertTrue(LICENSE_REGISTRY.hasIpAttachedLicenseTerms(ipId, pilTemplate, licenseTermsId));
-        // We expect 2 because the IPA has the default license terms (licenseTermsId = 1)
-        // and the one we attached.
-        assertEq(LICENSE_REGISTRY.getAttachedLicenseTermsCount(ipId), 2);
-        // Although an IP Asset has default license terms, index 0 is
-        // still the one we attached.
-        (address licenseTemplate, uint256 attachedLicenseTermsId) = LICENSE_REGISTRY.getAttachedLicenseTerms({
-            ipId: ipId,
-            index: 0
-        });
-        assertEq(licenseTemplate, pilTemplate);
-        assertEq(attachedLicenseTermsId, licenseTermsId);
-    }
+    assertTrue(LICENSE_REGISTRY.hasIpAttachedLicenseTerms(ipId, pilTemplate, licenseTermsId));
+    assertEq(LICENSE_REGISTRY.getAttachedLicenseTermsCount(ipId), 1);
+    (address licenseTemplate, uint256 attachedLicenseTermsId) = LICENSE_REGISTRY.getAttachedLicenseTerms({
+      ipId: ipId,
+      index: 0
+    });
+    assertEq(licenseTemplate, pilTemplate);
+    assertEq(attachedLicenseTermsId, licenseTermsId);
+  }
 
-    function test_mintLicenseTokenAndRegisterDerivative() public {
-        LicenseRegistry LICENSE_REGISTRY = LicenseRegistry(licenseRegistry);
-        IPAssetRegistry IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
+  function test_mintLicenseTokenAndRegisterDerivative() public {
+    LicenseRegistry LICENSE_REGISTRY = LicenseRegistry(licenseRegistry);
+    IPAssetRegistry IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
 
-        (address parentIpId, uint256 parentTokenId, uint256 licenseTermsId) = EXAMPLE
-            .mintAndRegisterAndCreateTermsAndAttach(alice);
+    (uint256 parentTokenId, address parentIpId, uint256 licenseTermsId) = EXAMPLE
+    .mintAndRegisterAndCreateTermsAndAttach(alice);
 
-        (address childIpId, uint256 childTokenId, uint256 licenseTokenId) = EXAMPLE
-            .mintLicenseTokenAndRegisterDerivative(parentIpId, licenseTermsId, bob);
+    (uint256 childTokenId, address childIpId) = EXAMPLE.mintLicenseTokenAndRegisterDerivative(
+      parentIpId,
+      licenseTermsId,
+      bob
+    );
 
-        assertTrue(LICENSE_REGISTRY.hasDerivativeIps(parentIpId));
-        assertTrue(LICENSE_REGISTRY.isParentIp(parentIpId, childIpId));
-        assertTrue(LICENSE_REGISTRY.isDerivativeIp(childIpId));
-        assertEq(LICENSE_REGISTRY.getDerivativeIpCount(parentIpId), 1);
-        assertEq(LICENSE_REGISTRY.getParentIpCount(childIpId), 1);
-        assertEq(LICENSE_REGISTRY.getParentIp({ childIpId: childIpId, index: 0 }), parentIpId);
-        assertEq(LICENSE_REGISTRY.getDerivativeIp({ parentIpId: parentIpId, index: 0 }), childIpId);
-    }
+    assertTrue(LICENSE_REGISTRY.hasDerivativeIps(parentIpId));
+    assertTrue(LICENSE_REGISTRY.isParentIp(parentIpId, childIpId));
+    assertTrue(LICENSE_REGISTRY.isDerivativeIp(childIpId));
+    assertEq(LICENSE_REGISTRY.getDerivativeIpCount(parentIpId), 1);
+    assertEq(LICENSE_REGISTRY.getParentIpCount(childIpId), 1);
+    assertEq(LICENSE_REGISTRY.getParentIp({ childIpId: childIpId, index: 0 }), parentIpId);
+    assertEq(LICENSE_REGISTRY.getDerivativeIp({ parentIpId: parentIpId, index: 0 }), childIpId);
+  }
 }
 ```
 
@@ -287,7 +287,7 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/Example.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/Example.t.sol
 ```
 
 # Deploy & Verify the Example Contract
@@ -296,15 +296,15 @@ The `--constructor-args` come from [Deployed Smart Contracts](doc:deployed-smart
 
 ```shell
 forge create \
-  --rpc-url https://odyssey.storyrpc.io/ \
+  --rpc-url https://aeneid.storyrpc.io/ \
   --private-key $PRIVATE_KEY \
   ./src/Example.sol:Example \
   --verify \
   --verifier blockscout \
-  --verifier-url https://odyssey.storyscan.xyz/api/ \
-  --constructor-args 0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095 0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae 0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93 0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
+  --verifier-url https://aeneid.storyscan.xyz/api/ \
+  --constructor-args 0x77319B4031e6eF1250907aa00018B8B1c67a244b 0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f 0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316 0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E 0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E
 ```
 
-If everything worked correctly, you should see something like `Deployed to: 0xfb0923D531C1ca54AB9ee10CB8364b23d0C7F47d` in the console. Paste that address into [the explorer](https://odyssey.storyscan.xyz/) and see your verified contract!
+If everything worked correctly, you should see something like `Deployed to: 0xfb0923D531C1ca54AB9ee10CB8364b23d0C7F47d` in the console. Paste that address into [the explorer](https://aeneid.storyscan.xyz/) and see your verified contract!
 
 # Great job! :)
