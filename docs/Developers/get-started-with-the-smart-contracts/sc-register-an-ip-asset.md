@@ -37,16 +37,16 @@ import { WorkflowStructs } from "@storyprotocol/periphery/lib/WorkflowStructs.so
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
 contract IPARegistrarTest is Test {
     address internal alice = address(0xa11ce);
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry public immutable IP_ASSET_REGISTRY = IPAssetRegistry(0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095);
+    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
     // Protocol Periphery - RegistrationWorkflows
-    RegistrationWorkflows public immutable REGISTRATION_WORKFLOWS =
-        RegistrationWorkflows(0xde13Be395E1cd753471447Cf6A656979ef87881c);
+    RegistrationWorkflows internal REGISTRATION_WORKFLOWS =
+        RegistrationWorkflows(0xbe39E1C756e921BD25DF86e7AAa31106d1eb0424);
 
     SimpleNFT public SIMPLE_NFT;
     ISPGNFT public SPG_NFT;
@@ -116,7 +116,8 @@ contract IPARegistrarTest is Test {
                         "{'name':'Test NFT','description':'This is a test NFT','image':'https://picsum.photos/200'}"
                     )
                 )
-            })
+            }),
+            true
         );
 
         assertEq(ipId, expectedIpId);
@@ -153,5 +154,5 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
 ```
