@@ -20,7 +20,7 @@ In this section, we will briefly go over the protocol contracts and then guide y
 
 > ✅ Completed Code
 >
-> Skip the tutorial and view the completed code [here](https://github.com/storyprotocol/story-protocol-boilerplate). Follow the README instructions to run the tests, or go to the `/test` folder to view all of the example contracts.
+> Skip the tutorial and view the completed code [here](https://github.com/storyprotocol/story-protocol-boilerplate/tree/v1.3). Follow the README instructions to run the tests, or go to the `/test` folder to view all of the example contracts.
 
 **If you want to set things up from scratch**, then continue with the following tutorials, starting with the [Setup Your Own Project](doc:sc-tutorial-quick-setup) step.
 
