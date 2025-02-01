@@ -38,28 +38,28 @@ import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/L
 import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
 import { PILTerms } from "@storyprotocol/core/interfaces/modules/licensing/IPILicenseTemplate.sol";
 import { LicensingModule } from "@storyprotocol/core/modules/licensing/LicensingModule.sol";
+import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
-import { SUSD } from "../src/mocks/SUSD.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
 contract AttachTermsTest is Test {
     address internal alice = address(0xa11ce);
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry public immutable IP_ASSET_REGISTRY = IPAssetRegistry(0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095);
+    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
     // Protocol Core - LicenseRegistry
-    LicenseRegistry public immutable LICENSE_REGISTRY = LicenseRegistry(0xBda3992c49E98392e75E78d82B934F3598bA495f);
+    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0x529a750E02d8E2f15649c13D69a465286a780e24);
     // Protocol Core - LicensingModule
-    LicensingModule public immutable LICENSING_MODULE = LicensingModule(0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae);
+    LicensingModule internal LICENSING_MODULE = LicensingModule(0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f);
     // Protocol Core - PILicenseTemplate
-    PILicenseTemplate public immutable PIL_TEMPLATE = PILicenseTemplate(0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93);
+    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316);
     // Protocol Core - RoyaltyPolicyLAP
-    RoyaltyPolicyLAP public immutable ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6);
-    // Mock - SUSD
-    SUSD public immutable SUSD_TOKEN = SUSD(0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5);
+    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E);
+    // Mock - MERC20
+    MockERC20 internal MERC20 = MockERC20(0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E);
 
     SimpleNFT public SIMPLE_NFT;
     uint256 public tokenId;
@@ -82,7 +82,7 @@ contract AttachTermsTest is Test {
                 mintingFee: 0,
                 commercialRevShare: 10 * 10 ** 6, // 10%
                 royaltyPolicy: address(ROYALTY_POLICY_LAP),
-                currencyToken: address(SUSD_TOKEN)
+                currencyToken: address(MERC20)
             })
         );
     }
@@ -96,11 +96,7 @@ contract AttachTermsTest is Test {
         LICENSING_MODULE.attachLicenseTerms(ipId, address(PIL_TEMPLATE), licenseTermsId);
 
         assertTrue(LICENSE_REGISTRY.hasIpAttachedLicenseTerms(ipId, address(PIL_TEMPLATE), licenseTermsId));
-        // We expect 2 because the IPA has the default license terms (licenseTermsId = 1)
-        // and the one we attached.
-        assertEq(LICENSE_REGISTRY.getAttachedLicenseTermsCount(ipId), 2);
-        // Although an IP Asset has default license terms, index 0 is
-        // still the one we attached.
+        assertEq(LICENSE_REGISTRY.getAttachedLicenseTermsCount(ipId), 1);
         (address licenseTemplate, uint256 attachedLicenseTermsId) = LICENSE_REGISTRY.getAttachedLicenseTerms({
             ipId: ipId,
             index: 0
@@ -116,5 +112,5 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
 ```
