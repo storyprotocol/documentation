@@ -12,10 +12,6 @@ next:
 ---
 In this section, we will briefly go over the protocol contracts and then guide you through how to start building on top of the protocol. If you haven't yet familiarized yourself with the overall architecture, we recommend first going over the [Overview](doc:overview) section.
 
-> 🚧 Our contracts are undergoing audits.
->
-> The v1 release of our "Proof-of-Creativity Protocol" is currently undergoing audits, which means that we could change the smart contracts at any time without warning to address the audit findings. When the contracts are fully audited, we will remove this warning and ensure regular updates to this document with formal notice.
-
 # Smart Contract Tutorial
 
 > ✅ Completed Code
@@ -33,7 +29,7 @@ As of the current version, our Proof-of-Creativity Protocol is compatible with a
 
 ## Deploy & Verify Contracts on Story
 
-*The approach to deploy & verify contracts comes from the[Blockscout official documentation](https://docs.blockscout.com/developer-support/verifying-a-smart-contract/foundry-verification).*
+> The approach to deploy & verify contracts comes from the [Blockscout official documentation](https://docs.blockscout.com/developer-support/verifying-a-smart-contract/foundry-verification).
 
 Verify a contract with Blockscout right after deployment (make sure you add "/api/" to the end of the Blockscout homepage explorer URL):
 
