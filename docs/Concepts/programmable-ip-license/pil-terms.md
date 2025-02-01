@@ -404,7 +404,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       <td style={{ textAlign: "left" }}>
         Whether or not the IP can be used to develop AI learning models.
 
-        By default, the IP can be used for such development.
+        By default, the IP **cannot** be used for such development.
       </td>
     </tr>
 
