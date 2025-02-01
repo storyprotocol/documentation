@@ -42,7 +42,9 @@ A version matrix showing the **currently available protocol versions** for diffe
       <td style={{ textAlign: "left" }}>
         *v1.3 coming soon*
 
-        This will be ready on February 7th. **However you can begin anticipating changes based on the** [SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide)
+        Most of the changes are actually ready in a [beta version](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.3.0-beta.1). However, it is missing a key royalty function that will be ready on February 7th.
+
+        **You can begin anticipating changes (besides the royalty function) based on the** [SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide)
       </td>
     </tr>
 
