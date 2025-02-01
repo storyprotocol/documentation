@@ -56,9 +56,10 @@ A version matrix showing the **currently available protocol versions** for diffe
       </td>
 
       <td style={{ textAlign: "left" }}>
-        *v1.3 coming soon*
+        [Core v1.3](https://github.com/storyprotocol/protocol-core-v1)\
+        [Periphery v1.3](https://github.com/storyprotocol/protocol-periphery-v1)
 
-        This will be ready in a few hours.
+        **Tutorial**: Check out [⚙️ Smart Contracts](doc:get-started-with-the-smart-contracts) for a tutorial on integrating with the v1.3 contracts
       </td>
     </tr>
 
