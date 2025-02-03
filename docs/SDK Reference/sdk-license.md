@@ -35,7 +35,7 @@ Parameters:
 * `request.ipId`: The address of the IP to which the license terms are attached.
 * `request.licenseTemplate`: The address of the license template.
 * `request.licenseTermsId`: The ID of the license terms.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type AttachLicenseTermsResponse = {
@@ -51,7 +51,7 @@ Mints license tokens for the license terms attached to an IP.
 
 The license tokens are minted to the receiver.
 
-The license terms must be attached to the IP before calling this function. But it can mint license token of default license terms without attaching the default license terms, since it is attached to all IPs by default.
+The license terms must be attached to the IP before calling this function.
 
 IP owners can mint license tokens for their IPs for arbitrary license terms without attaching the license terms to IP.
 
@@ -68,7 +68,7 @@ Parameters:
 * `request.licenseTermsId`: The ID of the license terms within the license template.
 * `request.amount`: The amount of license tokens to mint.
 * `request.receiver`: The address of the receiver.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type MintLicenseTokensResponse = {
@@ -94,7 +94,7 @@ Parameters:
 >
 > They all come from the [PIL Terms](doc:pil-terms).
 
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterPILResponse = {
@@ -114,7 +114,7 @@ Convenient function to register a PIL non commercial social remix license to the
 
 Parameters:
 
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterPILResponse = {
@@ -136,8 +136,8 @@ Parameters:
 
 * `request.defaultMintingFee`: The fee to be paid when minting a license.
 * `request.currency`: The ERC20 token to be used to pay the minting fee and the token must be registered in story protocol.
-* `request.royaltyPolicyAddress`: [Optional] The address of the royalty policy contract, default value is LAP.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.royaltyPolicyAddress`: \[Optional] The address of the royalty policy contract, default value is LAP.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterPILResponse = {
@@ -160,8 +160,8 @@ Parameters:
 * `request.defaultMintingFee`: The fee to be paid when minting a license.
 * `request.commercialRevShare`: Percentage of revenue that must be shared with the licensor.
 * `request.currency`: The ERC20 token to be used to pay the minting fee and the token must be registered in story protocol.
-* `request.royaltyPolicyAddress`: [Optional] The address of the royalty policy contract, default value is LAP.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.royaltyPolicyAddress`: \[Optional] The address of the royalty policy contract, default value is LAP.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterPILResponse = {
@@ -175,9 +175,9 @@ export type RegisterPILResponse = {
 
 Gets License Terms of the given ID.
 
-| Method            | Type                                                                                                 |
-| ----------------- | ---------------------------------------------------------------------------------------------------- |
-| `getLicenseTerms` | `(selectedLicenseTermsId: string \\| number \\| bigint) => PiLicenseTemplateGetLicenseTermsResponse` |
+| Method            | Type                                 |           |                                                       |
+| :---------------- | :----------------------------------- | :-------- | :---------------------------------------------------- |
+| `getLicenseTerms` | \`(selectedLicenseTermsId: string \\ | number \\ | bigint) => PiLicenseTemplateGetLicenseTermsResponse\` |
 
 Parameters:
 
@@ -220,9 +220,9 @@ Parameters:
 * `request.licensorIpId`: The IP ID of the licensor.
 * `request.licenseTermsId`: The ID of the license terms.
 * `request.amount`: The amount of license tokens to mint.
-* `request.licenseTemplate`: [Optional] The address of the license template, default value is Programmable IP License.
-* `request.receiver`: [Optional] The address of the receiver, default value is your wallet address.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.licenseTemplate`: \[Optional] The address of the license template, default value is Programmable IP License.
+* `request.receiver`: \[Optional] The address of the receiver, default value is your wallet address.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type LicensingModulePredictMintingLicenseFeeResponse = {
@@ -249,7 +249,7 @@ Parameters:
   * `request.licensingConfig.mintingFee`: The minting fee to be paid when minting license tokens.
   * `request.licensingConfig.hookData`: The data to be used by the licensing hook.
   * `request.licensingConfig.licensingHook`: The hook contract address for the licensing module, or address(0) if none.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type SetLicensingConfigResponse = {
