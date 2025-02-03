@@ -1,5 +1,5 @@
 ---
-title: Node Setup - Homer
+title: Node Setup - Dev Mainnet
 excerpt: ''
 deprecated: false
 hidden: false
