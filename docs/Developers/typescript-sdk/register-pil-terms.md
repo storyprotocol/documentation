@@ -15,7 +15,7 @@ This section demonstrates how to register a selection of License Terms using the
 ## Prerequisites
 
 * [Setup](doc:typescript-sdk-setup) the client object.
-* If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`. 
+* If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`.
 
 > 🪙 Whitelisted Revenue Tokens
 >
@@ -192,8 +192,6 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 * Click [here](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) to see info on Non-Commercial Social Remixing licenses.
 
 There are currently no parameters to be passed in here, so this function should not really be used other than to get back the `licenseTermsId` for this license.
-
-In addition, NCSR terms are already attached to every single IP Asset **by default**, with `licenseTermsId == 1`.
 
 ```typescript TypeScript
 const nonComSocialRemixingParams = {}
