@@ -25,12 +25,6 @@ This section demonstrates how to register an IP Asset using the TypeScript SDK. 
 
 * [Setup](doc:typescript-sdk-setup) the client object.
 
-> 📘 Default License Terms
->
-> Note that every single IP Asset registered on Story automatically has [Non-Commercial Social Remixing License Terms](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing)  attached to it.
->
-> If it's a root IP Asset (meaning it has no more parents), you can attach more License Terms to it later. Please see [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset) for more info.
-
 # Register an NFT as an IP Asset
 
 You can register your NFT as an IP Asset by simply calling `client.ipAsset.register()` and passing in the token's contract address and token ID, like so:
@@ -97,7 +91,7 @@ IPA ID: 0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721
 
 Instead of first minting an NFT and then registering it as an IP Asset, this function allows you to mint and register an IP Asset all in one transaction
 
-> 📘 Before You Use this Function
+> 🚧 Before You Use this Function
 >
 > The address of `spgNftContract` **must** implement <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol" target="_blank">ISPGNFT</a> in order to work.
 >
