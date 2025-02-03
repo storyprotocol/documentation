@@ -12,10 +12,6 @@ next:
 ---
 This section demonstrates how to add License Terms to an IPA. By attaching terms, an IPA becomes eligible for licensing creation. Users who then wish to creative derivatives of the IP may then mint licenses, which can be burned to enroll their IPs as derivative IPAs of the original work.
 
-> 📘 Note
->
-> [Non-Commercial Social Remixing](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) License Terms are attached **by default** to every IP Asset.
-
 There are a few different ways you can do this, depending on what works best for you:
 
 1. Attach Existing License Terms to Existing IP Asset
