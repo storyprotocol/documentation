@@ -118,7 +118,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Supporting image. Could be used as a “wrapper” image for things related to branding or watermarks.
+        A separate image with your watermark already applied. This way apps choosing to use it can render this version of the image (with watermark applied).
       </td>
     </tr>
 
