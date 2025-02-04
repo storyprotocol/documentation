@@ -378,3 +378,59 @@ rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
 
 * Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
 * Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+### Update Story
+
+There will be three types of updates
+
+1. Update the story geth client
+2. Update the story client with cosmovisor
+3. Update the story client
+
+#### Update the story geth client
+
+```bash
+sudo systemctl stop story
+sudo systemctl stop story-geth
+
+# Download the new binary
+wget ${STORY_GETH_BINARY_URL}
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/story-geth
+source $HOME/.bashrc
+
+# Restart the service
+sudo systemctl start story-geth
+sudo systemctl start story
+```
+
+#### Update the story client with cosmovisor
+
+```bash
+
+
+# Download the new binary
+wget ${STORY_BINARY_URL}
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/story
+source $HOME/.bashrc
+
+# Schedule the update
+sudo systemctl start cosmovisor
+```
+
+#### Update the story client
+
+```bash
+sudo systemctl stop cosmovisor
+
+# Download the new binary
+wget ${STORY_BINARY_URL}
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/story
+
+# Schedule the update
+sudo systemctl start cosmovisor
+```
