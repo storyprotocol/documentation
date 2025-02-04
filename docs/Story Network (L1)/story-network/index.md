@@ -24,6 +24,8 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 # Resources
 
+**Network Name**: Story Aeneid Testnet
+
 **Chain ID**: 1315
 
 ## :link: RPCs
