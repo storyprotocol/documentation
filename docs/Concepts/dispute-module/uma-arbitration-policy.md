@@ -145,7 +145,10 @@ Depending on what the type of the Dispute Tag is, you also need to include in th
       <td style={{ textAlign: "left" }}>
         `CONTENT_STANDARDS_VIOLATION`
 
-        No-Hate, Suitable-for-All-Ages, No-Drugs-or-Weapons, No-Pornography
+        No-Hate,\
+        Suitable-for-All-Ages,
+        No-Drugs-or-Weapons,
+        No-Pornography
       </td>
 
       <td style={{ textAlign: "left" }}>
