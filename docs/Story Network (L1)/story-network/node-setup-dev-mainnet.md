@@ -381,15 +381,15 @@ rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
 
 <br />
 
-### Upgrade Story
+## Upgrade Story
 
 There are three types of upgrades
 
 1. Upgrade the story geth client
-2. Upgrade the story client with cosmovisor
-3. Upgrade the story client
+2. Upgrade the story client manually
+3. Schedule the upgrade with Cosmovisor
 
-#### Upgrade the story geth client
+### Upgrade the story geth client
 
 ```bash
 sudo systemctl stop story
@@ -407,7 +407,7 @@ sudo systemctl start story-geth
 sudo systemctl start story
 ```
 
-#### Upgrade the story client manually
+### Upgrade the story client manually
 
 ```bash
 sudo systemctl stop story
@@ -422,7 +422,7 @@ sudo mv ./story $HOME/go/bin/story
 sudo systemctl start story
 ```
 
-#### Schedule the upgrade with Cosmovisor
+### Schedule the upgrade with Cosmovisor
 
 The following steps outline how to schedule an upgrade using Cosmovisor:
 
