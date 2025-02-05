@@ -109,7 +109,7 @@ Below, compatibility fails when linking parents at the same time.
 
 <Image align="center" width="400px" src="https://files.readme.io/871078d-image.png" />
 
-Below, compatibility fails when Linking one parent after the other
+Below, compatibility fails when linking one parent after the other
 
 <Image align="center" width="400px" src="https://files.readme.io/936ff77-image.png" />
 
