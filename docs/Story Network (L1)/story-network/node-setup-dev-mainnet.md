@@ -406,7 +406,7 @@ sudo systemctl start story-geth
 sudo systemctl start story
 ```
 
-#### Upgrade the story client
+#### Upgrade the story client manually
 
 ```bash
 sudo systemctl stop story
@@ -421,27 +421,45 @@ sudo mv ./story $HOME/go/bin/story
 sudo systemctl start story
 ```
 
-#### Upgrade the story client with cosmovisor
+#### Schedule the upgrade with Cosmovisor
+
+The following steps outline how to schedule an upgrade using Cosmovisor:
+
+1. Create the upgrade directory and download the new binary
 
 ```bash
-sudo systemctl stop story
 # Download the new binary
 wget ${STORY_BINARY_URL}
-sudo mv story-linux-amd64 story
-sudo chmod +x story
-sudo cp $HOME/story-linux-amd64 $HOME/.story/story/cosmovisor/upgrades/v1.0.0/bin/story
-echo '{"name":"v1.0.0","time":${upgrade_time},"height":${upgrade_height}}' > $HOME/.story/story/cosmovisor/upgrades/v1.0.0/upgrade-info.json
 
-# now we need to check the version, version should be 1.0.0-stable
-$HOME/.story/story/cosmovisor/upgrades/v1.0.0/bin/story version
-
-# Schedule the update
-sudo systemctl start story
+# Schedule the upgrade
+source $HOME/.bash_profile
+cosmovisor add-upgrade ${UPGRADE_NAME} ${UPGRADE_PATH} \
+  --force \
+  --upgrade-height ${UPGRADE_HEIGHT}
 ```
 
-schedule the update
+2. Verify the upgrade configuration
 
 ```bash
-source $HOME/.bash_profile
-cosmovisor add-upgrade ${upgrade_name} ${upgrade_path} --force --upgrade-height ${upgrade_height}
+# Check the upgrade info
+cat $HOME/.story/data/upgrade-info.json
 ```
+
+The upgrade-info.json should show:
+
+```json
+{
+  "name": "v1.0.0",
+  "time": "2025-02-05T12:00:00Z",
+  "height": 858000
+}
+```
+
+3. Monitor the upgrade
+
+```bash
+# Watch the node logs for the upgrade
+journalctl -u story -f -o cat
+```
+
+Note: Cosmovisor will automatically handle the binary switch when the specified block height is reached. Ensure your node has enough disk space and is fully synced before the upgrade height.
