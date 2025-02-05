@@ -135,7 +135,7 @@ Depending on what the type of the Dispute Tag is, you also need to include in th
 
       <td style={{ textAlign: "left" }}>
         1. Check veracity of the proof of payments by checking on the associated platforms when possible using input A and B
-        2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on the blockchain explorer. Payments should be made calling payRoyaltyOnBehalf() function on RoyaltyModule.sol. In addition, royalty payments must be made within 15 days of when the capital was originally received by the owner/IP who is paying those royalties.
+        2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on the blockchain explorer. Payments should be made calling payRoyaltyOnBehalf() function on RoyaltyModule.sol smart contract. In addition, royalty payments must be made within 15 days of when the capital was originally received by the owner/IP who is paying those royalties.
 
         <br />
       </td>
