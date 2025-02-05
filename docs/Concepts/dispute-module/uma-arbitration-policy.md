@@ -102,7 +102,7 @@ Depending on what the type of the Dispute Tag is, you also need to include in th
         Commercial Use,
         Sublicensable,
         Non-Transferable,
-        Restriction on Cross-Platform Use
+        Restriction on Cross-Platform-Use
       </td>
 
       <td style={{ textAlign: "left" }}>
