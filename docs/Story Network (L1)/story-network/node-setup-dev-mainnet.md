@@ -39,7 +39,7 @@ The `story` and `geth` binaries, which make up the clients required for running 
 * Network: Story Dev mainnet
 * Required versions:
   * story-geth: v1.0.1
-  * story: v1.0.0
+  * story: v1.1.0
 
 ## 1. System Preparation
 
