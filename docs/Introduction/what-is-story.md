@@ -2,7 +2,7 @@
 title: What is Story
 excerpt: Introduction to Story
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: Story Documentation
   description: >-
