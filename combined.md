@@ -15317,6 +15317,7 @@ If you already have a License Token, it is easier to register a derivative this 
 const response = await client.ipAsset.registerDerivativeWithLicenseTokens({
   childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
   licenseTokenIds: ["5"], // array of license ids relevant to the creation of the derivative, minted from the parent IPA
+  maxRts: 100_000_000, // default
   txOptions: { waitForTransaction: true }
 });
 
