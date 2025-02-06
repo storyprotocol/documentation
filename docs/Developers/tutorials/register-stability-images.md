@@ -307,7 +307,7 @@ main();
 
 When registering your image on Story, you can attach [License Terms](doc:license-terms) to the IP. These are real, legally binding terms enforced on-chain by the [📜 Licensing Module](doc:licensing-module), disputable by the [❌ Dispute Module](doc:dispute-module), and in the worst case, able to be enforced off-chain in court through traditional means.
 
-Let's say we want to monetize our image such that every time someone wants to use it (on merch, advertisement, or whatever) they have to pay an initial minting fee of 10 SUSD. Additionally, every time they earn revenue on derivative work, they owe 5% revenue back as royalty.
+Let's say we want to monetize our image such that every time someone wants to use it (on merch, advertisement, or whatever) they have to pay an initial minting fee of 10 $WIP. Additionally, every time they earn revenue on derivative work, they owe 5% revenue back as royalty.
 
 ```typescript main.ts
 import fs from "fs";
@@ -339,7 +339,7 @@ async function main() {
     derivativesApproval: false,
     derivativesReciprocal: true,
     derivativeRevCeiling: BigInt(0),
-    currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+    currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
     uri: '',
   } 
 }
