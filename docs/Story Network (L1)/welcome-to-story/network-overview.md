@@ -1,5 +1,5 @@
 ---
-title: Network Overview
+title: Node Architecture
 deprecated: false
 hidden: false
 metadata:
