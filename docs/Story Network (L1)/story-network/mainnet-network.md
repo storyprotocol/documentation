@@ -127,7 +127,21 @@ Specifically for IP-related transactions like registering an IPA, minting a lice
 | :-------- |
 | N/A       |
 
-## Ports
+
+## Infrastructure Partners
+
+> 🚧 Coming soon!
+
+| Partner | URL |
+| :------ | :-- |
+| N/A     | N/A |
+
+## Contract deployment addresses
+
+- [Story Network](doc:node-setup-dev-mainnet)
+- 
+
+## :computer: Ports
 
 The following ports are available for `story-geth` and `story` clients:
 
@@ -145,6 +159,7 @@ Metrics:
 
 # Further Sections
 
+- [Mainnet Status Page](https://status.story.foundation/)
 - [Node Setup](doc:node-setup-dev-mainnet)
 - [Validator Operations](doc:validator-operations)
 - [Tokenomics & Staking](doc:tokenomics-staking)

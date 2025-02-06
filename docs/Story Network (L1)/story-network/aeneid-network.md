@@ -1,23 +1,23 @@
 ---
 title: Story Mainnet Guide
-excerpt: ''
+excerpt: ""
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
 
 # Overview
 
 Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
 
-* using precompiled primitives to traverse complex data structures like IP graphs within seconds at marginal costs
-* a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
-* a modular architecture that decouples consensus from execution via Ethereum’s Engine-API
+- using precompiled primitives to traverse complex data structures like IP graphs within seconds at marginal costs
+- a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
+- a modular architecture that decouples consensus from execution via Ethereum’s Engine-API
 
 # Resources
 
@@ -42,6 +42,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         Official
       </th>
     </tr>
+
   </thead>
 
   <tbody>
@@ -58,6 +59,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         :white_check_mark:
       </td>
     </tr>
+
   </tbody>
 </Table>
 
@@ -78,6 +80,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         Official
       </th>
     </tr>
+
   </thead>
 
   <tbody>
@@ -94,6 +97,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         :white_check_mark:
       </td>
     </tr>
+
   </tbody>
 </Table>
 
@@ -129,18 +133,19 @@ The following ports are available for `story-geth` and `story` clients:
 
 Geth:
 
-* RPC: 8545
-* WS: 8546
-* P2P: 30303
+- RPC: 8545
+- WS: 8546
+- P2P: 30303
 
 Metrics:
 
-* Prometheus: 9100
-* Geth: 6060
-* Story: 26660
+- Prometheus: 9100
+- Geth: 6060
+- Story: 26660
 
 # Further Sections
 
+- [Mainnet Status Page](https://status.story.foundation/)
 - [Node Setup](doc:node-setup-dev-mainnet)
 - [Validator Operations](doc:validator-operations)
 - [Tokenomics & Staking](doc:tokenomics-staking)

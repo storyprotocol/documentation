@@ -1,10 +1,10 @@
 ---
-excerpt: ''
+excerpt: ""
 deprecated: false
 hidden: true
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
   description: ""
@@ -19,7 +19,7 @@ next:
 
 ## SIP Repository
 
-- [SIP Repository](https://github.com/pip-pip-labs/story-improvement-proposals)
+- [SIP Repository](https://github.com/storyprotocol/SIPs)
 
 ## Community Forum
 
