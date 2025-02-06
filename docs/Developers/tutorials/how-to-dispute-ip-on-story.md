@@ -76,9 +76,10 @@ export const client = StoryClient.newClient(config)
 
 To dispute an IP Asset, you will need:
 
-* the `ipId` of the IP Asset you are disputing (we use a test one below)
-* the `targetTag` that you are applying to the dispute. Check out the [list of tags](https://docs.story.foundation/docs/dispute-module#/dispute-tags) that can be applied.
-* a `cid` (Content Identifier) is a unique identifier in IPFS, including CID v0 (base58) and CID v1 (base32). It represents the dispute evidence you must provide, as described [here](https://docs.story.foundation/docs/uma-arbitration-policy#/dispute-evidence-submission-guidelines) (we use a test one below).
+* the `targetIpId` of the IP Asset you are disputing (we use a test one below)
+* the `targetTag` that you are applying to the dispute. Only [whitelisted tags](https://docs.story.foundation/docs/dispute-module#/dispute-tags) can be applied.
+* a `cid` (Content Identifier) is a unique identifier in IPFS that represents the dispute evidence you must provide, as described [here](https://docs.story.foundation/docs/uma-arbitration-policy#/dispute-evidence-submission-guidelines) (we use a test one below).
+  * **Note you can only provide a CID one time.** After it is used, it can't be used as evidence again.
 
 Create a `main.ts` file and add the code below:
 
@@ -88,10 +89,14 @@ import { client } from './utils'
 async function main() {
   const disputeResponse = await client.dispute.raiseDispute({
     targetIpId: '0x6b42d065aDCDA6fA83B59ad731841360dC5321fB',
-    // this is "PLAGIARISM" in base32, and is currently the only whitelisted
-    // tag for protocol v1.2
-    targetTag: '0x504c414749415249534d00000000000000000000000000000000000000000000',
+    // NOTE: you must use your own CID here, because every time it is used,
+    // the protocol does not allow you to use it again
     cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+    // you must pick from one of the whitelisted tags here: https://docs.story.foundation/docs/dispute-module#/dispute-tags
+    targetTag: 'IMPROPER_REGISTRATION',
+    bond: 0,
+    liveness: 2592000,
+    txOptions: { waitForTransaction: true },
   })
   console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispute ID: ${disputeResponse.disputeId}`) 
 }
@@ -103,7 +108,7 @@ main();
 
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    Follow the completed code all the way through step 5a.
+    See a completed, working example disputing an IP.
   </Card>
 </Cards>
 
