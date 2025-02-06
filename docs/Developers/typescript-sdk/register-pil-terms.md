@@ -15,7 +15,7 @@ This section demonstrates how to register a selection of License Terms using the
 ## Prerequisites
 
 * [Setup](doc:typescript-sdk-setup) the client object.
-* If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`. 
+* If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by their `licenseTermsId`. 
 
 > 🪙 Whitelisted Revenue Tokens
 >

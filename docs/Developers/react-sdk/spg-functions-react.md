@@ -24,7 +24,7 @@ This function allows you to do all of the following: Mint an NFT :arrow_forward:
 >
 > The address of `nftContract` **must** implement <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol" target="_blank">ISPGNFT</a> in order to work.
 >
-> An easy way to create a collection that implements ISPGNFT is to call the `createCollection` function in the <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/StoryProtocolGateway.sol" target="_blank">SPG contract</a>.
+> An easy way to create a collection that implements ISPGNFT is to call the `createCollection` function in the <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/SPGNFT.sol" target="_blank">SPG contract</a>.
 
 > 📘 NFT Metadata
 >
@@ -240,7 +240,7 @@ This function allows you to do all of the following: Mint an NFT :arrow_forward:
 >
 > The address of `nftContract` **must** implement <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol" target="_blank">ISPGNFT</a> in order to work.
 >
-> An easy way to create a collection that implements ISPGNFT is to call the `createCollection` function in the <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/StoryProtocolGateway.sol" target="_blank">SPG contract</a>.
+> An easy way to create a collection that implements ISPGNFT is to call the `createCollection` function in the <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/SPGNFT.sol" target="_blank">SPG contract</a>.
 
 > 📘 NFT Metadata
 >
