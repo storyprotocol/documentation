@@ -133,7 +133,7 @@ If the `setDisputeJudgement` has tagged an IP as infringing then any address can
 
 The derivatives are then tagged directly without any need for judgment given that it is considered that if a parent IP license has been infringed then all derivatives that come from that license are also implicitly in an infringement situation.
 
-**Example**: IPA 7 is first tagged ("PLAGIARISM") as infringing via `setDisputeJudgement` after having gone through a dispute process. Only after that can IPAs 3, 1, and 0 can be tagged via `tagDerivativeIfParentInfringed` by any address without needing to go through a new dispute process.
+**Example**: IPA 7 is first tagged ("PLAGIARISM") as infringing via `setDisputeJudgement` after having gone through a dispute process. Only after that IPAs 3, 1, and 0 can be tagged via `tagDerivativeIfParentInfringed` by any address without needing to go through a new dispute process.
 
 ![](https://files.readme.io/ee69754-image.png)
 
