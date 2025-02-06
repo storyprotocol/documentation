@@ -5073,32 +5073,11 @@ We are excited to collect feedback and collaborate with IP owners to unlock the 
   Not yet, but we are working on it.
 </details>
 
-
 ## Troubleshooting
 
 Welcome to Story node troubleshooting! This section covers common problems and solutions when running Story nodes.
 
 ### Common Issues
-
-<details>
-  <summary>Database Initialization Failure</summary>
-
-  <br />
-
-  <b>Error:</b>
-
-  <code>
-    ERRO !! Fatal error occurred, app died️ unexpectedly !! err="create db: failed to initialize database:
-  </code>
-
-  <b>Solution:</b>
-
-  1. Save your validator state:
-
-  ```bash
-  cp $HOME/.story/story/data/priv_validator_state.json $HOME/.story/story/priv_validator_state.json.backup
-  ```
-</details>
 
 ***
 
@@ -5145,9 +5124,8 @@ Welcome to Story node troubleshooting! This section covers common problems and s
 
   **Solution:**
   Add the `--rpc.txfee` flag to your geth startup command:
-</details>
 
-```Text bash
+  ```bash
 
   sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
   [Unit]
@@ -5165,8 +5143,8 @@ Welcome to Story node troubleshooting! This section covers common problems and s
   [Install]
   WantedBy=multi-user.target
   EOF
-                            
-```
+  ```
+</details>
 
 <br />
 
