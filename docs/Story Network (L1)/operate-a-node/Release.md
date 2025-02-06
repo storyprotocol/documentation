@@ -2,7 +2,7 @@
 title: Release Notes
 excerpt: ''
 deprecated: true
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
