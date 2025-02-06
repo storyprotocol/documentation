@@ -14390,11 +14390,13 @@ To mint a License Token, we will need the:
 
 ```typescript TypeScript
 const response = await client.license.mintLicenseTokens({
-   licenseTermsId: "1", 
-   licensorIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-   receiver: "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", 
-   amount: 1, 
-   txOptions: { waitForTransaction: true }
+  licenseTermsId: "1", 
+  licensorIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+  receiver: "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", 
+  amount: 1,
+  maxMintingFee: BigInt(0), // disabled
+  maxRevenueShare: 100, // default
+  txOptions: { waitForTransaction: true }
 });
 
 console.log(`License Token minted at transaction hash ${response.txHash}, License IDs: ${response.licenseTokenIds}`)
