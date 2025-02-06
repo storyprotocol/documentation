@@ -1,5 +1,5 @@
 ---
-title: Story Mainnet Guide
+title: Mainnet
 excerpt: ""
 deprecated: false
 hidden: false
@@ -21,9 +21,9 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 # Resources
 
-**Network Name**: Story Aeneid Testnet
+**Network Name**: Story Mainnet
 
-**Chain ID**: 1315
+**Chain ID**: 1514
 
 ## :link: RPCs
 
@@ -52,7 +52,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://aeneid.storyrpc.io`
+        `https://mainnet.storyrpc.io`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -86,11 +86,11 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
+        <a href="https://www.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://aeneid.storyscan.xyz/`
+        `https://www.storyscan.xyz/`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -127,7 +127,21 @@ Specifically for IP-related transactions like registering an IPA, minting a lice
 | :-------- |
 | N/A       |
 
-## Ports
+
+## Infrastructure Partners
+
+> 🚧 Coming soon!
+
+| Partner | URL |
+| :------ | :-- |
+| N/A     | N/A |
+
+## Contract deployment addresses
+
+- [Story Network](doc:node-setup-dev-mainnet)
+- 
+
+## :computer: Ports
 
 The following ports are available for `story-geth` and `story` clients:
 

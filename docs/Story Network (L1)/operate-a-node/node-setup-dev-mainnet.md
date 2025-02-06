@@ -1,5 +1,5 @@
 ---
-title: Node Setup - Dev Mainnet
+title: Mainnet
 excerpt: ''
 deprecated: false
 hidden: false

@@ -1,2 +1,4 @@
-- node-setup-dev-mainnet
-- node-setup-odyssey
+- full-node
+- archive-node
+- node-upgrade
+- release
