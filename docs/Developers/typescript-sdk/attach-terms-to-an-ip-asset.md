@@ -84,10 +84,21 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
+const licensingConfig: LicensingConfig = {
+  isSet: false,
+  mintingFee: BigInt(0),
+  licensingHook: zeroAddress,
+  hookData: zeroHash,
+  commercialRevShare: 0,
+  disabled: false,
+  expectMinimumGroupRewardShare: 0,
+  expectGroupRewardPool: zeroAddress,
+};
+
 const response = await client.ipAsset.registerIpAndAttachPilTerms({
   nftContract: '0x041B4F29183317Fd352AE57e331154b73F8a1D73',
   tokenId: '12',
-  terms: [commercialRemixTerms], // IP already has non-commercial social remixing terms. You can add more here.
+  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
