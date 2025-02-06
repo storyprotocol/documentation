@@ -118,6 +118,8 @@ const newCollection = await client.nftClient.createNFTCollection({
 const response = await client.ipAsset.mintAndRegisterIp({
   // an NFT contract address created by the SPG
   spgNftContract: newCollection.spgNftContract as Address,
+  // set to true to have multiple NFTs with same metadata
+  allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
