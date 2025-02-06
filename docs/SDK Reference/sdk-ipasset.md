@@ -73,6 +73,9 @@ Parameters:
 * `request.childIpId`: The derivative IP ID.
 * `request.parentIpIds`: The parent IP IDs.
 * `request.licenseTermsIds`: The IDs of the license terms that the parent IP supports.
+* `request.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
+* `request.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
@@ -101,6 +104,7 @@ Parameters:
 
 * `request.childIpId`: The derivative IP ID.
 * `request.licenseTokenIds`: The IDs of the license tokens.
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
@@ -121,24 +125,10 @@ Mint an NFT from a collection, register it as an IP, attach metadata to the IP, 
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.terms[]`: The array of license terms to be attached.
-  * `request.terms.transferable`: Indicates whether the license is transferable or not.
-  * `request.terms.royaltyPolicy`: The address of the royalty policy contract which required to StoryProtocol in advance.
-  * `request.terms.mintingFee`: The fee to be paid when minting a license.
-  * `request.terms.expiration`: The expiration period of the license.
-  * `request.terms.commercialUse`: Indicates whether the work can be used commercially or not.
-  * `request.terms.commercialAttribution`: Whether attribution is required when reproducing the work commercially or not.
-  * `request.terms.commercializerChecker`: Commercializers that are allowed to commercially exploit the work. If zero address, then no restrictions is enforced.
-  * `request.terms.commercializerCheckerData`: The data to be passed to the commercializer checker contract.
-  * `request.terms.commercialRevShare`: Percentage of revenue that must be shared with the licensor.
-  * `request.terms.commercialRevCeiling`: The maximum revenue that can be generated from the commercial use of the work.
-  * `request.terms.derivativesAllowed`: Indicates whether the licensee can create derivatives of his work or not.
-  * `request.terms.derivativesAttribution`: Indicates whether attribution is required for derivatives of the work or not.
-  * `request.terms.derivativesApproval`: Indicates whether the licensor must approve derivatives of the work before they can be linked to the licensor IP ID or not.
-  * `request.terms.derivativesReciprocal`: Indicates whether the licensee must license derivatives of the work under the same terms or not.
-  * `request.terms.derivativeRevCeiling`: The maximum revenue that can be generated from the derivative use of the work.
-  * `request.terms.currency`: The ERC20 token to be used to pay the minting fee. the token must be registered in story protocol.
-  * `request.terms.uri`: The URI of the license terms, which can be used to fetch the offchain license terms.
+* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
+* `request.licenseTermsData[]`: The array of license terms to be attached.
+  * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
+  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI`: \[Optional] The URI of the metadata for the IP.
   * `request.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
@@ -221,24 +211,9 @@ Parameters:
 
 * `request.nftContract`: The address of the NFT collection.
 * `request.tokenId`:  The ID of the NFT.
-* `request.terms[]`: The array of license terms to be attached.
-  * `request.terms.transferable`: Indicates whether the license is transferable or not.
-  * `request.terms.royaltyPolicy`: The address of the royalty policy contract which required to StoryProtocol in advance.
-  * `request.terms.mintingFee`: The fee to be paid when minting a license.
-  * `request.terms.expiration`: The expiration period of the license.
-  * `request.terms.commercialUse`: Indicates whether the work can be used commercially or not.
-  * `request.terms.commercialAttribution`: Whether attribution is required when reproducing the work commercially or not.
-  * `request.terms.commercializerChecker`: Commercializers that are allowed to commercially exploit the work. If zero address, then no restrictions is enforced.
-  * `request.terms.commercializerCheckerData`: The data to be passed to the commercializer checker contract.
-  * `request.terms.commercialRevShare`: Percentage of revenue that must be shared with the licensor.
-  * `request.terms.commercialRevCeiling`: The maximum revenue that can be generated from the commercial use of the work.
-  * `request.terms.derivativesAllowed`: Indicates whether the licensee can create derivatives of his work or not.
-  * `request.terms.derivativesAttribution`: Indicates whether attribution is required for derivatives of the work or not.
-  * `request.terms.derivativesApproval`: Indicates whether the licensor must approve derivatives of the work before they can be linked to the licensor IP ID or not.
-  * `request.terms.derivativesReciprocal`: Indicates whether the licensee must license derivatives of the work under the same terms or not.
-  * `request.terms.derivativeRevCeiling`: The maximum revenue that can be generated from the derivative use of the work.
-  * `request.terms.currency`: The ERC20 token to be used to pay the minting fee. the token must be registered in story protocol.
-  * `request.terms.uri`: The URI of the license terms, which can be used to fetch the offchain license terms.
+* `request.licenseTermsData[]`: The array of license terms to be attached.
+  * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
+  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI`: \[Optional] The URI of the metadata for the IP.
   * `request.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
@@ -271,6 +246,9 @@ Parameters:
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
+  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
+  * `request.derivData.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
+  * `request.derivData.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -299,9 +277,13 @@ Mint an NFT from a collection and register it as a derivative IP without license
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
+* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
+  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
+  * `request.derivData.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
+  * `request.derivData.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -331,6 +313,7 @@ Mint an NFT from a SPGNFT collection and register it with metadata as an IP.
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
+* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
 * `request.recipient`: \[Optional] The address of the recipient of the minted NFT, default value is your wallet address.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -358,24 +341,9 @@ Register Programmable IP License Terms (if unregistered) and attach it to IP.
 Parameters:
 
 * `request.ipId`: The ID of the IP.
-* `request.terms[]`: The array of license terms to be attached.
-  * `request.terms.transferable`: Indicates whether the license is transferable or not.
-  * `request.terms.royaltyPolicy`: The address of the royalty policy contract which required to StoryProtocol in advance.
-  * `request.terms.mintingFee`: The fee to be paid when minting a license.
-  * `request.terms.expiration`: The expiration period of the license.
-  * `request.terms.commercialUse`: Indicates whether the work can be used commercially or not.
-  * `request.terms.commercialAttribution`: Whether attribution is required when reproducing the work commercially or not.
-  * `request.terms.commercializerChecker`: Commercializers that are allowed to commercially exploit the work. If zero address, then no restrictions is enforced.
-  * `request.terms.commercializerCheckerData`: The data to be passed to the commercializer checker contract.
-  * `request.terms.commercialRevShare`: Percentage of revenue that must be shared with the licensor.
-  * `request.terms.commercialRevCeiling`: The maximum revenue that can be generated from the commercial use of the work.
-  * `request.terms.derivativesAllowed`: Indicates whether the licensee can create derivatives of his work or not.
-  * `request.terms.derivativesAttribution`: Indicates whether attribution is required for derivatives of the work or not.
-  * `request.terms.derivativesApproval`: Indicates whether the licensor must approve derivatives of the work before they can be linked to the licensor IP ID or not.
-  * `request.terms.derivativesReciprocal`: Indicates whether the licensee must license derivatives of the work under the same terms or not.
-  * `request.terms.derivativeRevCeiling`: The maximum revenue that can be generated from the derivative use of the work.
-  * `request.terms.currency`: The ERC20 token to be used to pay the minting fee. the token must be registered in story protocol.
-  * `request.terms.uri`: The URI of the license terms, which can be used to fetch the offchain license terms.
+* `request.licenseTermsData[]`: The array of license terms to be attached.
+  * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
+  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
 * `request.deadline`: \[Optional] The deadline for the signature in milliseconds, default is 1000s.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
@@ -398,6 +366,8 @@ Mint an NFT from a collection and register it as a derivative IP using license t
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
+* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -427,6 +397,7 @@ Parameters:
 
 * `request.nftContract`: The address of the NFT collection.
 * `request.tokenId`: The ID of the NFT.
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
