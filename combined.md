@@ -5699,7 +5699,6 @@ visualization for the blockchain network. Tools include **Prometheus**,
 | **Promtail**   | Scrapes logs from Docker containers and sends them to Loki.        | `9080` (API), `9095` (Metrics) | `http://localhost:9080` |
 | **Grafana**    | Provides a dashboard interface for metrics and logs visualization. | `3000`                         | `http://localhost:3000` |
 
-
 # Aeneid - Testnet
 
 # Overview
@@ -6136,7 +6135,6 @@ Metrics:
 - [Node Setup](doc:node-setup-dev-mainnet)
 - [Validator Operations](doc:validator-operations)
 - [Tokenomics & Staking](doc:tokenomics-staking)
-
 
 # Troubleshooting
 
