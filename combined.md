@@ -6389,7 +6389,6 @@ iptables -I INPUT -s localhost -j ACCEPT
 
 </details>
 
-
 # Run a Localnet
 
 # Overview
