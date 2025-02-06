@@ -383,6 +383,7 @@ rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
 
 ## Upgrade Story
 
+
 There are three types of upgrades
 
 1. Upgrade the story geth client
