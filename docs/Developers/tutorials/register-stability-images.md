@@ -418,6 +418,7 @@ import { zeroAddress, Address } from 'viem';
 async function main() {
   // previous code here ...
   
+  // default license config
   const licensingConfig: LicensingConfig = {
     isSet: false,
     mintingFee: BigInt(0),
