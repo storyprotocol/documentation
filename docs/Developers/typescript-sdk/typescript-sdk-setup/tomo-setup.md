@@ -27,7 +27,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_TOMO_CLIENT_ID` set up in your `.env` file. Do this by logging into the [Tomo Dashboard](https://dashboard.tomo.inc/) and creating a project.
 3. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
@@ -38,13 +38,13 @@ import { getDefaultConfig, TomoEVMKitProvider } from "@tomo-inc/tomo-evm-kit";
 import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
-import { odyssey } from "@story-protocol/core-sdk";
+import { aeneid } from "@story-protocol/core-sdk";
 
 const config = getDefaultConfig({
   appName: "Test Story App",
   clientId: process.env.NEXT_PUBLIC_TOMO_CLIENT_ID as string,
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
-  chains: [odyssey],
+  chains: [aeneid],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
