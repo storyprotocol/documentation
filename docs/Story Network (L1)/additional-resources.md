@@ -1,13 +1,14 @@
 ---
-excerpt: ""
+title: Additional Resources
+excerpt: ''
 deprecated: false
 hidden: true
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
 
 # Additional Resources
