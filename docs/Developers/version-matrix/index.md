@@ -42,6 +42,8 @@ A version matrix showing the **currently available protocol versions** for diffe
       <td style={{ textAlign: "left" }}>
         [v1.3](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.3.0-beta.2)
 
+        :warning: Note this is still a beta version.
+
         **Migration Guide**: To go from v1.2 to v1.3, check out the [SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide).
       </td>
     </tr>
