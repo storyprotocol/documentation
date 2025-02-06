@@ -16055,7 +16055,7 @@ Next we can initiate the SDK Client. There are two ways to do this:
 ## Set Up Private Key Account
 
 <Cards columns={1}>
-  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/v1.3/scripts/utils/utils.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/utils.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Check out the TypeScript Tutorial for a working example of how to set up the Story SDK Client.
   </Card>
 </Cards>
