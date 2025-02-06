@@ -55,7 +55,7 @@ PINATA_JWT=<YOUR_PINATA_JWT>
 4. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 5. Install the dependencies:
@@ -81,7 +81,7 @@ export const account: Account = privateKeyToAccount(privateKey)
 const config: StoryConfig = {  
   account: account,  
   transport: http(process.env.RPC_PROVIDER_URL),  
-  chainId: 'odyssey',  
+  chainId: 'aeneid',  
 }  
 export const client = StoryClient.newClient(config)
 ```
@@ -195,12 +195,12 @@ Then, in two separate files, add the following `mintNFT` function and the `defau
 ```typescript mintNFT.ts
 import { http, createWalletClient, createPublicClient, Address } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
-import { odyssey } from '@story-protocol/core-sdk'
+import { aeneid } from '@story-protocol/core-sdk'
 import { defaultNftContractAbi } from './defaultNftContractAbi'
 import { account } from './utils'
 
 const baseConfig = {
-  chain: odyssey,
+  chain: aeneid,
   transport: http(process.env.RPCProviderUrl),
 } as const
 export const publicClient = createPublicClient(baseConfig)
