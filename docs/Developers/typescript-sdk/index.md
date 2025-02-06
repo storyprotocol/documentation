@@ -14,14 +14,10 @@ next:
       slug: typescript-sdk-setup
       title: TypeScript SDK Setup
 ---
-> ❗️ v1.3 of SDK is not fully functional yet
->
-> v1.3 of SDK is expected to be released on February 7th, 2025. In the meantime, we will be updating these docs beforehand to prepare for the changes.
-
 The best way to get started is to get your hands dirty and start building.
 
 <Cards columns={2}>
-  <Card title="Working Code Examples" href="https://github.com/storyprotocol/typescript-tutorial/tree/v1.3" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Working Code Examples" href="https://github.com/storyprotocol/typescript-tutorial" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Extremely easy & straightforward working code examples for all of the following tutorials.
   </Card>
 
