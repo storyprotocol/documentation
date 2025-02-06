@@ -27,7 +27,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_DYNAMIC_ENV_ID` set up in your `.env` file. Do this by logging into [Dynamic](https://app.dynamic.xyz/) and creating a project.
 
 ```jsx Web3Providers.tsx
@@ -39,14 +39,14 @@ import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { PropsWithChildren } from "react";
-import { odyssey } from "@story-protocol/core-sdk";
+import { aeneid } from "@story-protocol/core-sdk";
 
 // setup wagmi
 const config = createConfig({
-  chains: [odyssey],
+  chains: [aeneid],
   multiInjectedProviderDiscovery: false,
   transports: {
-    [odyssey.id]: http(),
+    [aeneid.id]: http(),
   },
 });
 const queryClient = new QueryClient();
