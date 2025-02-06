@@ -24,7 +24,7 @@ For this section, we will register an existing NFT as an IP asset (#1 above).
 ## Prerequisites
 
 * [Setup](doc:react-sdk-setup) the Web3Provider.
-* Own an ERC721 NFT in your wallet. Have it's contract address and token ID ready. 
+* Own an ERC721 NFT in your wallet. Have its contract address and token ID ready. 
 
 # Register an Existing NFT as an IP Asset
 

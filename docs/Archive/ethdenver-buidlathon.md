@@ -18,9 +18,9 @@ See all bounty information [here](doc:bounties) or on [Devfolio](https://ethdenv
 
 **General track: Integrate Story Protocol in your dApp ($15K across 5 winners)**: Integrate with Story Protocol and add decentralized Intellectual Property tracking, Licensing and royalties for any content. Get automatic tracking of attribution, derivative work, licensing and royalty payments on Story Protocol’s IP Graph. 
 
-**DeFi track: Create DeFi Primitives for Intellectual Property (IPFi) ($15K)** : Leverage Story Protocol to build out DeFi primitives that enable liquidity of IP (IPFi). Anything goes: trading, collateralization, SocialFi, RWA’s, revenue sharing, the opportunities are untapped and ready to be explored.
+**DeFi track: Create DeFi Primitives for Intellectual Property (IPFi) ($15K)** : Leverage Story Protocol to build out DeFi primitives that enable liquidity of IP (IPFi). Anything goes: trading, collateralization, SocialFi, RWAs, revenue sharing, the opportunities are untapped and ready to be explored.
 
-**Creator tools track: Build plugins for mainstream apps to help register IP on Story Protocol ($10K)** : Build plugins for creator centric Web2 or Web3 apps to make it easy for creators to register their content (video, photo, prose, etc) as IP on-chain. E.g. Wordpress plugins, Unity plugins or even Metamask Snaps to register IP.
+**Creator tools track: Build plugins for mainstream apps to help register IP on Story Protocol ($10K)** : Build plugins for creator-centric Web2 or Web3 apps to make it easy for creators to register their content (video, photo, prose, etc) as IP on-chain. E.g. Wordpress plugins, Unity plugins or even Metamask Snaps to register IP.
 
 **Tooling & Infra track: Create Infrastructure and Tooling for Story Protocol ($8K)** : Build tooling and infrastructure for developers integrating with Story Protocol. This can include hooks and modules like KYC, Oracle integration, and providers like LayerZero, Wormhole, ZKGraph, etc.
 
