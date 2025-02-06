@@ -338,7 +338,7 @@ export const defaultNftContractAbi = [
 
 Now we can call that `mintNFT` function to get a `tokenId`, and then register the NFT as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-* Associated Docs: [ Register New IP Asset and Attach License Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#register-new-ip-asset-and-attach-license-terms)
+* Associated Docs: [ipAsset.register](https://docs.story.foundation/docs/sdk-ipasset#/register)
 
 ```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
@@ -352,10 +352,9 @@ async function main() {
   // previous code here ...
 
   const tokenId = await mintNFT(account.address, `https://ipfs.io/ipfs/${nftIpfsHash}`)
-  const response = await client.ipAsset.registerIpAndAttachPilTerms({
+  const response = await client.ipAsset.register({
     nftContract: process.env.NFT_CONTRACT_ADDRESS as Address,
     tokenId: tokenId!,
-    terms: [], // IP already has non-commercial social remixing terms. You can add more here.
     ipMetadata: {
       ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
       ipMetadataHash: `0x${ipHash}`,
@@ -425,7 +424,7 @@ SPG_NFT_CONTRACT_ADDRESS=<SPG_NFT_CONTRACT_ADDRESS>
 
 The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
+* Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisterip)
 
 ```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
@@ -437,9 +436,9 @@ import { Address } from 'viem'
 async function main() {
   // previous code here ...
 
-  const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
+  const response = await client.ipAsset.mintAndRegisterIp({
     spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-    terms: [], // IP already has non-commercial social remixing terms. You can add more here.
+    allowDuplicates: true,
     ipMetadata: {
       ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
       ipMetadataHash: `0x${ipHash}`,
