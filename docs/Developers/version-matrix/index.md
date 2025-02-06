@@ -76,8 +76,6 @@ A version matrix showing the **currently available protocol versions** for diffe
 
       <td style={{ textAlign: "left" }}>
         *v1.3 coming soon*
-
-        This will be ready on February 3rd.
       </td>
     </tr>
   </tbody>
