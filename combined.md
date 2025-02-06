@@ -14713,9 +14713,20 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
+const licensingConfig: LicensingConfig = {
+  isSet: false,
+  mintingFee: BigInt(0),
+  licensingHook: zeroAddress,
+  hookData: zeroHash,
+  commercialRevShare: 0,
+  disabled: false,
+  expectMinimumGroupRewardShare: 0,
+  expectGroupRewardPool: zeroAddress,
+};
+
 const response = await client.ipAsset.registerPilTermsAndAttach({
   ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721',
-  terms: [commercialRemixTerms],
+  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }],
   txOptions: { waitForTransaction: true },
 })
 console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
@@ -14763,9 +14774,22 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
+const licensingConfig: LicensingConfig = {
+  isSet: false,
+  mintingFee: BigInt(0),
+  licensingHook: zeroAddress,
+  hookData: zeroHash,
+  commercialRevShare: 0,
+  disabled: false,
+  expectMinimumGroupRewardShare: 0,
+  expectGroupRewardPool: zeroAddress,
+};
+
 const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
   spgNftContract: '0xfE265a91dBe911db06999019228a678b86C04959',
-  terms: [commercialRemixTerms], // IP already has non-commercial social remixing terms. You can add more here.
+  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
+  // set to true to mint ip with same nft metadata
+  allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
