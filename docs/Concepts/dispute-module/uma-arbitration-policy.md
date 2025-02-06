@@ -44,7 +44,7 @@ Every document should have the following characteristics:
 
 * It should not take the reviewer more than 1 hour to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
-Depending on what the type of the Dispute Tag is, you also need to include extra evidence:
+Depending on what the type of the Dispute Tag is, you also need to include in the evidence the "Dispute Evidence Contents of the table below:
 
 <Table align={["left","left","left"]}>
   <thead>
@@ -92,9 +92,17 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         `IMPROPER_USAGE`
 
         Examples (non-exhaustive):\
-        Territory, Channels of Distribution,
-        Expiration, Irrevocable, Attribution,
-        Derivatives, Limitations on Creation of Derivatives, Commercial Use, Sublicensable, Non-Transferable, Restriction on Cross-Platform Use
+        Territory,
+        Channels of Distribution,
+        Expiration,
+        Irrevocable,
+        Attribution,
+        Derivatives,
+        Limitations on Creation of Derivatives,
+        Commercial Use,
+        Sublicensable,
+        Non-Transferable,
+        Restriction on Cross-Platform Use
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -127,7 +135,7 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
 
       <td style={{ textAlign: "left" }}>
         1. Check veracity of the proof of payments by checking on the associated platforms when possible using input A and B
-        2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on the blockchain explorer
+        2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on the blockchain explorer. Payments should be made calling payRoyaltyOnBehalf() function on RoyaltyModule.sol smart contract. In addition, royalty payments must be made within 15 days of when the capital was originally received by the owner/IP who is paying those royalties.
 
         <br />
       </td>
@@ -137,7 +145,10 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         `CONTENT_STANDARDS_VIOLATION`
 
-        No-Hate, Suitable-for-All-Ages, No-Drugs-or-Weapons, No-Pornography
+        No-Hate,\
+        Suitable-for-All-Ages,
+        No-Drugs-or-Weapons,
+        No-Pornography
       </td>
 
       <td style={{ textAlign: "left" }}>
