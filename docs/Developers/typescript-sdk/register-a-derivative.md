@@ -71,6 +71,9 @@ const response = await client.ipAsset.registerDerivative({
   childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
   parentIpIds: ["0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba"],
   licenseTermsIds: ["5"],
+  maxMintingFee: BigInt(0), // disabled
+  maxRts: 100_000_000, // default
+  maxRevenueShare: 100, // default
   txOptions: { waitForTransaction: true }
 });
 
@@ -100,13 +103,18 @@ This function allows you to do all of the following: [Register an NFT as an IP A
 ```typescript TypeScript
 import { toHex } from 'viem';
 
+const derivData: DerivativeData = {
+  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+  licenseTermsIds: ["1"],
+  maxMintingFee: BitInt(0), // disabled
+  maxRts: 100_000_000, // default
+  maxRevenueShare: 100, // default
+};
+
 const response = await client.ipAsset.registerDerivativeIp({
   nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
   tokenId: '127',
-  derivData: {
-    parentIpIds: ['0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721'],
-    licenseTermsIds: ['13']
-  },
+  derivData,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -162,6 +170,7 @@ const response = await client.ipAsset.registerIpAndMakeDerivativeWithLicenseToke
   nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
   tokenId: '127',
   licenseTokenIds: ['10'],
+  maxRts: 100_000_000, // default
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -219,13 +228,18 @@ This function allows you to do all of the following: Mint an NFT :arrow_forward:
 import { PIL_TYPE } from '@story-protocol/core-sdk';
 import { toHex } from 'viem';
 
+const derivData: DerivativeData = {
+  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+  licenseTermsIds: ["1"],
+  maxMintingFee: BitInt(0), // disabled
+  maxRts: 100_000_000, // default
+  maxRevenueShare: 100, // default
+};
+
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
   // an NFT contract address created by the SPG
   spgNftContract: "0xfE265a91dBe911db06999019228a678b86C04959",
-  derivData: {
-    parentIpIds: ['0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721'],
-    licenseTermsIds: ['13']
-  },
+  derivData,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -281,6 +295,9 @@ import { toHex } from 'viem';
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLicenseTokens({
   spgNftContract: "0xfE265a91dBe911db06999019228a678b86C04959", // your NFT contract address
   licenseTokenIds: ['10'],
+  maxRts: 100_000_000, // default
+  // set to true to allow ip with same nft metadata
+  allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
