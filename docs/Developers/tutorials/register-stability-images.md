@@ -402,7 +402,7 @@ SPG_NFT_CONTRACT_ADDRESS=
 
 The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
+* Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisterip)
 
 ```typescript main.ts
 import fs from "fs";
@@ -412,15 +412,28 @@ import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
 import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { createHash } from "crypto";
-import { LicenseTerms } from '@story-protocol/core-sdk';
+import { LicenseTerms, LicensingConfig } from '@story-protocol/core-sdk';
 import { zeroAddress, Address } from 'viem';
 
 async function main() {
   // previous code here ...
+  
+  const licensingConfig: LicensingConfig = {
+    isSet: false,
+    mintingFee: BigInt(0),
+    licensingHook: zeroAddress,
+    hookData: zeroHash,
+    commercialRevShare: 0,
+    disabled: false,
+    expectMinimumGroupRewardShare: 0,
+    expectGroupRewardPool: zeroAddress,
+  };
 
   const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
     spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-    terms: [commercialRemixTerms], // the terms we created in the previous step
+    allowDuplicates: true,
+    // the terms we created in the previous step
+    licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }],
     ipMetadata: {
       ipMetadataURI: process.env.PINATA_GATEWAY + '/files/' + ipIpfsHash,
       ipMetadataHash: `0x${ipHash}`,
