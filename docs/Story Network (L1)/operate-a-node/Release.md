@@ -1,12 +1,12 @@
 ---
 title: Release Notes
-excerpt: ""
-deprecated: false
+excerpt: ''
+deprecated: true
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
