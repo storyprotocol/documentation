@@ -22,7 +22,7 @@ This section demonstrates how to claim due revenue from an IP Asset in TypeScrip
 
 There are two main ways revenue can be claimed:
 
-1. **Scenario #1**: Someone pays my IP Asset directly, and I claim that revenue
+1. **Scenario #1**: Someone pays my IP Asset directly, and I claim that revenue.
 2. **Scenario #2**: Someone pays a derivative IP Asset of my IP, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms.
 
 ## Scenario #1
@@ -31,7 +31,7 @@ In this scenario, someone pays my IP Asset directly, and I claim that revenue.
 
 ![](https://files.readme.io/a39e345a512747ff414668309a80ec1b01048c238bf1adef4d0760d830006cbd-image.png)
 
-As we can see in the above diagram, when IP Asset 4 pays IP Asset 3 1M USDC, 850k USDC automatically gets deposited into IP Royalty Vault 3. Below is how IP Asset 3 would claim their revenue:
+As we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 850k USDC automatically gets deposited into IP Royalty Vault 3. Below is how IP Asset 3 would claim their revenue:
 
 ```typescript TypeScript
 const claimRevenue = await client.royalty.claimAllRevenue({
@@ -80,7 +80,7 @@ In this scenario, someone pays a derivative IP Asset of my IP, and I have the ri
 
 ![](https://files.readme.io/04a92b164d8f25119881efe784aed4bb539cdd955f553d74191b513ac0623b68-image.png)
 
-As we can see in the above diagram, when IP Asset 4 pays IP Asset 3 1M USDC, 150k USDC automatically gets deposited to the LAP royalty policy contract to be distributed to ancestors.
+Similar to Scenario #1, as we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 150k USDC automatically gets deposited to the LAP royalty policy contract to be distributed to ancestors.
 
 ![](https://files.readme.io/8f11792c3e3d2e25f74a469996b9c000c61eac167d9512f9a0f353bf62b77abf-image.png)
 
