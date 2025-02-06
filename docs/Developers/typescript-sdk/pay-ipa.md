@@ -28,9 +28,9 @@ In either scenario, you would use the below `payRoyaltyOnBehalf` function. When 
 >
 > In order to use the `payRoyaltyOnBehalf` function below, you'll first need to know a few things.
 >
-> First, the only way to make payments on Story is if the ERC20 token you're using is whitelisted. One of the only whitelisted revenue tokens is SUSD, which is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens).
+> First, the only way to make payments on Story is if the ERC20 token you're using is whitelisted. One of the only whitelisted revenue tokens is $WIP, which is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens).
 >
-> Then, once you have SUSD, you have to approve the Royalty Module to spend them on behalf so it can properly distribute payment to ancestor IPs. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
+> Then, once you have $WIP, you have to approve the Royalty Module to spend them on your behalf so it can properly distribute payment to ancestor IPs. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the `spender` is the v1.3 (current deployment supported by the SDK) address of `RoyaltyModule` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
 
 # Paying an IP Asset
 
@@ -40,15 +40,15 @@ To help with the following scenarios, let's say we have a parent IP Asset that h
 
 ## Tipping an IP Asset
 
-In this scenario, you're an external 3rd-party user who want to pay the child 2 SUSD for being cool. When you call the function below, you should make `payerIpId` a zero address because you are not paying on behalf of an IP Asset. Additionally, you would set `amount` to 2.
+In this scenario, you're an external 3rd-party user who want to pay the child 2 $WIP for being cool. When you call the function below, you should make `payerIpId` a zero address because you are not paying on behalf of an IP Asset. Additionally, you would set `amount` to 2.
 
-Due to the existing license terms that specify 50% `commercialRevShare`, 50% of the revenue (2\*0.5 = 1) would automatically be claimable by the parent thanks to the Royalty Module, such that both the parent and child IP Assets earn 1 SUSD.
+Due to the existing license terms that specify 50% `commercialRevShare`, 50% of the revenue (2\*0.5 = 1) would automatically be claimable by the parent thanks to the Royalty Module, such that both the parent and child IP Assets earn 1 $WIP.
 
 ```typescript TypeScript
 const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
   receiverIpId: '0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1', // child ipId
   payerIpId: zeroAddress,
-  token: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  token: '0x1514000000000000000000000000000000000000', // insert WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   amount: 2,
   txOptions: { waitForTransaction: true },
 })
@@ -75,13 +75,13 @@ export type PayRoyaltyOnBehalfResponse = {
 
 In this scenario, lets say the child IP Asset earned 2 USD off-chain. Because the child owes the parent IP Asset 50% of its revenue, it needs to send 1 USD to the parent.
 
-The `amount` should still be 2. This is because the Royalty Module will automate the payment, such that, like the tipping scenario, 1 SUSD would be kept for the child and 1 SUSD would be claimable by the parent.
+The `amount` should still be 2. This is because the Royalty Module will automate the payment, such that, like the tipping scenario, 1 $WIP would be kept for the child and 1 $WIP would be claimable by the parent.
 
 ```typescript TypeScript
 const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
   receiverIpId: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2', //parentIpId
   payerIpId: '0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1', // childIpId
-  token: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  token: '0x1514000000000000000000000000000000000000', // insert WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   amount: 2,
   txOptions: { waitForTransaction: true },
 })
