@@ -45,7 +45,7 @@ Parameters:
 * `request.ipId`: The address of the IP to which the license terms are attached.
 * `request.licenseTemplate`: The address of the license template.
 * `request.licenseTermsId`: The ID of the license terms.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type AttachLicenseTermsResponse = {
@@ -61,7 +61,7 @@ Mints license tokens for the license terms attached to an IP.
 
 The license tokens are minted to the receiver.
 
-The license terms must be attached to the IP before calling this function. But it can mint license token of default license terms without attaching the default license terms, since it is attached to all IPs by default.
+The license terms must be attached to the IP before calling this function.
 
 IP owners can mint license tokens for their IPs for arbitrary license terms without attaching the license terms to IP.
 
@@ -78,7 +78,7 @@ Parameters:
 * `request.licenseTermsId`: The ID of the license terms within the license template.
 * `request.amount`: The amount of license tokens to mint.
 * `request.receiver`: The address of the receiver.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type MintLicenseTokensResponse = {
@@ -104,7 +104,7 @@ Parameters:
 >
 > They all come from the [PIL Terms](doc:pil-terms).
 
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterPILResponse = {
@@ -124,7 +124,7 @@ Convenient function to register a PIL non commercial social remix license to the
 
 Parameters:
 
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterPILResponse = {
@@ -146,8 +146,8 @@ Parameters:
 
 * `request.defaultMintingFee`: The fee to be paid when minting a license.
 * `request.currency`: The ERC20 token to be used to pay the minting fee and the token must be registered in story protocol.
-* `request.royaltyPolicyAddress`: [Optional] The address of the royalty policy contract, default value is LAP.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.royaltyPolicyAddress`: \[Optional] The address of the royalty policy contract, default value is LAP.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterPILResponse = {
@@ -170,8 +170,8 @@ Parameters:
 * `request.defaultMintingFee`: The fee to be paid when minting a license.
 * `request.commercialRevShare`: Percentage of revenue that must be shared with the licensor.
 * `request.currency`: The ERC20 token to be used to pay the minting fee and the token must be registered in story protocol.
-* `request.royaltyPolicyAddress`: [Optional] The address of the royalty policy contract, default value is LAP.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.royaltyPolicyAddress`: \[Optional] The address of the royalty policy contract, default value is LAP.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterPILResponse = {
@@ -185,9 +185,9 @@ export type RegisterPILResponse = {
 
 Gets License Terms of the given ID.
 
-| Method            | Type                                                                                                 |
-| ----------------- | ---------------------------------------------------------------------------------------------------- |
-| `getLicenseTerms` | `(selectedLicenseTermsId: string \\| number \\| bigint) => PiLicenseTemplateGetLicenseTermsResponse` |
+| Method            | Type                                 |           |                                                       |
+| :---------------- | :----------------------------------- | :-------- | :---------------------------------------------------- |
+| `getLicenseTerms` | \`(selectedLicenseTermsId: string \\ | number \\ | bigint) => PiLicenseTemplateGetLicenseTermsResponse\` |
 
 Parameters:
 
@@ -230,9 +230,9 @@ Parameters:
 * `request.licensorIpId`: The IP ID of the licensor.
 * `request.licenseTermsId`: The ID of the license terms.
 * `request.amount`: The amount of license tokens to mint.
-* `request.licenseTemplate`: [Optional] The address of the license template, default value is Programmable IP License.
-* `request.receiver`: [Optional] The address of the receiver, default value is your wallet address.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.licenseTemplate`: \[Optional] The address of the license template, default value is Programmable IP License.
+* `request.receiver`: \[Optional] The address of the receiver, default value is your wallet address.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type LicensingModulePredictMintingLicenseFeeResponse = {
@@ -259,7 +259,7 @@ Parameters:
   * `request.licensingConfig.mintingFee`: The minting fee to be paid when minting license tokens.
   * `request.licensingConfig.hookData`: The data to be used by the licensing hook.
   * `request.licensingConfig.licensingHook`: The hook contract address for the licensing module, or address(0) if none.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type SetLicensingConfigResponse = {
@@ -268,7 +268,6 @@ export type SetLicensingConfigResponse = {
   success?: boolean;
 };
 ```
-
 
 # IP Asset
 ## IPAssetClient
@@ -1132,12 +1131,7 @@ export type SetPermissionsResponse = {
 
 * payRoyaltyOnBehalf
 * claimableRevenue
-* claimRevenue
-* snapshot
-* transferToVaultAndSnapshotAndClaimByTokenBatch
-* transferToVaultAndSnapshotAndClaimBySnapshotBatch
-* snapshotAndClaimByTokenBatch
-* snapshotAndClaimBySnapshotBatch
+* claimAllRevenue
 * getRoyaltyVaultAddress
 
 ### payRoyaltyOnBehalf
@@ -1183,155 +1177,49 @@ Parameters:
 export type ClaimableRevenueResponse = bigint;
 ```
 
-### claimRevenue
+### claimAllRevenue
 
 Allows token holders to claim by a list of snapshot ids based on the token balance at certain snapshot.
 
-| Method         | Type                                                              |
-| -------------- | ----------------------------------------------------------------- |
-| `claimRevenue` | `(request: ClaimRevenueRequest) => Promise<ClaimRevenueResponse>` |
+| Method            | Type                                                                    |
+| ----------------- | ----------------------------------------------------------------------- |
+| `claimAllRevenue` | `(request: ClaimAllRevenueRequest) => Promise<ClaimAllRevenueResponse>` |
 
 Parameters:
 
-* `request.snapshotIds`: The list of snapshot ids.
-* `request.royaltyVaultIpId`: The id of the royalty vault.
-* `request.token`: The revenue token to claim.
-* `request.account`: \[Optional]The ipId of the IP Account you want to claim to instead of the wallet running the transaction.
+* `request.ancestorIpId`: The address of the ancestor IP from which the revenue is being claimed.
+* `request.claimer`: The address of the claimer of the currency (revenue) tokens. This is normally the ipId of the ancestor IP if the IP has all royalty tokens. Otherwise, this would be the address that is holding the ancestor IP royalty tokens.
+* `request.childIpIds[]`: The addresses of the child IPs from which royalties are derived.
+* `request.royaltyPolicies[]`: The addresses of the royalty policies, where royaltyPolicies\[i] governs the royalty flow for childIpIds\[i].
+* `request.currencyTokens[]`: The addresses of the currency tokens in which royalties will be claimed.
+* `request.claimOptions`: \[Optional]
+  * `request.claimOptions.autoTransferAllClaimedTokensFromIp`: \[Optional]When enabled, all claimed tokens on the claimer are transferred to the wallet address if the wallet owns the IP. If the wallet is the claimer or if the claimer is not an IP owned by the wallet, then the tokens will not be transferred. Set to false to disable auto transferring claimed tokens from the claimer. **Default: true**
+  * `request.claimOptions.autoUnwrapIpTokens`: \[Optional]By default all claimed WIP tokens are converted back to IP after they are transferred. Set this to false to disable this behavior. **Default: false**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
-```typescript Response Type
-export type ClaimRevenueResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  claimableToken?: bigint;
+```typescript Request Type
+export type ClaimAllRevenueRequest = {
+  ancestorIpId: Address;
+  claimer: Address;
+  childIpIds: Address[];
+  royaltyPolicies: Address[];
+  currencyTokens: Address[];
+  claimOptions?: {
+    autoTransferAllClaimedTokensFromIp?: boolean;
+    autoUnwrapIpTokens?: boolean;
+  };
 };
 ```
-
-### snapshot
-
-Snapshots the claimable revenue and royalty token amounts.
-
-| Method     | Type                                                      |
-| ---------- | --------------------------------------------------------- |
-| `snapshot` | `(request: SnapshotRequest) => Promise<SnapshotResponse>` |
-
-Parameters:
-
-* `request`: The request object that contains all data needed to snapshot.
-* `request.royaltyVaultIpId`: The id of the royalty vault.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
 ```typescript Response Type
-export type SnapshotResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
+export type ClaimAllRevenueResponse = {
+  txHashes: Hash[];
+  receipt?: TransactionReceipt;
+  claimedTokens?: ClaimedToken[];
 };
-```
 
-### transferToVaultAndSnapshotAndClaimByTokenBatch
-
-Transfers royalties from royalty policy to the ancestor IP's royalty vault, takes a snapshot, and claims revenue on that snapshot for each specified currency token.
-
-| Method                                           | Type                                                                                                                                  |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `transferToVaultAndSnapshotAndClaimByTokenBatch` | `(request: TransferToVaultAndSnapshotAndClaimByTokenBatchRequest) => Promise<TransferToVaultAndSnapshotAndClaimByTokenBatchResponse>` |
-
-Parameters:
-
-* `request.ancestorIpId`: The ipId of the ancestor IP.
-* `request.royaltyClaimDetails[]`: The details of the royalty claim from child IPs
-  * `request.royaltyClaimDetails.childIpId`: The address of the child IP.
-  * `request.royaltyClaimDetails.royaltyPolicy`: The address of the royalty policy.
-  * `request.royaltyClaimDetails.currencyToken`: The address of the currency (revenue) token to claim.
-  * `request.royaltyClaimDetails.amount`: Amount to claim.
-* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type TransferToVaultAndSnapshotAndClaimByTokenBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
-};
-```
-
-### transferToVaultAndSnapshotAndClaimBySnapshotBatch
-
-Transfers royalties to the ancestor IP's royalty vault, takes a snapshot, claims revenue for each
-
-| Method                                              | Type                                                                                                                                        |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `transferToVaultAndSnapshotAndClaimBySnapshotBatch` | `(request: TransferToVaultAndSnapshotAndClaimBySnapshotBatchRequest) => Promise<TransferToVaultAndSnapshotAndClaimBySnapshotBatchResponse>` |
-
-Parameters:
-
-* `request.ancestorIpId`: The ipId of the ancestor IP.
-* `request.unclaimedSnapshotIds`: The IDs of the unclaimed snapshots to include in the claim.
-* `request.royaltyClaimDetails[]`: The details of the royalty claim from child IPs
-  * `request.royaltyClaimDetails.childIpId`: The address of the child IP.
-  * `request.royaltyClaimDetails.royaltyPolicy`: The address of the royalty policy.
-  * `request.royaltyClaimDetails.currencyToken`: The address of the currency (revenue) token to claim.
-  * `request.royaltyClaimDetails.amount`: Amount to claim.
-* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type TransferToVaultAndSnapshotAndClaimBySnapshotBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
-};
-```
-
-### snapshotAndClaimByTokenBatch
-
-Takes a snapshot of the IP's royalty vault and claims revenue on that snapshot for each
-
-| Method                         | Type                                                                                              |
-| ------------------------------ | ------------------------------------------------------------------------------------------------- |
-| `snapshotAndClaimByTokenBatch` | `(request: SnapshotAndClaimByTokenBatchRequest) => Promise<SnapshotAndClaimByTokenBatchResponse>` |
-
-Parameters:
-
-* `request.royaltyVaultIpId`: The address of the IP.
-* `request.currencyTokens`: The addresses of the currency (revenue) tokens to claim.
-* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type SnapshotAndClaimByTokenBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
-};
-```
-
-### snapshotAndClaimBySnapshotBatch
-
-Takes a snapshot of the IP's royalty vault and claims revenue for each specified currency token
-
-| Method                            | Type                                                                                                    |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `snapshotAndClaimBySnapshotBatch` | `(request: SnapshotAndClaimBySnapshotBatchRequest) => Promise<SnapshotAndClaimBySnapshotBatchResponse>` |
-
-Parameters:
-
-* `request.royaltyVaultIpId`: The address of the IP.
-* `request.unclaimedSnapshotIds`: The IDs of unclaimed snapshots to include in the claim.
-* `request.currencyTokens`: The addresses of the currency (revenue) tokens to claim.
-* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type SnapshotAndClaimBySnapshotBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
+export type ClaimedToken = {
+  token: Address;
+  amount: bigint;
 };
 ```
 
@@ -1547,10 +1435,10 @@ Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inf
 
 An ERC-20 token must be whitelisted by our protocol in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token. Here are the whitelisted tokens (you can mint tokens directly from the link):
 
-| Token | Contract Address                             | Mint                                                                                                                                                      |
-| :---- | :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SUSD  | `0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5` | <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19" target="_blank">Mint SUSD ↗️</a> |
-| WIP   | `0x1516000000000000000000000000000000000000` |                                                                                                                                                           |
+| Token  | Contract Address                             | Explorer                                                                                                                   | Mint                                                                                                                                                |
+| :----- | :------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| WIP    | `0x1514000000000000000000000000000000000000` | <a href="https://aeneid.storyscan.xyz/address/0x1514000000000000000000000000000000000000" target="_blank">View here ↗️</a> | N/A                                                                                                                                                 |
+| MERC20 | `0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E` | <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E" target="_blank">View here ↗️</a> | <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19" target="_blank">Mint ↗️</a> |
 
 ## How to obtain Royalty Tokens?
 
@@ -1688,6 +1576,7 @@ Although the SPG contains certain functions like `mintAndRegisterIpAndAttachPILT
 Instead, we have allowed for a "Multicall" mechanism where you can batch transactions how you like. For more info, see [Batch Function Calls](doc:batch-spg-function-calls).
 
 # Batch Function Calls
+
 ## Background
 
 Prior to this point, registering multiple IPs or performing other operations such as minting, attaching licensing terms, and registering derivatives requires separate transactions for each operation. This can be inefficient and costly. To streamline the process, you can batch multiple transactions into a single one. Two solutions are now available for this:
@@ -1695,7 +1584,7 @@ Prior to this point, registering multiple IPs or performing other operations suc
 1. **Batch SPG function calls:** Use [SPG’s built-in `multicall` function](https://docs.story.foundation/docs/batch-spg-function-calls#1-batch-spg-function-calls-via-built-in-multicall-function).
 2. **Batch function calls beyond SPG:** Use the [Multicall3 Contract](https://docs.story.foundation/docs/batch-spg-function-calls#2-batch-function-calls-via-multicall3-contract).
 
-***
+---
 
 ## 1. Batch SPG Function Calls via Built-in `multicall` Function
 
@@ -1712,9 +1601,9 @@ function multicall(bytes[] calldata data) external virtual returns (bytes[] memo
 
 ### Example Usage
 
-Suppose you want to mint multiple NFTs, register them as IPs, and link them as derivatives to some parent IPs. 
+Suppose you want to mint multiple NFTs, register them as IPs, and link them as derivatives to some parent IPs.
 
-To accomplish this, you can use SPG’s `multicall` function to batch the calls to the `mintAndRegisterIpAndMakeDerivative` function. 
+To accomplish this, you can use SPG’s `multicall` function to batch the calls to the `mintAndRegisterIpAndMakeDerivative` function.
 
 Here’s how you might do it:
 
@@ -1745,14 +1634,14 @@ await DerivativeWorkflows.multicall([
       recipient1,
       ipMetadata1,
   ).encodeABI(),
-  
+
   DerivativeWorkflows.contract.methods.mintAndRegisterIpAndMakeDerivative(
       nftContract2,
       derivData2,
       recipient2,
       ipMetadata2,
   ).encodeABI(),
-  
+
   DerivativeWorkflows.contract.methods.mintAndRegisterIpAndMakeDerivative(
       nftContract3,
       derivData3,
@@ -1764,7 +1653,7 @@ await DerivativeWorkflows.multicall([
 ]);
 ```
 
-***
+---
 
 ## 2. Batch Function Calls via Multicall3 Contract
 
@@ -1774,7 +1663,7 @@ await DerivativeWorkflows.multicall([
 
 The Multicall3 contract allows you to execute multiple calls within a single transaction and aggregate the results. The [`viem` library](https://viem.sh/docs/contract/multicall#multicall) provides native support for Multicall3.
 
-### Story Odyssey Testnet Multicall3 Deployment Info
+### Story Aeneid Testnet Multicall3 Deployment Info
 
 (Same address across all EVM chains)
 
@@ -1783,7 +1672,7 @@ The Multicall3 contract allows you to execute multiple calls within a single tra
   "contractName": "Multicall3",
   "chainId": 1516,
   "contractAddress": "0xcA11bde05977b3631167028862bE2a173976CA11",
-  "url": "https://odyssey.storyscan.xyz/address/0xcA11bde05977b3631167028862bE2a173976CA11"
+  "url": "https://aeneid.storyscan.xyz/address/0xcA11bde05977b3631167028862bE2a173976CA11"
 }
 ```
 
@@ -1808,8 +1697,8 @@ function aggregate3Value(Call3Value[] calldata calls) external payable returns (
 
 ### Struct Definitions
 
-* **Call3**: Used in `aggregate3`.
-* **Call3Value**: Used in `aggregate3Value`.
+- **Call3**: Used in `aggregate3`.
+- **Call3Value**: Used in `aggregate3Value`.
 
 ```solidity
 struct Call3 {
@@ -1828,7 +1717,7 @@ struct Call3Value {
 
 ### Return Type
 
-* **Result**: Struct returned by both `aggregate3` and `aggregate3Value`.
+- **Result**: Struct returned by both `aggregate3` and `aggregate3Value`.
 
 ```solidity
 struct Result {
@@ -1847,8 +1736,8 @@ For a list of limitations when using Multicall3, refer to the [Multicall3 README
 
 ### Additional Resources
 
-* [Multicall3 Documentation](https://github.com/mds1/multicall/blob/main/README.md)
-* [Multicall Documentation from Viem](https://viem.sh/docs/contract/multicall#multicall)
+- [Multicall3 Documentation](https://github.com/mds1/multicall/blob/main/README.md)
+- [Multicall Documentation from Viem](https://viem.sh/docs/contract/multicall#multicall)
 
 ### Full Multicall3 Interface
 
@@ -3232,7 +3121,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Supporting image. Could be used as a “wrapper” image for things related to branding or watermarks.
+        A separate image with your watermark already applied. This way apps choosing to use it can render this version of the image (with watermark applied).
       </td>
     </tr>
 
@@ -3823,29 +3712,29 @@ In addition, [Group IPAs](doc:grouping-module) are subject to the following addi
 | Remove IP Asset from a Group | You can only remove an IP Asset from a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it. |
 
 # UMA Arbitration Policy
-> 🚧 Warning: Only in v1.3
->
-> The UMA Arbitration Policy is only available in v1.3 of our protocol, which is not yet documented.
-
 > 📘 UMA
 >
 > For detailed information on how UMA's dispute resolution works, [visit their website](https://uma.xyz/).
 
-This arbitration policy is a dispute resolution mechanism that follows [UMA's](https://uma.xyz/) rules. Below we share a high-level overview of how the UMA dispute process works.
+This arbitration policy is a dispute resolution mechanism that uses UMA’s optimistic oracle to verify disputes. Below we share a high-level overview of how the UMA dispute process works.
 
 ## Smart Contract Flow Diagram
 
 ![](https://files.readme.io/e0dfb0a226bdd29ab3adede7d1df7d6662497331e1b92319ee1ad8344dc5dfa3-image.png)
 
-1. Raise Dispute - The first step to initiate a dispute against an IP Asset is to call the `raiseDispute` function on [DisputeModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/dispute/DisputeModule.sol). This function will in turn call `assertTruth` on UMA's `OptimisticOracleV3.sol`. To initiate a dispute the dispute initiator will need to post a bond of at least the minimum bond defined by UMA for the selected currency.
-2. (Optional) Dispute Assertion / Counter Dispute - After the `raiseDispute` call there is a period of time called liveness in which a counter dispute can be submitted. The liveness period is split in two parts: (i) the first part of the liveness period in which only the IP owner can counter dispute and (ii) a second part in which any address can counter dispute - which can be done by calling `disputeAssertion` on `ArbitrationPolicyUMA.sol`. To counter a dispute the caller will need to post a bond of the same amount and currency that was used by the dispute initiator when raising a dispute.
+1. Raise Dispute - The first step to initiate a dispute against an IP Asset is to call the `raiseDispute` function on [DisputeModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/dispute/DisputeModule.sol). This function will in turn call `assertTruth` on UMA's `OptimisticOracleV3.sol`. To initiate a dispute the dispute initiator will need to post a bond of at least the minimum bond defined by UMA for the selected currency. Note that this bond will be lost if the dispute is deemed not verifiably correct by the oracle.
+2. (Optional) Dispute Assertion / Counter Dispute - After the `raiseDispute` call there is a period of time called liveness in which a counter dispute can be submitted. The liveness period is split in two parts: (i) the first part of the liveness period in which only the IP owner can counter dispute and (ii) a second part in which any address can counter dispute - which can be done by calling `disputeAssertion` on `ArbitrationPolicyUMA.sol`. To counter a dispute the caller will need to post a bond of the same amount and currency that was used by the dispute initiator when raising a dispute. Note that this bond will be lost if the original dispute is deemed to be verifiably correct by the oracle.
 3. Settle Assertion
    1. If nobody submitted a counter dispute then when the liveness period is over, any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
    2. If somebody has submitted a counter dispute before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
 
 ## Dispute Evidence Submission Guidelines
 
-When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that UMA will use & read from to make a judgement on the dispute.
+When raising a dispute or making a counter dispute, both parties can submit dispute evidence. Dispute evidence refers to a text document that oracle participants will use & read from to make a judgement on the dispute.
+
+### Burden of Proof
+
+In all disputes with UMA arbitration policy, the burden of proof lies with the party creating the dispute. This means that the disputer must provide clear, compelling, and verifiable evidence to prove the dispute beyond reasonable doubt. Disputes that do not meet this high bar can be counter-disputed with the disputing party losing their bond.
 
 ### Document Characteristics
 
@@ -3855,9 +3744,9 @@ Every document should have the following characteristics:
 
 * It should be uploaded on IPFS.
 
-* It should not take the reviewer more than 2 hours to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
+* It should not take the reviewer more than 1 hour to review the dispute evidence document - the reviewer's time is limited and the evidence could be deemed invalid if it would take too much time to review. Best efforts will be applied to solve a dispute but please keep it concise to have your dispute evidence be valid.
 
-Depending on what the type of the Dispute Tag is, you also need to include extra evidence:
+Depending on what the type of the Dispute Tag is, you also need to include in the evidence the "Dispute Evidence Contents of the table below:
 
 <Table align={["left","left","left"]}>
   <thead>
@@ -3883,16 +3772,18 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. Proof of pre-existing IP with earlier registration date (onchain or offchain) and/or instructions on where/how to check it.
+        A. Showcase or pointer to the pre-existing IP that is being infringed upon by the disputed IP
+
+        B. Proof of public display of the pre-existing IP at an earlier date than the infringing IP (onchain or offchain) and/or instructions on where/how to check it
       </td>
 
       <td style={{ textAlign: "left" }}>
         1. Check if the pre-existing  is the same or very similar to the disputed IP using input A
            * Mickey Mouse with 1 pixel difference is an infringement
-           * Mickey Mouse with a new hat is an infringement unless it’s a derivative of Mickey Mouse
+           * Mickey Mouse with a new hat is an infringement unless it’s a derivative of the original Mickey Mouse with an appropriate license
         2. Check the registration date of the pre-existing IP using input B
-        3. Confirm that the disputed IP has a later registration date by checking on the Hub
-        4. Confirm that the disputed IP is not a derivative of the pre-existing IP by checking on the Hub
+        3. Confirm that the disputed IP has a later registration date
+        4. Confirm that the disputed IP is not a derivative of the pre-existing IP
 
         <br />
       </td>
@@ -3903,29 +3794,33 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
         `IMPROPER_USAGE`
 
         Examples (non-exhaustive):\
-        Territory
-        Channels of Distribution
-        Expiration
-        Irrevocable
-        Attribution
-        Derivatives
-        Limitations on Creation of Derivatives
-        Commercial Use
-        Sublicensable
-        Non-Transferable
+        Territory,
+        Channels of Distribution,
+        Expiration,
+        Irrevocable,
+        Attribution,
+        Derivatives,
+        Limitations on Creation of Derivatives,
+        Commercial Use,
+        Sublicensable,
+        Non-Transferable,
         Restriction on Cross-Platform Use
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. PIL terms that have been violated
-        2. Description of the violations
-        3. Proof of the violations
+        A. PIL term that has been violated
+
+        B. Description of the violation
+
+        C. Proof of the violation
       </td>
 
       <td style={{ textAlign: "left" }}>
         1. Read the associated PIL term description on the PIL license official document using input A
         2. Read the violation description using input B
         3. Decide on the veracity of the proof presented by checking on associated platforms when possible using input C
+
+        <br />
       </td>
     </tr>
 
@@ -3935,13 +3830,14 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. Description of each payment the disputed IP received that should have been shared with its royalty vault
-        2. Proof of payments
+        A. Description of each payment the disputed IP received that should have been shared with its royalty vault and/or its ancestors but it were not
+
+        B. Proof of those payments that were not properly shared as royalties
       </td>
 
       <td style={{ textAlign: "left" }}>
         1. Check veracity of the proof of payments by checking on the associated platforms when possible using input A and B
-        2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on blockchain explorer
+        2. If proof of payments are deemed to be real, confirm that the payment has indeed not been made onchain by checking on the blockchain explorer. Payments should be made calling payRoyaltyOnBehalf() function on RoyaltyModule.sol smart contract. In addition, royalty payments must be made within 15 days of when the capital was originally received by the owner/IP who is paying those royalties.
 
         <br />
       </td>
@@ -3951,16 +3847,18 @@ Depending on what the type of the Dispute Tag is, you also need to include extra
       <td style={{ textAlign: "left" }}>
         `CONTENT_STANDARDS_VIOLATION`
 
-        No-Hate\
-        Suitable-for-All-Ages
-        No-Drugs-or-Weapons
+        No-Hate,\
+        Suitable-for-All-Ages,
+        No-Drugs-or-Weapons,
         No-Pornography
       </td>
 
       <td style={{ textAlign: "left" }}>
-        1. The content standard point that has been violated
-        2. Description of the violation
-        3. Proof of violation
+        A. The content standard point that has been violated
+
+        B. Description of the violation
+
+        C. Proof of violation
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -4135,7 +4033,7 @@ The [💊 Programmable IP License (PIL)](doc:programmable-ip-license) is very co
 
 > 📘 Default Terms
 >
-> This flavor is already registered as `licenseTermsId = 1` on our protocol. **In addition, every single IP Asset has these terms attached by default.**
+> This flavor is already registered as `licenseTermsId = 1` on our protocol.
 
 Let the world build on and play with your creation. This license allows for endless free remixing while tracking all uses of your work while giving you full credit. Similar to: TikTok plus attribution.
 
@@ -4295,7 +4193,7 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 PILTerms({
   transferable: true,
   royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
-  defaultMintingFee: BigInt(100), // ex. costs 100 SUSD to mint
+  defaultMintingFee: BigInt(100), // ex. costs 100 $WIP to mint
   expiration: BigInt(0),
   commercialUse: true,
   commercialAttribution: true,
@@ -4308,7 +4206,7 @@ PILTerms({
   derivativesApproval: false,
   derivativesReciprocal: false,
   derivativeRevCeiling: BigInt(0),
-  currency: CURRENCY, // ex. SUSD address
+  currency: CURRENCY, // ex. $WIP address
   uri: "",
 })
 ```
@@ -4404,7 +4302,7 @@ Let the world build on and play with your creation... and earn money together fr
 PILTerms({
   transferable: true,
   royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
-  defaultMintingFee: BigInt(100), // ex. costs 100 SUSD to mint
+  defaultMintingFee: BigInt(100), // ex. costs 100 $WIP to mint
   expiration: BigInt(0),
   commercialUse: true,
   commercialAttribution: true,
@@ -4417,7 +4315,7 @@ PILTerms({
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // ex. SUSD address
+  currency: CURRENCY, // ex. $WIP address
   uri: "",
 });
 ```
@@ -4858,7 +4756,7 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
       <td style={{ textAlign: "left" }}>
         Whether or not the IP can be used to develop AI learning models.
 
-        By default, the IP can be used for such development.
+        By default, the IP **cannot** be used for such development.
       </td>
     </tr>
 
@@ -5799,378 +5697,6 @@ Story’s staking contract will handle all validators/delegators related operati
 
 The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
-# Node Setup - Homer
-
-This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
-
-![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
-
-The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
-
-- **`story-geth`execution client:**
-  - Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  - Latest Stable Binary (v1.0.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.1)
-- **`story`consensus client:**
-  - Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  - Latest Stable Binary (v1.0.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.0.0)
-
-# Story Node Installation Guide
-
-## Pre-Installation Checklist
-
-- [ ] Verify system meets hardware requirements
-- [ ] Operating system: Ubuntu 22.04 LTS
-- [ ] Required ports are available
-- [ ] Sufficient disk space available
-- [ ] Root or sudo access
-
-## Quick Reference
-
-- Installation time: ~30 minutes
-- Network: Homer Testnet
-- Required versions:
-  - story-geth: v1.0.1
-  - story: v1.0.0
-
-## 1. System Preparation
-
-### 1.1 System Requirements
-
-For optimal performance and reliability, we recommend running your node on either:
-
-- A Virtual Private Server (VPS)
-- A dedicated Linux-based machine
-
-### System Specs
-
-| Hardware  | Requirement       |
-| --------- | ----------------- |
-| CPU       | 8 Cores           |
-| RAM       | 32 GB             |
-| Disk      | 500 GB NVMe Drive |
-| Bandwidth | 25 MBit/s         |
-
-### 1.2 Required Ports
-
-_Ensure all ports needed for your node functionality are needed, described below_
-
-- `story-geth`
-  - 8545
-    - Required if you want your node to interface via JSON-RPC API over HTTP
-  - 8546
-    - Required for websockets interaction
-  - 30303 (TCP + API)
-    - MUST be open for p2p communication
-- `story`
-  - 26656
-    - MUST be open for consensus p2p communication
-  - 26657
-    - Required if you want your node interfacing for Tendermint RPC
-  - 26660
-    - Needed if you want to expose prometheus metrics
-
-## 1.3 Install Dependencies
-
-```bash
-# Update system
-sudo apt update && sudo apt-get update
-
-# Install required packages
-sudo apt install -y \
-  curl \
-  git \
-  make \
-  jq \
-  build-essential \
-  gcc \
-  unzip \
-  wget \
-  lz4 \
-  aria2 \
-  gh
-```
-
-### 1.4 Install Go
-
-For Odyssey, we need to install Go 1.22.0
-
-```bash
-# Download and install Go 1.22.0
-cd $HOME
-
-# Set Go version
-GO_VERSION="1.22.0"
-
-# Download Go binary
-wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Remove existing Go installation and extract new version
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Clean up downloaded archive
-rm "go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Add Go to PATH
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-
-# Verify installation
-go version
-```
-
-## 2. Story Node Installation
-
-### 2.1 Install Story-Geth
-
-1. Download and setup binary
-
-```bash
-cd $HOME
-wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
-sudo mv ./geth-linux-amd64 story-geth
-sudo chmod +x story-geth
-sudo mv ./story-geth $HOME/go/bin/story-geth
-source $HOME/.bashrc
-
-# Verify installation
-story-geth version
-```
-
-You will see the version of the geth binary.
-
-```
-Geth
-version: 1.0.1-stable
-...
-
-```
-
-(Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-```bash
-sudo xattr -rd com.apple.quarantine ./geth
-```
-
-2. Configure and start service
-
-```bash
-# Setup systemd service
-sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
-[Unit]
-Description=Story Geth Client
-After=network.target
-
-[Service]
-User=${user}
-ExecStart=${path_to_geth_binary} --story --syncmode full
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=4096
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# Start service
-sudo systemctl daemon-reload
-sudo systemctl enable story-geth
-sudo systemctl start story-geth
-
-# Verify service status
-sudo systemctl status story-geth
-```
-
-### 2.2 Install Story Consensus Client
-
-#### Cosmovisor installation
-
-For updating the story client, we recommend using Cosmovisor.
-
-1. Install Cosmovisor
-
-```bash
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
-cosmovisor version
-```
-
-2. Configure Cosmovisor
-
-```bash
-# Set daemon configuration
-export DAEMON_NAME=story
-export DAEMON_HOME=$HOME/.story/story
-export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
-sudo mkdir -p \
-  $DAEMON_HOME/cosmovisor/backup \
-  $DAEMON_HOME/data
-
-
-# Persist configuration
-echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
-echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
-echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
-echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
-```
-
-#### Install Story Client
-
-```bash
-cd $HOME
-wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
-sudo mv story-linux-amd64 story
-sudo chmod +x story
-sudo mv ./story $HOME/go/bin/story
-source $HOME/.bashrc
-story version
-```
-
-> You should expect to see version 1.0.0-stable
-
-(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-```bash
-sudo xattr -rd com.apple.quarantine ./story
-```
-
-#### Init Story with Cosmovisor
-
-```bash
-cosmovisor init ./story
-cosmovisor run init --network story --moniker ${moniker_name}
-cosmovisor version
-```
-
-#### Clear State
-
-If you ever run into issues and would like to try joining the network from a fresh state, run the following:
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
-```
-
-- Mac OS X:
-  - `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-- Linux:
-  - `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
-
-To quickly check if the node is syncing, you could
-
-- Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-
-#### Custom Configuration
-
-To override your own node settings, you can do the following:
-
-- `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
-- `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
-- `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
-
-#### Custom Automation
-
-Below we list a sample `Systemd` configuration you may use on Linux
-
-```bash
-# story
-sudo tee /etc/systemd/system/cosmovisor.service > /dev/null <<EOF
-[Unit]
-Description=Cosmovisor
-After=network.target
-
-[Service]
-Type=simple
-User=$USER
-Group=$GROUP
-ExecStart=/usr/local/bin/cosmovisor run run \
---api-enable \
---api-address=0.0.0.0:1317
-Restart=on-failure
-RestartSec=5s
-LimitNOFILE=65535
-Environment="DAEMON_NAME=$DAEMON_NAME"
-Environment="DAEMON_HOME=$DAEMON_HOME"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
-WorkingDirectory=$DAEMON_HOME
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-```
-
-#### Start the service
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable cosmovisor
-sudo systemctl start cosmovisor
-
-# Monitor logs
-journalctl -u cosmovisor -f -o cat
-```
-
-#### Debugging
-
-If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
-
-- `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  - This will give you a list of consesus peers the node is sync'd with by moniker
-- `curl localhost:26657/health`
-  - This will let you know if the node is healthy - `{}` indicates it is
-
-## 3. Verify Installation
-
-### 3.1 Check Geth Status
-
-```bash
-# Check sync status
-curl -X POST -H "Content-Type: application/json" \
-  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
-  http://localhost:8545
-
-```
-
-### 3.2 Check Consensus Client
-
-```bash
-# Check node status
-curl localhost:26657/status
-
-# Check peer connections
-curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
-```
-
-## Clean status
-
-If you ever run into issues and would like to try joining the
-network from a cleared state, run the following:
-
-### Geth
-
-```bash
-rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
-```
-
-- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story 
---syncmode full`
-- Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode 
-full`
-
-### Story
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
-```
-
-- Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-- Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
-
 # Wallet Setup
 # Option 1: Button Click
 
@@ -6650,6 +6176,462 @@ rm ~/.story/story/config/priv_validator_key.json
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
 
 
+# Node Setup - Dev Mainnet
+This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
+
+![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
+
+The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
+
+* **`story-geth`execution client:**
+  * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
+  * Latest Stable Binary (v1.0.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.1)
+* **`story`consensus client:**
+  * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
+  * Latest Stable Binary (v1.1.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.1.0)
+
+# Story Node Installation Guide
+
+## Pre-Installation Checklist
+
+* [ ] Verify system meets hardware requirements
+* [ ] Operating system: Ubuntu 22.04 LTS
+* [ ] Required ports are available
+* [ ] Sufficient disk space available
+* [ ] Root or sudo access
+
+## Quick Reference
+
+* Installation time: \~30 minutes
+* Network: Story Dev mainnet
+* Required versions:
+  * story-geth: v1.0.1
+  * story: v1.1.0
+
+## 1. System Preparation
+
+### 1.1 System Requirements
+
+For optimal performance and reliability, we recommend running your node on either:
+
+* A Virtual Private Server (VPS)
+* A dedicated Linux-based machine
+
+### System Specs
+
+| Hardware  | Requirement       |
+| --------- | ----------------- |
+| CPU       | 8 Cores           |
+| RAM       | 32 GB             |
+| Disk      | 500 GB NVMe Drive |
+| Bandwidth | 25 MBit/s         |
+
+### 1.2 Required Ports
+
+*Ensure all ports needed for your node functionality are needed, described below*
+
+* `story-geth`
+  * 8545
+    * Required if you want your node to interface via JSON-RPC API over HTTP
+  * 8546
+    * Required for websockets interaction
+  * 30303 (TCP + API)
+    * MUST be open for p2p communication
+* `story`
+  * 26656
+    * MUST be open for consensus p2p communication
+  * 26657
+    * Required if you want your node interfacing for Tendermint RPC
+  * 26660
+    * Needed if you want to expose prometheus metrics
+
+## 1.3 Install Dependencies
+
+```bash
+# Update system
+sudo apt update && sudo apt-get update
+
+# Install required packages
+sudo apt install -y \
+  curl \
+  git \
+  make \
+  jq \
+  build-essential \
+  gcc \
+  unzip \
+  wget \
+  lz4 \
+  aria2 \
+  gh
+```
+
+### 1.4 Install Go
+
+For Odyssey, we need to install Go 1.22.0
+
+```bash
+# Download and install Go 1.22.0
+cd $HOME
+
+# Set Go version
+GO_VERSION="1.22.0"
+
+# Download Go binary
+wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Remove existing Go installation and extract new version
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Clean up downloaded archive
+rm "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Add Go to PATH
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
+
+# Verify installation
+go version
+```
+
+## 2. Story Node Installation
+
+### 2.1 Install Story-Geth
+
+1. Download and setup binary
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/
+source $HOME/.bashrc
+
+# Verify installation
+story-geth version
+```
+
+You will see the version of the geth binary.
+
+```
+Geth
+version: 1.0.1-stable
+...
+
+```
+
+(Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./geth
+```
+
+2. Configure and start service
+
+```bash
+# Setup systemd service
+sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+[Unit]
+Description=Story Geth Client
+After=network.target
+
+[Service]
+User=${user}
+ExecStart=${path_to_geth_binary} --story --syncmode full
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Start service
+sudo systemctl daemon-reload
+sudo systemctl enable story-geth
+sudo systemctl start story-geth
+
+# Verify service status
+sudo systemctl status story-geth
+```
+
+### 2.2 Install Story Consensus Client
+
+#### Cosmovisor installation
+
+For updating the story client, we recommend using Cosmovisor.
+
+1. Install Cosmovisor
+
+```bash
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
+cosmovisor version
+```
+
+2. Configure Cosmovisor
+
+```bash
+# Set daemon configuration
+export DAEMON_NAME=story
+export DAEMON_HOME=$HOME/.story/story
+export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
+sudo mkdir -p \
+  $DAEMON_HOME/cosmovisor/backup \
+  $DAEMON_HOME/data
+
+
+# Persist configuration
+echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
+echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
+echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
+```
+
+#### Install Story Client
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/
+source $HOME/.bashrc
+story version
+```
+
+> You should expect to see version 1.0.0-stable
+
+(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./story
+```
+
+#### Init Story with Cosmovisor
+
+```bash
+cosmovisor init ./story
+cosmovisor run init --network story --moniker ${moniker_name}
+cosmovisor version
+```
+
+#### Clear State
+
+If you ever run into issues and would like to try joining the network from a fresh state, run the following:
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+```
+
+* Mac OS X:
+  * `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+* Linux:
+  * `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+
+To quickly check if the node is syncing, you could
+
+* Check the geth RPC endpoint to see if blocks are increasing:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+  ```
+* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+
+#### Custom Configuration
+
+To override your own node settings, you can do the following:
+
+* `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
+* `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
+* `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
+
+#### Custom Automation
+
+Below we list a sample `Systemd` configuration you may use on Linux
+
+```bash
+# story
+sudo tee /etc/systemd/system/cosmovisor.service > /dev/null <<EOF
+[Unit]
+Description=Cosmovisor
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+Group=$GROUP
+ExecStart=/usr/local/bin/cosmovisor run run \
+--api-enable \
+--api-address=0.0.0.0:1317
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=65535
+Environment="DAEMON_NAME=$DAEMON_NAME"
+Environment="DAEMON_HOME=$DAEMON_HOME"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
+WorkingDirectory=$DAEMON_HOME
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+```
+
+#### Start the service
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable cosmovisor
+sudo systemctl start cosmovisor
+
+# Monitor logs
+journalctl -u cosmovisor -f -o cat
+```
+
+#### Debugging
+
+If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
+
+* `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
+  * This will give you a list of consesus peers the node is sync'd with by moniker
+* `curl localhost:26657/health`
+  * This will let you know if the node is healthy - `{}` indicates it is
+
+## 3. Verify Installation
+
+### 3.1 Check Geth Status
+
+```bash
+# Check sync status
+curl -X POST -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  http://localhost:8545
+
+```
+
+### 3.2 Check Consensus Client
+
+```bash
+# Check node status
+curl localhost:26657/status
+
+# Check peer connections
+curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
+```
+
+## Clean status
+
+If you ever run into issues and would like to try joining the\
+network from a cleared state, run the following:
+
+### Geth
+
+```bash
+rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
+```
+
+* Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story    --syncmode full`
+* Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode   
+  full`
+
+### Story
+
+```bash
+rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+```
+
+* Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+* Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+
+<br />
+
+## Upgrade Story
+
+There are three types of upgrades
+
+1. Upgrade the story geth client
+2. Upgrade the story client manually
+3. Schedule the upgrade with Cosmovisor
+
+### Upgrade the story geth client
+
+```bash
+sudo systemctl stop story
+sudo systemctl stop story-geth
+
+# Download the new binary
+wget ${STORY_GETH_BINARY_URL}
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/story-geth
+source $HOME/.bashrc
+
+# Restart the service
+sudo systemctl start story-geth
+sudo systemctl start story
+```
+
+### Upgrade the story client manually
+
+```bash
+sudo systemctl stop story
+
+# Download the new binary
+wget ${STORY_BINARY_URL}
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/story
+
+# Schedule the update
+sudo systemctl start story
+```
+
+### Schedule the upgrade with Cosmovisor
+
+The following steps outline how to schedule an upgrade using Cosmovisor:
+
+1. Create the upgrade directory and download the new binary
+
+```bash
+# Download the new binary
+wget ${STORY_BINARY_URL}
+
+# Schedule the upgrade
+source $HOME/.bash_profile
+cosmovisor add-upgrade ${UPGRADE_NAME} ${UPGRADE_PATH} \
+  --force \
+  --upgrade-height ${UPGRADE_HEIGHT}
+```
+
+2. Verify the upgrade configuration
+
+```bash
+# Check the upgrade info
+cat $HOME/.story/data/upgrade-info.json
+```
+
+The upgrade-info.json should show:
+
+```json
+{
+  "name": "v1.0.0",
+  "time": "2025-02-05T12:00:00Z",
+  "height": 858000
+}
+```
+
+3. Monitor the upgrade
+
+```bash
+# Watch the node logs for the upgrade
+journalctl -u story -f -o cat
+```
+
+Note: Cosmovisor will automatically handle the binary switch when the specified block height is reached. Ensure your node has enough disk space and is fully synced before the upgrade height.
+
 # Node Setup - Odyssey
 
 This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
@@ -6960,6 +6942,10 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 # Resources
 
+**Network Name**: Story Aeneid Testnet
+
+**Chain ID**: 1315
+
 ## :link: RPCs
 
 <Table align={["left","left","left"]}>
@@ -6986,7 +6972,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://rpc.odyssey.storyrpc.io/`
+        `https://aeneid.storyrpc.io`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -7018,57 +7004,15 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://odyssey.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
+        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://odyssey.storyscan.xyz/`
+        `https://aeneid.storyscan.xyz/`
       </td>
 
       <td style={{ textAlign: "left" }}>
         :white_check_mark:
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        <a href="https://odyssey.story.explorers.guru/" target="_blank">Nodes.Guru Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://odyssey.story.explorers.guru/`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        <a href="https://www.okx.com/web3/explorer/story-odyssey" target="_blank">OKX Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://www.okx.com/web3/explorer/story-odyssey`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        <a href="https://story.aurascan.io/" target="_blank">Story Scan by Aura Network ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://story.aurascan.io/`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
       </td>
     </tr>
   </tbody>
@@ -7078,22 +7022,27 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
 
-| Explorer                                                                                  | URL                                 |
-| :---------------------------------------------------------------------------------------- | :---------------------------------- |
-| <a href="https://explorer.story.foundation" target="_blank">Story Odyssey Explorer ↗️</a> | `https://explorer.story.foundation` |
+> 🚧 Coming soon!
+
+| Explorer | URL |
+| :------- | :-- |
+| N/A      | N/A |
 
 ## :money_with_wings: Faucets
 
-| Faucet                                                                                       | Amount  | Requirement    |
-| :------------------------------------------------------------------------------------------- | :------ | :------------- |
-| <a href="https://faucet.story.foundation/" target="_blank">Story Faucet ↗️</a>               | 1 $IP   | Every 24 hours |
-| <a href="https://faucet.quicknode.com/story/odyssey" target="_blank">Quicknode Faucet ↗️</a> | 1-2 $IP | Every 24 hours |
+> 🚧 Coming soon!
+
+| Faucet | Amount | Requirement |
+| :----- | :----- | :---------- |
+| N/A    | N/A    | N/A         |
 
 ## :moneybag: Staking
 
-| Dashboard                                                                           |
-| :---------------------------------------------------------------------------------- |
-| <a href="https://staking.story.foundation/" target="_blank">Story Validators ↗️</a> |
+> 🚧 Coming soon!
+
+| Dashboard |
+| :-------- |
+| N/A       |
 
 ## Ports
 
@@ -7721,6 +7670,7 @@ Along the way, you will learn how to:
 *
 
 # Python SDK Setup
+
 # Prerequisite
 
 For running the tutorial for developers, we require Python 10 or later version and pip 24 to be installed in your environment. To install python and pip, we recommend you go to the [Python official website](https://www.python.org/) and download an appropriate version.
@@ -7757,9 +7707,9 @@ Next we can initiate the SDK Client by first setting up our account and then the
 
 There are two ways to set up an account. The first is to use a private key locally:
 
-> :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
+> :information_source: Make sure to have WALLET_PRIVATE_KEY set up in your .env file.
 >
-> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out other RPCs [here](https://docs.story.foundation/docs/story-network#/explorers).
+> :information_source: Make sure to have RPC_PROVIDER_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://aeneid.storyrpc.io`) or check out other RPCs [here](https://docs.story.foundation/docs/story-network#/explorers).
 
 ```python main.py
 import os
@@ -7781,6 +7731,7 @@ account = web3.eth.account.from_key(private_key)
 # Create StoryClient instance
 story_client = StoryClient(web3, account, 1516)
 ```
+
 
 # SPG Functions
 A group of functions provided by the [Story Protocol Gateway (SPG) contract](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/StoryProtocolGateway.sol), which is essentially a way to combine independent operations like [Register an NFT as an IP Asset](doc:register-an-nft-as-an-ip-asset-python) and [Attach License Terms to an IP Asset](doc:attach-license-terms-to-an-ip-asset-python) into one transaction to make your life easier.
@@ -9499,21 +9450,21 @@ import { Test } from "forge-std/Test.sol";
 import { PILicenseTemplate } from "@storyprotocol/core/modules/licensing/PILicenseTemplate.sol";
 import { PILTerms } from "@storyprotocol/core/interfaces/modules/licensing/IPILicenseTemplate.sol";
 import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol";
-
-import { SUSD } from "../src/mocks/SUSD.sol";
+import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol";
+import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/1_LicenseTerms.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/1_LicenseTerms.t.sol
 contract LicenseTermsTest is Test {
     address internal alice = address(0xa11ce);
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - PILicenseTemplate
-    PILicenseTemplate public immutable PIL_TEMPLATE = PILicenseTemplate(0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93);
+    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316);
     // Protocol Core - RoyaltyPolicyLAP
-    RoyaltyPolicyLAP public immutable ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6);
-    // Mock - SUSD
-    SUSD public immutable SUSD_TOKEN = SUSD(0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5);
+    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E);
+    // Mock - MERC20
+    MockERC20 internal MERC20 = MockERC20(0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E);
 
     function setUp() public {}
 
@@ -9535,7 +9486,7 @@ contract LicenseTermsTest is Test {
             derivativesApproval: true,
             derivativesReciprocal: true,
             derivativeRevCeiling: 0,
-            currency: address(SUSD_TOKEN),
+            currency: address(MERC20),
             uri: ""
         });
         uint256 licenseTermsId = PIL_TEMPLATE.registerLicenseTerms(pilTerms);
@@ -9546,35 +9497,13 @@ contract LicenseTermsTest is Test {
 }
 ```
 
-Create another new file under `./src/mocks/SUSD.sol` and paste the following:
-
-```sol SUSD.sol
-// SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.23;
-
-import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-
-contract SUSD is ERC20 {
-    constructor() ERC20("Story USD", "SUSD") {}
-
-    function mint(address to, uint256 amount) external {
-        _mint(to, amount);
-    }
-
-    function burn(address from, uint256 amount) external {
-        _burn(from, amount);
-    }
-}
-```
-
 Run `forge build`. If everything is successful, the command should successfully compile.
 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/1_LicenseTerms.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/1_LicenseTerms.t.sol
 ```
-
 
 # Register an NFT as an IP Asset
 Let's see how we can perform a barebones registration using the [IP Asset Registry](doc:ip-asset-registry). To do this, we will create a forge test that forks the Story chain and interacts with our contracts directly so you can see exactly how it's done.
@@ -9604,16 +9533,16 @@ import { WorkflowStructs } from "@storyprotocol/periphery/lib/WorkflowStructs.so
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
 contract IPARegistrarTest is Test {
     address internal alice = address(0xa11ce);
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry public immutable IP_ASSET_REGISTRY = IPAssetRegistry(0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095);
+    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
     // Protocol Periphery - RegistrationWorkflows
-    RegistrationWorkflows public immutable REGISTRATION_WORKFLOWS =
-        RegistrationWorkflows(0xde13Be395E1cd753471447Cf6A656979ef87881c);
+    RegistrationWorkflows internal REGISTRATION_WORKFLOWS =
+        RegistrationWorkflows(0xbe39E1C756e921BD25DF86e7AAa31106d1eb0424);
 
     SimpleNFT public SIMPLE_NFT;
     ISPGNFT public SPG_NFT;
@@ -9683,7 +9612,8 @@ contract IPARegistrarTest is Test {
                         "{'name':'Test NFT','description':'This is a test NFT','image':'https://picsum.photos/200'}"
                     )
                 )
-            })
+            }),
+            true
         );
 
         assertEq(ipId, expectedIpId);
@@ -9720,9 +9650,8 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
 ```
-
 
 # Attach License Terms to an IP Asset
 Once [License Terms](doc:license-terms) have been created, and an associated `licenseTermsId` is created, the owner of an IP Asset can attach those terms to their IP. This allows anyone to then mint a [License Token](doc:license-token), which we will cover on the next section. For now, let's learn how to attach License Terms to our IP Asset.
@@ -9753,28 +9682,28 @@ import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/L
 import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
 import { PILTerms } from "@storyprotocol/core/interfaces/modules/licensing/IPILicenseTemplate.sol";
 import { LicensingModule } from "@storyprotocol/core/modules/licensing/LicensingModule.sol";
+import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
-import { SUSD } from "../src/mocks/SUSD.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
 contract AttachTermsTest is Test {
     address internal alice = address(0xa11ce);
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry public immutable IP_ASSET_REGISTRY = IPAssetRegistry(0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095);
+    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
     // Protocol Core - LicenseRegistry
-    LicenseRegistry public immutable LICENSE_REGISTRY = LicenseRegistry(0xBda3992c49E98392e75E78d82B934F3598bA495f);
+    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0x529a750E02d8E2f15649c13D69a465286a780e24);
     // Protocol Core - LicensingModule
-    LicensingModule public immutable LICENSING_MODULE = LicensingModule(0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae);
+    LicensingModule internal LICENSING_MODULE = LicensingModule(0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f);
     // Protocol Core - PILicenseTemplate
-    PILicenseTemplate public immutable PIL_TEMPLATE = PILicenseTemplate(0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93);
+    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316);
     // Protocol Core - RoyaltyPolicyLAP
-    RoyaltyPolicyLAP public immutable ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6);
-    // Mock - SUSD
-    SUSD public immutable SUSD_TOKEN = SUSD(0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5);
+    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E);
+    // Mock - MERC20
+    MockERC20 internal MERC20 = MockERC20(0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E);
 
     SimpleNFT public SIMPLE_NFT;
     uint256 public tokenId;
@@ -9797,7 +9726,7 @@ contract AttachTermsTest is Test {
                 mintingFee: 0,
                 commercialRevShare: 10 * 10 ** 6, // 10%
                 royaltyPolicy: address(ROYALTY_POLICY_LAP),
-                currencyToken: address(SUSD_TOKEN)
+                currencyToken: address(MERC20)
             })
         );
     }
@@ -9811,11 +9740,7 @@ contract AttachTermsTest is Test {
         LICENSING_MODULE.attachLicenseTerms(ipId, address(PIL_TEMPLATE), licenseTermsId);
 
         assertTrue(LICENSE_REGISTRY.hasIpAttachedLicenseTerms(ipId, address(PIL_TEMPLATE), licenseTermsId));
-        // We expect 2 because the IPA has the default license terms (licenseTermsId = 1)
-        // and the one we attached.
-        assertEq(LICENSE_REGISTRY.getAttachedLicenseTermsCount(ipId), 2);
-        // Although an IP Asset has default license terms, index 0 is
-        // still the one we attached.
+        assertEq(LICENSE_REGISTRY.getAttachedLicenseTermsCount(ipId), 1);
         (address licenseTemplate, uint256 attachedLicenseTermsId) = LICENSE_REGISTRY.getAttachedLicenseTerms({
             ipId: ipId,
             index: 0
@@ -9831,9 +9756,8 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
 ```
-
 
 # Register an NFT as an IP Asset
 # IP Asset Registration
@@ -10231,7 +10155,6 @@ For the setting, `start` refers to when minting can begin for the collection, wi
 
 
 # Using an Example
-
 <Cards columns={2}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/Example.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     See the completed code.
@@ -10269,25 +10192,25 @@ Create a new file under `./src/Example.sol` and paste the following:
 pragma solidity ^0.8.26;
 
 import { IPAssetRegistry } from "@storyprotocol/core/registries/IPAssetRegistry.sol";
-import { RegistrationWorkflows } from "@storyprotocol/periphery/workflows/RegistrationWorkflows.sol";
-import { WorkflowStructs } from "@storyprotocol/periphery/lib/WorkflowStructs.sol";
 import { LicenseRegistry } from "@storyprotocol/core/registries/LicenseRegistry.sol";
 import { LicensingModule } from "@storyprotocol/core/modules/licensing/LicensingModule.sol";
 import { PILicenseTemplate } from "@storyprotocol/core/modules/licensing/PILicenseTemplate.sol";
 import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol";
 import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
+import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
-import { SUSD } from "./mocks/SUSD.sol";
 import { SimpleNFT } from "./mocks/SimpleNFT.sol";
 
+import { ERC721Holder } from "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
+
 /// @notice Register an NFT as an IP Account.
-contract Example {
+contract Example is ERC721Holder {
     IPAssetRegistry public immutable IP_ASSET_REGISTRY;
     LicenseRegistry public immutable LICENSE_REGISTRY;
     LicensingModule public immutable LICENSING_MODULE;
     PILicenseTemplate public immutable PIL_TEMPLATE;
     RoyaltyPolicyLAP public immutable ROYALTY_POLICY_LAP;
-    SUSD public immutable SUSD_TOKEN;
+    MockERC20 public immutable MERC20;
     SimpleNFT public immutable SIMPLE_NFT;
 
     constructor(
@@ -10295,25 +10218,25 @@ contract Example {
         address licensingModule,
         address pilTemplate,
         address royaltyPolicyLAP,
-        address susdToken
+        address merc20
     ) {
         IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
         LICENSING_MODULE = LicensingModule(licensingModule);
         PIL_TEMPLATE = PILicenseTemplate(pilTemplate);
         ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(royaltyPolicyLAP);
-        SUSD_TOKEN = SUSD(susdToken);
+        MERC20 = MockERC20(merc20);
         // Create a new Simple NFT collection
         SIMPLE_NFT = new SimpleNFT("Simple IP NFT", "SIM");
     }
 
     /// @notice Mint an NFT, register it as an IP Asset, and attach License Terms to it.
     /// @param receiver The address that will receive the NFT/IPA.
-    /// @return ipId The address of the IP Account.
     /// @return tokenId The token ID of the NFT representing ownership of the IPA.
+    /// @return ipId The address of the IP Account.
     /// @return licenseTermsId The ID of the license terms.
     function mintAndRegisterAndCreateTermsAndAttach(
         address receiver
-    ) external returns (address ipId, uint256 tokenId, uint256 licenseTermsId) {
+    ) external returns (uint256 tokenId, address ipId, uint256 licenseTermsId) {
         // We mint to this contract so that it has permissions
         // to attach license terms to the IP Asset.
         // We will later transfer it to the intended `receiver`
@@ -10326,7 +10249,7 @@ contract Example {
                 mintingFee: 0,
                 commercialRevShare: 10 * 10 ** 6, // 10%
                 royaltyPolicy: address(ROYALTY_POLICY_LAP),
-                currencyToken: address(SUSD_TOKEN)
+                currencyToken: address(MERC20)
             })
         );
 
@@ -10354,7 +10277,7 @@ In this next section, we will combine a few of the later tutorials into one. We 
 
 ### Writing our Contract
 
-In your `Example.sol` contract, add the following function:
+In your `Example.sol` contract, add the following function at the bottom:
 
 ```sol Example.sol
 /// @notice Mint and register a new child IPA, mint a License Token
@@ -10363,14 +10286,13 @@ In your `Example.sol` contract, add the following function:
 /// @param licenseTermsId The ID of the license terms you will
 /// mint a license token from.
 /// @param receiver The address that will receive the NFT/IPA.
-/// @return childIpId The address of the child IPA.
 /// @return childTokenId The token ID of the NFT representing ownership of the child IPA.
-/// @return licenseTokenId The ID of the license token.
+/// @return childIpId The address of the child IPA.
 function mintLicenseTokenAndRegisterDerivative(
   address parentIpId,
   uint256 licenseTermsId,
   address receiver
-) external returns (address childIpId, uint256 childTokenId, uint256 licenseTokenId) {
+) external returns (uint256 childTokenId, address childIpId) {
   // We mint to this contract so that it has permissions
   // to register itself as a derivative of another
   // IP Asset.
@@ -10379,7 +10301,7 @@ function mintLicenseTokenAndRegisterDerivative(
   childIpId = IP_ASSET_REGISTRY.register(block.chainid, address(SIMPLE_NFT), childTokenId);
 
   // mint a license token from the parent
-  licenseTokenId = LICENSING_MODULE.mintLicenseTokens({
+  uint256 licenseTokenId = LICENSING_MODULE.mintLicenseTokens({
     licensorIpId: parentIpId,
     licenseTemplate: address(PIL_TEMPLATE),
     licenseTermsId: licenseTermsId,
@@ -10387,7 +10309,9 @@ function mintLicenseTokenAndRegisterDerivative(
     // mint the license token to this contract so it can
     // use it to register as a derivative of the parent
     receiver: address(this),
-    royaltyContext: "" // for PIL, royaltyContext is empty string
+    royaltyContext: "", // for PIL, royaltyContext is empty string
+    maxMintingFee: 0,
+    maxRevenueShare: 0
   });
 
   uint256[] memory licenseTokenIds = new uint256[](1);
@@ -10398,7 +10322,8 @@ function mintLicenseTokenAndRegisterDerivative(
   LICENSING_MODULE.registerDerivativeWithLicenseTokens({
     childIpId: childIpId,
     licenseTokenIds: licenseTokenIds,
-    royaltyContext: "" // empty for PIL
+    royaltyContext: "", // empty for PIL
+    maxRts: 0
   });
 
   // transfer the NFT to the receiver so it owns the child IPA
@@ -10424,82 +10349,81 @@ import { Example } from "../src/Example.sol";
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/Example.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/Example.t.sol
 contract ExampleTest is Test {
-    address internal alice = address(0xa11ce);
-    address internal bob = address(0xb0b);
-    // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
-    // Protocol Core - IPAssetRegistry
-    address internal ipAssetRegistry = 0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095;
-    // Protocol Core - LicenseRegistry
-    address internal licenseRegistry = 0xBda3992c49E98392e75E78d82B934F3598bA495f;
-    // Protocol Core - LicensingModule
-    address internal licensingModule = 0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae;
-    // Protocol Core - PILicenseTemplate
-    address internal pilTemplate = 0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93;
-    // Protocol Core - RoyaltyPolicyLAP
-    address internal royaltyPolicyLAP = 0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6;
-    // Mock - SUSD
-    address internal susd = 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5;
+  address internal alice = address(0xa11ce);
+  address internal bob = address(0xb0b);
+  // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
+  // Protocol Core - IPAssetRegistry
+  address internal ipAssetRegistry = 0x77319B4031e6eF1250907aa00018B8B1c67a244b;
+  // Protocol Core - LicenseRegistry
+  address internal licenseRegistry = 0x529a750E02d8E2f15649c13D69a465286a780e24;
+  // Protocol Core - LicensingModule
+  address internal licensingModule = 0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f;
+  // Protocol Core - PILicenseTemplate
+  address internal pilTemplate = 0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316;
+  // Protocol Core - RoyaltyPolicyLAP
+  address internal royaltyPolicyLAP = 0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E;
+  // Mock - MERC20
+  address internal merc20 = 0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E;
 
-    SimpleNFT public SIMPLE_NFT;
-    Example public EXAMPLE;
+  SimpleNFT public SIMPLE_NFT;
+  Example public EXAMPLE;
 
-    function setUp() public {
-        // this is only for testing purposes
-        // due to our IPGraph precompile not being
-        // deployed on the fork
-        vm.etch(address(0x0101), address(new MockIPGraph()).code);
+  function setUp() public {
+    // this is only for testing purposes
+    // due to our IPGraph precompile not being
+    // deployed on the fork
+    vm.etch(address(0x0101), address(new MockIPGraph()).code);
 
-        EXAMPLE = new Example(ipAssetRegistry, licensingModule, pilTemplate, royaltyPolicyLAP, susd);
-        SIMPLE_NFT = SimpleNFT(EXAMPLE.SIMPLE_NFT());
-    }
+    EXAMPLE = new Example(ipAssetRegistry, licensingModule, pilTemplate, royaltyPolicyLAP, merc20);
+    SIMPLE_NFT = SimpleNFT(EXAMPLE.SIMPLE_NFT());
+  }
 
-    function test_mintAndRegisterAndCreateTermsAndAttach() public {
-        LicenseRegistry LICENSE_REGISTRY = LicenseRegistry(licenseRegistry);
-        IPAssetRegistry IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
+  function test_mintAndRegisterAndCreateTermsAndAttach() public {
+    LicenseRegistry LICENSE_REGISTRY = LicenseRegistry(licenseRegistry);
+    IPAssetRegistry IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
 
-        uint256 expectedTokenId = SIMPLE_NFT.nextTokenId();
-        address expectedIpId = IP_ASSET_REGISTRY.ipId(block.chainid, address(SIMPLE_NFT), expectedTokenId);
+    uint256 expectedTokenId = SIMPLE_NFT.nextTokenId();
+    address expectedIpId = IP_ASSET_REGISTRY.ipId(block.chainid, address(SIMPLE_NFT), expectedTokenId);
 
-        (address ipId, uint256 tokenId, uint256 licenseTermsId) = EXAMPLE.mintAndRegisterAndCreateTermsAndAttach(alice);
+    (uint256 tokenId, address ipId, uint256 licenseTermsId) = EXAMPLE.mintAndRegisterAndCreateTermsAndAttach(alice);
 
-        assertEq(tokenId, expectedTokenId);
-        assertEq(ipId, expectedIpId);
-        assertEq(SIMPLE_NFT.ownerOf(tokenId), alice);
+    assertEq(tokenId, expectedTokenId);
+    assertEq(ipId, expectedIpId);
+    assertEq(SIMPLE_NFT.ownerOf(tokenId), alice);
 
-        assertTrue(LICENSE_REGISTRY.hasIpAttachedLicenseTerms(ipId, pilTemplate, licenseTermsId));
-        // We expect 2 because the IPA has the default license terms (licenseTermsId = 1)
-        // and the one we attached.
-        assertEq(LICENSE_REGISTRY.getAttachedLicenseTermsCount(ipId), 2);
-        // Although an IP Asset has default license terms, index 0 is
-        // still the one we attached.
-        (address licenseTemplate, uint256 attachedLicenseTermsId) = LICENSE_REGISTRY.getAttachedLicenseTerms({
-            ipId: ipId,
-            index: 0
-        });
-        assertEq(licenseTemplate, pilTemplate);
-        assertEq(attachedLicenseTermsId, licenseTermsId);
-    }
+    assertTrue(LICENSE_REGISTRY.hasIpAttachedLicenseTerms(ipId, pilTemplate, licenseTermsId));
+    assertEq(LICENSE_REGISTRY.getAttachedLicenseTermsCount(ipId), 1);
+    (address licenseTemplate, uint256 attachedLicenseTermsId) = LICENSE_REGISTRY.getAttachedLicenseTerms({
+      ipId: ipId,
+      index: 0
+    });
+    assertEq(licenseTemplate, pilTemplate);
+    assertEq(attachedLicenseTermsId, licenseTermsId);
+  }
 
-    function test_mintLicenseTokenAndRegisterDerivative() public {
-        LicenseRegistry LICENSE_REGISTRY = LicenseRegistry(licenseRegistry);
-        IPAssetRegistry IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
+  function test_mintLicenseTokenAndRegisterDerivative() public {
+    LicenseRegistry LICENSE_REGISTRY = LicenseRegistry(licenseRegistry);
+    IPAssetRegistry IP_ASSET_REGISTRY = IPAssetRegistry(ipAssetRegistry);
 
-        (address parentIpId, uint256 parentTokenId, uint256 licenseTermsId) = EXAMPLE
-            .mintAndRegisterAndCreateTermsAndAttach(alice);
+    (uint256 parentTokenId, address parentIpId, uint256 licenseTermsId) = EXAMPLE
+    .mintAndRegisterAndCreateTermsAndAttach(alice);
 
-        (address childIpId, uint256 childTokenId, uint256 licenseTokenId) = EXAMPLE
-            .mintLicenseTokenAndRegisterDerivative(parentIpId, licenseTermsId, bob);
+    (uint256 childTokenId, address childIpId) = EXAMPLE.mintLicenseTokenAndRegisterDerivative(
+      parentIpId,
+      licenseTermsId,
+      bob
+    );
 
-        assertTrue(LICENSE_REGISTRY.hasDerivativeIps(parentIpId));
-        assertTrue(LICENSE_REGISTRY.isParentIp(parentIpId, childIpId));
-        assertTrue(LICENSE_REGISTRY.isDerivativeIp(childIpId));
-        assertEq(LICENSE_REGISTRY.getDerivativeIpCount(parentIpId), 1);
-        assertEq(LICENSE_REGISTRY.getParentIpCount(childIpId), 1);
-        assertEq(LICENSE_REGISTRY.getParentIp({ childIpId: childIpId, index: 0 }), parentIpId);
-        assertEq(LICENSE_REGISTRY.getDerivativeIp({ parentIpId: parentIpId, index: 0 }), childIpId);
-    }
+    assertTrue(LICENSE_REGISTRY.hasDerivativeIps(parentIpId));
+    assertTrue(LICENSE_REGISTRY.isParentIp(parentIpId, childIpId));
+    assertTrue(LICENSE_REGISTRY.isDerivativeIp(childIpId));
+    assertEq(LICENSE_REGISTRY.getDerivativeIpCount(parentIpId), 1);
+    assertEq(LICENSE_REGISTRY.getParentIpCount(childIpId), 1);
+    assertEq(LICENSE_REGISTRY.getParentIp({ childIpId: childIpId, index: 0 }), parentIpId);
+    assertEq(LICENSE_REGISTRY.getDerivativeIp({ parentIpId: parentIpId, index: 0 }), childIpId);
+  }
 }
 ```
 
@@ -10508,7 +10432,7 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/Example.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/Example.t.sol
 ```
 
 # Deploy & Verify the Example Contract
@@ -10517,19 +10441,18 @@ The `--constructor-args` come from [Deployed Smart Contracts](doc:deployed-smart
 
 ```shell
 forge create \
-  --rpc-url https://odyssey.storyrpc.io/ \
+  --rpc-url https://aeneid.storyrpc.io/ \
   --private-key $PRIVATE_KEY \
   ./src/Example.sol:Example \
   --verify \
   --verifier blockscout \
-  --verifier-url https://odyssey.storyscan.xyz/api/ \
-  --constructor-args 0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095 0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae 0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93 0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
+  --verifier-url https://aeneid.storyscan.xyz/api/ \
+  --constructor-args 0x77319B4031e6eF1250907aa00018B8B1c67a244b 0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f 0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316 0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E 0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E
 ```
 
-If everything worked correctly, you should see something like `Deployed to: 0xfb0923D531C1ca54AB9ee10CB8364b23d0C7F47d` in the console. Paste that address into [the explorer](https://odyssey.storyscan.xyz/) and see your verified contract!
+If everything worked correctly, you should see something like `Deployed to: 0xfb0923D531C1ca54AB9ee10CB8364b23d0C7F47d` in the console. Paste that address into [the explorer](https://aeneid.storyscan.xyz/) and see your verified contract!
 
 # Great job! :)
-
 
 # Remix an IP Asset
 Once a [License Token](doc:license-token) has been minted from an IP Asset, the owner of that token (an ERC-721 NFT) can burn it to register their own IP Asset as a derivative of the IPA associated with the license token. Note that some functions in our protocol actually allow you to register an IPA as a derivative of another without needing a license token, but they are simply convenience functions that do the minting + burning for you. Below we will learn how to register an IPA as a derivative of another using a License Token.
@@ -10559,33 +10482,33 @@ import { PILicenseTemplate } from "@storyprotocol/core/modules/licensing/PILicen
 import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol";
 import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
 import { PILTerms } from "@storyprotocol/core/interfaces/modules/licensing/IPILicenseTemplate.sol";
-import { ILicensingModule } from "@storyprotocol/core/interfaces/modules/licensing/ILicensingModule.sol";
+import { LicensingModule } from "@storyprotocol/core/modules/licensing/LicensingModule.sol";
 import { LicenseToken } from "@storyprotocol/core/LicenseToken.sol";
+import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
-import { SUSD } from "../src/mocks/SUSD.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/4_IPARemix.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/4_IPARemix.t.sol
 contract IPARemixTest is Test {
     address internal alice = address(0xa11ce);
     address internal bob = address(0xb0b);
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095);
+    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
     // Protocol Core - LicenseRegistry
-    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0xBda3992c49E98392e75E78d82B934F3598bA495f);
+    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0x529a750E02d8E2f15649c13D69a465286a780e24);
     // Protocol Core - LicensingModule
-    ILicensingModule internal LICENSING_MODULE = ILicensingModule(0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae);
+    LicensingModule internal LICENSING_MODULE = LicensingModule(0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f);
     // Protocol Core - PILicenseTemplate
-    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93);
+    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316);
     // Protocol Core - RoyaltyPolicyLAP
-    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6);
+    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E);
     // Protocol Core - LicenseToken
-    LicenseToken internal LICENSE_TOKEN = LicenseToken(0xB138aEd64814F2845554f9DBB116491a077eEB2D);
-    // Mock - SUSD
-    SUSD internal SUSD_TOKEN = SUSD(0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5);
+    LicenseToken internal LICENSE_TOKEN = LicenseToken(0xFe3838BFb30B34170F00030B52eA4893d8aAC6bC);
+    // Mock - MERC20
+    MockERC20 internal MERC20 = MockERC20(0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E);
 
     SimpleNFT public SIMPLE_NFT;
     uint256 public tokenId;
@@ -10608,7 +10531,7 @@ contract IPARemixTest is Test {
                 mintingFee: 0,
                 commercialRevShare: 10 * 10 ** 6, // 10%
                 royaltyPolicy: address(ROYALTY_POLICY_LAP),
-                currencyToken: address(SUSD_TOKEN)
+                currencyToken: address(MERC20)
             })
         );
 
@@ -10620,7 +10543,9 @@ contract IPARemixTest is Test {
             licenseTermsId: licenseTermsId,
             amount: 2,
             receiver: bob,
-            royaltyContext: "" // for PIL, royaltyContext is empty string
+            royaltyContext: "", // for PIL, royaltyContext is empty string
+            maxMintingFee: 0,
+            maxRevenueShare: 0
         });
     }
 
@@ -10642,14 +10567,15 @@ contract IPARemixTest is Test {
         LICENSING_MODULE.registerDerivativeWithLicenseTokens({
             childIpId: childIpId,
             licenseTokenIds: licenseTokenIds,
-            royaltyContext: "" // empty for PIL
+            royaltyContext: "", // empty for PIL
+            maxRts: 0
         });
 
         assertTrue(LICENSE_REGISTRY.hasDerivativeIps(ipId));
         assertTrue(LICENSE_REGISTRY.isParentIp(ipId, childIpId));
         assertTrue(LICENSE_REGISTRY.isDerivativeIp(childIpId));
-        assertEq(LICENSE_REGISTRY.getDerivativeIpCount(ipId), 1);
         assertEq(LICENSE_REGISTRY.getParentIpCount(childIpId), 1);
+        assertEq(LICENSE_REGISTRY.getDerivativeIpCount(ipId), 1);
         assertEq(LICENSE_REGISTRY.getParentIp({ childIpId: childIpId, index: 0 }), ipId);
         assertEq(LICENSE_REGISTRY.getDerivativeIp({ parentIpId: ipId, index: 0 }), childIpId);
     }
@@ -10661,9 +10587,8 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/4_IPARemix.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/4_IPARemix.t.sol
 ```
-
 
 # Setup Your Own Project
 In this guide, we will show you how to setup the Story smart contract development environment in just a few minutes
@@ -10677,7 +10602,7 @@ In this guide, we will show you how to setup the Story smart contract developmen
 
 1. Run the following in a new directory of your choice: `yarn init`
 2. Set up foundry using the following command: `forge init --force`
-   1. Open up your `foundry.toml` file and replace it with this: 
+   1. Open up your `foundry.toml` file and replace it with this:
       ```Text foundry.toml
       [profile.default]
       out = 'out'
@@ -10688,7 +10613,7 @@ In this guide, we will show you how to setup the Story smart contract developmen
       optimizer_runs = 20000
       test = 'test'
       solc = '0.8.26'
-      fs_permissions = [{ access = 'read', path = './' }, { access = 'read-write', path = './deploy-out' }]
+      fs_permissions = [{ access = 'read', path = './out' }, { access = 'read-write', path = './deploy-out' }]
       evm_version = 'cancun'
       ```
 3. Once done, do some cleaning up on the dependency management side. Remove those conflicting with `forge` by running the following: `rm -rf lib/ .github/`
@@ -10700,11 +10625,12 @@ Now, we are ready to start installing our dependencies. To incorporate the Story
 
 ```powershell Terminal
 # note: you can run them one-by-one, or all at once
-yarn add @story-protocol/protocol-core@https://github.com/storyprotocol/protocol-core-v1#v1.2.3
-yarn add @story-protocol/protocol-periphery@https://github.com/storyprotocol/protocol-periphery-v1#v1.2.4
+yarn add @story-protocol/protocol-core@https://github.com/storyprotocol/protocol-core-v1
+yarn add @story-protocol/protocol-periphery@https://github.com/storyprotocol/protocol-periphery-v1
 yarn add @openzeppelin/contracts
 yarn add @openzeppelin/contracts-upgradeable
 yarn add erc6551
+yarn add solady
 ```
 
 Additionally, for working with Foundry's test kit, we also recommend adding the following `devDependencies`:
@@ -10723,23 +10649,20 @@ Then, create a file in the root folder named `remappings.txt` and paste the foll
 erc6551/=node_modules/erc6551/
 forge-std/=node_modules/forge-std/src/
 ds-test/=node_modules/ds-test/src/
+@storyprotocol/test/=node_modules/@story-protocol/protocol-core/test/foundry/
+@solady/=node_modules/solady/
 ```
 
- Now we are ready to build a simple test registration contract.
-
+Now we are ready to build a simple test registration contract.
 
 # ⚙️ Smart Contracts
 In this section, we will briefly go over the protocol contracts and then guide you through how to start building on top of the protocol. If you haven't yet familiarized yourself with the overall architecture, we recommend first going over the [Overview](doc:overview) section.
-
-> 🚧 Our contracts are undergoing audits.
->
-> The v1 release of our "Proof-of-Creativity Protocol" is currently undergoing audits, which means that we could change the smart contracts at any time without warning to address the audit findings. When the contracts are fully audited, we will remove this warning and ensure regular updates to this document with formal notice.
 
 # Smart Contract Tutorial
 
 > ✅ Completed Code
 >
-> Skip the tutorial and view the completed code [here](https://github.com/storyprotocol/story-protocol-boilerplate). Follow the README instructions to run the tests, or go to the `/test` folder to view all of the example contracts.
+> Skip the tutorial and view the completed code [here](https://github.com/storyprotocol/story-protocol-boilerplate/tree/v1.3). Follow the README instructions to run the tests, or go to the `/test` folder to view all of the example contracts.
 
 **If you want to set things up from scratch**, then continue with the following tutorials, starting with the [Setup Your Own Project](doc:sc-tutorial-quick-setup) step.
 
@@ -10752,7 +10675,7 @@ As of the current version, our Proof-of-Creativity Protocol is compatible with a
 
 ## Deploy & Verify Contracts on Story
 
-*The approach to deploy & verify contracts comes from the[Blockscout official documentation](https://docs.blockscout.com/developer-support/verifying-a-smart-contract/foundry-verification).*
+> The approach to deploy & verify contracts comes from the [Blockscout official documentation](https://docs.blockscout.com/developer-support/verifying-a-smart-contract/foundry-verification).
 
 Verify a contract with Blockscout right after deployment (make sure you add "/api/" to the end of the Blockscout homepage explorer URL):
 
@@ -10777,7 +10700,6 @@ forge script <script_file> \
   --verifier blockscout \
   --verifier-url <blockscout_homepage_explorer_url>/api/
 ```
-
 
 # Claiming Royalty
 Let's say you have a parent IP Asset that specifies in its [License Terms](doc:license-terms) that any derivatives must share 10% of their revenue with it. A child IPA then agrees to those, mints a [License Token](doc:license-token), and registers as a derivative.
@@ -10810,39 +10732,39 @@ import { PILicenseTemplate } from "@storyprotocol/core/modules/licensing/PILicen
 import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol";
 import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
 import { PILTerms } from "@storyprotocol/core/interfaces/modules/licensing/IPILicenseTemplate.sol";
-import { ILicensingModule } from "@storyprotocol/core/interfaces/modules/licensing/ILicensingModule.sol";
+import { LicensingModule } from "@storyprotocol/core/modules/licensing/LicensingModule.sol";
 import { LicenseToken } from "@storyprotocol/core/LicenseToken.sol";
-import { IRoyaltyWorkflows } from "@storyprotocol/periphery/interfaces/workflows/IRoyaltyWorkflows.sol";
+import { RoyaltyWorkflows } from "@storyprotocol/periphery/workflows/RoyaltyWorkflows.sol";
 import { RoyaltyModule } from "@storyprotocol/core/modules/royalty/RoyaltyModule.sol";
+import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
-import { SUSD } from "../src/mocks/SUSD.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/5_Royalty.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/5_Royalty.t.sol
 contract RoyaltyTest is Test {
     address internal alice = address(0xa11ce);
     address internal bob = address(0xb0b);
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095);
+    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
     // Protocol Core - LicenseRegistry
-    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0xBda3992c49E98392e75E78d82B934F3598bA495f);
+    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0x529a750E02d8E2f15649c13D69a465286a780e24);
     // Protocol Core - LicensingModule
-    ILicensingModule internal LICENSING_MODULE = ILicensingModule(0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae);
+    LicensingModule internal LICENSING_MODULE = LicensingModule(0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f);
     // Protocol Core - PILicenseTemplate
-    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93);
+    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316);
     // Protocol Core - RoyaltyPolicyLAP
-    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6);
+    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E);
     // Protocol Core - LicenseToken
-    LicenseToken internal LICENSE_TOKEN = LicenseToken(0xB138aEd64814F2845554f9DBB116491a077eEB2D);
-    // Protocol Periphery - RoyaltyModule
-    RoyaltyModule internal ROYALTY_MODULE = RoyaltyModule(0xEa6eD700b11DfF703665CCAF55887ca56134Ae3B);
+    LicenseToken internal LICENSE_TOKEN = LicenseToken(0xFe3838BFb30B34170F00030B52eA4893d8aAC6bC);
+    // Protocol Core - RoyaltyModule
+    RoyaltyModule internal ROYALTY_MODULE = RoyaltyModule(0xD2f60c40fEbccf6311f8B47c4f2Ec6b040400086);
     // Protocol Periphery - RoyaltyWorkflows
-    IRoyaltyWorkflows internal ROYALTY_WORKFLOWS = IRoyaltyWorkflows(0xAf922379B8e1abc6B0D78547128579221C7F7A22);
-    // Mock - SUSD
-    SUSD internal SUSD_TOKEN = SUSD(0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5);
+    RoyaltyWorkflows internal ROYALTY_WORKFLOWS = RoyaltyWorkflows(0x9515faE61E0c0447C6AC6dEe5628A2097aFE1890);
+    // Mock - MERC20
+    MockERC20 internal MERC20 = MockERC20(0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E);
 
     SimpleNFT public SIMPLE_NFT;
     uint256 public tokenId;
@@ -10866,7 +10788,7 @@ contract RoyaltyTest is Test {
                 mintingFee: 0,
                 commercialRevShare: 10 * 10 ** 6, // 10%
                 royaltyPolicy: address(ROYALTY_POLICY_LAP),
-                currencyToken: address(SUSD_TOKEN)
+                currencyToken: address(MERC20)
             })
         );
 
@@ -10878,7 +10800,9 @@ contract RoyaltyTest is Test {
             licenseTermsId: licenseTermsId,
             amount: 2,
             receiver: bob,
-            royaltyContext: "" // for PIL, royaltyContext is empty string
+            royaltyContext: "", // for PIL, royaltyContext is empty string
+            maxMintingFee: 0,
+            maxRevenueShare: 0
         });
 
         // Registers a child IP (owned by Bob) as a derivative of Alice's IP.
@@ -10892,48 +10816,50 @@ contract RoyaltyTest is Test {
         LICENSING_MODULE.registerDerivativeWithLicenseTokens({
             childIpId: childIpId,
             licenseTokenIds: licenseTokenIds,
-            royaltyContext: "" // empty for PIL
+            royaltyContext: "", // empty for PIL
+            maxRts: 0
         });
     }
 
-    /// @notice Pays SUSD to Bob's IP. Some of this SUSD is then claimable
+    /// @notice Pays MERC20 to Bob's IP. Some of this MERC20 is then claimable
     /// by Alice's IP.
-    /// @dev In this case, this contract will act as the 3rd party paying SUSD
+    /// @dev In this case, this contract will act as the 3rd party paying MERC20
     /// to Bob (the child IP).
-    function test_transferToVaultAndSnapshotAndClaimByTokenBatch() public {
+    function test_claimAllRevenue() public {
         // ADMIN SETUP
-        // We mint 100 SUSD to this contract so it has some money to pay.
-        SUSD_TOKEN.mint(address(this), 100);
-        // We approve the Royalty Module to spend SUSD on our behalf, which
+        // We mint 100 MERC20 to this contract so it has some money to pay.
+        MERC20.mint(address(this), 100);
+        // We approve the Royalty Module to spend MERC20 on our behalf, which
         // it will do using `payRoyaltyOnBehalf`.
-        SUSD_TOKEN.approve(address(ROYALTY_MODULE), 10);
+        MERC20.approve(address(ROYALTY_MODULE), 10);
 
-        // This contract pays 10 SUSD to Bob's IP.
-        ROYALTY_MODULE.payRoyaltyOnBehalf(childIpId, address(0), address(SUSD_TOKEN), 10);
+        // This contract pays 10 MERC20 to Bob's IP.
+        ROYALTY_MODULE.payRoyaltyOnBehalf(childIpId, address(0), address(MERC20), 10);
 
-        // Now that Bob's IP has been paid, Alice can claim her share (1 SUSD, which
+        // Now that Bob's IP has been paid, Alice can claim her share (1 MERC20, which
         // is 10% as specified in the license terms)
-        IRoyaltyWorkflows.RoyaltyClaimDetails[] memory claimDetails = new IRoyaltyWorkflows.RoyaltyClaimDetails[](1);
-        claimDetails[0] = IRoyaltyWorkflows.RoyaltyClaimDetails({
-            childIpId: childIpId,
-            royaltyPolicy: address(ROYALTY_POLICY_LAP),
-            currencyToken: address(SUSD_TOKEN),
-            amount: 1
-        });
-        (uint256 snapshotId, uint256[] memory amountsClaimed) = ROYALTY_WORKFLOWS
-            .transferToVaultAndSnapshotAndClaimByTokenBatch({
-                ancestorIpId: ipId,
-                claimer: ipId,
-                royaltyClaimDetails: claimDetails
-            });
+        address[] memory childIpIds = new address[](1);
+        address[] memory royaltyPolicies = new address[](1);
+        address[] memory currencyTokens = new address[](1);
+        childIpIds[0] = childIpId;
+        royaltyPolicies[0] = address(ROYALTY_POLICY_LAP);
+        currencyTokens[0] = address(MERC20);
 
-        // Check that 1 SUSD was claimed by Alice's IP Account
+        uint256[] memory amountsClaimed = ROYALTY_WORKFLOWS.claimAllRevenue({
+            ancestorIpId: ipId,
+            claimer: ipId,
+            childIpIds: childIpIds,
+            royaltyPolicies: royaltyPolicies,
+            currencyTokens: currencyTokens
+        });
+
+        // Check that 1 MERC20 was claimed by Alice's IP Account
         assertEq(amountsClaimed[0], 1);
-        // Check that Alice's IP Account now has 1 SUSD in its balance.
-        assertEq(SUSD_TOKEN.balanceOf(ipId), 1);
-        // Check that Bob's IP now has 9 SUSD in its Royalty Vault, which it
+        // Check that Alice's IP Account now has 1 MERC20 in its balance.
+        assertEq(MERC20.balanceOf(ipId), 1);
+        // Check that Bob's IP now has 9 MERC20 in its Royalty Vault, which it
         // can claim to its IP Account at a later point if he wants.
-        assertEq(SUSD_TOKEN.balanceOf(ROYALTY_MODULE.ipRoyaltyVaults(childIpId)), 9);
+        assertEq(MERC20.balanceOf(ROYALTY_MODULE.ipRoyaltyVaults(childIpId)), 9);
     }
 }
 ```
@@ -10943,9 +10869,8 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/5_Royalty.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/5_Royalty.t.sol
 ```
-
 
 # Build a periphery contract
 In this guide, we'll go over how you can create your own periphery contract for interfacing with the core protocol modules. 
@@ -11078,33 +11003,33 @@ import { PILicenseTemplate } from "@storyprotocol/core/modules/licensing/PILicen
 import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol";
 import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
 import { PILTerms } from "@storyprotocol/core/interfaces/modules/licensing/IPILicenseTemplate.sol";
-import { ILicensingModule } from "@storyprotocol/core/interfaces/modules/licensing/ILicensingModule.sol";
+import { LicensingModule } from "@storyprotocol/core/modules/licensing/LicensingModule.sol";
 import { LicenseToken } from "@storyprotocol/core/LicenseToken.sol";
+import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
-import { SUSD } from "../src/mocks/SUSD.sol";
 
 // Run this test:
-// forge test --fork-url https://odyssey.storyrpc.io/ --match-path test/3_LicenseToken.t.sol
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/3_LicenseToken.t.sol
 contract LicenseTokenTest is Test {
     address internal alice = address(0xa11ce);
     address internal bob = address(0xb0b);
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095);
+    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
     // Protocol Core - LicenseRegistry
-    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0xBda3992c49E98392e75E78d82B934F3598bA495f);
+    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0x529a750E02d8E2f15649c13D69a465286a780e24);
     // Protocol Core - LicensingModule
-    ILicensingModule internal LICENSING_MODULE = ILicensingModule(0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae);
+    LicensingModule internal LICENSING_MODULE = LicensingModule(0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f);
     // Protocol Core - PILicenseTemplate
-    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93);
+    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316);
     // Protocol Core - RoyaltyPolicyLAP
-    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6);
+    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E);
     // Protocol Core - LicenseToken
-    LicenseToken internal LICENSE_TOKEN = LicenseToken(0xB138aEd64814F2845554f9DBB116491a077eEB2D);
-    // Mock - SUSD
-    SUSD internal SUSD_TOKEN = SUSD(0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5);
+    LicenseToken internal LICENSE_TOKEN = LicenseToken(0xFe3838BFb30B34170F00030B52eA4893d8aAC6bC);
+    // Mock - MERC20
+    MockERC20 internal MERC20 = MockERC20(0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E);
 
     SimpleNFT public SIMPLE_NFT;
     uint256 public tokenId;
@@ -11126,7 +11051,7 @@ contract LicenseTokenTest is Test {
                 mintingFee: 0,
                 commercialRevShare: 10 * 10 ** 6, // 10%
                 royaltyPolicy: address(ROYALTY_POLICY_LAP),
-                currencyToken: address(SUSD_TOKEN)
+                currencyToken: address(MERC20)
             })
         );
 
@@ -11143,7 +11068,9 @@ contract LicenseTokenTest is Test {
             licenseTermsId: licenseTermsId,
             amount: 2,
             receiver: bob,
-            royaltyContext: "" // for PIL, royaltyContext is empty string
+            royaltyContext: "", // for PIL, royaltyContext is empty string
+            maxMintingFee: 0,
+            maxRevenueShare: 0
         });
 
         assertEq(LICENSE_TOKEN.ownerOf(startLicenseTokenId), bob);
@@ -11157,9 +11084,8 @@ Run `forge build`. If everything is successful, the command should successfully 
 To test this out, simply run the following command:
 
 ```shell
-forge test --fork-url https://rpc.odyssey.storyrpc.io/ --match-path test/3_LicenseToken.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/3_LicenseToken.t.sol
 ```
-
 
 # Helpful Resources
 # Developer Tooling & Tutorials
@@ -11185,33 +11111,6 @@ Open-source React widgets to interact with Story Protocol.
 
 * View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-core-v1/tree/main)
 
-```json Odyssey Testnet v1.2
-{
-  "AccessController": "0xf709c8001E94e2ca6F98b7fFBCd5BD3943E46D81",
-  "CoreMetadataModule": "0x89630Ccf23277417FBdfd3076C702F5248267e78",
-  "CoreMetadataViewModule": "0x6839De4A647eE2311bd765f615E09f7bd930ed25",
-  "DisputeModule": "0x692B47fa72eE7Ac0Ec617ea384a0cAD41098F712",
-  "EvenSplitGroupPool": "0xC384B56fD62d6679Cd62A2fE0dA3fe4560f33391",
-  "GroupNFT": "0x5d7C6e71290f034bED4C241eD78642204ad1178A",
-  "GroupingModule": "0xa731948cfE05135ad77d48C71f75066333Da78Bf",
-  "IPAccountImpl": "0x24F08796561d6E1AC08e82b68BF4d9500B374Af6",
-  "IPAssetRegistry": "0x28E59E91C0467e89fd0f0438D47Ca839cDfEc095",
-  "IPGraphACL": "0x680E66e4c7Df9133a7AFC1ed091089B32b89C4ae",
-  "IpRoyaltyVaultBeacon": "0x1F9CEDe79f5Af0a0A8E527Ad84e6C74f57D5F926",
-  "IpRoyaltyVaultImpl": "0x1081250219B16cc3903Aa2d2d1403A75c6A2F9f5",
-  "LicenseRegistry": "0xBda3992c49E98392e75E78d82B934F3598bA495f",
-  "LicenseToken": "0xB138aEd64814F2845554f9DBB116491a077eEB2D",
-  "LicensingModule": "0x5a7D9Fa17DE09350F481A53B470D798c1c1aabae",
-  "MockERC20": "0x12A8b0DcC6e3bB0915638361D9D49942Da07F455",
-  "ModuleRegistry": "0x9F18c5723BC4Ee447CF9B01a8543D3b08b7F09C7",
-  "PILicenseTemplate": "0x58E2c909D557Cd23EF90D14f8fd21667A5Ae7a93",
-  "ProtocolAccessManager": "0xD22ff1C7e88aF45166aEFe000C4C0c4873Afa284",
-  "ProtocolPauseAdmin": "0x65C6Ec6Cc074eaf7ba3970C540b4379C9BcA8A67",
-  "RoyaltyModule": "0xEa6eD700b11DfF703665CCAF55887ca56134Ae3B",
-  "RoyaltyPolicyLAP": "0x28b4F70ffE5ba7A26aEF979226f77Eb57fb9Fdb6",
-  "RoyaltyPolicyLRP": "0x7D2d9af4E4ab14Afcfd86436BC348928B40963Dd"
-}
-```
 ```json Aneid Testnet v1.3
 {
   "AccessController": "0xcCF37d0a503Ee1D4C11208672e622ed3DFB2275a",
@@ -11246,17 +11145,6 @@ Open-source React widgets to interact with Story Protocol.
 
 * View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-periphery-v1)
 
-```json Odyssey Testnet v1.2
-{
-  "DerivativeWorkflows": "0xa8815CEB96857FFb8f5F8ce920b1Ae6D70254C7B",
-  "GroupingWorkflows": "0xcd754994eBE5Ce16D432C1f936f98ac0d4aABA0e",
-  "LicenseAttachmentWorkflows": "0x44Bad1E4035a44eAC1606B222873E4a85E8b7D9c",
-  "RegistrationWorkflows": "0xde13Be395E1cd753471447Cf6A656979ef87881c",
-  "RoyaltyWorkflows": "0xAf922379B8e1abc6B0D78547128579221C7F7A22",
-  "SPGNFTBeacon": "0x4b913A9da52806A0fd0b031bdf32fa33634d082a",
-  "SPGNFTImpl": "0x32c03CD2B4CC3456aCD86C7d5BA8E0405665DbF9"
-}
-```
 ```json Aeneid Testnet v1.3
 {
   "DerivativeWorkflows": "0x9e2d496f72C547C2C535B167e06ED8729B374a4f",
@@ -11277,18 +11165,10 @@ Open-source React widgets to interact with Story Protocol.
 
 ## Whitelisted Revenue Tokens
 
-<Tabs>
-  <Tab title="Odyssey Testnet">
-    * SUSD: 0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5
-      * <a href="https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#40c10f19" target="_blank">Mint SUSD ↗️</a>
-    * WIP: 0x1516000000000000000000000000000000000000
-  </Tab>
-
-  <Tab title="Aeneid Testnet">
-    * MERC20: 0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E
-      * <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19" target="_blank">Mint Mock ERC20 ↗️</a>
-  </Tab>
-</Tabs>
+| Token  | Contract Address                             | Explorer                                                                                                                   | Mint                                                                                                                                                |
+| :----- | :------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| WIP    | `0x1514000000000000000000000000000000000000` | <a href="https://aeneid.storyscan.xyz/address/0x1514000000000000000000000000000000000000" target="_blank">View here ↗️</a> | N/A                                                                                                                                                 |
+| MERC20 | `0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E` | <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E" target="_blank">View here ↗️</a> | <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19" target="_blank">Mint ↗️</a> |
 
 ## Misc
 
@@ -11361,12 +11241,14 @@ In this tutorial, you will learn how to send money ("tip") an IP Asset using the
 
 ## The Explanation
 
-In this scenario, let's say there is a parent IP Asset that represents Mickey Mouse. Someone else draws a hat on that Mickey Mouse and registers it as a derivative (or "child") IP Asset. The License Terms specify that the child must share 50% of all commercial revenue (`commercialRevShare = 50`) with the parent. Someone else (a 3rd party user) comes along and wants to send the derivative 2 SUSD for being really cool.
+In this scenario, let's say there is a parent IP Asset that represents Mickey Mouse. Someone else draws a hat on that Mickey Mouse and registers it as a derivative (or "child") IP Asset. The License Terms specify that the child must share 50% of all commercial revenue (`commercialRevShare = 50`) with the parent. Someone else (a 3rd party user) comes along and wants to send the derivative 2 $WIP for being really cool.
 
 For the purposes of this example, we will assume the child is already registered as a derivative IP Asset. If you want help learning this, check out [Register a Derivative](doc:register-a-derivative).
 
 * Parent IP ID: `0x42595dA29B541770D9F9f298a014bF912655E183`
 * Child IP ID: `0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a`
+
+Additionally, we will be using $MERC20 instead of $WIP since we can mint it for testing purposes.
 
 ## 0. Before you Start
 
@@ -11382,7 +11264,7 @@ WALLET_PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
 3. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```text env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 4. Install the dependencies:
@@ -11408,7 +11290,7 @@ export const account: Account = privateKeyToAccount(privateKey)
 const config: StoryConfig = {  
   account: account,  
   transport: http(process.env.RPC_PROVIDER_URL),  
-  chainId: 'odyssey',  
+  chainId: 'aeneid',  
 }  
 export const client = StoryClient.newClient(config)
 ```
@@ -11419,15 +11301,18 @@ Now create a `main.ts` file. We will use the `payRoyaltyOnBehalf` function to pa
 
 Now, before you actually pay the IP Asset, you will need to do a few things:
 
-1. Obviously, we will need some SUSD to pay with. Mint some SUSD tokens by running [this](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19) transaction (10 is good).
-2. Next, you have to allow the `RoyaltyModule.sol` contract to spend those tokens on your behalf so it can properly distribute royalties to ancestor IPs. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the spender is `0xEa6eD700b11DfF703665CCAF55887ca56134Ae3B` (this is the Odyssey v1.2 address of `RoyaltyModule.sol` found [here](doc:deployed-smart-contracts)) and the value is >= 2 (that's the amount we're paying in the script).
+1. Obviously, we will need some tokens to pay with. Mint some $MERC20 tokens by running [this](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19) transaction (10 is good).
+   > 📘 Revenue Tokens
+   >
+   > Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#/).
+2. Next, you have to allow the `RoyaltyModule.sol` contract to spend those tokens on your behalf so it can properly distribute royalties to ancestor IPs. Run the [approve transaction](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x095ea7b3) where the spender is `0xD2f60c40fEbccf6311f8B47c4f2Ec6b040400086` (this is the Aeneid v1.3 address of `RoyaltyModule.sol` found [here](doc:deployed-smart-contracts)) and the value is >= 2 (that's the amount we're paying in the script).
 
 Now we can call the `payRoyaltyOnBehalf` function. In this case:
 
 1. `receiverIpId` is the `ipId` of the derivative (child) asset
 2. `payerIpId` is `zeroAddress` because the payer is a 3rd party (someone that thinks Mickey Mouse with a hat on him is cool), and not necessarily another IP Asset
-3. `token` is the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
-4. `amount` is 2, since the person tipping wants to send 2 SUSD
+3. `token` is the address of MERC20, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+4. `amount` is 2, since the person tipping wants to send 2 MERC20
 
 ```typescript main.ts
 import { client } from './utils'
@@ -11437,7 +11322,7 @@ async function main() {
    const response = await client.royalty.payRoyaltyOnBehalf({
     receiverIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a',
     payerIpId: zeroAddress,
-    token: '0x91f6F05B08c16769d3c85867548615d270C42fC7',
+    token: '0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E',
     amount: 2,
     txOptions: { waitForTransaction: true },
   })
@@ -11451,37 +11336,45 @@ main();
 
 At this point we have already finished the tutorial: we learned how to tip an IP Asset. But what if the child and parent want to claim their due revenue?
 
-The child has been paid 2 SUSD. But remember, it shares 50% of its revenue with the parent IP because of the `commercialRevenue = 50` in the license terms.
+The child has been paid 2 MERC20. But remember, it shares 50% of its revenue with the parent IP because of the `commercialRevenue = 50` in the license terms.
 
-The child IP can claim its 1 SUSD by calling the `snapshotAndClaimByTokenBatch` function:
+The child IP can claim its 1 MERC20 by calling the `claimAllRevenue` function:
 
-* `royaltyVaultIpId` is the `ipId` of the IP Asset thats associated with the royalty vault that has the funds in it (more simply, this is just the child's `ipId`)
-* `currencyTokens` is an array that contains the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+* `ancestorIpId` is the `ipId` of the IP Asset thats associated with the royalty vault that has the funds in it (more simply, this is just the child's `ipId`)
+* `currencyTokens` is an array that contains the address of MERC20, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 * `claimer` is the address that holds the royalty tokens associated with the child's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the child asset
 
 ```typescript main.ts
-const response = await client.royalty.snapshotAndClaimByTokenBatch({
-  royaltyVaultIpId: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
-  currencyTokens: ["0x91f6F05B08c16769d3c85867548615d270C42fC7"],
-  claimer: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
-  txOptions: { waitForTransaction: true },
-})
+import { client } from './utils'
+import { zeroAaddress } from 'viem'
 
-console.log(`Claimed revenue: ${response.amountsClaimed}`);
+async function main() {
+  // previous code here ...
+  const response = await client.royalty.claimAllRevenue({
+    ancestorIpId: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
+    claimer: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
+    currencyTokens: ['0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E'],
+    childIpIds: [],
+    royaltyPolicies: []
+  })
+
+  console.log(`Claimed revenue: ${response.claimedTokens}`);
+}
+
+main();
 ```
 
 ## 4. Parent Claiming Due Revenue
 
-Continuing, the parent should be able to claim its revenue as well. In this example, the parent should be able to claim 1 SUSD since the child earned 2 SUSD and the `commercialRevShare = 50` in the license terms.
+Continuing, the parent should be able to claim its revenue as well. In this example, the parent should be able to claim 1 MERC20 since the child earned 2 MERC20 and the `commercialRevShare = 50` in the license terms.
 
-We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the due revenue tokens.
+We will use the `claimAllRevenue` function to claim the due revenue tokens.
 
 1. `ancestorIpId` is the `ipId` of the parent ("ancestor") asset
 2. `claimer` is the address that holds the royalty tokens associated with the parent's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the parent asset
-3. `childIpId` is obviously the `ipId` of the child asset
-4. `royaltyPolicy` is the address of the royalty policy. As explained in [💸 Royalty Module](doc:royalty-module), this is either `RoyaltyPolicyLAP` or `RoyaltyPolicyLRP`, depending on the license terms. In this case, let's assume the license terms specify a `RoyaltyPolicyLAP`. Simply go to [Deployed Smart Contracts](doc:deployed-smart-contracts) and find the correct address.
-5. `currencyToken` is the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
-6. `amount` is 1, since the parent should have 1 SUSD available to claim
+3. `childIpIds` will have the `ipId` of the child asset
+4. `royaltyPolicies` will contain the address of the royalty policy. As explained in [💸 Royalty Module](doc:royalty-module), this is either `RoyaltyPolicyLAP` or `RoyaltyPolicyLRP`, depending on the license terms. In this case, let's assume the license terms specify a `RoyaltyPolicyLAP`. Simply go to [Deployed Smart Contracts](doc:deployed-smart-contracts) and find the correct address.
+5. `currencyTokens` is an array that contains the address of MERC20, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 
 ```typescript main.ts
 import { client } from './utils'
@@ -11490,18 +11383,15 @@ import { zeroAaddress } from 'viem'
 async function main() {
   // previous code here ...
 
-  const response = await client.royalty.transferToVaultAndSnapshotAndClaimByTokenBatch({
-    ancestorIpId: '0x42595dA29B541770D9F9f298a014bF912655E183',
-    claimer: '0x42595dA29B541770D9F9f298a014bF912655E183',
-    royaltyClaimDetails: [{ 
-      childIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a', 
-      royaltyPolicy: '0x793Df8d32c12B0bE9985FFF6afB8893d347B6686', 
-      currencyToken: '0x91f6F05B08c16769d3c85867548615d270C42fC7', 
-      amount: 1 
-    }],
-    txOptions: { waitForTransaction: true },
+  const response = await client.royalty.claimAllRevenue({
+    ancestorIpId: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+    claimer: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+    currencyTokens: ['0x1514000000000000000000000000000000000000'],
+    childIpIds: ['0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2'],
+    royaltyPolicies: ['0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E']
   })
-  console.log(`Claimed revenue: ${response.amountsClaimed} at snapshotId ${response.snapshotId}`)
+  
+  console.log(`Claimed revenue: ${response.claimedTokens}`);
 }
 
 main();
@@ -11564,7 +11454,7 @@ STABILITY_API_KEY=
 5. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 6. Install the dependencies:
@@ -11687,7 +11577,7 @@ export const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: "odyssey",
+  chainId: "aeneid",
 };
 export const client = StoryClient.newClient(config);
 ```
@@ -11821,7 +11711,7 @@ main();
 
 When registering your image on Story, you can attach [License Terms](doc:license-terms) to the IP. These are real, legally binding terms enforced on-chain by the [📜 Licensing Module](doc:licensing-module), disputable by the [❌ Dispute Module](doc:dispute-module), and in the worst case, able to be enforced off-chain in court through traditional means.
 
-Let's say we want to monetize our image such that every time someone wants to use it (on merch, advertisement, or whatever) they have to pay an initial minting fee of 10 SUSD. Additionally, every time they earn revenue on derivative work, they owe 5% revenue back as royalty.
+Let's say we want to monetize our image such that every time someone wants to use it (on merch, advertisement, or whatever) they have to pay an initial minting fee of 10 $WIP. Additionally, every time they earn revenue on derivative work, they owe 5% revenue back as royalty.
 
 ```typescript main.ts
 import fs from "fs";
@@ -11853,7 +11743,7 @@ async function main() {
     derivativesApproval: false,
     derivativesReciprocal: true,
     derivativeRevCeiling: BigInt(0),
-    currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+    currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
     uri: '',
   } 
 }
@@ -11991,7 +11881,7 @@ WALLET_PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
 3. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 4. Install the dependencies:
@@ -12017,7 +11907,7 @@ export const account: Account = privateKeyToAccount(privateKey)
 const config: StoryConfig = {  
   account: account,  
   transport: http(process.env.RPC_PROVIDER_URL),  
-  chainId: 'odyssey',  
+  chainId: 'aeneid',  
 }
 export const client = StoryClient.newClient(config)
 ```
@@ -12062,6 +11952,7 @@ main();
 > 🚧 Coming soon...
 
 # Training Data
+
 In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generated images by registering it on Story.
 
 ## The Explanation
@@ -12101,7 +11992,7 @@ OPENAI_API_KEY=
 4. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 5. Install the dependencies:
@@ -12113,23 +12004,23 @@ npm install @story-protocol/core-sdk pinata-web3 viem
 ## 1. Generate an Image
 
 ```typescript main.ts
-import OpenAI from 'openai'
+import OpenAI from "openai";
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-})
-
-const image = await openai.images.generate({ 
-  model: 'dall-e-2', 
-  prompt: 'A cute baby sea otter' 
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-console.log(image.data[0].url) // the url to the newly created image
+const image = await openai.images.generate({
+  model: "dall-e-2",
+  prompt: "A cute baby sea otter",
+});
+
+console.log(image.data[0].url); // the url to the newly created image
 ```
 
 ## 2. Set up your Story Config
 
-* Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
+- Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
 ```javascript main.ts
 import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
@@ -12144,7 +12035,7 @@ const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: "odyssey",
+  chainId: "aeneid",
 };
 const client = StoryClient.newClient(config);
 ```
@@ -12159,27 +12050,27 @@ import { IpMetadata } from "@story-protocol/core-sdk";
 // previous code here...
 
 const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
-  title: 'Dall-E 2 Image',
-  description: 'An image generated by Dall-E 2',
-  ipType: 'image',
+  title: "Dall-E 2 Image",
+  description: "An image generated by Dall-E 2",
+  ipType: "image",
   attributes: [
     {
-      key: 'Model',
-      value: 'dall-e-2',
+      key: "Model",
+      value: "dall-e-2",
     },
     {
-      key: 'Prompt',
-      value: 'A cute baby sea otter',
+      key: "Prompt",
+      value: "A cute baby sea otter",
     },
   ],
   creators: [
     {
-      name: 'Jacob Tucker',
+      name: "Jacob Tucker",
       contributionPercent: 100,
       address: account.address,
     },
   ],
-})
+});
 ```
 
 ## 4. Set up your NFT Metadata
@@ -12190,20 +12081,21 @@ The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.o
 // previous code here...
 
 const nftMetadata = {
-  name: 'NFT representing ownership of our image',
-  description: 'This NFT represents ownership of the image generated by Dall-E 2',
+  name: "NFT representing ownership of our image",
+  description:
+    "This NFT represents ownership of the image generated by Dall-E 2",
   image: image.data[0].url,
   attributes: [
     {
-      key: 'Model',
-      value: 'dall-e-2',
+      key: "Model",
+      value: "dall-e-2",
     },
     {
-      key: 'Prompt',
-      value: 'A cute baby sea otter',
+      key: "Prompt",
+      value: "A cute baby sea otter",
     },
   ],
-}
+};
 ```
 
 ## 5. Upload your IP and NFT Metadata to IPFS
@@ -12260,7 +12152,7 @@ const account: Account = privateKeyToAccount(privateKey)
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: 'odyssey',
+  chainId: 'aeneid',
 }
 const client = StoryClient.newClient(config)
 
@@ -12292,7 +12184,7 @@ SPG_NFT_CONTRACT_ADDRESS=
 
 The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
+- Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
 ```typescript main.ts
 import {
@@ -12325,6 +12217,7 @@ console.log(
 ```
 
 ## 7. Done!
+
 
 # Protect DALL·E AI-Generated Images
 In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generated images by registering it on Story.
@@ -12365,7 +12258,7 @@ OPENAI_API_KEY=
 5. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 6. Install the dependencies:
@@ -12414,7 +12307,7 @@ export const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: "odyssey",
+  chainId: "aeneid",
 };
 export const client = StoryClient.newClient(config);
 ```
@@ -12671,7 +12564,7 @@ PINATA_JWT=<YOUR_PINATA_JWT>
 4. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 5. Install the dependencies:
@@ -12697,7 +12590,7 @@ export const account: Account = privateKeyToAccount(privateKey)
 const config: StoryConfig = {  
   account: account,  
   transport: http(process.env.RPC_PROVIDER_URL),  
-  chainId: 'odyssey',  
+  chainId: 'aeneid',  
 }  
 export const client = StoryClient.newClient(config)
 ```
@@ -12811,12 +12704,12 @@ Then, in two separate files, add the following `mintNFT` function and the `defau
 ```typescript mintNFT.ts
 import { http, createWalletClient, createPublicClient, Address } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
-import { odyssey } from '@story-protocol/core-sdk'
+import { aeneid } from '@story-protocol/core-sdk'
 import { defaultNftContractAbi } from './defaultNftContractAbi'
 import { account } from './utils'
 
 const baseConfig = {
-  chain: odyssey,
+  chain: aeneid,
   transport: http(process.env.RPCProviderUrl),
 } as const
 export const publicClient = createPublicClient(baseConfig)
@@ -13398,7 +13291,7 @@ BFL_API_KEY=
 5. Add your preferred Story RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 6. Install the dependencies:
@@ -13747,7 +13640,7 @@ export const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: "odyssey",
+  chainId: "aeneid",
 };
 export const client = StoryClient.newClient(config);
 ```
@@ -14040,6 +13933,8 @@ The function now has 1 extra parameter:
 
 The function has also modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
 
+:warning: This function will now fail if you do not provide any license terms. For that, just use `mintAndRegisterIp` instead.
+
 Example:
 
 ```typescript TypeScript
@@ -14064,7 +13959,7 @@ const licenseTerms: LicenseTerms = {
 };
 
 const licensingConfig: LicensingConfig = {
-  isSet: true,
+  isSet: false,
   mintingFee: BigInt(0),
   licensingHook: zeroAddress,
   hookData: zeroHash,
@@ -14096,6 +13991,8 @@ const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
 
 The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
 
+:warning: This function will now fail if you do not provide any license terms. For that, just use `register` instead.
+
 Example:
 
 ```typescript TypeScript
@@ -14120,7 +14017,7 @@ const licenseTerms: LicenseTerms = {
 };
 
 const licensingConfig: LicensingConfig = {
-  isSet: true,
+  isSet: false,
   mintingFee: BigInt(0),
   licensingHook: zeroAddress,
   hookData: zeroHash,
@@ -14249,6 +14146,8 @@ const response = await client.ipAsset.mintAndRegisterIp({
 
 The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
 
+:warning: This function will now fail if you do not provide any license terms. There is no reason you would be providing empty terms anyway.
+
 Example:
 
 ```typescript TypeScript
@@ -14273,7 +14172,7 @@ const licenseTerms: LicenseTerms = {
 };
 
 const licensingConfig: LicensingConfig = {
-  isSet: true,
+  isSet: false,
   mintingFee: BigInt(0),
   licensingHook: zeroAddress,
   hookData: zeroHash,
@@ -14429,9 +14328,11 @@ A version matrix showing the **currently available protocol versions** for diffe
       </td>
 
       <td style={{ textAlign: "left" }}>
-        *v1.3 coming soon*
+        [v1.3](https://www.npmjs.com/package/@story-protocol/core-sdk/v/1.3.0-beta.2)
 
-        This will be ready on February 7th. **However you can begin anticipating changes based on the** [SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide)
+        :warning: Note this is still a beta version.
+
+        **Migration Guide**: To go from v1.2 to v1.3, check out the [SDK v1.3 MIGRATION GUIDE](doc:sdk-v13-migration-guide).
       </td>
     </tr>
 
@@ -14445,9 +14346,10 @@ A version matrix showing the **currently available protocol versions** for diffe
       </td>
 
       <td style={{ textAlign: "left" }}>
-        *v1.3 coming soon*
+        [Core v1.3](https://github.com/storyprotocol/protocol-core-v1)\
+        [Periphery v1.3](https://github.com/storyprotocol/protocol-periphery-v1)
 
-        This will be ready in a few hours.
+        **Tutorial**: Check out [⚙️ Smart Contracts](doc:get-started-with-the-smart-contracts) for a tutorial on integrating with the v1.3 contracts
       </td>
     </tr>
 
@@ -14462,8 +14364,6 @@ A version matrix showing the **currently available protocol versions** for diffe
 
       <td style={{ textAlign: "left" }}>
         *v1.3 coming soon*
-
-        This will be ready on February 3rd.
       </td>
     </tr>
   </tbody>
@@ -14541,12 +14441,6 @@ This section demonstrates how to register an IP Asset using the TypeScript SDK. 
 
 * [Setup](doc:typescript-sdk-setup) the client object.
 
-> 📘 Default License Terms
->
-> Note that every single IP Asset registered on Story automatically has [Non-Commercial Social Remixing License Terms](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing)  attached to it.
->
-> If it's a root IP Asset (meaning it has no more parents), you can attach more License Terms to it later. Please see [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset) for more info.
-
 # Register an NFT as an IP Asset
 
 You can register your NFT as an IP Asset by simply calling `client.ipAsset.register()` and passing in the token's contract address and token ID, like so:
@@ -14613,7 +14507,7 @@ IPA ID: 0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721
 
 Instead of first minting an NFT and then registering it as an IP Asset, this function allows you to mint and register an IP Asset all in one transaction
 
-> 📘 Before You Use this Function
+> 🚧 Before You Use this Function
 >
 > The address of `spgNftContract` **must** implement <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol" target="_blank">ISPGNFT</a> in order to work.
 >
@@ -14679,10 +14573,6 @@ export type RegisterIpResponse = {
 
 # Attach Terms to an IPA
 This section demonstrates how to add License Terms to an IPA. By attaching terms, an IPA becomes eligible for licensing creation. Users who then wish to creative derivatives of the IP may then mint licenses, which can be burned to enroll their IPs as derivative IPAs of the original work.
-
-> 📘 Note
->
-> [Non-Commercial Social Remixing](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) License Terms are attached **by default** to every IP Asset.
 
 There are a few different ways you can do this, depending on what works best for you:
 
@@ -14752,7 +14642,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -14812,7 +14702,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -14862,7 +14752,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -14909,7 +14799,7 @@ This section demonstrates how to register a selection of License Terms using the
 ## Prerequisites
 
 * [Setup](doc:typescript-sdk-setup) the client object.
-* If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`. 
+* If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`.
 
 > 🪙 Whitelisted Revenue Tokens
 >
@@ -14927,7 +14817,7 @@ import { zeroAddress } from 'viem';
 
 const licenseTerms: LicenseTerms = {
   defaultMintingFee: 0n,
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   transferable: false,
   expiration: 0n,
@@ -15015,8 +14905,8 @@ export type RegisterPILResponse = {
 
 ```typescript TypeScript
 const commercialUseParams = {
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: '10' // 10 of the currency (using the above currency, 10 SUSD)
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: '10' // 10 of the currency (using the above currency, 10 $WIP)
 }
 
 const response = await client.license.registerCommercialUsePIL({
@@ -15050,8 +14940,8 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 
 ```typescript TypeScript
 const commercialRemixParams = {
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: '10', // 10 of the currency (using the above currency, 10 SUSD)
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: '10', // 10 of the currency (using the above currency, 10 $WIP)
   commercialRevShare: 10 // 10%
 }
 
@@ -15087,8 +14977,6 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 
 There are currently no parameters to be passed in here, so this function should not really be used other than to get back the `licenseTermsId` for this license.
 
-In addition, NCSR terms are already attached to every single IP Asset **by default**, with `licenseTermsId == 1`.
-
 ```typescript TypeScript
 const nonComSocialRemixingParams = {}
 
@@ -15114,7 +15002,6 @@ export type RegisterPILResponse = {
 
 Setting `waitForTransaction: true` in the transaction options will return the `licenseTermsId` value.
 
-
 # Claim Revenue
 This section demonstrates how to claim due revenue from an IP Asset in TypeScript.
 
@@ -15122,53 +15009,130 @@ This section demonstrates how to claim due revenue from an IP Asset in TypeScrip
 
 * [Setup](doc:typescript-sdk-setup) the client object.
 * Understand the [💸 Royalty Module](doc:royalty-module)
+* Obviously, there must be a payment to be claimed. Read [Pay an IPA in TypeScript](doc:pay-ipa)
 
 # Claiming Revenue Tokens
 
-As you can probably tell from reading the [💸 Royalty Module](doc:royalty-module) docs, there are a few steps involved in claiming revenue from child IP Assets. Obviously, the revenue must first be paid to the child (read [Pay an IPA in TypeScript](doc:pay-ipa)). 
+There are two main ways revenue can be claimed:
 
-The Royalty Module automatically splits the revenue between the child and its ancestors based on the license terms ▶️ the revenue tokens must then be transferred from the royalty policy contract to the IPA's [IP Royalty Vault](doc:ip-royalty-vault) ▶️ a snapshot must be taken ▶️ the tokens can be claimed by whoever owns the associated Royalty Tokens.
+1. **Scenario #1**: Someone pays my IP Asset directly, and I claim that revenue.
+2. **Scenario #2**: Someone pays a derivative IP Asset of my IP, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms.
 
-To simplify this, the SDK supports a `transferToVaultAndSnapshotAndClaimByTokenBatch` function which does all of the above. 
+## Scenario #1
+
+In this scenario, someone pays my IP Asset directly, and I claim that revenue.
+
+![](https://files.readme.io/a39e345a512747ff414668309a80ec1b01048c238bf1adef4d0760d830006cbd-image.png)
+
+As we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 850k USDC automatically gets deposited into IP Royalty Vault 3. Below is how IP Asset 3 would claim their revenue:
 
 ```typescript TypeScript
-const claimRevenue = await client.royalty.transferToVaultAndSnapshotAndClaimByTokenBatch({
+const claimRevenue = await client.royalty.claimAllRevenue({
+  // IP Asset 3's ipId
   ancestorIpId: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
-  claimer: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2', // whoever owns the royalty tokens (most likely the associated ipId)
-  royaltyClaimDetails: [{ 
-    childIpId: '0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1', 
-    royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-    currencyToken: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
-    amount: 1 
-  }],
-  txOptions: { waitForTransaction: true },
+  // whoever owns the royalty tokens associated with IP Royalty Vault 3
+  // (most likely the associated ipId, which is IP Asset 3's ipId)
+  claimer: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
+  // testnet address of $WIP
+  currencyTokens: ['0x1514000000000000000000000000000000000000'],
+  childIpIds: [],
+  royaltyPolicies: []
 })
-console.log(`Claimed ${claimRevenue.amountsClaimed} revenue at snapshotId ${claimRevenue.snapshotId}`)
+
+console.log(`Claimed revenue: ${claimRevenue.claimedTokens}`);
 ```
 ```typescript Request Type
-export type TransferToVaultAndSnapshotAndClaimByTokenBatchRequest = {
+export type ClaimAllRevenueRequest = {
   ancestorIpId: Address;
-  royaltyClaimDetails: RoyaltyClaimDetail[];
-  claimer?: Address;
-  txOptions?: TxOptions;
+  claimer: Address;
+  childIpIds: Address[];
+  royaltyPolicies: Address[];
+  currencyTokens: Address[];
+  claimOptions?: {
+    autoTransferAllClaimedTokensFromIp?: boolean;
+    autoUnwrapIpTokens?: boolean;
+  };
 };
 ```
 ```typescript Response Type
-export type TransferToVaultAndSnapshotAndClaimByTokenBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
+export type ClaimAllRevenueResponse = {
+  txHashes: Hash[];
+  receipt?: TransactionReceipt;
+  claimedTokens?: ClaimedToken[];
+};
+
+export type ClaimedToken = {
+  token: Address;
+  amount: bigint;
 };
 ```
 
+## Scenario #2
+
+In this scenario, someone pays a derivative IP Asset of my IP, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms. This is exactly the same as Scenario #1, except one extra step is added.
+
+![](https://files.readme.io/04a92b164d8f25119881efe784aed4bb539cdd955f553d74191b513ac0623b68-image.png)
+
+Similar to Scenario #1, as we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 150k USDC automatically gets deposited to the LAP royalty policy contract to be distributed to ancestors.
+
+![](https://files.readme.io/8f11792c3e3d2e25f74a469996b9c000c61eac167d9512f9a0f353bf62b77abf-image.png)
+
+Then, in a second step, the USDC is transferred to the ancestors' [IP Royalty Vault](doc:ip-royalty-vault) based on the negotiated `commercialRevShare` in the license terms.
+
+Below is how IP Asset 1 (or 2) would claim their revenue:
+
+```typescript TypeScript
+const claimRevenue = await client.royalty.claimAllRevenue({
+  // IP Asset 1's ipId
+  ancestorIpId: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+  // whoever owns the royalty tokens associated with IP Royalty Vault 1
+  // (most likely the associated ipId, which is IP Asset 1's ipId)
+  claimer: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+  // testnet address of $WIP
+  currencyTokens: ['0x1514000000000000000000000000000000000000'],
+  // IP Asset 3's ipId
+  childIpIds: ['0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2'],
+  // testnet address of RoyaltyPolicyLAP
+  royaltyPolicies: ['0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E']
+})
+
+console.log(`Claimed revenue: ${claimRevenue.claimedTokens}`);
+```
+```typescript Request Type
+export type ClaimAllRevenueRequest = {
+  ancestorIpId: Address;
+  claimer: Address;
+  childIpIds: Address[];
+  royaltyPolicies: Address[];
+  currencyTokens: Address[];
+  claimOptions?: {
+    autoTransferAllClaimedTokensFromIp?: boolean;
+    autoUnwrapIpTokens?: boolean;
+  };
+};
+```
+```typescript Response Type
+export type ClaimAllRevenueResponse = {
+  txHashes: Hash[];
+  receipt?: TransactionReceipt;
+  claimedTokens?: ClaimedToken[];
+};
+
+export type ClaimedToken = {
+  token: Address;
+  amount: bigint;
+};
+```
 
 # 🛠️ TypeScript SDK Guide
+> ❗️ v1.3 of SDK is not fully functional yet
+>
+> v1.3 of SDK is expected to be released on February 7th, 2025. In the meantime, we will be updating these docs beforehand to prepare for the changes.
 
 The best way to get started is to get your hands dirty and start building.
 
 <Cards columns={2}>
-  <Card title="Working Code Examples" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Working Code Examples" href="https://github.com/storyprotocol/typescript-tutorial/tree/v1.3" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Extremely easy & straightforward working code examples for all of the following tutorials.
   </Card>
 
@@ -15187,51 +15151,52 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
 | **Function**                                                                                | **Mint an NFT** | **Register IPA** | **Create License Terms** | **Attach License Terms** | **Mint License Token** | **Register as Derivative** |
 | ------------------------------------------------------------------------------------------- | :-------------: | :--------------: | :----------------------: | :----------------------: | :--------------------: | :------------------------: |
-| <span style={{color: "#6741d9"}}>register</span>                                            |                 |        ✓         |                          |                          |                        |                            |
-| <span style={{color: "#6741d9"}}>mintAndRegisterIp</span>                                   |        ✓        |        ✓         |                          |                          |                        |                            |
-| <span style={{color: "#2f9e43"}}>registerPILTerms</span>                                    |                 |                  |            ✓             |                          |                        |                            |
-| <span style={{color: "#e03130"}}>attachLicenseTerms</span>                                  |                 |                  |                          |            ✓             |                        |                            |
-| <span style={{color: "#e03130"}}>registerIpAndAttachPilTerms</span>                         |                 |        ✓         |            ✓             |            ✓             |                        |                            |
-| <span style={{color: "#e03130"}}>registerPilTermsAndAttach</span>                           |                 |                  |            ✓             |            ✓             |                        |                            |
-| <span style={{color: "#e03130"}}>mintAndRegisterIpAssetWithPilTerms</span>                  |        ✓        |        ✓         |            ✓             |            ✓             |                        |                            |
-| <span style={{color: "#1971c2"}}>mintLicenseTokens</span>                                   |                 |                  |                          |                          |           ✓            |                            |
-| <span style={{color: "#f08c00"}}>registerDerivative</span>                                  |                 |                  |                          |                          |                        |             ✓              |
-| <span style={{color: "#f08c00"}}>registerDerivativeWithLicenseTokens</span>                 |                 |                  |                          |                          |                        |             ✓              |
-| <span style={{color: "#f08c00"}}>registerDerivativeIp</span>                                |                 |        ✓         |                          |                          |                        |             ✓              |
-| <span style={{color: "#f08c00"}}>registerIpAndMakeDerivativeWithLicenseTokens</span>        |                 |        ✓         |                          |                          |                        |             ✓              |
-| <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivative</span>                  |        ✓        |        ✓         |                          |                          |                        |             ✓              |
-| <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivativeWithLicenseTokens</span> |        ✓        |        ✓         |                          |                          |                        |             ✓              |
+| <span style={{color: "#6741d9"}}>register</span>                                            |                 |         ✓        |                          |                          |                        |                            |
+| <span style={{color: "#6741d9"}}>mintAndRegisterIp</span>                                   |        ✓        |         ✓        |                          |                          |                        |                            |
+| <span style={{color: "#2f9e43"}}>registerPILTerms</span>                                    |                 |                  |             ✓            |                          |                        |                            |
+| <span style={{color: "#e03130"}}>attachLicenseTerms</span>                                  |                 |                  |                          |             ✓            |                        |                            |
+| <span style={{color: "#e03130"}}>registerIpAndAttachPilTerms</span>                         |                 |         ✓        |             ✓            |             ✓            |                        |                            |
+| <span style={{color: "#e03130"}}>registerPilTermsAndAttach</span>                           |                 |                  |             ✓            |             ✓            |                        |                            |
+| <span style={{color: "#e03130"}}>mintAndRegisterIpAssetWithPilTerms</span>                  |        ✓        |         ✓        |             ✓            |             ✓            |                        |                            |
+| <span style={{color: "#1971c2"}}>mintLicenseTokens</span>                                   |                 |                  |                          |                          |            ✓           |                            |
+| <span style={{color: "#f08c00"}}>registerDerivative</span>                                  |                 |                  |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>registerDerivativeWithLicenseTokens</span>                 |                 |                  |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>registerDerivativeIp</span>                                |                 |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>registerIpAndMakeDerivativeWithLicenseTokens</span>        |                 |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivative</span>                  |        ✓        |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivativeWithLicenseTokens</span> |        ✓        |         ✓        |                          |                          |                        |              ✓             |
 
-- <span style={{color: "#6741d9"}}>Purple</span>: [Register an IP Asset](doc:register-an-ip-asset)
-- <span style={{color: "#2f9e43"}}>Green</span>: [Register License Terms](doc:register-pil-terms)
-- <span style={{color: "#e03130"}}>Red</span>: [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset)
-- <span style={{color: "#1971c2"}}>Blue</span>: [Mint a License Token](doc:mint-a-license)
-- <span style={{color: "#f08c00"}}>Orange</span>: [Register a Derivative](doc:register-a-derivative)
+* <span style={{color: "#6741d9"}}>Purple</span>: [Register an IP Asset](doc:register-an-ip-asset)
+* <span style={{color: "#2f9e43"}}>Green</span>: [Register License Terms](doc:register-pil-terms)
+* <span style={{color: "#e03130"}}>Red</span>: [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset)
+* <span style={{color: "#1971c2"}}>Blue</span>: [Mint a License Token](doc:mint-a-license)
+* <span style={{color: "#f08c00"}}>Orange</span>: [Register a Derivative](doc:register-a-derivative)
 
 You can also check out [Pay an IPA](doc:pay-ipa) and [Claim Revenue](doc:claim-revenue) to interact with the [💸 Royalty Module](doc:royalty-module) with the SDK.
 
 # Pay an IPA
+
 This section demonstrates how to pay an IP Asset in TypeScript.
 
 There are a few reasons you would pay an IP Asset:
 
-* you simply want to "tip" an IP
-* you have to because your license terms with that IP require you to forward a certain % of payment
+- you simply want to "tip" an IP
+- you have to because your license terms with that IP require you to forward a certain % of payment
 
 In either scenario, you would use the below `payRoyaltyOnBehalf` function. When this happens, the Royalty Module automatically handles the different payment flows such that parent IP Assets who have negotiated a certain `commercialRevShare` with the IPA being paid can claim their due share. This is covered in ...
 
 ## Prerequisites
 
-* [Setup](doc:typescript-sdk-setup) the client object.
-* Understand the [💸 Royalty Module](doc:royalty-module)
+- [Setup](doc:typescript-sdk-setup) the client object.
+- Understand the [💸 Royalty Module](doc:royalty-module)
 
 > ❗️ Important: Before you continue
 >
 > In order to use the `payRoyaltyOnBehalf` function below, you'll first need to know a few things.
 >
-> First, the only way to make payments on Story is if the ERC20 token you're using is whitelisted. One of the only whitelisted revenue tokens is SUSD, which is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens).
+> First, the only way to make payments on Story is if the ERC20 token you're using is whitelisted. One of the only whitelisted revenue tokens is $MERC20, which can be minted for test purposes and is shown [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens).
 >
-> Then, once you have SUSD, you have to approve the Royalty Module to spend them on behalf so it can properly distribute payment to ancestor IPs. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
+> Then, once you have $MERC20, you have to approve the Royalty Module to spend them on your behalf so it can properly distribute payment to ancestor IPs. Run the [approve transaction](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x095ea7b3) where the `spender` is `0xD2f60c40fEbccf6311f8B47c4f2Ec6b040400086`, which is the v1.3 (current deployment supported by the SDK) address of `RoyaltyModule.sol` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
 
 # Paying an IP Asset
 
@@ -15241,21 +15206,22 @@ To help with the following scenarios, let's say we have a parent IP Asset that h
 
 ## Tipping an IP Asset
 
-In this scenario, you're an external 3rd-party user who want to pay the child 2 SUSD for being cool. When you call the function below, you should make `payerIpId` a zero address because you are not paying on behalf of an IP Asset. Additionally, you would set `amount` to 2.
+In this scenario, you're an external 3rd-party user who want to pay the child 2 $WIP for being cool. When you call the function below, you should make `payerIpId` a zero address because you are not paying on behalf of an IP Asset. Additionally, you would set `amount` to 2.
 
-Due to the existing license terms that specify 50% `commercialRevShare`, 50% of the revenue (2\*0.5 = 1) would automatically be claimable by the parent thanks to the Royalty Module, such that both the parent and child IP Assets earn 1 SUSD.
+Due to the existing license terms that specify 50% `commercialRevShare`, 50% of the revenue (2\*0.5 = 1) would automatically be claimable by the parent thanks to the Royalty Module, such that both the parent and child IP Assets earn 1 $WIP.
 
 ```typescript TypeScript
 const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
-  receiverIpId: '0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1', // child ipId
+  receiverIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // child ipId
   payerIpId: zeroAddress,
-  token: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  token: "0x1514000000000000000000000000000000000000", // insert WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   amount: 2,
   txOptions: { waitForTransaction: true },
-})
+});
 
-console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`)
+console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
 ```
+
 ```typescript Request Type
 export type PayRoyaltyOnBehalfRequest = {
   receiverIpId: Address;
@@ -15265,6 +15231,7 @@ export type PayRoyaltyOnBehalfRequest = {
   txOptions?: TxOptions;
 };
 ```
+
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
@@ -15276,18 +15243,19 @@ export type PayRoyaltyOnBehalfResponse = {
 
 In this scenario, lets say the child IP Asset earned 2 USD off-chain. Because the child owes the parent IP Asset 50% of its revenue, it needs to send 1 USD to the parent.
 
-The `amount` should still be 2. This is because the Royalty Module will automate the payment, such that, like the tipping scenario, 1 SUSD would be kept for the child and 1 SUSD would be claimable by the parent.
+The `amount` should still be 2. This is because the Royalty Module will automate the payment, such that, like the tipping scenario, 1 $WIP would be kept for the child and 1 $WIP would be claimable by the parent.
 
 ```typescript TypeScript
 const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
-  receiverIpId: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2', //parentIpId
-  payerIpId: '0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1', // childIpId
-  token: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  receiverIpId: "0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2", //parentIpId
+  payerIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // childIpId
+  token: "0x1514000000000000000000000000000000000000", // insert WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   amount: 2,
   txOptions: { waitForTransaction: true },
-})
-console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`)
+});
+console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
 ```
+
 ```typescript Request Type
 export type PayRoyaltyOnBehalfRequest = {
   receiverIpId: Address;
@@ -15297,12 +15265,14 @@ export type PayRoyaltyOnBehalfRequest = {
   txOptions?: TxOptions;
 };
 ```
+
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
   encodedTxData?: EncodedTxData;
 };
 ```
+
 
 # Register a Derivative
 This section demonstrates how to register an IP Asset as a derivative of another. **Luckily there are many ways you can do this based on what is best for you**, and it is up to you to choose which one you need.
@@ -15497,7 +15467,7 @@ export type RegisterIpResponse = {
 
 This function allows you to do all of the following: Mint an NFT :arrow_forward: [Register an NFT as an IP Asset](doc:register-an-nft-as-an-ip-asset) :arrow_forward: [Register an IPA as a Derivative](doc:register-ipa-as-derivative)
 
-> 📘 Before You Use this Function
+> 🚧 Before You Use this Function
 >
 > The address of `nftContract` **must** implement <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol" target="_blank">ISPGNFT</a> in order to work.
 >
@@ -15611,8 +15581,8 @@ export type RegisterIpResponse = {
 };
 ```
 
-
 # RainbowKit Setup
+
 > 📘 Optional: Official RainbowKit Docs
 >
 > Check out the official Wagmi + RainbowKit installation docs [here](https://www.rainbowkit.com/docs/installation).
@@ -15622,9 +15592,11 @@ export type RegisterIpResponse = {
 ```shell npm
 npm install --save @story-protocol/core-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -15634,7 +15606,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 ```jsx Web3Providers.tsx
@@ -15644,12 +15616,12 @@ import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
-import { odyssey } from "@story-protocol/core-sdk";
+import { aeneid } from "@story-protocol/core-sdk";
 
 const config = getDefaultConfig({
   appName: "Test Story App",
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
-  chains: [odyssey],
+  chains: [aeneid],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
@@ -15667,13 +15639,14 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Web3Providers from "./Web3Providers";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15682,9 +15655,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -15697,6 +15668,7 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -15706,17 +15678,17 @@ import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 export default function TestComponent() {
   const { data: wallet } = useWalletClient();
-  
+
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
       account: wallet!.account,
       transport: custom(wallet!.transport),
-      chainId: "odyssey",
+      chainId: "aeneid",
     };
     const client = StoryClient.newClient(config);
     return client;
   }
-  
+
   async function registerIp() {
     const client = await setupStoryClient();
     const response = await client.ipAsset.register({
@@ -15734,14 +15706,16 @@ export default function TestComponent() {
       `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
     );
   }
-  
+
   return (
-    {/* */} 
+    {/* */}
   )
 }
 ```
 
+
 # Dynamic Setup
+
 > 📘 Optional: Official Dynamic Docs
 >
 > Check out the official Wagmi + Dynamic installation docs [here](https://docs.dynamic.xyz/react-sdk/using-wagmi).
@@ -15751,9 +15725,11 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk viem wagmi @dynamic-labs/sdk-react-core @dynamic-labs/wagmi-connector @dynamic-labs/ethereum @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -15763,7 +15739,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_DYNAMIC_ENV_ID` set up in your `.env` file. Do this by logging into [Dynamic](https://app.dynamic.xyz/) and creating a project.
 
 ```jsx Web3Providers.tsx
@@ -15775,14 +15751,14 @@ import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { PropsWithChildren } from "react";
-import { odyssey } from "@story-protocol/core-sdk";
+import { aeneid } from "@story-protocol/core-sdk";
 
 // setup wagmi
 const config = createConfig({
-  chains: [odyssey],
+  chains: [aeneid],
   multiInjectedProviderDiscovery: false,
   transports: {
-    [odyssey.id]: http(),
+    [aeneid.id]: http(),
   },
 });
 const queryClient = new QueryClient();
@@ -15808,13 +15784,14 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Web3Providers from "./Web3Providers";
-import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15823,9 +15800,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -15838,6 +15813,7 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -15847,17 +15823,17 @@ import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 export default function TestComponent() {
   const { data: wallet } = useWalletClient();
-  
+
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
       account: wallet!.account,
       transport: custom(wallet!.transport),
-      chainId: "odyssey",
+      chainId: "aeneid",
     };
     const client = StoryClient.newClient(config);
     return client;
   }
-  
+
   async function registerIp() {
     const client = await setupStoryClient();
     const response = await client.ipAsset.register({
@@ -15875,14 +15851,16 @@ export default function TestComponent() {
       `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
     );
   }
-  
+
   return (
-    {/* */} 
+    {/* */}
   )
 }
 ```
 
+
 # Reown (WalletConnect) Setup
+
 > 📘 Optional: Official WalletConnect Docs
 >
 > Check out the official Wagmi + Reown installation docs [here](https://docs.walletconnect.com/appkit/next/core/installation).
@@ -15892,9 +15870,11 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk @reown/appkit @reown/appkit-adapter-wagmi wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -15904,35 +15884,37 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 ```jsx config/index.tsx
-import { cookieStorage, createStorage, http } from '@wagmi/core'
-import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
-import { mainnet, arbitrum } from '@reown/appkit/networks'
+import { cookieStorage, createStorage, http } from "@wagmi/core";
+import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+import { mainnet, arbitrum } from "@reown/appkit/networks";
+import { aeneid } from "@story-protocol/core-sdk";
 
 // Get projectId from https://cloud.reown.com
-export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
+export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 
 if (!projectId) {
-  throw new Error('Project ID is not defined')
+  throw new Error("Project ID is not defined");
 }
 
-export const networks = [mainnet, arbitrum]
+export const networks = [aeneid];
 
 //Set up the Wagmi Adapter (Config)
 export const wagmiAdapter = new WagmiAdapter({
   storage: createStorage({
-    storage: cookieStorage
+    storage: cookieStorage,
   }),
   ssr: true,
   projectId,
-  networks
-})
+  networks,
+});
 
-export const config = wagmiAdapter.wagmiConfig
+export const config = wagmiAdapter.wagmiConfig;
 ```
+
 ```jsx context/index.tsx
 'use client'
 
@@ -15982,6 +15964,7 @@ function ContextProvider({ children, cookies }: { children: ReactNode; cookies: 
 
 export default ContextProvider
 ```
+
 ```jsx app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -16018,6 +16001,7 @@ export default function RootLayout({
   )
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -16027,17 +16011,17 @@ import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 export default function TestComponent() {
   const { data: wallet } = useWalletClient();
-  
+
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
       account: wallet!.account,
       transport: custom(wallet!.transport),
-      chainId: "odyssey",
+      chainId: "aeneid",
     };
     const client = StoryClient.newClient(config);
     return client;
   }
-  
+
   async function registerIp() {
     const client = await setupStoryClient();
     const response = await client.ipAsset.register({
@@ -16055,12 +16039,13 @@ export default function TestComponent() {
       `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
     );
   }
-  
+
   return (
-    {/* */} 
+    {/* */}
   )
 }
 ```
+
 
 # TypeScript SDK Setup
 # Prerequisite
@@ -16091,7 +16076,7 @@ Next we can initiate the SDK Client. There are two ways to do this:
 ## Set Up Private Key Account
 
 <Cards columns={1}>
-  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/v1.3/scripts/utils/utils.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Check out the TypeScript Tutorial for a working example of how to set up the Story SDK Client.
   </Card>
 </Cards>
@@ -16100,7 +16085,7 @@ Before continuing with the code below:
 
 1. Make sure to have `WALLET_PRIVATE_KEY` set up in your `.env` file.
 2. Make sure to have `RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
 
 ```typescript index.ts
 import { http } from 'viem';
@@ -16113,18 +16098,12 @@ const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account, // the account object from above
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: 'odyssey'
+  chainId: 'aeneid'
 };
 export const client = StoryClient.newClient(config);
 ```
 
 ## Set Up JSON-RPC Account (ex. Metamask)
-
-<Cards columns={1}>
-  <Card title="Working Example" href="https://github.com/jacob-tucker/story-developer-sandbox/blob/main/lib/context/AppContext.tsx" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    Check out the Developer Sandbox for a working example of how to set up the Story SDK Client in a frontend setting.
-  </Card>
-</Cards>
 
 We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
 
@@ -16136,6 +16115,7 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 * [Tomo Setup Tutorial](doc:tomo-setup)
 
 # Tomo Setup
+
 > 📘 Optional: Official TomoEVMKit Docs
 >
 > Check out the official Wagmi + TomoEVMKit installation docs [here](https://docs.tomo.inc/tomo-sdk/tomoevmkit/quick-start).
@@ -16145,9 +16125,11 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 ```shell npm
 npm install --save @story-protocol/core-sdk @tomo-inc/tomo-evm-kit wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -16157,7 +16139,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_TOMO_CLIENT_ID` set up in your `.env` file. Do this by logging into the [Tomo Dashboard](https://dashboard.tomo.inc/) and creating a project.
 3. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
@@ -16168,13 +16150,13 @@ import { getDefaultConfig, TomoEVMKitProvider } from "@tomo-inc/tomo-evm-kit";
 import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
-import { odyssey } from "@story-protocol/core-sdk";
+import { aeneid } from "@story-protocol/core-sdk";
 
 const config = getDefaultConfig({
   appName: "Test Story App",
   clientId: process.env.NEXT_PUBLIC_TOMO_CLIENT_ID as string,
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
-  chains: [odyssey],
+  chains: [aeneid],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
@@ -16192,13 +16174,14 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Web3Providers from "./Web3Providers";
-import { useConnectModal } from '@tomo-inc/tomo-evm-kit';
+import { useConnectModal } from "@tomo-inc/tomo-evm-kit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16207,18 +16190,14 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   const { openConnectModal } = useConnectModal();
-  
+
   return (
     <html lang="en">
       <body>
         <Web3Providers>
-          <button onClick={openConnectModal}>
-            Connect Wallet
-          </button>
+          <button onClick={openConnectModal}>Connect Wallet</button>
           {children}
         </Web3Providers>
       </body>
@@ -16226,6 +16205,7 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -16235,17 +16215,17 @@ import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 export default function TestComponent() {
   const { data: wallet } = useWalletClient();
-  
+
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
       account: wallet!.account,
       transport: custom(wallet!.transport),
-      chainId: "odyssey",
+      chainId: "aeneid",
     };
     const client = StoryClient.newClient(config);
     return client;
   }
-  
+
   async function registerIp() {
     const client = await setupStoryClient();
     const response = await client.ipAsset.register({
@@ -16263,12 +16243,13 @@ export default function TestComponent() {
       `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
     );
   }
-  
+
   return (
-    {/* */} 
+    {/* */}
   )
 }
 ```
+
 
 # FAQ
 ## *"Is on-chain IP real?"*
@@ -16443,7 +16424,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -16546,7 +16527,7 @@ import { LicenseTerms } from '@story-protocol/core-sdk';
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
   royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(1), // costs 1 SUSD to mint a license
+  defaultMintingFee: BigInt(1), // costs 1 $WIP to mint a license
   expiration: BigInt(0),
   commercialUse: true,
   commercialAttribution: true,
@@ -16559,7 +16540,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -16605,9 +16586,9 @@ Here is how that can be done in the SDK:
 >
 > Note that sometimes minting a license might cost a `mintingFee` (based on what the value is in the terms).
 >
-> The `mintingFee` is paid in a ERC20 `currency` (also in the terms) that must be whitelisted by the protocol. For example, one of the only whitelisted revenue tokens is SUSD, which can be minted for test purposes [here](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19).
+> The `mintingFee` is paid in a ERC20 `currency` (also in the terms) that must be whitelisted by the protocol. For example, one of the only whitelisted revenue tokens is $MERC20, which can be minted for test purposes [here](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19).
 >
-> Assuming the `mintingFee` is in SUSD and you have some, you have to approve the `RoyaltyModule.sol` contract to spend them on your behalf. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the `spender` is the v1.2 (current deployment supported by the SDK) address of `RoyaltyModule.sol` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
+> Assuming the `mintingFee` is in $MERC20 and you have some, you have to approve the `RoyaltyModule.sol` contract to spend them on your behalf. Run the [approve transaction](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x095ea7b3) where the `spender` is the v1.3 (current deployment supported by the SDK) address of `RoyaltyModule.sol` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
 
 ```typescript TypeScript
 const response = await client.license.mintLicenseTokens({
@@ -16647,7 +16628,7 @@ Once the providing agent has been paid for their work (when the requesting agent
 ```typescript TypeScript
 const response = await client.royalty.snapshotAndClaimByTokenBatch({
   royaltyVaultIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-  currencyTokens: [SUSDAddress], // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currencyTokens: ["0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E"], // insert $MERC20 address from https://docs.story.foundation/docs/deployed-smart-contracts
   claimer: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba", // same as `royaltyVaultIpId` because the IP Account holds the royalty tokens
   txOptions: { waitForTransaction: true },
 })
