@@ -176,7 +176,7 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 PILTerms({
   transferable: true,
   royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
-  defaultMintingFee: BigInt(100), // ex. costs 100 SUSD to mint
+  defaultMintingFee: BigInt(100), // ex. costs 100 $WIP to mint
   expiration: BigInt(0),
   commercialUse: true,
   commercialAttribution: true,
@@ -189,7 +189,7 @@ PILTerms({
   derivativesApproval: false,
   derivativesReciprocal: false,
   derivativeRevCeiling: BigInt(0),
-  currency: CURRENCY, // ex. SUSD address
+  currency: CURRENCY, // ex. $WIP address
   uri: "",
 })
 ```
@@ -285,7 +285,7 @@ Let the world build on and play with your creation... and earn money together fr
 PILTerms({
   transferable: true,
   royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
-  defaultMintingFee: BigInt(100), // ex. costs 100 SUSD to mint
+  defaultMintingFee: BigInt(100), // ex. costs 100 $WIP to mint
   expiration: BigInt(0),
   commercialUse: true,
   commercialAttribution: true,
@@ -298,7 +298,7 @@ PILTerms({
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: SUSD, // ex. SUSD address
+  currency: CURRENCY, // ex. $WIP address
   uri: "",
 });
 ```
