@@ -16,11 +16,9 @@ metadata:
 ```shell npm
 npm install --save @story-protocol/core-sdk @tomo-inc/tomo-evm-kit wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -65,7 +63,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -96,7 +93,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";

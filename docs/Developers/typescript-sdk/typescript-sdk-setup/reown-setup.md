@@ -16,11 +16,9 @@ metadata:
 ```shell npm
 npm install --save @story-protocol/core-sdk @reown/appkit @reown/appkit-adapter-wagmi wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -60,7 +58,6 @@ export const wagmiAdapter = new WagmiAdapter({
 
 export const config = wagmiAdapter.wagmiConfig;
 ```
-
 ```jsx context/index.tsx
 'use client'
 
@@ -110,7 +107,6 @@ function ContextProvider({ children, cookies }: { children: ReactNode; cookies: 
 
 export default ContextProvider
 ```
-
 ```jsx app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -147,7 +143,6 @@ export default function RootLayout({
   )
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";

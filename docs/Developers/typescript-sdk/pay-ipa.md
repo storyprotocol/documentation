@@ -56,7 +56,6 @@ const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
 
 console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
 ```
-
 ```typescript Request Type
 export type PayRoyaltyOnBehalfRequest = {
   receiverIpId: Address;
@@ -66,7 +65,6 @@ export type PayRoyaltyOnBehalfRequest = {
   txOptions?: TxOptions;
 };
 ```
-
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
@@ -90,7 +88,6 @@ const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
 });
 console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
 ```
-
 ```typescript Request Type
 export type PayRoyaltyOnBehalfRequest = {
   receiverIpId: Address;
@@ -100,7 +97,6 @@ export type PayRoyaltyOnBehalfRequest = {
   txOptions?: TxOptions;
 };
 ```
-
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
