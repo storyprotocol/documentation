@@ -15217,7 +15217,6 @@ const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
 
 console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
 ```
-
 ```typescript Request Type
 export type PayRoyaltyOnBehalfRequest = {
   receiverIpId: Address;
@@ -15227,7 +15226,6 @@ export type PayRoyaltyOnBehalfRequest = {
   txOptions?: TxOptions;
 };
 ```
-
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
@@ -15251,7 +15249,6 @@ const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
 });
 console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
 ```
-
 ```typescript Request Type
 export type PayRoyaltyOnBehalfRequest = {
   receiverIpId: Address;
@@ -15261,7 +15258,6 @@ export type PayRoyaltyOnBehalfRequest = {
   txOptions?: TxOptions;
 };
 ```
-
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
@@ -15588,11 +15584,9 @@ export type RegisterIpResponse = {
 ```shell npm
 npm install --save @story-protocol/core-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -15635,7 +15629,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -15664,7 +15657,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -15721,11 +15713,9 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk viem wagmi @dynamic-labs/sdk-react-core @dynamic-labs/wagmi-connector @dynamic-labs/ethereum @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -15780,7 +15770,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -15809,7 +15798,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -15866,11 +15854,9 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk @reown/appkit @reown/appkit-adapter-wagmi wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -15910,7 +15896,6 @@ export const wagmiAdapter = new WagmiAdapter({
 
 export const config = wagmiAdapter.wagmiConfig;
 ```
-
 ```jsx context/index.tsx
 'use client'
 
@@ -15960,7 +15945,6 @@ function ContextProvider({ children, cookies }: { children: ReactNode; cookies: 
 
 export default ContextProvider
 ```
-
 ```jsx app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -15997,7 +15981,6 @@ export default function RootLayout({
   )
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -16121,11 +16104,9 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 ```shell npm
 npm install --save @story-protocol/core-sdk @tomo-inc/tomo-evm-kit wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -16170,7 +16151,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -16201,7 +16181,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
