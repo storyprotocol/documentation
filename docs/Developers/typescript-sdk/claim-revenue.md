@@ -46,7 +46,7 @@ const claimRevenue = await client.royalty.claimAllRevenue({
   royaltyPolicies: []
 })
 
-console.log(`Claimed revenue: ${childClaimRevenue.claimedTokens}`);
+console.log(`Claimed revenue: ${claimRevenue.claimedTokens}`);
 ```
 ```typescript Request Type
 export type ClaimAllRevenueRequest = {
@@ -103,7 +103,7 @@ const claimRevenue = await client.royalty.claimAllRevenue({
   royaltyPolicies: ['0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E']
 })
 
-console.log(`Claimed revenue: ${childClaimRevenue.claimedTokens}`);
+console.log(`Claimed revenue: ${claimRevenue.claimedTokens}`);
 ```
 ```typescript Request Type
 export type ClaimAllRevenueRequest = {
