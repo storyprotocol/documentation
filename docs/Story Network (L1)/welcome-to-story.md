@@ -2,7 +2,7 @@
 title: Welcome to Story
 excerpt: ""
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ""
   description: ""

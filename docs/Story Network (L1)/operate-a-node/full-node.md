@@ -2,7 +2,7 @@
 title: Full Node
 excerpt: ''
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
