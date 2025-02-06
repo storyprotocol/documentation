@@ -50,7 +50,7 @@ STABILITY_API_KEY=
 5. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 6. Install the dependencies:
@@ -173,7 +173,7 @@ export const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: "odyssey",
+  chainId: "aeneid",
 };
 export const client = StoryClient.newClient(config);
 ```
