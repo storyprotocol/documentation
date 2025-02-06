@@ -6,6 +6,7 @@ hidden: false
 metadata:
   robots: index
 ---
+
 > 📘 Optional: Official RainbowKit Docs
 >
 > Check out the official Wagmi + RainbowKit installation docs [here](https://www.rainbowkit.com/docs/installation).
@@ -15,9 +16,11 @@ metadata:
 ```shell npm
 npm install --save @story-protocol/core-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -60,13 +63,14 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Web3Providers from "./Web3Providers";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -75,9 +79,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -90,6 +92,7 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -99,17 +102,17 @@ import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 export default function TestComponent() {
   const { data: wallet } = useWalletClient();
-  
+
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
       account: wallet!.account,
       transport: custom(wallet!.transport),
-      chainId: "odyssey",
+      chainId: "aeneid",
     };
     const client = StoryClient.newClient(config);
     return client;
   }
-  
+
   async function registerIp() {
     const client = await setupStoryClient();
     const response = await client.ipAsset.register({
@@ -127,9 +130,9 @@ export default function TestComponent() {
       `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
     );
   }
-  
+
   return (
-    {/* */} 
+    {/* */}
   )
 }
 ```

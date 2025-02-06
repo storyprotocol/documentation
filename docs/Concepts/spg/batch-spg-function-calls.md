@@ -1,15 +1,16 @@
 ---
 title: Batch Function Calls
-excerpt: ''
+excerpt: ""
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
+
 ## Background
 
 Prior to this point, registering multiple IPs or performing other operations such as minting, attaching licensing terms, and registering derivatives requires separate transactions for each operation. This can be inefficient and costly. To streamline the process, you can batch multiple transactions into a single one. Two solutions are now available for this:
@@ -17,7 +18,7 @@ Prior to this point, registering multiple IPs or performing other operations suc
 1. **Batch SPG function calls:** Use [SPG’s built-in `multicall` function](https://docs.story.foundation/docs/batch-spg-function-calls#1-batch-spg-function-calls-via-built-in-multicall-function).
 2. **Batch function calls beyond SPG:** Use the [Multicall3 Contract](https://docs.story.foundation/docs/batch-spg-function-calls#2-batch-function-calls-via-multicall3-contract).
 
-***
+---
 
 ## 1. Batch SPG Function Calls via Built-in `multicall` Function
 
@@ -34,9 +35,9 @@ function multicall(bytes[] calldata data) external virtual returns (bytes[] memo
 
 ### Example Usage
 
-Suppose you want to mint multiple NFTs, register them as IPs, and link them as derivatives to some parent IPs. 
+Suppose you want to mint multiple NFTs, register them as IPs, and link them as derivatives to some parent IPs.
 
-To accomplish this, you can use SPG’s `multicall` function to batch the calls to the `mintAndRegisterIpAndMakeDerivative` function. 
+To accomplish this, you can use SPG’s `multicall` function to batch the calls to the `mintAndRegisterIpAndMakeDerivative` function.
 
 Here’s how you might do it:
 
@@ -67,14 +68,14 @@ await DerivativeWorkflows.multicall([
       recipient1,
       ipMetadata1,
   ).encodeABI(),
-  
+
   DerivativeWorkflows.contract.methods.mintAndRegisterIpAndMakeDerivative(
       nftContract2,
       derivData2,
       recipient2,
       ipMetadata2,
   ).encodeABI(),
-  
+
   DerivativeWorkflows.contract.methods.mintAndRegisterIpAndMakeDerivative(
       nftContract3,
       derivData3,
@@ -86,7 +87,7 @@ await DerivativeWorkflows.multicall([
 ]);
 ```
 
-***
+---
 
 ## 2. Batch Function Calls via Multicall3 Contract
 
@@ -96,7 +97,7 @@ await DerivativeWorkflows.multicall([
 
 The Multicall3 contract allows you to execute multiple calls within a single transaction and aggregate the results. The [`viem` library](https://viem.sh/docs/contract/multicall#multicall) provides native support for Multicall3.
 
-### Story Odyssey Testnet Multicall3 Deployment Info
+### Story Aeneid Testnet Multicall3 Deployment Info
 
 (Same address across all EVM chains)
 
@@ -105,7 +106,7 @@ The Multicall3 contract allows you to execute multiple calls within a single tra
   "contractName": "Multicall3",
   "chainId": 1516,
   "contractAddress": "0xcA11bde05977b3631167028862bE2a173976CA11",
-  "url": "https://odyssey.storyscan.xyz/address/0xcA11bde05977b3631167028862bE2a173976CA11"
+  "url": "https://aeneid.storyscan.xyz/address/0xcA11bde05977b3631167028862bE2a173976CA11"
 }
 ```
 
@@ -130,8 +131,8 @@ function aggregate3Value(Call3Value[] calldata calls) external payable returns (
 
 ### Struct Definitions
 
-* **Call3**: Used in `aggregate3`.
-* **Call3Value**: Used in `aggregate3Value`.
+- **Call3**: Used in `aggregate3`.
+- **Call3Value**: Used in `aggregate3Value`.
 
 ```solidity
 struct Call3 {
@@ -150,7 +151,7 @@ struct Call3Value {
 
 ### Return Type
 
-* **Result**: Struct returned by both `aggregate3` and `aggregate3Value`.
+- **Result**: Struct returned by both `aggregate3` and `aggregate3Value`.
 
 ```solidity
 struct Result {
@@ -169,8 +170,8 @@ For a list of limitations when using Multicall3, refer to the [Multicall3 README
 
 ### Additional Resources
 
-* [Multicall3 Documentation](https://github.com/mds1/multicall/blob/main/README.md)
-* [Multicall Documentation from Viem](https://viem.sh/docs/contract/multicall#multicall)
+- [Multicall3 Documentation](https://github.com/mds1/multicall/blob/main/README.md)
+- [Multicall Documentation from Viem](https://viem.sh/docs/contract/multicall#multicall)
 
 ### Full Multicall3 Interface
 
