@@ -3892,13 +3892,7 @@ The main components of the arbitration system are:
 
 ### Dispute Tags
 
-**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. Tags must be whitelisted by protocol governance to be used in a dispute. The initial set of tags are planned to be:
-
-> 🚧 Version Warning
->
-> In protocol v1.2, the only whitelisted dispute tag is "PLAGIARISM" (`0x504c414749415249534d00000000000000000000000000000000000000000000` in base32).
->
-> The below tags will be available in protocol v1.3
+**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. **Tags must be whitelisted by protocol governance to be used in a dispute.** The initial set of tags are planned to be:
 
 <Table align={["left","left"]}>
   <thead>
@@ -14534,6 +14528,8 @@ const newCollection = await client.nftClient.createNFTCollection({
 const response = await client.ipAsset.mintAndRegisterIp({
   // an NFT contract address created by the SPG
   spgNftContract: newCollection.spgNftContract as Address,
+  // set to true to have multiple NFTs with same metadata
+  allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
