@@ -48,7 +48,7 @@ WALLET_PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
 3. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```text env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 4. Install the dependencies:
