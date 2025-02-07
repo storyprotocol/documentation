@@ -13,8 +13,8 @@ next:
 Welcome to the Story API Reference! Please use the `https://api.storyprotocol.net` endpoint.
 
 ```text Headers
-X-CHAIN: 1516
-X-API-Key: 4CWuPKSRTTxC7WvjPNsaZlAqJmrGL7OhNniUrZawdu8
+X-CHAIN: story-aeneid
+X-API-Key: f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g
 ```
 
 ## Rate Limit
