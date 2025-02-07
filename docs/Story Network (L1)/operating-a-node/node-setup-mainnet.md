@@ -163,66 +163,65 @@ sudo xattr -rd com.apple.quarantine ./geth
 
 2. Configure and start service
 
-
 <Tabs>
-     <Tab title="Mainnet">
-```bash
-       # Setup systemd service
-sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
-[Unit]
-Description=Story Geth Client
-After=network.target
+  <Tab title="Mainnet">
+    ```bash
+           # Setup systemd service
+    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Geth Client
+    After=network.target
 
-[Service]
-User=${user}
-ExecStart=${path_to_geth_binary} --story --syncmode full
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=4096
+    [Service]
+    User=${user}
+    ExecStart=${path_to_geth_binary} --story --syncmode full
+    Restart=on-failure
+    RestartSec=3
+    LimitNOFILE=4096
 
-[Install]
-WantedBy=multi-user.target
-EOF
+    [Install]
+    WantedBy=multi-user.target
+    EOF
 
-# Start service
-sudo systemctl daemon-reload
-sudo systemctl enable story-geth
-sudo systemctl start story-geth
+    # Start service
+    sudo systemctl daemon-reload
+    sudo systemctl enable story-geth
+    sudo systemctl start story-geth
 
-# Verify service status
-sudo systemctl status story-geth
-```
-     </Tab>
+    # Verify service status
+    sudo systemctl status story-geth
+    ```
+  </Tab>
 
-     <Tab title="Aeneid testnet">
-       ```bash
-       # Setup systemd service
-sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
-[Unit]
-Description=Story Geth Client
-After=network.target
+  <Tab title="Aeneid testnet">
+    ```bash
+    # Setup systemd service
+    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Geth Client
+    After=network.target
 
-[Service]
-User=${user}
-ExecStart=${path_to_geth_binary} --aeneid --syncmode full
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=4096
+    [Service]
+    User=${user}
+    ExecStart=${path_to_geth_binary} --aeneid --syncmode full
+    Restart=on-failure
+    RestartSec=3
+    LimitNOFILE=4096
 
-[Install]
-WantedBy=multi-user.target
-EOF
+    [Install]
+    WantedBy=multi-user.target
+    EOF
 
-# Start service
-sudo systemctl daemon-reload
-sudo systemctl enable story-geth
-sudo systemctl start story-geth
+    # Start service
+    sudo systemctl daemon-reload
+    sudo systemctl enable story-geth
+    sudo systemctl start story-geth
 
-# Verify service status
-sudo systemctl status story-geth
-```
-     </Tab>
-   </Tabs>
+    # Verify service status
+    sudo systemctl status story-geth
+    ```
+  </Tab>
+</Tabs>
 
 ### 2.2 Install Story Consensus Client
 
@@ -278,15 +277,85 @@ sudo xattr -rd com.apple.quarantine ./story
 
 #### Init Story with Cosmovisor
 
-```bash
-cosmovisor init ./story
-cosmovisor run init --network story --moniker ${moniker_name}
-cosmovisor version
-```
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    cosmovisor init ./story
+    cosmovisor run init --network story --moniker ${moniker_name}
+    cosmovisor version
+    ```
+  </Tab>
+
+  <Tab title="Aeneid testnet">
+    ```bash
+    cosmovisor init ./story
+    cosmovisor run init --network aeneid --moniker ${moniker_name}
+    cosmovisor version
+    ```
+  </Tab>
+
+  <Tab title="Third Tab">
+    Here's content that's only inside the third Tab.
+  </Tab>
+</Tabs>
 
 #### Clear State
 
 If you ever run into issues and would like to try joining the network from a fresh state, run the following:
+
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+    ```
+
+    Mac OS X:
+
+    `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+
+    Linux:
+
+    `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+
+    To quickly check if the node is syncing, you could
+
+    Check the geth RPC endpoint to see if blocks are increasing:
+
+    ```bash
+    curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+    ```
+
+    Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+  </Tab>
+
+  <Tab title="Aeneid Testnet">
+    ```bash
+    rm -rf ${STORY_DATA_ROOT} && ./story init --network aeneid && ./story run
+    ```
+
+    Mac OS X:
+
+    `rm -rf ~/Library/Story/story/* && ./story init --network aeneid && ./story run`
+
+    Linux:
+
+    `rm -rf ~/.story/story/* && ./story init --network aeneid && ./story run`
+
+    To quickly check if the node is syncing, you could
+
+    Check the geth RPC endpoint to see if blocks are increasing:
+
+    ```bash
+    curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
+    ```
+
+    Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
+  </Tab>
+
+  <Tab title="Third Tab">
+    Here's content that's only inside the third Tab.
+  </Tab>
+</Tabs>
 
 ```bash
 rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
