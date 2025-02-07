@@ -1,8 +1,8 @@
 ---
-title: Helpful Resources
-excerpt: ''
+title: Introduction
+excerpt: For developers.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   title: ''
   description: ''
@@ -10,20 +10,29 @@ metadata:
 next:
   description: ''
 ---
-# Developer Tooling & Tutorials
+I'm going to skip any introduction or welcome. If you're a developer, here is everything you need:
 
-## :mag: <a href="https://docs.story.foundation/docs/story-network#-ip-related-explorer" target="_blank">IP-related Explorer</a>
+> 📘 Can't find something?
+>
+> Ask the writer of our docs on Telegram for help: @jacobmtucker
 
-View transaction data specifically related to IP interactions like registering, licensing, etc.
+# SDK
 
-## :mag: <a href="https://docs.story.foundation/docs/story-network#-block-explorers" target="_blank">Story Explorer</a>
+Check out the following resources to learn the SDK:
 
-View all block & transaction data on Story.
+* [Overview](doc:sdk-overview) - view the entire SDK reference
+* [🛠️ TypeScript SDK Guide](doc:typescript-sdk) - a walkthrough of how to set up and implement the most popular uses of the SDK ***(includes working code so you can jump right to coding)***
+* [📘 Tutorials](doc:tutorials) - includes tutorials that cover more specific topics, like registering music, registering AI-generated images, etc ***(includes working code so you can jump right to coding)***
 
-## :computer: <a href="https://github.com/storyprotocol/typescript-tutorial/tree/main/scripts" target="_blank">TypeScript Tutorial</a>
+# Smart Contracts
 
-Learn the TypeScript SDK by running extremely straightforward & easy scripts containing examples of all the most popular actions with the SDK.
+Check out the following resources to learn the protocol:
 
-## :building_construction: <a href="https://storykit.vercel.app/" target="_blank">StoryKit</a>
+* [⚙️ Smart Contracts](doc:get-started-with-the-smart-contracts) - a walkthrough of how to set up and implement the most popular uses of the protocol ***(includes working code so you can jump right to coding)***
+* [Deployed Smart Contracts](doc:deployed-smart-contracts) - all the deployed protocol addresses
+* [📘 Tutorials](doc:tutorials) - includes tutorials that cover more specific topics, like registering music, registering AI-generated images, etc ***(includes working code so you can jump right to coding)***
 
-Open-source React widgets to interact with Story Protocol.
+# Developer Tooling
+
+* <a href="https://aeneid.storyscan.xyz" target="_blank">Block Explorer</a> - View all block & transaction data on Story.
+* <a href="https://explorer.story.foundation" target="_blank">IP-related Explorer</a> - View transaction data specifically related to IP interactions like registering, licensing, etc.
