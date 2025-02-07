@@ -1,6 +1,6 @@
 ---
 title: 👋 Dev Overview
-excerpt: For developers.
+excerpt: For developers who want to build on our protocol.
 deprecated: false
 hidden: false
 metadata:
