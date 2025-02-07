@@ -1,12 +1,10 @@
 ---
-title: Network FAQ
+title: Troubleshooting
 deprecated: false
 hidden: true
 metadata:
   robots: index
 ---
-## Troubleshooting
-
 Welcome to Story node troubleshooting! This section covers common problems and solutions when running Story nodes.
 
 ### Node Setup
