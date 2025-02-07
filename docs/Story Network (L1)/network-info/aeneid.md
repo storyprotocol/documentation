@@ -88,31 +88,9 @@ next:
   </tbody>
 </Table>
 
-## :mag: IP-related Explorer
+## Contract deployment addresses
 
-Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
-
-> 🚧 Coming soon!
-
-| Explorer | URL |
-| :------- | :-- |
-| N/A      | N/A |
-
-## :money_with_wings: Faucets
-
-> 🚧 Coming soon!
-
-| Faucet | Amount | Requirement |
-| :----- | :----- | :---------- |
-| N/A    | N/A    | N/A         |
-
-## :moneybag: Staking
-
-> 🚧 Coming soon!
-
-| Dashboard |
-| :-------- |
-| N/A       |
+* [Proof of Creative](doc:deployed-smart-contracts)
 
 ## Ports
 
