@@ -1,12 +1,12 @@
 ---
-title: Story Mainnet Guide
-excerpt: ""
+title: Become a validator
+excerpt: ''
 deprecated: false
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
