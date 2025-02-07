@@ -32,6 +32,10 @@ Check out the following resources to learn the protocol:
 * [Deployed Smart Contracts](doc:deployed-smart-contracts) - all the deployed protocol addresses
 * [📘 Tutorials](doc:tutorials) - includes tutorials that cover more specific topics, like registering music, registering AI-generated images, etc ***(includes working code so you can jump right to coding)***
 
+# API
+
+View our [API Reference](https://docs.story.foundation/reference/api-introduction#/).
+
 # Developer Tooling
 
 * <a href="https://aeneid.storyscan.xyz" target="_blank">Block Explorer</a> - View all block & transaction data on Story.
