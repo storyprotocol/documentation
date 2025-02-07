@@ -1,5 +1,5 @@
 ---
-title: Mainnet
+title: Full Node
 excerpt: ''
 deprecated: false
 hidden: false
@@ -36,7 +36,7 @@ The `story` and `geth` binaries, which make up the clients required for running 
 ## Quick Reference
 
 * Installation time: \~30 minutes
-* Network: Story Dev mainnet
+* Network: Story Mainnet or Story Aeneid Testnet
 * Required versions:
   * story-geth: v1.0.1
   * story: v1.1.0
@@ -162,6 +162,19 @@ sudo xattr -rd com.apple.quarantine ./geth
 ```
 
 2. Configure and start service
+3. <Tabs>
+     <Tab title="First Tab">
+       Welcome to the content that you can only see inside the first Tab.
+     </Tab>
+
+     <Tab title="Second Tab">
+       Here's content that's only inside the second Tab.
+     </Tab>
+
+     <Tab title="Third Tab">
+       Here's content that's only inside the third Tab.
+     </Tab>
+   </Tabs>
 
 ```bash
 # Setup systemd service
