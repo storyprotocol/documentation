@@ -16,6 +16,16 @@ I'm going to skip any introduction or welcome. If you're a developer, here is ev
 >
 > Ask the writer of our docs on Telegram for help: @jacobmtucker
 
+<Cards columns={2}>
+  <Card title="Block Explorer" href="https://aeneid.storyscan.xyz" icon="fa-home" target="_blank">
+    View all block & transaction data on Story.
+  </Card>
+
+  <Card title="IP-related Explorer" href="https://explorer.story.foundation" icon="fa-user" target="_blank">
+    View transaction data specifically related to IP interactions like registering, licensing, etc.
+  </Card>
+</Cards>
+
 # SDK
 
 Check out the following resources to learn the SDK:
@@ -35,8 +45,3 @@ Check out the following resources to learn the protocol:
 # API
 
 View our [API Reference](https://docs.story.foundation/reference/api-introduction#/).
-
-# Developer Tooling
-
-* <a href="https://aeneid.storyscan.xyz" target="_blank">Block Explorer</a> - View all block & transaction data on Story.
-* <a href="https://explorer.story.foundation" target="_blank">IP-related Explorer</a> - View transaction data specifically related to IP interactions like registering, licensing, etc.
