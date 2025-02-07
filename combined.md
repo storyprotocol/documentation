@@ -12188,7 +12188,7 @@ forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/3_LicenseTok
 ```
 
 # 👋 Dev Overview
-I'm going to skip any introduction or welcome. If you're a developer, here is everything you need:
+If you're a developer, here is everything you need:
 
 > 📘 Can't find something?
 >
