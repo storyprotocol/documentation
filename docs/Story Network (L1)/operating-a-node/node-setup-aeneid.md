@@ -172,7 +172,7 @@ After=network.target
 
 [Service]
 User=${user}
-ExecStart=${path_to_geth_binary} --story --syncmode full
+ExecStart=${path_to_geth_binary} --aeneid --syncmode full
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
@@ -246,7 +246,7 @@ sudo xattr -rd com.apple.quarantine ./story
 
 ```bash
 cosmovisor init ./story
-cosmovisor run init --network story --moniker ${moniker_name}
+cosmovisor run init --network aeneid --moniker ${moniker_name}
 cosmovisor version
 ```
 
@@ -255,13 +255,13 @@ cosmovisor version
 If you ever run into issues and would like to try joining the network from a fresh state, run the following:
 
 ```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+rm -rf ${STORY_DATA_ROOT} && ./story init --network aeneid && ./story run
 ```
 
 * Mac OS X:
-  * `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+  * `rm -rf ~/Library/Story/story/* && ./story init --network aeneid && ./story run`
 * Linux:
-  * `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+  * `rm -rf ~/.story/story/* && ./story init --network aeneid && ./story run`
 
 To quickly check if the node is syncing, you could
 
@@ -363,18 +363,18 @@ network from a cleared state, run the following:
 ### Geth
 
 ```bash
-rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
+rm -rf ${GETH_DATA_ROOT} && ./geth --aeneid --syncmode full
 ```
 
-* Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story    --syncmode full`
-* Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode   
+* Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --aeneid    --syncmode full`
+* Linux: `rm -rf ~/.story/geth/* && ./geth --aeneid --syncmode   
   full`
 
 ### Story
 
 ```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+rm -rf ${STORY_DATA_ROOT} && ./story init --network aeneid && ./story run
 ```
 
-* Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-* Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+* Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network aeneid && ./story run`
+* Linux: `rm -rf ~/.story/story/* && ./story init --network aeneid && ./story run`
