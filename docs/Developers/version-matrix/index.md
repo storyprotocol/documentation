@@ -71,11 +71,11 @@ A version matrix showing the **currently available protocol versions** for diffe
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [v1.2](https://docs.story.foundation/reference/api-introduction)
+        :warning: Deprecated (no longer available)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        *v1.3 coming soon*
+        [v1.3](https://docs.story.foundation/reference/api-introduction)
       </td>
     </tr>
   </tbody>
