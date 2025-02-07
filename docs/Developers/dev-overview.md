@@ -24,6 +24,10 @@ I'm going to skip any introduction or welcome. If you're a developer, here is ev
   <Card title="IP-related Explorer" href="https://explorer.story.foundation" icon="fa-user" target="_blank">
     View transaction data specifically related to IP interactions like registering, licensing, etc.
   </Card>
+
+  <Card title="Quickstart" href="https://docs.story.foundation/docs/quickstart#/" icon="fa-run" target="_blank">
+    Start building on Story quickly.
+  </Card>
 </Cards>
 
 # SDK
