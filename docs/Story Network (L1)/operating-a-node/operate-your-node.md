@@ -1,5 +1,5 @@
 ---
-title: Operate Your Node
+title: Operating Your Node
 excerpt: ''
 deprecated: false
 hidden: false
