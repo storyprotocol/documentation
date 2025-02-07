@@ -88,12 +88,9 @@ next:
   </tbody>
 </Table>
 
-
-
 ## Contract deployment addresses
 
 * [Story Network](doc:node-setup-dev-mainnet)
-* <br />
 
 ## :computer: Ports
 
