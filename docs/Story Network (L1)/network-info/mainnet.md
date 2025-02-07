@@ -92,22 +92,6 @@ next:
 
 * [Proof of Creative](doc:deployed-smart-contracts)
 
-## :computer: Ports
-
-The following ports are available for `story-geth` and `story` clients:
-
-Geth:
-
-* RPC: 8545
-* WS: 8546
-* P2P: 30303
-
-Metrics:
-
-* Prometheus: 9100
-* Geth: 6060
-* Story: 26660
-
 # Further Sections
 
 * [Mainnet Status Page](https://status.story.foundation/)
