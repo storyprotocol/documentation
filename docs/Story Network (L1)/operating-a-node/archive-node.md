@@ -1,5 +1,5 @@
 ---
-title: Archive Node
+title: Operate Your Node
 excerpt: ''
 deprecated: false
 hidden: false
