@@ -12,8 +12,6 @@ next:
 ---
 This section will guide you through how to setup a Story node for mainnet. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
 
-![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
-
 The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
 
 * **`story-geth`execution client:**
@@ -417,7 +415,7 @@ If you ever run into issues and would like to try joining the network from a cle
 
     Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
 
-Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+    Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
   </Tab>
 
   <Tab title="Aeneid Testnet">
