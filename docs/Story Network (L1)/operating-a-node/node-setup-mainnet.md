@@ -409,24 +409,24 @@ If you ever run into issues and would like to try joining the network from a cle
 
 ### Story
 
-<br />
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+    ```
 
-\<Tabs>
-&#x20; \<Tab title="Mainnet">
-&#x20;   \`\`\`bash
-rm -rf $\{STORY\_DATA\_ROOT} && ./story init --network story && ./story run    \`\`\`
+    Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
 
-&#x20;   Mac OS X: \`rm -rf \\\~/Library/Story/story/\\\* && ./story init --network story && ./story run\`
+Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+  </Tab>
 
-&#x20;   Linux: \`rm -rf \\\~/.story/story/\\\* && ./story init --network story && ./story run\`
-&#x20; \</Tab>
+  <Tab title="Aeneid Testnet">
+    ```bash
+    rm -rf ${STORY_DATA_ROOT} && ./story init --network aeneid && ./story run
+    ```
 
-&#x20; \<Tab title="Aeneid Testnet">
-&#x20;       \`\`\`bash
-rm -rf $\{STORY\_DATA\_ROOT} && ./story init --network aeneid && ./story run    \`\`\`
+    Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network aeneid && ./story run`
 
-&#x20;   Mac OS X: \`rm -rf \\\~/Library/Story/story/\\\* && ./story init --network aeneid && ./story run\`
-
-&#x20;   Linux: \`rm -rf \\\~/.story/story/\\\* && ./story init --network aeneid && ./story run\`
-&#x20; \</Tab>
-\</Tabs>
+    Linux: `rm -rf ~/.story/story/* && ./story init --network aeneid && ./story run`
+  </Tab>
+</Tabs>
