@@ -1,12 +1,12 @@
 ---
-title: Welcome to Story
-excerpt: ""
+title: Welcome to Story Network
+excerpt: ''
 deprecated: false
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
