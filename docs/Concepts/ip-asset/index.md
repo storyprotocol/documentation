@@ -12,7 +12,7 @@ next:
 ---
 > 🐦 Skip the Read
 >
-> Get a quick 1-minute overview of IP Assets [here](https://twitter.com/jacobmtucker/status/1785765362744889410).
+> Get a quick 1-minute overview of IP Assets [here](https://x.com/jacobmtucker/status/1785765362744889410).
 
 IP Assets are the foundational programmable IP metadata on Story. Each IP Asset is an on-chain ERC-721 NFT (representing an IP). Yes, that means your Azuki or Pudgy Penguin is already eligible for registration into our protocol, and don't worry, there is no wrapping involved.
 

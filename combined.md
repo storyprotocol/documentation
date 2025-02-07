@@ -3103,7 +3103,7 @@ contract MockRegistry {
 # ⚙️ IP Account
 > 🐦 Skip the Read
 >
-> Get a quick 2-minute overview of IP Accounts [here](https://twitter.com/jacobmtucker/status/1787603252198134234).
+> Get a quick 2-minute overview of IP Accounts [here](https://x.com/jacobmtucker/status/1787603252198134234).
 
 When an [🧩 IP Asset](doc:ip-asset) is registered, it is given an associated **IP Account**. An IP Account is a modified ERC-6551 (Token Bound Account) implementation. It is a separate contract bound to the IP Asset for controlling permissions around interactions with Story's modules or storing the IP's associated data. Upon registration, an IP Asset is assigned a unique ID. This ID is the address of the IP Account that is bound to the IP Asset.
 
@@ -3552,7 +3552,7 @@ The different relationship types that can be used for the `relationships` attrib
       socialMedia: [
         {
           platform: "Twitter",
-          url: "https://twitter.com/kentathesamurai"
+          url: "https://x.com/kentathesamurai"
         }
       ]
     },
@@ -3648,7 +3648,7 @@ The different relationship types that can be used for the `relationships` attrib
 # 🧩 IP Asset
 > 🐦 Skip the Read
 >
-> Get a quick 1-minute overview of IP Assets [here](https://twitter.com/jacobmtucker/status/1785765362744889410).
+> Get a quick 1-minute overview of IP Assets [here](https://x.com/jacobmtucker/status/1785765362744889410).
 
 IP Assets are the foundational programmable IP metadata on Story. Each IP Asset is an on-chain ERC-721 NFT (representing an IP). Yes, that means your Azuki or Pudgy Penguin is already eligible for registration into our protocol, and don't worry, there is no wrapping involved.
 
@@ -17404,7 +17404,7 @@ Story tokenizes any type of IP; whether that’s an idea, an image, a real world
 
 When IP owners share their work online, it’s easy for others to use or change it without crediting them, and they often don't get paid fairly if their work becomes popular or valuable. This can be discouraging for people who want to share their ideas and creations but don’t want to lose control over them.
 
-Additionally, the sheer speed and superabundance of AI-generated media is outpacing the current IP system that was designed for physical replication. In many cases, [AI is trained on and is producing copyrighted data](https://twitter.com/BriannaWu/status/1823833723764084846).
+Additionally, the sheer speed and superabundance of AI-generated media is outpacing the current IP system that was designed for physical replication. In many cases, [AI is trained on and is producing copyrighted data](https://x.com/BriannaWu/status/1823833723764084846).
 
 Story fixes this by providing a way for creators to share their work with built-in protection. When someone (including an AI model) uses a song, image, or any creative work that’s registered on Story, the system automatically tracks who the original owner is and makes sure they get credited. Plus, if that work generates revenue—say someone remixes a song and it earns money—the original owner automatically receives their fair share based on license terms that were set on-chain.
 

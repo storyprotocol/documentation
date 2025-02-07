@@ -438,7 +438,7 @@ The different relationship types that can be used for the `relationships` attrib
       socialMedia: [
         {
           platform: "Twitter",
-          url: "https://twitter.com/kentathesamurai"
+          url: "https://x.com/kentathesamurai"
         }
       ]
     },
