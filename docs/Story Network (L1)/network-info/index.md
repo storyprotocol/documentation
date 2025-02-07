@@ -21,19 +21,7 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 # Available Network
 
 <Cards columns={4}>
-  <Card title="First Card" href="https://readme.com" icon="fa-home" target="_blank">
-    Main
-  </Card>
+  <Card title="Mainnet" href="https://docs.story.foundation/v1.3-beta/docs/mainnet/" icon="fa-home" target="_blank" />
 
-  <Card title="Second Card" icon="fa-user">
-    *Lorem ipsum dolor sit amet, consectetur adipiscing elit*
-  </Card>
-
-  <Card title="Third Card" icon="fa-star">
-    > Ut enim ad minim veniam, quis nostrud ullamco
-  </Card>
-
-  <Card title="Fourth Card" icon="fa-question">
-    **Excepteur sint occaecat cupidatat non proident**
-  </Card>
+  <Card title="Aeneid Testnet" hred="https://docs.story.foundation/v1.3-beta/docs/aeneid/" icon="fa-user" />
 </Cards>
