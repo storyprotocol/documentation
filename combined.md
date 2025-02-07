@@ -6094,9 +6094,10 @@ If any of these happen, you must create a new group if you wish to add/remove me
 > Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.
 
 # 🔍 Overview
+
 A piece of Intellectual Property is represented as an [🧩 IP Asset](doc:ip-asset) and its associated [⚙️ IP Account](doc:ip-account), a smart contract designed to serve as the core identity for each IP. We also have various [🧱 Modules](doc:story-modules)to add functionality to IP Assets, like creating derivatives of them, disputing IP, and automating revenue flow between them.
 
-# Architecture
+# Architectures
 
 <Image align="center" src="https://files.readme.io/251dabc-story-v1-architecture.png" />
 
@@ -6139,6 +6140,7 @@ The various registries on our protocol function as a primary directory/storage f
 The PIL is a real, off-chain legal contract that defines certain **License Terms** for how an IP Asset can be legally licensed. For example, how an IP Asset is commercialized, remixed, or attributed, and who is allowed to do that and under what conditions.
 
 We have mapped these same terms on-chain so you can easily attach terms to your IP Asset for others to seamlessly and transparently license your IP.
+
 
 # 🔒 Access Controller
 <Image align="center" src="https://files.readme.io/ff607ff-Screenshot_2024-01-23_at_14.30.19.png" />
