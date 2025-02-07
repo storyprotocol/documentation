@@ -78,7 +78,7 @@ For optimal performance and reliability, we recommend running your node on eithe
   * 26660
     * Needed if you want to expose prometheus metrics
 
-## 1.3 Install Dependencies
+### 1.3 Install Dependencies
 
 ```bash
 # Update system
@@ -293,86 +293,7 @@ sudo xattr -rd com.apple.quarantine ./story
     cosmovisor version
     ```
   </Tab>
-
-  <Tab title="Third Tab">
-    Here's content that's only inside the third Tab.
-  </Tab>
 </Tabs>
-
-#### Clear State
-
-If you ever run into issues and would like to try joining the network from a fresh state, run the following:
-
-<Tabs>
-  <Tab title="Mainnet">
-    ```bash
-    rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
-    ```
-
-    Mac OS X:
-
-    `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-
-    Linux:
-
-    `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
-
-    To quickly check if the node is syncing, you could
-
-    Check the geth RPC endpoint to see if blocks are increasing:
-
-    ```bash
-    curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-    ```
-
-    Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-  </Tab>
-
-  <Tab title="Aeneid Testnet">
-    ```bash
-    rm -rf ${STORY_DATA_ROOT} && ./story init --network aeneid && ./story run
-    ```
-
-    Mac OS X:
-
-    `rm -rf ~/Library/Story/story/* && ./story init --network aeneid && ./story run`
-
-    Linux:
-
-    `rm -rf ~/.story/story/* && ./story init --network aeneid && ./story run`
-
-    To quickly check if the node is syncing, you could
-
-    Check the geth RPC endpoint to see if blocks are increasing:
-
-    ```bash
-    curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-    ```
-
-    Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-  </Tab>
-
-  <Tab title="Third Tab">
-    Here's content that's only inside the third Tab.
-  </Tab>
-</Tabs>
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
-```
-
-* Mac OS X:
-  * `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-* Linux:
-  * `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
-
-To quickly check if the node is syncing, you could
-
-* Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
 
 #### Custom Configuration
 
