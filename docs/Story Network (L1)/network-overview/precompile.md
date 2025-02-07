@@ -39,15 +39,11 @@ Additionally, Story Protocol introduces two extra precompiled contracts:
 | \[]byte{0x01, 0x00} | `p256Verify` -  Secp256r1 signature verification              |
 | \[]byte{0x01, 0x01} | `ipgraph` - Intellectual property management                  |
 
-<br />
-
-### p256Verify precompile
+## p256Verify precompile
 
 Refer to [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) for more information.
 
-<br />
-
-### ipgraph precompile
+## ipgraph precompile
 
 The `ipgraph` precompile enables efficient querying and modification of IP relationships and royalty structures while minimizing gas costs.
 
