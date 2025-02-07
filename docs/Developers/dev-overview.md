@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-I'm going to skip any introduction or welcome. If you're a developer, here is everything you need:
+If you're a developer, here is everything you need:
 
 > 📘 Can't find something?
 >
