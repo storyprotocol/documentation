@@ -1,5 +1,5 @@
 ---
-title: Architecture Overview
+title: Overview
 excerpt: ''
 deprecated: false
 hidden: false
