@@ -15075,7 +15075,7 @@ const licenseTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  currency: "0x1514000000000000000000000000000000000000", // $WIP
   uri: "",
 };
 
@@ -15133,7 +15133,7 @@ const licenseTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  currency: "0x1514000000000000000000000000000000000000", // $WIP
   uri: "",
 };
 
@@ -15288,7 +15288,7 @@ const licenseTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: "0x1daAE3197Bc469Cb97B917aa460a12dD95c6627c",
+  currency: "0x1514000000000000000000000000000000000000", // $WIP
   uri: "",
 };
 
