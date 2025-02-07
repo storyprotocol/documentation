@@ -12194,7 +12194,7 @@ I'm going to skip any introduction or welcome. If you're a developer, here is ev
 >
 > Ask the writer of our docs on Telegram for help: @jacobmtucker
 
-<Cards columns={2}>
+<Cards columns={3}>
   <Card title="Block Explorer" href="https://aeneid.storyscan.xyz" icon="fa-home" target="_blank">
     View all block & transaction data on Story.
   </Card>
@@ -12203,7 +12203,7 @@ I'm going to skip any introduction or welcome. If you're a developer, here is ev
     View transaction data specifically related to IP interactions like registering, licensing, etc.
   </Card>
 
-  <Card title="Quickstart" href="https://docs.story.foundation/docs/quickstart#/" icon="fa-run" target="_blank">
+  <Card title="Quickstart" href="https://docs.story.foundation/docs/quickstart#/" icon="fa-truck-fast" target="_blank">
     Start building on Story quickly.
   </Card>
 </Cards>
