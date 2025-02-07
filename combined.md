@@ -14253,7 +14253,7 @@ contract IPARegistrar {
 * [Finetune Images on Story](doc:finetune-images)
 
 # How to Register Music on Story
-In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer. You can see an example final result <a href="https://explorer.story.foundation/ipa/0xC627E15bD2C44fC3221065E7ebdCfe61411fF5CA" target="_blank">here</a>.
+In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer. You can see an example final result <a href="https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" target="_blank">here</a>.
 
 > 📢 Justin Bieber is coming to Story!
 >
@@ -14354,7 +14354,7 @@ const nftMetadata = {
 
 ## 3. Done!
 
-When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0xC627E15bD2C44fC3221065E7ebdCfe61411fF5CA) on our explorer.
+When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!
 
