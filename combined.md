@@ -12370,8 +12370,6 @@ For the purposes of this example, we will assume the child is already registered
 * Parent IP ID: `0x42595dA29B541770D9F9f298a014bF912655E183`
 * Child IP ID: `0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a`
 
-Additionally, we will be using $MERC20 instead of $WIP since we can mint it for testing purposes.
-
 ## 0. Before you Start
 
 There are a few steps you have to complete before you can start the tutorial.
@@ -12421,20 +12419,18 @@ export const client = StoryClient.newClient(config)
 
 Now create a `main.ts` file. We will use the `payRoyaltyOnBehalf` function to pay the derivative asset.
 
-Now, before you actually pay the IP Asset, you will need to do a few things:
+You will be paying the IP Asset with [$WIP](https://aeneid.storyscan.xyz/address/0x1514000000000000000000000000000000000000). **Note that if you don't have enough $WIP, the function will auto wrap an equivalent amount of $IP into $WIP for you.** If you don't have enough of either, it will fail.
 
-1. Obviously, we will need some tokens to pay with. Mint some $MERC20 tokens by running [this](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19) transaction (10 is good).
-   > 📘 Revenue Tokens
-   >
-   > Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#/).
-2. Next, you have to allow the `RoyaltyModule.sol` contract to spend those tokens on your behalf so it can properly distribute royalties to ancestor IPs. Run the [approve transaction](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x095ea7b3) where the spender is `0xD2f60c40fEbccf6311f8B47c4f2Ec6b040400086` (this is the Aeneid v1.3 address of `RoyaltyModule.sol` found [here](doc:deployed-smart-contracts)) and the value is >= 2 (that's the amount we're paying in the script).
+> 📘 Whitelisted Revenue Tokens
+>
+> Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. $WIP is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#/).
 
 Now we can call the `payRoyaltyOnBehalf` function. In this case:
 
 1. `receiverIpId` is the `ipId` of the derivative (child) asset
 2. `payerIpId` is `zeroAddress` because the payer is a 3rd party (someone that thinks Mickey Mouse with a hat on him is cool), and not necessarily another IP Asset
-3. `token` is the address of MERC20, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
-4. `amount` is 2, since the person tipping wants to send 2 MERC20
+3. `token` is the address of $WIP, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+4. `amount` is 2, since the person tipping wants to send 2 $WIP
 
 ```typescript main.ts
 import { client } from './utils'
@@ -12444,7 +12440,7 @@ async function main() {
    const response = await client.royalty.payRoyaltyOnBehalf({
     receiverIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a',
     payerIpId: zeroAddress,
-    token: '0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E',
+    token: '0x1514000000000000000000000000000000000000',
     amount: 2,
     txOptions: { waitForTransaction: true },
   })
@@ -12458,12 +12454,12 @@ main();
 
 At this point we have already finished the tutorial: we learned how to tip an IP Asset. But what if the child and parent want to claim their due revenue?
 
-The child has been paid 2 MERC20. But remember, it shares 50% of its revenue with the parent IP because of the `commercialRevenue = 50` in the license terms.
+The child has been paid 2 $WIP. But remember, it shares 50% of its revenue with the parent IP because of the `commercialRevenue = 50` in the license terms.
 
-The child IP can claim its 1 MERC20 by calling the `claimAllRevenue` function:
+The child IP can claim its 1 $WIP by calling the `claimAllRevenue` function:
 
 * `ancestorIpId` is the `ipId` of the IP Asset thats associated with the royalty vault that has the funds in it (more simply, this is just the child's `ipId`)
-* `currencyTokens` is an array that contains the address of MERC20, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+* `currencyTokens` is an array that contains the address of $WIP, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 * `claimer` is the address that holds the royalty tokens associated with the child's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the child asset
 
 ```typescript main.ts
@@ -12475,7 +12471,7 @@ async function main() {
   const response = await client.royalty.claimAllRevenue({
     ancestorIpId: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
     claimer: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
-    currencyTokens: ['0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E'],
+    currencyTokens: ['0x1514000000000000000000000000000000000000'],
     childIpIds: [],
     royaltyPolicies: []
   })
@@ -12488,7 +12484,7 @@ main();
 
 ## 4. Parent Claiming Due Revenue
 
-Continuing, the parent should be able to claim its revenue as well. In this example, the parent should be able to claim 1 MERC20 since the child earned 2 MERC20 and the `commercialRevShare = 50` in the license terms.
+Continuing, the parent should be able to claim its revenue as well. In this example, the parent should be able to claim 1 $WIP since the child earned 2 $WIP and the `commercialRevShare = 50` in the license terms.
 
 We will use the `claimAllRevenue` function to claim the due revenue tokens.
 
@@ -12496,7 +12492,7 @@ We will use the `claimAllRevenue` function to claim the due revenue tokens.
 2. `claimer` is the address that holds the royalty tokens associated with the parent's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the parent asset
 3. `childIpIds` will have the `ipId` of the child asset
 4. `royaltyPolicies` will contain the address of the royalty policy. As explained in [💸 Royalty Module](doc:royalty-module), this is either `RoyaltyPolicyLAP` or `RoyaltyPolicyLRP`, depending on the license terms. In this case, let's assume the license terms specify a `RoyaltyPolicyLAP`. Simply go to [Deployed Smart Contracts](doc:deployed-smart-contracts) and find the correct address.
-5. `currencyTokens` is an array that contains the address of MERC20, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+5. `currencyTokens` is an array that contains the address of $WIP, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 
 ```typescript main.ts
 import { client } from './utils'
