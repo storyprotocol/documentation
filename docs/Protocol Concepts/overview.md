@@ -4,15 +4,16 @@ excerpt: A broad overview of Story's "Proof-of-Creativity" protocol.
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
+
 A piece of Intellectual Property is represented as an [🧩 IP Asset](doc:ip-asset) and its associated [⚙️ IP Account](doc:ip-account), a smart contract designed to serve as the core identity for each IP. We also have various [🧱 Modules](doc:story-modules)to add functionality to IP Assets, like creating derivatives of them, disputing IP, and automating revenue flow between them.
 
-# Architecture
+# Architectures
 
 <Image align="center" src="https://files.readme.io/251dabc-story-v1-architecture.png" />
 
