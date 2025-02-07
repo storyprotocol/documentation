@@ -1,5 +1,5 @@
 ---
-title: Precompile
+title: Precompiles
 excerpt: ''
 deprecated: false
 hidden: false
