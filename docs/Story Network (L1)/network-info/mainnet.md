@@ -90,7 +90,7 @@ next:
 
 ## Contract deployment addresses
 
-* [Story Network](doc:node-setup-dev-mainnet)
+* [Proof of Creative](doc:deployed-smart-contracts)
 
 ## :computer: Ports
 
