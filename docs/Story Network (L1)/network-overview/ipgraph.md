@@ -1,6 +1,6 @@
 ---
 title: Overview
-excerpt: Overview of Story's Modular Architecture
+excerpt: Overview of Story's modular architecture
 deprecated: false
 hidden: false
 metadata:
