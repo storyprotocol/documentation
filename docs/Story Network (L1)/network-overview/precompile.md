@@ -16,7 +16,8 @@ Precompiled contracts are specialized smart contracts implemented directly in th
 
 Precompiled contracts exist at fixed addresses within the execution environment and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
 
-Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.\
+Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
+
 Additionally, Story Protocol introduces two extra precompiled contracts:
 
 * `p256Verify` precompile to support signature verifications in the secp256r1 elliptic curve.
@@ -49,22 +50,22 @@ The `ipgraph` precompile enables efficient querying and modification of IP relat
 
 This precompile provides multiple functions based on the function selector—the first 4 bytes of the input.
 
-<Table>
+<Table align={["left","left","left","left"]}>
   <thead>
     <tr>
-      <th>
+      <th style={{ textAlign: "left" }}>
         Function Selector
       </th>
 
-      <th>
+      <th style={{ textAlign: "left" }}>
         Description
       </th>
 
-      <th>
+      <th style={{ textAlign: "left" }}>
         Gas computation formula
       </th>
 
-      <th>
+      <th style={{ textAlign: "left" }}>
         Gas Cost
       </th>
     </tr>
@@ -72,325 +73,325 @@ This precompile provides multiple functions based on the function selector—the
 
   <tbody>
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `addParentIp`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Adds a parent IP record
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `intrinsicGas + (ipGraphWriteGas * parentCount)`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         > \= 1100
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `hasParentIp`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Checks if an IP is parent of another IP
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphReadGas * averageParentIpCount`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         40
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getParentIps`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Retrieves parent IPs
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphReadGas * averageParentIpCount`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         40
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getParentIpsCount`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Gets the number of parent IPs
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphReadGas`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         10
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getAncestorIps`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Retrieves ancestor IPs
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphReadGas * averageAncestorIpCount * 2`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         600
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getAncestorIpsCount`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Gets the number of ancestor IPs
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphReadGas * averageParentIpCount * 2`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         80
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `hasAncestorIp`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Checks if an IP is ancestor of another IP
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphReadGas * averageAncestorIpCount * 2`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         600
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `setRoyalty`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Sets royalty details of an IP
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphWriteGas`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         1000
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getRoyalty`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Retrieves royalty details of an IP
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `varies by royalty policy`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         LAP:900, LRP:620, other:1000
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getRoyaltyStack`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Retrieves royalty stack  of an IP
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `varies by royalty policy`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         LAP:50, LRP: 600, other:1000
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `hasParentIpExt`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Checks if an IP is parent of another IP through external call
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphExternalReadGas * averageParentIpCount`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         8400
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getParentIpsExt`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Retrieves parent IPs through external call
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphExternalReadGas * averageParentIpCount`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         8400
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getParentIpsCountExt`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Gets the number of parent IPs through external call
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphExternalReadGas`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         2100
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getAncestorIpsExt`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Retrieve ancestor IPs through external call
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphExternalReadGas * averageAncestorIpCount * 2`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         126000
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getAncestorIpsCountExt`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Gets the number of ancestor IPs through external call
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphExternalReadGas * averageParentIpCount * 2`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         16800
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `hasAncestorIpExt`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Checks if an IP is ancestor of another IP through external call
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `ipGraphExternalReadGas * averageAncestorIpCount * 2`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         126000
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getRoyaltyExt`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Retrieves royalty details of an IP through external call
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `varies by royalty policy`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         LAP:189000, LRP:130200, other:1000
       </td>
     </tr>
 
     <tr>
-      <td>
+      <td style={{ textAlign: "left" }}>
         `getRoyaltyStackExt`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         Retrieves royalty stack of an IP through external call
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         `varies by royalty policy`
       </td>
 
-      <td>
+      <td style={{ textAlign: "left" }}>
         LAP:10500, LRP:126000, other:1000
       </td>
     </tr>
