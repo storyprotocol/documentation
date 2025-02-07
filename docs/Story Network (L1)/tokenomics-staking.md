@@ -42,7 +42,7 @@ A fixed number of tokens will be allocated for emissions in the first year, with
 New emissions will flow to two places:
 
 1. Block Rewards
-2. UBI (currently set to 0, explained later)
+2. Community Pool (currently set to 5%, explained later)
 
 ## Token burn
 
@@ -302,17 +302,11 @@ The reward distribution will go to a reward distribution queue, which only proce
 
 The staking reward cannot be manually withdrawn by design.
 
-# UBI for validators
+# Community Pool
 
-In every block, a percentage (currently 0% at Genesis) of the newly minted tokens will go to a UBI pool contract. The pool is to incentivize validators to validate the blocks. At the beginning of each month, the foundation will set the UBI percentage for the next month based on the token price. The maximum UBI percentage that can be set is 20%.
+A percentage (currently 5%) of the newly minted tokens in every block will go to a community pool contract. The foundation will determine how to use the tokens sent to the pool. The maximum community pool percentage that can be set is 20%.
 
-## Distribution process
-
-Every month, the story foundation will get the validator consensus participation rate based on the on-chain metrics for the previous month and calculate how many UBI tokens each validator can claim and set this in the UBI pool contract. Each validator then can claim the token from the UBI pool contract.
-
-The UBI calculation and claim process shall be verifiable by the public.
-
-The UBI contract address: **0xcccccc0000000000000000000000000000000002**
+The community pool contract address: **0xcccccc0000000000000000000000000000000002**
 
 # Singularity
 
