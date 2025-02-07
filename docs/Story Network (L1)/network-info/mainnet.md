@@ -88,39 +88,7 @@ next:
   </tbody>
 </Table>
 
-## :mag: IP-related Explorer
 
-Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
-
-> 🚧 Coming soon!
-
-| Explorer | URL |
-| :------- | :-- |
-| N/A      | N/A |
-
-## :money_with_wings: Faucets
-
-> 🚧 Coming soon!
-
-| Faucet | Amount | Requirement |
-| :----- | :----- | :---------- |
-| N/A    | N/A    | N/A         |
-
-## :moneybag: Staking
-
-> 🚧 Coming soon!
-
-| Dashboard |
-| :-------- |
-| N/A       |
-
-## Infrastructure Partners
-
-> 🚧 Coming soon!
-
-| Partner | URL |
-| :------ | :-- |
-| N/A     | N/A |
 
 ## Contract deployment addresses
 
@@ -146,6 +114,6 @@ Metrics:
 # Further Sections
 
 * [Mainnet Status Page](https://status.story.foundation/)
-* [Node Setup](doc:node-setup-dev-mainnet)
+* [Node Setup](doc:full-node)
 * [Validator Operations](doc:validator-operations)
 * [Tokenomics & Staking](doc:tokenomics-staking)
