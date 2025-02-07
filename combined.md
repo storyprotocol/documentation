@@ -14284,19 +14284,19 @@ The only difference is how you set your metadata. In your `ipMetadata`, you can 
 
 ```typescript main.ts
 const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
-  title: 'My IP Asset',
-  description: 'This is a test IP asset',
+  title: 'Midnight Marriage',
+  description: 'This is a house-style song generated on suno.',
   ipType: 'Music',
   media: [
     {
-      name: 'Rise Again',
+      name: 'Midnight Marriage',
       url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
       mimeType: 'audio/mpeg',
     },
   ],
   attributes: [
     {
-      key: 'Artist',
+      key: 'Suno Artist',
       value: 'amazedneurofunk956',
     },
     {
@@ -14310,7 +14310,7 @@ const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
   ],
   creators: [
     {
-      name: 'srivatsan_qb',
+      name: 'Jacob Tucker',
       address: account.address,
       contributionPercent: 100,
     },
@@ -14325,19 +14325,19 @@ In your `nftMetadata`, **in order for the music to actually be played on our exp
 
 ```typescript main.ts
 const nftMetadata = {
-  name: 'Test NFT',
-  description: 'This is a test NFT',
+  name: 'Midnight Marriage',
+  description: 'This is an NFT representing ownership of the Midnight Marriage song.',
   image: 'https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg',
   media: [
     {
-      name: 'Rise Again',
+      name: 'Midnight Marriage',
       url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
       mimeType: 'audio/mpeg',
     },
   ],
   attributes: [
     {
-      key: 'Artist',
+      key: 'Suno Artist',
       value: 'amazedneurofunk956',
     },
     {
