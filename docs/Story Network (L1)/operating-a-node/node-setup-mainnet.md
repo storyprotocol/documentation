@@ -381,24 +381,52 @@ curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
 
 ## Clean status
 
-If you ever run into issues and would like to try joining the\
-network from a cleared state, run the following:
+If you ever run into issues and would like to try joining the network from a cleared state, run the following:
 
 ### Geth
 
-```bash
-rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
-```
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
+    ```
 
-* Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story    --syncmode full`
-* Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode   
-  full`
+    Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story    --syncmode full`
+
+    Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode full`
+  </Tab>
+
+  <Tab title="Aeneid Testnet">
+    ```bash
+    rm -rf ${GETH_DATA_ROOT} && ./geth --aeneid --syncmode full
+    ```
+
+    Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --aeneid    --syncmode full`
+
+    Linux: `rm -rf ~/.story/geth/* && ./geth --aeneid --syncmode full`
+  </Tab>
+</Tabs>
 
 ### Story
 
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
-```
+<br />
 
-* Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-* Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+\<Tabs>
+&#x20; \<Tab title="Mainnet">
+&#x20;   \`\`\`bash
+rm -rf $\{STORY\_DATA\_ROOT} && ./story init --network story && ./story run    \`\`\`
+
+&#x20;   Mac OS X: \`rm -rf \\\~/Library/Story/story/\\\* && ./story init --network story && ./story run\`
+
+&#x20;   Linux: \`rm -rf \\\~/.story/story/\\\* && ./story init --network story && ./story run\`
+&#x20; \</Tab>
+
+&#x20; \<Tab title="Aeneid Testnet">
+&#x20;       \`\`\`bash
+rm -rf $\{STORY\_DATA\_ROOT} && ./story init --network aeneid && ./story run    \`\`\`
+
+&#x20;   Mac OS X: \`rm -rf \\\~/Library/Story/story/\\\* && ./story init --network aeneid && ./story run\`
+
+&#x20;   Linux: \`rm -rf \\\~/.story/story/\\\* && ./story init --network aeneid && ./story run\`
+&#x20; \</Tab>
+\</Tabs>
