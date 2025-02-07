@@ -333,7 +333,7 @@ Parameters:
 * `request.childIpId`: The derivative IP ID.
 * `request.parentIpIds`: The parent IP IDs.
 * `request.licenseTermsIds`: The IDs of the license terms that the parent IP supports.
-* `request.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
+* `request.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no limit. **Recommended for simplicity: 0**
 * `request.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
 * `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
@@ -376,7 +376,7 @@ export type RegisterDerivativeWithLicenseTokensResponse = {
 
 ### mintAndRegisterIpAssetWithPilTerms
 
-Mint an NFT from a collection, register it as an IP, attach metadata to the IP, and atach License Terms to the IP all in one function.
+Mint an NFT from a collection, register it as an IP, attach metadata to the IP, and attach License Terms to the IP all in one function.
 
 | Method                               | Type                                                                                                          |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -421,12 +421,12 @@ Parameters:
   * `request.args.spgNftContract`: The address of the NFT collection.
   * `request.args.terms[]`: The array of license terms to be attached.
     * `request.args.terms.transferable`: Indicates whether the license is transferable or not.
-    * `request.args.terms.royaltyPolicy`: The address of the royalty policy contract which required to StoryProtocol in advance.
+    * `request.args.terms.royaltyPolicy`: The address of the royalty policy contract which is required to StoryProtocol in advance.
     * `request.args.terms.mintingFee`: The fee to be paid when minting a license.
     * `request.args.terms.expiration`: The expiration period of the license.
     * `request.args.terms.commercialUse`: Indicates whether the work can be used commercially or not.
     * `request.args.terms.commercialAttribution`: Whether attribution is required when reproducing the work commercially or not.
-    * `request.args.terms.commercializerChecker`: Commercializers that are allowed to commercially exploit the work. If zero address, then no restrictions is enforced.
+    * `request.args.terms.commercializerChecker`: Commercializers that are allowed to commercially exploit the work. If zero address then no restrictions is enforced.
     * `request.args.terms.commercializerCheckerData`: The data to be passed to the commercializer checker contract.
     * `request.args.terms.commercialRevShare`: Percentage of revenue that must be shared with the licensor.
     * `request.args.terms.commercialRevCeiling`: The maximum revenue that can be generated from the commercial use of the work.
@@ -506,7 +506,7 @@ Parameters:
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
+  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no limit. **Recommended for simplicity: 0**
   * `request.derivData.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
   * `request.derivData.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
@@ -541,7 +541,7 @@ Parameters:
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
+  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no limit. **Recommended for simplicity: 0**
   * `request.derivData.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
   * `request.derivData.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
@@ -718,7 +718,7 @@ Cancels an ongoing dispute
 
 Parameters:
 
-* `request.disputeId`: The ID of the dispute to be cancelled.
+* `request.disputeId`: The ID of the dispute to be canceled.
 * `request.data`: [Optional] Additional data used in the cancellation process.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
@@ -826,7 +826,7 @@ Registers a Group IPA.
 
 Parameters:
 
-* `request.groupPool`: The address specifying how royalty will be split amongst the pool of IPs in the group.
+* `request.groupPool`: The address specifies how royalty will be split amongst the pool of IPs in the group.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
@@ -850,9 +850,9 @@ Parameters:
 * `request.nftContract`: The address of the NFT collection.
 * `request.groupId`: The ID of the group IP to add the newly registered IP.
 * `request.licenseTermsId`: The ID of the registered license terms that will be attached to the new IP.
-* `request.recipient`: [Optional] The address of the recipient of the minted NFT,default value is your wallet address.
-* `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP,default value is Programmable IP License.
-* `request.deadline`: [Optional] The deadline for the signature in milliseconds,default value is 1000ms.
+* `request.recipient`: [Optional] The address of the recipient of the minted NFT, the default value is your wallet address.
+* `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
+* `request.deadline`: [Optional] The deadline for the signature in milliseconds, default value is 1000ms.
 * `request.ipMetadata`: [Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` [Optional] The URI of the metadata for the IP.
   * `request.ipMetadata.ipMetadataHash` [Optional] The hash of the metadata for the IP.
@@ -911,7 +911,7 @@ Register a group IP with a group reward pool and attach license terms to the gro
 
 Parameters:
 
-* `request.groupPool`: The address specifying how royalty will be split amongst the pool of IPs in the group.
+* `request.groupPool`: The address specifies how royalty will be split amongst the pool of IPs in the group.
 * `request.licenseTermsId`: The ID of the registered license terms that will be attached to the new group IP.
 * `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
@@ -935,9 +935,9 @@ Register a group IP with a group reward pool, attach license terms to the group 
 Parameters:
 
 * `request.pIds`: must have the same PIL terms as the group IP.
-* `request.groupPool`: The address specifying how royalty will be split amongst the pool of IPs in the group.
+* `request.groupPool`: The address specifies how royalty will be split amongst the pool of IPs in the group.
 * `request.licenseTermsId`: The ID of the registered license terms that will be attached to the new group IP.
-* `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP,default value is Programmable IP License.
+* `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
 * `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
@@ -1442,7 +1442,7 @@ Welcome to Story node troubleshooting! This section covers common problems and s
   cat $HOME/.story/story/cosmovisor/upgrades/v0.13.0/upgrade-info.json
   ```
 
-  If you don\`t have create new one:
+  If you don't have create new one:
 
   ```bash
   echo '{"name":"v0.13.0","time":"0001-01-01T00:00:00Z","height":858000}' > $HOME/.story/story/cosmovisor/upgrades/v0.13.0/upgrade-info.json
@@ -2154,7 +2154,7 @@ Slashing penalizes bad behaviors on the validators by slashing out a fraction of
 
 A validator will also get jailed after self-undelegation if the validator’s remaining self-delegation amount is smaller than the minimum self-delegation (1024 IP).
 
-A jailed validator cannot participate in the consensus and earn any reward. But they can unjail themselves after a cooldown time, which is currently set to 10 minutes. After 10 minutes, it can call story’s staking contract to unjail itself IF their stake is more than minimum stake amount (1024 IP), after which it can participate in the consensus again if it’s still within the top 64 validators.
+A jailed validator cannot participate in the consensus and earn any reward. But they can unjail themselves after a cooldown time, which is currently set to 10 minutes. After 10 minutes, it can call story’s staking contract to unjail itself if its stake is more than minimum stake amount (1024 IP), after which it can participate in the consensus again if it’s still within the top 64 validators.
 
 A jailed validator can still withdraw all their stakes.
 
@@ -2238,7 +2238,7 @@ To calculate how many tokens each delegator receives, we first calculate each of
 * delegatorB with 10 \* 1 = 10 shares
 * delegatorC with 10 \* 2 = 20 shares
 
-With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each delegator, noting that the total number of tokens to be distributed among delegators is give by 100 - (100 \* 0.20) = 80:
+With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each delegator, noting that the total number of tokens to be distributed among delegators is given by 100 - (100 \* 0.20) = 80:
 
 * delegatorA with 80 \* (10 / 40) = 20 tokens
 * delegatorB with 80 \* (10 / 40) = 20 tokens
@@ -2309,7 +2309,7 @@ This section will guide you through how you can run your own validator. Validato
 
 > 📘 Note
 >
-> The below operations do not requiring running a node! However, if you would like to participate in staking rewards, you must run a validator node.
+> The below operations do not require running a node! However, if you would like to participate in staking rewards, you must run a validator node.
 
 Before proceeding, it is important to familiarize yourself with the difference between a delegator and a validator:
 
@@ -3216,11 +3216,11 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://www.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
+        <a href="https://explorer.story.foundation/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://www.storyscan.xyz/`
+        `https://explorer.story.foundation/`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -3723,7 +3723,7 @@ iptables -I INPUT -s localhost -j ACCEPT
 # Engine API
 
 The Engine API is a collection of JSON-RPC methods that enables communication between execution layer and consensus layer of an EVM node.\
-Story's execution layer,which offers full EVM compatibility, supports all standard JSON-RPC methods defined by [Ethereum Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md).
+Story's execution layer, which offers full EVM compatibility, supports all standard JSON-RPC methods defined by [Ethereum Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md).
 Meanwhile, Story's consensus layer, built on Cosmos modules, utilizes the Engine API to coordinate with the execution layer.
 
 # Precompile
@@ -4955,7 +4955,7 @@ Following the example, when each remix is made and during the `onLinkToParents` 
 
 is called on the "Policy X" address. It should return the % of derivative's royalty tokens that the royalty policy demands for the link to happen. That share of royalty tokens are sent to the "Policy X" contract. In the example case:
 
-* "Policy X" receives 3% of RT2 token supply that it can then redistributed to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs. Therefore, instead of having to give 10% as the license percentage indicated it only gives 3%.
+* "Policy X" receives 3% of RT2 token supply that it can then redistributed to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs. Therefore, instead of having to give 10% as the license percentage indicated it only gives 3%.
 * "Policy X" receives 50% of RT3 token supply that it can then redistributed to its userbase.
 
 ![](https://files.readme.io/33efb951a9be1339e849eb025d183a0f8d4f949f634ee5dfe1f13dac52c79bb0-image.png)
@@ -11249,7 +11249,7 @@ contract ExampleCustomSPGCollectionRegistration {
 
 Let us examine the `_getOrCreateCustomCollection()` internal function we wrote at the end. This leverages the SPG's `createIpCollection` function, which allows us to specify a collection type and a set of settings related to the collection as a whole. Here, we chose the `SP_DEFAULT_COLLECTION` type, which refers to the ERC721 variant that treats every NFT independently with its own customizable metadata. 
 
-For the setting, `start` refers to when minting can begin for the collection, with `end` referring to the when it will terminate (0 means it will run indefinitely until the max supply is reached). In addition, we specify the name, symbol, and maximum supply. The metadata provider is an abstraction used by SPG ERC-721s for metadata rendering. You may choose to implement your own, as long as it conforms to the `IERC721MetadataProvider` interface, but we recommend simply passing in the Story Protocol default metadata provider (*refer to the deployments document for what this address is*).
+For the setting, `start` refers to when minting can begin for the collection, with `end` referring to when it will terminate (0 means it will run indefinitely until the max supply is reached). In addition, we specify the name, symbol, and maximum supply. The metadata provider is an abstraction used by SPG ERC-721s for metadata rendering. You may choose to implement your own, as long as it conforms to the `IERC721MetadataProvider` interface, but we recommend simply passing in the Story Protocol default metadata provider (*refer to the deployments document for what this address is*).
 
 *Note: For version`v0.1-beta`, the SPG only supports one type of collection, the `SP_DEFAULT_COLLECTION`, and only supports public mints by default.*
 
@@ -17780,7 +17780,7 @@ Now, the requesting agent has a license token that can be held, giving it the ri
 
 ## Claim Revenue
 
-Once the providing agent has been paid for their work (when the requesting agent minted a license that costed $), they can claim their due revenue with the SDK like so:
+Once the providing agent has been paid for their work (when the requesting agent minted a license that cost $), they can claim their due revenue with the SDK like so:
 
 ```typescript TypeScript
 const response = await client.royalty.snapshotAndClaimByTokenBatch({
@@ -18026,4 +18026,3 @@ Our smart contract tutorial will show you exactly how to claim royalty from a ch
 > 📘 Learn More
 >
 > For more information on royalty and how it functions, check out the [💸 Royalty Module](doc:royalty-module).
-
