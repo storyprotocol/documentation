@@ -32,8 +32,7 @@ Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates t
 
 ### Getting Started
 
-* [Welcome to Story](./welcome-to-story)
-* [Node Architecture](./node-architecture)
+* [Node Architecture](doc:network-overview)
 * [Story Network Overview](./story-network)
 * [Whitepaper](https://www.story.foundation/whitepaper.pdf)
 
