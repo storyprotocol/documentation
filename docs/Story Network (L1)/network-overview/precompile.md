@@ -12,16 +12,14 @@ next:
 ---
 ## Introduction
 
-Precompiled contracts are specialized smart contracts implemented directly in the execution layer of a blockchain. Unlike user-deployed smart contracts that execute EVM bytecode, precompiled contracts offer optimized native implementations for complex cryptographic and computational operations. This significantly improves efficiency and reduces gas costs.
+Precompiled contracts are specialized smart contracts implemented directly in the execution layer of a blockchain. Unlike user-deployed smart contracts that execute EVM bytecode, precompiled contracts offer optimized native implementations for complex cryptographic and computational operations. This significantly improves efficiency and reduces gas costs. Precompiled contracts exist at fixed addresses within the execution client and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
 
-Precompiled contracts exist at fixed addresses within the execution environment and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
-
-Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
-
-Additionally, Story Protocol introduces two extra precompiled contracts:
+Story Protocol introduces two precompiled contracts:
 
 * `p256Verify` precompile to support signature verifications in the secp256r1 elliptic curve.
 * `ipgraph` precompile to enhance on-chain intellectual property management.
+
+In addition, Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
 
 ## Precompiled Contracts
 
@@ -398,4 +396,4 @@ This precompile provides multiple functions based on the function selector—the
   </tbody>
 </Table>
 
-Refer to [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
+Refer to the [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
