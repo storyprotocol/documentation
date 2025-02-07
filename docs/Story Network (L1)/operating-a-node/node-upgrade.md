@@ -19,6 +19,7 @@ There are three types of upgrades
 ### Upgrade the story geth client
 
 ```bash
+# Stop the services
 sudo systemctl stop story
 sudo systemctl stop story-geth
 
@@ -37,6 +38,7 @@ sudo systemctl start story
 ### Upgrade the story client manually
 
 ```bash
+# Stop the service
 sudo systemctl stop story
 
 # Download the new binary
@@ -90,4 +92,4 @@ The upgrade-info.json should show:
 journalctl -u story -f -o cat
 ```
 
-Note: Cosmovisor will automatically handle the binary switch when the specified block height is reached. Ensure your node has enough disk space and is fully synced before the upgrade height.
+Note: Cosmovisor will automatically handle the binary switch once the specified block height is reached. Before the upgrade, confirm that your node is fully synced and has enough disk space available.
