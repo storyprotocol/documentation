@@ -162,22 +162,12 @@ sudo xattr -rd com.apple.quarantine ./geth
 ```
 
 2. Configure and start service
-3. <Tabs>
-     <Tab title="First Tab">
-       Welcome to the content that you can only see inside the first Tab.
-     </Tab>
 
-     <Tab title="Second Tab">
-       Here's content that's only inside the second Tab.
-     </Tab>
 
-     <Tab title="Third Tab">
-       Here's content that's only inside the third Tab.
-     </Tab>
-   </Tabs>
-
+<Tabs>
+     <Tab title="Mainnet">
 ```bash
-# Setup systemd service
+       # Setup systemd service
 sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
 [Unit]
 Description=Story Geth Client
@@ -202,6 +192,37 @@ sudo systemctl start story-geth
 # Verify service status
 sudo systemctl status story-geth
 ```
+     </Tab>
+
+     <Tab title="Aeneid testnet">
+       ```bash
+       # Setup systemd service
+sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+[Unit]
+Description=Story Geth Client
+After=network.target
+
+[Service]
+User=${user}
+ExecStart=${path_to_geth_binary} --aeneid --syncmode full
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Start service
+sudo systemctl daemon-reload
+sudo systemctl enable story-geth
+sudo systemctl start story-geth
+
+# Verify service status
+sudo systemctl status story-geth
+```
+     </Tab>
+   </Tabs>
 
 ### 2.2 Install Story Consensus Client
 
