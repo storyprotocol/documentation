@@ -39,7 +39,7 @@ Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates t
 
 ### Node Operations
 
-* [Operate a Node](./operate-a-node)
+* [Operating a node](doc:operating-a-node)
   * Full Node Setup
   * Archive Node Setup
   * Node Upgrade Guide
@@ -47,24 +47,24 @@ Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates t
 
 ### Validation
 
-* [Become a Validator](./become-a-validator)
+* [Become a validator](doc:become-a-validator)
   * Validator Setup
   * Validator Operations
 
 ### Network Economics
 
-* [Tokenomics & Staking](./tokenomics-staking)
+* [Tokenomics & Staking](doc:tokenomics-staking)
   * Token Economics
   * Staking Mechanisms
   * Rewards Structure
 
 ### Resources
 
-* [Additional Resources](./additional-resources)
+* [Additional Resources](doc:additional-resources)
   * GitHub Repositories
   * SIP Repository
   * Community Forum
-* [Network FAQ](./network-faq)
+* [Troubleshooting](doc:network-faq)
   * Common Issues
   * Troubleshooting
   * Best Practices
