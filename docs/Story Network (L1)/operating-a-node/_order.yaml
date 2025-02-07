@@ -1,6 +1,6 @@
 - full-node
 - archive-node
-- node-upgrade
 - node-setup-dev-mainnet
 - node-setup-aeneid
+- node-upgrade
 - release-notes
