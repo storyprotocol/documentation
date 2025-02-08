@@ -48,10 +48,12 @@ In this scenario, you're an external 3rd-party user who wants to pay the child 2
 Due to the existing license terms that specify 50% `commercialRevShare`, 50% of the revenue (2\*0.5 = 1) would automatically be claimable by the parent thanks to the [💸 Royalty Module](doc:royalty-module), such that both the parent and child IP Assets earn 1 $WIP.
 
 ```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
 const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
   receiverIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // child ipId
   payerIpId: zeroAddress,
-  token: "0x1514000000000000000000000000000000000000", // insert WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  token: WIP_TOKEN_ADDRESS,
   amount: 2,
   txOptions: { waitForTransaction: true },
 });
