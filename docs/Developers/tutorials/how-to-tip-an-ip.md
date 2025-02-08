@@ -97,12 +97,13 @@ Now we can call the `payRoyaltyOnBehalf` function. In this case:
 ```typescript main.ts
 import { client } from './utils'
 import { zeroAaddress } from 'viem'
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {
    const response = await client.royalty.payRoyaltyOnBehalf({
     receiverIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a',
     payerIpId: zeroAddress,
-    token: '0x1514000000000000000000000000000000000000',
+    token: WIP_TOKEN_ADDRESS,
     amount: 2,
     txOptions: { waitForTransaction: true },
   })
@@ -127,13 +128,14 @@ The child IP can claim its 1 $WIP by calling the `claimAllRevenue` function:
 ```typescript main.ts
 import { client } from './utils'
 import { zeroAaddress } from 'viem'
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {
   // previous code here ...
   const response = await client.royalty.claimAllRevenue({
     ancestorIpId: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
     claimer: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
-    currencyTokens: ['0x1514000000000000000000000000000000000000'],
+    currencyTokens: [WIP_TOKEN_ADDRESS],
     childIpIds: [],
     royaltyPolicies: []
   })
@@ -159,6 +161,7 @@ We will use the `claimAllRevenue` function to claim the due revenue tokens.
 ```typescript main.ts
 import { client } from './utils'
 import { zeroAaddress } from 'viem'
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {
   // previous code here ...
@@ -166,7 +169,7 @@ async function main() {
   const response = await client.royalty.claimAllRevenue({
     ancestorIpId: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
     claimer: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
-    currencyTokens: ['0x1514000000000000000000000000000000000000'],
+    currencyTokens: [WIP_TOKEN_ADDRESS],
     childIpIds: ['0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2'],
     royaltyPolicies: ['0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E']
   })
