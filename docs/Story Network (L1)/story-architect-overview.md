@@ -52,7 +52,7 @@ Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates t
 
 ### Network Economics
 
-* [Tokenomics & Staking](doc:tokenomics-staking)
+* [Staking Design](doc:tokenomics-staking)
   * Token Economics
   * Staking Mechanisms
   * Rewards Structure
