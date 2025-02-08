@@ -97,4 +97,4 @@ next:
 * [Mainnet Status Page](https://status.story.foundation/)
 * [Node Setup](doc:node-setup-dev-mainnet)
 * [Validator Operations](doc:validator-operations)
-* [Tokenomics & Staking](doc:tokenomics-staking)
+* [Staking Design](doc:tokenomics-staking)
