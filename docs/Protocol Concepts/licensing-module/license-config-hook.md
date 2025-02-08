@@ -68,8 +68,6 @@ The hook itself is defined below in a different section. You can see it contains
 
 You can set the License Config by calling the `setLicenseConfig` function in the [LicensingModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/LicensingModule.sol).
 
-You can also attach the License Config to an IP Asset as a whole, so it will execute on every license term that belongs to the IP. Note that if both an IP-wide config and license-specific config are set, the license-specific config will take priority. You can set a config on the IP as a whole by passing `licenseTemplate == address(0)` and `licenseTermsId == 0` to the `setLicenseConfig` function.
-
 ### Logic that is Possible with License Config
 
 1. **Max Number of Licenses**: The `licensingHook` (described in the next section) is where you can define logic for the max number of licenses that can be minted. For example, reverting the transaction if the max number of licenses has already been minted.
