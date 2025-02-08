@@ -6,12 +6,12 @@ metadata:
   image: >-
     https://files.readme.io/aa05faf72cf1635a281643626ee4370fe86c9b3636d774178dafdb9c7ef119dd-ip-tokenomics.webp
 ---
+# What is $IP?
+
 | Property       | Details          |
 | :------------- | :--------------- |
 | Token Name     | $IP              |
 | Initial Supply | 1,000,000,000 IP |
-
-# What is $IP?
 
 ![](https://files.readme.io/cf2e1a0bff0a618c4527eb0c2992cfb916babb3674e3a15e3d6167274af9cd3b-image.png)
 
