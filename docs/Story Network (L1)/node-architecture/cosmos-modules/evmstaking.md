@@ -23,7 +23,7 @@ In Story blockchain, the gas token resides on the execution layer (EL) to pay fo
 
 Type: `Queue[types.Withdrawal]`
 
-The (stake) withdrawal queue stores the pending unbonded stakes to be burned on CL and minted on EL. Stakes that are unbonded after 21 days of unstaking period are added to the queue to be processed.
+The (stake) withdrawal queue stores the pending unbonded stakes to be burned on CL and minted on EL. Stakes that are unbonded after 14 days of unstaking period are added to the queue to be processed.
 
 ### Reward Withdrawal Queue
 
@@ -85,7 +85,7 @@ IPTokenStaking contract is used to filter and parse staking-related events from 
 
 ## Two Queue System
 
-The module departs from traditional Cosmos SDK staking module's unstaking system, where all unbonded entries (stakes that have unbonded after 21 days of unbonding period) are immediately distributed into delegators account. Instead, Story's unstaking system assimilates Ethereum 2.0's unstaking system, where 16 full or partial (reward) withdrawals are processed per slot.
+The module departs from traditional Cosmos SDK staking module's unstaking system, where all unbonded entries (stakes that have unbonded after 14 days of unbonding period) are immediately distributed into delegators account. Instead, Story's unstaking system assimilates Ethereum 2.0's unstaking system, where 16 full or partial (reward) withdrawals are processed per slot.
 
 In a single queue of withdrawals, reward withdrawals can significantly delay stake withdrawals. Hence, Story blockchain implements a two-queue system where a max amount to process per block is enforced per queue. In other words, the stake/ubi withdrawal and reward withdrawal queues can each process the max parameter per block.
 
@@ -97,7 +97,7 @@ In other words, the `evmstaking` module is in charge of parsing, processing, and
 
 ## End Block
 
-The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 21 days) from the [staking](./staking.md) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
+The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking.md) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
 
 If the network is in the [Singularity period](https://docs.story.foundation/docs/tokenomics-staking#singularity), the End Block gets skipped as there are no staking rewards and withdrawals available during the period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations), [Withdrawing Rewards](#withdrawing-rewards), and [Withdrawing UBI](#withdrawing-ubi) for detailed withdrawal processes.
 
