@@ -4,7 +4,7 @@
 
 This document specifies the internal `x/evmstaking` module of the Story blockchain.
 
-In Story blockchain, the gas token resides on the execution layer (EL) to pay for transactions and interact with smart contracts. However, the consensus layer (CL) manages the consensus staking, slashing, and rewarding. This module exists to facilitate CL-level staking-related logics, such as delegating to validators with custom lock periods.
+In Story blockchain, the gas token resides on the execution layer (EL) to pay for transactions and interact with smart contracts. However, the consensus layer (CL) manages the consensus staking, slashing, and rewarding. This module exists to facilitate CL-level staking-related logic, such as delegating to validators with custom lock periods.
 
 ## Contents
 
@@ -99,7 +99,7 @@ In other words, the `evmstaking` module is in charge of parsing, processing, and
 
 The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking.md) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
 
-If the network is in the [Singularity period](https://docs.story.foundation/docs/tokenomics-staking#singularity), the End Block gets skipped as there are no staking rewards and withdrawals available during the period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations), [Withdrawing Rewards](#withdrawing-rewards), and [Withdrawing UBI](#withdrawing-ubi) for detailed withdrawal processes.
+If the network is in the [Singularity period](https://docs.story.foundation/docs/tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations), [Withdrawing Rewards](#withdrawing-rewards), and [Withdrawing UBI](#withdrawing-ubi) for detailed withdrawal processes.
 
 ## Processing Staking Events
 
@@ -113,7 +113,7 @@ The module parses and processes staking events emitted from the [IPTokenStaking 
 - Redelegate
 - Unjail: anyone can request to unjail a jailed validator by paying the unjail fee in the contract.
 
-These operations incur a fixed gas cost to prevent spams.
+These operations incur a fixed gas cost to prevent spam.
 
 ### Parameter events
 
@@ -123,7 +123,7 @@ These operations incur a fixed gas cost to prevent spams.
 - Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelgation.
 - Unset Operator: delegator can remove operator.
 
-These operations incur a fixed gas cost to prevent spams.
+These operations incur a fixed gas cost to prevent spam.
 
 ## Withdrawing Delegations
 

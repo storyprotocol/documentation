@@ -36,7 +36,7 @@ where
 
 #### Time-weighted Reward Multiplier $M_{d_i}$
 
-* Flexible (no lockup): 1
-* Short (90 days): 1.1
-* Medium (360 days): 1.5
-* Long (540 days): 2.0
+* _Flexible_ (no lockup): 1
+* _Short_ (90 days): 1.1
+* _Medium_ (360 days): 1.5
+* _Long_ (540 days): 2.0
