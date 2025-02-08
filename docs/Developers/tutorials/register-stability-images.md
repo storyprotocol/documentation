@@ -317,7 +317,7 @@ import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
 import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { createHash } from "crypto";
-import { LicenseTerms } from '@story-protocol/core-sdk';
+import { LicenseTerms, WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk';
 import { zeroAddress } from 'viem';
 
 async function main() {
@@ -339,7 +339,7 @@ async function main() {
     derivativesApproval: false,
     derivativesReciprocal: true,
     derivativeRevCeiling: BigInt(0),
-    currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+    currency: WIP_TOKEN_ADDRESS,
     uri: '',
   } 
 }
@@ -409,7 +409,7 @@ import fs from "fs";
 import axios from "axios";
 import FormData from "form-data";
 import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
-import { IpMetadata } from "@story-protocol/core-sdk";
+import { IpMetadata, WIP_TOKEN_ADDRESS } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { createHash } from "crypto";
 import { LicenseTerms, LicensingConfig } from '@story-protocol/core-sdk';
