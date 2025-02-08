@@ -53,7 +53,7 @@ Calculates the amount of revenue token claimable by a token holder at certain sn
 Parameters:
 
 * `request.royaltyVaultIpId`: The id of the royalty vault.
-* `request.claimer`: The address of the token holder.
+* `request.claimer`: The address of the royalty token holder.
 * `request.token`: The revenue token to claim.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
