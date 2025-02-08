@@ -30,10 +30,9 @@ Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inf
 
 An ERC-20 token must be whitelisted by our protocol in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token. Here are the whitelisted tokens (you can mint tokens directly from the link):
 
-| Token  | Contract Address                             | Explorer                                                                                                                   | Mint                                                                                                                                                |
-| :----- | :------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| WIP    | `0x1514000000000000000000000000000000000000` | <a href="https://aeneid.storyscan.xyz/address/0x1514000000000000000000000000000000000000" target="_blank">View here ↗️</a> | N/A                                                                                                                                                 |
-| MERC20 | `0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E` | <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E" target="_blank">View here ↗️</a> | <a href="https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19" target="_blank">Mint ↗️</a> |
+| Token | Contract Address                             | Explorer                                                                                                                   | Mint |
+| :---- | :------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :--- |
+| WIP   | `0x1514000000000000000000000000000000000000` | <a href="https://aeneid.storyscan.xyz/address/0x1514000000000000000000000000000000000000" target="_blank">View here ↗️</a> | N/A  |
 
 ## How to obtain Royalty Tokens?
 
