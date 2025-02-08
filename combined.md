@@ -16379,7 +16379,7 @@ You will be paying the IP Asset with [$WIP](https://aeneid.storyscan.xyz/address
 
 To help with the following scenarios, let's say we have a parent IP Asset that has negotiated a 50% `commercialRevShare` with its child IP Asset.
 
-There are two situations where you'd be calling this function:
+There are two situations where you'd be paying an IPA:
 
 1. Tipping an IP Asset
 2. Paying your due share to an ancestor
