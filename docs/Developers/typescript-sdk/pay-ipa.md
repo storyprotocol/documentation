@@ -85,10 +85,12 @@ In this scenario, lets say the child IP Asset earned 2 USD off-chain. Because th
 > Let's say the child earned 1,000 USD off-chain, and is linked to huge ancestor tree where each parent has a different set of complex license terms. In this scenario, you won't be able to individually calculate each payment to each parent. Instead, you would just pay *yourself* the amount you earned, and the [💸 Royalty Module](doc:royalty-module) will automate the payment, such that each ancestor gets their due share.
 
 ```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
 const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
   receiverIpId: "0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2", // parentIpId
   payerIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // childIpId
-  token: "0x1514000000000000000000000000000000000000", // insert WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  token: WIP_TOKEN_ADDRESS,
   amount: 1,
   txOptions: { waitForTransaction: true },
 });
