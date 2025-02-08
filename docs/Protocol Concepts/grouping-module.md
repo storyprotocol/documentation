@@ -48,19 +48,22 @@ Only the owner of a group can add/remove IP Assets. You **do not** have to own a
 
 ### Conditions to Add to a Group
 
-There are a few conditions an IP Asset must meet to be added into a group:
-
-1. The minting fee of that IP Asset must be set to 0
-2. It must have the same license terms of the group it is trying to join **or** no license terms at all. It can also have other license terms attached, as long as one of them is the same.
+An IPA must have the same license terms of the group it is trying to join **or** no license terms at all. It can also have other license terms attached, as long as one of them is the same.
 
 ### Groups Becoming Locked
 
-There are a few cases in which a group becomes "locked", meaning you can't add/remove any more members:
+Once the group receives any type of payment, it becomes "locked", meaning you can't add/remove any more members and you must create a new group if you wish to add/remove members.
 
-* once the group receives any type of payment
-* if a derivative is linked to the group (in other words, the group becomes a parent IP)
+### Restrictions
 
-If any of these happen, you must create a new group if you wish to add/remove members.
+* A derivative IP of a group IP can only have the group IP as its sole parent
+* A Group IP cannot attach License Terms that use the LAP Royalty policy
+* An empty group cannot have derivative IPs or mint License Tokens
+* A Group IP cannot be registered as a derivative as another parent IP
+* **Single License Term Validation:** Ensure that a Group IPA can only attach one license term common to all members
+* **Consistent License Config Validation:** When adding an IP to a group, the Group and IP must have the same mintingFee and licenseHook in the LicenseConfig, and the Group’s commercial revenue share must be greater than or equal to the IP’s share
+* **Freezing License Config Items:** Once a Group gains its first member, the mintingFee, licensingHook, and licensingHookData are frozen. The Group’s commercial revenue share can only increase
+* **Group Max Size Limit:** Enforce a maximum group size of 1000
 
 > 📘 Example
 >
