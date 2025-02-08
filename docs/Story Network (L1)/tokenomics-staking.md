@@ -1,5 +1,5 @@
 ---
-title: Tokenomics & Staking
+title: Staking Design
 excerpt: ''
 deprecated: false
 hidden: false
@@ -42,11 +42,11 @@ A fixed number of tokens will be allocated for emissions in the first year, with
 New emissions will flow to two places:
 
 1. Block Rewards
-2. Community Pool (currently set to 5%, explained later)
+2. Community Pool
 
 ## Token burn
 
-Since story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
+Since Story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
 
 # Staking
 
@@ -97,9 +97,9 @@ For locked tokens, only flexible staking is allowed. If a user delegates their l
 
 Staking in these fixed staking periods earns more rewards. The longer the period, the bigger the reward weight multiplier. Reward multiplier for different periods:
 
-* 90 days - 1.051
-* 360 days - 1.16
-* 540 days - 1.34
+* 90 days - 1.1
+* 360 days - 1.5
+* 540 days - 2
 
 After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
 
@@ -304,7 +304,7 @@ The staking reward cannot be manually withdrawn by design.
 
 # Community Pool
 
-A percentage (currently 5%) of the newly minted tokens in every block will go to a community pool contract. The foundation will determine how to use the tokens sent to the pool. The maximum community pool percentage that can be set is 20%.
+A percentage of the newly minted tokens in every block will go to a community pool contract. The foundation will determine how to use the tokens sent to the pool. The maximum community pool percentage that can be set is 20%.
 
 The community pool contract address: **0xcccccc0000000000000000000000000000000002**
 
