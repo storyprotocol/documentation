@@ -6074,7 +6074,7 @@ An IPA must have the same license terms of the group it is trying to join **or**
 
 Once the group receives any type of payment, it becomes "locked", meaning you can't add/remove any more members and you must create a new group if you wish to add/remove members.
 
-### Restrictions
+## Group Restrictions
 
 * A derivative IP of a group IP can only have the group IP as its sole parent
 * A Group IP cannot attach License Terms that use the LAP Royalty policy
