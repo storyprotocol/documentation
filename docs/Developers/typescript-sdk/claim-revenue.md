@@ -25,6 +25,10 @@ There are two main ways revenue can be claimed:
 1. **Scenario #1**: Someone pays my IP Asset directly, and I claim that revenue.
 2. **Scenario #2**: Someone pays a derivative IP Asset of my IP, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms.
 
+> 🚧 Quick Note
+>
+> The below examples show and talk about USDC. In reality, you'd be using one of the whitelisted revenue tokens [listed here](https://docs.story.foundation/docs/deployed-smart-contracts#/), which is more often than not $WIP.
+
 ## Scenario #1
 
 In this scenario, someone pays my IP Asset directly, and I claim that revenue.
