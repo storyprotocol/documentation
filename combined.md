@@ -16202,7 +16202,9 @@ There are two main ways revenue can be claimed:
 
 > 🚧 Quick Note
 >
-> The below examples show and talk about USDC. In reality, you'd be using one of the whitelisted revenue tokens [listed here](https://docs.story.foundation/docs/deployed-smart-contracts#/), which is more often than not $WIP.
+> The below examples and diagrams show USDC. In reality, you'd be using one of the whitelisted revenue tokens [listed here](https://docs.story.foundation/docs/deployed-smart-contracts#/), which is more often than not $WIP.
+
+Additionally, it's important to note that when claiming revenue tokens, they are transferred to whoever owns the Royalty Tokens (which represent a % of revenue share for a given IP Asset) of the [IP Royalty Vault](doc:ip-royalty-vault). Usually the IP Account is what holds most of the Royalty Tokens. However by default, if the wallet claiming the revenue is the owner of the IP Account, `claimAllRevenue` will transfer all earnings to the user's external wallet instead of the IP Account.
 
 ## Scenario #1
 
@@ -16213,14 +16215,15 @@ In this scenario, someone pays my IP Asset directly, and I claim that revenue.
 As we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 850k USDC automatically gets deposited into IP Royalty Vault 3. Below is how IP Asset 3 would claim their revenue:
 
 ```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
 const claimRevenue = await client.royalty.claimAllRevenue({
   // IP Asset 3's ipId
   ancestorIpId: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
   // whoever owns the royalty tokens associated with IP Royalty Vault 3
   // (most likely the associated ipId, which is IP Asset 3's ipId)
   claimer: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
-  // testnet address of $WIP
-  currencyTokens: ['0x1514000000000000000000000000000000000000'],
+  currencyTokens: [WIP_TOKEN_ADDRESS],
   childIpIds: [],
   royaltyPolicies: []
 })
@@ -16268,14 +16271,15 @@ Then, in a second step, the USDC is transferred to the ancestors' [IP Royalty Va
 Below is how IP Asset 1 (or 2) would claim their revenue:
 
 ```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
 const claimRevenue = await client.royalty.claimAllRevenue({
   // IP Asset 1's ipId
   ancestorIpId: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
   // whoever owns the royalty tokens associated with IP Royalty Vault 1
   // (most likely the associated ipId, which is IP Asset 1's ipId)
   claimer: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
-  // testnet address of $WIP
-  currencyTokens: ['0x1514000000000000000000000000000000000000'],
+  currencyTokens: [WIP_TOKEN_ADDRESS],
   // IP Asset 3's ipId
   childIpIds: ['0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2'],
   // testnet address of RoyaltyPolicyLAP
