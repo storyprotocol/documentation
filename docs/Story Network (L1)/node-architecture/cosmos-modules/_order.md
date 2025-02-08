@@ -2,3 +2,4 @@
 - evmengine
 - evmstaking
 - mint
+- staking
