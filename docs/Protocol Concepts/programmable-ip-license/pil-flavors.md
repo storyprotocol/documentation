@@ -14,9 +14,9 @@ The [💊 Programmable IP License (PIL)](doc:programmable-ip-license) is very co
 
 ## Flavor #1: Non-Commercial Social Remixing
 
-> 📘 Default Terms
+> 📘 Already Registered
 >
-> This flavor is already registered as `licenseTermsId = 1` on our protocol.
+> This flavor is already registered as `licenseTermsId = 1` on our protocol. This is because it doesn't take any inputs, so we registered it ahead of time.
 
 Let the world build on and play with your creation. This license allows for endless free remixing while tracking all uses of your work while giving you full credit. Similar to: TikTok plus attribution.
 
