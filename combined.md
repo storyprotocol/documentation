@@ -7781,6 +7781,113 @@ PILTerms({
 | Alternative Dispute Resolution    | Tag: Alternative-Dispute-Resolution Ledger-Authoritative-Dispute-Resolution |
 | Additional License Parameters     | None                                                                        |
 
+## Flavor #4: Creative Commons Attribution
+
+Let the world build on and play with your creation - including making money.
+
+### What others can do?
+
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Others can
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Others cannot
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Remix this work
+        (`derivativesAllowed == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ❌ Claim credit for the original work
+        (`commercialAttribution == true`)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Commercialize the original and derivative works
+        (`commercialUse == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Distribute their remix anywhere
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Credit you appropriately
+        (`derivativesAttribution == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
+###  PIL Term Values
+
+* **On-chain**:
+
+```sol Solidity
+PILTerms({
+  transferable: true,
+  royaltyPolicy: zeroAddress,
+  defaultMintingFee: 0,
+  expiration: 0,
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: EMPTY_BYTES,
+  commercialRevShare: 0,
+  commercialRevCelling: 0,
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCelling: 0,
+  currency: zeroAddress,
+  uri: ''
+});
+```
+
+* **Off-chain**
+
+| Parameter                         | Options / Tags                                                              |
+| --------------------------------- | --------------------------------------------------------------------------- |
+| Territory                         | No restrictions                                                             |
+| Channels of Distribution          | No Restriction                                                              |
+| Attribution                       | True                                                                        |
+| Content Standards                 | No Restriction                                                              |
+| Sublicensable                     | False                                                                       |
+| AI Learning Models                | True                                                                        |
+| Restriction on Cross-Platform Use | False                                                                       |
+| Governing Law                     | California                                                                  |
+| Alternative Dispute Resolution    | Tag: Alternative-Dispute-Resolution Ledger-Authoritative-Dispute-Resolution |
+| Additional License Parameters     | None                                                                        |
+
 # Examples
 
 Here are some common examples of royalty flow. *More coming soon!*
