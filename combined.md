@@ -7963,7 +7963,7 @@ A third person wants to commercialize the remix by putting it in a TV advertisem
     Since there are so many possible combinations of the PIL, we have created preset "flavors" for you to use while developing.
   </Card>
 
-  <Card title="PIL Legal Text" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+  <Card title="PIL Legal Text" href="https://github.com/piplabs/pil-document/blob/v1.3.0/Story%20Foundation%20-%20Programmable%20IP%20License%20(1.31.25).pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
     Check out the actual PIL legal text. It is very human-readable for a legal text!
   </Card>
 </Cards>
