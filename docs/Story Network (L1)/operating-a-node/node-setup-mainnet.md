@@ -307,9 +307,9 @@ Below we list a sample `Systemd` configuration you may use on Linux
 
 ```bash
 # story
-sudo tee /etc/systemd/system/cosmovisor.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
 [Unit]
-Description=Cosmovisor
+Description=Story Cosmovisor
 After=network.target
 
 [Service]
@@ -335,12 +335,71 @@ EOF
 
 ```
 
+<Tabs>
+  <Tab title="With Cosmovisor">
+    ```bash
+    # story
+    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Cosmovisor
+    After=network.target
+
+    [Service]
+    Type=simple
+    User=${USER}
+    Group=${GROUP}
+    ExecStart=${path_to_story_binary} run run \
+    --api-enable \
+    --api-address=0.0.0.0:1317
+    Restart=on-failure
+    RestartSec=5s
+    LimitNOFILE=65535
+    Environment="DAEMON_NAME=$DAEMON_NAME"
+    Environment="DAEMON_HOME=$DAEMON_HOME"
+    Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+    Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+    Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
+    WorkingDirectory=$DAEMON_HOME
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    ```
+  </Tab>
+
+  <Tab title="Without Cosmovisor">
+    ```bash
+    # story
+    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Cosmovisor
+    After=network.target
+
+    [Service]
+    Type=simple
+    User=${USER}
+    Group=${GROUP}
+    ExecStart=${path_to_story_binary} run
+    Restart=on-failure
+    RestartSec=5s
+    LimitNOFILE=65535
+    WorkingDirectory=$HOME/.story/story
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    ```
+  </Tab>
+</Tabs>
+
 #### Start the service
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable cosmovisor
-sudo systemctl start cosmovisor
+sudo systemctl enable story
+sudo systemctl start story
 
 # Monitor logs
 journalctl -u cosmovisor -f -o cat
