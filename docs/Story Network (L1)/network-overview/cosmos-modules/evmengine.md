@@ -1,3 +1,16 @@
+---
+title: evmengine
+excerpt: ""
+deprecated: false
+hidden: false
+metadata:
+  title: ""
+  description: ""
+  robots: index
+next:
+  description: ""
+---
+
 # `evmengine`
 
 ## Abstract
@@ -166,7 +179,7 @@ All UBI-related changes must be triggered from the canonical UBI contract in the
 
 ### Set UBI Distribution
 
-The `UBIPool` contract emits the UBI distribution set event, which is parsed by the module to set the UBI percentage in the [distribution](./distribution.md) module.
+The `UBIPool` contract emits the UBI distribution set event, which is parsed by the module to set the UBI percentage in the distribution module.
 
 ## Upgrades
 
