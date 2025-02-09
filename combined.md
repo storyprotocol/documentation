@@ -7529,17 +7529,8 @@ Let the world build on and play with your creation. This license allows for endl
       </td>
 
       <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
+        :x: Claim credit for the original work\
+        ("Attribution" is true in the off-chain terms)
       </td>
     </tr>
   </tbody>
@@ -7648,7 +7639,8 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
       </td>
 
       <td style={{ textAlign: "left" }}>
-
+        :x: Claim credit for the original work even non-commercially\
+        ("Attribution is true in the off-chain terms)
       </td>
     </tr>
   </tbody>
@@ -7760,6 +7752,17 @@ Let the world build on and play with your creation... and earn money together fr
         (`defaultMintingFee` is set)
       </td>
     </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :x: Claim credit for the original work even non-commercially\
+        ("Attribution is true in the off-chain terms)
+      </td>
+    </tr>
   </tbody>
 </Table>
 
@@ -7854,7 +7857,8 @@ Let the world build on and play with your creation - including making money.
       </td>
 
       <td style={{ textAlign: "left" }}>
-
+        :x: Claim credit for the original work even non-commercially\
+        ("Attribution is true in the off-chain terms)
       </td>
     </tr>
 
