@@ -7517,15 +7517,26 @@ Let the world build on and play with your creation. This license allows for endl
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the remix as original work
+        :x: Claim credit for any derivative works
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Credit you appropriately
+        ✅ Credit you appropriately\
         (`derivativesAttribution == true`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark: Get the license for free\
+        (`defaultMintingFee` is set)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -7598,8 +7609,8 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Purchase the right to use your creation
-        (`defaultMintingFee` is set)
+        ✅ Remix this work
+        (`derivativesAllowed == true`)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -7615,13 +7626,26 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
       </td>
 
       <td style={{ textAlign: "left" }}>
-
+        :x: Claim credit for any derivative works
+        (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
       <td style={{ textAlign: "left" }}>
         ✅ Distribute their remix anywhere
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :x: Get the license for free\
+        (`defaultMintingFee` is set)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark: Keep all revenue\
+        (`commercialRevShare == 0`)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -7699,31 +7723,8 @@ Let the world build on and play with your creation... and earn money together fr
       </td>
 
       <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the remix as original work
-        (`derivativesAttribution == true`)
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        ✅ Distribute their remix anywhere
-      </td>
-
-      <td style={{ textAlign: "left" }}>
         ❌ Claim credit for the original work
         (`commercialAttribution == true`)
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        ✅ Credit you appropriately
-        (`derivativesAttribution == true`)
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        ❌ Claim all the revenue from commercial use of the original work or derivative works
-        (`commercialRevShare` is set)
       </td>
     </tr>
 
@@ -7734,7 +7735,30 @@ Let the world build on and play with your creation... and earn money together fr
       </td>
 
       <td style={{ textAlign: "left" }}>
+        :x: Claim credit for any derivative works
+        (`derivativesAttribution == true`)
+      </td>
+    </tr>
 
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        ✅ Distribute their remix anywhere
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ❌ Keep all revenue\
+        (`commercialRevShare` is set)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :x: Get the license for free\
+        (`defaultMintingFee` is set)
       </td>
     </tr>
   </tbody>
@@ -7820,7 +7844,8 @@ Let the world build on and play with your creation - including making money.
       </td>
 
       <td style={{ textAlign: "left" }}>
-
+        :x: Claim credit for any derivative works
+        (`derivativesAttribution == true`)
       </td>
     </tr>
 
@@ -7836,8 +7861,19 @@ Let the world build on and play with your creation - including making money.
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Credit you appropriately
-        (`derivativesAttribution == true`)
+        :white_check_mark: Get the license for free\
+        (`defaultMintingFee == 0`)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark: Keep all revenue\
+        (`commercialRevShare == 0`)
       </td>
 
       <td style={{ textAlign: "left" }}>
