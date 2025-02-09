@@ -15,7 +15,7 @@ The PIL is a legal off-chain document based on US copyright law created by the S
 The parameters outlined in the PIL (ex. "Commercial Use", "Derivatives Allowed", etc) have been mapped on-chain, which means they can be enforced on-chain via our protocol, bridging code and law and unlocking the benefit of transparent, autonomous, and permission-less smart contracts for the world of intellectual property.
 
 <Cards columns={1}>
-  <Card title="PIL Legal Text" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+  <Card title="PIL Legal Text" href="https://github.com/piplabs/pil-document/blob/v1.3.0/Story%20Foundation%20-%20Programmable%20IP%20License%20(1.31.25).pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
     Check out the actual PIL legal text. It is very human-readable for a legal text!
   </Card>
 </Cards>
@@ -47,7 +47,7 @@ We searched for a form of a "universal license" that could support these emergin
 We are excited to collect feedback and collaborate with IP owners to unlock the potential of their works - please let us know what you think! We can be reached at `legal@storyprotocol.xyz`.
 
 <Cards columns={1}>
-  <Card title="PIL Legal Text" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/PIL_Testnet.pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+  <Card title="PIL Legal Text" href="https://github.com/piplabs/pil-document/blob/v1.3.0/Story%20Foundation%20-%20Programmable%20IP%20License%20(1.31.25).pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
     Check out the actual PIL legal text. It is very human-readable for a legal text!
   </Card>
 </Cards>
