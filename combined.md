@@ -7524,8 +7524,8 @@ Let the world build on and play with your creation. This license allows for endl
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        ✅ Credit you appropriately\
-        (`derivativesAttribution == true`)
+        :white_check_mark: Get the license for free\
+        (`defaultMintingFee == 0`)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -7535,8 +7535,7 @@ Let the world build on and play with your creation. This license allows for endl
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        :white_check_mark: Get the license for free\
-        (`defaultMintingFee` is set)
+
       </td>
 
       <td style={{ textAlign: "left" }}>
