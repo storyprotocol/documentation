@@ -6071,13 +6071,18 @@ Besides the common interfaces of IP Account, the Group IP Account has functions 
 
 Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
 
-### Conditions to Add to a Group
+### Conditions to Join a Group
 
-An IPA must have the same license terms of the group it is trying to join **or** no license terms at all. It can also have other license terms attached, as long as one of them is the same.
+An IPA must include one license terms that matches the license terms of the group. An IPA may include other license terms in addition to the one that matches the group.
 
 ### Groups Becoming Locked
 
-Once the group receives any type of payment, it becomes "locked", meaning you can't add/remove any more members and you must create a new group if you wish to add/remove members.
+A group IPA is locked when:
+
+1. it has derivative IPs registered or
+2. when someone mints a license token from the group.
+
+Once the group is locked, IPAs cannot be removed from it, but new IPAs can still be added.
 
 ## Group Restrictions
 
