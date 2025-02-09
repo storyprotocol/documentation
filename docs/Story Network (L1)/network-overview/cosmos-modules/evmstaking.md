@@ -132,8 +132,8 @@ These operations incur a fixed gas cost to prevent spam.
 
 - Update Validator Commission: update the validator commission.
 - Set Withdrawal Address: delegator can modify their withdrawal address for future unstakes/undelegations.
-- Set Reward Address: delegator can modify their withdrawl address for future reward emissions.
-- Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelgation.
+- Set Reward Address: delegator can modify their withdrawal address for future reward emissions.
+- Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelegation.
 - Unset Operator: delegator can remove operator.
 
 These operations incur a fixed gas cost to prevent spam.
