@@ -41,8 +41,6 @@ message Params {
 }
 ```
 
-<br />
-
 ## Begin Block
 
 Minting parameters are calculated and inflation paid at the beginning of each block.
@@ -59,8 +57,6 @@ passing a function that matches `InflationCalculationFn`'s signature.
 type InflationCalculationFn func(ctx sdk.Context, minter Minter, params Params, bondedRatio math.LegacyDec) math.LegacyDec
 ```
 
-<br />
-
 ## Parameters
 
 The minting module contains the following parameters:
@@ -74,8 +70,6 @@ The minting module contains the following parameters:
 * `MintDenom` is the coin denominator used.
 * `InflationsPerYear` is the target inflation per year, in 1e18 decimals.
 * `BlocksPerYear` is the target number of blocks per year.
-
-<br />
 
 ## Events
 
