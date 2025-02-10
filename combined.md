@@ -270,9 +270,9 @@ export type SetLicensingConfigResponse = {
 ```
 
 # IP Asset
-## IPAssetClient
+# IPAssetClient
 
-### Methods
+## Methods
 
 * register
 * registerDerivative
