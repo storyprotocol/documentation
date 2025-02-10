@@ -17,7 +17,6 @@ next:
 2. [State](#state)
 3. [Begin Block](#begin-block)
 4. [Parameters](#parameters)
-5. [Events](#events)
 
 ## State
 
@@ -71,13 +70,3 @@ The minting module contains the following parameters:
 * `MintDenom` is the coin denominator used.
 * `InflationsPerYear` is the target inflation per year, in 1e18 decimals.
 * `BlocksPerYear` is the target number of blocks per year.
-
-## Events
-
-The minting module emits the following events:
-
-### BeginBlocker
-
-| Type | Attribute Key     | Attribute Value    |
-|------|-------------------|--------------------|
-| mint | amount            | {amount}           |
