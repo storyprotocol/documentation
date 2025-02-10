@@ -1756,9 +1756,31 @@ Parameters:
 * `request.amount`: The amount to pay.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
+const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
+  receiverIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // child ipId
+  payerIpId: zeroAddress,
+  token: WIP_TOKEN_ADDRESS,
+  amount: 2,
+  txOptions: { waitForTransaction: true },
+});
+
+console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
+```
+```typescript Request Type
+export type PayRoyaltyOnBehalfRequest = {
+  receiverIpId: Address;
+  payerIpId: Address;
+  token: Address;
+  amount: TokenAmountInput;
+} & WithTxOptions & WithWipOptions;
+```
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
+  receipt?: TransactionReceipt;
   encodedTxData?: EncodedTxData;
 };
 ```
@@ -1809,6 +1831,24 @@ Parameters:
   * `request.claimOptions.autoUnwrapIpTokens`: \[Optional]By default all claimed WIP tokens are converted back to IP after they are transferred. Set this to false to disable this behavior. **Default: false**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
+const claimRevenue = await client.royalty.claimAllRevenue({
+  // IP Asset 1's (parent) ipId
+  ancestorIpId: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+  // whoever owns the royalty tokens associated with IP Royalty Vault 1
+  // (most likely the associated ipId, which is IP Asset 1's ipId)
+  claimer: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+  currencyTokens: [WIP_TOKEN_ADDRESS],
+  // IP Asset 2's (child) ipId
+  childIpIds: ['0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2'],
+  // testnet address of RoyaltyPolicyLAP
+  royaltyPolicies: ['0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E']
+})
+
+console.log(`Claimed revenue: ${claimRevenue.claimedTokens}`);
+```
 ```typescript Request Type
 export type ClaimAllRevenueRequest = {
   ancestorIpId: Address;
