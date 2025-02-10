@@ -4678,6 +4678,23 @@ To manage consensus client upgrades more easily, especially for hard forks, we r
 
 To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a guide to help you with the setup of automated upgrades with Cosmovisor.
 
+# Payments and Revenue Tokens
+All payments on Story are made with **Revenue Tokens**. These are ERC-20 tokens that have been whitelisted by our protocol. Currently, the whitelisted revenue tokens are:
+
+<Tabs>
+  <Tab title="Aeneid Testnet">
+    | Token | Contract Address                             | Explorer                                                                                                                   | Mint |
+| :---- | :------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :--- |
+| WIP   | `0x1514000000000000000000000000000000000000` | <a href="https://aeneid.storyscan.xyz/address/0x1514000000000000000000000000000000000000" target="_blank">View here ↗️</a> | N/A  |
+  </Tab>
+
+  <Tab title="Mainnet">
+    | Token | Contract Address                             | Explorer                                                                                                                   | Mint |
+| :---- | :------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :--- |
+| WIP   | `0x1514000000000000000000000000000000000000` | <a href="https://aeneid.storyscan.xyz/address/0x1514000000000000000000000000000000000000" target="_blank">View here ↗️</a> | N/A  |
+  </Tab>
+</Tabs>
+
 # Liquid Relative Percentage (LRP)
 > ⏩ Skip the Read - 1 Minute Summary
 >
