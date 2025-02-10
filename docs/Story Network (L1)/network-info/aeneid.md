@@ -88,6 +88,12 @@ next:
   </tbody>
 </Table>
 
+## Faucet
+
+| Faucet                                                        | Amount |
+| :------------------------------------------------------------ | :----- |
+| [Official Faucet](https://cloud.google.com/application/web3/) | 1 IP   |
+
 ## Contract deployment addresses
 
 * [Proof of Creative](doc:deployed-smart-contracts)
