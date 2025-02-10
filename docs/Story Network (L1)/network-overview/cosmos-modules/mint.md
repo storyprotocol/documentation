@@ -11,8 +11,6 @@ next:
   description: ""
 ---
 
-# `mint`
-
 ## Contents
 
 1. [Contents](#contents)

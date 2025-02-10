@@ -11,8 +11,6 @@ next:
   description: ""
 ---
 
-# `evmstaking`
-
 ## Abstract
 
 This document specifies the internal `x/evmstaking` module of the Story blockchain.

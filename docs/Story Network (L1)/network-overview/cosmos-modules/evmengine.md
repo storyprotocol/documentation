@@ -11,8 +11,6 @@ next:
   description: ""
 ---
 
-# `evmengine`
-
 ## Abstract
 
 This document specifies the internal `x/evmengine` module of the Story blockchain.

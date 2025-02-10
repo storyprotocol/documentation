@@ -1,4 +1,15 @@
-# `staking`
+---
+title: staking
+excerpt: ""
+deprecated: false
+hidden: false
+metadata:
+  title: ""
+  description: ""
+  robots: index
+next:
+  description: ""
+---
 
 The staking module has been modified to accommodate for the following changes below. Refer to the Cosmos SDK's [staking module docs](https://docs.cosmos.network/main/build/modules/staking) for more information.
 
