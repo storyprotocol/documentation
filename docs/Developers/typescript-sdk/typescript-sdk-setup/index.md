@@ -10,13 +10,13 @@ metadata:
 next:
   description: ''
 ---
-# Prerequisite
+# Prerequisites
 
-For running the tutorial for developers, we require node version 18 or later version and npm version 8 to be installed in your environment. To install node and npm, we recommend you go to the [Node.js official website](https://nodejs.org) and download the latest LTS (Long Term Support) version.
+We require node version 18 or later version and npm version 8 to be installed in your environment. To install node and npm, we recommend you go to the [Node.js official website](https://nodejs.org) and download the latest LTS (Long Term Support) version.
 
-# Install the Dependencies
+## Install the Dependencies
 
-In the current folder `story-ts-example`, install the Story Protocol SDK node package, as well as `viem` ([https://www.npmjs.com/package/viem](https://www.npmjs.com/package/viem)) to access the DeFi wallet accounts.
+Install the [Story Protocol SDK](https://www.npmjs.com/package/@story-protocol/core-sdk) node package, as well as [viem](https://www.npmjs.com/package/viem).
 
 ```shell npm
 npm install --save @story-protocol/core-sdk viem
@@ -49,7 +49,7 @@ Before continuing with the code below:
 2. Make sure to have `RPC_PROVIDER_URL` set up in your `.env` file.
    1. You can use the public default one (`https://aeneid.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
 
-```typescript index.ts
+```typescript utils.ts
 import { http } from 'viem';
 import { Account, privateKeyToAccount, Address } from 'viem/accounts';
 import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
