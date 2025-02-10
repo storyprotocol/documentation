@@ -1,5 +1,5 @@
 ---
-title: staking-module
+title: staking
 deprecated: false
 hidden: false
 metadata:
