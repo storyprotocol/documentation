@@ -10,9 +10,9 @@ metadata:
 next:
   description: ''
 ---
-## IPAssetClient
+# IPAssetClient
 
-### Methods
+## Methods
 
 * register
 * registerDerivative
