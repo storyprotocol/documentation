@@ -58,3 +58,19 @@ passing a function that matches `InflationCalculationFn`'s signature.
 ```go
 type InflationCalculationFn func(ctx sdk.Context, minter Minter, params Params, bondedRatio math.LegacyDec) math.LegacyDec
 ```
+
+<br />
+
+## Parameters
+
+The minting module contains the following parameters:
+
+| Key               | Type            | Example             |
+| ----------------- | --------------- | ------------------- |
+| MintDenom         | string          | "stake"             |
+| InflationsPerYear | string (dec)    | "20000000000000000" |
+| BlocksPerYear     | string (uint64) | "10368000"          |
+
+* `MintDenom` is the coin denominator used.
+* `InflationsPerYear` is the target inflation per year, in 1e18 decimals.
+* `BlocksPerYear` is the target number of blocks per year.
