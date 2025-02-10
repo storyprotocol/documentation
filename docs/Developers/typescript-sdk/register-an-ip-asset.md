@@ -195,10 +195,14 @@ async function main() {
 main();
 ```
 
-## 6. Done!
+## 5. Done!
+
+Congratulations, you registered an IP!
 
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Follow the completed code all the way through.
   </Card>
 </Cards>
+
+Next, you can attach [License Terms](doc:license-terms) to your IP. This will allow others to mint a license and use your IP, restricted by the terms.
