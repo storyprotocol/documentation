@@ -28,7 +28,11 @@ next:
 
 ### register
 
-Registers an NFT as IP, creating a corresponding IP record.
+Registers an NFT as IP, creating a corresponding [🧩 IP Asset](doc:ip-asset). If the given NFT was already registered, this function will return the existing `ipId`.
+
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
 
 | Method     | Type                                                        |
 | ---------- | ----------------------------------------------------------- |
@@ -50,8 +54,8 @@ Parameters:
 import { toHex } from 'viem';
 
 const response = await client.ipAsset.register({
-  nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
-  tokenId: "12", // your NFT token ID
+  nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73",
+  tokenId: "12",
   ipMetadata: {
     ipMetadataURI: 'test-uri',
     ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
@@ -186,6 +190,10 @@ export type RegisterDerivativeWithLicenseTokensResponse = {
 ### mintAndRegisterIpAssetWithPilTerms
 
 Mint an NFT from a collection, register it as an IP, attach metadata to the IP, and atach License Terms to the IP all in one function.
+
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
 
 | Method                               | Type                                                                                                          |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -337,6 +345,10 @@ export type BatchMintAndRegisterIpAssetWithPilTermsResult = {
 
 Register a given NFT as an IP, attach metadata to the IP, and attach License Terms to the IP all in one function.
 
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
+
 | Method                        | Type                                                                                            |
 | ----------------------------- | ----------------------------------------------------------------------------------------------- |
 | `registerIpAndAttachPilTerms` | `(request: RegisterIpAndAttachPilTermsRequest) => Promise<RegisterIpAndAttachPilTermsResponse>` |
@@ -428,6 +440,10 @@ export type RegisterIpAndAttachPilTermsResponse = {
 
 Register an NFT as IP and then link it as a derivative of another IP Asset without using license tokens.
 
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
+
 | Method                 | Type                                                                                            |
 | ---------------------- | ----------------------------------------------------------------------------------------------- |
 | `registerDerivativeIp` | `(request: RegisterIpAndMakeDerivativeRequest) => Promise<RegisterIpAndMakeDerivativeResponse>` |
@@ -514,6 +530,10 @@ export type RegisterIpAndMakeDerivativeResponse = {
 
 Mint an NFT from a collection and register it as a derivative IP without license tokens.
 
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
+
 | Method                               | Type                                                                                                          |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
 | `mintAndRegisterIpAndMakeDerivative` | `(request: MintAndRegisterIpAndMakeDerivativeRequest) => Promise<MintAndRegisterIpAndMakeDerivativeResponse>` |
@@ -597,7 +617,11 @@ export type CommonRegistrationResponse = {
 
 ### mintAndRegisterIp
 
-Mint an NFT from a SPGNFT collection and register it with metadata as an IP.
+Mint an NFT from an SPGNFT collection and register it with metadata as an IP.
+
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
 
 | Method              | Type                                                                 |
 | ------------------- | -------------------------------------------------------------------- |
@@ -744,6 +768,10 @@ export type RegisterPilTermsAndAttachResponse = {
 
 Mint an NFT from a collection and register it as a derivative IP using license tokens
 
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
+
 | Method                                                | Type                                                                                                   |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | `mintAndRegisterIpAndMakeDerivativeWithLicenseTokens` | `(request: MintAndRegisterIpAndMakeDerivativeWithLicenseTokensRequest) => Promise<RegisterIpResponse>` |
@@ -808,6 +836,10 @@ export type CommonRegistrationResponse = {
 ### registerIpAndMakeDerivativeWithLicenseTokens
 
 Register the given NFT as a derivative IP using license tokens.
+
+> 📘 NFT Metadata
+>
+> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
 
 | Method                                         | Type                                                                                            |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
