@@ -3005,7 +3005,7 @@ Metrics:
 - [Tokenomics & Staking](doc:tokenomics-staking)
 
 
-# Network Info 
+# Network Info
 > 🚧 We are still in testnet!
 >
 > Please note that Story Network (our purpose-built L1) is still in **testnet**. This means things are subject to change or break along the way.
@@ -3108,11 +3108,9 @@ Specifically for IP-related transactions like registering an IPA, minting a lice
 
 ## :money_with_wings: Faucets
 
-> 🚧 Coming soon!
-
-| Faucet | Amount | Requirement |
-| :----- | :----- | :---------- |
-| N/A    | N/A    | N/A         |
+| Faucet                                                        | Amount |
+| :------------------------------------------------------------ | :----- |
+| [Official Faucet](https://cloud.google.com/application/web3/) | 1 IP   |
 
 ## :moneybag: Staking
 
