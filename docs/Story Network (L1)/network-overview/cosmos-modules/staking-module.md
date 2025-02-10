@@ -32,6 +32,8 @@ where
 
 Delegators can delegate with four different staking lock times, which results in different staking reward multiplier for each delegation (delegator-validator pair of stakes). The inflation distribution for each delegation $D\_i$ is calculated as follows:
 
+<Image align="center" src="https://files.readme.io/002ae69aa3b3e52a33747452fe0c0b91b9120f20155deb19b56fb7917132b8de-Screenshot_2025-02-11_at_8.34.44_AM.png" />
+
 where
 
 * S\_d\_i is the staked tokens of delegation d\_i on validator v\_d
