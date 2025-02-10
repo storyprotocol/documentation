@@ -11,15 +11,13 @@ next:
   description: ""
 ---
 
-# `evmengine`
-
 ## Abstract
 
 This document specifies the internal `x/evmengine` module of the Story blockchain.
 
 As Story Network separates the consensus and execution client, like Ethereum, the consensus client (CL) and execution client (EL) needs to communicate to sync to the network, propose proper EVM blocks, and execute EVM-triggered EL actions in CL.
 
-The module exists to facilitate all communications between CL and EL using the [Engine API](../engineapi.md), from staking and upgrades to driving block production and consensus in CL and EL.
+The module exists to facilitate all communications between CL and EL using the [Engine API](../engine-api.md), from staking and upgrades to driving block production and consensus in CL and EL.
 
 ## Contents
 
@@ -37,7 +35,7 @@ The module exists to facilitate all communications between CL and EL using the [
 
 Type: `time.Duration`
 
-Build delay determines the wait duration from the start of `PrepareProposal` ABCI2 call before fetching the next EVM block data to propose from EL via the [Engine API](../engineapi.md). Applicable to the current proposer only. If the node has a block optimistically built beforehand, the build delay is not used.
+Build delay determines the wait duration from the start of `PrepareProposal` ABCI2 call before fetching the next EVM block data to propose from EL via the [Engine API](../engine-api.md). Applicable to the current proposer only. If the node has a block optimistically built beforehand, the build delay is not used.
 
 ### Build Optimistic
 
@@ -106,7 +104,7 @@ message Params {
 
 At each block, if the node is the proposer, ABCI2 triggers `PrepareProposal` which
 
-1. Loads staking & reward withdrawals from the [evmstaking](./evmstaking.md) module.
+1. Loads staking & reward withdrawals from the [evmstaking](./evmstaking-module.md) module.
 2. Builds a valid EVM block.
     - If optimistic building: loads the optimistically built block.
     - Non-optimistic: requests and retrieves an EVM block from EL.
@@ -128,7 +126,7 @@ More specifically, the node processes the received `MsgExecutionPayload` data in
 2. Compare local stake & reward withdrawals with the received withdrawals data.
 3. Push the received execution payload to EL via the Engine API and wait for payload validation.
 4. Update the EL forkchoice to the execution payload's block hash.
-5. Process staking events using the [evmstaking](./evmstaking.md) module.
+5. Process staking events using the [evmstaking](./evmstaking-module.md) module.
 6. Process upgrade events.
 7. Update the execution head to the execution payload (finalized block).
 
@@ -169,7 +167,7 @@ This message is expected to fail if:
 - execution payload's `Withdrawals`, `BlobGasUsed`, and `ExcessBlobGas` fields are nil
 - execution payload's `Withdrawals` count does not match local node's sum of dequeued stake & reward withdrawals
 
-The message must contain previous block's events, which gets processed at the current CL block (in other words, execution events from EL block n-1 are processed at CL block n). In the future, the message will remove `prev_payload_events` and rely on [Engine API](../engineapi.md) to get the current finalized EL block's events.
+The message must contain previous block's events, which gets processed at the current CL block (in other words, execution events from EL block n-1 are processed at CL block n). In the future, the message will remove `prev_payload_events` and rely on [Engine API](../engine-api.md) to get the current finalized EL block's events.
 
 Also note that EVM events are processed in CL in the order they are generated in EL.
 

@@ -11,8 +11,6 @@ next:
   description: ""
 ---
 
-# `evmstaking`
-
 ## Abstract
 
 This document specifies the internal `x/evmstaking` module of the Story blockchain.
@@ -104,13 +102,13 @@ In a single queue of withdrawals, reward withdrawals can significantly delay sta
 
 ## Withdrawal Queue Content
 
-Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine.md) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](../engineapi.md). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
+Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine-module.md) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](../engine-api.md). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
 
 In other words, the `evmstaking` module is in charge of parsing, processing, and inserting withdrawal requests to two queues, while the `evmengine` module is in charge of validating and dequeuing withdrawal requests, as well as depositing them to corresponding withdrawal addresses in EL.
 
 ## End Block
 
-The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking.md) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
+The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module.md) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
 
 If the network is in the [Singularity period](https://docs.story.foundation/docs/tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations), [Withdrawing Rewards](#withdrawing-rewards), and [Withdrawing UBI](#withdrawing-ubi) for detailed withdrawal processes.
 

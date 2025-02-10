@@ -1,4 +1,15 @@
-# `staking`
+---
+title: staking
+excerpt: ""
+deprecated: false
+hidden: false
+metadata:
+  title: ""
+  description: ""
+  robots: index
+next:
+  description: ""
+---
 
 The staking module has been modified to accommodate for the following changes below. Refer to the Cosmos SDK's [staking module docs](https://docs.cosmos.network/main/build/modules/staking) for more information.
 
@@ -19,7 +30,7 @@ where
 * $M_{v_i}$ is the rewards multiplier for $v_i$
   * $0.5$ for locked tokens
   * $1$ for unlocked tokens
-* $R_{\text{n}}$ is the total inflationary tokens allocated for the rewards pool in block $n$, calculated in the [mint](./mint.md) module
+* $R_{\text{n}}$ is the total inflationary tokens allocated for the rewards pool in block $n$, calculated in the [mint](./mint-module.md) module
 
 ### Delegations
 
