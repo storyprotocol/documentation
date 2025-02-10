@@ -17,6 +17,8 @@ Validators can choose to accept either locked tokens or unlocked tokens as deleg
 
 Since each validator receives different inflation distribution based on delegations, the inflation distribution I\_v\_i for validator v\_i in the rewards pool is calculated as follows:
 
+<Image align="center" src="https://files.readme.io/3ee4914a7cc6036ceebbdd31ce93e525984a08364f8c3ab2152b86b3bcd5df7e-Screenshot_2025-02-11_at_8.30.07_AM.png" />
+
 where
 
 * I\_v\_i is the total inflationary token rewards for v\_i
