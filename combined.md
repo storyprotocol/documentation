@@ -3108,9 +3108,9 @@ Specifically for IP-related transactions like registering an IPA, minting a lice
 
 ## :money_with_wings: Faucets
 
-| Faucet                                                        | Amount |
-| :------------------------------------------------------------ | :----- |
-| [Official Faucet](https://cloud.google.com/application/web3/) | 1 IP   |
+| Faucet                                                                                 | Amount |
+| :------------------------------------------------------------------------------------- | :----- |
+| <a href="https://cloud.google.com/application/web3/" target="_blank">GCP Faucet ↗️</a> | 1 IP   |
 
 ## :moneybag: Staking
 
