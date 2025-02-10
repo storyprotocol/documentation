@@ -28,4 +28,4 @@ The staking module has been modified to accommodate for the following changes be
 
 Validators can choose to accept either locked tokens or unlocked tokens as delegations. Validators for locked tokens are conditioned to half the inflation allocation of validators for unlocked tokens.
 
-Since each validator receives different inflation distribution based on delegations, the inflation distribution $I_v_i$ for validator $v_i$ in the rewards pool is calculated as follows:
+Since each validator receives different inflation distribution based on delegations, the inflation distribution $I\_v\_i$ for validator $v\_i$ in the rewards pool is calculated as follows:
