@@ -7568,7 +7568,7 @@ Let the world build on and play with your creation. This license allows for endl
   </tbody>
 </Table>
 
-###  PIL Term Values
+### PIL Term Values
 
 * **On-chain**:
 
@@ -7678,7 +7678,7 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
   </tbody>
 </Table>
 
-###  PIL Term Values
+### PIL Term Values
 
 * **On-chain**:
 
@@ -7798,7 +7798,7 @@ Let the world build on and play with your creation... and earn money together fr
   </tbody>
 </Table>
 
-###  PIL Term Values
+### PIL Term Values
 
 * **On-chain**:
 
@@ -7918,7 +7918,7 @@ Let the world build on and play with your creation - including making money.
   </tbody>
 </Table>
 
-###  PIL Term Values
+### PIL Term Values
 
 * **On-chain**:
 
