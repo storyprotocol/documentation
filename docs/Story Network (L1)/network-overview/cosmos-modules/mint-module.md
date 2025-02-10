@@ -40,3 +40,21 @@ message Params {
   uint64 blocks_per_year = 3;
 }
 ```
+
+<br />
+
+## Begin Block
+
+Minting parameters are calculated and inflation paid at the beginning of each block.
+
+### Inflation amount calculation
+
+Inflation amount is calculated using an "inflation calculation function" that's\
+passed to the `NewAppModule` function. If no function is passed, then the SDK's
+default inflation function will be used (`DefaultInflationCalculationFn`). In case a custom
+inflation calculation logic is needed, this can be achieved by defining and
+passing a function that matches `InflationCalculationFn`'s signature.
+
+```go
+type InflationCalculationFn func(ctx sdk.Context, minter Minter, params Params, bondedRatio math.LegacyDec) math.LegacyDec
+```
