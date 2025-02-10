@@ -529,14 +529,6 @@ export type MintAndRegisterIpAssetWithPilTermsRequest = {
   recipient?: Address;
   royaltyPolicyAddress?: Address;
 } & IpMetadataAndTxOptions & WithWipOptions;
-
-export type WithWipOptions = {
-  wipOptions?: {
-    useMulticallWhenPossible?: boolean;
-    enableAutoWrapIp?: boolean;
-    enableAutoApprove?: boolean;
-  };
-};
 ```
 ```typescript Response Type
 export type MintAndRegisterIpAssetWithPilTermsResponse = {
