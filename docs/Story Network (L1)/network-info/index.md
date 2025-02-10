@@ -1,5 +1,5 @@
 ---
-title: Network Info 
+title: Network Info
 excerpt: ''
 deprecated: false
 hidden: false
@@ -112,11 +112,9 @@ Specifically for IP-related transactions like registering an IPA, minting a lice
 
 ## :money_with_wings: Faucets
 
-> 🚧 Coming soon!
-
-| Faucet | Amount | Requirement |
-| :----- | :----- | :---------- |
-| N/A    | N/A    | N/A         |
+| Faucet                                                        | Amount |
+| :------------------------------------------------------------ | :----- |
+| [Official Faucet](https://cloud.google.com/application/web3/) | 1 IP   |
 
 ## :moneybag: Staking
 
