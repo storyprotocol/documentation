@@ -17082,8 +17082,14 @@ There are a lot of ways to register an IP Asset as a derivative of another.
     * :white_check_mark: Yes: Use [registerDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#/registerderivativewithlicensetokens)
     * :x: No: Do you have your own NFT contract, or an already minted NFT?
       * :white_check_mark: Yes: Use [registerIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#/registeripandmakederivativewithlicensetokens)
-      * :x: No: Use \[[https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivativewithlicensetokens](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivativewithlicensetokens)
-  * :x:
+      * :x: No: Use [mintAndRegisterIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivativewithlicensetokens)
+  * :x: No: Is the derivative IP Asset already registered?
+  *
+  * wfqwf
+
+qwffwq
+
+wqwf
 
 # Existing Child IP + License Token
 
