@@ -34,7 +34,7 @@ If you're a developer, here is everything you need:
 
 Check out the following resources to learn the SDK:
 
-* [Overview](doc:sdk-overview) - view the entire SDK reference
+* [SDK Reference](doc:sdk-overview) - view the entire SDK reference with detailed **explanations and examples** for each function ***(includes working code so you can jump right to coding)***
 * [🛠️ TypeScript SDK Guide](doc:typescript-sdk) - a walkthrough of how to set up and implement the most popular uses of the SDK ***(includes working code so you can jump right to coding)***
 * [📘 Tutorials](doc:tutorials) - includes tutorials that cover more specific topics, like registering music, registering AI-generated images, etc ***(includes working code so you can jump right to coding)***
 
@@ -42,7 +42,7 @@ Check out the following resources to learn the SDK:
 
 Check out the following resources to learn the protocol:
 
-* [⚙️ Smart Contracts](doc:get-started-with-the-smart-contracts) - a walkthrough of how to set up and implement the most popular uses of the protocol ***(includes working code so you can jump right to coding)***
+* [⚙️ Smart Contract Guide](doc:get-started-with-the-smart-contracts) - a walkthrough of how to set up and implement the most popular uses of the protocol ***(includes working code so you can jump right to coding)***
 * [Deployed Smart Contracts](doc:deployed-smart-contracts) - all the deployed protocol addresses
 * [📘 Tutorials](doc:tutorials) - includes tutorials that cover more specific topics, like registering music, registering AI-generated images, etc ***(includes working code so you can jump right to coding)***
 
