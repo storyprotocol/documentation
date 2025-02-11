@@ -30,7 +30,7 @@ It's important to know that if **License Terms already exist for the identical s
 
 ## 1. Register License Terms
 
-Create a new file under `test/1_LicenseTerms.t.sol` and paste the following:
+Let's create a test file under `test/1_LicenseTerms.t.sol` to see it work and verify the results:
 
 > 📘 Contract Addresses
 >
