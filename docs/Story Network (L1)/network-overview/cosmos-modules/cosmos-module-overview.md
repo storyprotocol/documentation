@@ -14,7 +14,7 @@ next:
 
 Here is a list of all production-grade modules that can be used on the Story blockchain, along with their respective documentation:
 
-* [evmengine](./evmengine-module) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](../engine-api).
+* [evmengine](./evmengine-module) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](engine-api).
 * [evmstaking](./evmstaking-module) - Handles staking and network emission logics with queues.
 * [mint](./mint-module.md)
 
