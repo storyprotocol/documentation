@@ -93,13 +93,13 @@ Delegators can decide how flexible and how long they want to stake their tokens.
 
 For unlocked tokens, a few more fixed staking periods are supported: 90 days, 360 days, and 540 days. In this case, users can only call unstake after the staking period is mature. Any call earlier than the mature day will be discarded. Unstaking from a mature staking period is still subject to the unbonding process, meaning users will get their staked tokens back after 14 days of unbonding time.
 
-For locked tokens, only flexible staking is allowed. If a user delegates their locked tokens to a staking period, we will convert that to a flexible staking delegation.
-
 Staking in these fixed staking periods earns more rewards. The longer the period, the bigger the reward weight multiplier. Reward multiplier for different periods:
 
-* 90 days - 1.1
-* 360 days - 1.5
-* 540 days - 2
+* 90 days - **1.1**
+* 360 days - **1.5**
+* 540 days - **2**
+
+For locked tokens, only flexible staking is allowed and the reward multiplier is **0.5**. If a user delegates their locked tokens to a staking period, we will convert that to a flexible staking delegation.
 
 After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
 
