@@ -207,7 +207,7 @@ export type AttachLicenseTermsResponse = {
 
 It's worth mentioning that you can **create terms + attach terms** all in the same step with the the [registerPilTermsAndAttach](https://docs.story.foundation/docs/sdk-ipasset#/registerpiltermsandattach) function. Whatever is easiest for you!
 
-And, like we mentioned at the beginning, there are two functions you can use that allow you to **register + create terms + attach terms** in the same function:
+And, like we mentioned at the beginning, there are two functions you can use that allow you to **register IP + create terms + attach terms** in the same function:
 
 * [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripassetwithpilterms)
 * [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/registeripandattachpilterms)
