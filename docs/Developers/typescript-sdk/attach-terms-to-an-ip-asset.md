@@ -146,19 +146,19 @@ We have convenience functions to help you register new terms. We have created [P
 
 <Cards columns={4}>
   <Card title="Non-Commercial Social Remixing" href="https://docs.story.foundation/docs/pil-flavors#/flavor-1-non-commercial-social-remixing" icon="fa-file" target="_blank">
-    Let the world build on and play with your creation. This license allows for endless free remixing while tracking all uses of your work while giving you full credit. Similar to: TikTok plus attribution.
+    Free remixing with attribution. No commercialization.
   </Card>
 
   <Card title="Commercial Use" href="https://docs.story.foundation/docs/pil-flavors#/flavor-2-commercial-use" icon="fa-file" target="_blank">
-    Retain control over reuse of your work, while allowing anyone to appropriately use the work in exchange for the economic terms you set. This is similar to Shutterstock with creator-set rules.
+    Pay to use the license with attribution, but don't have to share revenue.
   </Card>
 
   <Card title="Commercial Remix" href="https://docs.story.foundation/docs/pil-flavors#/flavor-3-commercial-remix" icon="fa-file" target="_blank">
-    Let the world build on and play with your creation... and earn money together from it! This license allows for endless free remixing while tracking all uses of your work while giving you full credit, with each derivative paying a percentage of revenue to its "parent" IP.
+    Pay to use the license with attribution and pay % of revenue earned.
   </Card>
 
   <Card title="Creative Commons Attribution" href="https://docs.story.foundation/docs/pil-flavors#/flavor-4-creative-commons-attribution" icon="fa-file" target="_blank">
-    Let the world build on and play with your creation - including making money.
+    Free remixing and commercial use with attribution.
   </Card>
 </Cards>
 
