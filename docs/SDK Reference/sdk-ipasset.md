@@ -48,7 +48,7 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 | <span style={{color: "#1971c2"}}>mintLicenseTokens</span>                                   |                 |                  |                          |                          |            ✓           |                            |
 
 * <span style={{color: "#e03130"}}>Red</span>: IPAssetClient (this page)
-* <span style={{color: "#1971c2"}}>Blue</span>: [License Client](doc:sdk-license)
+* <span style={{color: "#1971c2"}}>Blue</span>: [LicenseClient](doc:sdk-license)
 
 ## register
 
@@ -320,50 +320,6 @@ Batch mint an NFT from a collection and register it as an IP.
 | Method                                    | Type                                                                                                                    |
 | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `batchMintAndRegisterIpAssetWithPilTerms` | `(request: BatchMintAndRegisterIpAssetWithPilTermsRequest) => Promise<BatchMintAndRegisterIpAssetWithPilTermsResponse>` |
-
-Parameters:
-
-* `request.args[]`: The array of mint and register IP requests.
-  * `request.args.spgNftContract`: The address of the NFT collection.
-  * `request.args.terms[]`: The array of license terms to be attached.
-    * `request.args.terms.transferable`: Indicates whether the license is transferable or not.
-    * `request.args.terms.royaltyPolicy`: The address of the royalty policy contract which required to StoryProtocol in advance.
-    * `request.args.terms.mintingFee`: The fee to be paid when minting a license.
-    * `request.args.terms.expiration`: The expiration period of the license.
-    * `request.args.terms.commercialUse`: Indicates whether the work can be used commercially or not.
-    * `request.args.terms.commercialAttribution`: Whether attribution is required when reproducing the work commercially or not.
-    * `request.args.terms.commercializerChecker`: Commercializers that are allowed to commercially exploit the work. If zero address, then no restrictions is enforced.
-    * `request.args.terms.commercializerCheckerData`: The data to be passed to the commercializer checker contract.
-    * `request.args.terms.commercialRevShare`: Percentage of revenue that must be shared with the licensor.
-    * `request.args.terms.commercialRevCeiling`: The maximum revenue that can be generated from the commercial use of the work.
-    * `request.args.terms.derivativesAllowed`: Indicates whether the licensee can create derivatives of his work or not.
-    * `request.args.terms.derivativesAttribution`: Indicates whether attribution is required for derivatives of the work or not.
-    * `request.args.terms.derivativesApproval`: Indicates whether the licensor must approve derivatives of the work before they can be linked to the licensor IP ID or not.
-    * `request.args.terms.derivativesReciprocal`: Indicates whether the licensee must license derivatives of the work under the same terms or not.
-    * `request.args.terms.derivativeRevCeiling`: The maximum revenue that can be generated from the derivative use of the work.
-    * `request.args.terms.currency`: The ERC20 token to be used to pay the minting fee. the token must be registered in story protocol.
-    * `request.args.terms.uri`: The URI of the license terms, which can be used to fetch the offchain license terms.
-  * `request.args.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
-    * `request.args.ipMetadata.ipMetadataURI`: \[Optional] The URI of the metadata for the IP.
-    * `request.args.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
-    * `request.args.ipMetadata.nftMetadataURI`: \[Optional] The URI of the metadata for the NFT.
-    * `request.args.ipMetadata.nftMetadataHash`: \[Optional] The hash of the metadata for the IP NFT.
-  * `request.args.recipient`: \[Optional] The address of the recipient of the minted NFT.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type BatchMintAndRegisterIpAssetWithPilTermsResponse = {
-  txHash: Hex;
-  results?: BatchMintAndRegisterIpAssetWithPilTermsResult[];
-};
-
-export type BatchMintAndRegisterIpAssetWithPilTermsResult = {
-  ipId: Address;
-  tokenId: bigint;
-  licenseTermsIds: bigint[];
-  spgNftContract: Address;
-};
-```
 
 ## registerIpAndAttachPilTerms
 
