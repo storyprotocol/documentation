@@ -12983,25 +12983,63 @@ forge script <script_file> \
   --verifier-url <blockscout_homepage_explorer_url>/api/
 ```
 
-# Claiming Royalty
-Let's say you have a parent IP Asset that specifies in its [License Terms](doc:license-terms) that any derivatives must share 10% of their revenue with it. A child IPA then agrees to those, mints a [License Token](doc:license-token), and registers as a derivative.
+# Pay & Claim Revenue
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/5_Royalty.t.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through.
+  </Card>
+</Cards>
 
-In the below example, we will see how the parent IPA can claim its due 10% revenue from a child IPA that earns revenue.
+This section demonstrates how to pay an IP Asset. There are a few reasons you would do this:
 
-## Prerequisites
+1. you simply want to "tip" an IP
+2. you have to because your license terms with an ancestor IP require you to forward a certain % of payment
 
-* Understand the [💸 Royalty Module](doc:royalty-module)
-* A child IPA and a parent IPA, for which their license terms have a commercial revenue share to make this example work
+In either scenario, you would use the below `payRoyaltyOnBehalf` function. When this happens, the [💸 Royalty Module](doc:royalty-module) automatically handles the different payment flows such that parent IP Assets who have negotiated a certain `commercialRevShare` with the IPA being paid can claim their due share.
 
-## Claim Royalty
+### :warning: Prerequisites
 
-Create a new file under `./test/5_Royalty.t.sol` and paste the following:
+There are a few steps you have to complete before you can start the tutorial.
+
+1. Complete the [Setup Your Own Project](doc:sc-setup)
+2. Have a basic understanding of the [💸 Royalty Module](doc:royalty-module)
+3. A child IPA and a parent IPA, for which their license terms have a commercial revenue share to make this example work
+
+## 0. Before We Start
+
+You can pay an IP Asset using the `payRoyaltyOnBehalf` function from the [💸 Royalty Module](doc:royalty-module).
+
+You will be paying the IP Asset with [MockERC20](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E). Usually you would pay with $WIP, but because we need to mint some tokens to test, we will use MockERC20.
+
+To help with the following scenarios, let's say we have a parent IP Asset that has negotiated a 50% `commercialRevShare` with its child IP Asset.
+
+### 0a. :coin: Whitelisted Revenue Tokens
+
+Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. MockERC20 is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#/whitelisted-revenue-tokens).
+
+## 1. Paying an IP Asset
+
+We can pay an IP Asset like so:
+
+```sol
+ROYALTY_MODULE.payRoyaltyOnBehalf(childIpId, address(0), address(MERC20), 10);
+```
+
+This will send 10 $MERC20 to the `childIpId`'s [IP Royalty Vault](doc:ip-royalty-vault). From there, the child can claim revenue. In the next section, you'll see a working version of this.
+
+## 2. Claim Revenue
+
+When payments are made, they eventually end up in an IP Asset's [IP Royalty Vault](doc:ip-royalty-vault). From here, they are claimed/transferred to whoever owns the Royalty Tokens associated with it, which represent a % of revenue share for a given IP Asset's IP Royalty Vault.
+
+The IP Account (the smart contract that represents the [🧩 IP Asset](doc:ip-asset)) is what holds 100% of the Royalty Tokens when it's first registered. So usually, it indeed holds most of the Royalty Tokens.
+
+Let's create a test file under `test/5_Royalty.t.sol` to see it work and verify the results:
 
 > 📘 Contract Addresses
 >
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
-```sol 5_Royalty.t.sol
+```sol test/5_Royalty.t.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
@@ -13146,13 +13184,29 @@ contract RoyaltyTest is Test {
 }
 ```
 
+## 3. Test Your Code!
+
 Run `forge build`. If everything is successful, the command should successfully compile.
 
-To test this out, simply run the following command:
+Now run the test by executing the following command:
 
 ```shell
 forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/5_Royalty.t.sol
 ```
+
+## 4. Dispute an IP
+
+Congratulations, you claimed revenue using the [💸 Royalty Module](doc:royalty-module)!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/5_Royalty.t.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through.
+  </Card>
+</Cards>
+
+Now what happens if an IP Asset doesn't pay their due share? We can dispute the IP on-chain, which we will cover on the next page.
+
+> 🚧 Coming soon!
 
 # Build a periphery contract
 In this guide, we'll go over how you can create your own periphery contract for interfacing with the core protocol modules. 
