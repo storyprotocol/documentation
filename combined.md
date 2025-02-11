@@ -11561,13 +11561,13 @@ It's important to know that if **License Terms already exist for the identical s
 
 ## 1. Register License Terms
 
-Create a new file under `./test/1_LicenseTerms.t.sol` and paste the following:
+Create a new file under `test/1_LicenseTerms.t.sol` and paste the following:
 
 > 📘 Contract Addresses
 >
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
-```sol 1_LicenseTerms.t.sol
+```sol test/1_LicenseTerms.t.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
