@@ -161,7 +161,7 @@ If you run this code and look at the console output, you will find the SPG NFT c
 
 Now we can actually register our IP by minting an NFT, registering it as an [🧩 IP Asset](doc:ip-asset), and setting both NFT & IP metadata.
 
-* Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisterip)
+> Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisterip)
 
 ```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
