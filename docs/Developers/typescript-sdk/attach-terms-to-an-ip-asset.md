@@ -33,7 +33,7 @@ In order to attach terms to an IP Asset, let's first create them!
 
 > 📘 Duplicate Terms
 >
-> If License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. You can use existing License Terms by its `licenseTermsId`.
+> If License Terms already exist on our protocol for the identical set of parameters you intend to create, it is unnecessary to create it again and the function will simply return the existing `licenseTermsId` and an undefined `txHash`. License Terms are protocol-wide, so you can use existing License Terms by its `licenseTermsId`.
 
 Below is a code example showing how to create new terms:
 
