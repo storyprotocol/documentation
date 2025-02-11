@@ -32,35 +32,27 @@ Let's say that IP Asset (`ipId = 0x01`) has License Terms (`licenseTermdId = 10`
 >
 > Be mindful that some IP Assets may have license terms attached that require the user minting the license to pay a `defaultMintingFee`. You can see an example of that in the <a href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" target="_blank">TypeScript Tutorial</a>.
 
-```typescript TypeScript
-const response = await client.license.mintLicenseTokens({
-  licenseTermsId: "10", 
-  licensorIpId: "0x01",
-  receiver: "0x02", // optional. if not provided, it will go to the tx sender
-  amount: 2,
-  maxMintingFee: BigInt(0), // disabled
-  maxRevenueShare: 100, // default
-  txOptions: { waitForTransaction: true }
-});
+> Associated Docs: [license.mintLicenseTokens](https://docs.story.foundation/docs/sdk-license#/mintlicensetokens)
 
-console.log(`License Token minted at transaction hash ${response.txHash}, License IDs: ${response.licenseTokenIds}`)
-```
-```typescript Request Type
-export type MintLicenseTokensRequest = {
-  licensorIpId: Address;
-  licenseTermsId: string | number | bigint;
-  licenseTemplate?: Address;
-  amount?: number | string | bigint;
-  receiver?: Address;
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type MintLicenseTokensResponse = {
-  licenseTokenIds?: bigint[];
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-};
+```typescript main.ts
+// you should already have a client set up (prerequisite)
+import { client } from './client'
+
+async function main() {
+  const response = await client.license.mintLicenseTokens({
+    licenseTermsId: "10", 
+    licensorIpId: "0x01",
+    receiver: "0x02", // optional. if not provided, it will go to the tx sender
+    amount: 2,
+    maxMintingFee: BigInt(0), // disabled
+    maxRevenueShare: 100, // default
+    txOptions: { waitForTransaction: true }
+  });
+
+  console.log(`License Token minted at transaction hash ${response.txHash}, License IDs: ${response.licenseTokenIds}`)
+}
+
+main();
 ```
 
 ### 1a. :hand: Setting Restrictions on Minting License Token
