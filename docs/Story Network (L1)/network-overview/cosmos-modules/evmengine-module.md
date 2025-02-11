@@ -50,7 +50,7 @@ Head table stores the latest execution head data to be used for partial validati
 
 The following execution head is stored in the table.
 
-```protobuf
+```protobuf protobuf
 message ExecutionHead {
   option (cosmos.orm.v1.table) = {
     id: 1;
@@ -87,7 +87,7 @@ Mutable payload stores the optimistic block built, if optimistic building is ena
 
 The module's `GenesisState` defines the state necessary for initializing the chain from a previously exported height.
 
-```protobuf
+```protobuf protobuf
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
 }
@@ -139,7 +139,7 @@ In this section we describe the processing of the evmengine messages and the cor
 
 ### MsgExecutionPayload
 
-```protobuf
+```protobuf protobuf
 message MsgExecutionPayload {
   option (cosmos.msg.v1.signer) = "authority";
   string            authority           = 1;
