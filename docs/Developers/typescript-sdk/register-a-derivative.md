@@ -66,61 +66,39 @@ Modify your code such that...
    2. `licenseTermIds` is an array of license terms you want to register under. These are the terms your derivative must abide by
    3. Set `maxMintingFee`, `maxRts`, and `maxRevenueShare` to be left as disabled/default as shown below
 
-```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
-import { toHex } from 'viem';
+```typescript main.ts
+import { IpMetadata, DerivativeData } from '@story-protocol/core-sdk'
+import { client } from './utils'
+import { uploadJSONToIPFS } from './uploadToIpfs'
+import { createHash } from 'crypto'
+import { Address } from 'viem'
 
-const derivData: DerivativeData = {
-  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
-  licenseTermsIds: ["1"],
-  maxMintingFee: BitInt(0), // disabled
-  maxRts: 100_000_000, // default
-  maxRevenueShare: 100, // default
-};
-
-const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
-  // an NFT contract address created by the SPG
-  spgNftContract: "0xfE265a91dBe911db06999019228a678b86C04959",
-  derivData,
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true }
-});
-
-console.log(`Completed at transaction hash ${response.txHash}, IPA ID: ${response.ipId}, Token ID: ${response.tokenId}`);
-```
-```typescript Request Type
-export type MintAndRegisterIpAndMakeDerivativeRequest = {
-  nftContract: Address;
-  derivData: {
-    parentIpIds: Address[];
-    licenseTermsIds: string[] | bigint[] | number[];
-    licenseTemplate?: Address;
+async function main() {
+  // previous code here ...
+  
+  const derivData: DerivativeData = {
+    // TODO: insert the parent's ipId
+    parentIpIds: [PARENT_IP_ID],
+    // TODO: insert the licenseTermsId attached to parent IpId
+    licenseTermsIds: [LICENSE_TERMS_ID],
+    maxMintingFee: BitInt(0), // disabled
+    maxRts: 100_000_000, // default
+    maxRevenueShare: 100, // default
   };
-  nftMetadata?: string;
-  recipient?: Address;
-} & IpMetadataAndTxOption;
 
-type IpMetadataAndTxOption = {
-  ipMetadata?: {
-    ipMetadataURI?: string;
-    ipMetadataHash?: Hex;
-    nftMetadataURI?: string;
-    nftMetadataHash?: Hex;
-  };
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterDerivativeResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  childIpId?: Address;
-  tokenId?: bigint;
-};
+  const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
+    // TODO: insert your NFT contract address created by the SPG
+    spgNftContract: SPG_NFT_CONTRACT_ADDRESS as Address,
+    derivData,
+    ipMetadata: {
+      ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
+      ipMetadataHash: `0x${ipHash}`,
+      nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
+      nftMetadataHash: `0x${nftHash}`,
+    },
+    txOptions: { waitForTransaction: true }
+  });
+
+  console.log(`Completed at transaction hash ${response.txHash}, IPA ID: ${response.ipId}, Token ID: ${response.tokenId}`);
+}
 ```
