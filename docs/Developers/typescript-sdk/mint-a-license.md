@@ -22,14 +22,7 @@ There are two reasons you'd mint a License Token:
 There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
-
-* An IP Asset that has License Terms added. Learn how to add License Terms to an IPA [here](doc:attach-terms-to-an-ip-asset).
-
-### section about restrictions
-
-> 📘 Max Number of Licenses
->
-> If you're curious about setting the maximum number of licenses that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
+2. An IP Asset that has License Terms added. Learn how to add License Terms to an IPA [here](doc:attach-terms-to-an-ip-asset).
 
 ## 1. Mint License
 
@@ -69,6 +62,16 @@ export type MintLicenseTokensResponse = {
   encodedTxData?: EncodedTxData;
 };
 ```
+
+### 1a. :hand: Setting Restrictions on Minting License Token
+
+This is a note for owners of an IP Asset who want to set restrictions on who or how their license tokens are minted. You can:
+
+* Set a max number of licenses that can be minted
+* Charge dynamic fees based on who / how many are minted
+* Whitelisted certain wallets to mint the tokens
+
+... and more. Learn more by checking out the [License Config / Hook](doc:license-config-hook) section of our documentation.
 
 ## 2. Register a Derivative
 
