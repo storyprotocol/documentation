@@ -4807,7 +4807,7 @@ sudo apt install -y \
 
 ### 1.4 Install Go
 
-For Odyssey, we need to install Go 1.22.0
+For Dev Mainnet, we need to install Go 1.22.0
 
 ```bash
 # Download and install Go 1.22.0
