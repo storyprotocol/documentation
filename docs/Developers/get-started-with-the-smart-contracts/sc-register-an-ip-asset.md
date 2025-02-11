@@ -43,7 +43,7 @@ All you have to do is call `register` on the [IP Asset Registry](doc:ip-asset-re
 * `tokenContract` - the address of your NFT collection
 * `tokenId` - your NFT's ID
 
-Let's create a test file to see it work and verify the results:
+Let's create a test file under `test/0_IPARegistrar.sol` to see it work and verify the results:
 
 > 📘 Contract Addresses
 >
@@ -106,7 +106,7 @@ Once you have your own SPGNFT, all you have to do is call `mintAndRegisterIp` wi
 * `recipient` - the address of who will receive the NFT and thus be the owner of the newly registered IP. *Note: remember that registering IP on Story is permissionless, so you can register an IP for someone else (by paying for the transaction) yet they can still be the owner of that IP Asset.*
 * `ipMetadata` - the metadata associated with your NFT & IP. See [this](https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata) section to better understand setting NFT & IP metadata.
 
-Let's create a test file to see it work and verify the results:
+Let's create a test file under `test/0_IPARegistrar.sol` to see it work and verify the results:
 
 > 📘 Contract Addresses
 >
