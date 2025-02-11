@@ -1,16 +1,15 @@
 ---
 title: evmstaking
-excerpt: ""
+excerpt: ''
 deprecated: false
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
-
 ## Abstract
 
 This document specifies the internal `x/evmstaking` module of the Story blockchain.
@@ -44,7 +43,7 @@ The reward withdrawal queue stores the pending rewards from stakes to be burned 
 
 ### Parameters
 
-```protobuf
+```protobuf protobuf
 message Params {
   uint32 max_withdrawal_per_block = 1 [
     (gogoproto.moretags) = "yaml:\"max_withdrawal_per_block\""
@@ -61,10 +60,10 @@ message Params {
 }
 ```
 
-- `max_withdrawal_per_block` is the maximum number of withdrawals (reward and unstakes, each) to process per block. This parameter prevents nodes from processing a large amount of withdrawals at once, which could exceed the max chain timeout.
-- `max_sweep_per_block` is the maximum number of validator-delegator delegations to sweep per block. This parameter prevents nodes from processing a large amount of delegations at once.
-- `min_partial_withdrawal_amount` is the minimum amount required for rewards to get added to the reward withdrawal queue.
-- `ubi_withdrawal_address` is the UBI contract address to which UBI withdrawals should be deposited.
+* `max_withdrawal_per_block` is the maximum number of withdrawals (reward and unstakes, each) to process per block. This parameter prevents nodes from processing a large amount of withdrawals at once, which could exceed the max chain timeout.
+* `max_sweep_per_block` is the maximum number of validator-delegator delegations to sweep per block. This parameter prevents nodes from processing a large amount of delegations at once.
+* `min_partial_withdrawal_amount` is the minimum amount required for rewards to get added to the reward withdrawal queue.
+* `ubi_withdrawal_address` is the UBI contract address to which UBI withdrawals should be deposited.
 
 ### Delegator Withdraw Address
 
@@ -102,37 +101,37 @@ In a single queue of withdrawals, reward withdrawals can significantly delay sta
 
 ## Withdrawal Queue Content
 
-Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine-module.md) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](../engine-api.md). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
+Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine-module) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](engine-api). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
 
 In other words, the `evmstaking` module is in charge of parsing, processing, and inserting withdrawal requests to two queues, while the `evmengine` module is in charge of validating and dequeuing withdrawal requests, as well as depositing them to corresponding withdrawal addresses in EL.
 
 ## End Block
 
-The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module.md) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
+The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
 
 If the network is in the [Singularity period](https://docs.story.foundation/docs/tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations), [Withdrawing Rewards](#withdrawing-rewards), and [Withdrawing UBI](#withdrawing-ubi) for detailed withdrawal processes.
 
 ## Processing Staking Events
 
-The module parses and processes staking events emitted from the [IPTokenStaking contract](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol), which are collected by the [evmengine](evmengine.md) module. The list of events are:
+The module parses and processes staking events emitted from the [IPTokenStaking contract](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol), which are collected by the [evmengine](./evmengine-module) module. The list of events are:
 
 ### Staking events
 
-- Create Validator
-- Deposit (delegate)
-- Withdraw (undelegate)
-- Redelegate
-- Unjail: anyone can request to unjail a jailed validator by paying the unjail fee in the contract.
+* Create Validator
+* Deposit (delegate)
+* Withdraw (undelegate)
+* Redelegate
+* Unjail: anyone can request to unjail a jailed validator by paying the unjail fee in the contract.
 
 These operations incur a fixed gas cost to prevent spam.
 
 ### Parameter events
 
-- Update Validator Commission: update the validator commission.
-- Set Withdrawal Address: delegator can modify their withdrawal address for future unstakes/undelegations.
-- Set Reward Address: delegator can modify their withdrawal address for future reward emissions.
-- Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelegation.
-- Unset Operator: delegator can remove operator.
+* Update Validator Commission: update the validator commission.
+* Set Withdrawal Address: delegator can modify their withdrawal address for future unstakes/undelegations.
+* Set Reward Address: delegator can modify their withdrawal address for future reward emissions.
+* Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelegation.
+* Unset Operator: delegator can remove operator.
 
 These operations incur a fixed gas cost to prevent spam.
 
@@ -140,7 +139,7 @@ These operations incur a fixed gas cost to prevent spam.
 
 Both withdrawal queues hold withdrawals of type:
 
-```protobuf
+```protobuf protobuf
 message Withdrawal {
   option (gogoproto.equal) = true;
   option (gogoproto.goproto_getters) = false;
@@ -162,11 +161,11 @@ message Withdrawal {
 }
 ```
 
-- `creation_height` is the block height at which the withdrawal is created.
-- `execution_address` is the EVM address receiving the withdrawn fund, which is burned in CL.
-- `amount` is the amount to burn on CL and mint on EL.
-- `withdrawal_type` is the type of withdrawal: $0$ for unstakes, $1$ for reward, and $2$ for UBI.
-- `validator_address` is the EVM validator address.
+* `creation_height` is the block height at which the withdrawal is created.
+* `execution_address` is the EVM address receiving the withdrawn fund, which is burned in CL.
+* `amount` is the amount to burn on CL and mint on EL.
+* `withdrawal_type` is the type of withdrawal: $0$ for unstakes, $1$ for reward, and $2$ for UBI.
+* `validator_address` is the EVM validator address.
 
 ### Withdrawing Delegations
 
