@@ -17063,12 +17063,27 @@ export type PayRoyaltyOnBehalfResponse = {
 ```
 
 # Register a Derivative
-This section demonstrates how to register an IP Asset as a derivative of another. **Luckily there are many ways you can do this based on what is best for you**, and it is up to you to choose which one you need.
+This section demonstrates how to register an IP Asset as a derivative of another.)
 
-## Prerequisites
+### :warning: Prerequisites
 
-* [Setup](doc:typescript-sdk-setup) the client object.
-* The parent IP Asset must be registered and have License Terms attached to it.
+There are a few steps you have to complete before you can start the tutorial.
+
+1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
+
+## 0) Before We Start
+
+There are a lot of ways to register an IP Asset as a derivative of another.
+
+<br />
+
+* Do you already have a [License Token](doc:license-token) you can use?
+  * :white_check_mark: Yes: Is the derivative IP Asset already registered?
+    * :white_check_mark: Yes: Use [registerDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#/registerderivativewithlicensetokens)
+    * :x: No: Do you have your own NFT contract, or an already minted NFT?
+      * :white_check_mark: Yes: Use [registerIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#/registeripandmakederivativewithlicensetokens)
+      * :x: No: Use \[[https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivativewithlicensetokens](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivativewithlicensetokens)
+  * :x:
 
 # Existing Child IP + License Token
 
@@ -17338,7 +17353,7 @@ export type RegisterDerivativeResponse = {
 
 ## Additional Prerequisites
 
-* An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
+* An already minted License Token from the parent IP Asset. Learn how to mint a License Token \[here]\(doc:mint-a-license.
 
 ```typescript TypeScript
 import { toHex } from 'viem';
