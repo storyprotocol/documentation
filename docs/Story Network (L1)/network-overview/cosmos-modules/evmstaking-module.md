@@ -109,7 +109,7 @@ In other words, the `evmstaking` module is in charge of parsing, processing, and
 
 The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
 
-If the network is in the [Singularity period](https://docs.story.foundation/docs/tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations), [Withdrawing Rewards](#withdrawing-rewards), and [Withdrawing UBI](#withdrawing-ubi) for detailed withdrawal processes.
+If the network is in the [Singularity period](tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations) and [Withdrawing Rewards](#withdrawing-rewards) for detailed withdrawal processes.
 
 ## Processing Staking Events
 
