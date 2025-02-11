@@ -18,11 +18,6 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-* mintAndRegisterIpAssetWithPilTerms
-* registerIpAndAttachPilTerms
-* registerPilTermsAndAttach
-* attachLicenseTerms
-
 ## 0. Before We Start
 
 We should mention that you do not need an existing IP Asset to attach terms to it. There are two functions you can use that allow you to **register + attach terms** in the same function:
