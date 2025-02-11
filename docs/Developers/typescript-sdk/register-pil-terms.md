@@ -2,7 +2,7 @@
 title: Register License Terms
 excerpt: Learn how to register new License Terms in TypeScript.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
