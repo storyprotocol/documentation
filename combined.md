@@ -17122,6 +17122,10 @@ Modify your code such that...
    2. `licenseTermIds` is an array of license terms you want to register under. These are the terms your derivative must abide by
    3. Set `maxMintingFee`, `maxRts`, and `maxRevenueShare` to be left as disabled/default as shown below
 
+Now we can call the function like so:
+
+* Associated Docs: [ipAsset.mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivative)
+
 ```typescript main.ts
 import { IpMetadata, DerivativeData } from '@story-protocol/core-sdk'
 import { client } from './utils'
