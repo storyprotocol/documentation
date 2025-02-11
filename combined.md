@@ -17069,7 +17069,7 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-## 0) Before We Start
+## 0. Before We Start
 
 There are a lot of ways to register an IP Asset as a derivative of another. Below, we will help you figure out what function you should use.
 
