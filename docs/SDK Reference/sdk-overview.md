@@ -12,7 +12,7 @@ next:
 ---
 This section provides a detailed description of every function in our [SDK](https://www.npmjs.com/package/@story-protocol/core-sdk). overview of the [🛠️ TypeScript SDK](doc:typescript-sdk).
 
-<Cards columns={4}>
+<Cards columns={2}>
   <Card title="Story Protocol TypeScript SDK" href="https://www.npmjs.com/package/@story-protocol/core-sdk" icon="fa-home" iconColor="red" target="_blank">
     View our SDK package on npm.
   </Card>
