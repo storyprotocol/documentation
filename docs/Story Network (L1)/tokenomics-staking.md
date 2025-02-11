@@ -32,11 +32,11 @@ Both types of tokens can be slashed if their validators get slashed.
 
 ## Token emissions
 
-A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters, whose initial values are still yet to be determined:
+A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters:
 
-* blocks\_per\_year
+* blocks\_per\_year: 10368000 blocks
   * The number of blocks expected to be produced in a year
-* inflations\_per\_year
+* inflations\_per\_year: 20,000,000 tokens
   * The total number of inflationary tokens to be emitted in a year
 
 New emissions will flow to two places:
