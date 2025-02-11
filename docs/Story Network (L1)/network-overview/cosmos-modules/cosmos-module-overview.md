@@ -14,15 +14,15 @@ next:
 
 Here is a list of all production-grade modules that can be used on the Story blockchain, along with their respective documentation:
 
-* [evmengine](./evmengine-module.md) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](../engine-api.md).
-* [evmstaking](./evmstaking-module.md) - Handles staking and network emission logics with queues.
+* [evmengine](./evmengine-module) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](../engine-api).
+* [evmstaking](./evmstaking-module) - Handles staking and network emission logics with queues.
 * [mint](./mint-module.md)
 
 ## Cosmos SDK (modified)
 
 Story network uses the following Cosmos SDK modules with some modifications:
 
-* [staking](./staking-module.md)
+* [staking](./staking-module)
 * [distribution](https://docs.cosmos.network/main/build/modules/distribution)
 
 ## Cosmos SDK (unmodified)
