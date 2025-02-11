@@ -644,7 +644,7 @@ Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
 * `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
-* `request.licenseTermsData[]`: The array of license terms to be attached. :warning: This function will fail if you pass in an empty array
+* `request.licenseTermsData[]`: The array of license terms to be attached. :warning: **This function will fail if you pass in an empty array.**
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
   * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
@@ -798,7 +798,7 @@ Parameters:
 
 * `request.nftContract`: The address of the NFT collection.
 * `request.tokenId`:  The ID of the NFT.
-* `request.licenseTermsData[]`: The array of license terms to be attached. :warning: This function will fail if you pass in an empty array
+* `request.licenseTermsData[]`: The array of license terms to be attached. :warning: **This function will fail if you pass in an empty array.**
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
   * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
