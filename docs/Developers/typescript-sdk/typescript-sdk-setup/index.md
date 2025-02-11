@@ -47,7 +47,7 @@ Before continuing with the code below:
 
 1. Make sure to have `WALLET_PRIVATE_KEY` set up in your `.env` file.
 2. Make sure to have `RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://aeneid.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/network-info#-rpcs).
 
 ```typescript index.ts
 import { http } from 'viem';
