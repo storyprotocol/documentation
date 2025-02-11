@@ -129,9 +129,9 @@ For simplicity, we can use the SDK's `createNFTCollection` to create a new NFT c
 
 > ❓ Why do we have to do this?
 >
-> In order to use the `mintAndRegisterIp` function below, we'll have to deploy an **SPG NFT** collection. This is any contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). An easy way to do this is just to call the `createNFTCollection` as you'll see below.
+> In order to use the `mintAndRegisterIp` function in the next step, we'll have to deploy an **SPG NFT** collection. This is any contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). An easy way to do this is just to call the `createNFTCollection` as you'll see below.
 >
-> Instead of doing this, you can mint an NFT yourself and use the [register](https://docs.story.foundation/docs/sdk-ipasset#/register) function (providing an `nftContract` and `tokenId`) *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts).
+> Instead of doing this, you can mint an NFT from your own contract and use the [register](https://docs.story.foundation/docs/sdk-ipasset#/register) function (providing an `nftContract` and `tokenId`) *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts).
 
 ```typescript createSpgNftCollection.ts
 import { zeroAddress } from 'viem'
