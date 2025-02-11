@@ -1,5 +1,5 @@
 ---
-title: ⚙️ Smart Contracts
+title: ⚙️ Smart Contract Guide
 excerpt: For smart contract developers who wish to build on top of Story directly.
 deprecated: false
 hidden: false
