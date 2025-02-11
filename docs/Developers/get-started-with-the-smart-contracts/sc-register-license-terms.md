@@ -24,11 +24,11 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [Setup Your Own Project](doc:sc-setup)
 
-## 0/. Before We Start
+## 0. Before We Start
 
 It's important to know that if **License Terms already exist for the identical set of parameters you intend to create, it is unnecessary to create it again**. License Terms are protocol-wide, so you can use existing License Terms by its `licenseTermsId`.
 
-## 1/. Register License Terms
+## 1. Register License Terms
 
 Create a new file under `./test/1_LicenseTerms.t.sol` and paste the following:
 
@@ -125,7 +125,7 @@ PILTerms memory pilTerms = PILFlavors.commercialRemix({
 });
 ```
 
-## 2/. Test Your Code!
+## 2. Test Your Code!
 
 Run `forge build`. If everything is successful, the command should successfully compile.
 
@@ -135,7 +135,7 @@ Now run the test by executing the following command:
 forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/1_LicenseTerms.t.sol
 ```
 
-## 3/. Attach Terms to Your IP
+## 3. Attach Terms to Your IP
 
 Congratulations, you created new license terms!
 
