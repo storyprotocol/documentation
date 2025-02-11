@@ -24,7 +24,7 @@ next:
 
 * Params: `mint/params -> legacy_amino(params)`
 
-```protobuf
+```protobuf protobuf
 message Params {
   option (amino.name) = "client/x/mint/Params";
 
