@@ -32,26 +32,23 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 
 | **Function**                                                                                | **Mint an NFT** | **Register IPA** | **Create License Terms** | **Attach License Terms** | **Mint License Token** | **Register as Derivative** |
 | ------------------------------------------------------------------------------------------- | :-------------: | :--------------: | :----------------------: | :----------------------: | :--------------------: | :------------------------: |
-| <span style={{color: "#6741d9"}}>register</span>                                            |                 |         ✓        |                          |                          |                        |                            |
-| <span style={{color: "#6741d9"}}>mintAndRegisterIp</span>                                   |        ✓        |         ✓        |                          |                          |                        |                            |
-| <span style={{color: "#2f9e43"}}>registerPILTerms</span>                                    |                 |                  |             ✓            |                          |                        |                            |
-| <span style={{color: "#e03130"}}>attachLicenseTerms</span>                                  |                 |                  |                          |             ✓            |                        |                            |
+| <span style={{color: "#e03130"}}>register</span>                                            |                 |         ✓        |                          |                          |                        |                            |
+| <span style={{color: "#e03130"}}>mintAndRegisterIp</span>                                   |        ✓        |         ✓        |                          |                          |                        |                            |
 | <span style={{color: "#e03130"}}>registerIpAndAttachPilTerms</span>                         |                 |         ✓        |             ✓            |             ✓            |                        |                            |
-| <span style={{color: "#e03130"}}>registerPilTermsAndAttach</span>                           |                 |                  |             ✓            |             ✓            |                        |                            |
 | <span style={{color: "#e03130"}}>mintAndRegisterIpAssetWithPilTerms</span>                  |        ✓        |         ✓        |             ✓            |             ✓            |                        |                            |
+| <span style={{color: "#e03130"}}>registerDerivativeIp</span>                                |                 |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#e03130"}}>mintAndRegisterIpAndMakeDerivativeWithLicenseTokens</span> |        ✓        |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#e03130"}}>registerIpAndMakeDerivativeWithLicenseTokens</span>        |                 |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#e03130"}}>mintAndRegisterIpAndMakeDerivative</span>                  |        ✓        |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#e03130"}}>registerDerivative</span>                                  |                 |                  |                          |                          |                        |              ✓             |
+| <span style={{color: "#e03130"}}>registerDerivativeWithLicenseTokens</span>                 |                 |                  |                          |                          |                        |              ✓             |
+| <span style={{color: "#1971c2"}}>registerPILTerms</span>                                    |                 |                  |             ✓            |                          |                        |                            |
+| <span style={{color: "#1971c2"}}>registerPilTermsAndAttach</span>                           |                 |                  |             ✓            |             ✓            |                        |                            |
+| <span style={{color: "#1971c2"}}>attachLicenseTerms</span>                                  |                 |                  |                          |             ✓            |                        |                            |
 | <span style={{color: "#1971c2"}}>mintLicenseTokens</span>                                   |                 |                  |                          |                          |            ✓           |                            |
-| <span style={{color: "#f08c00"}}>registerDerivative</span>                                  |                 |                  |                          |                          |                        |              ✓             |
-| <span style={{color: "#f08c00"}}>registerDerivativeWithLicenseTokens</span>                 |                 |                  |                          |                          |                        |              ✓             |
-| <span style={{color: "#f08c00"}}>registerDerivativeIp</span>                                |                 |         ✓        |                          |                          |                        |              ✓             |
-| <span style={{color: "#f08c00"}}>registerIpAndMakeDerivativeWithLicenseTokens</span>        |                 |         ✓        |                          |                          |                        |              ✓             |
-| <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivative</span>                  |        ✓        |         ✓        |                          |                          |                        |              ✓             |
-| <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivativeWithLicenseTokens</span> |        ✓        |         ✓        |                          |                          |                        |              ✓             |
 
-* <span style={{color: "#6741d9"}}>Purple</span>: [Register an IP Asset](doc:register-an-ip-asset)
-* <span style={{color: "#2f9e43"}}>Green</span>: [Register License Terms](doc:register-pil-terms)
-* <span style={{color: "#e03130"}}>Red</span>: [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset)
-* <span style={{color: "#1971c2"}}>Blue</span>: [Mint a License Token](doc:mint-a-license)
-* <span style={{color: "#f08c00"}}>Orange</span>: [Register a Derivative](doc:register-a-derivative)
+* <span style={{color: "#e03130"}}>Red</span>: IPAssetClient (this page)
+* <span style={{color: "#1971c2"}}>Blue</span>: [License Client](doc:sdk-license)
 
 ## register
 
