@@ -11804,6 +11804,16 @@ contract IPARegistrarTest is Test {
 }
 ```
 
+## Test Your Code!
+
+Run `forge build`. If everything is successful, the command should successfully compile.
+
+Now run the test by executing the following command:
+
+```shell
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/IPARegistrar.t.sol
+```
+
 ## Add License Terms to IP
 
 Congratulations, you registered an IP!
