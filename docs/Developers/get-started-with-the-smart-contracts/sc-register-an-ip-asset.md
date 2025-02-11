@@ -45,6 +45,10 @@ All you have to do is call `register` on the [IP Asset Registry](doc:ip-asset-re
 
 Let's create a test file to see it work and verify the results:
 
+> 📘 Contract Addresses
+>
+> We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
+
 ```sol test/0_IPARegistrar.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
@@ -101,6 +105,10 @@ Once you have your own SPGNFT, all you have to do is call `mintAndRegisterIp` wi
 * `ipMetadata` - the metadata associated with your NFT & IP. See [this](https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata) section to better understand setting NFT & IP metadata.
 
 Let's create a test file to see it work and verify the results:
+
+> 📘 Contract Addresses
+>
+> We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
 ```sol test/0_IPARegistrar.sol
 // SPDX-License-Identifier: UNLICENSED
