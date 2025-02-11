@@ -10,36 +10,41 @@ metadata:
 next:
   description: ''
 ---
-This section demonstrates how to mint a License Token for an IPA. You can only mint a License Token for an IPA if it has License Terms attached to it. A License Token is minted as an ERC721 token and contains the necessary licensing details.
+This section demonstrates how to mint a [License Token](doc:license-token) from an [🧩 IP Asset](doc:ip-asset). You can only mint a License Token from an IP Asset if the IP Asset has [License Terms](doc:license-terms) attached to it. A License Token is minted as an ERC-721.
 
-> 💰 Paid Licenses
->
-> Note that some IP Assets may have license terms attached that require the user minting the license to pay a `mintingFee`. You can see an example of that in the <a href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" target="_blank">TypeScript Tutorial</a>.
+There are two reasons you'd mint a License Token:
+
+1. To hold the license and be able to use the underlying IP Asset as the license described (for ex. "Can use commercially as long as you provide proper attribution and share 5% of your revenue)
+2. Use the license token to link another IP Asset as a derivative of it. *Note though that, as you'll see later, some SDK functions don't require you to explicitly mint a license token first in order to register a derivative, and will actually handle it for you behind the scenes.*
+
+### :warning: Prerequisites
+
+There are a few steps you have to complete before you can start the tutorial.
+
+1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
+
+* An IP Asset that has License Terms added. Learn how to add License Terms to an IPA [here](doc:attach-terms-to-an-ip-asset).
+
+### section about restrictions
 
 > 📘 Max Number of Licenses
 >
 > If you're curious about setting the maximum number of licenses that can be created from your IP, check out the [License Config / Hook](doc:license-config-hook) section of our documentation.
 
-## Prerequisites
+## 1. Mint License
 
-* [Setup](doc:typescript-sdk-setup) the client object.
-* An IPA that has License Terms added. Learn how to add License Terms to an IPA [here](doc:attach-terms-to-an-ip-asset).
+Let's say that IP Asset (`ipId = 0x01`) has License Terms (`licenseTermdId = 10`) attached to it. We want to mint 2 License Tokens with those terms to a specific wallet address (`0x02`).
 
-# Mint License
-
-To mint a License Token, we will need the:
-
-* `licenseTermsId` - the id of the License Terms (ex. "1" for Non-Commercial Social Remixing)
-* `licensorIpId` - the ipId of the IPA we are minting a License Token from
-* `receiver` - wallet receiving the License Token, usually the wallet address that is executing the transaction
-* `amount` - # of License Tokens to be minted (usually 1, unless the minter decides to mint a batch and distribute it in another way later on)
+> 🚧 Paid Licenses
+>
+> Be mindful that some IP Assets may have license terms attached that require the user minting the license to pay a `defaultMintingFee`. You can see an example of that in the <a href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" target="_blank">TypeScript Tutorial</a>.
 
 ```typescript TypeScript
 const response = await client.license.mintLicenseTokens({
-  licenseTermsId: "1", 
-  licensorIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-  receiver: "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", 
-  amount: 1,
+  licenseTermsId: "10", 
+  licensorIpId: "0x01",
+  receiver: "0x02", // optional. if not provided, it will go to the tx sender
+  amount: 2,
   maxMintingFee: BigInt(0), // disabled
   maxRevenueShare: 100, // default
   txOptions: { waitForTransaction: true }
@@ -65,4 +70,8 @@ export type MintLicenseTokensResponse = {
 };
 ```
 
-Setting `waitForTransaction: true` in the transaction options will return the `licenseTokenId` of the newly minted license(s).
+## 2. Register a Derivative
+
+Now that we have minted a License Token, we can hold it or use it to link an IP Asset as a derivative. We will go over that on the next page.
+
+*Note though that, as you'll see later, some SDK functions don't require you to explicitly mint a license token first in order to register a derivative, and will actually handle it for you behind the scenes.*
