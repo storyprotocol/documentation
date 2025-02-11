@@ -17160,6 +17160,18 @@ async function main() {
 }
 ```
 
+## Paying and Claiming Revenue
+
+Congratulations, you registered a derivative IP Asset!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercialSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    All of this page is covered in this working code example.
+  </Card>
+</Cards>
+
+Now that we have established parent-child IP relationships, we can begin to explore payments and automated revenue share based on the license terms. We'll cover that in the upcoming pages.
+
 # RainbowKit Setup
 
 > 📘 Optional: Official RainbowKit Docs
