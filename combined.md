@@ -17097,7 +17097,7 @@ Do you already have a [License Token](doc:license-token) you can use?
     * :white_check_mark: Yes: Use [registerDerivativeIp](https://docs.story.foundation/docs/sdk-ipasset#/registerderivativeip)
     * :x: No: Use [mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivative)
 
-### :question: Why would I ever use a License Token if it's not needed?
+### 0a. :question: Why would I ever use a License Token if it's not needed?
 
 There are a few times when **you would need** a License Token to register a derivative:
 
