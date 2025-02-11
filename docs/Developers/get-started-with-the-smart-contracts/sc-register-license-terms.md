@@ -30,6 +30,8 @@ It's important to know that if **License Terms already exist for the identical s
 
 ## 1. Register License Terms
 
+You can view the full set of terms in [PIL Terms](doc:pil-terms).
+
 Let's create a test file under `test/1_LicenseTerms.t.sol` to see it work and verify the results:
 
 > 📘 Contract Addresses
