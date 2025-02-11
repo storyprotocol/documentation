@@ -51,7 +51,8 @@ As we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP
 
 Below is how IP Asset 3 would claim their revenue:
 
-> :eyes: Note the comments under the `claimOptions` object.
+> :eyes: Note the comments under the `claimOptions` object.\
+> Associated Docs: [royalty.claimAllRevenue](https://docs.story.foundation/docs/sdk-royalty#/claimallrevenue)
 
 ```typescript main.ts
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
@@ -100,7 +101,8 @@ Then, in a second step, the tokens are transferred to the ancestors' [IP Royalty
 
 Below is how IP Asset 1 (or 2) would claim their revenue:
 
-> :eyes: Note the comments under the `claimOptions` object.
+> :eyes: Note the comments under the `claimOptions` object.\
+> Associated Docs: [royalty.claimAllRevenue](https://docs.story.foundation/docs/sdk-royalty#/claimallrevenue)
 
 ```typescript main.ts
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
