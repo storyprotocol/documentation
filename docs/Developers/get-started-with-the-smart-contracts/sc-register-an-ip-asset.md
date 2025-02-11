@@ -49,6 +49,8 @@ Let's create a test file to see it work and verify the results:
 >
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
+> You can view the `SimpleNFT` contract we're using to test [here](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/mocks/SimpleNFT.sol).
+
 ```sol test/0_IPARegistrar.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
