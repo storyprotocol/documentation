@@ -1,6 +1,6 @@
 ---
-title: Register an NFT as an IP Asset
-excerpt: ''
+title: Register an IP Asset
+excerpt: Learn how to Register an NFT as an IP Asset in Solidity.
 deprecated: false
 hidden: false
 metadata:
@@ -10,30 +10,49 @@ metadata:
 next:
   description: ''
 ---
-Let's see how we can perform a barebones registration using the [IP Asset Registry](doc:ip-asset-registry). To do this, we will create a forge test that forks the Story chain and interacts with our contracts directly so you can see exactly how it's done.
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/0_IPARegistrar.t.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through.
+  </Card>
+</Cards>
 
-## Prerequisites
+Let's say you have some off-chain IP (ex. a book, a character, a drawing, etc). In order to register that IP on Story, you first need to mint an NFT. This NFT is the **ownership** over the IP. Then you **register** that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset). The below tutorial will walk you through how to do this.
 
-* Understand what an [🧩 IP Asset](doc:ip-asset) is and how they get registered using the [IP Asset Registry](doc:ip-asset-registry).
+### :warning: Prerequisites
 
-## Register an IP Asset
+There are a few steps you have to complete before you can start the tutorial.
 
-Create a new file under `./test/0_IPARegistrar.t.sol` and paste the following:
+1. Complete the [Setup Your Own Project](doc:sc-setup)
 
-> 📘 Contract Addresses
->
-> We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
+## 0/. Before We Start
 
-```sol 0_IPARegistrar.t.sol
+There are two scenarios:
+
+1. You already have a **custom** ERC-721 NFT contract and can mint from it
+2. You want to create an [📦 SPG (Periphery)](doc:spg) NFT contract to do minting for you
+
+## Scenario #1: You already have a custom ERC-721 NFT contract and can mint from it
+
+If you already have an NFT minted, or you want to register IP using a custom-built ERC-721 contract, this is the section for you.
+
+As you can see below, the registration process is relatively straightforward. We use `SimpleNFT` as an example, but you can replace it with your own ERC-721 contract.
+
+All you have to do is call `register` on the [IP Asset Registry](doc:ip-asset-registry) with:
+
+* `chainid` - you can simply use `block.chainid`
+* `tokenContract` - the address of your NFT collection
+* `tokenId` - your NFT's ID
+
+Let's create a test file to see it work and verify the results:
+
+```sol test/0_IPARegistrar.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
 import { Test } from "forge-std/Test.sol";
-import { IPAssetRegistry } from "@storyprotocol/core/registries/IPAssetRegistry.sol";
-import { ISPGNFT } from "@storyprotocol/periphery/interfaces/ISPGNFT.sol";
-import { RegistrationWorkflows } from "@storyprotocol/periphery/workflows/RegistrationWorkflows.sol";
-import { WorkflowStructs } from "@storyprotocol/periphery/lib/WorkflowStructs.sol";
+import { IIPAssetRegistry } from "@storyprotocol/core/interfaces/registries/IIPAssetRegistry.sol";
 
+// your own ERC-721 NFT contract
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
 
 // Run this test:
@@ -43,17 +62,71 @@ contract IPARegistrarTest is Test {
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
-    // Protocol Periphery - RegistrationWorkflows
-    RegistrationWorkflows internal REGISTRATION_WORKFLOWS =
-        RegistrationWorkflows(0xbe39E1C756e921BD25DF86e7AAa31106d1eb0424);
+    IIPAssetRegistry internal IP_ASSET_REGISTRY = IIPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
 
     SimpleNFT public SIMPLE_NFT;
-    ISPGNFT public SPG_NFT;
 
     function setUp() public {
         // Create a new Simple NFT collection
         SIMPLE_NFT = new SimpleNFT("Simple IP NFT", "SIM");
+    }
+
+    /// @notice Mint an NFT and then register it as an IP Asset.
+    function test_register() public {
+        uint256 expectedTokenId = SIMPLE_NFT.nextTokenId();
+        address expectedIpId = IP_ASSET_REGISTRY.ipId(block.chainid, address(SIMPLE_NFT), expectedTokenId);
+
+        uint256 tokenId = SIMPLE_NFT.mint(alice);
+        address ipId = IP_ASSET_REGISTRY.register(block.chainid, address(SIMPLE_NFT), tokenId);
+
+        assertEq(tokenId, expectedTokenId);
+        assertEq(ipId, expectedIpId);
+        assertEq(SIMPLE_NFT.ownerOf(tokenId), alice);
+    }
+}
+```
+
+## Scenario #2: You want to create an SPG NFT contract to do minting for you
+
+If you don't have your own custom NFT contract, this is the section for you.
+
+To achieve this, we will be using the [📦 SPG](doc:spg), which is a utility contract that allows us to combine multiple transactions into one. In this case, we'll be using the SPG's `mintAndRegisterIp` function which combines both minting an NFT and registering it as an IP Asset.
+
+In order to use `mintAndRegisterIp`, we first have to create a new `SPGNFT` collection. We can do this simply by calling `createCollection` on the `StoryProtocolGateway` contract. Or, if you want to create your own `SPGNFT` for some reason, you can implement the [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol) contract interface. Follow the example below to see example parameters you can use to initialize a new SPGNFT.
+
+Once you have your own SPGNFT, all you have to do is call `mintAndRegisterIp` with:
+
+* `spgNftContract` - the address of your SPGNFT contract
+* `recipient` - the address of who will receive the NFT and thus be the owner of the newly registered IP. *Note: remember that registering IP on Story is permissionless, so you can register an IP for someone else (by paying for the transaction) yet they can still be the owner of that IP Asset.*
+* `ipMetadata` - the metadata associated with your NFT & IP. See [this](https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata) section to better understand setting NFT & IP metadata.
+
+Let's create a test file to see it work and verify the results:
+
+```sol test/0_IPARegistrar.sol
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.26;
+
+import { Test } from "forge-std/Test.sol";
+import { IIPAssetRegistry } from "@storyprotocol/core/interfaces/registries/IIPAssetRegistry.sol";
+import { ISPGNFT } from "@storyprotocol/periphery/interfaces/ISPGNFT.sol";
+import { IRegistrationWorkflows } from "@storyprotocol/periphery/interfaces/workflows/IRegistrationWorkflows.sol";
+import { WorkflowStructs } from "@storyprotocol/periphery/lib/WorkflowStructs.sol";
+
+// Run this test:
+// forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
+contract IPARegistrarTest is Test {
+    address internal alice = address(0xa11ce);
+
+    // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
+    // Protocol Core - IPAssetRegistry
+    IIPAssetRegistry internal IP_ASSET_REGISTRY = IIPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
+    // Protocol Periphery - RegistrationWorkflows
+    IRegistrationWorkflows internal REGISTRATION_WORKFLOWS =
+        IRegistrationWorkflows(0xbe39E1C756e921BD25DF86e7AAa31106d1eb0424);
+
+    ISPGNFT public SPG_NFT;
+
+    function setUp() public {
         // Create a new NFT collection via SPG
         SPG_NFT = ISPGNFT(
             REGISTRATION_WORKFLOWS.createCollection(
@@ -72,19 +145,6 @@ contract IPARegistrarTest is Test {
                 })
             )
         );
-    }
-
-    /// @notice Mint an NFT and then register it as an IP Asset.
-    function test_register() public {
-        uint256 expectedTokenId = SIMPLE_NFT.nextTokenId();
-        address expectedIpId = IP_ASSET_REGISTRY.ipId(block.chainid, address(SIMPLE_NFT), expectedTokenId);
-
-        uint256 tokenId = SIMPLE_NFT.mint(alice);
-        address ipId = IP_ASSET_REGISTRY.register(block.chainid, address(SIMPLE_NFT), tokenId);
-
-        assertEq(tokenId, expectedTokenId);
-        assertEq(ipId, expectedIpId);
-        assertEq(SIMPLE_NFT.ownerOf(tokenId), alice);
     }
 
     /// @notice Mint an NFT and register it in the same call via the Story Protocol Gateway.
@@ -127,32 +187,16 @@ contract IPARegistrarTest is Test {
 }
 ```
 
-Create another new file under `./src/mocks/SimpleNFT.sol` and paste the following:
+## Add License Terms to IP
 
-```sol SimpleNFT.sol
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.23;
+Congratulations, you registered an IP!
 
-import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { ERC721 } from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/0_IPARegistrar.t.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through.
+  </Card>
+</Cards>
 
-contract SimpleNFT is ERC721, Ownable {
-    uint256 public nextTokenId;
+Now that your IP is registered, you can create and attach [License Terms](doc:license-terms) to it. This will allow others to mint a license and use your IP, restricted by the terms.
 
-    constructor(string memory name, string memory symbol) ERC721(name, symbol) Ownable(msg.sender) {}
-
-    function mint(address to) public onlyOwner returns (uint256) {
-        uint256 tokenId = nextTokenId++;
-        _mint(to, tokenId);
-        return tokenId;
-    }
-}
-```
-
-Run `forge build`. If everything is successful, the command should successfully compile.
-
-To test this out, simply run the following command:
-
-```shell
-forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
-```
+We will go over this on the next page.
