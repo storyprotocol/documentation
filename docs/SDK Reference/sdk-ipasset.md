@@ -106,6 +106,14 @@ export type RegisterIpResponse = {
 };
 ```
 
+## batchRegister
+
+Batch registers an NFT as IP, creating a corresponding IP record.
+
+| Method          | Type                                                                |
+| --------------- | ------------------------------------------------------------------- |
+| `batchRegister` | `(request: BatchRegisterRequest) => Promise<BatchRegisterResponse>` |
+
 ## registerDerivative
 
 Registers a derivative directly with parent IP's license terms, without needing license tokens, and attaches the license terms of the parent IPs to the derivative IP.
@@ -506,6 +514,14 @@ export type RegisterIpAndMakeDerivativeResponse = {
 };
 ```
 
+## batchRegisterDerivative
+
+Batch registers a derivative directly with parent IP's license terms.
+
+| Method                    | Type                                                                                    |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `batchRegisterDerivative` | `(request: BatchRegisterDerivativeRequest) => Promise<BatchRegisterDerivativeResponse>` |
+
 ## mintAndRegisterIpAndMakeDerivative
 
 Mint an NFT from a collection and register it as a derivative IP without license tokens.
@@ -594,6 +610,14 @@ export type CommonRegistrationResponse = {
   receipt?: TransactionReceipt;
 };
 ```
+
+## batchMintAndRegisterIpAndMakeDerivative
+
+Batch mint an NFT from a collection and register it as a derivative IP without license tokens.
+
+| Method                                    | Type                                                                                                                    |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `batchMintAndRegisterIpAndMakeDerivative` | `(request: BatchMintAndRegisterIpAndMakeDerivativeRequest) => Promise<BatchMintAndRegisterIpAndMakeDerivativeResponse>` |
 
 ## mintAndRegisterIp
 
