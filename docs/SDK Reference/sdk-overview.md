@@ -17,7 +17,7 @@ This section provides a detailed description of every function in our SDK.
     View our `@story-protocol/core-sdk` package on npm.
   </Card>
 
-  <Card title="Step-by-Step Guide" href="https://docs.story.foundation/docs/typescript-sdk-guide" icon="fa-home" target="_blank">
+  <Card title="Step-by-Step Guide" href="https://docs.story.foundation/docs/typescript-sdk" icon="fa-home" target="_blank">
     Learn our SDK through a series of tutorials with the TypeScript SDK Guide.
   </Card>
 </Cards>
