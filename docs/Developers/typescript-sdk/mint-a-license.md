@@ -79,7 +79,7 @@ Now that we have minted a License Token, we can hold it or use it to link an IP 
 
 *Note though that, as you'll see later, some SDK functions don't require you to explicitly mint a license token first in order to register a derivative, and will actually handle it for you behind the scenes.*
 
-### :question: Why would I ever use a License Token if it's not needed?
+### 2a. :question: Why would I ever use a License Token if it's not needed?
 
 There are a few times when **you would need** a License Token to register a derivative:
 
