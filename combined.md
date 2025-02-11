@@ -16348,9 +16348,9 @@ Congratulations, you registered an IP!
   </Card>
 </Cards>
 
-Now that your IP is registered, you can attach [License Terms](doc:license-terms) to it. This will allow others to mint a license and use your IP, restricted by the terms.
+Now that your IP is registered, you can create and attach [License Terms](doc:license-terms) to it. This will allow others to mint a license and use your IP, restricted by the terms.
 
-We will go over this in the next section, but it's worth mentioning that you can **register + attach terms** all in the same step with the following functions:
+We will go over this in the next section, but it's worth mentioning that you can **register IP + create terms + attach terms** all in the same step with the following functions:
 
 * [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripassetwithpilterms)
 * [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/registeripandattachpilterms)
@@ -16366,7 +16366,7 @@ There are a few steps you have to complete before you can start the tutorial.
 
 ## 0. Before We Start
 
-We should mention that you do not need an existing IP Asset to attach terms to it. There are two functions you can use that allow you to **register + attach terms** in the same function:
+We should mention that you do not need an existing IP Asset to attach terms to it. There are two functions you can use that allow you to **register IP + create terms + attach terms** in the same function:
 
 * [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripassetwithpilterms)
 * [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/registeripandattachpilterms)
@@ -16392,7 +16392,7 @@ import { client } from './utils';
 async function main() {
   const licenseTerms: LicenseTerms = {
     defaultMintingFee: 0n,
-    // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+    // must be a whitelisted revenue token from https://docs.story.foundation/docs/deployed-smart-contracts
     currency: '0x1514000000000000000000000000000000000000',
     // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
     royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E',
@@ -16552,6 +16552,11 @@ export type AttachLicenseTermsResponse = {
 ### 2a. Create Terms + Attach
 
 It's worth mentioning that you can **create terms + attach terms** all in the same step with the the [registerPilTermsAndAttach](https://docs.story.foundation/docs/sdk-ipasset#/registerpiltermsandattach) function. Whatever is easiest for you!
+
+And, like we mentioned at the beginning, there are two functions you can use that allow you to **register IP + create terms + attach terms** in the same function:
+
+* [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripassetwithpilterms)
+* [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/registeripandattachpilterms)
 
 # Register License Terms
 This section demonstrates how to register a selection of License Terms using the PIL.
