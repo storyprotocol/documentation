@@ -14,13 +14,6 @@ next:
 ---
 This section demonstrates how to register an IP Asset as a derivative of another.
 
-> ❓ "Why would I ever use a License Token then?"
->
-> There are a few times when you would need a License Token to register a derivative:
->
-> * The License Token contains private license terms, so you would only be able to register if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
-> * The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `mintingFee`.
-
 ### :warning: Prerequisites
 
 There are a few steps you have to complete before you can start the tutorial.
@@ -48,13 +41,30 @@ Do you already have a [License Token](doc:license-token) you can use?
     * :white_check_mark: Yes: Use [registerDerivativeIp](https://docs.story.foundation/docs/sdk-ipasset#/registerderivativeip)
     * :x: No: Use [mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivative)
 
+### :question: Why would I ever use a License Token if it's not needed?
+
+There are a few times when **you would need** a License Token to register a derivative:
+
+* The License Token contains private license terms, so you would only be able to register as a derivative if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
+* The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `defaultMintingFee`.
+
 ## 1. Register Derivative
 
-You are encouraged to figure out the best derivative function to use based on the survey above. However, if you don't know and want to be walked through one solution, this next part is for you.
+> 📘 This is just an example
+>
+> You are encouraged to figure out the best derivative function to use based on the survey above. However, if you don't know and want to be walked through one solution, this next part is for you.
 
 We're going to assume you have :x: no license tokens, :x: the derivative IP is not yet registered, and :x: you don't have your own NFT contract or an already minted NFT.
 
-Follow steps 1-4 of [Register an IP Asset](doc:register-an-ip-asset). Then, come back here.
+**Follow steps 1-4 of** [Register an IP Asset](doc:register-an-ip-asset). Note you can skip step 4 if you already have an SPG NFT Collection. Then, come back here.
+
+Modify your code such that...
+
+1. Instead of using `mintAndRegisterIp`, use `mintAndRegisterIpAndMakeDerivative`
+2. Add a `derivData` field, where:
+   1. `parentIpIds` is the `ipIds` of the parents you want to become a derivative of. **NOTE: Once you become a derivative, you cannot add more parents**
+   2. `licenseTermIds` is an array of license terms you want to register under. These are the terms your derivative must abide by
+   3. Set `maxMintingFee`, `maxRts`, and `maxRevenueShare` to be left as disabled/default as shown below
 
 ```typescript TypeScript
 import { PIL_TYPE } from '@story-protocol/core-sdk';
