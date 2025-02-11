@@ -37,6 +37,8 @@ In order to attach terms to an IP Asset, let's first create them!
 
 Below is a code example showing how to create new terms:
 
+> Associated Docs: [license.registerPILTerms](https://docs.story.foundation/docs/sdk-license#/registerpilterms)
+
 ```typescript main.ts
 import { LicenseTerms } from '@story-protocol/core-sdk';
 import { zeroAddress } from 'viem';
@@ -76,62 +78,6 @@ async function main() {
 
 main();
 ```
-```typescript Request Type
-export type RegisterPILTermsRequest = Omit<
-  LicenseTerms,
-  "defaultMintingFee" | "expiration" | "commercialRevCeiling" | "derivativeRevCeiling"
-> & {
-  defaultMintingFee: bigint | string | number;
-  expiration: bigint | string | number;
-  commercialRevCeiling: bigint | string | number;
-  derivativeRevCeiling: bigint | string | number;
-  txOptions?: TxOptions;
-};
-
-export type LicenseTerms = {
-  /*Indicates whether the license is transferable or not.*/
-  transferable: boolean;
-  /*The address of the royalty policy contract which required to StoryProtocol in advance.*/
-  royaltyPolicy: Address;
-  /*The default minting fee to be paid when minting a license.*/
-  defaultMintingFee: bigint;
-  /*The expiration period of the license.*/
-  expiration: bigint;
-  /*Indicates whether the work can be used commercially or not.*/
-  commercialUse: boolean;
-  /*Whether attribution is required when reproducing the work commercially or not.*/
-  commercialAttribution: boolean;
-  /*Commercializers that are allowed to commercially exploit the work. If zero address, then no restrictions is enforced.*/
-  commercializerChecker: Address;
-  /*The data to be passed to the commercializer checker contract.*/
-  commercializerCheckerData: Address;
-  /*Percentage of revenue that must be shared with the licensor.*/
-  commercialRevShare: number;
-  /*The maximum revenue that can be generated from the commercial use of the work.*/
-  commercialRevCeiling: bigint;
-  /*Indicates whether the licensee can create derivatives of his work or not.*/
-  derivativesAllowed: boolean;
-  /*Indicates whether attribution is required for derivatives of the work or not.*/
-  derivativesAttribution: boolean;
-  /*Indicates whether the licensor must approve derivatives of the work before they can be linked to the licensor IP ID or not.*/
-  derivativesApproval: boolean;
-  /*Indicates whether the licensee must license derivatives of the work under the same terms or not.*/
-  derivativesReciprocal: boolean;
-  /*The maximum revenue that can be generated from the derivative use of the work.*/
-  derivativeRevCeiling: bigint;
-  /*The ERC20 token to be used to pay the minting fee. the token must be registered in story protocol.*/
-  currency: Address;
-  /*The URI of the license terms, which can be used to fetch the offchain license terms.*/
-  uri: string;
-};
-```
-```typescript Response Type
-export type RegisterPILResponse = {
-  licenseTermsId?: bigint;
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-};
-```
 
 ### 1a. :icecream: PIL Flavors
 
@@ -161,6 +107,8 @@ We have convenience functions to help you register new terms. We have created [P
 
 Now that we have created terms and have the associated `licenseTermsId`, we can attach them to an existing IP Asset like so:
 
+> Associated Docs: [license.attachLicenseTerms](https://docs.story.foundation/docs/sdk-license#/attachlicenseterms)
+
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
 import { zeroAddress } from 'viem';
@@ -186,21 +134,6 @@ async function main() {
 }
 
 main();
-```
-```typescript Request Type
-export type AttachLicenseTermsRequest = {
-  ipId: Address;
-  licenseTermsId: string | number | bigint;
-  licenseTemplate?: Address;
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type AttachLicenseTermsResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  success?: boolean;
-};
 ```
 
 ### 2a. Create Terms + Attach
