@@ -174,7 +174,7 @@ async function main() {
   // previous code here ...
 
   const response = await client.ipAsset.mintAndRegisterIp({
-    // insert your SPG_NFT_CONTRACT_ADDRESS here
+    // TODO: insert your SPG_NFT_CONTRACT_ADDRESS here
     spgNftContract: SPG_NFT_CONTRACT_ADDRESS as Address,
     allowDuplicates: true,
     ipMetadata: {
