@@ -164,18 +164,33 @@ We have convenience functions to help you register new terms. We have created [P
 
 ## 2. Attach License Terms
 
-```typescript TypeScript
-const response = await client.license.attachLicenseTerms({
-  licenseTermsId: "1", 
-  ipId: "0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721",
-  txOptions: { waitForTransaction: true }
-});
+Now that we have created terms and have the associated `licenseTermsId`, we can attach them to an existing IP Asset like so:
 
-if (response.success) {
-  console.log(`Attached License Terms to IPA at transaction hash ${response.txHash}.`)
-} else {
-  console.log(`License Terms already attached to this IPA.`)
+```typescript TypeScript
+import { LicenseTerms } from '@story-protocol/core-sdk';
+import { zeroAddress } from 'viem';
+// you should already have a client set up (prerequisite)
+import { client } from './utils';
+
+async function main() {
+  // previous code here ...
+  
+  const response = await client.license.attachLicenseTerms({
+    // insert your newly created license terms id here
+    licenseTermsId: LICENSE_TERMS_ID, 
+    // insert the ipId you want to attach terms to here
+    ipId: "0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721",
+    txOptions: { waitForTransaction: true }
+  });
+
+  if (response.success) {
+    console.log(`Attached License Terms to IPA at transaction hash ${response.txHash}.`)
+  } else {
+    console.log(`License Terms already attached to this IPA.`)
+  }
 }
+
+main();
 ```
 ```typescript Request Type
 export type AttachLicenseTermsRequest = {
@@ -193,212 +208,6 @@ export type AttachLicenseTermsResponse = {
 };
 ```
 
-# Register New IP Asset and Attach License Terms
+### 2a. Create Terms + Attach
 
-Below is a code example to register a new IP Asset and attach a new set of License Terms all in one transaction:
-
-```typescript TypeScript
-import { LicenseTerms } from '@story-protocol/core-sdk';
-import { toHex } from 'viem';
-
-const commercialRemixTerms: LicenseTerms = {
-  transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
-  commercialUse: true,
-  commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
-  derivativesApproval: false,
-  derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  uri: '',
-}
-
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: BigInt(0),
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
-const response = await client.ipAsset.registerIpAndAttachPilTerms({
-  nftContract: '0x041B4F29183317Fd352AE57e331154b73F8a1D73',
-  tokenId: '12',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true },
-})
-console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
-```
-```typescript Request Type
-export type RegisterIpAndAttachPilTermsRequest = {
-  nftContract: Address;
-  tokenId: bigint | string | number;
-  terms: RegisterPILTermsRequest[];
-  deadline?: bigint | number | string;
-} & IpMetadataAndTxOption;
-```
-```typescript Response Type
-export type RegisterIpAndAttachPilTermsResponse = {
-  txHash?: Hex;
-  encodedTxData?: EncodedTxData;
-  ipId?: Address;
-  licenseTermsIds?: bigint[];
-  tokenId?: bigint;
-};
-```
-
-# Register New Terms and Attach to an Existing IP Asset
-
-Below is a code example to register terms and attach them to an IP Asset all in one transaction:
-
-```typescript TypeScript
-import { LicenseTerms } from '@story-protocol/core-sdk';
-
-const commercialRemixTerms: LicenseTerms = {
-  transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
-  commercialUse: true,
-  commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
-  derivativesApproval: false,
-  derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  uri: '',
-}
-
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: BigInt(0),
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
-const response = await client.ipAsset.registerPilTermsAndAttach({
-  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }],
-  txOptions: { waitForTransaction: true },
-})
-console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
-```
-```typescript Request Type
-export type RegisterPilTermsAndAttachRequest = {
-  ipId: Address;
-  terms: RegisterPILTermsRequest[];
-  deadline?: string | number | bigint;
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterPilTermsAndAttachResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  licenseTermsIds?: bigint[];
-};
-```
-
-# Mint NFT, Register as IP Asset, and Attach Terms
-
-Below is a code example that mints a new NFT, registers it as an IP Asset, and attaches terms to it all in one transaction:
-
-```typescript TypeScript
-import { LicenseTerms } from '@story-protocol/core-sdk';
-
-const commercialRemixTerms: LicenseTerms = {
-  transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
-  commercialUse: true,
-  commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
-  derivativesApproval: false,
-  derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  uri: '',
-}
-
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: BigInt(0),
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
-const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
-  spgNftContract: '0xfE265a91dBe911db06999019228a678b86C04959',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
-  // set to true to mint ip with same nft metadata
-  allowDuplicates: true,
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true },
-})
-
-console.log(`
-  Token ID: ${response.tokenId}, 
-  IPA ID: ${response.ipId}, 
-  License Terms ID: ${response.licenseTermsId}
-`)
-```
-```typescript Request Type
-export type MintAndRegisterIpAssetWithPilTermsRequest = {
-  spgNftContract: Address;
-  terms: RegisterPILTermsRequest[];
-  recipient?: Address;
-  royaltyPolicyAddress?: Address;
-} & IpMetadataAndTxOption;
-```
-```typescript Response Type
-export type MintAndRegisterIpAssetWithPilTermsResponse = {
-  txHash?: Hex;
-  encodedTxData?: EncodedTxData;
-  ipId?: Address;
-  tokenId?: bigint;
-  licenseTermsIds?: bigint[];
-};
-```
+It's worth mentioning that you can **create terms + attach terms** all in the same step with the the [registerPilTermsAndAttach](https://docs.story.foundation/docs/sdk-ipasset#/registerpiltermsandattach) function. Whatever is easiest for you!
