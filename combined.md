@@ -16789,6 +16789,12 @@ export type RegisterPILResponse = {
 Setting `waitForTransaction: true` in the transaction options will return the `licenseTermsId` value.
 
 # Claim Revenue
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercialSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    All of this page is covered in this working code example.
+  </Card>
+</Cards>
+
 This section demonstrates how to claim due revenue from an IP Asset.
 
 There are two main ways revenue can be claimed:
@@ -16909,6 +16915,20 @@ async function main() {
 
 main();
 ```
+
+## Dispute an IP
+
+Congratulations, you claimed revenue using the [💸 Royalty Module](doc:royalty-module)!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercialSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    All of this page is covered in this working code example.
+  </Card>
+</Cards>
+
+Now what happens if an IP Asset doesn't pay their due share? We can dispute the IP on-chain, which we will cover on the next page.
+
+> 🚧 Coming soon!
 
 # 🛠️ TypeScript SDK Guide
 The best way to get started is to get your hands dirty and start building.
