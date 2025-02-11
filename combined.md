@@ -467,7 +467,34 @@ export type SetLicensingConfigResponse = {
 * mintAndRegisterIpAndMakeDerivativeWithLicenseTokens
 * registerIpAndMakeDerivativeWithLicenseTokens
 
-### register
+### Navigating Around the IPAssetClient
+
+Because there are a lot of functions to interact with the [📜 Licensing Module](doc:licensing-module), we have broken them down into a helpful chart so you can identify what you're looking for, and then find the associated docs.
+
+| **Function**                                                                                | **Mint an NFT** | **Register IPA** | **Create License Terms** | **Attach License Terms** | **Mint License Token** | **Register as Derivative** |
+| ------------------------------------------------------------------------------------------- | :-------------: | :--------------: | :----------------------: | :----------------------: | :--------------------: | :------------------------: |
+| <span style={{color: "#6741d9"}}>register</span>                                            |                 |         ✓        |                          |                          |                        |                            |
+| <span style={{color: "#6741d9"}}>mintAndRegisterIp</span>                                   |        ✓        |         ✓        |                          |                          |                        |                            |
+| <span style={{color: "#2f9e43"}}>registerPILTerms</span>                                    |                 |                  |             ✓            |                          |                        |                            |
+| <span style={{color: "#e03130"}}>attachLicenseTerms</span>                                  |                 |                  |                          |             ✓            |                        |                            |
+| <span style={{color: "#e03130"}}>registerIpAndAttachPilTerms</span>                         |                 |         ✓        |             ✓            |             ✓            |                        |                            |
+| <span style={{color: "#e03130"}}>registerPilTermsAndAttach</span>                           |                 |                  |             ✓            |             ✓            |                        |                            |
+| <span style={{color: "#e03130"}}>mintAndRegisterIpAssetWithPilTerms</span>                  |        ✓        |         ✓        |             ✓            |             ✓            |                        |                            |
+| <span style={{color: "#1971c2"}}>mintLicenseTokens</span>                                   |                 |                  |                          |                          |            ✓           |                            |
+| <span style={{color: "#f08c00"}}>registerDerivative</span>                                  |                 |                  |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>registerDerivativeWithLicenseTokens</span>                 |                 |                  |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>registerDerivativeIp</span>                                |                 |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>registerIpAndMakeDerivativeWithLicenseTokens</span>        |                 |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivative</span>                  |        ✓        |         ✓        |                          |                          |                        |              ✓             |
+| <span style={{color: "#f08c00"}}>mintAndRegisterIpAndMakeDerivativeWithLicenseTokens</span> |        ✓        |         ✓        |                          |                          |                        |              ✓             |
+
+* <span style={{color: "#6741d9"}}>Purple</span>: [Register an IP Asset](doc:register-an-ip-asset)
+* <span style={{color: "#2f9e43"}}>Green</span>: [Register License Terms](doc:register-pil-terms)
+* <span style={{color: "#e03130"}}>Red</span>: [Attach Terms to an IPA](doc:attach-terms-to-an-ip-asset)
+* <span style={{color: "#1971c2"}}>Blue</span>: [Mint a License Token](doc:mint-a-license)
+* <span style={{color: "#f08c00"}}>Orange</span>: [Register a Derivative](doc:register-a-derivative)
+
+## register
 
 Registers an NFT as IP, creating a corresponding [🧩 IP Asset](doc:ip-asset). If the given NFT was already registered, this function will return the existing `ipId`.
 
@@ -523,7 +550,7 @@ export type RegisterIpResponse = {
 };
 ```
 
-### registerDerivative
+## registerDerivative
 
 Registers a derivative directly with parent IP's license terms, without needing license tokens, and attaches the license terms of the parent IPs to the derivative IP.
 
@@ -582,7 +609,7 @@ export type RegisterDerivativeResponse = {
 };
 ```
 
-### registerDerivativeWithLicenseTokens
+## registerDerivativeWithLicenseTokens
 
 Registers a derivative with license tokens.
 
@@ -628,7 +655,7 @@ export type RegisterDerivativeWithLicenseTokensResponse = {
 };
 ```
 
-### mintAndRegisterIpAssetWithPilTerms
+## mintAndRegisterIpAssetWithPilTerms
 
 Mint an NFT from a collection, register it as an IP, attach metadata to the IP, and atach License Terms to the IP all in one function.
 
@@ -730,7 +757,7 @@ export type MintAndRegisterIpAssetWithPilTermsResponse = {
 };
 ```
 
-### batchMintAndRegisterIpAssetWithPilTerms
+## batchMintAndRegisterIpAssetWithPilTerms
 
 Batch mint an NFT from a collection and register it as an IP.
 
@@ -782,7 +809,7 @@ export type BatchMintAndRegisterIpAssetWithPilTermsResult = {
 };
 ```
 
-### registerIpAndAttachPilTerms
+## registerIpAndAttachPilTerms
 
 Register a given NFT as an IP, attach metadata to the IP, and attach License Terms to the IP all in one function.
 
@@ -877,7 +904,7 @@ export type RegisterIpAndAttachPilTermsResponse = {
 };
 ```
 
-### registerDerivativeIp
+## registerDerivativeIp
 
 Register an NFT as IP and then link it as a derivative of another IP Asset without using license tokens.
 
@@ -967,7 +994,7 @@ export type RegisterIpAndMakeDerivativeResponse = {
 };
 ```
 
-### mintAndRegisterIpAndMakeDerivative
+## mintAndRegisterIpAndMakeDerivative
 
 Mint an NFT from a collection and register it as a derivative IP without license tokens.
 
@@ -1056,7 +1083,7 @@ export type CommonRegistrationResponse = {
 };
 ```
 
-### mintAndRegisterIp
+## mintAndRegisterIp
 
 Mint an NFT from an SPGNFT collection and register it with metadata as an IP.
 
@@ -1131,7 +1158,7 @@ export type CommonRegistrationResponse = {
 };
 ```
 
-### registerPilTermsAndAttach
+## registerPilTermsAndAttach
 
 Register Programmable IP License Terms (if unregistered) and attach it to IP.
 
@@ -1205,7 +1232,7 @@ export type RegisterPilTermsAndAttachResponse = {
 };
 ```
 
-### mintAndRegisterIpAndMakeDerivativeWithLicenseTokens
+## mintAndRegisterIpAndMakeDerivativeWithLicenseTokens
 
 Mint an NFT from a collection and register it as a derivative IP using license tokens
 
@@ -1274,7 +1301,7 @@ export type CommonRegistrationResponse = {
 };
 ```
 
-### registerIpAndMakeDerivativeWithLicenseTokens
+## registerIpAndMakeDerivativeWithLicenseTokens
 
 Register the given NFT as a derivative IP using license tokens.
 
