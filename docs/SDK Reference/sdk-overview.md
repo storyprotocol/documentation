@@ -10,15 +10,15 @@ metadata:
 next:
   description: ''
 ---
-This section provides a detailed description of every function in our [SDK](https://www.npmjs.com/package/@story-protocol/core-sdk). overview of the [🛠️ TypeScript SDK](doc:typescript-sdk).
+This section provides a detailed description of every function in our SDK.
 
 <Cards columns={2}>
-  <Card title="Story Protocol TypeScript SDK" href="https://www.npmjs.com/package/@story-protocol/core-sdk" icon="fa-home" iconColor="red" target="_blank">
-    View our SDK package on npm.
+  <Card title="NPM Package" href="https://www.npmjs.com/package/@story-protocol/core-sdk" icon="fa-home" iconColor="red" target="_blank">
+    View our `@story-protocol/core-sdk` package on npm.
   </Card>
 
   <Card title="Step-by-Step Guide" href="https://docs.story.foundation/docs/typescript-sdk-guide" icon="fa-home" target="_blank">
-    To learn our SDK through a series of tutorials, view the TypeScript SDK Guide.
+    Learn our SDK through a series of tutorials with the TypeScript SDK Guide.
   </Card>
 </Cards>
 
