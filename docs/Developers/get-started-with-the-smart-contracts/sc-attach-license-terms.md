@@ -10,6 +10,12 @@ metadata:
 next:
   description: ''
 ---
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/2_AttachTerms.t.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through.
+  </Card>
+</Cards>
+
 This section demonstrates how to attach [License Terms](doc:license-terms) to an [🧩 IP Asset](doc:ip-asset). By attaching terms, users can publicly mint [License Tokens](doc:license-token) (the on-chain "license") with those terms from the IP.
 
 ### :warning: Prerequisites
@@ -121,5 +127,13 @@ forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/2_AttachTerm
 ```
 
 ## 3. Mint a License
+
+Congraulations, you attached terms to an IPA!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/2_AttachTerms.t.sol" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through.
+  </Card>
+</Cards>
 
 Now that we have attached License Terms to our IP, the next step is minting a License Token, which we'll go over on the next page.
