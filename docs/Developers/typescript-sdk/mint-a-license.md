@@ -78,3 +78,10 @@ This is a note for owners of an IP Asset who want to set restrictions on who or 
 Now that we have minted a License Token, we can hold it or use it to link an IP Asset as a derivative. We will go over that on the next page.
 
 *Note though that, as you'll see later, some SDK functions don't require you to explicitly mint a license token first in order to register a derivative, and will actually handle it for you behind the scenes.*
+
+### 2a. :question: Why would I ever use a License Token if it's not needed?
+
+There are a few times when **you would need** a License Token to register a derivative:
+
+* The License Token contains private license terms, so you would only be able to register as a derivative if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
+* The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `defaultMintingFee`.
