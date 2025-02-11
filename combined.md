@@ -16977,6 +16977,12 @@ Because there are a lot of functions to interact with the [📜 Licensing Module
 You can also check out [Pay an IPA](doc:pay-ipa) and [Claim Revenue](doc:claim-revenue) to interact with the [💸 Royalty Module](doc:royalty-module) with the SDK.
 
 # Pay an IPA
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercialSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    All of this page is covered in this working code example.
+  </Card>
+</Cards>
+
 This section demonstrates how to pay an IP Asset. There are a few reasons you would do this:
 
 1. you simply want to "tip" an IP
@@ -17066,6 +17072,12 @@ Let's say the child earned 1,000 USD off-chain, and is linked to a huge ancestor
 ## Claiming Revenue
 
 Congratulations, you paid an IP Asset on-chain!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercialSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    All of this page is covered in this working code example.
+  </Card>
+</Cards>
 
 Now that we have paid revenue, we need to learn how to claim it! We will cover that on the next page.
 
