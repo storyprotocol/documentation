@@ -1,6 +1,6 @@
 ---
-title: Attach License Terms to an IP Asset
-excerpt: ''
+title: Attach Terms to an IPA
+excerpt: Learn how to attach License Terms to an IP Asset in Solidity.
 deprecated: false
 hidden: false
 metadata:
@@ -10,35 +10,38 @@ metadata:
 next:
   description: ''
 ---
-Once [License Terms](doc:license-terms) have been created, and an associated `licenseTermsId` is created, the owner of an IP Asset can attach those terms to their IP. This allows anyone to then mint a [License Token](doc:license-token), which we will cover on the next section. For now, let's learn how to attach License Terms to our IP Asset.
+This section demonstrates how to attach [License Terms](doc:license-terms) to an [🧩 IP Asset](doc:ip-asset). By attaching terms, users can publicly mint [License Tokens](doc:license-token) (the on-chain "license") with those terms from the IP.
 
-## Prerequisites
+### :warning: Prerequisites
 
-* Create License Terms by following this tutorial: [Register License Terms](doc:sc-register-license-terms)
+There are a few steps you have to complete before you can start the tutorial.
 
-## Attach License Terms
+1. Complete the [Setup Your Own Project](doc:sc-setup)
+2. Create License Terms and have a `licenseTermsId`. You can do that by following the [previous page](doc:sc-register-license-terms).
 
-Create a new file under `./test/2_AttachTerms.t.sol` and paste the following:
+## 1. Attach License Terms
+
+Now that we have created terms and have the associated `licenseTermsId`, we can attach them to an existing IP Asset.
+
+Let's create a test file under `test/2_AttachTerms.t.sol` to see it work and verify the results:
 
 > 📘 Contract Addresses
 >
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
-```sol 2_AttachTerms.t.sol
+```sol test/2_AttachTerms.t.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
 import { Test } from "forge-std/Test.sol";
 // for testing purposes only
 import { MockIPGraph } from "@storyprotocol/test/mocks/MockIPGraph.sol";
-import { IPAssetRegistry } from "@storyprotocol/core/registries/IPAssetRegistry.sol";
-import { LicenseRegistry } from "@storyprotocol/core/registries/LicenseRegistry.sol";
-import { PILicenseTemplate } from "@storyprotocol/core/modules/licensing/PILicenseTemplate.sol";
-import { RoyaltyPolicyLAP } from "@storyprotocol/core/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol";
+import { IIPAssetRegistry } from "@storyprotocol/core/interfaces/registries/IIPAssetRegistry.sol";
+import { ILicenseRegistry } from "@storyprotocol/core/interfaces/registries/ILicenseRegistry.sol";
+import { IPILicenseTemplate } from "@storyprotocol/core/interfaces/modules/licensing/IPILicenseTemplate.sol";
+import { ILicensingModule } from "@storyprotocol/core/interfaces/modules/licensing/ILicensingModule.sol";
 import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
 import { PILTerms } from "@storyprotocol/core/interfaces/modules/licensing/IPILicenseTemplate.sol";
-import { LicensingModule } from "@storyprotocol/core/modules/licensing/LicensingModule.sol";
-import { MockERC20 } from "@storyprotocol/test/mocks/token/MockERC20.sol";
 
 import { SimpleNFT } from "../src/mocks/SimpleNFT.sol";
 
@@ -49,17 +52,17 @@ contract AttachTermsTest is Test {
 
     // For addresses, see https://docs.story.foundation/docs/deployed-smart-contracts
     // Protocol Core - IPAssetRegistry
-    IPAssetRegistry internal IP_ASSET_REGISTRY = IPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
+    IIPAssetRegistry internal IP_ASSET_REGISTRY = IIPAssetRegistry(0x77319B4031e6eF1250907aa00018B8B1c67a244b);
     // Protocol Core - LicenseRegistry
-    LicenseRegistry internal LICENSE_REGISTRY = LicenseRegistry(0x529a750E02d8E2f15649c13D69a465286a780e24);
+    ILicenseRegistry internal LICENSE_REGISTRY = ILicenseRegistry(0x529a750E02d8E2f15649c13D69a465286a780e24);
     // Protocol Core - LicensingModule
-    LicensingModule internal LICENSING_MODULE = LicensingModule(0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f);
+    ILicensingModule internal LICENSING_MODULE = ILicensingModule(0x04fbd8a2e56dd85CFD5500A4A4DfA955B9f1dE6f);
     // Protocol Core - PILicenseTemplate
-    PILicenseTemplate internal PIL_TEMPLATE = PILicenseTemplate(0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316);
+    IPILicenseTemplate internal PIL_TEMPLATE = IPILicenseTemplate(0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316);
     // Protocol Core - RoyaltyPolicyLAP
-    RoyaltyPolicyLAP internal ROYALTY_POLICY_LAP = RoyaltyPolicyLAP(0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E);
-    // Mock - MERC20
-    MockERC20 internal MERC20 = MockERC20(0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E);
+    address internal ROYALTY_POLICY_LAP = 0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E;
+    // Revenue Token - MERC20
+    address internal MERC20 = 0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E;
 
     SimpleNFT public SIMPLE_NFT;
     uint256 public tokenId;
@@ -81,8 +84,8 @@ contract AttachTermsTest is Test {
             PILFlavors.commercialRemix({
                 mintingFee: 0,
                 commercialRevShare: 10 * 10 ** 6, // 10%
-                royaltyPolicy: address(ROYALTY_POLICY_LAP),
-                currencyToken: address(MERC20)
+                royaltyPolicy: ROYALTY_POLICY_LAP,
+                currencyToken: MERC20
             })
         );
     }
@@ -107,10 +110,16 @@ contract AttachTermsTest is Test {
 }
 ```
 
+## 2. Test Your Code!
+
 Run `forge build`. If everything is successful, the command should successfully compile.
 
-To test this out, simply run the following command:
+Now run the test by executing the following command:
 
 ```shell
 forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/2_AttachTerms.t.sol
 ```
+
+## 3. Mint a License
+
+Now that we have attached License Terms to our IP, the next step is minting a License Token, which we'll go over on the next page.
