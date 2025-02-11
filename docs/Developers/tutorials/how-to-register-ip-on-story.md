@@ -2,7 +2,7 @@
 title: How to Register IP on Story
 excerpt: Learn how to add IP & NFT metadata to an IP Asset using the Typescript SDK.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
