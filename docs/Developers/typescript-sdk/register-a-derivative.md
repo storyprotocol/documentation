@@ -90,6 +90,7 @@ async function main() {
     // TODO: insert your NFT contract address created by the SPG
     spgNftContract: SPG_NFT_CONTRACT_ADDRESS as Address,
     derivData,
+    allowDuplicates: true,
     ipMetadata: {
       ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
       ipMetadataHash: `0x${ipHash}`,
