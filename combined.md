@@ -12551,7 +12551,7 @@ Congratulations, you registered a derivative IP Asset!
 
 Now that we have established parent-child IP relationships, we can begin to explore payments and automated revenue share based on the license terms. We'll cover that in the upcoming pages.
 
-# ⚙️ Smart Contracts
+# ⚙️ Smart Contract Guide
 In this section, we will briefly go over the protocol contracts and then guide you through how to start building on top of the protocol. If you haven't yet familiarized yourself with the overall architecture, we recommend first going over the [Overview](doc:overview) section.
 
 # Smart Contract Tutorial
