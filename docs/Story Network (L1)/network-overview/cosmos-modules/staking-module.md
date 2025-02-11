@@ -36,7 +36,7 @@ Delegators can delegate with four different staking lock times, which results in
 
 where
 
-* S\_d\_i is the staked tokens of delegation d\_i on validator v\_d
+* S<sub>d<sub>i</sub></sub> is the staked tokens of delegation d\_i on validator v\_d
 * M\_d\_i is the rewards multiplier of d\_i on v\_d
 * I\_v is the total inflationary token rewards for v\_d
 * C\_v is the commission rate for v\_d
