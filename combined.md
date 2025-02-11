@@ -16558,6 +16558,10 @@ And, like we mentioned at the beginning, there are two functions you can use tha
 * [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripassetwithpilterms)
 * [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/registeripandattachpilterms)
 
+## 3. Mint a License
+
+Now that we have attached License Terms to our IP, the next step is minting a License Token, which we'll go over on the next page.
+
 # Register License Terms
 This section demonstrates how to register a selection of License Terms using the PIL.
 
