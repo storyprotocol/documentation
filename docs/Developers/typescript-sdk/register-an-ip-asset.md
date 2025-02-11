@@ -205,9 +205,9 @@ Congratulations, you registered an IP!
   </Card>
 </Cards>
 
-Now that your IP is registered, you can attach [License Terms](doc:license-terms) to it. This will allow others to mint a license and use your IP, restricted by the terms.
+Now that your IP is registered, you can create and attach [License Terms](doc:license-terms) to it. This will allow others to mint a license and use your IP, restricted by the terms.
 
-We will go over this in the next section, but it's worth mentioning that you can **register + attach terms** all in the same step with the following functions:
+We will go over this in the next section, but it's worth mentioning that you can **register IP + create terms + attach terms** all in the same step with the following functions:
 
 * [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripassetwithpilterms)
 * [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/registeripandattachpilterms)
