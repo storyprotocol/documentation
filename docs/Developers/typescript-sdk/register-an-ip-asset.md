@@ -129,7 +129,9 @@ For simplicity, we can use the SDK's `createNFTCollection` to create a new NFT c
 
 > ❓ Why do we have to do this?
 >
-> In order to use the `mintAndRegisterIp` function in the next step, we'll have to deploy an **SPG NFT** collection. This is any contract that implements [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). An easy way to do this is just to call the `createNFTCollection` as you'll see below.
+> In order to use the `mintAndRegisterIp` function in the next step, we'll have to deploy an **SPG NFT** collection. **This is any contract that implements** [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). An easy way to deploy a contract like this is to call the `createNFTCollection` as you'll see below.
+>
+> :warning: You only have to create a new SPG Collection **once**. Once you have your SPG NFT contract address, you can register any amount of IPs and will **not** have to do this again.
 >
 > Instead of doing this, you can mint an NFT from your own contract and use the [register](https://docs.story.foundation/docs/sdk-ipasset#/register) function (providing an `nftContract` and `tokenId`) *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts).
 
@@ -157,11 +159,7 @@ createSpgNftCollection();
 
 If you run this code and look at the console output, you will find the SPG NFT contract address. Save this for later.
 
-> 📘 Quick Note
->
-> You only have to create a new SPG Collection **once**. Once you have your SPG NFT contract address, you can register any amount of IPs and will **not** have to do this again.
-
-The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), and set both NFT & IP metadata.
+Now we can actually register our IP by minting an NFT, registering it as an [🧩 IP Asset](doc:ip-asset), and setting both NFT & IP metadata.
 
 * Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisterip)
 
