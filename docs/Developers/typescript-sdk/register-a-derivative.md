@@ -114,7 +114,7 @@ async function main() {
 }
 ```
 
-## Paying and Claiming Revenue
+## 2. Paying and Claiming Revenue
 
 Congratulations, you registered a derivative IP Asset!
 
