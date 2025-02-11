@@ -74,7 +74,7 @@ Modify your code such that...
 
 Now we can call the function like so:
 
-* Associated Docs: [ipAsset.mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivative)
+> Associated Docs: [ipAsset.mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivative)
 
 ```typescript main.ts
 import { IpMetadata, DerivativeData } from '@story-protocol/core-sdk'
