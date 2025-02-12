@@ -42,7 +42,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://aeneid.storyrpc.io](https://aeneid.storyrpc.io)
+        `https://aeneid.storyrpc.io`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -74,11 +74,11 @@ next:
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        Blockscout Explorer ↗️
+        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://aeneid.storyscan.xyz/](https://aeneid.storyscan.xyz/)
+        `https://aeneid.storyscan.xyz`
       </td>
 
       <td style={{ textAlign: "left" }}>
