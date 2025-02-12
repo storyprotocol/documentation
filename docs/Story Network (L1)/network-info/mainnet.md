@@ -92,7 +92,7 @@ next:
 
 ## Contract deployment addresses
 
-* [Proof of Creative](doc:deployed-smart-contracts)
+* [Proof of Creativity](doc:deployed-smart-contracts)
 
 # Further Sections
 
