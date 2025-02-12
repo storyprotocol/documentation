@@ -2469,6 +2469,12 @@ Vaults can only claim from other vaults if those other vaults belong to IPs in t
 
 The Liquid Absolute Percentage (LAP) defines that each parent IP Asset can choose a minimum royalty percentage that all of its downstream IP Assets in a derivative chain will share from their monetary gains as defined in the license agreement.
 
+<Cards columns={1}>
+  <Card title="RoyaltyPolicyLAP.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/royalty/policies/LAP/RoyaltyPolicyLAP.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the LAP Royalty Policy.
+  </Card>
+</Cards>
+
 ## Prerequisites
 
 Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
@@ -2488,6 +2494,10 @@ In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a %
 ![](https://files.readme.io/dcfb36162a224000d960fe9d6ca451bf7679500a31e727fb7205d22cb3581391-image.png)
 
 Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivative chain as a derivative of IP Asset 3. An example flow sequence below:
+
+> 🚧 Quick Note
+>
+> The below example uses $USDC, when in reality the token would be one of our [whitelisted revenue tokens](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens) like $WIP.
 
 1. IP Asset 4 pays 1M USDC in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
 
@@ -2519,6 +2529,12 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 
 The Liquid Relative Percentage (LRP) royalty policy defines that each parent IP Asset can choose a minimum royalty percentage that only the direct derivative IP Assets in a derivative chain will share from their monetary gains as defined in the license agreement.
 
+<Cards columns={1}>
+  <Card title="RoyaltyPolicyLRP.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/royalty/policies/LRP/RoyaltyPolicyLRP.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the LRP Royalty Policy.
+  </Card>
+</Cards>
+
 ## Prerequisites
 
 Before continuing, make sure you have read the [IP Royalty Vault](doc:ip-royalty-vault) terminology.
@@ -2538,6 +2554,10 @@ In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a %
 ![](https://files.readme.io/de296f0efbb58233b5f340b127dc66a48c80eff88a75b809107ea8b95beca5a6-image.png)
 
 Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivative chain as a derivative of IP Asset 3. An example flow sequence below:
+
+> 🚧 Quick Note
+>
+> The below example uses $USDC, when in reality the token would be one of our [whitelisted revenue tokens](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens) like $WIP.
 
 1. IP Asset 4 pays 1M USDC in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
 
