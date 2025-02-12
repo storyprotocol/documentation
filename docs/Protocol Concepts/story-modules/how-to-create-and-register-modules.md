@@ -2,7 +2,7 @@
 title: How to Create and Register Modules
 excerpt: ''
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
