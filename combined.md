@@ -6931,7 +6931,7 @@ visualization for the blockchain network. Tools include **Prometheus**,
 
 ## Staking Dashboard
 
-| Faucet                                                      | Official |
+| Dashboard URL                                               | Official |
 | :---------------------------------------------------------- | :------- |
 | [Story Dashboard](https://aeneid.staking.story.foundation/) | ✅        |
 
