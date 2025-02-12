@@ -12,9 +12,11 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/LicenseToken.sol).
+<Cards columns={1}>
+  <Card title="LicenseToken.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/LicenseToken.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for License Tokens.
+  </Card>
+</Cards>
 
 A **License Token** is represented as an **ERC-721 NFT** and contains the specific [License Terms](doc:license-terms) it represents. Its associated `licenseTokenId` is global, as there is one License Token contract.
 
