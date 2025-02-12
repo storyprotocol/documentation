@@ -88,7 +88,7 @@ next:
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a>
+        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
       <td style={{ textAlign: "left" }}>
