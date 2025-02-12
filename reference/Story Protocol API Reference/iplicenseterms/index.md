@@ -1,4 +1,0 @@
----
-title: IPLicenseTerms
-hidden: false
----
