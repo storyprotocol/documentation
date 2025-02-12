@@ -10,21 +10,20 @@ metadata:
 next:
   description: ''
 ---
-> ⏩ Skip the Read - 1 Minute Summary
->
-> An IP Royalty Vault is a pool for all monetary inflows related to an IP Asset.
->
-> Every IP Asset has 100,000,000 Royalty Tokens associated with it, where each token represents the right to 0.000001% of that IPA's revenue (*"Revenue Tokens"*) stored in the pool.
->
-> Revenue Tokens are ERC-20 tokens used for payment (ex. USDC). These tokens must be whitelisted by the protocol to be used.
+<Accordion title="Skip the Read - 1 Minute Summary" icon="fa-info-circle">
+  An IP Royalty Vault is a pool for all monetary inflows related to an IP Asset.
+
+  Every IP Asset has 100,000,000 Royalty Tokens associated with it, where each token represents the right to 0.000001% of that IPA's revenue (*"Revenue Tokens"*) stored in the pool.
+
+  Revenue Tokens are ERC-20 tokens used for payment (ex. USDC). These tokens must be whitelisted by the protocol to be used.
+</Accordion>
 
 Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inflows related to an IP Asset's commercial exploration or from minting licenses. Anyone who holds Royalty Tokens (defined below) has the right to claim their share of this pool.
 
 ## Token Terminology
 
-1. Royalty Tokens - the IP Royalty Vault contract is also the ERC-20 contract for the Royalty Tokens of each IP Asset. This means the address of the IP Royalty Vault for an IP Asset is also the ERC-20 token address of the Royalty Tokens. Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of those gains. The holders of these Royalty Tokens can claim the Revenue Tokens (defined below) that are in the associated IP Royalty Vault.
-2. Revenue Tokens - these are the tokens used for payment (ie. ETH, USDC, etc). Royalty Tokens can be used to claim Revenue Tokens.
-   1. An ERC-20 token must be whitelisted by governance in the [RoyaltyModule.sol contract](https://github.com/storyprotocol/protocol-core-v1/blob/e339f0671c9172a6699537285e32aa45d4c1b57b/contracts/modules/royalty/RoyaltyModule.sol#L50) to be used as a Revenue Token in the Royalty Module.
+1. **Royalty Tokens**: the IP Royalty Vault contract is also the ERC-20 contract for the Royalty Tokens of each IP Asset. This means the address of the IP Royalty Vault for an IP Asset is also the ERC-20 token address of the Royalty Tokens. Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of those gains. The holders of these Royalty Tokens can claim the Revenue Tokens (defined below) that are in the associated IP Royalty Vault.
+2. **Revenue Tokens**: these are the tokens used for payment (ie. ETH, USDC, etc). Royalty Tokens can be used to claim Revenue Tokens. Read below on whitelisting :arrow_heading_down:
 
 ### Whitelisted Revenue Tokens
 
