@@ -1,15 +1,18 @@
 ---
 title: Node Upgrade
-excerpt: ''
+excerpt: ""
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
+
+## Upgrading a Node
+
 There are three types of upgrades
 
 1. Upgrade the story geth client
