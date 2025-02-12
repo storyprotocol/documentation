@@ -456,6 +456,6 @@ rm ~/.story/story/config/priv_validator_key.json
 
 3. Locate the `priv_validator_key.json` file in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
 
-***IMPORTANT: Before you proceed, make sure you STOPPED your validator on the old server and do not start it again there.***
+> ❗️ Important: Before proceeding, shut down the old validator on the original server and do not restart it!
 
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
