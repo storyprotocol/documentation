@@ -8068,6 +8068,11 @@ rm ~/.story/story/config/priv_validator_key.json
 
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
 
+# Become a validator
+
+# Become a validator
+
+
 # Infrastructure Partners
 ## RPC Providers
 
