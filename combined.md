@@ -2633,15 +2633,21 @@ There can be many flavors and variations of royalty distribution rules as we obs
 
 It is a smart contract that inherits a specific interface called `IExternalRoyaltyPolicy`, which defines the view function below:
 
-```sol IExternalRoyaltyPolicy
-    /// @notice Returns the amount of royalty tokens required to link a child to a given IP asset
-    /// @param ipId The ipId of the IP asset
-    /// @param licensePercent The percentage of the license
-    /// @return The amount of royalty tokens required to link a child to a given IP asset
-    function getPolicyRtsRequiredToLink(address ipId, uint32 licensePercent) external view returns (uint32);
+<Cards columns={1}>
+  <Card title="IExternalRoyaltyPolicy.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/royalty/policies/IExternalRoyaltyPolicy.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for external royalty policies.
+  </Card>
+</Cards>
+
+```sol IExternalRoyaltyPolicy.sol
+/// @notice Returns the amount of royalty tokens required to link a child to a given IP asset
+/// @param ipId The ipId of the IP asset
+/// @param licensePercent The percentage of the license
+/// @return The amount of royalty tokens required to link a child to a given IP asset
+function getPolicyRtsRequiredToLink(address ipId, uint32 licensePercent) external view returns (uint32);
 ```
 
-After developing your smart contract make sure it inherits the interface above and you can register your new External Royalty Policy by calling `registerExternalRoyaltyPolicy` function in RoyaltyModule.sol.
+After developing your smart contract make sure it inherits the interface above and you can register your new External Royalty Policy by calling `registerExternalRoyaltyPolicy` function in [RoyaltyModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/royalty/RoyaltyModule.sol).
 
 ## 2. How does it work?
 
@@ -2663,11 +2669,17 @@ Every time there is a remix - the link between the parent and derivative has 2 d
 
 ### External Royalty Policies receive royalty tokens from their users' IPs
 
-Following the example, when each remix is made and during the `onLinkToParents` function call in RoyaltyModule.sol the function
+Following the example, when each remix is made and during the `onLinkToParents` function call in [RoyaltyModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/royalty/RoyaltyModule.sol), the function `getPolicyRtsRequiredToLink` is called on the "Policy X" address.
 
-`getPolicyRtsRequiredToLink(address ipId, uint32 licensePercent) external view returns (uint32)`
+```sol IExternalRoyaltyPolic.sol
+/// @notice Returns the amount of royalty tokens required to link a child to a given IP asset
+/// @param ipId The ipId of the IP asset
+/// @param licensePercent The percentage of the license
+/// @return The amount of royalty tokens required to link a child to a given IP asset
+function getPolicyRtsRequiredToLink(address ipId, uint32 licensePercent) external view returns (uint32);
+```
 
-is called on the "Policy X" address. It should return the % of derivative's royalty tokens that the royalty policy demands for the link to happen. That share of royalty tokens are sent to the "Policy X" contract. In the example case:
+It should return the % of derivative's royalty tokens that the royalty policy demands for the link to happen. That share of royalty tokens are sent to the "Policy X" contract. In the example case:
 
 * "Policy X" receives 3% of RT2 token supply that it can then redistributed to its userbase. IP1 owner wanted 10%, however - let's assume for the sake of the example - that due to the specific use case of "Policy X" and its custom logic, the IP2 owner is granted a special status in the platform in which it it has a 70% discount on the % share it has to give parent IPs due to having a very large distribution network to promote IPs. Therefore, instead of having to give 10% as the license percentage indicated it only gives 3%.
 * "Policy X" receives 50% of RT3 token supply that it can then redistributed to its userbase.
