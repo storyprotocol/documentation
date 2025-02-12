@@ -58,7 +58,7 @@ BFL_API_KEY=
 5. Add your preferred Story RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 6. Install the dependencies:
@@ -407,7 +407,7 @@ export const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: "odyssey",
+  chainId: "aeneid",
 };
 export const client = StoryClient.newClient(config);
 ```
@@ -573,7 +573,7 @@ SPG_NFT_CONTRACT_ADDRESS=
 
 Back in our `registerIp.ts` file, add the following code. It will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
+* Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
 
 ```typescript story/registerIp.ts
 import { IpMetadata } from "@story-protocol/core-sdk";
@@ -585,9 +585,9 @@ import { Address } from "viem";
 export async function registerIp(inference) {
   // previous code here ...
 
-  const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
+  const response = await client.ipAsset.mintAndRegisterIp({
     spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-    terms: [], // IP already has non-commercial social remixing terms. You can add more here.
+    allowDuplicates: true,
     ipMetadata: {
       ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
       ipMetadataHash: `0x${ipHash}`,

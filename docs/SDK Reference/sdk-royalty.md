@@ -16,12 +16,7 @@ next:
 
 * payRoyaltyOnBehalf
 * claimableRevenue
-* claimRevenue
-* snapshot
-* transferToVaultAndSnapshotAndClaimByTokenBatch
-* transferToVaultAndSnapshotAndClaimBySnapshotBatch
-* snapshotAndClaimByTokenBatch
-* snapshotAndClaimBySnapshotBatch
+* claimAllRevenue
 * getRoyaltyVaultAddress
 
 ### payRoyaltyOnBehalf
@@ -40,16 +35,38 @@ Parameters:
 * `request.amount`: The amount to pay.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
+const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
+  receiverIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // child ipId
+  payerIpId: zeroAddress,
+  token: WIP_TOKEN_ADDRESS,
+  amount: 2,
+  txOptions: { waitForTransaction: true },
+});
+
+console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
+```
+```typescript Request Type
+export type PayRoyaltyOnBehalfRequest = {
+  receiverIpId: Address;
+  payerIpId: Address;
+  token: Address;
+  amount: TokenAmountInput;
+} & WithTxOptions & WithWipOptions;
+```
 ```typescript Response Type
 export type PayRoyaltyOnBehalfResponse = {
   txHash?: string;
+  receipt?: TransactionReceipt;
   encodedTxData?: EncodedTxData;
 };
 ```
 
 ### claimableRevenue
 
-Calculates the amount of revenue token claimable by a token holder at certain snapshot.
+Get total amount of revenue token claimable by a royalty token holder.
 
 | Method             | Type                                                                      |
 | ------------------ | ------------------------------------------------------------------------- |
@@ -58,164 +75,82 @@ Calculates the amount of revenue token claimable by a token holder at certain sn
 Parameters:
 
 * `request.royaltyVaultIpId`: The id of the royalty vault.
-* `request.account`: The address of the token holder.
-* `request.snapshotId`: The snapshot id.
+* `request.claimer`: The address of the royalty token holder.
 * `request.token`: The revenue token to claim.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript Request Type
+export type ClaimableRevenueRequest = {
+  royaltyVaultIpId: Address;
+	claimer: Address;
+  token: Address;
+}
+```
 ```typescript Response Type
 export type ClaimableRevenueResponse = bigint;
 ```
 
-### claimRevenue
+### claimAllRevenue
 
-Allows token holders to claim by a list of snapshot ids based on the token balance at certain snapshot.
+Claims all revenue from child IP Assets and/or from your own IP Royalty Vault.
 
-| Method         | Type                                                              |
-| -------------- | ----------------------------------------------------------------- |
-| `claimRevenue` | `(request: ClaimRevenueRequest) => Promise<ClaimRevenueResponse>` |
+| Method            | Type                                                                    |
+| ----------------- | ----------------------------------------------------------------------- |
+| `claimAllRevenue` | `(request: ClaimAllRevenueRequest) => Promise<ClaimAllRevenueResponse>` |
 
 Parameters:
 
-* `request.snapshotIds`: The list of snapshot ids.
-* `request.royaltyVaultIpId`: The id of the royalty vault.
-* `request.token`: The revenue token to claim.
-* `request.account`: \[Optional]The ipId of the IP Account you want to claim to instead of the wallet running the transaction.
+* `request.ancestorIpId`: The address of the ancestor IP from which the revenue is being claimed.
+* `request.claimer`: The address of the claimer of the currency (revenue) tokens. This is normally the ipId of the ancestor IP if the IP has all royalty tokens. Otherwise, this would be the address that is holding the ancestor IP royalty tokens.
+* `request.childIpIds[]`: The addresses of the child IPs from which royalties are derived.
+* `request.royaltyPolicies[]`: The addresses of the royalty policies, where royaltyPolicies\[i] governs the royalty flow for childIpIds\[i].
+* `request.currencyTokens[]`: The addresses of the currency tokens in which royalties will be claimed.
+* `request.claimOptions`: \[Optional]
+  * `request.claimOptions.autoTransferAllClaimedTokensFromIp`: \[Optional]When enabled, all claimed tokens on the claimer are transferred to the wallet address if the wallet owns the IP. If the wallet is the claimer or if the claimer is not an IP owned by the wallet, then the tokens will not be transferred. Set to false to disable auto transferring claimed tokens from the claimer. **Default: true**
+  * `request.claimOptions.autoUnwrapIpTokens`: \[Optional]By default all claimed WIP tokens are converted back to IP after they are transferred. Set this to false to disable this behavior. **Default: false**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
-```typescript Response Type
-export type ClaimRevenueResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  claimableToken?: bigint;
+```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
+const claimRevenue = await client.royalty.claimAllRevenue({
+  // IP Asset 1's (parent) ipId
+  ancestorIpId: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+  // whoever owns the royalty tokens associated with IP Royalty Vault 1
+  // (most likely the associated ipId, which is IP Asset 1's ipId)
+  claimer: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+  currencyTokens: [WIP_TOKEN_ADDRESS],
+  // IP Asset 2's (child) ipId
+  childIpIds: ['0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2'],
+  // testnet address of RoyaltyPolicyLAP
+  royaltyPolicies: ['0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E']
+})
+
+console.log(`Claimed revenue: ${claimRevenue.claimedTokens}`);
+```
+```typescript Request Type
+export type ClaimAllRevenueRequest = {
+  ancestorIpId: Address;
+  claimer: Address;
+  childIpIds: Address[];
+  royaltyPolicies: Address[];
+  currencyTokens: Address[];
+  claimOptions?: {
+    autoTransferAllClaimedTokensFromIp?: boolean;
+    autoUnwrapIpTokens?: boolean;
+  };
 };
 ```
-
-### snapshot
-
-Snapshots the claimable revenue and royalty token amounts.
-
-| Method     | Type                                                      |
-| ---------- | --------------------------------------------------------- |
-| `snapshot` | `(request: SnapshotRequest) => Promise<SnapshotResponse>` |
-
-Parameters:
-
-* `request`: The request object that contains all data needed to snapshot.
-* `request.royaltyVaultIpId`: The id of the royalty vault.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
 ```typescript Response Type
-export type SnapshotResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
+export type ClaimAllRevenueResponse = {
+  txHashes: Hash[];
+  receipt?: TransactionReceipt;
+  claimedTokens?: ClaimedToken[];
 };
-```
 
-### transferToVaultAndSnapshotAndClaimByTokenBatch
-
-Transfers royalties from royalty policy to the ancestor IP's royalty vault, takes a snapshot, and claims revenue on that snapshot for each specified currency token.
-
-| Method                                           | Type                                                                                                                                  |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `transferToVaultAndSnapshotAndClaimByTokenBatch` | `(request: TransferToVaultAndSnapshotAndClaimByTokenBatchRequest) => Promise<TransferToVaultAndSnapshotAndClaimByTokenBatchResponse>` |
-
-Parameters:
-
-* `request.ancestorIpId`: The ipId of the ancestor IP.
-* `request.royaltyClaimDetails[]`: The details of the royalty claim from child IPs
-  * `request.royaltyClaimDetails.childIpId`: The address of the child IP.
-  * `request.royaltyClaimDetails.royaltyPolicy`: The address of the royalty policy.
-  * `request.royaltyClaimDetails.currencyToken`: The address of the currency (revenue) token to claim.
-  * `request.royaltyClaimDetails.amount`: Amount to claim.
-* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type TransferToVaultAndSnapshotAndClaimByTokenBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
-};
-```
-
-### transferToVaultAndSnapshotAndClaimBySnapshotBatch
-
-Transfers royalties to the ancestor IP's royalty vault, takes a snapshot, claims revenue for each
-
-| Method                                              | Type                                                                                                                                        |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `transferToVaultAndSnapshotAndClaimBySnapshotBatch` | `(request: TransferToVaultAndSnapshotAndClaimBySnapshotBatchRequest) => Promise<TransferToVaultAndSnapshotAndClaimBySnapshotBatchResponse>` |
-
-Parameters:
-
-* `request.ancestorIpId`: The ipId of the ancestor IP.
-* `request.unclaimedSnapshotIds`: The IDs of the unclaimed snapshots to include in the claim.
-* `request.royaltyClaimDetails[]`: The details of the royalty claim from child IPs
-  * `request.royaltyClaimDetails.childIpId`: The address of the child IP.
-  * `request.royaltyClaimDetails.royaltyPolicy`: The address of the royalty policy.
-  * `request.royaltyClaimDetails.currencyToken`: The address of the currency (revenue) token to claim.
-  * `request.royaltyClaimDetails.amount`: Amount to claim.
-* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type TransferToVaultAndSnapshotAndClaimBySnapshotBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
-};
-```
-
-### snapshotAndClaimByTokenBatch
-
-Takes a snapshot of the IP's royalty vault and claims revenue on that snapshot for each
-
-| Method                         | Type                                                                                              |
-| ------------------------------ | ------------------------------------------------------------------------------------------------- |
-| `snapshotAndClaimByTokenBatch` | `(request: SnapshotAndClaimByTokenBatchRequest) => Promise<SnapshotAndClaimByTokenBatchResponse>` |
-
-Parameters:
-
-* `request.royaltyVaultIpId`: The address of the IP.
-* `request.currencyTokens`: The addresses of the currency (revenue) tokens to claim.
-* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type SnapshotAndClaimByTokenBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
-};
-```
-
-### snapshotAndClaimBySnapshotBatch
-
-Takes a snapshot of the IP's royalty vault and claims revenue for each specified currency token
-
-| Method                            | Type                                                                                                    |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `snapshotAndClaimBySnapshotBatch` | `(request: SnapshotAndClaimBySnapshotBatchRequest) => Promise<SnapshotAndClaimBySnapshotBatchResponse>` |
-
-Parameters:
-
-* `request.royaltyVaultIpId`: The address of the IP.
-* `request.unclaimedSnapshotIds`: The IDs of unclaimed snapshots to include in the claim.
-* `request.currencyTokens`: The addresses of the currency (revenue) tokens to claim.
-* `request.claimer`: \[Optional] The address of the claimer of the revenue tokens (must be a royalty token holder), default value is wallet address.
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type SnapshotAndClaimBySnapshotBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
+export type ClaimedToken = {
+  token: Address;
+  amount: bigint;
 };
 ```
 

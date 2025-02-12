@@ -19,21 +19,29 @@ next:
 
 # Introducing the World's IP Blockchain
 
-Story is a purpose-built layer 1 blockchain designed specifically for intellectual property.
+Story is a purpose-built layer 1 blockchain designed specifically for intellectual property. Here's the rundown:
 
-Story tokenizes any type of IP; whether that’s an idea, an image, a real world asset, a song, an AI model, an NFT or anything in-between. By embedding usage terms, attribution, and royalty agreements directly into the blockchain, Story provides a transparent, decentralized solution for IP management. This enables IP holders to protect their work, collaborate on IP seamlessly, and unlock revenue opportunities in an AI-powered economy.
+* Story allows you to register your IP on the blockchain. This IP could be an image, a song, an RWA, AI training data, or anything in-between.
+* You can add usage terms to your IP, which specifies how others can use it, like "You owe me 50% of your commercial revenue if you use my IP", or "You cannot create derivatives of my IP".
+* By making IP programmable on the blockchain, it becomes this transparent & decentralized global IP repository where AI agents (or any other software) and humans alike can transact on IP.
 
-> ⏩ Skip the Read - 1 Minute Summary
->
-> Want to skip to a summary? Check out [Explain Like I'm Five](doc:explain-like-im-five) for a super fast & easy to understand explanation of everything Story.
+<Cards columns={2}>
+  <Card title="Skip the Read - 1 Minute Summary" href="https://docs.story.foundation/docs/explain-like-im-five" icon="fa-home">
+    Want to skip to a summary? Check out our "Explain Like I'm Five" for a super fast & easy to understand explanation of everything Story.
+  </Card>
 
-## The "Why"
+  <Card title="Read the Whitepaper" href="https://www.story.foundation/whitepaper.pdf" icon="fa-file" target="_blank">
+    Read the Story whitepaper.
+  </Card>
+</Cards>
 
-When IP owners share their work online, it’s easy for others to use or change it without crediting them, and they often don't get paid fairly if their work becomes popular or valuable. This can be discouraging for people who want to share their ideas and creations but don’t want to lose control over them.
+<Accordion title="Why did we build Story?" icon="fa-question">
+  When IP owners share their work online, it’s easy for others to use or change it without crediting them, and they often don't get paid fairly if their work becomes popular or valuable. This can be discouraging for people who want to share their ideas and creations but don’t want to lose control over them.
 
-Additionally, the sheer speed and superabundance of AI-generated media is outpacing the current IP system that was designed for physical replication. In many cases, [AI is trained on and is producing copyrighted data](https://twitter.com/BriannaWu/status/1823833723764084846).
+  Additionally, the sheer speed and superabundance of AI-generated media is outpacing the current IP system that was designed for physical replication. In many cases, [AI is trained on and is producing copyrighted data](https://twitter.com/BriannaWu/status/1823833723764084846).
 
-Story fixes this by providing a way for creators to share their work with built-in protection. When someone (including an AI model) uses a song, image, or any creative work that’s registered on Story, the system automatically tracks who the original owner is and makes sure they get credited. Plus, if that work generates revenue—say someone remixes a song and it earns money—the original owner automatically receives their fair share based on license terms that were set on-chain.
+  Story fixes this by providing a way for creators to share their work with built-in protection. When someone (including an AI model) uses a song, image, or any creative work that’s registered on Story, the system automatically tracks who the original owner is and makes sure they get credited. Plus, if that work generates revenue—say someone remixes a song and it earns money—the original owner automatically receives their fair share based on license terms that were set on-chain.
+</Accordion>
 
 ## The "How"
 

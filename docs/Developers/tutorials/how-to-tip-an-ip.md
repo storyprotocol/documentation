@@ -25,7 +25,7 @@ In this tutorial, you will learn how to send money ("tip") an IP Asset using the
 
 ## The Explanation
 
-In this scenario, let's say there is a parent IP Asset that represents Mickey Mouse. Someone else draws a hat on that Mickey Mouse and registers it as a derivative (or "child") IP Asset. The License Terms specify that the child must share 50% of all commercial revenue (`commercialRevShare = 50`) with the parent. Someone else (a 3rd party user) comes along and wants to send the derivative 2 SUSD for being really cool.
+In this scenario, let's say there is a parent IP Asset that represents Mickey Mouse. Someone else draws a hat on that Mickey Mouse and registers it as a derivative (or "child") IP Asset. The License Terms specify that the child must share 50% of all commercial revenue (`commercialRevShare = 50`) with the parent. Someone else (a 3rd party user) comes along and wants to send the derivative 2 $WIP for being really cool.
 
 For the purposes of this example, we will assume the child is already registered as a derivative IP Asset. If you want help learning this, check out [Register a Derivative](doc:register-a-derivative).
 
@@ -46,7 +46,7 @@ WALLET_PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
 3. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```text env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 4. Install the dependencies:
@@ -72,7 +72,7 @@ export const account: Account = privateKeyToAccount(privateKey)
 const config: StoryConfig = {  
   account: account,  
   transport: http(process.env.RPC_PROVIDER_URL),  
-  chainId: 'odyssey',  
+  chainId: 'aeneid',  
 }  
 export const client = StoryClient.newClient(config)
 ```
@@ -81,27 +81,29 @@ export const client = StoryClient.newClient(config)
 
 Now create a `main.ts` file. We will use the `payRoyaltyOnBehalf` function to pay the derivative asset.
 
-Now, before you actually pay the IP Asset, you will need to do a few things:
+You will be paying the IP Asset with [$WIP](https://aeneid.storyscan.xyz/address/0x1514000000000000000000000000000000000000). **Note that if you don't have enough $WIP, the function will auto wrap an equivalent amount of $IP into $WIP for you.** If you don't have enough of either, it will fail.
 
-1. Obviously, we will need some SUSD to pay with. Mint some SUSD tokens by running [this](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x40c10f19) transaction (10 is good).
-2. Next, you have to allow the `RoyaltyModule.sol` contract to spend those tokens on your behalf so it can properly distribute royalties to ancestor IPs. Run the [approve transaction](https://odyssey.storyscan.xyz/address/0xC0F6E387aC0B324Ec18EAcf22EE7271207dCE3d5?tab=write_contract#0x095ea7b3) where the spender is `0xEa6eD700b11DfF703665CCAF55887ca56134Ae3B` (this is the Odyssey v1.2 address of `RoyaltyModule.sol` found [here](doc:deployed-smart-contracts)) and the value is >= 2 (that's the amount we're paying in the script).
+> 📘 Whitelisted Revenue Tokens
+>
+> Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. $WIP is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts).
 
 Now we can call the `payRoyaltyOnBehalf` function. In this case:
 
 1. `receiverIpId` is the `ipId` of the derivative (child) asset
 2. `payerIpId` is `zeroAddress` because the payer is a 3rd party (someone that thinks Mickey Mouse with a hat on him is cool), and not necessarily another IP Asset
-3. `token` is the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
-4. `amount` is 2, since the person tipping wants to send 2 SUSD
+3. `token` is the address of $WIP, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+4. `amount` is 2, since the person tipping wants to send 2 $WIP
 
 ```typescript main.ts
 import { client } from './utils'
 import { zeroAaddress } from 'viem'
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {
    const response = await client.royalty.payRoyaltyOnBehalf({
     receiverIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a',
     payerIpId: zeroAddress,
-    token: '0x91f6F05B08c16769d3c85867548615d270C42fC7',
+    token: WIP_TOKEN_ADDRESS,
     amount: 2,
     txOptions: { waitForTransaction: true },
   })
@@ -115,28 +117,30 @@ main();
 
 At this point we have already finished the tutorial: we learned how to tip an IP Asset. But what if the child and parent want to claim their due revenue?
 
-The child has been paid 2 SUSD. But remember, it shares 50% of its revenue with the parent IP because of the `commercialRevenue = 50` in the license terms.
+The child has been paid 2 $WIP. But remember, it shares 50% of its revenue with the parent IP because of the `commercialRevenue = 50` in the license terms.
 
-The child IP can claim its 1 SUSD by calling the `snapshotAndClaimByTokenBatch` function:
+The child IP can claim its 1 $WIP by calling the `claimAllRevenue` function:
 
-* `royaltyVaultIpId` is the `ipId` of the IP Asset thats associated with the royalty vault that has the funds in it (more simply, this is just the child's `ipId`)
-* `currencyTokens` is an array that contains the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
+* `ancestorIpId` is the `ipId` of the IP Asset thats associated with the royalty vault that has the funds in it (more simply, this is just the child's `ipId`)
+* `currencyTokens` is an array that contains the address of $WIP, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 * `claimer` is the address that holds the royalty tokens associated with the child's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the child asset
 
 ```typescript main.ts
 import { client } from './utils'
 import { zeroAaddress } from 'viem'
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {
   // previous code here ...
-  const response = await client.royalty.snapshotAndClaimByTokenBatch({
-    royaltyVaultIpId: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
-    currencyTokens: ["0x91f6F05B08c16769d3c85867548615d270C42fC7"],
-    claimer: "0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a",
-    txOptions: { waitForTransaction: true },
+  const response = await client.royalty.claimAllRevenue({
+    ancestorIpId: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
+    claimer: '0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2',
+    currencyTokens: [WIP_TOKEN_ADDRESS],
+    childIpIds: [],
+    royaltyPolicies: []
   })
 
-  console.log(`Claimed revenue: ${response.amountsClaimed}`);
+  console.log(`Claimed revenue: ${response.claimedTokens}`);
 }
 
 main();
@@ -144,36 +148,33 @@ main();
 
 ## 4. Parent Claiming Due Revenue
 
-Continuing, the parent should be able to claim its revenue as well. In this example, the parent should be able to claim 1 SUSD since the child earned 2 SUSD and the `commercialRevShare = 50` in the license terms.
+Continuing, the parent should be able to claim its revenue as well. In this example, the parent should be able to claim 1 $WIP since the child earned 2 $WIP and the `commercialRevShare = 50` in the license terms.
 
-We will use the `transferToVaultAndSnapshotAndClaimByTokenBatch` to claim the due revenue tokens.
+We will use the `claimAllRevenue` function to claim the due revenue tokens.
 
 1. `ancestorIpId` is the `ipId` of the parent ("ancestor") asset
 2. `claimer` is the address that holds the royalty tokens associated with the parent's [IP Royalty Vault](doc:ip-royalty-vault). By default, they are in the IP Account, which is just the `ipId` of the parent asset
-3. `childIpId` is obviously the `ipId` of the child asset
-4. `royaltyPolicy` is the address of the royalty policy. As explained in [💸 Royalty Module](doc:royalty-module), this is either `RoyaltyPolicyLAP` or `RoyaltyPolicyLRP`, depending on the license terms. In this case, let's assume the license terms specify a `RoyaltyPolicyLAP`. Simply go to [Deployed Smart Contracts](doc:deployed-smart-contracts) and find the correct address.
-5. `currencyToken` is the address of SUSD, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
-6. `amount` is 1, since the parent should have 1 SUSD available to claim
+3. `childIpIds` will have the `ipId` of the child asset
+4. `royaltyPolicies` will contain the address of the royalty policy. As explained in [💸 Royalty Module](doc:royalty-module), this is either `RoyaltyPolicyLAP` or `RoyaltyPolicyLRP`, depending on the license terms. In this case, let's assume the license terms specify a `RoyaltyPolicyLAP`. Simply go to [Deployed Smart Contracts](doc:deployed-smart-contracts) and find the correct address.
+5. `currencyTokens` is an array that contains the address of $WIP, which can be found [here](https://docs.story.foundation/docs/ip-royalty-vault#whitelisted-revenue-tokens)
 
 ```typescript main.ts
 import { client } from './utils'
 import { zeroAaddress } from 'viem'
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {
   // previous code here ...
 
-  const response = await client.royalty.transferToVaultAndSnapshotAndClaimByTokenBatch({
-    ancestorIpId: '0x42595dA29B541770D9F9f298a014bF912655E183',
-    claimer: '0x42595dA29B541770D9F9f298a014bF912655E183',
-    royaltyClaimDetails: [{ 
-      childIpId: '0xeaa4Eed346373805B377F5a4fe1daeFeFB3D182a', 
-      royaltyPolicy: '0x793Df8d32c12B0bE9985FFF6afB8893d347B6686', 
-      currencyToken: '0x91f6F05B08c16769d3c85867548615d270C42fC7', 
-      amount: 1 
-    }],
-    txOptions: { waitForTransaction: true },
+  const response = await client.royalty.claimAllRevenue({
+    ancestorIpId: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+    claimer: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+    currencyTokens: [WIP_TOKEN_ADDRESS],
+    childIpIds: ['0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2'],
+    royaltyPolicies: ['0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E']
   })
-  console.log(`Claimed revenue: ${response.amountsClaimed} at snapshotId ${response.snapshotId}`)
+  
+  console.log(`Claimed revenue: ${response.claimedTokens}`);
 }
 
 main();
@@ -189,6 +190,8 @@ main();
 
 # Using a Smart Contract
 
-> 🚧 Not Completed
->
-> A full written tutorial is coming soon. For now, you can see a code example at the bottom of [this file in our boilerplate](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/5_Royalty.t.sol).
+<Cards columns={1}>
+  <Card title="Go to Smart Contract Tutorial" href="https://docs.story.foundation/docs/sc-claiming-royalty" icon="fa-home">
+    View the tutorial here!
+  </Card>
+</Cards>

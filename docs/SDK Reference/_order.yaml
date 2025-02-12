@@ -1,8 +1,9 @@
 - sdk-overview
 - sdk-ipasset
-- sdk-nftclient
 - sdk-license
 - sdk-royalty
 - sdk-dispute
 - sdk-permissions
 - sdk-group
+- sdk-nftclient
+- wip-client

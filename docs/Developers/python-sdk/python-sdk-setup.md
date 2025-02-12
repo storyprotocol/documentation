@@ -1,15 +1,16 @@
 ---
 title: Python SDK Setup
-excerpt: ''
+excerpt: ""
 deprecated: false
 hidden: true
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
+
 # Prerequisite
 
 For running the tutorial for developers, we require Python 10 or later version and pip 24 to be installed in your environment. To install python and pip, we recommend you go to the [Python official website](https://www.python.org/) and download an appropriate version.
@@ -46,9 +47,9 @@ Next we can initiate the SDK Client by first setting up our account and then the
 
 There are two ways to set up an account. The first is to use a private key locally:
 
-> :information_source: Make sure to have WALLET\_PRIVATE\_KEY set up in your .env file.
+> :information_source: Make sure to have WALLET_PRIVATE_KEY set up in your .env file.
 >
-> :information_source: Make sure to have RPC\_PROVIDER\_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io`) or check out other RPCs [here](https://docs.story.foundation/docs/story-network#/explorers).
+> :information_source: Make sure to have RPC_PROVIDER_URL for your desired chain set up in your .env file. You can use a public default one (`RPC_PROVIDER_URL=https://aeneid.storyrpc.io`) or check out other RPCs [here](https://docs.story.foundation/docs/story-network#explorers).
 
 ```python main.py
 import os

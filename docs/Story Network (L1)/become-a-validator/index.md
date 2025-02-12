@@ -1,12 +1,12 @@
 ---
 title: Become a validator
-excerpt: ''
+excerpt: ""
 deprecated: false
 hidden: false
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---

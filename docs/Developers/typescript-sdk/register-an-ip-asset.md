@@ -11,146 +11,201 @@ next:
   description: ''
 ---
 <Cards columns={1}>
-  <Card title="Written Tutorial" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#/" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    Check out a full written walkthrough of registering an IP Asset on Story.
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through.
   </Card>
 </Cards>
 
-This section demonstrates how to register an IP Asset using the TypeScript SDK. There are generally two methods of IP registration:
+Let's say you have some off-chain IP (ex. a book, a character, a drawing, etc). In order to register that IP on Story, you first need to mint an NFT. This NFT is the **ownership** over the IP. Then you **register** that NFT on Story, turning it into an [🧩 IP Asset](doc:ip-asset). The below tutorial will walk you through how to do this.
 
-1. Register an existing NFT as an IP Asset
-2. Create an NFT and register it as an IP Asset in one transaction
+### :warning: Prerequisites
 
-## Prerequisites
+There are a few steps you have to complete before you can start the tutorial.
 
-* [Setup](doc:typescript-sdk-setup) the client object.
+1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
+2. \[OPTIONAL] Go to [Pinata](https://pinata.cloud/) and create a new API key. Add the JWT to your `.env` file:
 
-# Register an NFT as an IP Asset
+```yaml .env
+PINATA_JWT=<YOUR_PINATA_JWT>
+```
 
-You can register your NFT as an IP Asset by simply calling `client.ipAsset.register()` and passing in the token's contract address and token ID, like so:
+3. \[OPTIONAL] Install the `pinata-web3` dependency:
 
-> 📘 NFT Metadata
->
-> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
+```Text Terminal
+npm install pinata-web3
+```
 
-```typescript TypeScript
-import { toHex } from 'viem';
+## 1. \[OPTIONAL] Set up your IP Metadata
 
-const response = await client.ipAsset.register({
-  nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
-  tokenId: "12", // your NFT token ID
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true }
+We can set metadata on our NFT & IP, *but you don't have to*. To do this, view the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for both your NFT & IP.
+
+Use the `generateIpMetadata` function to properly format your metadata and ensure it is of the correct type, as shown below:
+
+```typescript main.ts
+import { IpMetadata } from '@story-protocol/core-sdk'
+// you should already have a client set up (prerequisite)
+import { client } from './utils'
+
+async function main() {
+  const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
+    title: 'My IP Asset',
+    description: 'This is a test IP asset',
+    watermarkImg: 'https://picsum.photos/200',
+    attributes: [
+      {
+        key: 'Rarity',
+        value: 'Legendary',
+      },
+    ],
+  })
+}
+
+main();
+```
+
+## 2. \[OPTIONAL] Set up your NFT Metadata
+
+The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.org/EIPS/eip-721).
+
+```typescript main.ts
+import { IpMetadata } from '@story-protocol/core-sdk'
+import { client } from './utils'
+
+async function main() {
+  // previous code here ...
+
+  const nftMetadata = {
+    name: 'Ownership NFT',
+    description: 'This is an NFT representing owernship of our IP Asset.',
+    image: 'https://picsum.photos/200',
+  }
+}
+
+main();
+```
+
+## 3. \[OPTIONAL] Upload your IP and NFT Metadata to IPFS
+
+In a separate `uploadToIpfs` file, create a function to upload your IP & NFT Metadata objects to IPFS:
+
+```typescript uploadToIpfs.ts
+import { PinataSDK } from "pinata-web3";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT
 });
 
-console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
-```
-```typescript Request Type
-export type RegisterRequest = {
-  nftContract: Address;
-  tokenId: string | number | bigint;
-  deadline?: string | number | bigint;
-} & IpMetadataAndTxOption;
-
-type IpMetadataAndTxOption = {
-  ipMetadata?: {
-    ipMetadataURI?: string;
-    ipMetadataHash?: Hex;
-    nftMetadataURI?: string;
-    nftMetadataHash?: Hex;
-  };
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterIpResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  ipId?: Address;
-};
+export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
+  const { IpfsHash } = await pinata.upload.json(jsonMetadata);
+  return IpfsHash;
+}
 ```
 
-> :information_source: If the provided `tokenId` from the `nftContract` has already been registered, the `response` object will contain the `ipId` of the existing IP Asset and an undefined `txHash`.
+You can then use that function to upload your metadata, as shown below:
 
-Setting `waitForTransaction: true` in the transaction options will return the `ipId` of the newly registered IP asset.
+```typescript main.ts
+import { IpMetadata } from '@story-protocol/core-sdk'
+import { client } from './utils'
+import { uploadJSONToIPFS } from './uploadToIpfs'
+import { createHash } from 'crypto'
 
-After we run the above code, the console output will look like:
+async function main() {
+  // previous code here ...
 
-```Text Console Output
-Root IPA created at transaction hash 0xa3e1caa7c2124b1550d459abc739291cb1be77ac73b99c097707878ac4ef57ae,
-IPA ID: 0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721
+  const ipIpfsHash = await uploadJSONToIPFS(ipMetadata)
+  const ipHash = createHash('sha256').update(JSON.stringify(ipMetadata)).digest('hex')
+  const nftIpfsHash = await uploadJSONToIPFS(nftMetadata)
+  const nftHash = createHash('sha256').update(JSON.stringify(nftMetadata)).digest('hex')
+}
+
+main();
 ```
 
-# Create an NFT and Register it as an IP Asset
+## 4. Register an NFT as an IP Asset
 
-Instead of first minting an NFT and then registering it as an IP Asset, this function allows you to mint and register an IP Asset all in one transaction
+Remember that in order to register a new IP, we first have to mint an NFT, which will represent the underlying ownership of the IP. This NFT then gets "registered" and becomes an [🧩 IP Asset](doc:ip-asset).
 
-> 🚧 Before You Use this Function
+For simplicity, we can use the SDK's `createNFTCollection` to create a new NFT collection for us. In a separate file `createSpgNftCollection.ts`, paste the following code (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
+
+> ❓ Why do we have to do this?
 >
-> The address of `spgNftContract` **must** implement <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol" target="_blank">ISPGNFT</a> in order to work.
+> In order to use the `mintAndRegisterIp` function in the next step, we'll have to deploy an **SPG NFT** collection. **This is any contract that implements** [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). An easy way to deploy a contract like this is to call the `createNFTCollection` as you'll see below.
 >
-> An easy way to create a collection that implements ISPGNFT is to call the `createCollection` function on the `nftClient` in the SDK, as shown below.
-
-> 📘 NFT Metadata
+> :warning: You only have to create a new SPG Collection **once**. Once you have your SPG NFT contract address, you can register any amount of IPs and will **not** have to do this again.
 >
-> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
+> Instead of doing this, you can mint an NFT from your own contract and use the [register](https://docs.story.foundation/docs/sdk-ipasset#register) function (providing an `nftContract` and `tokenId`) *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts).
 
-```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
-import { toHex, Address, zeroAddress } from 'viem';
+```typescript createSpgNftCollection.ts
+import { zeroAddress } from 'viem'
+import { client } from './utils'
 
-const newCollection = await client.nftClient.createNFTCollection({
-  name: 'Test NFT',
-  symbol: 'TEST',
-  isPublicMinting: true,
-  mintOpen: true,
-  mintFeeRecipient: zeroAddress,
-  contractURI: '',
-  txOptions: { waitForTransaction: true },
-})
+async function createSpgNftCollection() {
+  const newCollection = await client.nftClient.createNFTCollection({
+    name: 'Test NFTs',
+    symbol: 'TEST',
+    isPublicMinting: true,
+    mintOpen: true,
+    mintFeeRecipient: zeroAddress,
+    contractURI: '',
+    txOptions: { waitForTransaction: true },
+  })
 
-const response = await client.ipAsset.mintAndRegisterIp({
-  // an NFT contract address created by the SPG
-  spgNftContract: newCollection.spgNftContract as Address,
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true }
-});
+  console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
+  console.log(`NFT contract address: ${newCollection.spgNftContract}`)
+}
 
-console.log(`Completed at transaction hash ${response.txHash}, NFT Token ID: ${response.tokenId}, IPA ID: ${response.ipId}, License Terms ID: ${response.licenseTermsId}`);
+createSpgNftCollection();
 ```
-```typescript Request Type
-export type MintAndRegisterIpRequest = {
-  spgNftContract: Address;
-  recipient?: Address;
-} & IpMetadataAndTxOption;
 
-type IpMetadataAndTxOption = {
-  ipMetadata?: {
-    ipMetadataURI?: string;
-    ipMetadataHash?: Hex;
-    nftMetadataURI?: string;
-    nftMetadataHash?: Hex;
-  };
-  txOptions?: TxOptions;
-};
+If you run this code and look at the console output, you will find the SPG NFT contract address. Save this for later.
+
+Now we can actually register our IP by minting an NFT, registering it as an [🧩 IP Asset](doc:ip-asset), and setting both NFT & IP metadata.
+
+> Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
+
+```typescript main.ts
+import { IpMetadata } from '@story-protocol/core-sdk'
+import { client } from './utils'
+import { uploadJSONToIPFS } from './uploadToIpfs'
+import { createHash } from 'crypto'
+import { Address } from 'viem'
+
+async function main() {
+  // previous code here ...
+
+  const response = await client.ipAsset.mintAndRegisterIp({
+    // TODO: insert your SPG_NFT_CONTRACT_ADDRESS here
+    spgNftContract: SPG_NFT_CONTRACT_ADDRESS as Address,
+    allowDuplicates: true,
+    ipMetadata: {
+      ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
+      ipMetadataHash: `0x${ipHash}`,
+      nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
+      nftMetadataHash: `0x${nftHash}`,
+    },
+    txOptions: { waitForTransaction: true },
+  })
+  
+  console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
+  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`)
+}
+
+main();
 ```
-```typescript Response Type
-export type RegisterIpResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  ipId?: Address;
-  tokenId?: bigint;
-};
-```
+
+## 5. Add License Terms to IP
+
+Congratulations, you registered an IP!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Follow the completed code all the way through.
+  </Card>
+</Cards>
+
+Now that your IP is registered, you can create and attach [License Terms](doc:license-terms) to it. This will allow others to mint a license and use your IP, restricted by the terms.
+
+:point_right: We will go over this in the next section, but it's worth mentioning that instead of using the `mintAndRegisterIp` function, you can **register IP + create terms + attach terms** all in the same step with the following functions:
+
+* [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripassetwithpilterms)
+* [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#registeripandattachpilterms)

@@ -10,13 +10,13 @@ metadata:
 next:
   description: ''
 ---
-# Prerequisite
+### :warning: Prerequisites
 
-For running the tutorial for developers, we require node version 18 or later version and npm version 8 to be installed in your environment. To install node and npm, we recommend you go to the [Node.js official website](https://nodejs.org) and download the latest LTS (Long Term Support) version.
+We require node version 18 or later version and npm version 8 to be installed in your environment. To install node and npm, we recommend you go to the [Node.js official website](https://nodejs.org) and download the latest LTS (Long Term Support) version.
 
-# Install the Dependencies
+### :package: Install the Dependencies
 
-In the current folder `story-ts-example`, install the Story Protocol SDK node package, as well as `viem` ([https://www.npmjs.com/package/viem](https://www.npmjs.com/package/viem)) to access the DeFi wallet accounts.
+Install the [Story Protocol SDK](https://www.npmjs.com/package/@story-protocol/core-sdk) node package, as well as [viem](https://www.npmjs.com/package/viem).
 
 ```shell npm
 npm install --save @story-protocol/core-sdk viem
@@ -28,17 +28,17 @@ pnpm install @story-protocol/core-sdk viem
 yarn add @story-protocol/core-sdk viem
 ```
 
-# Initiate SDK Client
+## Initiate SDK Client
 
 Next we can initiate the SDK Client. There are two ways to do this:
 
 1. Using a private key (preferable for some backend admin)
 2. JSON-RPC account like Metamask where users sign their own transactions
 
-## Set Up Private Key Account
+### :key: Set Up Private Key Account
 
 <Cards columns={1}>
-  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/v1.3/scripts/utils/utils.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/utils.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Check out the TypeScript Tutorial for a working example of how to set up the Story SDK Client.
   </Card>
 </Cards>
@@ -49,7 +49,7 @@ Before continuing with the code below:
 2. Make sure to have `RPC_PROVIDER_URL` set up in your `.env` file.
    1. You can use the public default one (`https://aeneid.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
 
-```typescript index.ts
+```typescript utils.ts
 import { http } from 'viem';
 import { Account, privateKeyToAccount, Address } from 'viem/accounts';
 import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
@@ -65,7 +65,7 @@ const config: StoryConfig = {
 export const client = StoryClient.newClient(config);
 ```
 
-## Set Up JSON-RPC Account (ex. Metamask)
+### :purse: Set Up JSON-RPC Account (ex. Metamask)
 
 We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
 

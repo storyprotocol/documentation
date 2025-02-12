@@ -2,7 +2,7 @@
 title: Register License Terms
 excerpt: Learn how to register new License Terms in TypeScript.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   title: ''
   description: ''
@@ -33,7 +33,7 @@ import { zeroAddress } from 'viem';
 
 const licenseTerms: LicenseTerms = {
   defaultMintingFee: 0n,
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   transferable: false,
   expiration: 0n,
@@ -121,8 +121,8 @@ export type RegisterPILResponse = {
 
 ```typescript TypeScript
 const commercialUseParams = {
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: '10' // 10 of the currency (using the above currency, 10 SUSD)
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: '10' // 10 of the currency (using the above currency, 10 $WIP)
 }
 
 const response = await client.license.registerCommercialUsePIL({
@@ -156,8 +156,8 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 
 ```typescript TypeScript
 const commercialRemixParams = {
-  currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: '10', // 10 of the currency (using the above currency, 10 SUSD)
+  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: '10', // 10 of the currency (using the above currency, 10 $WIP)
   commercialRevShare: 10 // 10%
 }
 

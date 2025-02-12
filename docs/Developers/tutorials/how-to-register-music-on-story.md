@@ -12,11 +12,17 @@ metadata:
 next:
   description: ''
 ---
-In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer. You can see an example final result <a href="https://explorer.story.foundation/ipa/0xC627E15bD2C44fC3221065E7ebdCfe61411fF5CA" target="_blank">here</a>.
+In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer.
 
-> 📢 Justin Bieber is coming to Story!
->
-> "Peaches" by Justin Bieber is one of the first RWAs coming to Story. Check out the announcement <a href="https://x.com/StoryProtocol/status/1881713146274156951" target="_blank">here</a>!
+<Cards columns={2}>
+  <Card title="Example Final Result" href="https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" icon="fa-home" target="_blank">
+    View an example result after following this tutorial.
+  </Card>
+
+  <Card title="Justin Bieber is coming to Story!" href="https://x.com/StoryProtocol/status/1881713146274156951" icon="fa-megaphone" target="_blank">
+    "Peaches" by Justin Bieber is one of the first RWAs coming to Story. Check out the announcement!
+  </Card>
+</Cards>
 
 ## 0. Create a Song
 
@@ -33,7 +39,7 @@ This is the URL we'll use in step 2.
 
 ## 1. Complete the "How to Register IP" Tutorial
 
-Most of what we need to do is already covered in [How to Register IP on Story](doc:how-to-register-ip-on-story). Complete that tutorial first, and then come back here.
+Most of what we need to do is already covered in [Register an IP Asset](doc:register-an-ip-asset). Complete that tutorial first, and then come back here.
 
 ## 2. Change Metadata
 
@@ -43,19 +49,19 @@ The only difference is how you set your metadata. In your `ipMetadata`, you can 
 
 ```typescript main.ts
 const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
-  title: 'My IP Asset',
-  description: 'This is a test IP asset',
+  title: 'Midnight Marriage',
+  description: 'This is a house-style song generated on suno.',
   ipType: 'Music',
   media: [
     {
-      name: 'Rise Again',
+      name: 'Midnight Marriage',
       url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
       mimeType: 'audio/mpeg',
     },
   ],
   attributes: [
     {
-      key: 'Artist',
+      key: 'Suno Artist',
       value: 'amazedneurofunk956',
     },
     {
@@ -69,7 +75,7 @@ const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
   ],
   creators: [
     {
-      name: 'srivatsan_qb',
+      name: 'Jacob Tucker',
       address: account.address,
       contributionPercent: 100,
     },
@@ -84,19 +90,19 @@ In your `nftMetadata`, **in order for the music to actually be played on our exp
 
 ```typescript main.ts
 const nftMetadata = {
-  name: 'Test NFT',
-  description: 'This is a test NFT',
+  name: 'Midnight Marriage',
+  description: 'This is an NFT representing ownership of the Midnight Marriage song.',
   image: 'https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg',
   media: [
     {
-      name: 'Rise Again',
+      name: 'Midnight Marriage',
       url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
       mimeType: 'audio/mpeg',
     },
   ],
   attributes: [
     {
-      key: 'Artist',
+      key: 'Suno Artist',
       value: 'amazedneurofunk956',
     },
     {
@@ -113,6 +119,6 @@ const nftMetadata = {
 
 ## 3. Done!
 
-When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0xC627E15bD2C44fC3221065E7ebdCfe61411fF5CA) on our explorer.
+When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!

@@ -12,308 +12,116 @@ metadata:
 next:
   description: ''
 ---
-This section demonstrates how to register an IP Asset as a derivative of another. **Luckily there are many ways you can do this based on what is best for you**, and it is up to you to choose which one you need.
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercialSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    All of this page is covered in this working code example.
+  </Card>
+</Cards>
 
-## Prerequisites
+This section demonstrates how to register an IP Asset as a derivative of another.
 
-* [Setup](doc:typescript-sdk-setup) the client object.
-* The parent IP Asset must be registered and have License Terms attached to it.
+### :warning: Prerequisites
 
-# Existing Child IP + License Token
+There are a few steps you have to complete before you can start the tutorial.
 
-## Additional Prerequisites
+1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-* An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
+## 0. Before We Start
 
-If you already have a License Token, it is easier to register a derivative this way. We can register a child IPA as a derivative of a parent IPA by calling `client.ipAsset.registerDerivativeWithLicenseTokens()` like so:
+There are a lot of ways to register an IP Asset as a derivative of another. Below, we will help you figure out what function you should use.
 
-```typescript TypeScript
-const response = await client.ipAsset.registerDerivativeWithLicenseTokens({
-  childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-  licenseTokenIds: ["5"], // array of license ids relevant to the creation of the derivative, minted from the parent IPA
-  txOptions: { waitForTransaction: true }
-});
-
-console.log(`Derivative IPA linked to parent at transaction hash ${response.txHash}`)
-```
-```typescript Request Type
-export type RegisterDerivativeWithLicenseTokensRequest = {
-  childIpId: Address;
-  licenseTokenIds: string[] | bigint[] | number[];
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterDerivativeWithLicenseTokensResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-};
-```
-
-# Existing Child IP + Parent IP
-
-You can also register a derivative directly, without needing a License Token. There is no real difference between `registerDerivativeWithLicenseTokens` (above) and `registerDerivative` (below) except that the former requires an already minted License Token and the latter is a convenient function that handles it for you.
-
-> ❓ "Why would I ever use a License Token then?"
+> 📘 Have no idea?
 >
-> There are a few times when you would need a License Token to register a derivative:
+> It is best to figure out which SDK function to use based on what is easiest for you. But if you have no idea, simply continue to the next section.
+
+Do you already have a [License Token](doc:license-token) you can use?
+
+* :white_check_mark: Yes: Is the derivative IP Asset already registered?
+  * :white_check_mark: Yes: Use [registerDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#registerderivativewithlicensetokens)
+  * :x: No: Do you have your own NFT contract, or an already minted NFT?
+    * :white_check_mark: Yes: Use [registerIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#registeripandmakederivativewithlicensetokens)
+    * :x: No: Use [mintAndRegisterIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripandmakederivativewithlicensetokens)
+* :x: No: Is the derivative IP Asset already registered?
+  * :white_check_mark: Yes: Use [registerDerivative](https://docs.story.foundation/docs/sdk-ipasset#registerderivative)
+  * :x: No: Do you have your own NFT contract, or an already minted NFT?
+    * :white_check_mark: Yes: Use [registerDerivativeIp](https://docs.story.foundation/docs/sdk-ipasset#registerderivativeip)
+    * :x: No: Use [mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripandmakederivative)
+
+### 0a. :question: Why would I ever use a License Token if it's not needed?
+
+There are a few times when **you would need** a License Token to register a derivative:
+
+* The License Token contains private license terms, so you would only be able to register as a derivative if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
+* The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `defaultMintingFee`.
+
+## 1. Register Derivative
+
+> 📘 This is just an example
 >
-> * The License Token contains private license terms, so you would only be able to register if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
-> * The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `mintingFee`.
+> You are encouraged to figure out the best derivative function to use based on the survey above. However, if you don't know and want to be walked through one solution, this next part is for you.
 
-> 📘 Quick Note
->
-> Remember that once License Terms are attached to an IP Asset, it becomes public to register a derivative with those terms, which is why you don't necessarily need a License Token first. Read more on that [here](https://docs.story.foundation/docs/license-terms#license-terms-attached-to-ip-asset).
+We're going to assume you have :x: no license tokens, :x: the derivative IP is not yet registered, and :x: you don't have your own NFT contract or an already minted NFT.
 
-```typescript TypeScript
-const response = await client.ipAsset.registerDerivative({
-  childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-  parentIpIds: ["0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba"],
-  licenseTermsIds: ["5"],
-  txOptions: { waitForTransaction: true }
-});
+**Follow steps 1-4 of** [Register an IP Asset](doc:register-an-ip-asset). Note you can skip step 4 if you already have an SPG NFT Collection. Then, come back here.
 
-console.log(`Derivative IPA linked to parent at transaction hash ${response.txHash}`)
-```
-```typescript Request Type
-export type RegisterDerivativeRequest = {
-  childIpId: Address;
-  parentIpIds: Address[];
-  licenseTermsIds: string[] | bigint[] | number[];
-  licenseTemplate?: Address;
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterDerivativeResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  childIpId?: Address;
-};
-```
+Modify your code such that...
 
-# Existing NFT, Register IP, and Link to Existing Parent IP
+1. Instead of using `mintAndRegisterIp`, use `mintAndRegisterIpAndMakeDerivative`
+2. Add a `derivData` field, where:
+   1. `parentIpIds` is the `ipIds` of the parents you want to become a derivative of. **NOTE: Once you become a derivative, you cannot add more parents**
+   2. `licenseTermIds` is an array of license terms you want to register under. These are the terms your derivative must abide by
+   3. Set `maxMintingFee`, `maxRts`, and `maxRevenueShare` to be left as disabled/default as shown below
 
-This function allows you to do all of the following: [Register an NFT as an IP Asset](doc:register-an-nft-as-an-ip-asset) :arrow_forward: [Register an IPA as a Derivative](doc:register-ipa-as-derivative)
+Now we can call the function like so:
 
-```typescript TypeScript
-import { toHex } from 'viem';
+> Associated Docs: [ipAsset.mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripandmakederivative)
 
-const response = await client.ipAsset.registerDerivativeIp({
-  nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
-  tokenId: '127',
-  derivData: {
-    parentIpIds: ['0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721'],
-    licenseTermsIds: ['13']
-  },
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true }
-});
+```typescript main.ts
+import { IpMetadata, DerivativeData } from '@story-protocol/core-sdk'
+import { client } from './utils'
+import { uploadJSONToIPFS } from './uploadToIpfs'
+import { createHash } from 'crypto'
+import { Address } from 'viem'
 
-console.log(`Completed at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
-```
-```typescript Request Type
-export type RegisterIpAndMakeDerivativeRequest = {
-  nftContract: Address;
-  tokenId: string | number | bigint;
-  deadline?: string | number | bigint;
-  derivData: {
-    parentIpIds: Address[];
-    licenseTermsIds: string[] | bigint[] | number[];
-    licenseTemplate?: Address;
+async function main() {
+  // previous code here ...
+  
+  const derivData: DerivativeData = {
+    // TODO: insert the parent's ipId
+    parentIpIds: [PARENT_IP_ID],
+    // TODO: insert the licenseTermsId attached to parent IpId
+    licenseTermsIds: [LICENSE_TERMS_ID],
+    maxMintingFee: BitInt(0), // disabled
+    maxRts: 100_000_000, // default
+    maxRevenueShare: 100, // default
   };
-} & IpMetadataAndTxOption;
 
-type IpMetadataAndTxOption = {
-  ipMetadata?: {
-    ipMetadataURI?: string;
-    ipMetadataHash?: Hex;
-    nftMetadataURI?: string;
-    nftMetadataHash?: Hex;
-  };
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterIpAndMakeDerivativeResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  ipId?: Address;
-};
-```
+  const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
+    // TODO: insert your NFT contract address created by the SPG
+    spgNftContract: SPG_NFT_CONTRACT_ADDRESS as Address,
+    derivData,
+    allowDuplicates: true,
+    ipMetadata: {
+      ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
+      ipMetadataHash: `0x${ipHash}`,
+      nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
+      nftMetadataHash: `0x${nftHash}`,
+    },
+    txOptions: { waitForTransaction: true }
+  });
 
-# Existing NFT, Register IP, and Link to Existing Parent IP w/ License Tokens
-
-## Additional Prerequisites
-
-* An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
-
-```typescript TypeScript
-import { toHex } from 'viem';
-
-const response = await client.ipAsset.registerIpAndMakeDerivativeWithLicenseTokens({
-  nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
-  tokenId: '127',
-  licenseTokenIds: ['10'],
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true }
-});
-
-console.log(`Completed at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
-```
-```typescript Request Type
-export type RegisterIpAndMakeDerivativeWithLicenseTokensRequest = {
-  nftContract: Address;
-  tokenId: string | number | bigint;
-  licenseTokenIds: string[] | bigint[] | number[];
-  deadline?: string | number | bigint;
-} & IpMetadataAndTxOption;
-
-type IpMetadataAndTxOption = {
-  ipMetadata?: {
-    ipMetadataURI?: string;
-    ipMetadataHash?: Hex;
-    nftMetadataURI?: string;
-    nftMetadataHash?: Hex;
-  };
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterIpResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  ipId?: Address;
-  tokenId?: bigint;
-};
+  console.log(`Completed at transaction hash ${response.txHash}, IPA ID: ${response.ipId}, Token ID: ${response.tokenId}`);
+}
 ```
 
-# Mint NFT, Register IP, and Link to Existing Parent IP
+## 2. Paying and Claiming Revenue
 
-This function allows you to do all of the following: Mint an NFT :arrow_forward: [Register an NFT as an IP Asset](doc:register-an-nft-as-an-ip-asset) :arrow_forward: [Register an IPA as a Derivative](doc:register-ipa-as-derivative)
+Congratulations, you registered a derivative IP Asset!
 
-> 🚧 Before You Use this Function
->
-> The address of `nftContract` **must** implement <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol" target="_blank">ISPGNFT</a> in order to work.
->
-> An easy way to create a collection that implements ISPGNFT is to call the `createCollection` function in the <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/StoryProtocolGateway.sol" target="_blank">SPG contract</a>.
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercialSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    All of this page is covered in this working code example.
+  </Card>
+</Cards>
 
-> 📘 NFT Metadata
->
-> Note that this function will also set the underlying NFT's `tokenUri` to whatever is passed under `ipMetadata.nftMetadataURI`.
-
-```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
-import { toHex } from 'viem';
-
-const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
-  // an NFT contract address created by the SPG
-  spgNftContract: "0xfE265a91dBe911db06999019228a678b86C04959",
-  derivData: {
-    parentIpIds: ['0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721'],
-    licenseTermsIds: ['13']
-  },
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true }
-});
-
-console.log(`Completed at transaction hash ${response.txHash}, IPA ID: ${response.ipId}, Token ID: ${response.tokenId}`);
-```
-```typescript Request Type
-export type MintAndRegisterIpAndMakeDerivativeRequest = {
-  nftContract: Address;
-  derivData: {
-    parentIpIds: Address[];
-    licenseTermsIds: string[] | bigint[] | number[];
-    licenseTemplate?: Address;
-  };
-  nftMetadata?: string;
-  recipient?: Address;
-} & IpMetadataAndTxOption;
-
-type IpMetadataAndTxOption = {
-  ipMetadata?: {
-    ipMetadataURI?: string;
-    ipMetadataHash?: Hex;
-    nftMetadataURI?: string;
-    nftMetadataHash?: Hex;
-  };
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterDerivativeResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  childIpId?: Address;
-  tokenId?: bigint;
-};
-```
-
-# Mint NFT, Register IP, and Link to Existing Parent IP w/ License Tokens
-
-## Additional Prerequisites
-
-* An already minted License Token from the parent IP Asset. Learn how to mint a License Token [here](doc:mint-a-license).
-
-```typescript TypeScript
-import { toHex } from 'viem';
-
-const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLicenseTokens({
-  spgNftContract: "0xfE265a91dBe911db06999019228a678b86C04959", // your NFT contract address
-  licenseTokenIds: ['10'],
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
-  ipMetadata: {
-    ipMetadataURI: 'test-uri',
-    ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
-    nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
-    nftMetadataURI: 'test-nft-uri',
-  },
-  txOptions: { waitForTransaction: true }
-});
-
-console.log(`Completed at transaction hash ${response.txHash}, IPA ID: ${response.ipId}, Token ID: ${response.tokenId}`);
-```
-```typescript Request Type
-export type MintAndRegisterIpAndMakeDerivativeWithLicenseTokensRequest = {
-  spgNftContract: Address;
-  licenseTokenIds: string[] | bigint[] | number[];
-  recipient?: Address;
-} & IpMetadataAndTxOption;
-
-type IpMetadataAndTxOption = {
-  ipMetadata?: {
-    ipMetadataURI?: string;
-    ipMetadataHash?: Hex;
-    nftMetadataURI?: string;
-    nftMetadataHash?: Hex;
-  };
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterIpResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  ipId?: Address;
-  tokenId?: bigint;
-};
-```
+Now that we have established parent-child IP relationships, we can begin to explore payments and automated revenue share based on the license terms. We'll cover that in the upcoming pages.

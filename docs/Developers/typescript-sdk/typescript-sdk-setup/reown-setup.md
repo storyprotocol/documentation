@@ -6,6 +6,7 @@ hidden: false
 metadata:
   robots: index
 ---
+
 > 📘 Optional: Official WalletConnect Docs
 >
 > Check out the official Wagmi + Reown installation docs [here](https://docs.walletconnect.com/appkit/next/core/installation).
@@ -27,34 +28,35 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 ```jsx config/index.tsx
-import { cookieStorage, createStorage, http } from '@wagmi/core'
-import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
-import { mainnet, arbitrum } from '@reown/appkit/networks'
+import { cookieStorage, createStorage, http } from "@wagmi/core";
+import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+import { mainnet, arbitrum } from "@reown/appkit/networks";
+import { aeneid } from "@story-protocol/core-sdk";
 
 // Get projectId from https://cloud.reown.com
-export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
+export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 
 if (!projectId) {
-  throw new Error('Project ID is not defined')
+  throw new Error("Project ID is not defined");
 }
 
-export const networks = [mainnet, arbitrum]
+export const networks = [aeneid];
 
 //Set up the Wagmi Adapter (Config)
 export const wagmiAdapter = new WagmiAdapter({
   storage: createStorage({
-    storage: cookieStorage
+    storage: cookieStorage,
   }),
   ssr: true,
   projectId,
-  networks
-})
+  networks,
+});
 
-export const config = wagmiAdapter.wagmiConfig
+export const config = wagmiAdapter.wagmiConfig;
 ```
 ```jsx context/index.tsx
 'use client'
@@ -150,17 +152,17 @@ import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 export default function TestComponent() {
   const { data: wallet } = useWalletClient();
-  
+
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
       account: wallet!.account,
       transport: custom(wallet!.transport),
-      chainId: "odyssey",
+      chainId: "aeneid",
     };
     const client = StoryClient.newClient(config);
     return client;
   }
-  
+
   async function registerIp() {
     const client = await setupStoryClient();
     const response = await client.ipAsset.register({
@@ -178,9 +180,9 @@ export default function TestComponent() {
       `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
     );
   }
-  
+
   return (
-    {/* */} 
+    {/* */}
   )
 }
 ```

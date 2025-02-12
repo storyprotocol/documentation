@@ -6,6 +6,7 @@ hidden: false
 metadata:
   robots: index
 ---
+
 > 📘 Optional: Official RainbowKit Docs
 >
 > Check out the official Wagmi + RainbowKit installation docs [here](https://www.rainbowkit.com/docs/installation).
@@ -27,7 +28,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://rpc.odyssey.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 ```jsx Web3Providers.tsx
@@ -37,12 +38,12 @@ import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
-import { odyssey } from "@story-protocol/core-sdk";
+import { aeneid } from "@story-protocol/core-sdk";
 
 const config = getDefaultConfig({
   appName: "Test Story App",
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string,
-  chains: [odyssey],
+  chains: [aeneid],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
@@ -66,7 +67,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import Web3Providers from "./Web3Providers";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -75,9 +76,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -99,17 +98,17 @@ import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 export default function TestComponent() {
   const { data: wallet } = useWalletClient();
-  
+
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
       account: wallet!.account,
       transport: custom(wallet!.transport),
-      chainId: "odyssey",
+      chainId: "aeneid",
     };
     const client = StoryClient.newClient(config);
     return client;
   }
-  
+
   async function registerIp() {
     const client = await setupStoryClient();
     const response = await client.ipAsset.register({
@@ -127,9 +126,9 @@ export default function TestComponent() {
       `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
     );
   }
-  
+
   return (
-    {/* */} 
+    {/* */}
   )
 }
 ```

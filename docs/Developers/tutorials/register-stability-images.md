@@ -50,7 +50,7 @@ STABILITY_API_KEY=
 5. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
 
 ```yaml .env
-RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
+RPC_PROVIDER_URL=https://aeneid.storyrpc.io
 ```
 
 6. Install the dependencies:
@@ -173,7 +173,7 @@ export const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account,
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: "odyssey",
+  chainId: "aeneid",
 };
 export const client = StoryClient.newClient(config);
 ```
@@ -307,7 +307,7 @@ main();
 
 When registering your image on Story, you can attach [License Terms](doc:license-terms) to the IP. These are real, legally binding terms enforced on-chain by the [📜 Licensing Module](doc:licensing-module), disputable by the [❌ Dispute Module](doc:dispute-module), and in the worst case, able to be enforced off-chain in court through traditional means.
 
-Let's say we want to monetize our image such that every time someone wants to use it (on merch, advertisement, or whatever) they have to pay an initial minting fee of 10 SUSD. Additionally, every time they earn revenue on derivative work, they owe 5% revenue back as royalty.
+Let's say we want to monetize our image such that every time someone wants to use it (on merch, advertisement, or whatever) they have to pay an initial minting fee of 10 $WIP. Additionally, every time they earn revenue on derivative work, they owe 5% revenue back as royalty.
 
 ```typescript main.ts
 import fs from "fs";
@@ -317,7 +317,7 @@ import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
 import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { createHash } from "crypto";
-import { LicenseTerms } from '@story-protocol/core-sdk';
+import { LicenseTerms, WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk';
 import { zeroAddress } from 'viem';
 
 async function main() {
@@ -339,7 +339,7 @@ async function main() {
     derivativesApproval: false,
     derivativesReciprocal: true,
     derivativeRevCeiling: BigInt(0),
-    currency: SUSD, // insert SUSD address from https://docs.story.foundation/docs/deployed-smart-contracts
+    currency: WIP_TOKEN_ADDRESS,
     uri: '',
   } 
 }
@@ -402,25 +402,39 @@ SPG_NFT_CONTRACT_ADDRESS=
 
 The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
+* Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
 
 ```typescript main.ts
 import fs from "fs";
 import axios from "axios";
 import FormData from "form-data";
 import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
-import { IpMetadata } from "@story-protocol/core-sdk";
+import { IpMetadata, WIP_TOKEN_ADDRESS } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { createHash } from "crypto";
-import { LicenseTerms } from '@story-protocol/core-sdk';
+import { LicenseTerms, LicensingConfig } from '@story-protocol/core-sdk';
 import { zeroAddress, Address } from 'viem';
 
 async function main() {
   // previous code here ...
+  
+  // default license config
+  const licensingConfig: LicensingConfig = {
+    isSet: false,
+    mintingFee: BigInt(0),
+    licensingHook: zeroAddress,
+    hookData: zeroHash,
+    commercialRevShare: 0,
+    disabled: false,
+    expectMinimumGroupRewardShare: 0,
+    expectGroupRewardPool: zeroAddress,
+  };
 
   const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
     spgNftContract: process.env.SPG_NFT_CONTRACT_ADDRESS as Address,
-    terms: [commercialRemixTerms], // the terms we created in the previous step
+    allowDuplicates: true,
+    // the terms we created in the previous step
+    licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }],
     ipMetadata: {
       ipMetadataURI: process.env.PINATA_GATEWAY + '/files/' + ipIpfsHash,
       ipMetadataHash: `0x${ipHash}`,
