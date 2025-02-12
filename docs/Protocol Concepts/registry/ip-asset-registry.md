@@ -10,11 +10,13 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAssetRegistry.sol).
+<Cards columns={1}>
+  <Card title="IPAssetRegistry.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAssetRegistry.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the IP Asset Registry.
+  </Card>
+</Cards>
 
-The IP Asset Registry is responsible for registering IPs into the protocol. It deploys a dedicated [IP Account](doc:ip-account) contract for each new IP Asset registered on the protocol (*NOTE: This registry inherits from IP Account Registry*)
+The IP Asset Registry is responsible for registering IPs into the protocol. It deploys a dedicated [IP Account](doc:ip-account) contract for each new IP Asset registered on the protocol (*NOTE: This registry inherits from the* [IP Account Registry](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAccountRegistry.sol))
 
 ### Notable Functions
 
