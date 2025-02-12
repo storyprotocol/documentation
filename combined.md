@@ -11262,7 +11262,7 @@ In this tutorial, you will learn how to dispute an IP on Story using the TypeScr
 
 ## The Explanation
 
-There are many instances where you may want to dispute an IP - whether that IP is or is not owned by you. Disputing IP on Story is easy thanks to our [❌ Dispute Module](doc:dispute-module) and the [UMA Arbitration Policy](doc:uba-arbitration-policy).
+There are many instances where you may want to dispute an IP - whether that IP is or is not owned by you. Disputing IP on Story is easy thanks to our [❌ Dispute Module](doc:dispute-module) and the [UMA Arbitration Policy](doc:uma-arbitration-policy).
 
 Let's say you register a drawing, and then someone else registers that drawing with 1 pixel off. You can dispute it along a `IMPROPER_REGISTRATION` tag, which communicates potential plagiarism.
 
@@ -11320,7 +11320,7 @@ To dispute an IP Asset, you will need:
 * the `targetIpId` of the IP Asset you are disputing (we use a test one below)
 * the `targetTag` that you are applying to the dispute. Only [whitelisted tags](https://docs.story.foundation/docs/dispute-module#dispute-tags) can be applied.
 * a `cid` (Content Identifier) is a unique identifier in IPFS that represents the dispute evidence you must provide, as described [here](https://docs.story.foundation/docs/uma-arbitration-policy#dispute-evidence-submission-guidelines) (we use a test one below).
-  * **Note you can only provide a CID one time.** After it is used, it can't be used as evidence again.
+  * :warning: **Note you can only provide a CID one time.** After it is used, it can't be used as evidence again.
 
 Create a `main.ts` file and add the code below:
 
