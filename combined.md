@@ -3604,9 +3604,15 @@ The following document will walk through all of the major components of the Lice
 * [License Config / Hook](doc:license-config-hook)
 
 # 🔒 Access Controller
-<Image align="center" src="https://files.readme.io/ff607ff-Screenshot_2024-01-23_at_14.30.19.png" />
+<Cards columns={1}>
+  <Card title="AccessController.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/access/AccessController.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Access Controller.
+  </Card>
+</Cards>
 
 Access Controller manages all permission-related states and permission checks in Story Protocol. In particular, it maintains the *Permission Table* and *Permission Engine* to process and store permissions. IPAccount permissions are set by the IPAccount owner.
+
+<Image align="center" src="https://files.readme.io/ff607ff-Screenshot_2024-01-23_at_14.30.19.png" />
 
 ## Permission Table
 
@@ -3628,77 +3634,10 @@ Wildcard is also supported when defining permissions; it defines a permission th
 
 With wildcards, users can easily define a whitelist or blacklist of permissions.
 
-<Table>
-  <thead>
-    <tr>
-      <th>
-        IPAccount
-      </th>
-
-      <th>
-        Signer (caller)
-      </th>
-
-      <th>
-        To (module)
-      </th>
-
-      <th>
-        Func
-      </th>
-
-      <th>
-        Permission
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>
-        0x123..111
-      </td>
-
-      <td>
-        0x789..222
-      </td>
-
-      <td>
-        \*
-      </td>
-
-      <td>
-        \*
-      </td>
-
-      <td>
-        Allow
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        0x123..111
-      </td>
-
-      <td>
-        0x789..222
-      </td>
-
-      <td>
-        0x790..333
-      </td>
-
-      <td>
-        \*
-      </td>
-
-      <td>
-        Deny
-      </td>
-    </tr>
-  </tbody>
-</Table>
+| IPAccount  | Signer (caller) | To (module) | Func | Permission |
+| :--------- | :-------------- | :---------- | :--- | :--------- |
+| 0x123..111 | 0x789..222      | \*          | \*   | Allow      |
+| 0x123..111 | 0x789..222      | 0x790..333  | \*   | Deny       |
 
 The above example shows that the signer (0x789...) is unable to invoke any functions of the module (0x790...) on behalf of the IPAccount (0x123...).
 
@@ -3715,99 +3654,11 @@ In other words, the IPAccount has blacklisted the signer from calling any functi
 
 Specific permissions override general permissions.
 
-<Table>
-  <thead>
-    <tr>
-      <th>
-        IPAccount
-      </th>
-
-      <th>
-        Signer (caller)
-      </th>
-
-      <th>
-        To (module)
-      </th>
-
-      <th>
-        Func
-      </th>
-
-      <th>
-        Permission
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>
-        0x123..111
-      </td>
-
-      <td>
-        0x789..222
-      </td>
-
-      <td>
-        \*
-      </td>
-
-      <td>
-        \*
-      </td>
-
-      <td>
-        Allow
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        0x123..111
-      </td>
-
-      <td>
-        0x789..222
-      </td>
-
-      <td>
-        0x790..333
-      </td>
-
-      <td>
-        \*
-      </td>
-
-      <td>
-        Deny
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        0x123..111
-      </td>
-
-      <td>
-        0x789..222
-      </td>
-
-      <td>
-        0x790..333
-      </td>
-
-      <td>
-        0xCCCCDDDD
-      </td>
-
-      <td>
-        Allow
-      </td>
-    </tr>
-  </tbody>
-</Table>
+| IPAccount  | Signer (caller) | To (module) | Func       | Permission |
+| :--------- | :-------------- | :---------- | :--------- | :--------- |
+| 0x123..111 | 0x789..222      | \*          | \*         | Allow      |
+| 0x123..111 | 0x789..222      | 0x790..333  | \*         | Deny       |
+| 0x123..111 | 0x789..222      | 0x790..333  | 0xCCCCDDDD | Allow      |
 
 The above shows that the signer (0x789...) is not allowed to call any functions of the module (0x790...) on behalf of IPAccount (0x123...), except for the function 0xCCCCDDDD
 
@@ -3892,7 +3743,6 @@ contract MockRegistry {
 > 📘 The IPAccount's permissions will be revoked upon transfer of ownership.
 >
 > The permissions associated with the IPAccount are exclusively linked to its current owner. When the ownership of the IPAccount is transferred to a new individual, the existing permissions granted to the previous owner are automatically revoked. This ensures that only the current, legitimate owner has access to these permissions. If, in the future, the IPAccount ownership is transferred back to the original owner, the permissions that were initially revoked will be reinstated, restoring the original owner's access and control.
-
 
 # IP Asset
 ## IPAssetClient
