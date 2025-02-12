@@ -12552,17 +12552,19 @@ Congratulations, you registered a derivative IP Asset!
 Now that we have established parent-child IP relationships, we can begin to explore payments and automated revenue share based on the license terms. We'll cover that in the upcoming pages.
 
 # ⚙️ Smart Contract Guide
-In this section, we will briefly go over the protocol contracts and then guide you through how to start building on top of the protocol. If you haven't yet familiarized yourself with the overall architecture, we recommend first going over the [Overview](doc:overview) section.
+In this section, we will briefly go over the protocol contracts and then guide you through how to start building on top of the protocol. If you haven't yet familiarized yourself with the overall architecture, we recommend first going over the [Architecture Overview](doc:overview) section.
 
-# Smart Contract Tutorial
+## Smart Contract Tutorial
 
-> ✅ Completed Code
->
-> Skip the tutorial and view the completed code [here](https://github.com/storyprotocol/story-protocol-boilerplate/tree/v1.3). Follow the README instructions to run the tests, or go to the `/test` folder to view all of the example contracts.
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    > ✅ Skip the tutorial and view the completed code. Follow the README instructions to run the tests, or go to the `/test` folder to view all of the example contracts.
+  </Card>
+</Cards>
 
-**If you want to set things up from scratch**, then continue with the following tutorials, starting with the [Setup Your Own Project](doc:sc-tutorial-quick-setup) step.
+**If you want to set things up from scratch**, then continue with the following tutorials, starting with the [Setup Your Own Project](doc:sc-setup) step.
 
-# Our Smart Contracts
+## Our Smart Contracts
 
 As of the current version, our Proof-of-Creativity Protocol is compatible with all EVM chains and is written as a set of Smart Contracts in Solidity. There are two repositories that you may interact with as a developer:
 
