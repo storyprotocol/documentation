@@ -44,7 +44,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)
+        `https://mainnet.storyrpc.io`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -76,11 +76,11 @@ next:
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        BlockScout Explorer ↗️
+        <a href="https://storyscan.xyz/" target="_blank">BlockScout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://www.storyscan.xyz/](https://www.storyscan.xyz/)
+        `https://storyscan.xyz/`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -90,11 +90,11 @@ next:
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        OKX Explorer
+        <a href="https://www.okx.com/web3/explorer/story" target="_blank">OKX Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://www.okx.com/web3/explorer/story](https://www.okx.com/web3/explorer/story)
+        `https://www.okx.com/web3/explorer/story`
       </td>
 
       <td style={{ textAlign: "left" }}>
