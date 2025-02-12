@@ -14,9 +14,11 @@ next:
 ---
 ## License Config
 
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/lib/Licensing.sol).
+<Cards columns={1}>
+  <Card title="LicensingConfig Struct" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/lib/Licensing.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the LicensingConfig struct in the smart contract.
+  </Card>
+</Cards>
 
 Optionally, you can attach a `LicensingConfig` to an IP Asset (for a specific `licenseTermsId` attached to that asset) which contains fields like a `mintingFee` and a `licensingHook`, as shown below.
 
@@ -84,9 +86,11 @@ See [IP Modifications & Restrictions](https://docs.story.foundation/docs/ipa-mod
 
 ## Licensing Hook
 
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/ILicensingHook.sol#L26).
+<Cards columns={1}>
+  <Card title="ILicensingHook.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/interfaces/modules/licensing/ILicensingHook.sol#L26" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Licensing Hook.
+  </Card>
+</Cards>
 
 The `beforeMintLicenseTokens` function, which acts as a hook, is a function that can be called before a License Token is minted to implement custom logic and determine the final `totalMintingFee` of that License Token. The owner of an IP Asset must set the License Config (of which the hook is contained in), with their own implementation of the `beforeMintLicenseTokens` function, for this to be called.
 
