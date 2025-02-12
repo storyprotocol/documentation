@@ -10,7 +10,6 @@ metadata:
 next:
   description: ''
 ---
-
 This section will guide you through how to setup a Story node for mainnet. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
 
 The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:

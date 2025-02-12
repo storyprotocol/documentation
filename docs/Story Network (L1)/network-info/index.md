@@ -10,7 +10,6 @@ metadata:
 next:
   description: ''
 ---
-
 # Overview
 
 Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
