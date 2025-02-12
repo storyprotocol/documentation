@@ -14,7 +14,7 @@ You want to start building on Story quickly... so let's get started!
 
 ## :fast_forward: Skip everything. Go to the code.
 
-<Cards columns={4}>
+<Cards columns={2}>
   <Card title="TypeScript Code Example" href="https://github.com/storyprotocol/typescript-tutorial/tree/main" icon="fa-user" target="_blank">
     This is a clone-able quickstart for you to check out. You can clone it directly and follow the associated README.
   </Card>
