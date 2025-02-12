@@ -3461,9 +3461,11 @@ License Templates are responsible for:
 You can create your own License Template (like the PIL), but it must be approved by the Story team to be fully embedded into the protocol.
 
 # License Terms
-> 🍦 Example License Terms
->
-> View some popular combinations of PIL License Terms, also known as "flavors", [here](https://docs.story.foundation/docs/pil-flavors).
+<Cards columns={1}>
+  <Card title="Example License Terms" href="https://docs.story.foundation/docs/pil-flavors" icon="fa-ice-cream" iconColor="white" target="_blank">
+    View some popular combinations of PIL License Terms, also known as "flavors".
+  </Card>
+</Cards>
 
 License Terms are a particular combination of values from a [License Template](doc:license-template). Indeed, there can and will exist **multiple** License Terms (variations) for each License Template. You can imagine that a License Template generates many License Term variations.
 
