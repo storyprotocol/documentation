@@ -18,7 +18,7 @@ This document walks through the staking specification for Story. The goal is to 
 
 ## Genesis
 
-The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team. Tokens for investors, the core team, and a portion of those of the foundation and ecosystem will start out locked.
+The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team.  Please refer this document for the detailed [Token Distribution](https://www.story.foundation/blog/introducing-ip).
 
 ## Locked vs Unlocked tokens
 
