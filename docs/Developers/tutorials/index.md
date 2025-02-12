@@ -12,6 +12,7 @@ next:
 ---
 ## 📋 Registration
 
+* [How to Register IP on Story](doc:how-to-register-ip-on-story)
 * [How to Register Music on Story](doc:how-to-register-music-on-story)
 
 ## :money_with_wings: Royalty
