@@ -14,7 +14,7 @@ next:
 ---
 When registering your IP on Story, you can attach License Terms to the IP. These are real, legally binding terms enforced on-chain by the [📜 Licensing Module](doc:licensing-module), disputable by the [❌ Dispute Module](doc:dispute-module), and in the worst case, able to be enforced off-chain in court through traditional means.
 
-In them are also terms for commercial usage, which describes how the [💸 Royalty Module](doc:royalty-module) will be enforced (ex. "50% of revenue must be shared with the parent IP)".
+In them are also terms for commercial usage, which describes how the [💸 Royalty Module](doc:royalty-module) will be enforced (ex. "50% of revenue must be shared with the parent IP").
 
 <Cards columns={1}>
   <Card title="Example License Terms" href="https://docs.story.foundation/docs/pil-flavors" icon="fa-ice-cream" iconColor="white" target="_blank">
