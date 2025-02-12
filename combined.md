@@ -2607,14 +2607,10 @@ The Royalty Module defines how revenue flows between IPs on Story. More specific
 
 ## High-Level Example
 
-> 🚧 Quick Note
->
-> The below example uses $USDC, when in reality the token would be one of our [whitelisted revenue tokens](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens) like $WIP.
-
-The below example (using [Liquid Absolute Percentage](doc:liquid-absolute-percentage)) shows what happens when an IP Asset 4 (IPA4) tips IPA3 1,000,000 USDC.
+The below example (using [Liquid Absolute Percentage](doc:liquid-absolute-percentage)) shows what happens when an IP Asset 4 (IPA4) tips IPA3 1,000,000 WIP.
 
 1. Revenue first flows to the Royalty Module contract
-2. Royalty Module sends USDC to both IPA3 and the LAP contract based on the **royalty stack** (15%)
+2. Royalty Module sends WIP to both IPA3 and the LAP contract based on the **royalty stack** (15%)
 3. LAP will distribute funds to further ancestors since they have negotiated some license agreement where they are due revenue from IPA3's earnings.
 
 > Don't worry if you don't understand everything in the picture, this is just to show you an overview of what the Royalty Module is all about.
@@ -2664,13 +2660,13 @@ Let's imagine the scenario below:
 * User C has 80% of Royalty Tokens of IP2
 * IP2 Royalty Stack is 10% - meaning that all its ancestor IPs via Native/Whitelisted policies require IP2 to pay 10% of its revenue in order to create the derivative. In this case, there is only 1 ancestor which is IP1. IP1 demands 10% of IP2's future revenue in order to create a derivative.
 
-In the image below there is an example of a one million USDC payment made to IP2. In the image we can see how much each Royalty Token holder of the entire derivative chain receives when the payment is made.
+In the image below there is an example of a one million WIP payment made to IP2. In the image we can see how much each Royalty Token holder of the entire derivative chain receives when the payment is made.
 
 ![](https://files.readme.io/a96e7d196a85f69dceb2b125ce70008115e15d0aa76b4e14b0dff2007525051b-image.png)
 
-* RT Holder A - From the one million USDC payment gets 100k USDC. Royalty Stack percentage is paid first and RT Holder A has 100% of Royalty Tokens of IP1 so gets to keep the whole 100k USDC.
-* RT Holder B - From the one million USDC payment gets 180k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. B has 20% of Royalty Tokens of IP2 so it receives 900k USDC \* 20% = 180k.
-* RT Holder C - From the one million USDC payment gets 720k USDC. IP2 holders as a whole receive 900k USDC from the original one million USDC payment. Those 900k USDC are then split among the different Royalty Token holders of IP2 which are B and C. C has 80% of Royalty Tokens of IP2 so it receives 900k USDC \* 80% = 720k.
+* RT Holder A - From the one million WIP payment gets 100k WIP. Royalty Stack percentage is paid first and RT Holder A has 100% of Royalty Tokens of IP1 so gets to keep the whole 100k WIP.
+* RT Holder B - From the one million WIP payment gets 180k WIP. IP2 holders as a whole receive 900k WIP from the original one million WIP payment. Those 900k WIP are then split among the different Royalty Token holders of IP2 which are B and C. B has 20% of Royalty Tokens of IP2 so it receives 900k WIP \* 20% = 180k.
+* RT Holder C - From the one million WIP payment gets 720k WIP. IP2 holders as a whole receive 900k WIP from the original one million WIP payment. Those 900k WIP are then split among the different Royalty Token holders of IP2 which are B and C. C has 80% of Royalty Tokens of IP2 so it receives 900k WIP \* 80% = 720k.
 
 ## Derivative Chain Configurations
 
