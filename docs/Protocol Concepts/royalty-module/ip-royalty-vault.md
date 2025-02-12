@@ -15,7 +15,7 @@ next:
 
   Every IP Asset has 100,000,000 Royalty Tokens associated with it, where each token represents the right to 0.000001% of that IPA's revenue (*"Revenue Tokens"*) stored in the pool.
 
-  Revenue Tokens are ERC-20 tokens used for payment (ex. USDC). These tokens must be whitelisted by the protocol to be used.
+  Revenue Tokens are ERC-20 tokens used for payment (ex. WIP). These tokens must be whitelisted by the protocol to be used.
 </Accordion>
 
 Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inflows related to an IP Asset's commercial exploration or from minting licenses. Anyone who holds Royalty Tokens (defined below) has the right to claim their share of this pool.
@@ -29,7 +29,7 @@ Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inf
 ## Token Terminology
 
 1. **Royalty Tokens**: the IP Royalty Vault contract is also the ERC-20 contract for the Royalty Tokens of each IP Asset. This means the address of the IP Royalty Vault for an IP Asset is also the ERC-20 token address of the Royalty Tokens. Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of those gains. The holders of these Royalty Tokens can claim the Revenue Tokens (defined below) that are in the associated IP Royalty Vault.
-2. **Revenue Tokens**: these are the tokens used for payment (ie. ETH, USDC, etc). Royalty Tokens can be used to claim Revenue Tokens. Read below on whitelisting :arrow_heading_down:
+2. **Revenue Tokens**: these are the tokens used for payment (ie. WIP). Royalty Tokens can be used to claim Revenue Tokens. Read below on whitelisting :arrow_heading_down:
 
 ### Whitelisted Revenue Tokens
 
@@ -63,13 +63,9 @@ Because Royalty Tokens are ERC-20, they can be transferred like any other token.
 
 ## How Revenue Flows
 
-> 🚧 Quick Note
->
-> The below example uses $USDC, when in reality the token would be one of our [whitelisted revenue tokens](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens) like $WIP.
-
 This section will help explain how revenue flows from the time of payment to being claimed by the royalty token holder. For the purposes of explanation, we will use an example from the [Liquid Absolute Percentage (LAP)](doc:liquid-absolute-percentage), but it is the same for any royalty policy.
 
-Imagine we have a scenario where IPA4 tips IPA3 1M USDC by calling `payRoyaltyOnBehalf`.
+Imagine we have a scenario where IPA4 tips IPA3 1M WIP by calling `payRoyaltyOnBehalf`.
 
 1. Revenue Tokens flow to the Royalty Module contract. This contract then splits up the tokens based on the **royalty stack** on the receiving IPA. In this case, IPA3 has a royalty stack of 15%, so 850k tokens flow to IP Royalty Vault 3, and 150k tokens flow to the LAP contract.
 
