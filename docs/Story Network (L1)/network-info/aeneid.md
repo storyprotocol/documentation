@@ -74,7 +74,7 @@ next:
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        Blockscout Explorer ↗️
+        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
