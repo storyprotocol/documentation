@@ -15,13 +15,25 @@ The Royalty Module defines how revenue flows between IPs on Story. More specific
 1. Minting a License - when you mint a [License Token](doc:license-token) that has a `mintingFee`. When this is paid by someone (who wants to register a derivative or simply hold the license), the revenue should flow up the ancestry chain.
 2. Tipping Directly - if someone sends revenue to an IP directly, it should flow up the chain.
 
+<Cards columns={1}>
+  <Card title="RoyaltyModule.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/royalty/RoyaltyModule.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Royalty Module.
+  </Card>
+</Cards>
+
+## High-Level Example
+
+> 🚧 Quick Note
+>
+> The below example uses $USDC, when in reality the token would be one of our [whitelisted revenue tokens](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens) like $WIP.
+
 The below example (using [Liquid Absolute Percentage](doc:liquid-absolute-percentage)) shows what happens when an IP Asset 4 (IPA4) tips IPA3 1,000,000 USDC.
 
 1. Revenue first flows to the Royalty Module contract
 2. Royalty Module sends USDC to both IPA3 and the LAP contract based on the **royalty stack** (15%)
 3. LAP will distribute funds to further ancestors since they have negotiated some license agreement where they are due revenue from IPA3's earnings.
 
-**Don't worry if you don't understand everything in the picture, this is just to show you an overview of what the Royalty Module is all about.**
+> Don't worry if you don't understand everything in the picture, this is just to show you an overview of what the Royalty Module is all about.
 
 ![](https://files.readme.io/25e44cabafe06886fef078422c3d48c472f25a12b6ea60207ffa0b63ef2cd65b-image.png)
 
