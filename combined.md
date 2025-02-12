@@ -13071,7 +13071,7 @@ Now that we have established parent-child IP relationships, we can begin to expl
 
 * View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-core-v1/tree/main)
 
-```json Aneid Testnet
+```json Aeneid Testnet
 {
   "AccessController": "0xcCF37d0a503Ee1D4C11208672e622ed3DFB2275a",
   "ArbitrationPolicyUMA": "0xfFD98c3877B8789124f02C7E8239A4b0Ef11E936",
