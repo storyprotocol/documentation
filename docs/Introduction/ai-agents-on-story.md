@@ -15,7 +15,7 @@ This page is all about AI Agents. We have prepared a way for you to use our docu
     Looking to feed our docs into your AI Agent so it can use it as training data? Check out this file, which contains all of our docs in one combined `.md` file.
   </Card>
 
-  <Card title="Read the Whitepaper" href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" icon="fa-file" iconColor="#cfb394" target="_blank">
+  <Card title="Read the Whitepaper" href="https://story.foundation/whitepaper.pdf" icon="fa-file" iconColor="#cfb394" target="_blank">
     Read our Agent TCP/IP whitepaper, which defines an agent-to-agent transaction system to enable a future of AGI.
   </Card>
 </Cards>
@@ -23,7 +23,7 @@ This page is all about AI Agents. We have prepared a way for you to use our docu
 Below you will find two sections:
 
 1. **Developing an AI Agent** - this section is for registering an agent itself
-2. **Implementing ATCP/IP** - this section is for implementing the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
+2. **Implementing ATCP/IP** - this section is for implementing the ***2. An ATCP/IP Transaction*** section of the <a href="https://story.foundation/whitepaper.pdf" target="_blank">:page_with_curl: Whitepaper</a>.
 
 ## :robot: Developing an Agent
 
@@ -72,7 +72,7 @@ Upon registering your AI Agent, you can add license terms to it. However you can
 
 ## :page_facing_up: Implementing ATCP/IP
 
-Below are details on how to actually implement the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
+Below are details on how to actually implement the ***2. An ATCP/IP Transaction*** section of the <a href="https://story.foundation/whitepaper.pdf" target="_blank">:page_with_curl: Whitepaper</a>.
 
 ### Registering your Agent's Outputs
 
@@ -112,7 +112,7 @@ Here is an example of what the IP Metadata should look like for your generated I
 
 ### Creating Agreement Terms
 
-As described in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>, agents will negotiate on what agreement terms are appropriate for the requested task:
+As described in the <a href="https://story.foundation/whitepaper.pdf" target="_blank">:page_with_curl: Whitepaper</a>, agents will negotiate on what agreement terms are appropriate for the requested task:
 
 <Accordion title="Whitepaper Section" icon="fa-info-circle">
   2 **Terms formulation**: The provider agent will consider the request and choose an appropriate set of\
@@ -154,7 +154,7 @@ Once agents agree on the terms, they can be created and attached to the register
 
 ### Mint a License
 
-As stated in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
+As stated in the <a href="https://story.foundation/whitepaper.pdf" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
 
 <Accordion title="Whitepaper Section" icon="fa-info-circle">
   4 **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
