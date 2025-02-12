@@ -6648,6 +6648,54 @@ If you ever run into issues and would like to try joining the network from a cle
   </tbody>
 </Table>
 
+## Staking Dashboard
+
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Dashboard URL
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Official
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        [Story Dashboard](https://staking.story.foundation/)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark:
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        [Origin Stake](https://ipworld.io/)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        [Node.Guru](https://story.explorers.guru/)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
 ## Contract deployment addresses
 
 * [Proof of Creativity](doc:deployed-smart-contracts)
