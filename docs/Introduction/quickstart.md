@@ -26,7 +26,7 @@ You want to start building on Story quickly... so let's get started!
 
 ## :building_construction: Story Network Infra
 
-The [Story Network Guide](doc:story-network) provides all RPC, explorer, and faucet info.
+See [Network Info](doc:network-info) provides all RPC, explorer, and faucet info.
 
 ## :computer: Use our SDKs
 
