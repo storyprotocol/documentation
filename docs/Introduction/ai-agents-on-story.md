@@ -25,7 +25,7 @@ Below you will find two sections:
 1. **Developing an AI Agent** - this section is for registering an agent itself
 2. **Implementing ATCP/IP** - this section is for implementing the ***2. An ATCP/IP Transaction*** section of the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>.
 
-## Developing an Agent
+## :robot: Developing an Agent
 
 Below are details on how to:
 
