@@ -2815,14 +2815,15 @@ Let's say you have an AI bot that uses training data to continuously learn and p
 Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.
 
 # Module Registry
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/ModuleRegistry.sol).
+<Cards columns={1}>
+  <Card title="ModuleRegistry.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/ModuleRegistry.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Module Registry.
+  </Card>
+</Cards>
 
 The Module Registry maintains and updates the global list of modules and hooks registered permissionlessly on Story. It can enable/disable modules on a per-IP Account basis for granular control over each IP Account's interaction with modules and hooks.
 
 **This module is likely not very important for you** unless you wish to dive into creating/reading modules.
-
 
 # 🗂️ Registry
 The various registries on Story function as a primary directory/storage for the global states of the protocol. Obviously, they also contain functions to update that storage.
@@ -2850,11 +2851,13 @@ Stores all license-related states within the protocol, like attaching License Te
 Maintains and updates the global list of modules and hooks registered permissionlessly on Story
 
 # IP Asset Registry
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAssetRegistry.sol).
+<Cards columns={1}>
+  <Card title="IPAssetRegistry.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAssetRegistry.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the IP Asset Registry.
+  </Card>
+</Cards>
 
-The IP Asset Registry is responsible for registering IPs into the protocol. It deploys a dedicated [IP Account](doc:ip-account) contract for each new IP Asset registered on the protocol (*NOTE: This registry inherits from IP Account Registry*)
+The IP Asset Registry is responsible for registering IPs into the protocol. It deploys a dedicated [IP Account](doc:ip-account) contract for each new IP Asset registered on the protocol (*NOTE: This registry inherits from the* [IP Account Registry](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/IPAccountRegistry.sol))
 
 ### Notable Functions
 
@@ -2864,11 +2867,12 @@ function register(uint256 chainid, address tokenContract, uint256 tokenId) exter
 
 This function registers an ERC-721 NFT as a new IP Asset on Story.
 
-
 # Group IP Asset Registry
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/GroupIPAssetRegistry.sol).
+<Cards columns={1}>
+  <Card title="GroupIPAssetRegistry.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/GroupIPAssetRegistry.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Group IP Asset Registry.
+  </Card>
+</Cards>
 
 The Group IP Asset Registry is responsible for managing the registration and tracking of Group IP Assets, including the group members and reward pools.
 
@@ -2898,11 +2902,12 @@ function removeGroupMember(address groupId, address[] calldata ipIds) external o
 
 Removes registered IPAs from a Group IPA.
 
-
 # License Registry
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/LicenseRegistry.sol).
+<Cards columns={1}>
+  <Card title="LicenseRegistry.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/LicenseRegistry.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the License Registry.
+  </Card>
+</Cards>
 
 The License Registry stores all license-related states within the protocol, including managing global state like registering new License Templates like the [Programmable IP License (PIL💊)](doc:programmable-ip-license), attaching licenses to individual [IP Assets](doc:ipasset), registering derivatives, and the like:
 
@@ -2941,8 +2946,7 @@ This function allows you to attach License Terms to an IP Asset.
 function registerDerivativeIp(address childIpId, address[] calldata parentIpIds, address licenseTemplate, uint256[] calldata licenseTermsIds, bool isUsingLicenseToken) external onlyLicensingModule
 ```
 
-This function allows you to register an IP Asset as a derivative of another IP Asset, unlocking things like claimable royalty flows from the [Royalty Module](doc:royalty-module).
-
+This function allows you to register an IP Asset as a derivative of another IP Asset, unlocking things like claimable royalty flows from the [💸 Royalty Module](doc:royalty-module).
 
 # ⚙️ IP Account
 > 🐦 Skip the Read
