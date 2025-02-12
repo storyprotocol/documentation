@@ -10,9 +10,11 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/GroupIPAssetRegistry.sol).
+<Cards columns={1}>
+  <Card title="GroupIPAssetRegistry.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/GroupIPAssetRegistry.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Group IP Asset Registry.
+  </Card>
+</Cards>
 
 The Group IP Asset Registry is responsible for managing the registration and tracking of Group IP Assets, including the group members and reward pools.
 
