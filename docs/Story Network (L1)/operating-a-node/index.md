@@ -5,5 +5,3 @@ hidden: false
 metadata:
   robots: index
 ---
-
-# Operating a Node
