@@ -2445,13 +2445,21 @@ Imagine we have a scenario where IPA4 tips IPA3 1M USDC by calling `payRoyaltyOn
 
 1. Revenue Tokens flow to the Royalty Module contract. This contract then splits up the tokens based on the **royalty stack** on the receiving IPA. In this case, IPA3 has a royalty stack of 15%, so 850k tokens flow to IP Royalty Vault 3, and 150k tokens flow to the LAP contract.
 
-   ![](https://files.readme.io/be5dfdf9064320904ca27bc1f12a2475456064a19049b7d8fb2500d094746e1d-image.png)
+![](https://files.readme.io/9cc0e9761fddd67bfeae74b14e2ec2bf51f686f72a145df096a96b54a17c5cd1-image.png)
+
+<br />
+
 2. The LAP contract separates the payment to the ancestors by calling `transferToVault`. In this case, IPA2 deserves 100k (10% of IPA3's earnings) and IPA1 deserves 50k (5% of IPA3's earnings).
 
-   ![](https://files.readme.io/1ad3a4827aa302dd94bcf45ebca6749b68821fcfaadb6a85c9b70b9c8d3f4af5-image.png)
+![](https://files.readme.io/d91316a30d117ea76bd42eecf3030aa1c6bf251217193d4e6e504d0f7b7367b8-image.png)
+
+<br />
+
 3. Now that the Revenue Tokens are in the IP Royalty Vaults, the associated Royalty Token holders can claim from the vaults. Remember, the Revenue Tokens get claimed to whoever holds the Royalty Tokens. In the most common case, they are in the IP Account since that's where they originate. To claim, you would call either `claimRevenueOnBehalfByTokenBatch` or `claimRevenueOnBehalf`.
 
-   ![](https://files.readme.io/c3523d5de4a3129f07eeceff5ff577178c3b3161b35fa2b75ed6e8ef98191872-image.png)
+![](https://files.readme.io/ef288631b074cd82d2edb95b6b27844db6a36cd8976a29f20a0cd9b393752218-image.png)
+
+<br />
 
 ### External Royalty Policies
 
