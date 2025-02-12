@@ -34,15 +34,9 @@ Below are details on how to:
 
 ## Registering an Agent
 
-<Cards columns={1}>
-  <Card title="Example Agent" href="https://explorer.story.foundation/ipa/0x123C52537C98d6064bF7BbdC7D4A93A9D9c8E43A" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    View an example Agent named Benjamin, registered on our explorer, here.
-  </Card>
-</Cards>
-
 In order to register an AI Agent (or any IP) on Story, follow the [How to Register IP on Story](https://docs.story.foundation/docs/how-to-register-ip-on-story) tutorial. The only difference for AI Agents is how you structure your IP Metadata, which should follow the [IPA Metadata Standard](https://docs.story.foundation/docs/ipa-metadata-standard).
 
-Here is an example of what the IP Metadata should look like for your AI Agent (using Benjamin as an example):
+Here is an example of what the IP Metadata should look like for your AI Agent (using [Benjamin](https://x.com/BenjaminOnIp) as an example):
 
 ```json
 {
@@ -64,53 +58,17 @@ Here is an example of what the IP Metadata should look like for your AI Agent (u
 
 ## Adding Terms to your AI Agent
 
-Upon registering your AI Agent, you can add license terms to it. However you can add more license terms to your AI Agent afterwards as well. Here is an example of how you attach commercial license terms to your agent using the SDK:
+Upon registering your AI Agent, you can add license terms to it. However you can add more license terms to your AI Agent afterwards as well. Follow the below tutorials to learn how to do this:
 
-```typescript TypeScript
-import { LicenseTerms } from '@story-protocol/core-sdk';
+<Cards columns={4}>
+  <Card title="Using the SDK" href="https://docs.story.foundation/docs/attach-terms-to-an-ip-asset" icon="fa-home" target="_blank">
+    Learn how to attach terms to your AI Agent using the SDK.
+  </Card>
 
-const commercialRemixTerms: LicenseTerms = {
-  transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
-  commercialUse: true,
-  commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
-  derivativesApproval: false,
-  derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  uri: '',
-}
-
-const response = await client.ipAsset.registerPilTermsAndAttach({
-  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721',
-  terms: [commercialRemixTerms],
-  txOptions: { waitForTransaction: true },
-})
-console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
-```
-```typescript Request Type
-export type RegisterPilTermsAndAttachRequest = {
-  ipId: Address;
-  terms: RegisterPILTermsRequest[];
-  deadline?: string | number | bigint;
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterPilTermsAndAttachResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  licenseTermsIds?: bigint[];
-};
-```
+  <Card title="Using the Smart Contracts" href="https://docs.story.foundation/docs/sc-attach-license-terms" icon="fa-home" target="_blank">
+    Learn how to attach terms to your AI Agent using the Smart Contracts.
+  </Card>
+</Cards>
 
 # Implementing ATCP/IP
 
