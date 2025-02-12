@@ -175,7 +175,7 @@ main();
 
 ## 5. Upload & Register IP
 
-Now that we have all of our metadata set up, you can easily complete this tutorial by going to [Register an IP Asset](doc:register-an-ip-asset) and **completing steps 3 (Upload your IP and NFT Metadata to IPFS) & 4 (Register an NFT as an IP Asset)**.
+Now that we have all of our metadata set up, you can easily complete this tutorial by going to [Register an IP Asset](https://docs.story.foundation/docs/register-an-ip-asset#3-optional-upload-your-ip-and-nft-metadata-to-ipfs) and **completing steps 3 (Upload your IP and NFT Metadata to IPFS) & 4 (Register an NFT as an IP Asset)**.
 
 Once you have done that, you should see a console log with a link to our IP-explorer that shows your registered AI generated image.
 
