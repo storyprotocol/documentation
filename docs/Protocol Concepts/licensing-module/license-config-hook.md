@@ -80,7 +80,7 @@ You can set the License Config by calling the `setLicenseConfig` function in the
 
 ### Restrictions
 
-See [IP Modifications & Restrictions](https://docs.story.foundation/docs/ipa-modifications#/) for the various restrictions on setting the License Config.
+See [IP Modifications & Restrictions](https://docs.story.foundation/docs/ipa-modifications) for the various restrictions on setting the License Config.
 
 ## Licensing Hook
 

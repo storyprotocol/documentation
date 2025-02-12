@@ -32,7 +32,7 @@ Let's say that IP Asset (`ipId = 0x01`) has License Terms (`licenseTermdId = 10`
 >
 > Be mindful that some IP Assets may have license terms attached that require the user minting the license to pay a `defaultMintingFee`. You can see an example of that in the <a href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercial.ts" target="_blank">TypeScript Tutorial</a>.
 
-> Associated Docs: [license.mintLicenseTokens](https://docs.story.foundation/docs/sdk-license#/mintlicensetokens)
+> Associated Docs: [license.mintLicenseTokens](https://docs.story.foundation/docs/sdk-license#mintlicensetokens)
 
 ```typescript main.ts
 // you should already have a client set up (prerequisite)

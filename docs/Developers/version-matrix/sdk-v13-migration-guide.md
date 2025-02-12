@@ -62,7 +62,7 @@ The function now has 1 extra parameter:
 1. `allowDuplicates`: Set to true to allow minting an NFT with a duplicate `nftMetadataHash`.
    1. **Recommended for simplicity**: `true`
 
-The function has also modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
+The function has also modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook).
 
 :warning: This function will now fail if you do not provide any license terms. For that, just use `mintAndRegisterIp` instead.
 
@@ -120,7 +120,7 @@ const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
 
 ## `registerIpAndAttachPilTerms`
 
-The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
+The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook).
 
 :warning: This function will now fail if you do not provide any license terms. For that, just use `register` instead.
 
@@ -275,7 +275,7 @@ const response = await client.ipAsset.mintAndRegisterIp({
 
 ## `registerPilTermsAndAttach`
 
-The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook#/).
+The function has modified `request.terms` to be `request.licenseTermsData`, which now also takes a `licenseConfig` as described [here](https://docs.story.foundation/docs/license-config-hook).
 
 :warning: This function will now fail if you do not provide any license terms. There is no reason you would be providing empty terms anyway.
 
@@ -408,7 +408,7 @@ All of the following functions have been combined into `claimAllRevenue`:
 * `snapshotAndClaimByTokenBatch`
 * `snapshotAndClaimBySnapshotBatch`
 
-To learn how to use `claimAllRevenue` in the SDK, see [this page](https://docs.story.foundation/docs/claim-revenue#/).
+To learn how to use `claimAllRevenue` in the SDK, see [this page](https://docs.story.foundation/docs/claim-revenue).
 
 # client.dispute
 

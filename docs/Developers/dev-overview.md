@@ -25,7 +25,7 @@ If you're a developer, here is everything you need:
     View transaction data specifically related to IP interactions like registering, licensing, etc.
   </Card>
 
-  <Card title="Quickstart" href="https://docs.story.foundation/docs/quickstart#/" icon="fa-truck-fast" target="_blank">
+  <Card title="Quickstart" href="https://docs.story.foundation/docs/quickstart" icon="fa-truck-fast" target="_blank">
     Start building on Story quickly.
   </Card>
 </Cards>
@@ -48,4 +48,4 @@ Check out the following resources to learn the protocol:
 
 # API
 
-View our [API Reference](https://docs.story.foundation/reference/api-introduction#/).
+View our [API Reference](https://docs.story.foundation/reference/api-introduction).

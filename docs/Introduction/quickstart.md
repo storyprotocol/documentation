@@ -53,7 +53,7 @@ Next you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](do
 * IP protection through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
 
 <Cards columns={1}>
-  <Card title="Register IP on Story" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#/using-the-sdk" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Register IP on Story" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#using-the-sdk" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Learn how to register IP on Story using the TypeScript SDK.
   </Card>
 </Cards>
@@ -125,7 +125,7 @@ Next you'd register that NFT on Story, ultimately creating an [🧩 IP Asset](do
 * IP protection through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)
 
 <Cards columns={1}>
-  <Card title="Register IP on Story" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#/using-a-smart-contract" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Register IP on Story" href="https://docs.story.foundation/docs/how-to-register-ip-on-story#using-a-smart-contract" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Learn how to register IP on Story using the smart contracts.
   </Card>
 </Cards>

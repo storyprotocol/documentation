@@ -15,8 +15,8 @@ next:
 
 # Using the SDK
 
-:warning: This tutorial has moved [here](https://docs.story.foundation/docs/register-an-ip-asset#/).
+:warning: This tutorial has moved [here](https://docs.story.foundation/docs/register-an-ip-asset).
 
 # Using a Smart Contract
 
-:warning: This tutorial has moved [here](https://docs.story.foundation/docs/sc-register-an-ip-asset#/).
+:warning: This tutorial has moved [here](https://docs.story.foundation/docs/sc-register-an-ip-asset).

@@ -77,8 +77,8 @@ export const client = StoryClient.newClient(config)
 To dispute an IP Asset, you will need:
 
 * the `targetIpId` of the IP Asset you are disputing (we use a test one below)
-* the `targetTag` that you are applying to the dispute. Only [whitelisted tags](https://docs.story.foundation/docs/dispute-module#/dispute-tags) can be applied.
-* a `cid` (Content Identifier) is a unique identifier in IPFS that represents the dispute evidence you must provide, as described [here](https://docs.story.foundation/docs/uma-arbitration-policy#/dispute-evidence-submission-guidelines) (we use a test one below).
+* the `targetTag` that you are applying to the dispute. Only [whitelisted tags](https://docs.story.foundation/docs/dispute-module#dispute-tags) can be applied.
+* a `cid` (Content Identifier) is a unique identifier in IPFS that represents the dispute evidence you must provide, as described [here](https://docs.story.foundation/docs/uma-arbitration-policy#dispute-evidence-submission-guidelines) (we use a test one below).
   * **Note you can only provide a CID one time.** After it is used, it can't be used as evidence again.
 
 Create a `main.ts` file and add the code below:
@@ -92,7 +92,7 @@ async function main() {
     // NOTE: you must use your own CID here, because every time it is used,
     // the protocol does not allow you to use it again
     cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
-    // you must pick from one of the whitelisted tags here: https://docs.story.foundation/docs/dispute-module#/dispute-tags
+    // you must pick from one of the whitelisted tags here: https://docs.story.foundation/docs/dispute-module#dispute-tags
     targetTag: 'IMPROPER_REGISTRATION',
     bond: 0,
     liveness: 2592000,

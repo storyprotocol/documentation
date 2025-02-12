@@ -40,7 +40,7 @@ To help with the following scenarios, let's say we have a parent IP Asset that h
 
 ### :coin: Whitelisted Revenue Tokens
 
-Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. $WIP is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#/whitelisted-revenue-tokens).
+Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. $WIP is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens).
 
 > ❗️ Testing: MockERC20
 >
@@ -52,7 +52,7 @@ Only tokens that are whitelisted by our protocol can be used as payment ("revenu
 
 In this scenario, you're an external 3rd-party user who wants to pay an IP Asset 2 $WIP for being cool. When you call the function below, you should make `payerIpId` a zero address because you are not paying on behalf of an IP Asset. Additionally, you would set `amount` to 2.
 
-> Associated Docs: [royalty.payRoyaltyOnBehalf](https://docs.story.foundation/docs/sdk-royalty#/payroyaltyonbehalf)
+> Associated Docs: [royalty.payRoyaltyOnBehalf](https://docs.story.foundation/docs/sdk-royalty#payroyaltyonbehalf)
 
 ```typescript main.ts
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
@@ -80,7 +80,7 @@ Let's say the IP Asset you're paying is a derivative. And due to existing licens
 
 In this scenario, lets say a derivative IP Asset earned 2 USD off-chain. Because the derivative owes the parent IP Asset 50% of its revenue, it could give the parent 1 USD off-chain and be ok. Or, it can send 1 $USD equivalent to the parent on-chain *(for this example, let's just assume 1 $WIP = 1 USD)*.
 
-> Associated Docs: [royalty.payRoyaltyOnBehalf](https://docs.story.foundation/docs/sdk-royalty#/payroyaltyonbehalf)
+> Associated Docs: [royalty.payRoyaltyOnBehalf](https://docs.story.foundation/docs/sdk-royalty#payroyaltyonbehalf)
 
 ```typescript main.ts
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'

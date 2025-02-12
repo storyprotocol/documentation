@@ -14,7 +14,7 @@ next:
 ---
 > 🍦 Example License Terms
 >
-> View some popular combinations of PIL License Terms, also known as "flavors", [here](https://docs.story.foundation/docs/pil-flavors#/).
+> View some popular combinations of PIL License Terms, also known as "flavors", [here](https://docs.story.foundation/docs/pil-flavors).
 
 License Terms are a particular combination of values from a [License Template](doc:license-template). Indeed, there can and will exist **multiple** License Terms (variations) for each License Template. You can imagine that a License Template generates many License Term variations.
 

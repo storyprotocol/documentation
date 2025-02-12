@@ -37,15 +37,15 @@ There are a lot of ways to register an IP Asset as a derivative of another. Belo
 Do you already have a [License Token](doc:license-token) you can use?
 
 * :white_check_mark: Yes: Is the derivative IP Asset already registered?
-  * :white_check_mark: Yes: Use [registerDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#/registerderivativewithlicensetokens)
+  * :white_check_mark: Yes: Use [registerDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#registerderivativewithlicensetokens)
   * :x: No: Do you have your own NFT contract, or an already minted NFT?
-    * :white_check_mark: Yes: Use [registerIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#/registeripandmakederivativewithlicensetokens)
-    * :x: No: Use [mintAndRegisterIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivativewithlicensetokens)
+    * :white_check_mark: Yes: Use [registerIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#registeripandmakederivativewithlicensetokens)
+    * :x: No: Use [mintAndRegisterIpAndMakeDerivativeWithLicenseTokens](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripandmakederivativewithlicensetokens)
 * :x: No: Is the derivative IP Asset already registered?
-  * :white_check_mark: Yes: Use [registerDerivative](https://docs.story.foundation/docs/sdk-ipasset#/registerderivative)
+  * :white_check_mark: Yes: Use [registerDerivative](https://docs.story.foundation/docs/sdk-ipasset#registerderivative)
   * :x: No: Do you have your own NFT contract, or an already minted NFT?
-    * :white_check_mark: Yes: Use [registerDerivativeIp](https://docs.story.foundation/docs/sdk-ipasset#/registerderivativeip)
-    * :x: No: Use [mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivative)
+    * :white_check_mark: Yes: Use [registerDerivativeIp](https://docs.story.foundation/docs/sdk-ipasset#registerderivativeip)
+    * :x: No: Use [mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripandmakederivative)
 
 ### 0a. :question: Why would I ever use a License Token if it's not needed?
 
@@ -74,7 +74,7 @@ Modify your code such that...
 
 Now we can call the function like so:
 
-> Associated Docs: [ipAsset.mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripandmakederivative)
+> Associated Docs: [ipAsset.mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripandmakederivative)
 
 ```typescript main.ts
 import { IpMetadata, DerivativeData } from '@story-protocol/core-sdk'

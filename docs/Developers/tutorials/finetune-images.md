@@ -573,7 +573,7 @@ SPG_NFT_CONTRACT_ADDRESS=
 
 Back in our `registerIp.ts` file, add the following code. It will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-* Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisterip)
+* Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
 
 ```typescript story/registerIp.ts
 import { IpMetadata } from "@story-protocol/core-sdk";

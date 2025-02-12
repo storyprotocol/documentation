@@ -85,7 +85,7 @@ You will be paying the IP Asset with [$WIP](https://aeneid.storyscan.xyz/address
 
 > 📘 Whitelisted Revenue Tokens
 >
-> Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. $WIP is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#/).
+> Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. $WIP is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts).
 
 Now we can call the `payRoyaltyOnBehalf` function. In this case:
 

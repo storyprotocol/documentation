@@ -133,7 +133,7 @@ For simplicity, we can use the SDK's `createNFTCollection` to create a new NFT c
 >
 > :warning: You only have to create a new SPG Collection **once**. Once you have your SPG NFT contract address, you can register any amount of IPs and will **not** have to do this again.
 >
-> Instead of doing this, you can mint an NFT from your own contract and use the [register](https://docs.story.foundation/docs/sdk-ipasset#/register) function (providing an `nftContract` and `tokenId`) *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts).
+> Instead of doing this, you can mint an NFT from your own contract and use the [register](https://docs.story.foundation/docs/sdk-ipasset#register) function (providing an `nftContract` and `tokenId`) *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts).
 
 ```typescript createSpgNftCollection.ts
 import { zeroAddress } from 'viem'
@@ -161,7 +161,7 @@ If you run this code and look at the console output, you will find the SPG NFT c
 
 Now we can actually register our IP by minting an NFT, registering it as an [🧩 IP Asset](doc:ip-asset), and setting both NFT & IP metadata.
 
-> Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisterip)
+> Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
 
 ```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
@@ -207,5 +207,5 @@ Now that your IP is registered, you can create and attach [License Terms](doc:li
 
 We will go over this in the next section, but it's worth mentioning that you can **register IP + create terms + attach terms** all in the same step with the following functions:
 
-* [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/mintandregisteripassetwithpilterms)
-* [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#/registeripandattachpilterms)
+* [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripassetwithpilterms)
+* [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#registeripandattachpilterms)

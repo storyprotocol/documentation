@@ -41,7 +41,7 @@ To help with the following scenarios, let's say we have a parent IP Asset that h
 
 ### 0a. :coin: Whitelisted Revenue Tokens
 
-Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. MockERC20 is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#/whitelisted-revenue-tokens).
+Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. MockERC20 is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens).
 
 ## 1. Paying an IP Asset
 

@@ -110,7 +110,7 @@ IP Assets can be modified/customized a few ways. For example, by [setting the Li
 
 ## License Hook Modifications
 
-The IP can be further customized or modified using the [License Hook](https://docs.story.foundation/docs/license-config-hook#/licensing-hook). This is a function that gets set within the License Config that gets called before a [License Token](doc:license-token) (or more simply, a "license") is minted. There are various features you can implement with the License Hook, and are **always modifiable**:
+The IP can be further customized or modified using the [License Hook](https://docs.story.foundation/docs/license-config-hook#licensing-hook). This is a function that gets set within the License Config that gets called before a [License Token](doc:license-token) (or more simply, a "license") is minted. There are various features you can implement with the License Hook, and are **always modifiable**:
 
 | Feature             | Description                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------- |
