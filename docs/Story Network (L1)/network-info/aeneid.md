@@ -52,7 +52,7 @@ next:
   </tbody>
 </Table>
 
-## :mag: Block Explorers
+## :mag: Explorers
 
 <Table align={["left","left","left"]}>
   <thead>
@@ -83,6 +83,20 @@ next:
 
       <td style={{ textAlign: "left" }}>
         :white_check_mark:
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a>
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `https://explorer.story.foundation`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ✅
       </td>
     </tr>
   </tbody>
