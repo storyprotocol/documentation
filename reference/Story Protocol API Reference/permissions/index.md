@@ -1,4 +1,0 @@
----
-title: Permissions
-hidden: false
----
