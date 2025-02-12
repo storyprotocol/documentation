@@ -2,7 +2,7 @@
 title: How to Register IP on Story
 excerpt: Learn how to register an NFT as IP with proper metadata on Story.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   title: ''
   description: ''
