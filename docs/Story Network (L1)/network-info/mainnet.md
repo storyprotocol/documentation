@@ -44,7 +44,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://mainnet.storyrpc.io`
+        [https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -76,11 +76,11 @@ next:
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://www.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
+        BlockScout Explorer ↗️
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://www.storyscan.xyz/`
+        [https://www.storyscan.xyz/](https://www.storyscan.xyz/)
       </td>
 
       <td style={{ textAlign: "left" }}>
