@@ -3495,17 +3495,15 @@ On the other hand, derivative IP Assets inherit their License Terms from the par
 License Terms support an `expiration` time. Once License Terms expire, any derivatives that abide by that license will no longer be able to generate revenue or create further derivatives. If an IP Asset is a derivative of multiple parents, it will expire when the soonest expiration time between the two parents is reached.
 
 # 📜 Licensing Module
-> ⏩ Skip the Read - 1 Minute Summary
->
-> The Licensing Module allows you to create a real legal license from a **License Template** (which is the [Programmable IP License (PIL💊)](doc:programmable-ip-license)) and attach it to your IP Asset. This license, and the **License Terms** that define it, restrict how others can use your IP, commercialize it, and remix it.
->
-> If License Terms are attached to an IP Asset, anyone can mint a **License Token** (an ERC-721 NFT) from it which acts as the license to use that work based on the terms that define it. This token can then be burned to register a derivative work. This then establishes a parent-child relationship between assets, unlocking things like automatic royalty flow from the [💸 Royalty Module](doc:royalty-module).
+<Accordion title="Skip the Read - 1 Minute Summary" icon="fa-info-circle">
+  The Licensing Module allows you to create a real legal license from a **License Template** (which is the [Programmable IP License (PIL💊)](doc:programmable-ip-license)) and attach it to your IP Asset. This license, and the **License Terms** that define it, restrict how others can use your IP, commercialize it, and remix it.
 
-The owner address of an IP Asset owns intellectual property rights such as creating derivatives, being commercially exploited, and being reproduced in different platforms. IP Assets can programmatically grant permissions for any users to exercise those rights with some autonomy via **License Tokens** (an ERC-721 NFT), which point to a particular set of conditions, known as **License Terms**.
+  If License Terms are attached to an IP Asset, anyone can mint a **License Token** (an ERC-721 NFT) from it which acts as the license to use that work based on the terms that define it. This token can then be burned to register a derivative work. This then establishes a parent-child relationship between assets, unlocking things like automatic royalty flow from the [💸 Royalty Module](doc:royalty-module).
+</Accordion>
 
-<Image alt="The contracts in blue are built into the protocol. The contracts in white can be developed by the community or 3rd party vendor. " align="center" src="https://files.readme.io/3be1037-Screenshot_2024-05-07_at_17.52.53.png">
-  Blue: contracts built into the protocol. White: contracts developed by the community or 3rd party vendor.
-</Image>
+The owner address of an IP Asset owns intellectual property rights such as creating derivatives, being commercially exploited, and being reproduced in different platforms. IP Assets can programmatically grant permissions for any users to exercise those rights with some autonomy via [License Tokens](doc:license-token) (an ERC-721 NFT), which point to a particular set of conditions, known as [License Terms](doc:license-terms).
+
+<Image align="center" alt="The contracts in blue are built into the protocol. The contracts in white can be developed by the community or 3rd party vendor. " border={false} caption="Blue: contracts built into the protocol. White: contracts developed by the community or 3rd party vendor." src="https://files.readme.io/3be1037-Screenshot_2024-05-07_at_17.52.53.png" />
 
 ## `LicensingModule.sol`
 
@@ -3529,7 +3527,6 @@ The following document will walk through all of the major components of the Lice
 * [License Token](doc:license-token)
 * [License Registry](doc:license-registry)
 * [License Config / Hook](doc:license-config-hook)
-
 
 # 🔒 Access Controller
 <Image align="center" src="https://files.readme.io/ff607ff-Screenshot_2024-01-23_at_14.30.19.png" />
