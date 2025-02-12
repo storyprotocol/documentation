@@ -5740,13 +5740,55 @@ Parameters:
 * `request.mintOpen`: Whether the collection is open for minting on creation.
 * `request.mintFeeRecipient`: The address to receive mint fees.
 * `request.contractURI`: The contract URI for the collection. Follows ERC-7572 standard. See [here](https://eips.ethereum.org/EIPS/eip-7572).
-* `request.baseURI`: [Optional] The base URI for the collection. If baseURI is not empty, tokenURI will be either baseURI + token ID (if nftMetadataURI is empty) or baseURI + nftMetadataURI.
-* `request.maxSupply`: [Optional] The maximum supply of the collection.
-* `request.mintFee`: [Optional] The cost to mint a token.
-* `request.mintFeeToken`: [Optional] The token to mint.
-* `request.owner`: [Optional] The owner of the collection.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.baseURI`: \[Optional] The base URI for the collection. If baseURI is not empty, tokenURI will be either baseURI + token ID (if nftMetadataURI is empty) or baseURI + nftMetadataURI.
+* `request.maxSupply`: \[Optional] The maximum supply of the collection.
+* `request.mintFee`: \[Optional] The cost to mint a token.
+* `request.mintFeeToken`: \[Optional] The token to mint.
+* `request.owner`: \[Optional] The owner of the collection.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript TypeScript
+import { zeroAddress } from 'viem'
+
+// Create a new SPG NFT collection
+//
+// NOTE: Use this code to create a new SPG NFT collection. You can then use the
+// `newCollection.spgNftContract` address as the `spgNftContract` argument in
+// functions like `mintAndRegisterIpAssetWithPilTerms` in the
+// `simpleMintAndRegisterSpg.ts` file.
+//
+// You will mostly only have to do this once. Once you get your nft contract address,
+// you can use it in SPG functions.
+//
+const newCollection = await client.nftClient.createNFTCollection({
+  name: 'Test NFT',
+  symbol: 'TEST',
+  isPublicMinting: true,
+  mintOpen: true,
+  mintFeeRecipient: zeroAddress,
+  contractURI: '',
+  txOptions: { waitForTransaction: true },
+})
+
+console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
+console.log(`NFT contract address: ${newCollection.spgNftContract}`)
+```
+```typescript Request Type
+export type CreateNFTCollectionRequest = {
+  name: string;
+  symbol: string;
+  isPublicMinting: boolean;
+  mintOpen: boolean;
+  mintFeeRecipient: Address;
+  contractURI: string;
+  baseURI?: string;
+  maxSupply?: number;
+  mintFee?: bigint;
+  mintFeeToken?: Hex;
+  owner?: Hex;
+  txOptions?: TxOptions;
+};
+```
 ```typescript Response Type
 export type CreateNFTCollectionResponse = {
   txHash?: string;
@@ -5754,7 +5796,6 @@ export type CreateNFTCollectionResponse = {
   spgNftContract?: Address; // the address of the newly created contract
 };
 ```
-
 
 # ""
 
