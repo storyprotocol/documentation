@@ -5996,6 +5996,9 @@ With these settings, both Geth and Story Protocol expose monitoring metrics that
 
 
 # Node Upgrade
+
+## Upgrading a Node
+
 There are three types of upgrades
 
 1. Upgrade the story geth client
@@ -6079,6 +6082,7 @@ journalctl -u story -f -o cat
 ```
 
 Note: Cosmovisor will automatically handle the binary switch once the specified block height is reached. Before the upgrade, confirm that your node is fully synced and has enough disk space available.
+
 
 # Full Node
 This section will guide you through how to setup a Story node for mainnet. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
