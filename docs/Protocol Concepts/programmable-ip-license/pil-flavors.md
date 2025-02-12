@@ -317,7 +317,7 @@ PILTerms({
   commercialAttribution: true,
   commercializerChecker: zeroAddress,
   commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50, // ex. can claim 50% of derivative revenue
+  commercialRevShare: 50 * 10 ** 6, // ex. can claim 50% of derivative revenue
   commercialRevCeiling: BigInt(0),
   derivativesAllowed: true,
   derivativesAttribution: true,
