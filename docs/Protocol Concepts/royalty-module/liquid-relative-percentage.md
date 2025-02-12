@@ -43,7 +43,7 @@ In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a %
   * Royalty Stack IPA 3 = License Royalty % between IPAs 2 and 3 = 10%
 * Royalty tokens flow to the IPA initially when a vault is deployed. The Royalty Tokens can be transferred to any other address and after that transfer any future royalty inflow will be claimable by that new address which now holds the RTs.
 
-![](https://files.readme.io/de296f0efbb58233b5f340b127dc66a48c80eff88a75b809107ea8b95beca5a6-image.png)
+![](https://files.readme.io/444805c5024234346548005c7dc2d271274eff452ebab10cf7245ac44d5f9d56-image.png)
 
 Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivative chain as a derivative of IP Asset 3. An example flow sequence below:
 
@@ -53,7 +53,7 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 
 1. IP Asset 4 pays 1M USDC in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
 
-![](https://files.readme.io/29ac6f6c55c2bb507ef8344fbc4351aa5574154e4d8577ec949d96d44cfffb68-image.png)
+![](https://files.readme.io/b2145b6218b5d08ee3a40076afcbe6f86727fb2df4a90f457539c6f17eefc528-image.png)
 
 <br />
 
@@ -62,7 +62,7 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
    1. 95k USDC are transferred to the IP Royalty Vault 2 since it has the right to 10% of all IPA 2 descendants revenue and has to pay 5% of its revenue to its direct parent IPA 1. So 100k is received from IPA 3 and 5k is paid to IPA 1, resulting in IPA 2 keeping 100k - 5k = 95k.
    2. 5k USDC are transferred to the IP Royalty Vault 1 since it has the right to 0.5% of all IPA 2 descendants revenue. IPA 1 has the right to 5% of revenue earned by IPA 2, which in turn has 10% of revenue earned by IPA 3. Given LRP royalty policy considers relative percentages, then IPA 1 has the right to 10%\*5% = 0.5% of revenue earned by IPA 3.
 
-   ![](https://files.readme.io/4956d4151c271dd42773b83ca75e23794c6318b8850cf046156f86b04c783f71-image.png)
+   ![](https://files.readme.io/a12749274bbad8b4f72f6bdcf2f79cd9c5945c677a0c28303a6d6ac4a180f1b0-image.png)
 
    <br />
 3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
@@ -71,4 +71,4 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
    3. 900k USDC are claimed by IPA 3 which holds 100% RT3\
       Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.
 
-![](https://files.readme.io/b39ed27190ace760f4b8cb788fdf5ad28e93e3d3f3a5c5b23b122c9a812564bd-image.png)
+![](https://files.readme.io/d14763b11b16f307edbef7bced62f8e1be05c8ab78dbc7bf47cb0edead49dbd6-image.png)
