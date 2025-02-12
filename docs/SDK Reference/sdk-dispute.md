@@ -36,7 +36,7 @@ Parameters:
 
 ```typescript TypeScript
 const disputeResponse = await client.dispute.raiseDispute({
-  targetIpId: ipResponse.ipId as Address,
+  targetIpId: '0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba',
   // NOTE: you must use your own CID here, because every time it is used,
   // the protocol does not allow you to use it again
   cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
