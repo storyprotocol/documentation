@@ -42,7 +42,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://aeneid.storyrpc.io`
+        [https://aeneid.storyrpc.io](https://aeneid.storyrpc.io)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -74,11 +74,11 @@ next:
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
+        Blockscout Explorer ↗️
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://aeneid.storyscan.xyz/`
+        [https://aeneid.storyscan.xyz/](https://aeneid.storyscan.xyz/)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -90,17 +90,10 @@ next:
 
 ## Faucet
 
-| Faucet                                                        | Amount |
-| :------------------------------------------------------------ | :----- |
-| [Official Faucet](https://cloud.google.com/application/web3/) | 1 IP   |
+| Faucet                                                                               | Amount |
+| :----------------------------------------------------------------------------------- | :----- |
+| [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/story/aeneid) | 1 IP   |
 
 ## Contract deployment addresses
 
 * [Proof of Creative](doc:deployed-smart-contracts)
-
-# Further Sections
-
-* [Mainnet Status Page](https://status.story.foundation/)
-* [Node Setup](doc:node-setup-dev-mainnet)
-* [Validator Operations](doc:validator-operations)
-* [Staking Design](doc:tokenomics-staking)
