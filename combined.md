@@ -9239,7 +9239,7 @@ Story is a purpose-built layer 1 blockchain designed specifically for intellectu
     Want to skip to a summary? Check out our "Explain Like I'm Five" for a super fast & easy to understand explanation of everything Story.
   </Card>
 
-  <Card title="Read the Whitepaper" href="https://www.story.foundation/whitepaper.pdf" icon="fa-paper" target="_blank">
+  <Card title="Read the Whitepaper" href="https://www.story.foundation/whitepaper.pdf" icon="fa-file" target="_blank">
     Read the Story whitepaper.
   </Card>
 </Cards>
