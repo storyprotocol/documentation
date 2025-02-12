@@ -35,7 +35,7 @@ The below example (using [Liquid Absolute Percentage](doc:liquid-absolute-percen
 
 > Don't worry if you don't understand everything in the picture, this is just to show you an overview of what the Royalty Module is all about.
 
-![](https://files.readme.io/25e44cabafe06886fef078422c3d48c472f25a12b6ea60207ffa0b63ef2cd65b-image.png)
+![](https://files.readme.io/37507c9dda61f5be3028edc020733b183f728575ff592f4f81ecc405b3e41df6-image.png)
 
 ## Royalty Policies
 
