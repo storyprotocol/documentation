@@ -10,11 +10,11 @@ metadata:
 next:
   description: ''
 ---
-# Prerequisites
+### :warning: Prerequisites
 
 We require node version 18 or later version and npm version 8 to be installed in your environment. To install node and npm, we recommend you go to the [Node.js official website](https://nodejs.org) and download the latest LTS (Long Term Support) version.
 
-## Install the Dependencies
+### :package: Install the Dependencies
 
 Install the [Story Protocol SDK](https://www.npmjs.com/package/@story-protocol/core-sdk) node package, as well as [viem](https://www.npmjs.com/package/viem).
 
@@ -28,14 +28,14 @@ pnpm install @story-protocol/core-sdk viem
 yarn add @story-protocol/core-sdk viem
 ```
 
-# Initiate SDK Client
+## Initiate SDK Client
 
 Next we can initiate the SDK Client. There are two ways to do this:
 
 1. Using a private key (preferable for some backend admin)
 2. JSON-RPC account like Metamask where users sign their own transactions
 
-## Set Up Private Key Account
+### :key: Set Up Private Key Account
 
 <Cards columns={1}>
   <Card title="Working Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/utils.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
@@ -65,7 +65,7 @@ const config: StoryConfig = {
 export const client = StoryClient.newClient(config);
 ```
 
-## Set Up JSON-RPC Account (ex. Metamask)
+### :purse: Set Up JSON-RPC Account (ex. Metamask)
 
 We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
 
