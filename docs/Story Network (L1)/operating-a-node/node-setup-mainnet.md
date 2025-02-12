@@ -36,8 +36,7 @@ The `story` and `geth` binaries, which make up the clients required for running 
 * Installation time: \~30 minutes
 * Network: Story Mainnet or Story Aeneid Testnet
 * Required versions:
-  * story-geth: v1.0.1
-  * story: v1.1.0
+  * Check Latest Release
 
 ## 1. System Preparation
 
@@ -50,12 +49,12 @@ For optimal performance and reliability, we recommend running your node on eithe
 
 ### System Specs
 
-| Hardware  | Requirement       |
-| --------- | ----------------- |
-| CPU       | 8 Cores           |
-| RAM       | 32 GB             |
-| Disk      | 500 GB NVMe Drive |
-| Bandwidth | 25 MBit/s         |
+| Hardware  | Minimal Requirement |
+| --------- | ------------------- |
+| CPU       | Dedicated 8 Cores   |
+| RAM       | 32 GB               |
+| Disk      | 500 GB NVMe Drive   |
+| Bandwidth | 25 MBit/s           |
 
 ### 1.2 Required Ports
 
