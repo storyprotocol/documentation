@@ -10,9 +10,11 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/ModuleRegistry.sol).
+<Cards columns={1}>
+  <Card title="ModuleRegistry.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/ModuleRegistry.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Module Registry.
+  </Card>
+</Cards>
 
 The Module Registry maintains and updates the global list of modules and hooks registered permissionlessly on Story. It can enable/disable modules on a per-IP Account basis for granular control over each IP Account's interaction with modules and hooks.
 
