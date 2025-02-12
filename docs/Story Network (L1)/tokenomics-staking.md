@@ -50,7 +50,7 @@ Since Story uses a fork of geth as the execution client, the burning mechanism f
 
 # Staking
 
-> 🔗 <a href="https://staking.story.foundation/" target="_blank">Go to the Staking Dashboard ↗️</a>
+> 🔗 <a href="https://staking.story.foundation/" target="_blank">Stake with the Staking Dashboard ↗️</a>
 
 Story supports the below staking-related operations
 
@@ -95,6 +95,8 @@ For unlocked tokens, a few more fixed staking periods are supported: 90 days, 36
 
 Staking in these fixed staking periods earns more rewards. The longer the period, the bigger the reward weight multiplier. Reward multiplier for different periods:
 
+* Locked flexible period - **0.5**
+* Flexible period - **1.0**
 * 90 days - **1.1**
 * 360 days - **1.5**
 * 540 days - **2**
