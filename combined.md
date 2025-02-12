@@ -2825,9 +2825,9 @@ The Module Registry maintains and updates the global list of modules and hooks r
 
 
 # 🗂️ Registry
-The various registries on Story function as a primary directory/storage for the global states of the protocol. Obviously, they also contain functions to update that storage. 
+The various registries on Story function as a primary directory/storage for the global states of the protocol. Obviously, they also contain functions to update that storage.
 
-Unlike [IP Accounts](doc:ip-account), which manage the state of specific IPs, a **registry** oversees the broader states of the protocol.
+Unlike [⚙️ IP Accounts](doc:ip-account), which manage the state of specific IPs, a **registry** oversees the broader states of the protocol.
 
 # Types of Registries
 
@@ -2848,7 +2848,6 @@ Stores all license-related states within the protocol, like attaching License Te
 ## [Module Registry](doc:module-registry)
 
 Maintains and updates the global list of modules and hooks registered permissionlessly on Story
-
 
 # IP Asset Registry
 > 🗒️ Contract
