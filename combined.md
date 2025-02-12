@@ -13599,9 +13599,11 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 ```shell npm
 npm install --save @story-protocol/core-sdk @reown/appkit @reown/appkit-adapter-wagmi wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -13611,7 +13613,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 ```jsx config/index.tsx
@@ -13641,6 +13643,7 @@ export const wagmiAdapter = new WagmiAdapter({
 
 export const config = wagmiAdapter.wagmiConfig;
 ```
+
 ```jsx context/index.tsx
 'use client'
 
@@ -13690,6 +13693,7 @@ function ContextProvider({ children, cookies }: { children: ReactNode; cookies: 
 
 export default ContextProvider
 ```
+
 ```jsx app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -13726,6 +13730,7 @@ export default function RootLayout({
   )
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -13772,6 +13777,7 @@ export default function TestComponent() {
 
 
 # TypeScript SDK Setup
+
 ### :warning: Prerequisites
 
 We require node version 18 or later version and npm version 8 to be installed in your environment. To install node and npm, we recommend you go to the [Node.js official website](https://nodejs.org) and download the latest LTS (Long Term Support) version.
@@ -13783,9 +13789,11 @@ Install the [Story Protocol SDK](https://www.npmjs.com/package/@story-protocol/c
 ```shell npm
 npm install --save @story-protocol/core-sdk viem
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -13809,11 +13817,11 @@ Before continuing with the code below:
 
 1. Make sure to have `WALLET_PRIVATE_KEY` set up in your `.env` file.
 2. Make sure to have `RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://aeneid.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or check out the other RPCs [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 
 ```typescript utils.ts
-import { http } from 'viem';
-import { Account, privateKeyToAccount, Address } from 'viem/accounts';
+import { http } from "viem";
+import { Account, privateKeyToAccount, Address } from "viem/accounts";
 import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`;
@@ -13822,7 +13830,7 @@ const account: Account = privateKeyToAccount(privateKey);
 const config: StoryConfig = {
   account: account, // the account object from above
   transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: 'aeneid'
+  chainId: "aeneid",
 };
 export const client = StoryClient.newClient(config);
 ```
@@ -13833,10 +13841,11 @@ We can also use the TypeScript SDK to delay signing & sending transactions to a 
 
 We recommend using wagmi as a Web3 provider and then installing a wallet service like Dynamic, RainbowKit, or WalletConnect. We provide an example for all 3:
 
-* [Dynamic Setup Tutorial](doc:dynamic-setup)
-* [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
-* [WalletConnect Setup Tutorial](doc:walletconnect-setup)
-* [Tomo Setup Tutorial](doc:tomo-setup)
+- [Dynamic Setup Tutorial](doc:dynamic-setup)
+- [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
+- [WalletConnect Setup Tutorial](doc:walletconnect-setup)
+- [Tomo Setup Tutorial](doc:tomo-setup)
+
 
 # Tomo Setup
 
@@ -13849,9 +13858,11 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 ```shell npm
 npm install --save @story-protocol/core-sdk @tomo-inc/tomo-evm-kit wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -13861,7 +13872,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_TOMO_CLIENT_ID` set up in your `.env` file. Do this by logging into the [Tomo Dashboard](https://dashboard.tomo.inc/) and creating a project.
 3. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
@@ -13896,6 +13907,7 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -13926,6 +13938,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -13982,9 +13995,11 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -13994,7 +14009,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
 ```jsx Web3Providers.tsx
@@ -14027,6 +14042,7 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14055,6 +14071,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -14111,9 +14128,11 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk viem wagmi @dynamic-labs/sdk-react-core @dynamic-labs/wagmi-connector @dynamic-labs/ethereum @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -14123,7 +14142,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_DYNAMIC_ENV_ID` set up in your `.env` file. Do this by logging into [Dynamic](https://app.dynamic.xyz/) and creating a project.
 
 ```jsx Web3Providers.tsx
@@ -14168,6 +14187,7 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14196,6 +14216,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -15801,16 +15822,19 @@ export type AttachLicenseTermsResponse = {
 
 
 # Wagmi + Dynamic Setup
-*Optional: Check out the official Wagmi + Dynamic installation docs[here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi).*
+
+_Optional: Check out the official Wagmi + Dynamic installation docs[here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi)._
 
 ### Install the Dependencies
 
 ```shell npm
 npm install --save @story-protocol/react-sdk viem wagmi @dynamic-labs/sdk-react-core @dynamic-labs/wagmi-connector @dynamic-labs/ethereum @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -15819,7 +15843,7 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_DYNAMIC_ENV_ID` set up in your .env file. Do this by logging into [Dynamic](https://app.dynamic.xyz/) and creating a project.
 
 You can then configure your DApp with help from the following example:
@@ -15906,16 +15930,16 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 
-// we use this component to pass in our 
+// we use this component to pass in our
 // wallet from wagmi
 function StoryProviderWrapper({ children}: PropsWithChildren) {
   const { data: wallet } = useWalletClient();
-  
+
 	const dummyWallet = createWalletClient({
     chain: iliad,
     transport: http("https://testnet.storyrpc.io"),
   });
-  
+
   return (
     <StoryProvider
       config={{
@@ -15929,6 +15953,7 @@ function StoryProviderWrapper({ children}: PropsWithChildren) {
   )
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -15943,9 +15968,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -15955,18 +15978,19 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
-import { custom, toHex } from 'viem';
+import { custom, toHex } from "viem";
 import { useIpAsset } from "@story-protocol/react-sdk";
 
 // example of how you would now use the fully setup react sdk
 
 export default async function TestComponent() {
   const { register } = useIpAsset();
-  
+
   const response = await register({
-    nftContract: '0x01...',
-    tokenId: '1',
+    nftContract: "0x01...",
+    tokenId: "1",
     ipMetadata: {
       ipMetadataURI: "test-metadata-uri",
       ipMetadataHash: toHex("test-metadata-hash", { size: 32 }),
@@ -15978,25 +16002,28 @@ export default async function TestComponent() {
   console.log(
     `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
   );
-  
-  return (
-    {/* */} 
-  )
+
+  return {
+    /* */
+  };
 }
 ```
 
 
 # Wagmi + RainbowKit Setup
-*Optional: Check out the official Wagmi + RainbowKit installation docs[here](https://www.rainbowkit.com/docs/installation).*
+
+_Optional: Check out the official Wagmi + RainbowKit installation docs[here](https://www.rainbowkit.com/docs/installation)._
 
 ### Install the Dependencies
 
 ```shell npm
 npm install --save @story-protocol/react-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -16005,7 +16032,7 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your .env file. Do this by logging into [WalletConnect](https://cloud.walletconnect.com/) and creating a project.
 
 You can then configure your DApp with help from the following example:
@@ -16081,6 +16108,7 @@ function StoryProviderWrapper({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -16095,9 +16123,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -16107,18 +16133,19 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
-import { custom, toHex } from 'viem';
+import { custom, toHex } from "viem";
 import { useIpAsset } from "@story-protocol/react-sdk";
 
 // example of how you would now use the fully setup react sdk
 
 export default async function TestComponent() {
   const { register } = useIpAsset();
-  
+
   const response = await register({
-    nftContract: '0x01...',
-    tokenId: '1',
+    nftContract: "0x01...",
+    tokenId: "1",
     ipMetadata: {
       ipMetadataURI: "test-metadata-uri",
       ipMetadataHash: toHex("test-metadata-hash", { size: 32 }),
@@ -16130,25 +16157,28 @@ export default async function TestComponent() {
   console.log(
     `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
   );
-  
-  return (
-    {/* */} 
-  )
+
+  return {
+    /* */
+  };
 }
 ```
 
 
 # Wagmi + WalletConnect Setup
-*Optional: Check out the official Wagmi + WalletConnect installation docs[here](https://docs.walletconnect.com/appkit/next/core/installation).*
+
+_Optional: Check out the official Wagmi + WalletConnect installation docs[here](https://docs.walletconnect.com/appkit/next/core/installation)._
 
 ### Install the Dependencies
 
 ```shell npm
 npm install --save @story-protocol/react-sdk @web3modal/wagmi wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -16157,7 +16187,7 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your .env file. Do this by logging into [WalletConnect](https://cloud.walletconnect.com/) and creating a project.
 
 You can then configure your DApp with help from the following example:
@@ -16245,7 +16275,7 @@ export default function Web3Providers({
 // wallet from wagmi
 function StoryProviderWrapper({ children }: PropsWithChildren) {
   const { data: wallet } = useWalletClient();
-  
+
   const dummyWallet = createWalletClient({
     chain: iliad,
     transport: http("https://testnet.storyrpc.io"),
@@ -16265,6 +16295,7 @@ function StoryProviderWrapper({ children }: PropsWithChildren) {
 }
 
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -16279,9 +16310,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -16291,18 +16320,19 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
-import { custom, toHex } from 'viem';
+import { custom, toHex } from "viem";
 import { useIpAsset } from "@story-protocol/react-sdk";
 
 // example of how you would now use the fully setup react sdk
 
 export default async function TestComponent() {
   const { register } = useIpAsset();
-  
+
   const response = await register({
-    nftContract: '0x01...',
-    tokenId: '1',
+    nftContract: "0x01...",
+    tokenId: "1",
     ipMetadata: {
       ipMetadataURI: "test-metadata-uri",
       ipMetadataHash: toHex("test-metadata-hash", { size: 32 }),
@@ -16314,10 +16344,10 @@ export default async function TestComponent() {
   console.log(
     `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
   );
-  
-  return (
-    {/* */} 
-  )
+
+  return {
+    /* */
+  };
 }
 ```
 
