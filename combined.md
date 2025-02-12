@@ -6999,6 +6999,617 @@ Metrics:
 
 * [Proof of Creativity](doc:deployed-smart-contracts)
 
+# Engine API
+The Engine API is a collection of JSON-RPC methods that facilitate communication between the execution layer (EL) and the consensus layer (CL) of an EVM node. Story's execution layer, which offers full EVM compatibility, supports all standard JSON-RPC methods defined by the [Ethereum Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md). Meanwhile, Story's consensus layer, built on Cosmos modules, utilizes the Engine API to coordinate with the execution layer.
+
+## Functionalities
+
+The Engine API facilitates seamless interaction between the EL and the CL by providing essential coordination mechanisms, including:
+
+* **Handshake**
+* **Synchronization**
+* **Block Validation**
+* **Block Proposal**
+
+## Execution Layer Implementation
+
+The EL in Story implements the following standard Engine API methods to support these functionalities:
+
+* `engine_exchangeCapabilities`: Exchanges supported methods.
+* `engine_getClientVersion`: Exchanges client version data.
+* `engine_newPayload`: Inserts the given payload into the local chain.
+* `engine_forkchoiceUpdate`: Updates the canonical chain marker and generates the payload with given attributes.
+* `engine_getPayload`: Retrieves the pre-generated payload.
+
+## Consensus Layer Interaction
+
+How does Story's Consensus Layer (CL) interact with these methods? The answer lies in CometBFT ABCI++.
+
+CometBFT is a state machine replication engine which provides consensus and security for Cosmos modules. ABCI++, also known as ABCI 2.0, is the interface between CometBFT and the actual state machine being replicated(i.e. EL's state machine).
+
+ABCI++ comprises of a set of methods that interact with the Engine API, as outlined below:
+
+### **1. PrepareProposal** (Proposing a New Block)
+
+* The CL checks whether a payload is already being generated using `payloadID`.
+* If not, the CL calls `engine_forkchoiceUpdate` to trigger a new payload generation.
+* The CL then calls `engine_getPayload` with `payloadID` to fetch the payload and propose a new block.
+
+### \*\*2. ProcessProposal (Processing a New Block)
+
+* The CL calls `engine_newPayload` to  delivers the new block to the EL.
+* The EL validates payload of the new block, executes transactions deterministically and updates its state.
+
+### **3. FinalizeBlock** (Finalizing a Decided Block)
+
+* The CL calls `engine_newPayload` to  delivers the finalized block to the EL.
+* If the block has not yet been incorporated into the EL, the EL validates payload of the new block, executes transactions deterministically and updates its state.
+* Since CometBFT provides instant finality, the CL calls `engine_forkchoiceUpdate` to finalize the block.
+* Finally, the CL calls `engine_forkchoiceUpdate` again, with extra attributes,  to start an optimistic build of the next block if enabled, and if the validator is the next proposer.
+
+This interaction ensures smooth coordination between the EL and the CL, maintaining the integrity and efficiency of Story's blockchain network.
+
+# mint
+## Contents
+
+1. [Contents](#contents)
+2. [State](#state)
+3. [Begin Block](#begin-block)
+4. [Parameters](#parameters)
+5. [Events](#events)
+
+## State
+
+### Params
+
+* Params: `mint/params -> legacy_amino(params)`
+
+```protobuf protobuf
+message Params {
+  option (amino.name) = "client/x/mint/Params";
+
+  // type of coin to mint
+  string mint_denom = 1;
+  // inflation amount per year
+  string inflations_per_year = 2 [
+    (cosmos_proto.scalar)  = "cosmos.Dec",
+    (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
+    (gogoproto.nullable)   = false
+  ];
+  // expected blocks per year
+  uint64 blocks_per_year = 3;
+}
+```
+
+## Begin Block
+
+Minting parameters are calculated and inflation paid at the beginning of each block.
+
+### Inflation amount calculation
+
+Inflation amount is calculated using an "inflation calculation function" that's\
+passed to the `NewAppModule` function. If no function is passed, then the SDK's
+default inflation function will be used (`DefaultInflationCalculationFn`). In case a custom
+inflation calculation logic is needed, this can be achieved by defining and
+passing a function that matches `InflationCalculationFn`'s signature.
+
+```go
+type InflationCalculationFn func(ctx sdk.Context, minter Minter, params Params, bondedRatio math.LegacyDec) math.LegacyDec
+```
+
+## Parameters
+
+The minting module contains the following parameters:
+
+| Key               | Type            | Example             |
+| ----------------- | --------------- | ------------------- |
+| MintDenom         | string          | "stake"             |
+| InflationsPerYear | string (dec)    | "20000000000000000" |
+| BlocksPerYear     | string (uint64) | "10368000"          |
+
+* `MintDenom` is the coin denominator used.
+* `InflationsPerYear` is the target inflation per year, in 1e18 decimals.
+* `BlocksPerYear` is the target number of blocks per year.
+
+## Events
+
+The minting module emits the following events:
+
+### BeginBlocker
+
+| Type | Attribute Key | Attribute Value |
+| :--- | :------------ | :-------------- |
+| mint | amount        | "1000"          |
+
+# evmengine
+## Abstract
+
+This document specifies the internal `x/evmengine` module of the Story blockchain.
+
+As Story Network separates the consensus and execution client, like Ethereum, the consensus client (CL) and execution client (EL) needs to communicate to sync to the network, propose proper EVM blocks, and execute EVM-triggered EL actions in CL.
+
+The module exists to facilitate all communications between CL and EL using the [Engine API](engine-api), from staking and upgrades to driving block production and consensus in CL and EL.
+
+## Contents
+
+1. **[State](#state)**
+2. **[Prepare Proposal](#prepare-proposal)**
+3. **[Process Proposal](#process-proposal)**
+4. **[Post Finalize](#post-finalize)**
+5. **[Messages](#messages)**
+6. **[UBI](#ubi)**
+7. **[Upgrades](#upgrades)**
+
+## State
+
+### Build Delay
+
+Type: `time.Duration`
+
+Build delay determines the wait duration from the start of `PrepareProposal` ABCI2 call before fetching the next EVM block data to propose from EL via the [Engine API](engine-api). Applicable to the current proposer only. If the node has a block optimistically built beforehand, the build delay is not used.
+
+### Build Optimistic
+
+Type: `bool`
+
+Enable optimistic building of a block if true. A node will deterministically build the next block if it finds itself as the next proposer in the current block. Optimistic building starts with requesting the next EVM block data (for the next CL block) immediately after the `FinalizeBlock` of ABCI2.
+
+### Head Table
+
+Type: `ExecutionHeadTable`
+
+Head table stores the latest execution head data to be used for partial validation of EVM blocks received from other validators. When the chain initializes, the execution head is populated with the genesis execution hash loaded from `genesis.json`.
+
+The following execution head is stored in the table.
+
+```protobuf protobuf
+message ExecutionHead {
+  option (cosmos.orm.v1.table) = {
+    id: 1;
+    primary_key: { fields: "id", auto_increment: true }
+  };
+
+  uint64 id               = 1; // Auto-incremented ID (always and only 1).
+  uint64 created_height   = 2; // Consensus chain height this execution block was created in.
+  uint64 block_height     = 3; // Execution block height.
+  bytes  block_hash       = 4; // Execution block hash.
+  uint64 block_time       = 5; // Execution block time.
+}
+```
+
+### Upgrade Contract
+
+Type: `*bindings.UpgradeEntrypoint`
+
+Upgrade contract is used to filter and parse upgrade-related events from EL.
+
+### UBI Contract
+
+Type: `*bindings.UBIPool`
+
+UBI contract is used to filter and parse UBI-related events from EL.
+
+### Mutable Payload
+
+Type: struct
+
+Mutable payload stores the optimistic block built, if optimistic building is enabled.
+
+#### Genesis State
+
+The module's `GenesisState` defines the state necessary for initializing the chain from a previously exported height.
+
+```protobuf protobuf
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message Params {
+  bytes execution_block_hash = 1 [
+    (gogoproto.moretags) = "yaml:\"execution_block_hash\""
+  ];
+}
+```
+
+## Prepare Proposal
+
+At each block, if the node is the proposer, ABCI2 triggers `PrepareProposal` which
+
+1. Loads staking & reward withdrawals from the [evmstaking](./evmstaking-module) module.
+2. Builds a valid EVM block.
+   * If optimistic building: loads the optimistically built block.
+   * Non-optimistic: requests and retrieves an EVM block from EL.
+3. Collects the EVM logs of the previous/parent block.
+4. Assembles `MsgExecutionPayload` with the built EVM block and previous EVM logs.
+5. Returns a transaction containing the assembled `MsgExecutionPayload` data.
+
+This CL block is then propagated to all other validators.
+
+## Process Proposal
+
+At each block, if the node is not a proposer but a validator, ABCI2 triggers `ProcessProposal` with received commits (which should be a transaction of `MsgExecutionPayload` data in the honest case).
+
+The node first validates that the received commit has only one transaction with at least 2/3 of votes committed. Then, the node validates that the one transaction only contains one unmarshalled `MsgExecutionPayload` data. Finally, the node processes the received data and broadcasts its acceptance of the proposal to the network. If any of the validation or processing fails, the node rejects the proposal.
+
+More specifically, the node processes the received `MsgExecutionPayload` data in the following manner:
+
+1. Validates the fields of the received `MsgExecutionPayload` (outlined in [Messages](#msgexecutionpayload)).
+2. Compare local stake & reward withdrawals with the received withdrawals data.
+3. Push the received execution payload to EL via the Engine API and wait for payload validation.
+4. Update the EL forkchoice to the execution payload's block hash.
+5. Process staking events using the [evmstaking](./evmstaking-module) module.
+6. Process upgrade events.
+7. Update the execution head to the execution payload (finalized block).
+
+## Post Finalize
+
+If optimistic building is enabled, `PostFinalize` is triggered immediately after `FinalizeBlock` set through custom ABCI callback. During this process, the node peeks the staking and reward queues from the evmstaking module, and builds a new execution payload on top of the current execution head. It sets the optimistic block to be used in the next block's `PrepareProposal` phase and returns the response from the forkchoice update.
+
+## Messages
+
+In this section we describe the processing of the evmengine messages and the corresponding updates to the state. All created/modified state objects specified by each message are defined within the state section.
+
+### MsgExecutionPayload
+
+```protobuf protobuf
+message MsgExecutionPayload {
+  option (cosmos.msg.v1.signer) = "authority";
+  string            authority           = 1;
+  bytes             execution_payload   = 2;
+  repeated EVMEvent prev_payload_events = 3;
+}
+
+message EVMEvent {
+  bytes          address = 1;
+  repeated bytes topics  = 2;
+  bytes          data    = 3;
+  bytes          tx_hash = 4;
+}
+```
+
+This message is expected to fail if:
+
+* authority is invalid (not evmengine authority)
+* execution payload fails to unmarshal to [ExecutableData](https://github.com/piplabs/story/blob/c38b80c13579d3df7174ea10c3368ef0692f52da/client/x/evmengine/types/executable_data.go#L17-L35) for reasons such as invalid fields
+* execution payload's block number does not match CL head's block number + 1
+* execution payload's block parent hash does not match CL head's hash
+* execution payload's timestamp is invalid
+* execution payload's RANDAO does not match CL head's hash (ie. parent hash)
+* execution payload's `Withdrawals`, `BlobGasUsed`, and `ExcessBlobGas` fields are nil
+* execution payload's `Withdrawals` count does not match local node's sum of dequeued stake & reward withdrawals
+
+The message must contain previous block's events, which gets processed at the current CL block (in other words, execution events from EL block n-1 are processed at CL block n). In the future, the message will remove `prev_payload_events` and rely on [Engine API](engine-api) to get the current finalized EL block's events.
+
+Also note that EVM events are processed in CL in the order they are generated in EL.
+
+## UBI
+
+All UBI-related changes must be triggered from the canonical UBI contract in the EVM execution layer. This module handles the execution handling of those triggers in CL. Read more about [UBI for validators](https://docs.story.foundation/docs/tokenomics-staking#ubi-for-validators)
+
+### Set UBI Distribution
+
+The `UBIPool` contract emits the UBI distribution set event, which is parsed by the module to set the UBI percentage in the distribution module.
+
+## Upgrades
+
+All chain upgrade-related logics must be triggered from the canonical upgrade contract in the EVM execution layer. This module handles the execution handling of those triggers in CL.
+
+### Software Upgrade
+
+The `UpgradeEntrypoint` contract emits the software upgrade event, which is parsed by the module to schedule an upgrade at a given height for a given binary name. Currently, all upgrades must either be set via forks or by the software upgrade events; the latter process is a multisig-controlled process, which will transition into a voting-based process in the future.
+
+### Cancel Upgrade
+
+Similar to the software upgrade, the module processes the cancel upgrade event from EVM logs of the previous block, and clears an existing upgrade plan.
+
+# staking
+## Abstrat
+
+The staking module has been modified to accommodate for the following changes below. Refer to the Cosmos SDK's [staking module docs](https://docs.cosmos.network/main/build/modules/staking) for more information.
+
+## Reward Multiplier
+
+### Validators
+
+Validators can choose to accept either locked tokens or unlocked tokens as delegations. Validators for locked tokens are conditioned to half the inflation allocation of validators for unlocked tokens.
+
+Since each validator receives different inflation distribution based on delegations, the inflation distribution I<sub>v<sub>i</sub></sub> for validator v<sub>i</sub> in the rewards pool is calculated as follows:
+
+<Image align="center" src="https://files.readme.io/3ee4914a7cc6036ceebbdd31ce93e525984a08364f8c3ab2152b86b3bcd5df7e-Screenshot_2025-02-11_at_8.30.07_AM.png" />
+
+where
+
+* I<sub>v<sub>i</sub></sub> is the total inflationary token rewards for v<sub>i</sub>
+* S<sub>v<sub>i</sub></sub> is the staked tokens for v<sub>i</sub>
+* M<sub>v<sub>i</sub></sub> is the rewards multiplier for v<sub>i</sub>
+  * 0.5 for locked tokens
+  * 1 for unlocked tokens
+* R<sub>n</sub> is the total inflationary tokens allocated for the rewards pool in block n, calculated in the [mint](./mint-module.md) module
+
+### Delegations
+
+Delegators can delegate with four different staking lock times, which results in different staking reward multiplier for each delegation (delegator-validator pair of stakes). The inflation distribution for each delegation D<sub>i</sub> is calculated as follows:
+
+<Image align="center" src="https://files.readme.io/002ae69aa3b3e52a33747452fe0c0b91b9120f20155deb19b56fb7917132b8de-Screenshot_2025-02-11_at_8.34.44_AM.png" />
+
+where
+
+* S<sub>d<sub>i</sub></sub> is the staked tokens of delegation d<sub>i</sub> on validator v<sub>d</sub>
+* M<sub>d<sub>i</sub></sub> is the rewards multiplier of d<sub>i</sub> on v<sub>d</sub>
+* I<sub>v</sub> is the total inflationary token rewards for v<sub>d</sub>
+* C<sub>v</sub> is the commission rate for v<sub>d</sub>
+
+#### Time-weighted Reward Multiplier M<sub>d<sub>i</sub></sub>
+
+* *Flexible* (no lockup): 1
+* *Short* (90 days): 1.1
+* *Medium* (360 days): 1.5
+* *Long* (540 days): 2.0
+
+# evmstaking
+## Abstract
+
+This document specifies the internal `x/evmstaking` module of the Story blockchain.
+
+In Story blockchain, the gas token resides on the execution layer (EL) to pay for transactions and interact with smart contracts. However, the consensus layer (CL) manages the consensus staking, slashing, and rewarding. This module exists to facilitate CL-level staking-related logic, such as delegating to validators with custom lock periods.
+
+## Contents
+
+1. **[State](#state)**
+2. **[Two Queue System](#two-queue-system)**
+3. **[Withdrawal Queue Content](#withdrawal-queue-content)**
+4. **[End Block](#end-block)**
+5. **[Processing Staking Events](#processing-staking-events)**
+6. **[Withdrawing Delegations](#withdrawing-delegations)**
+7. **[Withdrawing Rewards](#withdrawing-rewards)**
+8. **[Withdrawing UBI](#withdrawing-ubi)**
+
+## State
+
+### Withdrawal Queue
+
+Type: `Queue[types.Withdrawal]`
+
+The (stake) withdrawal queue stores the pending unbonded stakes to be burned on CL and minted on EL. Stakes that are unbonded after 14 days of unstaking period are added to the queue to be processed.
+
+### Reward Withdrawal Queue
+
+Type: `Queue[types.Withdrawal]`
+
+The reward withdrawal queue stores the pending rewards from stakes to be burned on CL and minted on EL. All rewards above a threshold are eligible to be queued in this queue, but there exists a parameter of maximum additions per block.
+
+### Parameters
+
+```protobuf protobuf
+message Params {
+  uint32 max_withdrawal_per_block = 1 [
+    (gogoproto.moretags) = "yaml:\"max_withdrawal_per_block\""
+  ];
+  uint32 max_sweep_per_block = 2 [
+    (gogoproto.moretags) = "yaml:\"max_sweep_per_block\""
+  ];
+  uint64 min_partial_withdrawal_amount = 3 [
+    (gogoproto.moretags) = "yaml:\"min_partial_withdrawal_amount\""
+  ];
+  string ubi_withdraw_address = 4 [
+    (gogoproto.moretags) = "yaml:\"ubi_withdraw_address\""
+  ];
+}
+```
+
+* `max_withdrawal_per_block` is the maximum number of withdrawals (reward and unstakes, each) to process per block. This parameter prevents nodes from processing a large amount of withdrawals at once, which could exceed the max chain timeout.
+* `max_sweep_per_block` is the maximum number of validator-delegator delegations to sweep per block. This parameter prevents nodes from processing a large amount of delegations at once.
+* `min_partial_withdrawal_amount` is the minimum amount required for rewards to get added to the reward withdrawal queue.
+* `ubi_withdrawal_address` is the UBI contract address to which UBI withdrawals should be deposited.
+
+### Delegator Withdraw Address
+
+Type: `Map[string, string]`
+
+The delegator-withdraw address mapping tracks the address to which a delegator receives their withdrawn stakes. The (stake) withdrawal queue uses this map to determine the `execution_address` in the `Withdrawal` struct used in building an EVM block payload.
+
+While the delegator can change the withdraw address at any time, existing stake withdraw requests in the (stake) withdrawal queue will maintain their original values.
+
+### Delegator Reward Address
+
+The delegator-reward address mapping tracks the address to which a delegator receives their reward stakes, similar to the delegator-withdraw mapping.
+
+While the delegator can change the reward address at any time, existing reward withdraw requests in the reward withdrawal queue will maintain their original values.
+
+Type: `Map[string, string]`
+
+### Delegator Operator Address
+
+Type: `Map[string, string]`
+
+The delegator-operator address mapping tracks the address to which a delegator has given the privilege to delegate (stake), undelegate (unstake), and redelegate on behalf of themselves.
+
+### IP Token Staking Contract
+
+Type: `*bindings.IPTokenStaking`
+
+IPTokenStaking contract is used to filter and parse staking-related events from EL.
+
+## Two Queue System
+
+The module departs from traditional Cosmos SDK staking module's unstaking system, where all unbonded entries (stakes that have unbonded after 14 days of unbonding period) are immediately distributed into delegators account. Instead, Story's unstaking system assimilates Ethereum 2.0's unstaking system, where 16 full or partial (reward) withdrawals are processed per slot.
+
+In a single queue of withdrawals, reward withdrawals can significantly delay stake withdrawals. Hence, Story blockchain implements a two-queue system where a max amount to process per block is enforced per queue. In other words, the stake/ubi withdrawal and reward withdrawal queues can each process the max parameter per block.
+
+## Withdrawal Queue Content
+
+Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine-module) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](engine-api). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
+
+In other words, the `evmstaking` module is in charge of parsing, processing, and inserting withdrawal requests to two queues, while the `evmengine` module is in charge of validating and dequeuing withdrawal requests, as well as depositing them to corresponding withdrawal addresses in EL.
+
+## End Block
+
+The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
+
+If the network is in the [Singularity period](tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations) and [Withdrawing Rewards](#withdrawing-rewards) for detailed withdrawal processes.
+
+## Processing Staking Events
+
+The module parses and processes staking events emitted from the [IPTokenStaking contract](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol), which are collected by the [evmengine](./evmengine-module) module. The list of events are:
+
+### Staking events
+
+* Create Validator
+* Deposit (delegate)
+* Withdraw (undelegate)
+* Redelegate
+* Unjail: anyone can request to unjail a jailed validator by paying the unjail fee in the contract.
+
+These operations incur a fixed gas cost to prevent spam.
+
+### Parameter events
+
+* Update Validator Commission: update the validator commission.
+* Set Withdrawal Address: delegator can modify their withdrawal address for future unstakes/undelegations.
+* Set Reward Address: delegator can modify their withdrawal address for future reward emissions.
+* Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelegation.
+* Unset Operator: delegator can remove operator.
+
+These operations incur a fixed gas cost to prevent spam.
+
+## Withdrawal
+
+Both withdrawal queues hold withdrawals of type:
+
+```protobuf protobuf
+message Withdrawal {
+  option (gogoproto.equal) = true;
+  option (gogoproto.goproto_getters) = false;
+
+  uint64 creation_height = 1;
+  string execution_address = 2 [
+    (cosmos_proto.scalar) = "cosmos.AddressString",
+    (gogoproto.moretags) = "yaml:\"execution_address\""
+  ];
+  uint64 amount = 3 [
+    (gogoproto.moretags) = "yaml:\"amount\""
+  ];
+  WithdrawalType withdrawal_type = 4 [
+    (gogoproto.moretags) = "yaml:\"withdrawal_type\""
+  ];
+  string validator_address = 5 [
+    (gogoproto.moretags) = "yaml:\"validator_address\""
+  ];
+}
+```
+
+* `creation_height` is the block height at which the withdrawal is created.
+* `execution_address` is the EVM address receiving the withdrawn fund, which is burned in CL.
+* `amount` is the amount to burn on CL and mint on EL.
+* `withdrawal_type` is the type of withdrawal: $0$ for unstakes, $1$ for reward, and $2$ for UBI.
+* `validator_address` is the EVM validator address.
+
+### Withdrawing Delegations
+
+Delegations that have unbonded after 14 days of unbonding period (ie. unbonded entries) gets added to the (stake) withdrawal queue at the end of each block. If validator is totally-unstaked, ie. all delegations and self-delegations are unbonded, then validator's commission is also withdrawn.
+
+### Withdrawing Rewards
+
+Inflation rewards allocated to delegations are auto-swept at the end of each block. If a delegation's accrued reward is greater than the parameterized threshold, the reward is added to the reward withdrawal queue to be credited to the delegator's EVM reward address.
+
+# List of Modules
+# List of Modules
+
+Here is a list of all production-grade modules that can be used on the Story blockchain, along with their respective documentation:
+
+* [evmengine](./evmengine-module) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](engine-api).
+* [evmstaking](./evmstaking-module) - Handles staking and network emission logics with queues.
+* [mint](./mint-module)
+
+## Cosmos SDK (modified)
+
+Story network uses the following Cosmos SDK modules with some modifications:
+
+* [staking](./staking-module)
+* [distribution](https://docs.cosmos.network/main/build/modules/distribution)
+
+## Cosmos SDK (unmodified)
+
+Story network uses the following Cosmos SDK modules without non-trivial modifications:
+
+* [auth](https://docs.cosmos.network/main/build/modules/auth)
+* [bank](https://docs.cosmos.network/main/build/modules/bank)
+* [consensusparams](https://docs.cosmos.network/main/build/modules/consensus)
+* [gov](https://docs.cosmos.network/main/build/modules/gov)
+* [slashing](https://docs.cosmos.network/main/build/modules/slashing)
+* [upgrade](https://docs.cosmos.network/main/build/modules/upgrade)
+
+# Overview
+Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api)  defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
+
+`story-geth` is a fork of the Geth client, with the addition of the [IPGraph Precompile](doc:precompile)  and [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) precompile. It handles transaction execution, broadcasting and state storage while maintaining full compatibility with the Ethereum Virtual Machine (EVM) and supporting all Ethereum JSON-RPC methods.
+
+`story` is built on the Cosmos SDK and CometBFT. The Cosmos SDK provides a modular framework for building blockchain applications, enabling seamless integration of new modules and features while allowing the network to be easily extended and customized. `story` client introduces upgrades and additional Cosmos SDK modules to support Engine API integration and novel staking mechanisms. CometBFT, a high-performance, scalable, and secure consensus engine, has been extensively tested within the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec).
+
+<Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
+
+# Precompiles
+## Introduction
+
+Precompiled contracts are specialized smart contracts implemented directly in the execution layer of a blockchain. Unlike user-deployed smart contracts that execute EVM bytecode, precompiled contracts offer optimized native implementations for complex cryptographic and computational operations. This significantly improves efficiency and reduces gas costs. Precompiled contracts exist at fixed addresses within the execution client and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
+
+Story Protocol introduces two precompiled contracts:
+
+* `p256Verify` precompile to support signature verifications in the secp256r1 elliptic curve.
+* `ipgraph` precompile to enhance on-chain intellectual property management.
+
+In addition, Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
+
+## Precompiled Contracts
+
+| Address          | Functionality                                                 |
+| ---------------- | ------------------------------------------------------------- |
+| byte{0x01}       | `ecrecover`- ECDSA signature recovery                         |
+| byte{0x02}       | `sha256` - SHA-256 hash computation                           |
+| byte{0x03}       | `ripemd160` - RIPEMD-160 hash computation                     |
+| byte{0x04}       | `identity` - Identity function                                |
+| byte{0x05}       | `modexp` - Modular exponentiation                             |
+| byte{0x06}       | `bn256Add` - BN256 elliptic curve addition                    |
+| byte{0x07}       | `bn256ScalarMul` - BN256 elliptic curve scalar multiplication |
+| byte{0x08}       | `bn256Pairing` - BN256 elliptic curve pairing check           |
+| byte{0x09}       | `blake2f` - Blake2 hash function                              |
+| byte{0x0a}       | `kzgPointEvaluation` - KZG polynomial commitment evaluation   |
+| byte{0x01, 0x00} | `p256Verify` -  Secp256r1 signature verification              |
+| byte{0x01, 0x01} | `ipgraph` - Intellectual property management                  |
+
+## p256Verify precompile
+
+Refer to [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) for more information.
+
+## IPgraph precompile
+
+The `ipgraph` precompile enables efficient querying and modification of IP relationships and royalty structures while minimizing gas costs.
+
+This precompile provides multiple functions based on the function selector—the first 4 bytes of the input.
+
+| Function Selector        | Description                                                     | Gas computation formula                               | Gas Cost                           |
+| :----------------------- | :-------------------------------------------------------------- | :---------------------------------------------------- | :--------------------------------- |
+| `addParentIp`            | Adds a parent IP record                                         | `intrinsicGas + (ipGraphWriteGas * parentCount)`      | Larger than 1100                   |
+| `hasParentIp`            | Checks if an IP is parent of another IP                         | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
+| `getParentIps`           | Retrieves parent IPs                                            | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
+| `getParentIpsCount`      | Gets the number of parent IPs                                   | `ipGraphReadGas`                                      | 10                                 |
+| `getAncestorIps`         | Retrieves ancestor IPs                                          | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
+| `getAncestorIpsCount`    | Gets the number of ancestor IPs                                 | `ipGraphReadGas * averageParentIpCount * 2`           | 80                                 |
+| `hasAncestorIp`          | Checks if an IP is ancestor of another IP                       | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
+| `setRoyalty`             | Sets royalty details of an IP                                   | `ipGraphWriteGas`                                     | 1000                               |
+| `getRoyalty`             | Retrieves royalty details of an IP                              | `varies by royalty policy`                            | LAP:900, LRP:620, other:1000       |
+| `getRoyaltyStack`        | Retrieves royalty stack  of an IP                               | `varies by royalty policy`                            | LAP:50, LRP: 600, other:1000       |
+| `hasParentIpExt`         | Checks if an IP is parent of another IP through external call   | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
+| `getParentIpsExt`        | Retrieves parent IPs through external call                      | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
+| `getParentIpsCountExt`   | Gets the number of parent IPs through external call             | `ipGraphExternalReadGas`                              | 2100                               |
+| `getAncestorIpsExt`      | Retrieve ancestor IPs through external call                     | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
+| `getAncestorIpsCountExt` | Gets the number of ancestor IPs through external call           | `ipGraphExternalReadGas * averageParentIpCount * 2`   | 16800                              |
+| `hasAncestorIpExt`       | Checks if an IP is ancestor of another IP through external call | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
+| `getRoyaltyExt`          | Retrieves royalty details of an IP through external call        | `varies by royalty policy`                            | LAP:189000, LRP:130200, other:1000 |
+| `getRoyaltyStackExt`     | Retrieves royalty stack of an IP through external call          | `varies by royalty policy`                            | LAP:10500, LRP:126000, other:1000  |
+
+Refer to the [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
+
 # Validator Operations
 ## Quick Links
 
@@ -8652,617 +9263,6 @@ Slashing/Jail won’t happen during Singularity.
 Story’s staking contract will handle all validators/delegators related operations. It’s deployed to address: **0xcccccc0000000000000000000000000000000001**
 
 The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
-
-# Overview
-Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api)  defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
-
-`story-geth` is a fork of the Geth client, with the addition of the [IPGraph Precompile](doc:precompile)  and [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) precompile. It handles transaction execution, broadcasting and state storage while maintaining full compatibility with the Ethereum Virtual Machine (EVM) and supporting all Ethereum JSON-RPC methods.
-
-`story` is built on the Cosmos SDK and CometBFT. The Cosmos SDK provides a modular framework for building blockchain applications, enabling seamless integration of new modules and features while allowing the network to be easily extended and customized. `story` client introduces upgrades and additional Cosmos SDK modules to support Engine API integration and novel staking mechanisms. CometBFT, a high-performance, scalable, and secure consensus engine, has been extensively tested within the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec).
-
-<Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
-
-# Engine API
-The Engine API is a collection of JSON-RPC methods that facilitate communication between the execution layer (EL) and the consensus layer (CL) of an EVM node. Story's execution layer, which offers full EVM compatibility, supports all standard JSON-RPC methods defined by the [Ethereum Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md). Meanwhile, Story's consensus layer, built on Cosmos modules, utilizes the Engine API to coordinate with the execution layer.
-
-## Functionalities
-
-The Engine API facilitates seamless interaction between the EL and the CL by providing essential coordination mechanisms, including:
-
-* **Handshake**
-* **Synchronization**
-* **Block Validation**
-* **Block Proposal**
-
-## Execution Layer Implementation
-
-The EL in Story implements the following standard Engine API methods to support these functionalities:
-
-* `engine_exchangeCapabilities`: Exchanges supported methods.
-* `engine_getClientVersion`: Exchanges client version data.
-* `engine_newPayload`: Inserts the given payload into the local chain.
-* `engine_forkchoiceUpdate`: Updates the canonical chain marker and generates the payload with given attributes.
-* `engine_getPayload`: Retrieves the pre-generated payload.
-
-## Consensus Layer Interaction
-
-How does Story's Consensus Layer (CL) interact with these methods? The answer lies in CometBFT ABCI++.
-
-CometBFT is a state machine replication engine which provides consensus and security for Cosmos modules. ABCI++, also known as ABCI 2.0, is the interface between CometBFT and the actual state machine being replicated(i.e. EL's state machine).
-
-ABCI++ comprises of a set of methods that interact with the Engine API, as outlined below:
-
-### **1. PrepareProposal** (Proposing a New Block)
-
-* The CL checks whether a payload is already being generated using `payloadID`.
-* If not, the CL calls `engine_forkchoiceUpdate` to trigger a new payload generation.
-* The CL then calls `engine_getPayload` with `payloadID` to fetch the payload and propose a new block.
-
-### \*\*2. ProcessProposal (Processing a New Block)
-
-* The CL calls `engine_newPayload` to  delivers the new block to the EL.
-* The EL validates payload of the new block, executes transactions deterministically and updates its state.
-
-### **3. FinalizeBlock** (Finalizing a Decided Block)
-
-* The CL calls `engine_newPayload` to  delivers the finalized block to the EL.
-* If the block has not yet been incorporated into the EL, the EL validates payload of the new block, executes transactions deterministically and updates its state.
-* Since CometBFT provides instant finality, the CL calls `engine_forkchoiceUpdate` to finalize the block.
-* Finally, the CL calls `engine_forkchoiceUpdate` again, with extra attributes,  to start an optimistic build of the next block if enabled, and if the validator is the next proposer.
-
-This interaction ensures smooth coordination between the EL and the CL, maintaining the integrity and efficiency of Story's blockchain network.
-
-# mint
-## Contents
-
-1. [Contents](#contents)
-2. [State](#state)
-3. [Begin Block](#begin-block)
-4. [Parameters](#parameters)
-5. [Events](#events)
-
-## State
-
-### Params
-
-* Params: `mint/params -> legacy_amino(params)`
-
-```protobuf protobuf
-message Params {
-  option (amino.name) = "client/x/mint/Params";
-
-  // type of coin to mint
-  string mint_denom = 1;
-  // inflation amount per year
-  string inflations_per_year = 2 [
-    (cosmos_proto.scalar)  = "cosmos.Dec",
-    (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
-    (gogoproto.nullable)   = false
-  ];
-  // expected blocks per year
-  uint64 blocks_per_year = 3;
-}
-```
-
-## Begin Block
-
-Minting parameters are calculated and inflation paid at the beginning of each block.
-
-### Inflation amount calculation
-
-Inflation amount is calculated using an "inflation calculation function" that's\
-passed to the `NewAppModule` function. If no function is passed, then the SDK's
-default inflation function will be used (`DefaultInflationCalculationFn`). In case a custom
-inflation calculation logic is needed, this can be achieved by defining and
-passing a function that matches `InflationCalculationFn`'s signature.
-
-```go
-type InflationCalculationFn func(ctx sdk.Context, minter Minter, params Params, bondedRatio math.LegacyDec) math.LegacyDec
-```
-
-## Parameters
-
-The minting module contains the following parameters:
-
-| Key               | Type            | Example             |
-| ----------------- | --------------- | ------------------- |
-| MintDenom         | string          | "stake"             |
-| InflationsPerYear | string (dec)    | "20000000000000000" |
-| BlocksPerYear     | string (uint64) | "10368000"          |
-
-* `MintDenom` is the coin denominator used.
-* `InflationsPerYear` is the target inflation per year, in 1e18 decimals.
-* `BlocksPerYear` is the target number of blocks per year.
-
-## Events
-
-The minting module emits the following events:
-
-### BeginBlocker
-
-| Type | Attribute Key | Attribute Value |
-| :--- | :------------ | :-------------- |
-| mint | amount        | "1000"          |
-
-# evmengine
-## Abstract
-
-This document specifies the internal `x/evmengine` module of the Story blockchain.
-
-As Story Network separates the consensus and execution client, like Ethereum, the consensus client (CL) and execution client (EL) needs to communicate to sync to the network, propose proper EVM blocks, and execute EVM-triggered EL actions in CL.
-
-The module exists to facilitate all communications between CL and EL using the [Engine API](engine-api), from staking and upgrades to driving block production and consensus in CL and EL.
-
-## Contents
-
-1. **[State](#state)**
-2. **[Prepare Proposal](#prepare-proposal)**
-3. **[Process Proposal](#process-proposal)**
-4. **[Post Finalize](#post-finalize)**
-5. **[Messages](#messages)**
-6. **[UBI](#ubi)**
-7. **[Upgrades](#upgrades)**
-
-## State
-
-### Build Delay
-
-Type: `time.Duration`
-
-Build delay determines the wait duration from the start of `PrepareProposal` ABCI2 call before fetching the next EVM block data to propose from EL via the [Engine API](engine-api). Applicable to the current proposer only. If the node has a block optimistically built beforehand, the build delay is not used.
-
-### Build Optimistic
-
-Type: `bool`
-
-Enable optimistic building of a block if true. A node will deterministically build the next block if it finds itself as the next proposer in the current block. Optimistic building starts with requesting the next EVM block data (for the next CL block) immediately after the `FinalizeBlock` of ABCI2.
-
-### Head Table
-
-Type: `ExecutionHeadTable`
-
-Head table stores the latest execution head data to be used for partial validation of EVM blocks received from other validators. When the chain initializes, the execution head is populated with the genesis execution hash loaded from `genesis.json`.
-
-The following execution head is stored in the table.
-
-```protobuf protobuf
-message ExecutionHead {
-  option (cosmos.orm.v1.table) = {
-    id: 1;
-    primary_key: { fields: "id", auto_increment: true }
-  };
-
-  uint64 id               = 1; // Auto-incremented ID (always and only 1).
-  uint64 created_height   = 2; // Consensus chain height this execution block was created in.
-  uint64 block_height     = 3; // Execution block height.
-  bytes  block_hash       = 4; // Execution block hash.
-  uint64 block_time       = 5; // Execution block time.
-}
-```
-
-### Upgrade Contract
-
-Type: `*bindings.UpgradeEntrypoint`
-
-Upgrade contract is used to filter and parse upgrade-related events from EL.
-
-### UBI Contract
-
-Type: `*bindings.UBIPool`
-
-UBI contract is used to filter and parse UBI-related events from EL.
-
-### Mutable Payload
-
-Type: struct
-
-Mutable payload stores the optimistic block built, if optimistic building is enabled.
-
-#### Genesis State
-
-The module's `GenesisState` defines the state necessary for initializing the chain from a previously exported height.
-
-```protobuf protobuf
-message GenesisState {
-  Params params = 1 [(gogoproto.nullable) = false];
-}
-
-message Params {
-  bytes execution_block_hash = 1 [
-    (gogoproto.moretags) = "yaml:\"execution_block_hash\""
-  ];
-}
-```
-
-## Prepare Proposal
-
-At each block, if the node is the proposer, ABCI2 triggers `PrepareProposal` which
-
-1. Loads staking & reward withdrawals from the [evmstaking](./evmstaking-module) module.
-2. Builds a valid EVM block.
-   * If optimistic building: loads the optimistically built block.
-   * Non-optimistic: requests and retrieves an EVM block from EL.
-3. Collects the EVM logs of the previous/parent block.
-4. Assembles `MsgExecutionPayload` with the built EVM block and previous EVM logs.
-5. Returns a transaction containing the assembled `MsgExecutionPayload` data.
-
-This CL block is then propagated to all other validators.
-
-## Process Proposal
-
-At each block, if the node is not a proposer but a validator, ABCI2 triggers `ProcessProposal` with received commits (which should be a transaction of `MsgExecutionPayload` data in the honest case).
-
-The node first validates that the received commit has only one transaction with at least 2/3 of votes committed. Then, the node validates that the one transaction only contains one unmarshalled `MsgExecutionPayload` data. Finally, the node processes the received data and broadcasts its acceptance of the proposal to the network. If any of the validation or processing fails, the node rejects the proposal.
-
-More specifically, the node processes the received `MsgExecutionPayload` data in the following manner:
-
-1. Validates the fields of the received `MsgExecutionPayload` (outlined in [Messages](#msgexecutionpayload)).
-2. Compare local stake & reward withdrawals with the received withdrawals data.
-3. Push the received execution payload to EL via the Engine API and wait for payload validation.
-4. Update the EL forkchoice to the execution payload's block hash.
-5. Process staking events using the [evmstaking](./evmstaking-module) module.
-6. Process upgrade events.
-7. Update the execution head to the execution payload (finalized block).
-
-## Post Finalize
-
-If optimistic building is enabled, `PostFinalize` is triggered immediately after `FinalizeBlock` set through custom ABCI callback. During this process, the node peeks the staking and reward queues from the evmstaking module, and builds a new execution payload on top of the current execution head. It sets the optimistic block to be used in the next block's `PrepareProposal` phase and returns the response from the forkchoice update.
-
-## Messages
-
-In this section we describe the processing of the evmengine messages and the corresponding updates to the state. All created/modified state objects specified by each message are defined within the state section.
-
-### MsgExecutionPayload
-
-```protobuf protobuf
-message MsgExecutionPayload {
-  option (cosmos.msg.v1.signer) = "authority";
-  string            authority           = 1;
-  bytes             execution_payload   = 2;
-  repeated EVMEvent prev_payload_events = 3;
-}
-
-message EVMEvent {
-  bytes          address = 1;
-  repeated bytes topics  = 2;
-  bytes          data    = 3;
-  bytes          tx_hash = 4;
-}
-```
-
-This message is expected to fail if:
-
-* authority is invalid (not evmengine authority)
-* execution payload fails to unmarshal to [ExecutableData](https://github.com/piplabs/story/blob/c38b80c13579d3df7174ea10c3368ef0692f52da/client/x/evmengine/types/executable_data.go#L17-L35) for reasons such as invalid fields
-* execution payload's block number does not match CL head's block number + 1
-* execution payload's block parent hash does not match CL head's hash
-* execution payload's timestamp is invalid
-* execution payload's RANDAO does not match CL head's hash (ie. parent hash)
-* execution payload's `Withdrawals`, `BlobGasUsed`, and `ExcessBlobGas` fields are nil
-* execution payload's `Withdrawals` count does not match local node's sum of dequeued stake & reward withdrawals
-
-The message must contain previous block's events, which gets processed at the current CL block (in other words, execution events from EL block n-1 are processed at CL block n). In the future, the message will remove `prev_payload_events` and rely on [Engine API](engine-api) to get the current finalized EL block's events.
-
-Also note that EVM events are processed in CL in the order they are generated in EL.
-
-## UBI
-
-All UBI-related changes must be triggered from the canonical UBI contract in the EVM execution layer. This module handles the execution handling of those triggers in CL. Read more about [UBI for validators](https://docs.story.foundation/docs/tokenomics-staking#ubi-for-validators)
-
-### Set UBI Distribution
-
-The `UBIPool` contract emits the UBI distribution set event, which is parsed by the module to set the UBI percentage in the distribution module.
-
-## Upgrades
-
-All chain upgrade-related logics must be triggered from the canonical upgrade contract in the EVM execution layer. This module handles the execution handling of those triggers in CL.
-
-### Software Upgrade
-
-The `UpgradeEntrypoint` contract emits the software upgrade event, which is parsed by the module to schedule an upgrade at a given height for a given binary name. Currently, all upgrades must either be set via forks or by the software upgrade events; the latter process is a multisig-controlled process, which will transition into a voting-based process in the future.
-
-### Cancel Upgrade
-
-Similar to the software upgrade, the module processes the cancel upgrade event from EVM logs of the previous block, and clears an existing upgrade plan.
-
-# staking
-## Abstrat
-
-The staking module has been modified to accommodate for the following changes below. Refer to the Cosmos SDK's [staking module docs](https://docs.cosmos.network/main/build/modules/staking) for more information.
-
-## Reward Multiplier
-
-### Validators
-
-Validators can choose to accept either locked tokens or unlocked tokens as delegations. Validators for locked tokens are conditioned to half the inflation allocation of validators for unlocked tokens.
-
-Since each validator receives different inflation distribution based on delegations, the inflation distribution I<sub>v<sub>i</sub></sub> for validator v<sub>i</sub> in the rewards pool is calculated as follows:
-
-<Image align="center" src="https://files.readme.io/3ee4914a7cc6036ceebbdd31ce93e525984a08364f8c3ab2152b86b3bcd5df7e-Screenshot_2025-02-11_at_8.30.07_AM.png" />
-
-where
-
-* I<sub>v<sub>i</sub></sub> is the total inflationary token rewards for v<sub>i</sub>
-* S<sub>v<sub>i</sub></sub> is the staked tokens for v<sub>i</sub>
-* M<sub>v<sub>i</sub></sub> is the rewards multiplier for v<sub>i</sub>
-  * 0.5 for locked tokens
-  * 1 for unlocked tokens
-* R<sub>n</sub> is the total inflationary tokens allocated for the rewards pool in block n, calculated in the [mint](./mint-module.md) module
-
-### Delegations
-
-Delegators can delegate with four different staking lock times, which results in different staking reward multiplier for each delegation (delegator-validator pair of stakes). The inflation distribution for each delegation D<sub>i</sub> is calculated as follows:
-
-<Image align="center" src="https://files.readme.io/002ae69aa3b3e52a33747452fe0c0b91b9120f20155deb19b56fb7917132b8de-Screenshot_2025-02-11_at_8.34.44_AM.png" />
-
-where
-
-* S<sub>d<sub>i</sub></sub> is the staked tokens of delegation d<sub>i</sub> on validator v<sub>d</sub>
-* M<sub>d<sub>i</sub></sub> is the rewards multiplier of d<sub>i</sub> on v<sub>d</sub>
-* I<sub>v</sub> is the total inflationary token rewards for v<sub>d</sub>
-* C<sub>v</sub> is the commission rate for v<sub>d</sub>
-
-#### Time-weighted Reward Multiplier M<sub>d<sub>i</sub></sub>
-
-* *Flexible* (no lockup): 1
-* *Short* (90 days): 1.1
-* *Medium* (360 days): 1.5
-* *Long* (540 days): 2.0
-
-# evmstaking
-## Abstract
-
-This document specifies the internal `x/evmstaking` module of the Story blockchain.
-
-In Story blockchain, the gas token resides on the execution layer (EL) to pay for transactions and interact with smart contracts. However, the consensus layer (CL) manages the consensus staking, slashing, and rewarding. This module exists to facilitate CL-level staking-related logic, such as delegating to validators with custom lock periods.
-
-## Contents
-
-1. **[State](#state)**
-2. **[Two Queue System](#two-queue-system)**
-3. **[Withdrawal Queue Content](#withdrawal-queue-content)**
-4. **[End Block](#end-block)**
-5. **[Processing Staking Events](#processing-staking-events)**
-6. **[Withdrawing Delegations](#withdrawing-delegations)**
-7. **[Withdrawing Rewards](#withdrawing-rewards)**
-8. **[Withdrawing UBI](#withdrawing-ubi)**
-
-## State
-
-### Withdrawal Queue
-
-Type: `Queue[types.Withdrawal]`
-
-The (stake) withdrawal queue stores the pending unbonded stakes to be burned on CL and minted on EL. Stakes that are unbonded after 14 days of unstaking period are added to the queue to be processed.
-
-### Reward Withdrawal Queue
-
-Type: `Queue[types.Withdrawal]`
-
-The reward withdrawal queue stores the pending rewards from stakes to be burned on CL and minted on EL. All rewards above a threshold are eligible to be queued in this queue, but there exists a parameter of maximum additions per block.
-
-### Parameters
-
-```protobuf protobuf
-message Params {
-  uint32 max_withdrawal_per_block = 1 [
-    (gogoproto.moretags) = "yaml:\"max_withdrawal_per_block\""
-  ];
-  uint32 max_sweep_per_block = 2 [
-    (gogoproto.moretags) = "yaml:\"max_sweep_per_block\""
-  ];
-  uint64 min_partial_withdrawal_amount = 3 [
-    (gogoproto.moretags) = "yaml:\"min_partial_withdrawal_amount\""
-  ];
-  string ubi_withdraw_address = 4 [
-    (gogoproto.moretags) = "yaml:\"ubi_withdraw_address\""
-  ];
-}
-```
-
-* `max_withdrawal_per_block` is the maximum number of withdrawals (reward and unstakes, each) to process per block. This parameter prevents nodes from processing a large amount of withdrawals at once, which could exceed the max chain timeout.
-* `max_sweep_per_block` is the maximum number of validator-delegator delegations to sweep per block. This parameter prevents nodes from processing a large amount of delegations at once.
-* `min_partial_withdrawal_amount` is the minimum amount required for rewards to get added to the reward withdrawal queue.
-* `ubi_withdrawal_address` is the UBI contract address to which UBI withdrawals should be deposited.
-
-### Delegator Withdraw Address
-
-Type: `Map[string, string]`
-
-The delegator-withdraw address mapping tracks the address to which a delegator receives their withdrawn stakes. The (stake) withdrawal queue uses this map to determine the `execution_address` in the `Withdrawal` struct used in building an EVM block payload.
-
-While the delegator can change the withdraw address at any time, existing stake withdraw requests in the (stake) withdrawal queue will maintain their original values.
-
-### Delegator Reward Address
-
-The delegator-reward address mapping tracks the address to which a delegator receives their reward stakes, similar to the delegator-withdraw mapping.
-
-While the delegator can change the reward address at any time, existing reward withdraw requests in the reward withdrawal queue will maintain their original values.
-
-Type: `Map[string, string]`
-
-### Delegator Operator Address
-
-Type: `Map[string, string]`
-
-The delegator-operator address mapping tracks the address to which a delegator has given the privilege to delegate (stake), undelegate (unstake), and redelegate on behalf of themselves.
-
-### IP Token Staking Contract
-
-Type: `*bindings.IPTokenStaking`
-
-IPTokenStaking contract is used to filter and parse staking-related events from EL.
-
-## Two Queue System
-
-The module departs from traditional Cosmos SDK staking module's unstaking system, where all unbonded entries (stakes that have unbonded after 14 days of unbonding period) are immediately distributed into delegators account. Instead, Story's unstaking system assimilates Ethereum 2.0's unstaking system, where 16 full or partial (reward) withdrawals are processed per slot.
-
-In a single queue of withdrawals, reward withdrawals can significantly delay stake withdrawals. Hence, Story blockchain implements a two-queue system where a max amount to process per block is enforced per queue. In other words, the stake/ubi withdrawal and reward withdrawal queues can each process the max parameter per block.
-
-## Withdrawal Queue Content
-
-Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine-module) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](engine-api). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
-
-In other words, the `evmstaking` module is in charge of parsing, processing, and inserting withdrawal requests to two queues, while the `evmengine` module is in charge of validating and dequeuing withdrawal requests, as well as depositing them to corresponding withdrawal addresses in EL.
-
-## End Block
-
-The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
-
-If the network is in the [Singularity period](tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations) and [Withdrawing Rewards](#withdrawing-rewards) for detailed withdrawal processes.
-
-## Processing Staking Events
-
-The module parses and processes staking events emitted from the [IPTokenStaking contract](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol), which are collected by the [evmengine](./evmengine-module) module. The list of events are:
-
-### Staking events
-
-* Create Validator
-* Deposit (delegate)
-* Withdraw (undelegate)
-* Redelegate
-* Unjail: anyone can request to unjail a jailed validator by paying the unjail fee in the contract.
-
-These operations incur a fixed gas cost to prevent spam.
-
-### Parameter events
-
-* Update Validator Commission: update the validator commission.
-* Set Withdrawal Address: delegator can modify their withdrawal address for future unstakes/undelegations.
-* Set Reward Address: delegator can modify their withdrawal address for future reward emissions.
-* Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelegation.
-* Unset Operator: delegator can remove operator.
-
-These operations incur a fixed gas cost to prevent spam.
-
-## Withdrawal
-
-Both withdrawal queues hold withdrawals of type:
-
-```protobuf protobuf
-message Withdrawal {
-  option (gogoproto.equal) = true;
-  option (gogoproto.goproto_getters) = false;
-
-  uint64 creation_height = 1;
-  string execution_address = 2 [
-    (cosmos_proto.scalar) = "cosmos.AddressString",
-    (gogoproto.moretags) = "yaml:\"execution_address\""
-  ];
-  uint64 amount = 3 [
-    (gogoproto.moretags) = "yaml:\"amount\""
-  ];
-  WithdrawalType withdrawal_type = 4 [
-    (gogoproto.moretags) = "yaml:\"withdrawal_type\""
-  ];
-  string validator_address = 5 [
-    (gogoproto.moretags) = "yaml:\"validator_address\""
-  ];
-}
-```
-
-* `creation_height` is the block height at which the withdrawal is created.
-* `execution_address` is the EVM address receiving the withdrawn fund, which is burned in CL.
-* `amount` is the amount to burn on CL and mint on EL.
-* `withdrawal_type` is the type of withdrawal: $0$ for unstakes, $1$ for reward, and $2$ for UBI.
-* `validator_address` is the EVM validator address.
-
-### Withdrawing Delegations
-
-Delegations that have unbonded after 14 days of unbonding period (ie. unbonded entries) gets added to the (stake) withdrawal queue at the end of each block. If validator is totally-unstaked, ie. all delegations and self-delegations are unbonded, then validator's commission is also withdrawn.
-
-### Withdrawing Rewards
-
-Inflation rewards allocated to delegations are auto-swept at the end of each block. If a delegation's accrued reward is greater than the parameterized threshold, the reward is added to the reward withdrawal queue to be credited to the delegator's EVM reward address.
-
-# List of Modules
-# List of Modules
-
-Here is a list of all production-grade modules that can be used on the Story blockchain, along with their respective documentation:
-
-* [evmengine](./evmengine-module) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](engine-api).
-* [evmstaking](./evmstaking-module) - Handles staking and network emission logics with queues.
-* [mint](./mint-module)
-
-## Cosmos SDK (modified)
-
-Story network uses the following Cosmos SDK modules with some modifications:
-
-* [staking](./staking-module)
-* [distribution](https://docs.cosmos.network/main/build/modules/distribution)
-
-## Cosmos SDK (unmodified)
-
-Story network uses the following Cosmos SDK modules without non-trivial modifications:
-
-* [auth](https://docs.cosmos.network/main/build/modules/auth)
-* [bank](https://docs.cosmos.network/main/build/modules/bank)
-* [consensusparams](https://docs.cosmos.network/main/build/modules/consensus)
-* [gov](https://docs.cosmos.network/main/build/modules/gov)
-* [slashing](https://docs.cosmos.network/main/build/modules/slashing)
-* [upgrade](https://docs.cosmos.network/main/build/modules/upgrade)
-
-# Precompiles
-## Introduction
-
-Precompiled contracts are specialized smart contracts implemented directly in the execution layer of a blockchain. Unlike user-deployed smart contracts that execute EVM bytecode, precompiled contracts offer optimized native implementations for complex cryptographic and computational operations. This significantly improves efficiency and reduces gas costs. Precompiled contracts exist at fixed addresses within the execution client and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
-
-Story Protocol introduces two precompiled contracts:
-
-* `p256Verify` precompile to support signature verifications in the secp256r1 elliptic curve.
-* `ipgraph` precompile to enhance on-chain intellectual property management.
-
-In addition, Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
-
-## Precompiled Contracts
-
-| Address          | Functionality                                                 |
-| ---------------- | ------------------------------------------------------------- |
-| byte{0x01}       | `ecrecover`- ECDSA signature recovery                         |
-| byte{0x02}       | `sha256` - SHA-256 hash computation                           |
-| byte{0x03}       | `ripemd160` - RIPEMD-160 hash computation                     |
-| byte{0x04}       | `identity` - Identity function                                |
-| byte{0x05}       | `modexp` - Modular exponentiation                             |
-| byte{0x06}       | `bn256Add` - BN256 elliptic curve addition                    |
-| byte{0x07}       | `bn256ScalarMul` - BN256 elliptic curve scalar multiplication |
-| byte{0x08}       | `bn256Pairing` - BN256 elliptic curve pairing check           |
-| byte{0x09}       | `blake2f` - Blake2 hash function                              |
-| byte{0x0a}       | `kzgPointEvaluation` - KZG polynomial commitment evaluation   |
-| byte{0x01, 0x00} | `p256Verify` -  Secp256r1 signature verification              |
-| byte{0x01, 0x01} | `ipgraph` - Intellectual property management                  |
-
-## p256Verify precompile
-
-Refer to [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) for more information.
-
-## IPgraph precompile
-
-The `ipgraph` precompile enables efficient querying and modification of IP relationships and royalty structures while minimizing gas costs.
-
-This precompile provides multiple functions based on the function selector—the first 4 bytes of the input.
-
-| Function Selector        | Description                                                     | Gas computation formula                               | Gas Cost                           |
-| :----------------------- | :-------------------------------------------------------------- | :---------------------------------------------------- | :--------------------------------- |
-| `addParentIp`            | Adds a parent IP record                                         | `intrinsicGas + (ipGraphWriteGas * parentCount)`      | Larger than 1100                   |
-| `hasParentIp`            | Checks if an IP is parent of another IP                         | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
-| `getParentIps`           | Retrieves parent IPs                                            | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
-| `getParentIpsCount`      | Gets the number of parent IPs                                   | `ipGraphReadGas`                                      | 10                                 |
-| `getAncestorIps`         | Retrieves ancestor IPs                                          | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
-| `getAncestorIpsCount`    | Gets the number of ancestor IPs                                 | `ipGraphReadGas * averageParentIpCount * 2`           | 80                                 |
-| `hasAncestorIp`          | Checks if an IP is ancestor of another IP                       | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
-| `setRoyalty`             | Sets royalty details of an IP                                   | `ipGraphWriteGas`                                     | 1000                               |
-| `getRoyalty`             | Retrieves royalty details of an IP                              | `varies by royalty policy`                            | LAP:900, LRP:620, other:1000       |
-| `getRoyaltyStack`        | Retrieves royalty stack  of an IP                               | `varies by royalty policy`                            | LAP:50, LRP: 600, other:1000       |
-| `hasParentIpExt`         | Checks if an IP is parent of another IP through external call   | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
-| `getParentIpsExt`        | Retrieves parent IPs through external call                      | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
-| `getParentIpsCountExt`   | Gets the number of parent IPs through external call             | `ipGraphExternalReadGas`                              | 2100                               |
-| `getAncestorIpsExt`      | Retrieve ancestor IPs through external call                     | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
-| `getAncestorIpsCountExt` | Gets the number of ancestor IPs through external call           | `ipGraphExternalReadGas * averageParentIpCount * 2`   | 16800                              |
-| `hasAncestorIpExt`       | Checks if an IP is ancestor of another IP through external call | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
-| `getRoyaltyExt`          | Retrieves royalty details of an IP through external call        | `varies by royalty policy`                            | LAP:189000, LRP:130200, other:1000 |
-| `getRoyaltyStackExt`     | Retrieves royalty stack of an IP through external call          | `varies by royalty policy`                            | LAP:10500, LRP:126000, other:1000  |
-
-Refer to the [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
 
 # What is Story
 <Image align="center" src="https://files.readme.io/30567679bc8ee50fe55d31b026f751e3535b21f9b2ed52ae7a6777cfd094ee5c-image_6.png" />
