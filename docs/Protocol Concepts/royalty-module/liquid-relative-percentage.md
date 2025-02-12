@@ -11,7 +11,7 @@ next:
   description: ''
 ---
 <Accordion title="Skip the Read - 1 Minute Summary" icon="fa-info-circle">
-  ⏩ Let's come up with an example: An IP Asset ('C') is a child of 'B', and 'B' is a child of 'A', such that it goes A▶️B▶️C. 'A' specifies that any **direct** descendant must share 5% of their revenue with it. On the other hand, 'B' specifies that any **direct** descendants must share 10% of their revenue with it.
+  Let's come up with an example: An IP Asset ('C') is a child of 'B', and 'B' is a child of 'A', such that it goes A▶️B▶️C. 'A' specifies that any **direct** descendant must share 5% of their revenue with it. On the other hand, 'B' specifies that any **direct** descendants must share 10% of their revenue with it.
 
   Okay, great. Let's see what happens in two (independent) common scenarios:
 
