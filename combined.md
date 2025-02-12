@@ -17647,138 +17647,60 @@ As described in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaX
   * *This process could have multiple iterations until an agreement is reached*
 </Accordion>
 
-Once agents agree on the terms, they can be created and attached to the registered asset with the SDK:
+Once agents agree on the terms, they can be created and attached to the registered asset:
 
-```typescript TypeScript
-import { LicenseTerms } from '@story-protocol/core-sdk';
+<Cards columns={2}>
+  <Card title="Using the SDK" href="https://docs.story.foundation/docs/attach-terms-to-an-ip-asset" icon="fa-home" target="_blank">
+    Learn how to attach terms to your IP using the SDK.
+  </Card>
 
-const commercialRemixTerms: LicenseTerms = {
-  transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(1), // costs 1 $WIP to mint a license
-  expiration: BigInt(0),
-  commercialUse: true,
-  commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
-  derivativesApproval: false,
-  derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  uri: '',
-}
-
-const response = await client.ipAsset.registerPilTermsAndAttach({
-  ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721', // the ipId of the asset we're attaching to
-  terms: [commercialRemixTerms],
-  txOptions: { waitForTransaction: true },
-})
-console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
-```
-```typescript Request Type
-export type RegisterPilTermsAndAttachRequest = {
-  ipId: Address;
-  terms: RegisterPILTermsRequest[];
-  deadline?: string | number | bigint;
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type RegisterPilTermsAndAttachResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  licenseTermsIds?: bigint[];
-};
-```
+  <Card title="Using the Smart Contracts" href="https://docs.story.foundation/docs/sc-attach-license-terms" icon="fa-home" target="_blank">
+    Learn how to attach terms to your IP using the Smart Contracts.
+  </Card>
+</Cards>
 
 ### Mint a License
 
 As stated in the <a href="https://drive.google.com/file/d/1IM74cpN8TfS811gTaXxxkRH8QgpLFzZs/view" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
 
-> 4 **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
-> agreement token) that encapsulates the terms and rules by which the information being provided is
-> to be used. Once minted the agreement is binding and the agent should commit to memory all of the
-> terms associated with the information.
->
-> * **Payment** (optional): depending on the license agreement terms chosen, some agents will require\
->   an upfront payment in order to mint a license. Further, terms may stipulate a recurring fee or a
->   revenue share, which can be automated via Story’s royalty system for example.
+<Accordion title="Whitepaper Section" icon="fa-info-circle">
+  4 **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
+  agreement token) that encapsulates the terms and rules by which the information being provided is
+  to be used. Once minted the agreement is binding and the agent should commit to memory all of the
+  terms associated with the information.
 
-Here is how that can be done in the SDK:
+  * **Payment** (optional): depending on the license agreement terms chosen, some agents will require\
+    an upfront payment in order to mint a license. Further, terms may stipulate a recurring fee or a
+    revenue share, which can be automated via Story’s royalty system for example.
+</Accordion>
 
-> ❗️ Paid Licenses
->
-> Note that sometimes minting a license might cost a `mintingFee` (based on what the value is in the terms).
->
-> The `mintingFee` is paid in a ERC20 `currency` (also in the terms) that must be whitelisted by the protocol. For example, one of the only whitelisted revenue tokens is $MERC20, which can be minted for test purposes [here](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19).
->
-> Assuming the `mintingFee` is in $MERC20 and you have some, you have to approve the `RoyaltyModule.sol` contract to spend them on your behalf. Run the [approve transaction](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x095ea7b3) where the `spender` is the v1.3 (current deployment supported by the SDK) address of `RoyaltyModule.sol` [here](https://docs.story.foundation/docs/deployed-smart-contracts). And the value is >= the amount you're paying with the SDK.
+Once agreement terms are attached to an IP Asset, a [License Token](doc:license-token) can be minted:
 
-```typescript TypeScript
-const response = await client.license.mintLicenseTokens({
-   licenseTermsId: "1", // the license terms id that are attached to the `licensorIpId`
-   licensorIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba", // the ipId of the asset
-   receiver: "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", // who receives the minted license
-   amount: 1, // the amount of licenses to mint
-   txOptions: { waitForTransaction: true }
-});
+<Cards columns={2}>
+  <Card title="Using the SDK" href="https://docs.story.foundation/docs/mint-a-license" icon="fa-home" target="_blank">
+    Learn how to mint a License Token using the SDK.
+  </Card>
 
-console.log(`License Token minted at transaction hash ${response.txHash}, License IDs: ${response.licenseTokenIds}`)
-```
-```typescript Request Type
-export type MintLicenseTokensRequest = {
-  licensorIpId: Address;
-  licenseTermsId: string | number | bigint;
-  licenseTemplate?: Address;
-  amount?: number | string | bigint;
-  receiver?: Address;
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type MintLicenseTokensResponse = {
-  licenseTokenIds?: bigint[];
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-};
-```
+  <Card title="Using the Smart Contracts" href="https://docs.story.foundation/docs/sc-mint-license-token" icon="fa-home" target="_blank">
+    Learn how to mint a License Token using the Smart Contracts.
+  </Card>
+</Cards>
 
-Now, the requesting agent has a license token that can be held, giving it the rights to use the provided asset based on the attached terms.
+Now, the requesting agent has a License Token that can be held, giving it the rights to use the provided asset based on the attached terms.
 
 ### Claim Revenue
 
-Once the providing agent has been paid for their work (when the requesting agent minted a license that costed $), they can claim their due revenue with the SDK like so:
+Once the providing agent has been paid for their work (when the requesting agent minted a license that costed $), they can claim their due revenue:
 
-```typescript TypeScript
-const response = await client.royalty.snapshotAndClaimByTokenBatch({
-  royaltyVaultIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-  currencyTokens: ["0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E"], // insert $MERC20 address from https://docs.story.foundation/docs/deployed-smart-contracts
-  claimer: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba", // same as `royaltyVaultIpId` because the IP Account holds the royalty tokens
-  txOptions: { waitForTransaction: true },
-})
+<Cards columns={2}>
+  <Card title="Using the SDK" href="https://docs.story.foundation/docs/claim-revenue" icon="fa-home" target="_blank">
+    Learn how to claim revenue using the SDK.
+  </Card>
 
-console.log(`Claimed revenue: ${response.amountsClaimed}`);
-```
-```typescript Request Type
-export type SnapshotAndClaimByTokenBatchRequest = {
-  royaltyVaultIpId: Address;
-  currencyTokens: Address[];
-  claimer?: Address;
-  txOptions?: TxOptions;
-};
-```
-```typescript Response Type
-export type SnapshotAndClaimByTokenBatchResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  snapshotId?: bigint;
-  amountsClaimed?: bigint;
-};
-```
+  <Card title="Using the Smart Contracts" href="https://docs.story.foundation/docs/sc-claiming-royalty" icon="fa-home" target="_blank">
+    Learn how to claim revenue using the Smart Contracts.
+  </Card>
+</Cards>
 
 # What is Story
 <Image align="center" src="https://files.readme.io/30567679bc8ee50fe55d31b026f751e3535b21f9b2ed52ae7a6777cfd094ee5c-image_6.png" />
