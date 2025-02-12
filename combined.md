@@ -16538,7 +16538,7 @@ The best way to get started is to get your hands dirty and start building.
   </Card>
 </Cards>
 
-In the following series of tutorials, you will learn how to build IP applications with Story SDK and the concepts we mentioned in the [Architecture Overview](doc:overview) of Story Protocol.
+In the following series of tutorials, you will learn how to build IP applications with the Story SDK along with the concepts we mentioned in the [Architecture Overview](doc:overview).
 
 # Pay an IPA
 <Cards columns={1}>
