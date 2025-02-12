@@ -10,14 +10,14 @@ metadata:
 next:
   description: ''
 ---
-> ⏩ Skip the Read - 1 Minute Summary
->
-> Let's come up with an example: An IP Asset ('C') is a child of 'B', and 'B' is a child of 'A', such that it goes A▶️B▶️C. 'A' specifies that any **direct** descendant must share 5% of their revenue with it. On the other hand, 'B' specifies that any **direct** descendants must share 10% of their revenue with it.
->
-> Okay, great. Let's see what happens in two (independent) common scenarios:
->
-> 1. **Minting a License** - 'C' mints a license from 'B' that costs 100 USDC. When 'C' pays 'B' 100 USDC to mint a license, 'A' claims 5 USDC from B. In the end, 'B' only gets 95 USDC.
-> 2. **Tipping Directly** - 'C' is a comic book that is super well written. Someone tips 100 USDC to 'C' because they love it. 'B' claims 10 USDC from 'C'. 'A' claims 0.5 USDC from 'B' (5% of 10). In the end, 'C' only gets 90 USDC.
+<Accordion title="Skip the Read - 1 Minute Summary" icon="fa-info-circle">
+  ⏩ Let's come up with an example: An IP Asset ('C') is a child of 'B', and 'B' is a child of 'A', such that it goes A▶️B▶️C. 'A' specifies that any **direct** descendant must share 5% of their revenue with it. On the other hand, 'B' specifies that any **direct** descendants must share 10% of their revenue with it.
+
+  Okay, great. Let's see what happens in two (independent) common scenarios:
+
+  1. **Minting a License** - 'C' mints a license from 'B' that costs 100 USDC. When 'C' pays 'B' 100 USDC to mint a license, 'A' claims 5 USDC from B. In the end, 'B' only gets 95 USDC.
+  2. **Tipping Directly** - 'C' is a comic book that is super well written. Someone tips 100 USDC to 'C' because they love it. 'B' claims 10 USDC from 'C'. 'A' claims 0.5 USDC from 'B' (5% of 10). In the end, 'C' only gets 90 USDC.
+</Accordion>
 
 The Liquid Relative Percentage (LRP) royalty policy defines that each parent IP Asset can choose a minimum royalty percentage that only the direct derivative IP Assets in a derivative chain will share from their monetary gains as defined in the license agreement.
 
