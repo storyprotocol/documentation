@@ -11684,7 +11684,7 @@ This is the URL we'll use in step 2.
 
 ## 1. Complete the "How to Register IP" Tutorial
 
-Most of what we need to do is already covered in [How to Register IP on Story](doc:how-to-register-ip-on-story). Complete that tutorial first, and then come back here.
+Most of what we need to do is already covered in [Register an IP Asset](doc:register-an-ip-asset). Complete that tutorial first, and then come back here.
 
 ## 2. Change Metadata
 
