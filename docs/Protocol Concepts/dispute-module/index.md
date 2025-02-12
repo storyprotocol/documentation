@@ -12,6 +12,12 @@ next:
 ---
 The Dispute Module creates a way for users to raise and resolve disputes through arbitration.
 
+<Cards columns={1}>
+  <Card title="DisputeModule.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/dispute/DisputeModule.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Dispute Module.
+  </Card>
+</Cards>
+
 ## Dispute Terminology
 
 The main components of the arbitration system are:
