@@ -113,7 +113,13 @@ Below is a list of optional flags to further customize your validator setup:
 ### Example creation command use
 
 ```bash
-./story validator create --stake 1024000000000000000000 --moniker testValidator
+story validator create 
+	--stake "1024000000000000000000" 
+  --moniker "timtimtim"
+  --commission-rate 700
+  --validator-pubkey "<validator_pubkey>" # if you dont have a .env
+  --rpc "https://mainnet.storyrpc.io"
+	--chain-id 1514
 ```
 
 ### Example creation command with custom flags
