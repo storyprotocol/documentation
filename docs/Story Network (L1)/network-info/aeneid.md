@@ -108,6 +108,12 @@ next:
 | :----------------------------------------------------------------------------------- | :----- |
 | [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/story/aeneid) | 1 IP   |
 
+## Staking Dashboard
+
+| Faucet                                                      | Official |
+| :---------------------------------------------------------- | :------- |
+| [Story Dashboard](https://aeneid.staking.story.foundation/) | ✅        |
+
 ## Contract deployment addresses
 
 * [Proof of Creativity](doc:deployed-smart-contracts)
