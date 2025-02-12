@@ -1,6 +1,6 @@
 ---
 title: How to Register IP on Story
-excerpt: Learn how to add IP & NFT metadata to an IP Asset using the Typescript SDK.
+excerpt: Learn how to register an NFT as IP with proper metadata on Story.
 deprecated: false
 hidden: true
 metadata:
@@ -10,13 +10,12 @@ metadata:
 next:
   description: ''
 ---
-* [Use the SDK](https://docs.story.foundation/docs/how-to-register-ip-on-story#using-the-sdk)
-* [Use a Smart Contract](https://docs.story.foundation/docs/how-to-register-ip-on-story#using-a-smart-contract)
+<Cards columns={2}>
+  <Card title="Using the SDK" href="https://docs.story.foundation/docs/register-an-ip-asset" icon="fa-home" target="_blank">
+    Learn how to register an IP using the SDK.
+  </Card>
 
-# Using the SDK
-
-:warning: This tutorial has moved [here](https://docs.story.foundation/docs/register-an-ip-asset).
-
-# Using a Smart Contract
-
-:warning: This tutorial has moved [here](https://docs.story.foundation/docs/sc-register-an-ip-asset).
+  <Card title="Using a Smart Contract" href="https://docs.story.foundation/docs/sc-register-an-ip-asset" icon="fa-home" target="_blank">
+    Learn how to register an IP using the Smart Contracts.
+  </Card>
+</Cards>
