@@ -5835,7 +5835,76 @@ export type CreateNFTCollectionResponse = {
 };
 ```
 
-# ""
+# Welcome to Story Network
+# Story Network (L1)
+
+Welcome to the Hub for Story Network, the Story Chain.
+
+This section is designed to help you understand the fundamentals of Story Network. We’ve structured the content into two parts:
+
+1. Understanding the Architecture
+2. Operating a Node
+
+Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates the best of both the Ethereum Virtual Machine (EVM) and Cosmos SDK. It offers full EVM compatibility while incorporating deep execution layer optimizations to efficiently support graph-based data structures. These optimizations make it particularly well-suited for handling complex intellectual property (IP) data structures in a cost-effective and scalable manner.
+
+## Key Features
+
+* **EVM Compatibility**: Full compatibility with Ethereum Virtual Machine
+* **Optimized Data Structures**: Precompiled primitives for efficient IP graph traversal
+* **Fast Finality**: CometBFT-based consensus layer for quick transaction finality
+* **Modular Architecture**: Decoupled consensus from execution using Ethereum's Engine-API
+
+## Documentation Sections
+
+### Getting Started
+
+* [Node Architecture](doc:network-overview)
+* [Network Info](doc:network-info)
+* [Whitepaper](https://www.story.foundation/whitepaper.pdf)
+
+### Node Operations
+
+* [Operating a node](doc:operating-a-node)
+  * Full Node Setup
+  * Archive Node Setup
+  * Node Upgrade Guide
+  * Release Notes
+
+### Validation
+
+* [Become a validator](doc:become-a-validator)
+  * Validator Setup
+  * Validator Operations
+
+### Network Economics
+
+* [Staking Design](doc:tokenomics-staking)
+  * Token Economics
+  * Staking Mechanisms
+  * Rewards Structure
+
+### Resources
+
+* [Additional Resources](doc:additional-resources)
+  * GitHub Repositories
+  * SIP Repository
+  * Community Forum
+* [Troubleshooting](doc:network-faq)
+  * Common Issues
+  * Troubleshooting
+  * Best Practices
+
+## Network Information
+
+The Story Network is currently available in multiple environments:
+
+* Mainnet (Production)
+* Aeneid (Testnet)
+* Localnet (Development)
+
+For detailed network information and connection details, please refer to the respective network documentation sections.
+
+# Additional Resources
 
 # Additional Resources
 
@@ -5852,429 +5921,646 @@ export type CreateNFTCollectionResponse = {
 
 - [Story Forum](https://forum.story.foundation/)
 
+# Release Notes
+This page provides information on the story execution and consensus client software release information. You may find execution client releases in [story-geth](https://github.com/piplabs/story-geth/releases) repo, and consensus client releases in [story](https://github.com/piplabs/story/releases) repo.
 
-# Troubleshooting
+### Production releases
 
-# Overview
+There are generally four types of releases:
+* Major: It requires hardfork upgrade with a predefined upgrade height. Node operators need to upgrade before or on the height. The release will increase minor version number.
+* Minor: It doesn't require hardfork upgrade. Node operators are required to upgrade binaries as soon as possible. The release will increase patch version number.
+* Fix: It is an urgent fix. Node operators are required to upgrade binaries as soon as possible. The release will increase minor version or patch version number.
+* Optional: It is an optional fix. Node operators can upgrade binaries based on needs. The release will increase patch version number.
 
-Welcome to the Troubleshooting a Story node!
+Each release comes with a release note describing a list of new features or fixes. Released software binaries are also attached in the release note. We currently provide binaries supporting four types of systems: darwin-amd64, darwin-arm64, linux-amd64, and linux-arm64. You may also build your binaries using the commit hash in the release note.
 
-The following section is a collection of the most common problems, errors, bugs that occur when interacting with the Story nodes.
+### Release entries
 
-Troubleshooting aims at:
-* Quickly identify problems;
-* Quickly solution that could affect your synchronization, performance, connectivity.
+Refer to the following release matrix to run nodes for Mainnet and Aeneid Testnet.
 
-Let's build a healthy ecosystem.
+| Network | story-geth | story  |
+|---------|------------|--------|
+| Mainnet	| v1.0.1	   | v1.1.0 |
+| Aeneid 	| v1.0.1	   | v1.1.0 |
 
-## Failed to initialize database
-Error:
+# Operating Your Node
+## **1. Setting Up a Geth Archive Node**
+To run a Geth archive node, use `--gcmode=archive` instead of `--gcmode=full`. This ensures that Geth retains all historical blockchain state data, making it ideal for indexing services and blockchain analytics.
+
+- `--syncmode=full`: Ensures a complete blockchain sync.
+- `--gcmode=archive`: Retains full historical state data without pruning.
+
+---
+
+## **2. Enabling RPC (HTTP) and WebSocket in Geth**
+### **HTTP (RPC) Options**
+| Option | Description |
+|--------|------------|
+| `--http` | Enables the HTTP-RPC server. |
+| `--http.addr=0.0.0.0` | Binds the HTTP server to all network interfaces. |
+| `--http.port=8545` | Sets the HTTP-RPC port (default: 8545). |
+| `--http.vhosts=*` | Allows requests from any domain (use with caution in production). |
+| `--http.api=web3,eth,txpool,net,engine,debug` | Specifies the available APIs for HTTP requests. |
+
+### **WebSocket (WS) Options**
+| Option | Description |
+|--------|------------|
+| `--ws` | Enables the WebSocket server. |
+| `--ws.addr=0.0.0.0` | Binds the WebSocket server to all network interfaces. |
+| `--ws.port=8546` | Sets the WebSocket port (default: 8546). |
+| `--ws.origins=*` | Allows WebSocket connections from any domain (use with caution in production). |
+| `--ws.api=web3,eth,txpool,net,engine,debug` | Specifies the available APIs for WebSocket connections. |
+
+These configurations ensure external applications can interact with the Geth node using both HTTP-RPC and WebSocket.
+
+---
+
+## **3. Monitoring Geth and Story Protocol**
+### **Geth Monitoring Configuration**
+- `--metrics`: Enables Prometheus-compatible metrics for Geth.
+- `--metrics.addr=0.0.0.0`: Binds the metrics server to all interfaces.
+- `--metrics.port=6060`: Exposes metrics on port `6060`.
+
+### **Story Protocol Monitoring**
+- Modify `config.toml` and set:
+  ```toml
+  prometheus = true
+  ```
+- The default Prometheus metrics port for Story Protocol is `26660`.
+
+With these settings, both Geth and Story Protocol expose monitoring metrics that can be collected using Prometheus and visualized with Grafana.
+
+# Node Upgrade
+There are three types of upgrades
+
+1. Upgrade the story geth client
+2. Upgrade the story client manually
+3. Schedule the upgrade with Cosmovisor
+
+### Upgrade the story geth client
+
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly !! err="create db: failed to initialize database:
-```
-Solution:
-* This indicates a corrupted database.
-* You need to save your state and try to sync from a fresh snapshot.
-* To save the state of the validator:
-```bash
-cp $HOME/.story/story/data/priv_validator_state.json $HOME/.story/story/priv_validator_state.json.backup
-```
-> 🚧 Be very careful with this file, especially if your validator is already signing blocks.
-* Check your the database backend type, your node must support the same as you are using the snapshot:
-```bash
-cat $HOME/.story/story/config/story.toml
-```
-Default is `app-db-backend = "goleveldb”`. The fallback is the `db_backend` value set in CometBFT's `config.toml`.
-```bash
-cat $HOME/.story/story/config/config.toml
-```
+# Stop the services
+sudo systemctl stop story
+sudo systemctl stop story-geth
 
-## Gas fee increase at RPC node
-Problem:
-* Gas fee are high and you need to edit it on the RPC node.
+# Download the new binary
+wget ${STORY_GETH_BINARY_URL}
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/story-geth
+source $HOME/.bashrc
 
-Solution:
-* You will need to add the `--rpc.txfee` flag to your geth startup command.
-* For example, it can look like this (meaning that the RPC node will skip all transactions with a fee of more than 2 IPs):
-```bash
-sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
-[Unit]
-Description=Story-Geth Node
-After=network.target
-
-[Service]
-User=$USER
-Type=simple
-WorkingDirectory=$HOME/.story/geth
-ExecStart=$(which geth)  --odyssey --syncmode full --rpc.txfee 2
-Restart=on-failure
-LimitNOFILE=65535
-
-[Install]
-WantedBy=multi-user.target
-EOF
-```
-
-## Failed to send PacketPing
-Error:
-```bash
-ERRO Failed to send PacketPing module=p2p peer=19fa6dd52e72e4e85bbb873b705282cf73217a6b@158.220.80.96:40128 err="write tcp 139.59.139.135:26656->158.220.80.96:40128: write: broken pipe"
-```
-Solution:
-* If the node is synchronized, you can ignore this error. Your client may be a little behind.
-* If the node stops, you should restart the services.
-
-## Cosmovisor: failed to read upgrade info
-An error occurs when starting the cosmovisor:
-```bash
-panic: failed to read upgrade info from disk unexpected end of JSON input
-```
-Solution:
-* You must ensure that the installed cosmovisor version must be at least [v1.7.0.](https://docs.cosmos.network/main/build/tooling/cosmovisor)
-* Then check your info file (edit version `v0.13.0` in your case):
-```bash
-cat $HOME/.story/story/cosmovisor/upgrades/v0.13.0/upgrade-info.json
-```
-If you don`t have create new one:
-```bash
-echo '{"name":"v0.13.0","time":"0001-01-01T00:00:00Z","height":858000}' > $HOME/.story/story/cosmovisor/upgrades/v0.13.0/upgrade-info.json
-```
-Find out more about automatic updates with cosmovisor [here](https://docs.story.foundation/docs/odyssey-node-setup#automated-upgrades).
-
-## IPC endpoint closed
-Error:
-```bash
-INFO HTTP server stopped
-INFO IPC endpoint closed
-```
-Solution:
-* It looks like port 8551 stopping, the background process running `iptables` blocking ip and port and access posix.
-* For solution try uninstall `ufw posix` and `iptables`:
-```bash
-iptables -I INPUT -s localhost -j ACCEPT 
+# Restart the service
+sudo systemctl start story-geth
+sudo systemctl start story
 ```
 
-## Found signature from the same key
-Error:
+### Upgrade the story client manually
+
 ```bash
-panic: Faile to consensus  state: found signature from the same key
+# Stop the service
+sudo systemctl stop story
+
+# Download the new binary
+wget ${STORY_BINARY_URL}
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/story
+
+# Schedule the update
+sudo systemctl start story
 ```
 
-Solution:
-* The validator has been double signed. It is currently not possible to restore the validator after it has been double signed.
-* To avoid such situations, see this post on how to correctly [migrate a validator to another machine](https://docs.story.foundation/docs/odyssey-validator-operations#migrating-a-validator-to-another-machine).
+### Schedule the upgrade with Cosmovisor
 
-## Failed to validate create flags: missing required flag(s): moniker
-Error:
-```bash
-4-11-26 08:42:20.302 ERRO !! Fatal error occurred, app died️ unexpectedly !! err="failed to validate create flags: missing required flag(s): moniker" stacktrace="[errors.go:39 flags.go:173 validator.go:168 validator.go:384 command.go:985 command.go:1117 command.go:1041 command.go:1034 cmd.go:34 main.go:10 proc.go:271 asm_amd64.s:1695]"
-```
-Solution:
-* You missed flag `--moniker`.
-* The command to create a new validator should look like this:
-```bash
-./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME}
-```
-See more options [here](https://docs.story.foundation/docs/odyssey-validator-operations#validator-creation).
+The following steps outline how to schedule an upgrade using Cosmovisor:
 
-## Error adding vote
-Error:
+1. Create the upgrade directory and download the new binary
+
 ```bash
-ERRO failed to process message msg_type= *consensus.VoteMessage err:" error adding vote"
-```
-Solution:
-* It looks like your node is down. To get started, check the current versions of the binaries [here](https://docs.story.foundation/docs/odyssey-node-setup).
-* If you have up-to-date binary - try updating peers, this usually happens when a node loses p2p communication:
-```bash
-PEERS="..."
-sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.story/story/config/config.toml
+# Download the new binary
+wget ${STORY_BINARY_URL}
+
+# Schedule the upgrade
+source $HOME/.bash_profile
+cosmovisor add-upgrade ${UPGRADE_NAME} ${UPGRADE_PATH} \
+  --force \
+  --upgrade-height ${UPGRADE_HEIGHT}
 ```
 
-## Error signing vote
-Error:
+2. Verify the upgrade configuration
+
 ```bash
-ERRO failed signing vote module=consensus height=403750 round=0 vote="Vote{23:B12C6AE31E8E 403750/00/SIGNED_MSG_TYPE_PREVOTE(Prevote) FA591EB1E540 000000000000 000000000000 @ 2024-11-08T16:58:10.375918193Z}" err="error signing vote: height regression. Got 403750, last height 420344"
+# Check the upgrade info
+cat $HOME/.story/data/upgrade-info.json
 ```
-Solution:
-* Looks like you have a problem with your `priv_validator_state` of validator.
-> 🚧 Be very careful with this file, especially if your validator is already signing blocks.
-* You can make a copy of your state with a command:
-```bash
-cp $HOME/.story/story/data/priv_validator_state.json $HOME/.story/story/priv_validator_state.json.backup
-```
-Check your validator state:
-```bash
-cat $HOME/.story/story/data/priv_validator_state.json
-```
-* If you get this error, you can reset your state (🚧 ONLY IF YOUR VALIDATOR HAS NOT YET SIGNET BLOCKS).
-* Stop node.
-```bash
-sudo tee $HOME/.story/story/data/priv_validator_state.json > /dev/null <<EOF
+
+The upgrade-info.json should show:
+
+```json
 {
-  "height": "0",
-  "round": 0,
-  "step": 0
+  "name": "v1.0.0",
+  "time": "2025-02-05T12:00:00Z",
+  "height": 858000
 }
-EOF
 ```
-* Start node.
 
-## Unknown flag: --home
-Error:
+3. Monitor the upgrade
+
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly !! err="unknown flag: --home"
+# Watch the node logs for the upgrade
+journalctl -u story -f -o cat
 ```
-Solution:
-* It looks like a misconfiguration. You must try to remove the `--home` flag from the startup command.
-* Your systemd to run might look like this:
+
+Note: Cosmovisor will automatically handle the binary switch once the specified block height is reached. Before the upgrade, confirm that your node is fully synced and has enough disk space available.
+
+# Full Node
+This section will guide you through how to setup a Story node for mainnet. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
+
+The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
+
+* **`story-geth`execution client:**
+  * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
+  * Latest Stable Binary (v1.0.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.1)
+* **`story`consensus client:**
+  * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
+  * Latest Stable Binary (v1.1.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.1.0)
+
+# Story Node Installation Guide
+
+## Pre-Installation Checklist
+
+* [ ] Verify system meets hardware requirements
+* [ ] Operating system: Ubuntu 22.04 LTS
+* [ ] Required ports are available
+* [ ] Sufficient disk space available
+* [ ] Root or sudo access
+
+## Quick Reference
+
+* Installation time: \~30 minutes
+* Network: Story Mainnet or Story Aeneid Testnet
+* Required versions:
+  * Check Latest Release
+
+## 1. System Preparation
+
+### 1.1 System Requirements
+
+For optimal performance and reliability, we recommend running your node on either:
+
+* A Virtual Private Server (VPS)
+* A dedicated Linux-based machine
+
+### System Specs
+
+| Hardware  | Minimal Requirement |
+| --------- | ------------------- |
+| CPU       | Dedicated 8 Cores   |
+| RAM       | 32 GB               |
+| Disk      | 500 GB NVMe Drive   |
+| Bandwidth | 25 MBit/s           |
+
+### 1.2 Required Ports
+
+*Ensure all ports needed for your node functionality are needed, described below*
+
+* `story-geth`
+  * 8545
+    * Required if you want your node to interface via JSON-RPC API over HTTP
+  * 8546
+    * Required for websockets interaction
+  * 30303 (TCP + API)
+    * MUST be open for p2p communication
+* `story`
+  * 26656
+    * MUST be open for consensus p2p communication
+  * 26657
+    * Required if you want your node interfacing for Tendermint RPC
+  * 26660
+    * Needed if you want to expose prometheus metrics
+
+### 1.3 Install Dependencies
+
 ```bash
+# Update system
+sudo apt update && sudo apt-get update
+
+# Install required packages
+sudo apt install -y \
+  curl \
+  git \
+  make \
+  jq \
+  build-essential \
+  gcc \
+  unzip \
+  wget \
+  lz4 \
+  aria2 \
+  gh
+```
+
+### 1.4 Install Go
+
+For Odyssey, we need to install Go 1.22.0
+
+```bash
+# Download and install Go 1.22.0
+cd $HOME
+
+# Set Go version
+GO_VERSION="1.22.0"
+
+# Download Go binary
+wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Remove existing Go installation and extract new version
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Clean up downloaded archive
+rm "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Add Go to PATH
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
+
+# Verify installation
+go version
+```
+
+## 2. Story Node Installation
+
+### 2.1 Install Story-Geth
+
+1. Download and setup binary
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/
+source $HOME/.bashrc
+
+# Verify installation
+story-geth version
+```
+
+You will see the version of the geth binary.
+
+```
+Geth
+version: 1.0.1-stable
+...
+
+```
+
+(Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./geth
+```
+
+2. Configure and start service
+
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+           # Setup systemd service
+    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Geth Client
+    After=network.target
+
+    [Service]
+    User=${user}
+    ExecStart=${path_to_geth_binary} --story --syncmode full
+    Restart=on-failure
+    RestartSec=3
+    LimitNOFILE=4096
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    # Start service
+    sudo systemctl daemon-reload
+    sudo systemctl enable story-geth
+    sudo systemctl start story-geth
+
+    # Verify service status
+    sudo systemctl status story-geth
+    ```
+  </Tab>
+
+  <Tab title="Aeneid testnet">
+    ```bash
+    # Setup systemd service
+    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Geth Client
+    After=network.target
+
+    [Service]
+    User=${user}
+    ExecStart=${path_to_geth_binary} --aeneid --syncmode full
+    Restart=on-failure
+    RestartSec=3
+    LimitNOFILE=4096
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    # Start service
+    sudo systemctl daemon-reload
+    sudo systemctl enable story-geth
+    sudo systemctl start story-geth
+
+    # Verify service status
+    sudo systemctl status story-geth
+    ```
+  </Tab>
+</Tabs>
+
+### 2.2 Install Story Consensus Client
+
+#### Cosmovisor installation
+
+For updating the story client, we recommend using Cosmovisor.
+
+1. Install Cosmovisor
+
+```bash
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
+cosmovisor version
+```
+
+2. Configure Cosmovisor
+
+```bash
+# Set daemon configuration
+export DAEMON_NAME=story
+export DAEMON_HOME=$HOME/.story/story
+export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
+sudo mkdir -p \
+  $DAEMON_HOME/cosmovisor/backup \
+  $DAEMON_HOME/data
+
+
+# Persist configuration
+echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
+echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
+echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
+```
+
+#### Install Story Client
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/
+source $HOME/.bashrc
+story version
+```
+
+> You should expect to see version 1.0.0-stable
+
+(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./story
+```
+
+#### Init Story with Cosmovisor
+
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    cosmovisor init ./story
+    cosmovisor run init --network story --moniker ${moniker_name}
+    cosmovisor version
+    ```
+  </Tab>
+
+  <Tab title="Aeneid testnet">
+    ```bash
+    cosmovisor init ./story
+    cosmovisor run init --network aeneid --moniker ${moniker_name}
+    cosmovisor version
+    ```
+  </Tab>
+</Tabs>
+
+#### Custom Configuration
+
+To override your own node settings, you can do the following:
+
+* `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
+* `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
+* `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
+
+#### Custom Automation
+
+Below we list a sample `Systemd` configuration you may use on Linux
+
+```bash
+# story
 sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
 [Unit]
-Description=Story Node
+Description=Story Cosmovisor
 After=network.target
 
 [Service]
-User=$USER
-WorkingDirectory=$HOME/.story/story
 Type=simple
-ExecStart=$(which story) run
+User=$USER
+Group=$GROUP
+ExecStart=/usr/local/bin/cosmovisor run run \
+--api-enable \
+--api-address=0.0.0.0:1317
 Restart=on-failure
+RestartSec=5s
 LimitNOFILE=65535
+Environment="DAEMON_NAME=$DAEMON_NAME"
+Environment="DAEMON_HOME=$DAEMON_HOME"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
+WorkingDirectory=$DAEMON_HOME
 
 [Install]
 WantedBy=multi-user.target
 EOF
+
 ```
 
-## Failed to register the Ethereum service
-Error:
-```bash
-Fatal: Failed to register the Ethereum service: incompatible state scheme, stored: path, provided: hash
-```
-Solution:
-* You have problems with the state of validator or a corrupted database.
-* Try using a snapshot.
-> 🚧 Be very careful with this file, especially if your validator is already signing blocks.
-* We have described how to reset your state [here](https://docs.story.foundation/docs/troubleshooting#error-signing-vote).
+<Tabs>
+  <Tab title="With Cosmovisor">
+    ```bash
+    # story
+    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Cosmovisor
+    After=network.target
 
-## Failed to reconnect to peer
-Error:
-```bash
-24-09-25 06:38:45.235 ERRO Failed to reconnect to peer. Beginning exponential backoff module=p2p addr=e0600fa5f2129e647ef30a942aac1695201ff135@65.109.115.98:26656 elapsed=2m29.598884906s
-```
-Solution:
-* If the node is synchronized and not far behind, you can ignore this error.
-* If the node is lagging or has stopped completely, try updating peers, this usually happens when a node loses p2p communication:
-```bash
-PEERS="..."
-sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers =./persistent_peers = \"$PEERS\"/}" $HOME/.story/story/config/config.toml
-```
+    [Service]
+    Type=simple
+    User=${USER}
+    Group=${GROUP}
+    ExecStart=${path_to_story_binary} run run \
+    --api-enable \
+    --api-address=0.0.0.0:1317
+    Restart=on-failure
+    RestartSec=5s
+    LimitNOFILE=65535
+    Environment="DAEMON_NAME=$DAEMON_NAME"
+    Environment="DAEMON_HOME=$DAEMON_HOME"
+    Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+    Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+    Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
+    WorkingDirectory=$DAEMON_HOME
 
-## Processing finalized payload halted while evm syncing
-Warn:
-```bash
-WARN Processing finalized payload halted while evm syncing (will retry) payload_height=...
-```
-Solution:
-* It just means that story-geth is syncing, you can ignore this warn.
-* However, if it takes a long time, we recommend that you stop the processes one at a time and start them again later in the following order:
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    ```
+  </Tab>
+
+  <Tab title="Without Cosmovisor">
+    ```bash
+    # story
+    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Cosmovisor
+    After=network.target
+
+    [Service]
+    Type=simple
+    User=${USER}
+    Group=${GROUP}
+    ExecStart=${path_to_story_binary} run
+    Restart=on-failure
+    RestartSec=5s
+    LimitNOFILE=65535
+    WorkingDirectory=$HOME/.story/story
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    ```
+  </Tab>
+</Tabs>
+
+#### Start the service
 
 ```bash
-sudo systemctl stop story-geth story
 sudo systemctl daemon-reload
-sudo systemctl start story-geth
-sudo systemctl enable story-geth
-
-sudo systemctl daemon-reload
-sudo systemctl start story
 sudo systemctl enable story
+sudo systemctl start story
+
+# Monitor logs
+journalctl -u cosmovisor -f -o cat
 ```
 
-## Upgrade handler is missing
-Error:
-```bash
-ERRO error in proxyAppConn.FinalizeBlock      module=consensus err="module manager preblocker: wrong app version 0, upgrade handler is missing for upgrade plan"
-```
-Solution:
-* Looks like you missed an update.
-* To get started, check the current versions of the binaries [here](https://docs.story.foundation/docs/odyssey-node-setup).
+#### Debugging
 
-## Home directory contains unexpected file
-Error:
-```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly !! err="home directory contains unexpected file(s), use --force to initialize anyway"
-```
-Solution:
-* This means that you have already initialized the node.
-* `$HOME/.story/story` directory created, and there are files in it. Delete it, or try with it.
+If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
 
-##  Err="create comet node: create node
-Error:
-```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly ! err="create comet node: create node
-```
-Solution:
-* It appears that your node is using incorrect versions.
-* Check the current versions of the binaries [here](https://docs.story.foundation/docs/odyssey-node-setup).
-* And most likely you need to perform a rollback binary to current versions.
+* `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
+  * This will give you a list of consesus peers the node is sync'd with by moniker
+* `curl localhost:26657/health`
+  * This will let you know if the node is healthy - `{}` indicates it is
 
-## WAL does not contain
-Error:
-```bash
-ERRO catchup replay: WAL does not contain
-```
-Solution:
-* Looks like an `AppHash` issue.
-* To get started, upgrade to the current versions of the binaries [here](https://docs.story.foundation/docs/odyssey-node-setup).
-* If your versions are newer than the current ones, perform a rollback.
+## 3. Verify Installation
 
-## Err="load engine JWT file: read jwt file
-Error:
+### 3.1 Check Geth Status
+
 ```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly !! err="load engine JWT file: read jwt file: open /root/.story/geth/odyssey/geth/jwtsecret: no such file or directory
-```
-Solution:
-* It seems your node can't get `jwtsecret`.
-* Check your `WorkingDirectory` in your `geth-service` , by default `WorkingDirectory=$HOME/.story/geth`.
-* Check all paths, you can get your `jwtsecret`with command (for odyssey network):
-```bash
-cat .story/geth/odyssey/geth/jwtsecret
+# Check sync status
+curl -X POST -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  http://localhost:8545
+
 ```
 
-## Couldn't connect to any seeds 
-Error:
+### 3.2 Check Consensus Client
+
 ```bash
-ERRO Couldn't connect to any seeds module=p2p
-```
-Solution:
-* If the node is synchronized and not far behind, you can ignore this error.
-* If the node is lagging or has stopped completely, try updating seeds/peers, it usually happens when a node loses p2p communication (we recommend that you stop the node and delete the addrbook).
-```bash
-rm -rf $HOME/.story/story/config/addrbook.json
-SEEDS="..."
-PEERS="..."
-sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" \
-       -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.story/story/config/config.toml
+# Check node status
+curl localhost:26657/status
+
+# Check peer connections
+curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
 ```
 
-## Processing finalized payload failed err="rpc forkchoice updated
-Warn:
-```bash
-WRN Processing finalized payload; evm syncing
-WRN Processing finalized payload failed: evm fork choice update (will retry) status="" err="rpc forkchoice updated v3: beacon syncer reorging"
-```
-Solution:
-* Everything is fine, it just means that `story-geth` is syncing, which takes some time.
-* If the node is not far behind, you can ignore this warning.
+## Clean status
 
-## Dial tcp 127.0.0.1:9090
-Warn:
-```bash
-WRN error getting latest block error:"rpc error: dial tcp 127.0.0.1:9090"
-```
-Solution:
-* The logs show a connection failure on port `9090`.
-* Check the listening ports:
-```bash
-sudo ss -tulpn  | grep LISTEN
-```
-* If other node uses `9090`, then modify it to another.
-* Normally, this WARNING should not affect the performance of your node.
+If you ever run into issues and would like to try joining the network from a cleared state, run the following:
 
-## Wrong AppHash
-Error:
-```bash
-ERRO Error in validation module=blocksync err="wrong Block[dot]Header[dot]AppHash  Expected [...]
-```
-Solution:
-* `Wrong AppHash` type logs means the story node version you are using is wrong.
-* Upgrade to the current versions of the binaries [here](https://docs.story.foundation/docs/odyssey-node-setup).
-* If your versions are newer than the current ones, perform a rollback.
+### Geth
 
-## Connection failed sendRoutine / Stopping peer
-Error:
-```bash
-ERRO Connection failed @ sendRoutine module=p2p peer=...
-ERRO Stopping peer for error module=p2p peer=...
-```
-Solution:
-* If the node is synchronized and not far behind, you can ignore this error.
-* If the node is lagging or has stopped completely, try updating peers, this usually happens when a node loses p2p communication:
-```bash
-PEERS="..."
-sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers =./persistent_peers = \"$PEERS\"/}" $HOME/.story/story/config/config.toml
-```
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
+    ```
 
-## Moniker must be valid non-empty
-Error:
-```bash
-ERRO !! Fatal error occurred, app died️ unexpectedly ! err="create comet node: create node: info.Moniker must be valid non-empty 
-```
-Solution:
-* Looks like a problem with your node moniker.
-* Be sure to use `""` when executing init:
-```bash
-story init --network “...“ --moniker “...”
-```
-* Go to config, find the moniker and put it inside `""` only:
-```bash
-sudo nano ~/.story/story/config/config.toml
-```
+    Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story    --syncmode full`
 
-## Invalid address (26656)
-Error:
-```bash
-Fatal error occurred, app died️ unexpectedly ! err="create comet node: create node: invalid address (26656):
-```
-Solution:
-* The logs report a connection failure on port `26656`.
-* Check the listening ports:
-```bash
-sudo ss -tulpn  | grep LISTEN
-```
-* If another node is using `26656`, change it to another and keep the default `26656` for story in the `P2P configuration` options in `config`:
-```bash
-sudo nano ~/.story/story/config/config.toml
-```
+    Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode full`
+  </Tab>
 
-## Eth_coinbase does not exist 
-Warn:
-```bash
-WARN Beacon client online, but no consensus updates received in a while. Please fix your beacon client to follow the chain!
-Served eth_coinbase eth_coinbase does not exist 
-```
-Solution:
-* This error indicates that the network has stopped.
+  <Tab title="Aeneid Testnet">
+    ```bash
+    rm -rf ${GETH_DATA_ROOT} && ./geth --aeneid --syncmode full
+    ```
 
-## Verifying proposal failed
-Warn:
-```bash
-WARN Verifying proposal failed: push new payload to evm (will retry) status="" err="new payload: rpc new payload v3: Post \"http://localhost:8551\": round trip: dial tcp 127.0.0.1:8551: connect: connection refused" stacktrace="[errors.go:39 jwt.go:41 client.go:259 client.go:180 client.go:724 client.go:590 http.go:229 http.go:173 client.go:351 engineclient.go:101 msg_server.go:183 proposal_server.go:34 helpers.go:30 proposal_server.go:33 tx.pb.go:299 msg_service_router.go:175 tx.pb.go:301 msg_service_router.go:198 prouter.go:74 abci.go:520 cmt_abci.go:40 abci.go:85 local_client.go:164 app_conn.go:89 execution.go:166 state.go:1381 state.go:1338 state.go:2055 state.go:910 state.go:836 asm_amd64.s:1695]"
-WARN Verifying proposal
-```
-Solution:
-* It looks like port 8551 stopping, the background process running `iptables` blocking ip and port and access posix.
-* For solution try uninstall `ufw posix` and `iptables`:
-```bash
-iptables -I INPUT -s localhost -j ACCEPT 
-```
+    Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --aeneid    --syncmode full`
 
+    Linux: `rm -rf ~/.story/geth/* && ./geth --aeneid --syncmode full`
+  </Tab>
+</Tabs>
+
+### Story
+
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+    ```
+
+    Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+
+    Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+  </Tab>
+
+  <Tab title="Aeneid Testnet">
+    ```bash
+    rm -rf ${STORY_DATA_ROOT} && ./story init --network aeneid && ./story run
+    ```
+
+    Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network aeneid && ./story run`
+
+    Linux: `rm -rf ~/.story/story/* && ./story init --network aeneid && ./story run`
+  </Tab>
+</Tabs>
 
 # Mainnet
-
-# Overview
-
-Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
-
-- using precompiled primitives to traverse complex data structures like IP graphs within seconds at marginal costs
-- a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
-- a modular architecture that decouples consensus from execution via Ethereum’s Engine-API
-
 # Resources
 
 **Network Name**: Story Mainnet
 
 **Chain ID**: 1514
+
+**Chainlist Link**: [https://chainlist.org/chain/1514](https://chainlist.org/chain/1514)
 
 ## :link: RPCs
 
@@ -6293,7 +6579,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         Official
       </th>
     </tr>
-
   </thead>
 
   <tbody>
@@ -6303,14 +6588,13 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://mainnet.storyrpc.io`
+        [https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)
       </td>
 
       <td style={{ textAlign: "left" }}>
         :white_check_mark:
       </td>
     </tr>
-
   </tbody>
 </Table>
 
@@ -6331,17 +6615,16 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         Official
       </th>
     </tr>
-
   </thead>
 
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://www.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
+        BlockScout Explorer ↗️
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://www.storyscan.xyz/`
+        [https://www.storyscan.xyz/](https://www.storyscan.xyz/)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -6349,77 +6632,34 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
       </td>
     </tr>
 
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        OKX Explorer
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        [https://www.okx.com/web3/explorer/story](https://www.okx.com/web3/explorer/story)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
   </tbody>
 </Table>
 
-## :mag: IP-related Explorer
-
-Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
-
-> 🚧 Coming soon!
-
-| Explorer | URL |
-| :------- | :-- |
-| N/A      | N/A |
-
-## :money_with_wings: Faucets
-
-> 🚧 Coming soon!
-
-| Faucet | Amount | Requirement |
-| :----- | :----- | :---------- |
-| N/A    | N/A    | N/A         |
-
-## :moneybag: Staking
-
-> 🚧 Coming soon!
-
-| Dashboard |
-| :-------- |
-| N/A       |
-
-
-## Infrastructure Partners
-
-> 🚧 Coming soon!
-
-| Partner | URL |
-| :------ | :-- |
-| N/A     | N/A |
-
 ## Contract deployment addresses
 
-- [Story Network](doc:node-setup-dev-mainnet)
-- 
-
-## :computer: Ports
-
-The following ports are available for `story-geth` and `story` clients:
-
-Geth:
-
-- RPC: 8545
-- WS: 8546
-- P2P: 30303
-
-Metrics:
-
-- Prometheus: 9100
-- Geth: 6060
-- Story: 26660
+* [Proof of Creativity](doc:deployed-smart-contracts)
 
 # Further Sections
 
-- [Mainnet Status Page](https://status.story.foundation/)
-- [Node Setup](doc:node-setup-dev-mainnet)
-- [Validator Operations](doc:validator-operations)
-- [Tokenomics & Staking](doc:tokenomics-staking)
+* [Mainnet Status Page](https://status.story.foundation/)
+* [Node Setup](doc:full-node)
+* [Validator Operations](doc:validator-operations)
+* [Staking Design](doc:tokenomics-staking)
 
 # Network Info
-> 🚧 We are still in testnet!
->
-> Please note that Story Network (our purpose-built L1) is still in **testnet**. This means things are subject to change or break along the way.
-
 # Overview
 
 Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
@@ -6428,136 +6668,20 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 * a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
 * a modular architecture that decouples consensus from execution via Ethereum’s Engine-API
 
-# Resources
+# Available Network
 
-**Network Name**: Story Aeneid Testnet
+<Cards columns={3}>
+  <Card title="Mainnet" href="https://docs.story.foundation/v1.3-beta/docs/mainnet/" icon="fa-home" target="_blank" />
 
-**Chain ID**: 1315
+  <Card title="Aeneid Testnet" hred="https://docs.story.foundation/v1.3-beta/docs/aeneid/" icon="fa-wrench" />
 
-## :link: RPCs
+  <Card title="Run a localnet" hred="https://docs.story.foundation/v1.3-beta/docs/localnet/" icon="fa-cog" />
+</Cards>
 
-<Table align={["left","left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-        RPC Name
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        RPC URL
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Official
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Story
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://aeneid.storyrpc.io`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        :white_check_mark:
-      </td>
-    </tr>
-  </tbody>
-</Table>
-
-## :mag: Block Explorers
-
-<Table align={["left","left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-        Explorer
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        URL
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Official
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://aeneid.storyscan.xyz/`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        :white_check_mark:
-      </td>
-    </tr>
-  </tbody>
-</Table>
-
-## :mag: IP-related Explorer
-
-Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
-
-> 🚧 Coming soon!
-
-| Explorer | URL |
-| :------- | :-- |
-| N/A      | N/A |
-
-## :money_with_wings: Faucets
-
-| Faucet                                                                                 | Amount |
-| :------------------------------------------------------------------------------------- | :----- |
-| <a href="https://cloud.google.com/application/web3/" target="_blank">GCP Faucet ↗️</a> | 1 IP   |
-
-## :moneybag: Staking
-
-> 🚧 Coming soon!
-
-| Dashboard |
-| :-------- |
-| N/A       |
-
-## Ports
-
-The following ports are available for `geth` and `story` clients:
-
-Geth:
-
-* RPC: 8545
-* WS: 8546
-* P2P: 30303
-
-Metrics:
-
-* Prometheus: 9100
-* Geth: 6060
-* Story: 26660
-
-# Further Sections
-
-* [Wallet Setup](doc:odyssey-wallet-setup)
-* [Node Setup](doc:odyssey-node-setup)
-* [Validator Operations](doc:odyssey-validator-operations)
-* [Tokenomics & Staking](doc:tokenomics-staking)
-
-# Run a local net
+# Run a Localnet
 # Overview
 
-You can easily set up your own local Story network using `docker compose`, the local network consists of one boot node and four validator nodes. With this local network, you can test the consensus layer of the Story network or deploy your applications to conduct various tests. Additionally, you can reset the network at any time\
-as needed.
+You can easily set up your own local Story network using docker compose, consisting of one boot node and four validator nodes. With this local network, you can test the consensus layer of the Story network or deploy your application using the precompiled primitive, the IP graph, to conduct various tests. Additionally, you can reset the network at any time as needed.
 
 # Run a Local Story Network
 
@@ -6658,16 +6782,7 @@ visualization for the blockchain network. Tools include **Prometheus**,
 | **Promtail**   | Scrapes logs from Docker containers and sends them to Loki.        | `9080` (API), `9095` (Metrics) | `http://localhost:9080` |
 | **Grafana**    | Provides a dashboard interface for metrics and logs visualization. | `3000`                         | `http://localhost:3000` |
 
-# Aeneid - Testnet
-
-# Overview
-
-Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
-
-- using precompiled primitives to traverse complex data structures like IP graphs within seconds at marginal costs
-- a consensus layer based on the mature CometBFT stack to ensure fast finality and cheap transactions
-- a modular architecture that decouples consensus from execution via Ethereum’s Engine-API
-
+# test
 # Resources
 
 **Network Name**: Story Aeneid Testnet
@@ -6691,7 +6806,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         Official
       </th>
     </tr>
-
   </thead>
 
   <tbody>
@@ -6708,7 +6822,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         :white_check_mark:
       </td>
     </tr>
-
   </tbody>
 </Table>
 
@@ -6729,7 +6842,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         Official
       </th>
     </tr>
-
   </thead>
 
   <tbody>
@@ -6746,7 +6858,6 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
         :white_check_mark:
       </td>
     </tr>
-
   </tbody>
 </Table>
 
@@ -6782,23 +6893,111 @@ The following ports are available for `story-geth` and `story` clients:
 
 Geth:
 
-- RPC: 8545
-- WS: 8546
-- P2P: 30303
+* RPC: 8545
+* WS: 8546
+* P2P: 30303
 
 Metrics:
 
-- Prometheus: 9100
-- Geth: 6060
-- Story: 26660
+* Prometheus: 9100
+* Geth: 6060
+* Story: 26660
 
 # Further Sections
 
-- [Mainnet Status Page](https://status.story.foundation/)
-- [Node Setup](doc:node-setup-dev-mainnet)
-- [Validator Operations](doc:validator-operations)
-- [Tokenomics & Staking](doc:tokenomics-staking)
+* [Mainnet Status Page](https://status.story.foundation/)
+* [Node Setup](doc:node-setup-dev-mainnet)
+* [Validator Operations](doc:validator-operations)
+* [Tokenomics & Staking](doc:tokenomics-staking)
 
+# Aeneid - Testnet
+# Resources
+
+**Network Name**: Story Aeneid Testnet
+
+**Chain ID**: 1315
+
+## :link: RPCs
+
+<Table align={["left","left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        RPC Name
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        RPC URL
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Official
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        Story
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        [https://aeneid.storyrpc.io](https://aeneid.storyrpc.io)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark:
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
+## :mag: Block Explorers
+
+<Table align={["left","left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Explorer
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        URL
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Official
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        Blockscout Explorer ↗️
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        [https://aeneid.storyscan.xyz/](https://aeneid.storyscan.xyz/)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark:
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
+## Faucet
+
+| Faucet                                                                               | Amount |
+| :----------------------------------------------------------------------------------- | :----- |
+| [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/story/aeneid) | 1 IP   |
+
+## Contract deployment addresses
+
+* [Proof of Creativity](doc:deployed-smart-contracts)
 
 # Validator Operations
 ## Quick Links
@@ -6865,11 +7064,8 @@ Delegator Address: story1p470h0jtph4n5hztallp8vznq8ehylswtr4vxd
 
 To create a new validator, run the following command:
 
-```bash Unlocked Token
+```bash
 ./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME} --rpc ${rpc} --chain-id ${chain_id}
-```
-```Text Locked Token
-./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME} --rpc ${rpc} --chain-id ${chain_id} --unlock=false
 ```
 
 This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. *Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!*
@@ -7250,763 +7446,9 @@ rm ~/.story/story/config/priv_validator_key.json
 
 3. Locate the `priv_validator_key.json` file in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
 
-***IMPORTANT: Before you proceed, make sure you STOPPED your validator on the old server and do not start it again there.***
+> ❗️ Important: Before proceeding, shut down the old validator on the original server and do not restart it!
 
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
-
-# Story Mainnet Guide
-
-
-# Mainnet
-This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
-
-![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
-
-The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
-
-* **`story-geth`execution client:**
-  * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  * Latest Stable Binary (v1.0.1): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.1)
-* **`story`consensus client:**
-  * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  * Latest Stable Binary (v1.1.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.1.0)
-
-# Story Node Installation Guide
-
-## Pre-Installation Checklist
-
-* [ ] Verify system meets hardware requirements
-* [ ] Operating system: Ubuntu 22.04 LTS
-* [ ] Required ports are available
-* [ ] Sufficient disk space available
-* [ ] Root or sudo access
-
-## Quick Reference
-
-* Installation time: \~30 minutes
-* Network: Story Dev mainnet
-* Required versions:
-  * story-geth: v1.0.1
-  * story: v1.1.0
-
-## 1. System Preparation
-
-### 1.1 System Requirements
-
-For optimal performance and reliability, we recommend running your node on either:
-
-* A Virtual Private Server (VPS)
-* A dedicated Linux-based machine
-
-### System Specs
-
-| Hardware  | Requirement       |
-| --------- | ----------------- |
-| CPU       | 8 Cores           |
-| RAM       | 32 GB             |
-| Disk      | 500 GB NVMe Drive |
-| Bandwidth | 25 MBit/s         |
-
-### 1.2 Required Ports
-
-*Ensure all ports needed for your node functionality are needed, described below*
-
-* `story-geth`
-  * 8545
-    * Required if you want your node to interface via JSON-RPC API over HTTP
-  * 8546
-    * Required for websockets interaction
-  * 30303 (TCP + API)
-    * MUST be open for p2p communication
-* `story`
-  * 26656
-    * MUST be open for consensus p2p communication
-  * 26657
-    * Required if you want your node interfacing for Tendermint RPC
-  * 26660
-    * Needed if you want to expose prometheus metrics
-
-## 1.3 Install Dependencies
-
-```bash
-# Update system
-sudo apt update && sudo apt-get update
-
-# Install required packages
-sudo apt install -y \
-  curl \
-  git \
-  make \
-  jq \
-  build-essential \
-  gcc \
-  unzip \
-  wget \
-  lz4 \
-  aria2 \
-  gh
-```
-
-### 1.4 Install Go
-
-For Dev Mainnet, we need to install Go 1.22.0
-
-```bash
-# Download and install Go 1.22.0
-cd $HOME
-
-# Set Go version
-GO_VERSION="1.22.0"
-
-# Download Go binary
-wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Remove existing Go installation and extract new version
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Clean up downloaded archive
-rm "go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Add Go to PATH
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-
-# Verify installation
-go version
-```
-
-## 2. Story Node Installation
-
-### 2.1 Install Story-Geth
-
-1. Download and setup binary
-
-```bash
-cd $HOME
-wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
-sudo mv ./geth-linux-amd64 story-geth
-sudo chmod +x story-geth
-sudo mv ./story-geth $HOME/go/bin/
-source $HOME/.bashrc
-
-# Verify installation
-story-geth version
-```
-
-You will see the version of the geth binary.
-
-```
-Geth
-version: 1.0.1-stable
-...
-
-```
-
-(Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-```bash
-sudo xattr -rd com.apple.quarantine ./geth
-```
-
-2. Configure and start service
-
-```bash
-# Setup systemd service
-sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
-[Unit]
-Description=Story Geth Client
-After=network.target
-
-[Service]
-User=${user}
-ExecStart=${path_to_geth_binary} --story --syncmode full
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=4096
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# Start service
-sudo systemctl daemon-reload
-sudo systemctl enable story-geth
-sudo systemctl start story-geth
-
-# Verify service status
-sudo systemctl status story-geth
-```
-
-### 2.2 Install Story Consensus Client
-
-#### Cosmovisor installation
-
-For updating the story client, we recommend using Cosmovisor.
-
-1. Install Cosmovisor
-
-```bash
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
-cosmovisor version
-```
-
-2. Configure Cosmovisor
-
-```bash
-# Set daemon configuration
-export DAEMON_NAME=story
-export DAEMON_HOME=$HOME/.story/story
-export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
-sudo mkdir -p \
-  $DAEMON_HOME/cosmovisor/backup \
-  $DAEMON_HOME/data
-
-
-# Persist configuration
-echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
-echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
-echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
-echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
-```
-
-#### Install Story Client
-
-```bash
-cd $HOME
-wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
-sudo mv story-linux-amd64 story
-sudo chmod +x story
-sudo mv ./story $HOME/go/bin/
-source $HOME/.bashrc
-story version
-```
-
-> You should expect to see version 1.0.0-stable
-
-(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-```bash
-sudo xattr -rd com.apple.quarantine ./story
-```
-
-#### Init Story with Cosmovisor
-
-```bash
-cosmovisor init ./story
-cosmovisor run init --network story --moniker ${moniker_name}
-cosmovisor version
-```
-
-#### Clear State
-
-If you ever run into issues and would like to try joining the network from a fresh state, run the following:
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
-```
-
-* Mac OS X:
-  * `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-* Linux:
-  * `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
-
-To quickly check if the node is syncing, you could
-
-* Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-* Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-
-#### Custom Configuration
-
-To override your own node settings, you can do the following:
-
-* `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
-* `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
-* `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
-
-#### Custom Automation
-
-Below we list a sample `Systemd` configuration you may use on Linux
-
-```bash
-# story
-sudo tee /etc/systemd/system/cosmovisor.service > /dev/null <<EOF
-[Unit]
-Description=Cosmovisor
-After=network.target
-
-[Service]
-Type=simple
-User=$USER
-Group=$GROUP
-ExecStart=/usr/local/bin/cosmovisor run run \
---api-enable \
---api-address=0.0.0.0:1317
-Restart=on-failure
-RestartSec=5s
-LimitNOFILE=65535
-Environment="DAEMON_NAME=$DAEMON_NAME"
-Environment="DAEMON_HOME=$DAEMON_HOME"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
-WorkingDirectory=$DAEMON_HOME
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-```
-
-#### Start the service
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable cosmovisor
-sudo systemctl start cosmovisor
-
-# Monitor logs
-journalctl -u cosmovisor -f -o cat
-```
-
-#### Debugging
-
-If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
-
-* `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  * This will give you a list of consesus peers the node is sync'd with by moniker
-* `curl localhost:26657/health`
-  * This will let you know if the node is healthy - `{}` indicates it is
-
-## 3. Verify Installation
-
-### 3.1 Check Geth Status
-
-```bash
-# Check sync status
-curl -X POST -H "Content-Type: application/json" \
-  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
-  http://localhost:8545
-
-```
-
-### 3.2 Check Consensus Client
-
-```bash
-# Check node status
-curl localhost:26657/status
-
-# Check peer connections
-curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
-```
-
-## Clean status
-
-If you ever run into issues and would like to try joining the\
-network from a cleared state, run the following:
-
-### Geth
-
-```bash
-rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
-```
-
-* Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story    --syncmode full`
-* Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode   
-  full`
-
-### Story
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
-```
-
-* Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-* Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
-
-<br />
-
-## Upgrade Story
-
-There are three types of upgrades
-
-1. Upgrade the story geth client
-2. Upgrade the story client manually
-3. Schedule the upgrade with Cosmovisor
-
-### Upgrade the story geth client
-
-```bash
-sudo systemctl stop story
-sudo systemctl stop story-geth
-
-# Download the new binary
-wget ${STORY_GETH_BINARY_URL}
-sudo mv ./geth-linux-amd64 story-geth
-sudo chmod +x story-geth
-sudo mv ./story-geth $HOME/go/bin/story-geth
-source $HOME/.bashrc
-
-# Restart the service
-sudo systemctl start story-geth
-sudo systemctl start story
-```
-
-### Upgrade the story client manually
-
-```bash
-sudo systemctl stop story
-
-# Download the new binary
-wget ${STORY_BINARY_URL}
-sudo mv story-linux-amd64 story
-sudo chmod +x story
-sudo mv ./story $HOME/go/bin/story
-
-# Schedule the update
-sudo systemctl start story
-```
-
-### Schedule the upgrade with Cosmovisor
-
-The following steps outline how to schedule an upgrade using Cosmovisor:
-
-1. Create the upgrade directory and download the new binary
-
-```bash
-# Download the new binary
-wget ${STORY_BINARY_URL}
-
-# Schedule the upgrade
-source $HOME/.bash_profile
-cosmovisor add-upgrade ${UPGRADE_NAME} ${UPGRADE_PATH} \
-  --force \
-  --upgrade-height ${UPGRADE_HEIGHT}
-```
-
-2. Verify the upgrade configuration
-
-```bash
-# Check the upgrade info
-cat $HOME/.story/data/upgrade-info.json
-```
-
-The upgrade-info.json should show:
-
-```json
-{
-  "name": "v1.0.0",
-  "time": "2025-02-05T12:00:00Z",
-  "height": 858000
-}
-```
-
-3. Monitor the upgrade
-
-```bash
-# Watch the node logs for the upgrade
-journalctl -u story -f -o cat
-```
-
-Note: Cosmovisor will automatically handle the binary switch when the specified block height is reached. Ensure your node has enough disk space and is fully synced before the upgrade height.
-
-# Aeneid
-
-This section will guide you through how to setup a Story node. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
-
-![](https://files.readme.io/7dee0e873bcb2aeeaf12c3c0d63db44692c1bfe5cee599c52ea5c465240967a4-image.png)
-
-The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
-
-- **`story-geth`execution client:**
-  - Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  - Latest Stable Binary (v0.11.0): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v0.11.0)
-- **`story`consensus client:**
-  - Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  - Latest Stable Binary (v0.13.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v0.13.0)
-
-**_IMPORTANT: For the Odyssey testnet, it is crucial to start with version v0.12.0, as this version is required before applying any subsequent upgrades. Download this version first to ensure compatibility with the testnet environment. Also, verify that you are downloading the binary matching your system architecture_**
-
-## System Specs
-
-| Hardware  | Requirement       |
-| --------- | ----------------- |
-| CPU       | 8 Cores           |
-| RAM       | 32 GB             |
-| Disk      | 500 GB NVMe Drive |
-| Bandwidth | 25 MBit/s         |
-
-On AWS, we recommend using the M6i, R6i, or C6i series.
-
-## Ports
-
-_Ensure all ports needed for your node functionality are needed, described below_
-
-- `story-geth`
-  - 8545
-    - Required if you want your node to interface via JSON-RPC API over HTTP
-  - 8546
-    - Required for websockets interaction
-  - 30303 (TCP + API)
-    - MUST be open for p2p communication
-- `story`
-  - 26656
-    - MUST be open for consensus p2p communication
-  - 26657
-    - Required if you want your node interfacing for Tendermint RPC
-  - 26660
-    - Needed if you want to expose prometheus metrics
-
-## Default Folder
-
-By default, we setup the following default data folders for consensus and execution clients:
-
-- Mac OS X
-  - `story` data root: `~/Library/Story/story`
-  - `story-geth` data root: `~/Library/Story/geth`
-- Linux
-  - `story` data root: `~/.story/story`
-  - `story-geth` data root: `~/.story/geth`
-
-_For the remainder of this tutorial, we will refer to the`story` data root as `${STORY_DATA_ROOT}` and the `geth` data root as `${GETH_DATA_ROOT}`._
-
-_You are able to override these configs on the`story` client side by passing `--home ${STORY_CONFIG_FOLDER}`. Similarly, for `geth`, you may use `--config ${GETH_CONFIG_FOLDER}`. For information on how overrides work, view our readme on [setting up a private network](https://github.com/piplabs/story?tab=readme-ov-file#creating-a-private-network)._
-
-When downloading the Story binaries, note that the file name will vary based on your operating system. For example, on a Linux system with an AMD64 architecture, the binary might be named `story-linux-amd64` or `geth-linux-amd`. This naming convention helps with compatibility identification, but for simplicity, we recommend renaming the binary file to story after download.
-
-```
-mv story-linux-amd64 story
-```
-
-This allows you to execute the program directly using the story command in your terminal. For the remainder of this documentation, we will use the `story` name convention.
-
-## Prerequisites
-
-We do suggest using a VPS for your node setup or linux based machine.
-
-## Execution Client Setup (`story-geth`)
-
-1. (Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-   ```bash
-   sudo xattr -rd com.apple.quarantine ./geth
-   ```
-
-2. You may now run `geth` with the following command:
-
-   ```bash
-   ./geth --odyssey --syncmode full
-   ```
-
-   - Currently, `snap` sync mode, the default, is still undergoing development
-
-### Clear State
-
-If you ever run into issues and would like to try joining the network from a cleared state, run the following:
-
-```bash
-rm -rf ${GETH_DATA_ROOT} && ./geth --odyssey --syncmode full
-```
-
-- Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --odyssey --syncmode full`
-- Linux: `rm -rf ~/.story/geth/* && ./geth --odyssey --syncmode full`
-
-### Debugging
-
-If you would like to check the status of `geth` while it is running, it is helpful to communicate via its built-in IPC-RPC server by running the following:
-
-```bash
-geth attach ${GETH_DATA_ROOT}/geth.ipc
-```
-
-- Mac OS X:
-  - `geth attach ~/Library/Story/geth/odyssey/geth.ipc`
-- Linux:
-  - `geth attach ~/.story/geth/odyssey/geth.ipc`
-
-This will connect you to the IPC server from which you can run some helpful queries:
-
-- `eth.blockNumber` will print out the latest block geth is sync’d to - if this is `undefined` there is likely a peer connection or syncing issue
-- `admin.peers` will print out a list of other `geth` nodes your client is connected to - if this is blank there is a peer connectivity issue
-- `eth.syncing` will return `true` if geth is in the process of syncing, `false` otherwise
-
-## Consensus Client Setup (`story`)
-
-1. (Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-   ```bash
-   sudo xattr -rd com.apple.quarantine ./story
-   ```
-
-2. Initialize the `story` client with the following command:
-
-   ```bash
-   ./story init --network odyssey
-   ```
-
-   - By default, this uses your username for the moniker (the human-readable identifier for your node), you may override this by passing in `--moniker ${NODE_MONIKER}`
-   - If you would like to initialize the node using your own data directory, you can pass in `--home ${STORY_DATA_DIR}`
-   - If you already have config and data files, and would like to re-initialize from scratch, you can add the `--clean` flag
-
-3. Now, you may run `story` with the following command:
-
-   ```bash
-   ./story run
-   ```
-
-**_IMPORTANT: If you are setting up a new node, you must start with version v0.12.0_**, as this base version is required before applying any subsequent upgrades. Afterward, install each subsequent upgrade in order. Follow these steps carefully:
-
-1. Download [version v0.12.0](https://github.com/piplabs/story/releases/tag/v0.12.0), ensuring you select the binary that matches your system architecture.
-2. Initialize and run version v0.12.0 following the initialization and run instructions provided above.
-3. Download and upgrade to the following releases using [this guide](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a):
-   1. [v0.12.1 ](https://github.com/piplabs/story/releases/tag/v0.12.1) upgrade at height 322000
-
-Note: currently you might see a bunch of `Stopping peer for error` logs - this is a known issue around peer connection stability with our bootnodes that we are currently fixing - for now please ignore it and rest assured that it does not impact block progression.
-
-_If you ever run into issues and would like to try re-joining the network**WHILE PRESERVING YOUR KEY,** run the following:_
-
-```bash
-rm -rf ${STORY_DATA_ROOT}/data/* && \
-echo '{"height": "0", "round": 0, "step": 0}' > ${STORY_DATA_ROOT}/data/priv_validator_state.json && \
-./story run
-```
-
-- Mac OS X:
-  ```bash
-  rm -rf ~/Library/Story/story/data/* && \
-  echo '{"height": "0", "round": 0, "step": 0}' > ~/Library/Story/story/data/priv_validator_state.json && \
-  ./story run
-  ```
-- Linux:
-  ```bash
-  rm -rf ~/.story/story/data/* && \
-  echo '{"height": "0", "round": 0, "step": 0}' > ~/.story/story/data/priv_validator_state.json && \
-  ./story run
-  ```
-
-\*If you ever run into issues and would like to try joining the network from a **COMPLETELY** fresh state, run the following (**\*WARNING: THIS WILL DELETE YOUR`priv_validator_key.json` FILE )**
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
-```
-
-- Mac OS X:
-  - `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
-- Linux:
-  - `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
-
-To quickly check if the node is syncing, you could
-
-- Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-
-### Clear State
-
-If you ever run into issues and would like to try joining the network from a fresh state, run the following:
-
-```bash
-rm -rf ${STORY_DATA_ROOT} && ./story init --network odyssey && ./story run
-```
-
-- Mac OS X:
-  - `rm -rf ~/Library/Story/story/* && ./story init --network odyssey && ./story run`
-- Linux:
-  - `rm -rf ~/.story/story/* && ./story init --network odyssey && ./story run`
-
-To quickly check if the node is syncing, you could
-
-- Check the geth RPC endpoint to see if blocks are increasing:
-  ```bash
-  curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://localhost:8545](http://localhost:8545/)
-  ```
-- Attach to `geth` as explained above and see if the `eth.blockNumber` is increasing
-
-### Custom Configuration
-
-To override your own node settings, you can do the following:
-
-- `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
-- `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
-- `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
-
-### Custom Automation
-
-Below we list a sample `Systemd` configuration you may use on Linux
-
-```bash
-# geth
-[Unit]
-Description=Node-Geth
-After=network.target
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=${USER_NAME}
-WorkingDirectory=${YOUR_HOME_DIR}
-ExecStart=geth --odyssey  --syncmode full
-StandardOutput=journal
-StandardError=journal
-SyslogIdentifier=node-geth
-StartLimitInterval=0
-LimitNOFILE=65536
-LimitNPROC=65536
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-# story
-[Unit]
-Description=Node-story
-After=network.target node-geth.service
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=ec2-user
-WorkingDirectory=${YOUR_HOME_DIR}
-ExecStart=story run
-StandardOutput=journal
-StandardError=journal
-SyslogIdentifier=node-story
-StartLimitInterval=0
-LimitNOFILE=65536
-LimitNPROC=65536
-
-[Install]
-WantedBy=multi-user.target
-
-```
-
-### Debugging
-
-If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
-
-- `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  - This will give you a list of consesus peers the node is sync’d with by moniker
-- `curl localhost:26657/health`
-  - This will let you know if the node is healthy - `{}` indicates it is
-
-### Common Issues
-
-1. `auth failure: secret conn failed: read tcp ${IP_A}:${PORT_A}->${IP_B}:{PORT_B}: i/o timeout`
-   - This issue occurs when the default `external_address` listed in `config.toml` (`””`) is not being introspected properly via the listener. To fix it, please remove `addrbook.json` in `{STORY_DATA_ROOT}/config/addrbook.json` and add `exteral_address = {YOUR_NODE_PUBLIC_IP_ADDRESS}` in `config.toml`
-
-### Automated Upgrades
-
-To manage consensus client upgrades more easily, especially for hard forks, we recommend using [Cosmovisor](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html), which allows you to automate the process of upgrading client binaries without having to restart your client.
-
-To get started, **your client must be upgraded to at least version 0.9.13**. [Here](https://medium.com/story-protocol/story-v0-10-0-node-upgrade-guide-42e2fbcfcb9a) is a guide to help you with the setup of automated upgrades with Cosmovisor.
 
 # Infrastructure Partners
 ## RPC Providers
@@ -8125,8 +7567,10 @@ To get started, **your client must be upgraded to at least version 0.9.13**. [He
   </Card>
 </Cards>
 
-# Network FAQ
-## Node Setup
+# Troubleshooting
+Welcome to Story node troubleshooting! This section covers common problems and solutions when running Story nodes.
+
+### Node Setup
 
 <details>
   <summary>What are the hardware requirements?</summary>
@@ -8247,9 +7691,7 @@ To get started, **your client must be upgraded to at least version 0.9.13**. [He
   Not yet, but we are working on it.
 </details>
 
-## Troubleshooting
-
-Welcome to Story node troubleshooting! This section covers common problems and solutions when running Story nodes.
+<br />
 
 ### Common Issues
 
@@ -8894,7 +8336,7 @@ Welcome to Story node troubleshooting! This section covers common problems and s
   ```
 </details>
 
-# Tokenomics & Staking
+# Staking Design
 # Purpose
 
 This document walks through the staking specification for Story. The goal is to provide clarity to network participants and technical partners on how Story’s staking mechanics work and how users can interface with our chain.
@@ -8903,7 +8345,7 @@ This document walks through the staking specification for Story. The goal is to 
 
 ## Genesis
 
-The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team. Tokens for investors, the core team, and a portion of those of the foundation and ecosystem will start out locked.
+The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team.  Please refer this document for the detailed [Token Distribution](https://www.story.foundation/blog/introducing-ip).
 
 ## Locked vs Unlocked tokens
 
@@ -8917,25 +8359,25 @@ Both types of tokens can be slashed if their validators get slashed.
 
 ## Token emissions
 
-A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters, whose initial values are still yet to be determined:
+A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters:
 
-* blocks\_per\_year
+* blocks\_per\_year: 10368000 blocks
   * The number of blocks expected to be produced in a year
-* inflations\_per\_year
+* inflations\_per\_year: 20,000,000 tokens
   * The total number of inflationary tokens to be emitted in a year
 
 New emissions will flow to two places:
 
 1. Block Rewards
-2. UBI (currently set to 0, explained later)
+2. Community Pool
 
 ## Token burn
 
-Since story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
+Since Story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
 
 # Staking
 
-> 🔗 <a href="https://staking.story.foundation/" target="_blank">Go to the Staking Dashboard ↗️</a>
+> 🔗 <a href="https://staking.story.foundation/" target="_blank">Stake with the Staking Dashboard ↗️</a>
 
 Story supports the below staking-related operations
 
@@ -8978,13 +8420,15 @@ Delegators can decide how flexible and how long they want to stake their tokens.
 
 For unlocked tokens, a few more fixed staking periods are supported: 90 days, 360 days, and 540 days. In this case, users can only call unstake after the staking period is mature. Any call earlier than the mature day will be discarded. Unstaking from a mature staking period is still subject to the unbonding process, meaning users will get their staked tokens back after 14 days of unbonding time.
 
-For locked tokens, only flexible staking is allowed. If a user delegates their locked tokens to a staking period, we will convert that to a flexible staking delegation.
-
 Staking in these fixed staking periods earns more rewards. The longer the period, the bigger the reward weight multiplier. Reward multiplier for different periods:
 
-* 90 days - 1.051
-* 360 days - 1.16
-* 540 days - 1.34
+* Locked flexible period - **0.5**
+* Flexible period - **1.0**
+* 90 days - **1.1**
+* 360 days - **1.5**
+* 540 days - **2**
+
+For locked tokens, only flexible staking is allowed and the reward multiplier is **0.5**. If a user delegates their locked tokens to a staking period, we will convert that to a flexible staking delegation.
 
 After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
 
@@ -9187,17 +8631,11 @@ The reward distribution will go to a reward distribution queue, which only proce
 
 The staking reward cannot be manually withdrawn by design.
 
-# UBI for validators
+# Community Pool
 
-In every block, a percentage (currently 0% at Genesis) of the newly minted tokens will go to a UBI pool contract. The pool is to incentivize validators to validate the blocks. At the beginning of each month, the foundation will set the UBI percentage for the next month based on the token price. The maximum UBI percentage that can be set is 20%.
+A percentage of the newly minted tokens in every block will go to a community pool contract. The foundation will determine how to use the tokens sent to the pool. The maximum community pool percentage that can be set is 20%.
 
-## Distribution process
-
-Every month, the story foundation will get the validator consensus participation rate based on the on-chain metrics for the previous month and calculate how many UBI tokens each validator can claim and set this in the UBI pool contract. Each validator then can claim the token from the UBI pool contract.
-
-The UBI calculation and claim process shall be verifiable by the public.
-
-The UBI contract address: **0xcccccc0000000000000000000000000000000002**
+The community pool contract address: **0xcccccc0000000000000000000000000000000002**
 
 # Singularity
 
@@ -9215,92 +8653,616 @@ Story’s staking contract will handle all validators/delegators related operati
 
 The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
+# Overview
+Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api)  defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
+
+`story-geth` is a fork of the Geth client, with the addition of the [IPGraph Precompile](doc:precompile)  and [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) precompile. It handles transaction execution, broadcasting and state storage while maintaining full compatibility with the Ethereum Virtual Machine (EVM) and supporting all Ethereum JSON-RPC methods.
+
+`story` is built on the Cosmos SDK and CometBFT. The Cosmos SDK provides a modular framework for building blockchain applications, enabling seamless integration of new modules and features while allowing the network to be easily extended and customized. `story` client introduces upgrades and additional Cosmos SDK modules to support Engine API integration and novel staking mechanisms. CometBFT, a high-performance, scalable, and secure consensus engine, has been extensively tested within the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec).
+
+<Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
+
 # Engine API
-# Engine API
+The Engine API is a collection of JSON-RPC methods that facilitate communication between the execution layer (EL) and the consensus layer (CL) of an EVM node. Story's execution layer, which offers full EVM compatibility, supports all standard JSON-RPC methods defined by the [Ethereum Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md). Meanwhile, Story's consensus layer, built on Cosmos modules, utilizes the Engine API to coordinate with the execution layer.
 
-The Engine API is a collection of JSON-RPC methods that enables communication between execution layer and consensus layer of an EVM node.\
-Story's execution layer,which offers full EVM compatibility, supports all standard JSON-RPC methods defined by [Ethereum Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md).
-Meanwhile, Story's consensus layer, built on Cosmos modules, utilizes the Engine API to coordinate with the execution layer.
+## Functionalities
 
-# Precompile
+The Engine API facilitates seamless interaction between the EL and the CL by providing essential coordination mechanisms, including:
 
+* **Handshake**
+* **Synchronization**
+* **Block Validation**
+* **Block Proposal**
+
+## Execution Layer Implementation
+
+The EL in Story implements the following standard Engine API methods to support these functionalities:
+
+* `engine_exchangeCapabilities`: Exchanges supported methods.
+* `engine_getClientVersion`: Exchanges client version data.
+* `engine_newPayload`: Inserts the given payload into the local chain.
+* `engine_forkchoiceUpdate`: Updates the canonical chain marker and generates the payload with given attributes.
+* `engine_getPayload`: Retrieves the pre-generated payload.
+
+## Consensus Layer Interaction
+
+How does Story's Consensus Layer (CL) interact with these methods? The answer lies in CometBFT ABCI++.
+
+CometBFT is a state machine replication engine which provides consensus and security for Cosmos modules. ABCI++, also known as ABCI 2.0, is the interface between CometBFT and the actual state machine being replicated(i.e. EL's state machine).
+
+ABCI++ comprises of a set of methods that interact with the Engine API, as outlined below:
+
+### **1. PrepareProposal** (Proposing a New Block)
+
+* The CL checks whether a payload is already being generated using `payloadID`.
+* If not, the CL calls `engine_forkchoiceUpdate` to trigger a new payload generation.
+* The CL then calls `engine_getPayload` with `payloadID` to fetch the payload and propose a new block.
+
+### \*\*2. ProcessProposal (Processing a New Block)
+
+* The CL calls `engine_newPayload` to  delivers the new block to the EL.
+* The EL validates payload of the new block, executes transactions deterministically and updates its state.
+
+### **3. FinalizeBlock** (Finalizing a Decided Block)
+
+* The CL calls `engine_newPayload` to  delivers the finalized block to the EL.
+* If the block has not yet been incorporated into the EL, the EL validates payload of the new block, executes transactions deterministically and updates its state.
+* Since CometBFT provides instant finality, the CL calls `engine_forkchoiceUpdate` to finalize the block.
+* Finally, the CL calls `engine_forkchoiceUpdate` again, with extra attributes,  to start an optimistic build of the next block if enabled, and if the validator is the next proposer.
+
+This interaction ensures smooth coordination between the EL and the CL, maintaining the integrity and efficiency of Story's blockchain network.
+
+# mint
+## Contents
+
+1. [Contents](#contents)
+2. [State](#state)
+3. [Begin Block](#begin-block)
+4. [Parameters](#parameters)
+5. [Events](#events)
+
+## State
+
+### Params
+
+* Params: `mint/params -> legacy_amino(params)`
+
+```protobuf protobuf
+message Params {
+  option (amino.name) = "client/x/mint/Params";
+
+  // type of coin to mint
+  string mint_denom = 1;
+  // inflation amount per year
+  string inflations_per_year = 2 [
+    (cosmos_proto.scalar)  = "cosmos.Dec",
+    (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
+    (gogoproto.nullable)   = false
+  ];
+  // expected blocks per year
+  uint64 blocks_per_year = 3;
+}
+```
+
+## Begin Block
+
+Minting parameters are calculated and inflation paid at the beginning of each block.
+
+### Inflation amount calculation
+
+Inflation amount is calculated using an "inflation calculation function" that's\
+passed to the `NewAppModule` function. If no function is passed, then the SDK's
+default inflation function will be used (`DefaultInflationCalculationFn`). In case a custom
+inflation calculation logic is needed, this can be achieved by defining and
+passing a function that matches `InflationCalculationFn`'s signature.
+
+```go
+type InflationCalculationFn func(ctx sdk.Context, minter Minter, params Params, bondedRatio math.LegacyDec) math.LegacyDec
+```
+
+## Parameters
+
+The minting module contains the following parameters:
+
+| Key               | Type            | Example             |
+| ----------------- | --------------- | ------------------- |
+| MintDenom         | string          | "stake"             |
+| InflationsPerYear | string (dec)    | "20000000000000000" |
+| BlocksPerYear     | string (uint64) | "10368000"          |
+
+* `MintDenom` is the coin denominator used.
+* `InflationsPerYear` is the target inflation per year, in 1e18 decimals.
+* `BlocksPerYear` is the target number of blocks per year.
+
+## Events
+
+The minting module emits the following events:
+
+### BeginBlocker
+
+| Type | Attribute Key | Attribute Value |
+| :--- | :------------ | :-------------- |
+| mint | amount        | "1000"          |
+
+# evmengine
+## Abstract
+
+This document specifies the internal `x/evmengine` module of the Story blockchain.
+
+As Story Network separates the consensus and execution client, like Ethereum, the consensus client (CL) and execution client (EL) needs to communicate to sync to the network, propose proper EVM blocks, and execute EVM-triggered EL actions in CL.
+
+The module exists to facilitate all communications between CL and EL using the [Engine API](engine-api), from staking and upgrades to driving block production and consensus in CL and EL.
+
+## Contents
+
+1. **[State](#state)**
+2. **[Prepare Proposal](#prepare-proposal)**
+3. **[Process Proposal](#process-proposal)**
+4. **[Post Finalize](#post-finalize)**
+5. **[Messages](#messages)**
+6. **[UBI](#ubi)**
+7. **[Upgrades](#upgrades)**
+
+## State
+
+### Build Delay
+
+Type: `time.Duration`
+
+Build delay determines the wait duration from the start of `PrepareProposal` ABCI2 call before fetching the next EVM block data to propose from EL via the [Engine API](engine-api). Applicable to the current proposer only. If the node has a block optimistically built beforehand, the build delay is not used.
+
+### Build Optimistic
+
+Type: `bool`
+
+Enable optimistic building of a block if true. A node will deterministically build the next block if it finds itself as the next proposer in the current block. Optimistic building starts with requesting the next EVM block data (for the next CL block) immediately after the `FinalizeBlock` of ABCI2.
+
+### Head Table
+
+Type: `ExecutionHeadTable`
+
+Head table stores the latest execution head data to be used for partial validation of EVM blocks received from other validators. When the chain initializes, the execution head is populated with the genesis execution hash loaded from `genesis.json`.
+
+The following execution head is stored in the table.
+
+```protobuf protobuf
+message ExecutionHead {
+  option (cosmos.orm.v1.table) = {
+    id: 1;
+    primary_key: { fields: "id", auto_increment: true }
+  };
+
+  uint64 id               = 1; // Auto-incremented ID (always and only 1).
+  uint64 created_height   = 2; // Consensus chain height this execution block was created in.
+  uint64 block_height     = 3; // Execution block height.
+  bytes  block_hash       = 4; // Execution block hash.
+  uint64 block_time       = 5; // Execution block time.
+}
+```
+
+### Upgrade Contract
+
+Type: `*bindings.UpgradeEntrypoint`
+
+Upgrade contract is used to filter and parse upgrade-related events from EL.
+
+### UBI Contract
+
+Type: `*bindings.UBIPool`
+
+UBI contract is used to filter and parse UBI-related events from EL.
+
+### Mutable Payload
+
+Type: struct
+
+Mutable payload stores the optimistic block built, if optimistic building is enabled.
+
+#### Genesis State
+
+The module's `GenesisState` defines the state necessary for initializing the chain from a previously exported height.
+
+```protobuf protobuf
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message Params {
+  bytes execution_block_hash = 1 [
+    (gogoproto.moretags) = "yaml:\"execution_block_hash\""
+  ];
+}
+```
+
+## Prepare Proposal
+
+At each block, if the node is the proposer, ABCI2 triggers `PrepareProposal` which
+
+1. Loads staking & reward withdrawals from the [evmstaking](./evmstaking-module) module.
+2. Builds a valid EVM block.
+   * If optimistic building: loads the optimistically built block.
+   * Non-optimistic: requests and retrieves an EVM block from EL.
+3. Collects the EVM logs of the previous/parent block.
+4. Assembles `MsgExecutionPayload` with the built EVM block and previous EVM logs.
+5. Returns a transaction containing the assembled `MsgExecutionPayload` data.
+
+This CL block is then propagated to all other validators.
+
+## Process Proposal
+
+At each block, if the node is not a proposer but a validator, ABCI2 triggers `ProcessProposal` with received commits (which should be a transaction of `MsgExecutionPayload` data in the honest case).
+
+The node first validates that the received commit has only one transaction with at least 2/3 of votes committed. Then, the node validates that the one transaction only contains one unmarshalled `MsgExecutionPayload` data. Finally, the node processes the received data and broadcasts its acceptance of the proposal to the network. If any of the validation or processing fails, the node rejects the proposal.
+
+More specifically, the node processes the received `MsgExecutionPayload` data in the following manner:
+
+1. Validates the fields of the received `MsgExecutionPayload` (outlined in [Messages](#msgexecutionpayload)).
+2. Compare local stake & reward withdrawals with the received withdrawals data.
+3. Push the received execution payload to EL via the Engine API and wait for payload validation.
+4. Update the EL forkchoice to the execution payload's block hash.
+5. Process staking events using the [evmstaking](./evmstaking-module) module.
+6. Process upgrade events.
+7. Update the execution head to the execution payload (finalized block).
+
+## Post Finalize
+
+If optimistic building is enabled, `PostFinalize` is triggered immediately after `FinalizeBlock` set through custom ABCI callback. During this process, the node peeks the staking and reward queues from the evmstaking module, and builds a new execution payload on top of the current execution head. It sets the optimistic block to be used in the next block's `PrepareProposal` phase and returns the response from the forkchoice update.
+
+## Messages
+
+In this section we describe the processing of the evmengine messages and the corresponding updates to the state. All created/modified state objects specified by each message are defined within the state section.
+
+### MsgExecutionPayload
+
+```protobuf protobuf
+message MsgExecutionPayload {
+  option (cosmos.msg.v1.signer) = "authority";
+  string            authority           = 1;
+  bytes             execution_payload   = 2;
+  repeated EVMEvent prev_payload_events = 3;
+}
+
+message EVMEvent {
+  bytes          address = 1;
+  repeated bytes topics  = 2;
+  bytes          data    = 3;
+  bytes          tx_hash = 4;
+}
+```
+
+This message is expected to fail if:
+
+* authority is invalid (not evmengine authority)
+* execution payload fails to unmarshal to [ExecutableData](https://github.com/piplabs/story/blob/c38b80c13579d3df7174ea10c3368ef0692f52da/client/x/evmengine/types/executable_data.go#L17-L35) for reasons such as invalid fields
+* execution payload's block number does not match CL head's block number + 1
+* execution payload's block parent hash does not match CL head's hash
+* execution payload's timestamp is invalid
+* execution payload's RANDAO does not match CL head's hash (ie. parent hash)
+* execution payload's `Withdrawals`, `BlobGasUsed`, and `ExcessBlobGas` fields are nil
+* execution payload's `Withdrawals` count does not match local node's sum of dequeued stake & reward withdrawals
+
+The message must contain previous block's events, which gets processed at the current CL block (in other words, execution events from EL block n-1 are processed at CL block n). In the future, the message will remove `prev_payload_events` and rely on [Engine API](engine-api) to get the current finalized EL block's events.
+
+Also note that EVM events are processed in CL in the order they are generated in EL.
+
+## UBI
+
+All UBI-related changes must be triggered from the canonical UBI contract in the EVM execution layer. This module handles the execution handling of those triggers in CL. Read more about [UBI for validators](https://docs.story.foundation/docs/tokenomics-staking#ubi-for-validators)
+
+### Set UBI Distribution
+
+The `UBIPool` contract emits the UBI distribution set event, which is parsed by the module to set the UBI percentage in the distribution module.
+
+## Upgrades
+
+All chain upgrade-related logics must be triggered from the canonical upgrade contract in the EVM execution layer. This module handles the execution handling of those triggers in CL.
+
+### Software Upgrade
+
+The `UpgradeEntrypoint` contract emits the software upgrade event, which is parsed by the module to schedule an upgrade at a given height for a given binary name. Currently, all upgrades must either be set via forks or by the software upgrade events; the latter process is a multisig-controlled process, which will transition into a voting-based process in the future.
+
+### Cancel Upgrade
+
+Similar to the software upgrade, the module processes the cancel upgrade event from EVM logs of the previous block, and clears an existing upgrade plan.
+
+# staking
+## Abstrat
+
+The staking module has been modified to accommodate for the following changes below. Refer to the Cosmos SDK's [staking module docs](https://docs.cosmos.network/main/build/modules/staking) for more information.
+
+## Reward Multiplier
+
+### Validators
+
+Validators can choose to accept either locked tokens or unlocked tokens as delegations. Validators for locked tokens are conditioned to half the inflation allocation of validators for unlocked tokens.
+
+Since each validator receives different inflation distribution based on delegations, the inflation distribution I<sub>v<sub>i</sub></sub> for validator v<sub>i</sub> in the rewards pool is calculated as follows:
+
+<Image align="center" src="https://files.readme.io/3ee4914a7cc6036ceebbdd31ce93e525984a08364f8c3ab2152b86b3bcd5df7e-Screenshot_2025-02-11_at_8.30.07_AM.png" />
+
+where
+
+* I<sub>v<sub>i</sub></sub> is the total inflationary token rewards for v<sub>i</sub>
+* S<sub>v<sub>i</sub></sub> is the staked tokens for v<sub>i</sub>
+* M<sub>v<sub>i</sub></sub> is the rewards multiplier for v<sub>i</sub>
+  * 0.5 for locked tokens
+  * 1 for unlocked tokens
+* R<sub>n</sub> is the total inflationary tokens allocated for the rewards pool in block n, calculated in the [mint](./mint-module.md) module
+
+### Delegations
+
+Delegators can delegate with four different staking lock times, which results in different staking reward multiplier for each delegation (delegator-validator pair of stakes). The inflation distribution for each delegation D<sub>i</sub> is calculated as follows:
+
+<Image align="center" src="https://files.readme.io/002ae69aa3b3e52a33747452fe0c0b91b9120f20155deb19b56fb7917132b8de-Screenshot_2025-02-11_at_8.34.44_AM.png" />
+
+where
+
+* S<sub>d<sub>i</sub></sub> is the staked tokens of delegation d<sub>i</sub> on validator v<sub>d</sub>
+* M<sub>d<sub>i</sub></sub> is the rewards multiplier of d<sub>i</sub> on v<sub>d</sub>
+* I<sub>v</sub> is the total inflationary token rewards for v<sub>d</sub>
+* C<sub>v</sub> is the commission rate for v<sub>d</sub>
+
+#### Time-weighted Reward Multiplier M<sub>d<sub>i</sub></sub>
+
+* *Flexible* (no lockup): 1
+* *Short* (90 days): 1.1
+* *Medium* (360 days): 1.5
+* *Long* (540 days): 2.0
+
+# evmstaking
+## Abstract
+
+This document specifies the internal `x/evmstaking` module of the Story blockchain.
+
+In Story blockchain, the gas token resides on the execution layer (EL) to pay for transactions and interact with smart contracts. However, the consensus layer (CL) manages the consensus staking, slashing, and rewarding. This module exists to facilitate CL-level staking-related logic, such as delegating to validators with custom lock periods.
+
+## Contents
+
+1. **[State](#state)**
+2. **[Two Queue System](#two-queue-system)**
+3. **[Withdrawal Queue Content](#withdrawal-queue-content)**
+4. **[End Block](#end-block)**
+5. **[Processing Staking Events](#processing-staking-events)**
+6. **[Withdrawing Delegations](#withdrawing-delegations)**
+7. **[Withdrawing Rewards](#withdrawing-rewards)**
+8. **[Withdrawing UBI](#withdrawing-ubi)**
+
+## State
+
+### Withdrawal Queue
+
+Type: `Queue[types.Withdrawal]`
+
+The (stake) withdrawal queue stores the pending unbonded stakes to be burned on CL and minted on EL. Stakes that are unbonded after 14 days of unstaking period are added to the queue to be processed.
+
+### Reward Withdrawal Queue
+
+Type: `Queue[types.Withdrawal]`
+
+The reward withdrawal queue stores the pending rewards from stakes to be burned on CL and minted on EL. All rewards above a threshold are eligible to be queued in this queue, but there exists a parameter of maximum additions per block.
+
+### Parameters
+
+```protobuf protobuf
+message Params {
+  uint32 max_withdrawal_per_block = 1 [
+    (gogoproto.moretags) = "yaml:\"max_withdrawal_per_block\""
+  ];
+  uint32 max_sweep_per_block = 2 [
+    (gogoproto.moretags) = "yaml:\"max_sweep_per_block\""
+  ];
+  uint64 min_partial_withdrawal_amount = 3 [
+    (gogoproto.moretags) = "yaml:\"min_partial_withdrawal_amount\""
+  ];
+  string ubi_withdraw_address = 4 [
+    (gogoproto.moretags) = "yaml:\"ubi_withdraw_address\""
+  ];
+}
+```
+
+* `max_withdrawal_per_block` is the maximum number of withdrawals (reward and unstakes, each) to process per block. This parameter prevents nodes from processing a large amount of withdrawals at once, which could exceed the max chain timeout.
+* `max_sweep_per_block` is the maximum number of validator-delegator delegations to sweep per block. This parameter prevents nodes from processing a large amount of delegations at once.
+* `min_partial_withdrawal_amount` is the minimum amount required for rewards to get added to the reward withdrawal queue.
+* `ubi_withdrawal_address` is the UBI contract address to which UBI withdrawals should be deposited.
+
+### Delegator Withdraw Address
+
+Type: `Map[string, string]`
+
+The delegator-withdraw address mapping tracks the address to which a delegator receives their withdrawn stakes. The (stake) withdrawal queue uses this map to determine the `execution_address` in the `Withdrawal` struct used in building an EVM block payload.
+
+While the delegator can change the withdraw address at any time, existing stake withdraw requests in the (stake) withdrawal queue will maintain their original values.
+
+### Delegator Reward Address
+
+The delegator-reward address mapping tracks the address to which a delegator receives their reward stakes, similar to the delegator-withdraw mapping.
+
+While the delegator can change the reward address at any time, existing reward withdraw requests in the reward withdrawal queue will maintain their original values.
+
+Type: `Map[string, string]`
+
+### Delegator Operator Address
+
+Type: `Map[string, string]`
+
+The delegator-operator address mapping tracks the address to which a delegator has given the privilege to delegate (stake), undelegate (unstake), and redelegate on behalf of themselves.
+
+### IP Token Staking Contract
+
+Type: `*bindings.IPTokenStaking`
+
+IPTokenStaking contract is used to filter and parse staking-related events from EL.
+
+## Two Queue System
+
+The module departs from traditional Cosmos SDK staking module's unstaking system, where all unbonded entries (stakes that have unbonded after 14 days of unbonding period) are immediately distributed into delegators account. Instead, Story's unstaking system assimilates Ethereum 2.0's unstaking system, where 16 full or partial (reward) withdrawals are processed per slot.
+
+In a single queue of withdrawals, reward withdrawals can significantly delay stake withdrawals. Hence, Story blockchain implements a two-queue system where a max amount to process per block is enforced per queue. In other words, the stake/ubi withdrawal and reward withdrawal queues can each process the max parameter per block.
+
+## Withdrawal Queue Content
+
+Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine-module) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](engine-api). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
+
+In other words, the `evmstaking` module is in charge of parsing, processing, and inserting withdrawal requests to two queues, while the `evmengine` module is in charge of validating and dequeuing withdrawal requests, as well as depositing them to corresponding withdrawal addresses in EL.
+
+## End Block
+
+The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
+
+If the network is in the [Singularity period](tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations) and [Withdrawing Rewards](#withdrawing-rewards) for detailed withdrawal processes.
+
+## Processing Staking Events
+
+The module parses and processes staking events emitted from the [IPTokenStaking contract](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol), which are collected by the [evmengine](./evmengine-module) module. The list of events are:
+
+### Staking events
+
+* Create Validator
+* Deposit (delegate)
+* Withdraw (undelegate)
+* Redelegate
+* Unjail: anyone can request to unjail a jailed validator by paying the unjail fee in the contract.
+
+These operations incur a fixed gas cost to prevent spam.
+
+### Parameter events
+
+* Update Validator Commission: update the validator commission.
+* Set Withdrawal Address: delegator can modify their withdrawal address for future unstakes/undelegations.
+* Set Reward Address: delegator can modify their withdrawal address for future reward emissions.
+* Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelegation.
+* Unset Operator: delegator can remove operator.
+
+These operations incur a fixed gas cost to prevent spam.
+
+## Withdrawal
+
+Both withdrawal queues hold withdrawals of type:
+
+```protobuf protobuf
+message Withdrawal {
+  option (gogoproto.equal) = true;
+  option (gogoproto.goproto_getters) = false;
+
+  uint64 creation_height = 1;
+  string execution_address = 2 [
+    (cosmos_proto.scalar) = "cosmos.AddressString",
+    (gogoproto.moretags) = "yaml:\"execution_address\""
+  ];
+  uint64 amount = 3 [
+    (gogoproto.moretags) = "yaml:\"amount\""
+  ];
+  WithdrawalType withdrawal_type = 4 [
+    (gogoproto.moretags) = "yaml:\"withdrawal_type\""
+  ];
+  string validator_address = 5 [
+    (gogoproto.moretags) = "yaml:\"validator_address\""
+  ];
+}
+```
+
+* `creation_height` is the block height at which the withdrawal is created.
+* `execution_address` is the EVM address receiving the withdrawn fund, which is burned in CL.
+* `amount` is the amount to burn on CL and mint on EL.
+* `withdrawal_type` is the type of withdrawal: $0$ for unstakes, $1$ for reward, and $2$ for UBI.
+* `validator_address` is the EVM validator address.
+
+### Withdrawing Delegations
+
+Delegations that have unbonded after 14 days of unbonding period (ie. unbonded entries) gets added to the (stake) withdrawal queue at the end of each block. If validator is totally-unstaked, ie. all delegations and self-delegations are unbonded, then validator's commission is also withdrawn.
+
+### Withdrawing Rewards
+
+Inflation rewards allocated to delegations are auto-swept at the end of each block. If a delegation's accrued reward is greater than the parameterized threshold, the reward is added to the reward withdrawal queue to be credited to the delegator's EVM reward address.
+
+# List of Modules
+# List of Modules
+
+Here is a list of all production-grade modules that can be used on the Story blockchain, along with their respective documentation:
+
+* [evmengine](./evmengine-module) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](engine-api).
+* [evmstaking](./evmstaking-module) - Handles staking and network emission logics with queues.
+* [mint](./mint-module)
+
+## Cosmos SDK (modified)
+
+Story network uses the following Cosmos SDK modules with some modifications:
+
+* [staking](./staking-module)
+* [distribution](https://docs.cosmos.network/main/build/modules/distribution)
+
+## Cosmos SDK (unmodified)
+
+Story network uses the following Cosmos SDK modules without non-trivial modifications:
+
+* [auth](https://docs.cosmos.network/main/build/modules/auth)
+* [bank](https://docs.cosmos.network/main/build/modules/bank)
+* [consensusparams](https://docs.cosmos.network/main/build/modules/consensus)
+* [gov](https://docs.cosmos.network/main/build/modules/gov)
+* [slashing](https://docs.cosmos.network/main/build/modules/slashing)
+* [upgrade](https://docs.cosmos.network/main/build/modules/upgrade)
+
+# Precompiles
 ## Introduction
 
-Precompiled contracts are specialized smart contracts implemented directly in the execution layer of a blockchain. Unlike user-deployed smart contracts that execute EVM bytecode, precompiled contracts offer optimized native implementations for complex cryptographic and computational operations. This significantly improves efficiency and reduces gas costs.
+Precompiled contracts are specialized smart contracts implemented directly in the execution layer of a blockchain. Unlike user-deployed smart contracts that execute EVM bytecode, precompiled contracts offer optimized native implementations for complex cryptographic and computational operations. This significantly improves efficiency and reduces gas costs. Precompiled contracts exist at fixed addresses within the execution client and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
 
-Precompiled contracts exist at fixed addresses within the execution environment and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
+Story Protocol introduces two precompiled contracts:
 
-Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
-Additionally, Story Protocol introduces two extra precompiled contracts:
-- `p256Verify` precompile to support signature verifications in the secp256r1 elliptic curve.
-- `ipgraph` precompile to enhance on-chain intellectual property management.
+* `p256Verify` precompile to support signature verifications in the secp256r1 elliptic curve.
+* `ipgraph` precompile to enhance on-chain intellectual property management.
 
+In addition, Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
 
 ## Precompiled Contracts
 
-| Address            | Functionality                                      |
-|--------------------|----------------------------------------------------|
-| []byte{0x01}      | `ecrecover` - ECDSA signature recovery             |
-| []byte{0x02}      | `sha256` - SHA-256 hash computation                |
-| []byte{0x03}      | `ripemd160` - RIPEMD-160 hash computation          |
-| []byte{0x04}      | `identity` - Identity function                     |
-| []byte{0x05}      | `modexp` - Modular exponentiation                  |
-| []byte{0x06}      | `bn256Add` - BN256 elliptic curve addition         |
-| []byte{0x07}      | `bn256ScalarMul` - BN256 elliptic curve scalar multiplication |
-| []byte{0x08}      | `bn256Pairing` - BN256 elliptic curve pairing check |
-| []byte{0x09}      | `blake2f` - Blake2 hash function                    |
-| []byte{0x0a}      | `kzgPointEvaluation` - KZG polynomial commitment evaluation |
-| []byte{0x01, 0x00}| `p256Verify` -  Secp256r1 signature verification |
-| []byte{0x01, 0x01}| `ipgraph` - Intellectual property management        |
+| Address          | Functionality                                                 |
+| ---------------- | ------------------------------------------------------------- |
+| byte{0x01}       | `ecrecover`- ECDSA signature recovery                         |
+| byte{0x02}       | `sha256` - SHA-256 hash computation                           |
+| byte{0x03}       | `ripemd160` - RIPEMD-160 hash computation                     |
+| byte{0x04}       | `identity` - Identity function                                |
+| byte{0x05}       | `modexp` - Modular exponentiation                             |
+| byte{0x06}       | `bn256Add` - BN256 elliptic curve addition                    |
+| byte{0x07}       | `bn256ScalarMul` - BN256 elliptic curve scalar multiplication |
+| byte{0x08}       | `bn256Pairing` - BN256 elliptic curve pairing check           |
+| byte{0x09}       | `blake2f` - Blake2 hash function                              |
+| byte{0x0a}       | `kzgPointEvaluation` - KZG polynomial commitment evaluation   |
+| byte{0x01, 0x00} | `p256Verify` -  Secp256r1 signature verification              |
+| byte{0x01, 0x01} | `ipgraph` - Intellectual property management                  |
 
+## p256Verify precompile
 
-### p256Verify precompile
-Refer to [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) for more information. 
+Refer to [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) for more information.
 
-### ipgraph precompile
+## IPgraph precompile
 
 The `ipgraph` precompile enables efficient querying and modification of IP relationships and royalty structures while minimizing gas costs.
 
 This precompile provides multiple functions based on the function selector—the first 4 bytes of the input.
 
-| Function Selector       | Description                                                     | Gas computation formula                              |  Gas Cost |
-|-------------------------|-----------------------------------------------------------------|------------------------------------------------------| ----------| 
-| `addParentIp`           | Adds a parent IP record                                         | `intrinsicGas + (ipGraphWriteGas * parentCount)`     |   >= 1100 |
-| `hasParentIp`           | Checks if an IP is parent of another IP                         | `ipGraphReadGas * averageParentIpCount`              |   40      |  
-| `getParentIps`          | Retrieves parent IPs                                            | `ipGraphReadGas * averageParentIpCount`              |   40      |
-| `getParentIpsCount`     | Gets the number of parent IPs                                   | `ipGraphReadGas`                                     |   10      |
-| `getAncestorIps`        | Retrieves ancestor IPs                                          | `ipGraphReadGas * averageAncestorIpCount * 2`        |   600     |
-| `getAncestorIpsCount`   | Gets the number of ancestor IPs                                 | `ipGraphReadGas * averageParentIpCount * 2`          |   80      |
-| `hasAncestorIp`         | Checks if an IP is ancestor of another IP                       | `ipGraphReadGas * averageAncestorIpCount * 2`        |   600     |
-| `setRoyalty`            | Sets royalty details of an IP                                   | `ipGraphWriteGas`                                    |   1000    |
-| `getRoyalty`            | Retrieves royalty details of an IP                              | `varies by royalty policy`                           |   LAP:900, LRP:620, other:1000    |
-| `getRoyaltyStack`       | Retrieves royalty stack  of an IP                               | `varies by royalty policy`                           |   LAP:50, LRP: 600, other:1000    |
-| `hasParentIpExt`        | Checks if an IP is parent of another IP through external call   | `ipGraphExternalReadGas * averageParentIpCount`      |   8400    |
-| `getParentIpsExt`       | Retrieves parent IPs through external call                      | `ipGraphExternalReadGas * averageParentIpCount`      |   8400    |
-| `getParentIpsCountExt`  | Gets the number of parent IPs through external call             | `ipGraphExternalReadGas`                             |   2100    |
-| `getAncestorIpsExt`     | Retrieve ancestor IPs through external call                     | `ipGraphExternalReadGas * averageAncestorIpCount * 2`|   126000  |
-| `getAncestorIpsCountExt`| Gets the number of ancestor IPs through external call           | `ipGraphExternalReadGas * averageParentIpCount * 2`  |   16800   |
-| `hasAncestorIpExt`      | Checks if an IP is ancestor of another IP through external call | `ipGraphExternalReadGas * averageAncestorIpCount * 2`|   126000  |
-| `getRoyaltyExt`         | Retrieves royalty details of an IP through external call        | `varies by royalty policy`                           |   LAP:189000, LRP:130200, other:1000  |
-| `getRoyaltyStackExt`    | Retrieves royalty stack of an IP through external call          | `varies by royalty policy`                           |   LAP:10500, LRP:126000, other:1000   |
+| Function Selector        | Description                                                     | Gas computation formula                               | Gas Cost                           |
+| :----------------------- | :-------------------------------------------------------------- | :---------------------------------------------------- | :--------------------------------- |
+| `addParentIp`            | Adds a parent IP record                                         | `intrinsicGas + (ipGraphWriteGas * parentCount)`      | Larger than 1100                   |
+| `hasParentIp`            | Checks if an IP is parent of another IP                         | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
+| `getParentIps`           | Retrieves parent IPs                                            | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
+| `getParentIpsCount`      | Gets the number of parent IPs                                   | `ipGraphReadGas`                                      | 10                                 |
+| `getAncestorIps`         | Retrieves ancestor IPs                                          | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
+| `getAncestorIpsCount`    | Gets the number of ancestor IPs                                 | `ipGraphReadGas * averageParentIpCount * 2`           | 80                                 |
+| `hasAncestorIp`          | Checks if an IP is ancestor of another IP                       | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
+| `setRoyalty`             | Sets royalty details of an IP                                   | `ipGraphWriteGas`                                     | 1000                               |
+| `getRoyalty`             | Retrieves royalty details of an IP                              | `varies by royalty policy`                            | LAP:900, LRP:620, other:1000       |
+| `getRoyaltyStack`        | Retrieves royalty stack  of an IP                               | `varies by royalty policy`                            | LAP:50, LRP: 600, other:1000       |
+| `hasParentIpExt`         | Checks if an IP is parent of another IP through external call   | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
+| `getParentIpsExt`        | Retrieves parent IPs through external call                      | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
+| `getParentIpsCountExt`   | Gets the number of parent IPs through external call             | `ipGraphExternalReadGas`                              | 2100                               |
+| `getAncestorIpsExt`      | Retrieve ancestor IPs through external call                     | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
+| `getAncestorIpsCountExt` | Gets the number of ancestor IPs through external call           | `ipGraphExternalReadGas * averageParentIpCount * 2`   | 16800                              |
+| `hasAncestorIpExt`       | Checks if an IP is ancestor of another IP through external call | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
+| `getRoyaltyExt`          | Retrieves royalty details of an IP through external call        | `varies by royalty policy`                            | LAP:189000, LRP:130200, other:1000 |
+| `getRoyaltyStackExt`     | Retrieves royalty stack of an IP through external call          | `varies by royalty policy`                            | LAP:10500, LRP:126000, other:1000  |
 
-
-Refer to [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
-
-# IPGraph Precompile
-
-# Architecture Overview
-
-Story is a purpose-built modular blockchain that is fully EVM compatible and uses Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: a `story-geth` client as the execution client (EL) and a `story` client as the consensus client (CL). The two clients communicate with each other via the Engine API interface(link to Engine API) defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
-
-`story-geth` client is a fork of the Geth client, with the addition of the IPGraph Precompile(link to IPGraph Precompile) and [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) precompile. It is responsible for transaction execution and state storage. It's fully compatible with the Ethereum Virtual Machine (EVM) and supports all Ethereum JSON-RPC methods.
-
-`story` is built on top of the Cosmos SDK and CometBFT. Cosmos SDK is a framework for building blockchain applications. It provides a modular architecture that allows for easy integration of new modules and features, and for the network to be easily extended and customized. The `story` client upgrades and added new Cosmos SDK modules to support EngineAPI integration and novel staking mechanisms. Meanwhile, CometBFT is a high-performance, scalable, and secure blockchain consensus engine that is battle-tested in the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec). 
-
-
-
-(insert architecture diagram)
-
+Refer to the [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
 
 # What is Story
 <Image align="center" src="https://files.readme.io/30567679bc8ee50fe55d31b026f751e3535b21f9b2ed52ae7a6777cfd094ee5c-image_6.png" />
