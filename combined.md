@@ -4943,6 +4943,13 @@ Parameters:
 * `request.data`: \[Optional] Additional data used in the cancellation process.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript Request Type
+export type CancelDisputeRequest = {
+  disputeId: number | string | bigint;
+  data?: Address;
+  txOptions?: TxOptions;
+};
+```
 ```typescript Response Type
 export type CancelDisputeResponse = {
   txHash?: string;
@@ -4964,6 +4971,13 @@ Parameters:
 * `request.data`: The data to resolve the dispute.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript Request Type
+export type ResolveDisputeRequest = {
+  disputeId: number | string | bigint;
+  data: Address;
+  txOptions?: TxOptions;
+};
+```
 ```typescript Response Type
 export type ResolveDisputeResponse = {
   txHash?: string;
