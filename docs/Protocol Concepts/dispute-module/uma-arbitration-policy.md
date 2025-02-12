@@ -36,6 +36,10 @@ In all disputes with UMA arbitration policy, the burden of proof lies with the p
 
 ### Document Characteristics
 
+> 🚧 Experimental
+>
+> As the process is still experimental, we can expect iteration and fine-tuning on the contents/formats of how the evidence should be submitted.
+
 Every document should have the following characteristics:
 
 * It should be a text document. Can have images or video if necessary.
@@ -169,7 +173,3 @@ Depending on what the type of the Dispute Tag is, you also need to include in th
     </tr>
   </tbody>
 </Table>
-
-> 📘 Note
->
-> As the process is still experimental, we can expect iteration and fine-tuning on the contents/formats of how the evidence should be submitted.
