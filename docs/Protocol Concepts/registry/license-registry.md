@@ -10,9 +10,11 @@ metadata:
 next:
   description: ''
 ---
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/LicenseRegistry.sol).
+<Cards columns={1}>
+  <Card title="LicenseRegistry.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/registries/LicenseRegistry.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the License Registry.
+  </Card>
+</Cards>
 
 The License Registry stores all license-related states within the protocol, including managing global state like registering new License Templates like the [Programmable IP License (PIL💊)](doc:programmable-ip-license), attaching licenses to individual [IP Assets](doc:ipasset), registering derivatives, and the like:
 
@@ -51,4 +53,4 @@ This function allows you to attach License Terms to an IP Asset.
 function registerDerivativeIp(address childIpId, address[] calldata parentIpIds, address licenseTemplate, uint256[] calldata licenseTermsIds, bool isUsingLicenseToken) external onlyLicensingModule
 ```
 
-This function allows you to register an IP Asset as a derivative of another IP Asset, unlocking things like claimable royalty flows from the [Royalty Module](doc:royalty-module).
+This function allows you to register an IP Asset as a derivative of another IP Asset, unlocking things like claimable royalty flows from the [💸 Royalty Module](doc:royalty-module).
