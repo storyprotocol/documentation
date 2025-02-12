@@ -87,6 +87,20 @@ next:
         :white_check_mark:
       </td>
     </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        OKX Explorer
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        [https://www.okx.com/web3/explorer/story](https://www.okx.com/web3/explorer/story)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+
+      </td>
+    </tr>
   </tbody>
 </Table>
 
