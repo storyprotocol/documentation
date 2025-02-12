@@ -1,22 +1,15 @@
 ---
-title: Mainnet
-excerpt: ''
+title: test
 deprecated: false
-hidden: false
+hidden: true
 metadata:
-  title: ''
-  description: ''
   robots: index
-next:
-  description: ''
 ---
 # Resources
 
-**Network Name**: Story Mainnet
+**Network Name**: Story Aeneid Testnet
 
-**Chain ID**: 1514
-
-**Chainlist Link**: [https://chainlist.org/chain/1514](https://chainlist.org/chain/1514)
+**Chain ID**: 1315
 
 ## :link: RPCs
 
@@ -44,7 +37,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)
+        `https://aeneid.storyrpc.io`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -76,41 +69,65 @@ next:
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        BlockScout Explorer ↗️
+        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://www.storyscan.xyz/](https://www.storyscan.xyz/)
+        `https://aeneid.storyscan.xyz/`
       </td>
 
       <td style={{ textAlign: "left" }}>
         :white_check_mark:
       </td>
     </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        OKX Explorer
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        [https://www.okx.com/web3/explorer/story](https://www.okx.com/web3/explorer/story)
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-
-      </td>
-    </tr>
   </tbody>
 </Table>
 
-## Contract deployment addresses
+## :mag: IP-related Explorer
 
-* [Proof of Creativity](doc:deployed-smart-contracts)
+Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
+
+> 🚧 Coming soon!
+
+| Explorer | URL |
+| :------- | :-- |
+| N/A      | N/A |
+
+## :money_with_wings: Faucets
+
+> 🚧 Coming soon!
+
+| Faucet | Amount | Requirement |
+| :----- | :----- | :---------- |
+| N/A    | N/A    | N/A         |
+
+## :moneybag: Staking
+
+> 🚧 Coming soon!
+
+| Dashboard |
+| :-------- |
+| N/A       |
+
+## Ports
+
+The following ports are available for `story-geth` and `story` clients:
+
+Geth:
+
+* RPC: 8545
+* WS: 8546
+* P2P: 30303
+
+Metrics:
+
+* Prometheus: 9100
+* Geth: 6060
+* Story: 26660
 
 # Further Sections
 
 * [Mainnet Status Page](https://status.story.foundation/)
-* [Node Setup](doc:full-node)
+* [Node Setup](doc:node-setup-dev-mainnet)
 * [Validator Operations](doc:validator-operations)
-* [Staking Design](doc:tokenomics-staking)
+* [Tokenomics & Staking](doc:tokenomics-staking)

@@ -1,5 +1,5 @@
 ---
-title: Tokenomics & Staking
+title: Staking Design
 excerpt: ''
 deprecated: false
 hidden: false
@@ -18,7 +18,7 @@ This document walks through the staking specification for Story. The goal is to 
 
 ## Genesis
 
-The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team. Tokens for investors, the core team, and a portion of those of the foundation and ecosystem will start out locked.
+The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team.  Please refer this document for the detailed [Token Distribution](https://www.story.foundation/blog/introducing-ip).
 
 ## Locked vs Unlocked tokens
 
@@ -32,25 +32,25 @@ Both types of tokens can be slashed if their validators get slashed.
 
 ## Token emissions
 
-A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters, whose initial values are still yet to be determined:
+A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters:
 
-* blocks\_per\_year
+* blocks\_per\_year: 10368000 blocks
   * The number of blocks expected to be produced in a year
-* inflations\_per\_year
+* inflations\_per\_year: 20,000,000 tokens
   * The total number of inflationary tokens to be emitted in a year
 
 New emissions will flow to two places:
 
 1. Block Rewards
-2. UBI (currently set to 0, explained later)
+2. Community Pool
 
 ## Token burn
 
-Since story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
+Since Story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
 
 # Staking
 
-> 🔗 <a href="https://staking.story.foundation/" target="_blank">Go to the Staking Dashboard ↗️</a>
+> 🔗 <a href="https://staking.story.foundation/" target="_blank">Stake with the Staking Dashboard ↗️</a>
 
 Story supports the below staking-related operations
 
@@ -93,13 +93,15 @@ Delegators can decide how flexible and how long they want to stake their tokens.
 
 For unlocked tokens, a few more fixed staking periods are supported: 90 days, 360 days, and 540 days. In this case, users can only call unstake after the staking period is mature. Any call earlier than the mature day will be discarded. Unstaking from a mature staking period is still subject to the unbonding process, meaning users will get their staked tokens back after 14 days of unbonding time.
 
-For locked tokens, only flexible staking is allowed. If a user delegates their locked tokens to a staking period, we will convert that to a flexible staking delegation.
-
 Staking in these fixed staking periods earns more rewards. The longer the period, the bigger the reward weight multiplier. Reward multiplier for different periods:
 
-* 90 days - 1.051
-* 360 days - 1.16
-* 540 days - 1.34
+* Locked flexible period - **0.5**
+* Flexible period - **1.0**
+* 90 days - **1.1**
+* 360 days - **1.5**
+* 540 days - **2**
+
+For locked tokens, only flexible staking is allowed and the reward multiplier is **0.5**. If a user delegates their locked tokens to a staking period, we will convert that to a flexible staking delegation.
 
 After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
 
@@ -302,17 +304,11 @@ The reward distribution will go to a reward distribution queue, which only proce
 
 The staking reward cannot be manually withdrawn by design.
 
-# UBI for validators
+# Community Pool
 
-In every block, a percentage (currently 0% at Genesis) of the newly minted tokens will go to a UBI pool contract. The pool is to incentivize validators to validate the blocks. At the beginning of each month, the foundation will set the UBI percentage for the next month based on the token price. The maximum UBI percentage that can be set is 20%.
+A percentage of the newly minted tokens in every block will go to a community pool contract. The foundation will determine how to use the tokens sent to the pool. The maximum community pool percentage that can be set is 20%.
 
-## Distribution process
-
-Every month, the story foundation will get the validator consensus participation rate based on the on-chain metrics for the previous month and calculate how many UBI tokens each validator can claim and set this in the UBI pool contract. Each validator then can claim the token from the UBI pool contract.
-
-The UBI calculation and claim process shall be verifiable by the public.
-
-The UBI contract address: **0xcccccc0000000000000000000000000000000002**
+The community pool contract address: **0xcccccc0000000000000000000000000000000002**
 
 # Singularity
 

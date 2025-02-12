@@ -1,11 +1,13 @@
 ---
-title: Network FAQ
+title: Troubleshooting
 deprecated: false
 hidden: false
 metadata:
   robots: index
 ---
-## Node Setup
+Welcome to Story node troubleshooting! This section covers common problems and solutions when running Story nodes.
+
+### Node Setup
 
 <details>
   <summary>What are the hardware requirements?</summary>
@@ -126,9 +128,7 @@ metadata:
   Not yet, but we are working on it.
 </details>
 
-## Troubleshooting
-
-Welcome to Story node troubleshooting! This section covers common problems and solutions when running Story nodes.
+<br />
 
 ### Common Issues
 

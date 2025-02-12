@@ -74,11 +74,8 @@ Delegator Address: story1p470h0jtph4n5hztallp8vznq8ehylswtr4vxd
 
 To create a new validator, run the following command:
 
-```bash Unlocked Token
+```bash
 ./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME} --rpc ${rpc} --chain-id ${chain_id}
-```
-```Text Locked Token
-./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME} --rpc ${rpc} --chain-id ${chain_id} --unlock=false
 ```
 
 This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. *Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!*
@@ -459,6 +456,6 @@ rm ~/.story/story/config/priv_validator_key.json
 
 3. Locate the `priv_validator_key.json` file in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
 
-***IMPORTANT: Before you proceed, make sure you STOPPED your validator on the old server and do not start it again there.***
+> ❗️ Important: Before proceeding, shut down the old validator on the original server and do not restart it!
 
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.

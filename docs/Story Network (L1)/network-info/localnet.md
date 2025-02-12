@@ -1,8 +1,8 @@
 ---
-title: Run a local net
+title: Run a Localnet
 excerpt: ''
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   title: ''
   description: ''
@@ -12,8 +12,7 @@ next:
 ---
 # Overview
 
-You can easily set up your own local Story network using `docker compose`, the local network consists of one boot node and four validator nodes. With this local network, you can test the consensus layer of the Story network or deploy your applications to conduct various tests. Additionally, you can reset the network at any time\
-as needed.
+You can easily set up your own local Story network using docker compose, consisting of one boot node and four validator nodes. With this local network, you can test the consensus layer of the Story network or deploy your application using the precompiled primitive, the IP graph, to conduct various tests. Additionally, you can reset the network at any time as needed.
 
 # Run a Local Story Network
 
