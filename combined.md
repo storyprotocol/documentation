@@ -6588,7 +6588,7 @@ If you ever run into issues and would like to try joining the network from a cle
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)
+        `https://mainnet.storyrpc.io`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -6620,11 +6620,11 @@ If you ever run into issues and would like to try joining the network from a cle
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        BlockScout Explorer ↗️
+        <a href="https://storyscan.xyz/" target="_blank">BlockScout Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://www.storyscan.xyz/](https://www.storyscan.xyz/)
+        `https://storyscan.xyz/`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -6634,11 +6634,11 @@ If you ever run into issues and would like to try joining the network from a cle
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        OKX Explorer
+        <a href="https://www.okx.com/web3/explorer/story" target="_blank">OKX Explorer ↗️</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://www.okx.com/web3/explorer/story](https://www.okx.com/web3/explorer/story)
+        `https://www.okx.com/web3/explorer/story`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -6861,7 +6861,7 @@ visualization for the blockchain network. Tools include **Prometheus**,
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a>
+        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
       <td style={{ textAlign: "left" }}>
