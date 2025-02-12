@@ -18,7 +18,7 @@ IP Assets are the foundational programmable IP metadata on Story. Each IP Asset 
 
 If your IP is off-chain, you would simply mint an ERC-721 NFT to represent that IP first, and then register it as an IP Asset.
 
-An IP Asset also has an associated [IP Account](doc:ip-account), which is a modified ERC-6551 (Token Bound Account) implementation. It is a separate contract bound to the IP Asset for controlling permissions around interactions with Story's modules or storing the IP's associated data.
+An IP Asset also has an associated [⚙️ IP Account](doc:ip-account), which is a modified ERC-6551 (Token Bound Account) implementation. It is a separate contract bound to the IP Asset for controlling permissions around interactions with Story's modules or storing the IP's associated data.
 
 ## Registering an IP Asset
 
