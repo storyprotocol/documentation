@@ -2750,11 +2750,11 @@ From the 1M USDC inflow to IP3 Royalty Vault:
 # 👥 Grouping Module
 The Grouping Module enables the creation and management of group IP Assets, supporting a royalty pool for the group.
 
-## `GroupingModule.sol`
-
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/grouping/GroupingModule.sol).
+<Cards columns={1}>
+  <Card title="GroupingModule.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/grouping/GroupingModule.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the Grouping Module.
+  </Card>
+</Cards>
 
 `GroupingModule.sol` is the main entry point for the grouping workflows. It is **stateless** and responsible for:
 
@@ -2808,11 +2808,11 @@ Once the group is locked, IPAs cannot be removed from it, but new IPAs can still
 * **Freezing License Config Items:** Once a Group gains its first member, the mintingFee, licensingHook, and licensingHookData are frozen. The Group’s commercial revenue share can only increase
 * **Group Max Size Limit:** Enforce a maximum group size of 1000
 
-> 📘 Example
->
-> Let's say you have an AI bot that uses training data to continuously learn and produce better content. The training data is a Group IPA that is the root, and the AI bot is a derivative IPA of the training data. And any time the AI bot gets paid, the revenue flows back to the training data as revenue.
->
-> Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.
+## :blue_book: Example
+
+Let's say you have an AI bot that uses training data to continuously learn and produce better content. The training data is a Group IPA that is the root, and the AI bot is a derivative IPA of the training data. And any time the AI bot gets paid, the revenue flows back to the training data as revenue.
+
+Now you want to add more training data to the group. Since the group is now locked (you linked a derivative to it), you should register a new Group IPA as a root, and then a new AI bot as a derivative.
 
 # Module Registry
 > 🗒️ Contract
@@ -2995,6 +2995,10 @@ In all disputes with UMA arbitration policy, the burden of proof lies with the p
 
 ### Document Characteristics
 
+> 🚧 Experimental
+>
+> As the process is still experimental, we can expect iteration and fine-tuning on the contents/formats of how the evidence should be submitted.
+
 Every document should have the following characteristics:
 
 * It should be a text document. Can have images or video if necessary.
@@ -3128,10 +3132,6 @@ Depending on what the type of the Dispute Tag is, you also need to include in th
     </tr>
   </tbody>
 </Table>
-
-> 📘 Note
->
-> As the process is still experimental, we can expect iteration and fine-tuning on the contents/formats of how the evidence should be submitted.
 
 # ❌ Dispute Module
 The Dispute Module creates a way for users to raise and resolve disputes through arbitration.
