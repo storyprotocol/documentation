@@ -10158,9 +10158,11 @@ main();
 
 # Using a Smart Contract
 
-> 🚧 Not Completed
->
-> A full written tutorial is coming soon. For now, you can see a code example at the bottom of [this file in our boilerplate](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/test/5_Royalty.t.sol).
+<Cards columns={1}>
+  <Card title="Go to Smart Contract Tutorial" href="https://docs.story.foundation/docs/sc-claiming-royalty" icon="fa-home">
+    View the tutorial here!
+  </Card>
+</Cards>
 
 # Finetune Images on Story
 <Cards columns={1}>
