@@ -3521,15 +3521,19 @@ License Terms support an `expiration` time. Once License Terms expire, any deriv
   If License Terms are attached to an IP Asset, anyone can mint a **License Token** (an ERC-721 NFT) from it which acts as the license to use that work based on the terms that define it. This token can then be burned to register a derivative work. This then establishes a parent-child relationship between assets, unlocking things like automatic royalty flow from the [💸 Royalty Module](doc:royalty-module).
 </Accordion>
 
-The owner address of an IP Asset owns intellectual property rights such as creating derivatives, being commercially exploited, and being reproduced in different platforms. IP Assets can programmatically grant permissions for any users to exercise those rights with some autonomy via [License Tokens](doc:license-token) (an ERC-721 NFT), which point to a particular set of conditions, known as [License Terms](doc:license-terms).
+The owner of an IP Asset owns intellectual property rights such as creating derivatives, being commercially exploited, and being reproduced in different platforms.
+
+IP Assets can programmatically grant permissions for any users to exercise those rights with some autonomy via [License Tokens](doc:license-token) (an ERC-721 NFT), which point to a particular set of conditions, known as [License Terms](doc:license-terms).
 
 <Image align="center" alt="The contracts in blue are built into the protocol. The contracts in white can be developed by the community or 3rd party vendor. " border={false} caption="Blue: contracts built into the protocol. White: contracts developed by the community or 3rd party vendor." src="https://files.readme.io/3be1037-Screenshot_2024-05-07_at_17.52.53.png" />
 
-## `LicensingModule.sol`
+## LicensingModule
 
-> 🗒️ Contract
->
-> View the smart contract [here](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/LicensingModule.sol).
+<Cards columns={1}>
+  <Card title="LicensingModule.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/licensing/LicensingModule.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the License Module.
+  </Card>
+</Cards>
 
 The `LicensingModule.sol` contract is the main entry point for the licensing system. It is responsible for:
 
