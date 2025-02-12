@@ -66,7 +66,7 @@ export type PayRoyaltyOnBehalfResponse = {
 
 ### claimableRevenue
 
-Calculates the amount of revenue token claimable by a token holder at certain snapshot.
+Get total amount of revenue token claimable by a royalty token holder.
 
 | Method             | Type                                                                      |
 | ------------------ | ------------------------------------------------------------------------- |
@@ -92,7 +92,7 @@ export type ClaimableRevenueResponse = bigint;
 
 ### claimAllRevenue
 
-Allows token holders to claim by a list of snapshot ids based on the token balance at certain snapshot.
+Claims all revenue from child IP Assets and/or from your own IP Royalty Vault.
 
 | Method            | Type                                                                    |
 | ----------------- | ----------------------------------------------------------------------- |
