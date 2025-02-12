@@ -10,9 +10,9 @@ metadata:
 next:
   description: ''
 ---
-The various registries on Story function as a primary directory/storage for the global states of the protocol. Obviously, they also contain functions to update that storage. 
+The various registries on Story function as a primary directory/storage for the global states of the protocol. Obviously, they also contain functions to update that storage.
 
-Unlike [IP Accounts](doc:ip-account), which manage the state of specific IPs, a **registry** oversees the broader states of the protocol.
+Unlike [⚙️ IP Accounts](doc:ip-account), which manage the state of specific IPs, a **registry** oversees the broader states of the protocol.
 
 # Types of Registries
 
