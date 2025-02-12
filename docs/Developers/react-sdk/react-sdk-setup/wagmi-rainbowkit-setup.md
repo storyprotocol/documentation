@@ -1,25 +1,28 @@
 ---
 title: Wagmi + RainbowKit Setup
-excerpt: ''
+excerpt: ""
 deprecated: false
 hidden: true
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
-*Optional: Check out the official Wagmi + RainbowKit installation docs[here](https://www.rainbowkit.com/docs/installation).*
+
+_Optional: Check out the official Wagmi + RainbowKit installation docs[here](https://www.rainbowkit.com/docs/installation)._
 
 ### Install the Dependencies
 
 ```shell npm
 npm install --save @story-protocol/react-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -28,7 +31,7 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your .env file. Do this by logging into [WalletConnect](https://cloud.walletconnect.com/) and creating a project.
 
 You can then configure your DApp with help from the following example:
@@ -104,6 +107,7 @@ function StoryProviderWrapper({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -118,9 +122,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -130,18 +132,19 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
-import { custom, toHex } from 'viem';
+import { custom, toHex } from "viem";
 import { useIpAsset } from "@story-protocol/react-sdk";
 
 // example of how you would now use the fully setup react sdk
 
 export default async function TestComponent() {
   const { register } = useIpAsset();
-  
+
   const response = await register({
-    nftContract: '0x01...',
-    tokenId: '1',
+    nftContract: "0x01...",
+    tokenId: "1",
     ipMetadata: {
       ipMetadataURI: "test-metadata-uri",
       ipMetadataHash: toHex("test-metadata-hash", { size: 32 }),
@@ -153,9 +156,9 @@ export default async function TestComponent() {
   console.log(
     `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
   );
-  
-  return (
-    {/* */} 
-  )
+
+  return {
+    /* */
+  };
 }
 ```

@@ -1,25 +1,28 @@
 ---
 title: Wagmi + Dynamic Setup
-excerpt: ''
+excerpt: ""
 deprecated: false
 hidden: true
 metadata:
-  title: ''
-  description: ''
+  title: ""
+  description: ""
   robots: index
 next:
-  description: ''
+  description: ""
 ---
-*Optional: Check out the official Wagmi + Dynamic installation docs[here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi).*
+
+_Optional: Check out the official Wagmi + Dynamic installation docs[here](https://docs.dynamic.xyz/adding-dynamic/using-wagmi)._
 
 ### Install the Dependencies
 
 ```shell npm
 npm install --save @story-protocol/react-sdk viem wagmi @dynamic-labs/sdk-react-core @dynamic-labs/wagmi-connector @dynamic-labs/ethereum @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -28,7 +31,7 @@ yarn add @story-protocol/core-sdk viem
 
 Before diving into the example, make sure you have two things setup:
 
-1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file. You can use the public default one (`NEXT_PUBLIC_RPC_PROVIDER_URL=https://testnet.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_DYNAMIC_ENV_ID` set up in your .env file. Do this by logging into [Dynamic](https://app.dynamic.xyz/) and creating a project.
 
 You can then configure your DApp with help from the following example:
@@ -115,16 +118,16 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 
-// we use this component to pass in our 
+// we use this component to pass in our
 // wallet from wagmi
 function StoryProviderWrapper({ children}: PropsWithChildren) {
   const { data: wallet } = useWalletClient();
-  
+
 	const dummyWallet = createWalletClient({
     chain: iliad,
     transport: http("https://testnet.storyrpc.io"),
   });
-  
+
   return (
     <StoryProvider
       config={{
@@ -138,6 +141,7 @@ function StoryProviderWrapper({ children}: PropsWithChildren) {
   )
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -152,9 +156,7 @@ export const metadata: Metadata = {
   description: "This is an Example DApp",
 };
 
-export default function RootLayout({
-  children
-}: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -164,18 +166,19 @@ export default function RootLayout({
   );
 }
 ```
+
 ```jsx TestComponent.tsx
-import { custom, toHex } from 'viem';
+import { custom, toHex } from "viem";
 import { useIpAsset } from "@story-protocol/react-sdk";
 
 // example of how you would now use the fully setup react sdk
 
 export default async function TestComponent() {
   const { register } = useIpAsset();
-  
+
   const response = await register({
-    nftContract: '0x01...',
-    tokenId: '1',
+    nftContract: "0x01...",
+    tokenId: "1",
     ipMetadata: {
       ipMetadataURI: "test-metadata-uri",
       ipMetadataHash: toHex("test-metadata-hash", { size: 32 }),
@@ -187,9 +190,9 @@ export default async function TestComponent() {
   console.log(
     `Root IPA created at tx hash ${response.txHash}, IPA ID: ${response.ipId}`
   );
-  
-  return (
-    {/* */} 
-  )
+
+  return {
+    /* */
+  };
 }
 ```

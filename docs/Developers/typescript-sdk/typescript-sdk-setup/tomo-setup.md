@@ -16,9 +16,11 @@ metadata:
 ```shell npm
 npm install --save @story-protocol/core-sdk @tomo-inc/tomo-evm-kit wagmi viem @tanstack/react-query
 ```
+
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
+
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -28,7 +30,7 @@ yarn add @story-protocol/core-sdk viem
 Before diving into the example, make sure you have two things setup:
 
 1. Make sure to have `NEXT_PUBLIC_RPC_PROVIDER_URL` set up in your `.env` file.
-   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/story-network#-rpcs).
+   1. You can use the public default one (`https://aeneid.storyrpc.io`) or any other RPC [here](https://docs.story.foundation/docs/aeneid#-rpcs).
 2. Make sure to have `NEXT_PUBLIC_TOMO_CLIENT_ID` set up in your `.env` file. Do this by logging into the [Tomo Dashboard](https://dashboard.tomo.inc/) and creating a project.
 3. Make sure to have `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` set up in your `.env` file. Do this by logging into [Reown (prev. WalletConnect)](https://reown.com/) and creating a project.
 
@@ -63,6 +65,7 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -93,6 +96,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
+
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
