@@ -6782,134 +6782,6 @@ visualization for the blockchain network. Tools include **Prometheus**,
 | **Promtail**   | Scrapes logs from Docker containers and sends them to Loki.        | `9080` (API), `9095` (Metrics) | `http://localhost:9080` |
 | **Grafana**    | Provides a dashboard interface for metrics and logs visualization. | `3000`                         | `http://localhost:3000` |
 
-# test
-# Resources
-
-**Network Name**: Story Aeneid Testnet
-
-**Chain ID**: 1315
-
-## :link: RPCs
-
-<Table align={["left","left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-        RPC Name
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        RPC URL
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Official
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        Story
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://aeneid.storyrpc.io`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        :white_check_mark:
-      </td>
-    </tr>
-  </tbody>
-</Table>
-
-## :mag: Block Explorers
-
-<Table align={["left","left","left"]}>
-  <thead>
-    <tr>
-      <th style={{ textAlign: "left" }}>
-        Explorer
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        URL
-      </th>
-
-      <th style={{ textAlign: "left" }}>
-        Official
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        `https://aeneid.storyscan.xyz/`
-      </td>
-
-      <td style={{ textAlign: "left" }}>
-        :white_check_mark:
-      </td>
-    </tr>
-  </tbody>
-</Table>
-
-## :mag: IP-related Explorer
-
-Specifically for IP-related transactions like registering an IPA, minting a license, attaching license terms, etc.
-
-> 🚧 Coming soon!
-
-| Explorer | URL |
-| :------- | :-- |
-| N/A      | N/A |
-
-## :money_with_wings: Faucets
-
-> 🚧 Coming soon!
-
-| Faucet | Amount | Requirement |
-| :----- | :----- | :---------- |
-| N/A    | N/A    | N/A         |
-
-## :moneybag: Staking
-
-> 🚧 Coming soon!
-
-| Dashboard |
-| :-------- |
-| N/A       |
-
-## Ports
-
-The following ports are available for `story-geth` and `story` clients:
-
-Geth:
-
-* RPC: 8545
-* WS: 8546
-* P2P: 30303
-
-Metrics:
-
-* Prometheus: 9100
-* Geth: 6060
-* Story: 26660
-
-# Further Sections
-
-* [Mainnet Status Page](https://status.story.foundation/)
-* [Node Setup](doc:node-setup-dev-mainnet)
-* [Validator Operations](doc:validator-operations)
-* [Tokenomics & Staking](doc:tokenomics-staking)
-
 # Aeneid - Testnet
 # Resources
 
@@ -6953,7 +6825,7 @@ Metrics:
   </tbody>
 </Table>
 
-## :mag: Block Explorers
+## :mag: Explorers
 
 <Table align={["left","left","left"]}>
   <thead>
@@ -6984,6 +6856,20 @@ Metrics:
 
       <td style={{ textAlign: "left" }}>
         :white_check_mark:
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a>
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `https://explorer.story.foundation`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        ✅
       </td>
     </tr>
   </tbody>
