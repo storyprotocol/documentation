@@ -9234,9 +9234,15 @@ Story is a purpose-built layer 1 blockchain designed specifically for intellectu
 * You can add usage terms to your IP, which specifies how others can use it, like "You owe me 50% of your commercial revenue if you use my IP", or "You cannot create derivatives of my IP".
 * By making IP programmable on the blockchain, it becomes this transparent & decentralized global IP repository where AI agents (or any other software) and humans alike can transact on IP.
 
-> ⏩ Skip the Read - 1 Minute Summary
->
-> Want to skip to a summary? Check out [Explain Like I'm Five](doc:explain-like-im-five) for a super fast & easy to understand explanation of everything Story.
+<Cards columns={2}>
+  <Card title="Skip the Read - 1 Minute Summary" href="https://docs.story.foundation/docs/explain-like-im-five" icon="fa-home">
+    Want to skip to a summary? Check out our "Explain Like I'm Five" for a super fast & easy to understand explanation of everything Story.
+  </Card>
+
+  <Card title="Read the Whitepaper" href="https://www.story.foundation/whitepaper.pdf" icon="fa-paper" target="_blank">
+    Read the Story whitepaper.
+  </Card>
+</Cards>
 
 <Accordion title="Why did we build Story?" icon="fa-question">
   When IP owners share their work online, it’s easy for others to use or change it without crediting them, and they often don't get paid fairly if their work becomes popular or valuable. This can be discouraging for people who want to share their ideas and creations but don’t want to lose control over them.
