@@ -2527,8 +2527,8 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 
   Okay, great. Let's see what happens in two (independent) common scenarios:
 
-  1. **Minting a License** - 'C' mints a license from 'B' that costs 100 USDC. When 'C' pays 'B' 100 USDC to mint a license, 'A' claims 5 USDC from B. In the end, 'B' only gets 95 USDC.
-  2. **Tipping Directly** - 'C' is a comic book that is super well written. Someone tips 100 USDC to 'C' because they love it. 'B' claims 10 USDC from 'C'. 'A' claims 0.5 USDC from 'B' (5% of 10). In the end, 'C' only gets 90 USDC.
+  1. **Minting a License** - 'C' mints a license from 'B' that costs 100 WIP. When 'C' pays 'B' 100 WIP to mint a license, 'A' claims 5 WIP from B. In the end, 'B' only gets 95 WIP.
+  2. **Tipping Directly** - 'C' is a comic book that is super well written. Someone tips 100 WIP to 'C' because they love it. 'B' claims 10 WIP from 'C'. 'A' claims 0.5 WIP from 'B' (5% of 10). In the end, 'C' only gets 90 WIP.
 </Accordion>
 
 The Liquid Relative Percentage (LRP) royalty policy defines that each parent IP Asset can choose a minimum royalty percentage that only the direct derivative IP Assets in a derivative chain will share from their monetary gains as defined in the license agreement.
@@ -2559,11 +2559,7 @@ In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a %
 
 Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivative chain as a derivative of IP Asset 3. An example flow sequence below:
 
-> 🚧 Quick Note
->
-> The below example uses $USDC, when in reality the token would be one of our [whitelisted revenue tokens](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens) like $WIP.
-
-1. IP Asset 4 pays 1M USDC in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
+1. IP Asset 4 pays 1M WIP in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
 
 ![](https://files.readme.io/b2145b6218b5d08ee3a40076afcbe6f86727fb2df4a90f457539c6f17eefc528-image.png)
 
@@ -2571,16 +2567,16 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 
 2. Each ancestor can call `transferToVault` on the royalty policy contract to receive the amount each ancestor has the right to claim from a given descendant. Funds are moved to the ancestor's IP Royalty Vault.
 
-   1. 95k USDC are transferred to the IP Royalty Vault 2 since it has the right to 10% of all IPA 2 descendants revenue and has to pay 5% of its revenue to its direct parent IPA 1. So 100k is received from IPA 3 and 5k is paid to IPA 1, resulting in IPA 2 keeping 100k - 5k = 95k.
-   2. 5k USDC are transferred to the IP Royalty Vault 1 since it has the right to 0.5% of all IPA 2 descendants revenue. IPA 1 has the right to 5% of revenue earned by IPA 2, which in turn has 10% of revenue earned by IPA 3. Given LRP royalty policy considers relative percentages, then IPA 1 has the right to 10%\*5% = 0.5% of revenue earned by IPA 3.
+   1. 95k WIP are transferred to the IP Royalty Vault 2 since it has the right to 10% of all IPA 2 descendants revenue and has to pay 5% of its revenue to its direct parent IPA 1. So 100k is received from IPA 3 and 5k is paid to IPA 1, resulting in IPA 2 keeping 100k - 5k = 95k.
+   2. 5k WIP are transferred to the IP Royalty Vault 1 since it has the right to 0.5% of all IPA 2 descendants revenue. IPA 1 has the right to 5% of revenue earned by IPA 2, which in turn has 10% of revenue earned by IPA 3. Given LRP royalty policy considers relative percentages, then IPA 1 has the right to 10%\*5% = 0.5% of revenue earned by IPA 3.
 
    ![](https://files.readme.io/a12749274bbad8b4f72f6bdcf2f79cd9c5945c677a0c28303a6d6ac4a180f1b0-image.png)
 
    <br />
 3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
-   1. 5k USDC are claimed to the IPA 1 which holds 100% RT1
-   2. 95k USDC are claimed to the IPA 2 which holds 100% RT2
-   3. 900k USDC are claimed by IPA 3 which holds 100% RT3\
+   1. 5k WIP are claimed to the IPA 1 which holds 100% RT1
+   2. 95k WIP are claimed to the IPA 2 which holds 100% RT2
+   3. 900k WIP are claimed by IPA 3 which holds 100% RT3\
       Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.
 
 ![](https://files.readme.io/d14763b11b16f307edbef7bced62f8e1be05c8ab78dbc7bf47cb0edead49dbd6-image.png)
