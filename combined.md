@@ -3252,15 +3252,15 @@ The `setDisputeJudgement` can only be called by whitelisted addresses and allows
 
 ### Tag Derivative If Parent Infringed
 
-If the `setDisputeJudgement` has tagged an IP as infringing then any address can call `tagDerivativeIfParentInfringed` to apply the same tag as the parent to the derivatives all the way down the derivative chain.
+If the `setDisputeJudgement` has tagged an IP as infringing then any address can call `tagIfRelatedIpInfringed` to apply the same tag as the parent to the derivatives all the way down the derivative chain or if the IP is a group then the group member tag can be applied to any group IP which it is a member of.
 
 > 📘 Looking Ahead
 >
-> In the future, the idea is that any derivative IP Asset of an infringed IP Asset would automatically be tagged without needing someone to call `tagDerivativeIfParentInfringed`. This is currently a limitation that we are aware of.
+> In the future, the idea is that any related IP Asset of an infringing IP Asset would automatically be tagged without needing someone to call `tagIfRelatedIpInfringed`. This is currently a limitation that we are aware of.
 
 The derivatives are then tagged directly without any need for judgment given that it is considered that if a parent IP license has been infringed then all derivatives that come from that license are also implicitly in an infringement situation.
 
-**Example**: IPA 7 is first tagged ("PLAGIARISM") as infringing via `setDisputeJudgement` after having gone through a dispute process. Only after that can IPAs 3, 1, and 0 can be tagged via `tagDerivativeIfParentInfringed` by any address without needing to go through a new dispute process.
+**Example**: IPA 7 is first tagged ("PLAGIARISM") as infringing via `setDisputeJudgement` after having gone through a dispute process. Only after that can IPAs 3, 1, and 0 can be tagged via `tagIfRelatedIpInfringed` by any address without needing to go through a new dispute process.
 
 ![](https://files.readme.io/ee69754-image.png)
 
@@ -3274,9 +3274,9 @@ In a case where a dispute judgment was positive, then a tag was applied. After t
 
 If the dispute initiator chooses to not resolve, then the tag that was defined in `setDisputeJudgement` remains in force.
 
-2. Tag was applied via the`tagDerivativeIfParentInfringed` function
+2. Tag was applied via the`tagIfRelatedIpInfringed` function
 
-If an IP has been previously tagged as infringing via `tagDerivativeIfParentInfringed`, such tag can be removed via `resolveDispute` in a permissionless way as long as the parent is no longer considered an infringing IP Asset.
+If an IP has been previously tagged as infringing via `tagIfRelatedIpInfringed`, such tag can be removed via `resolveDispute` in a permissionless way as long as the parent is no longer considered an infringing IP Asset.
 
 This mechanism of permissionless resolving disputes exists to make it easier to propagate down the derivative chain and remove infringement tags from derivative IPs when the parent has resolved its original dispute and is no longer considered as being in an infringing situation, and therefore neither are its derivatives.
 
