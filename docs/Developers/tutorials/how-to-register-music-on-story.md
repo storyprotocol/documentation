@@ -18,6 +18,10 @@ In this tutorial, you will learn how to properly register music as IP on Story u
   <Card title="Example Final Result" href="https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" icon="fa-home" target="_blank">
     View an example result after following this tutorial.
   </Card>
+
+  <Card title="Justin Bieber is coming to Story!" href="https://x.com/StoryProtocol/status/1881713146274156951" icon="fa-megaphone" target="_blank">
+    "Peaches" by Justin Bieber is one of the first RWAs coming to Story. Check out the announcement!
+  </Card>
 </Cards>
 
 > 📢 Justin Bieber is coming to Story!
