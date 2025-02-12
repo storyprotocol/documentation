@@ -905,7 +905,6 @@ To get your module verified and listed in this repository, please follow these s
 
 We look forward to seeing your contributions and expanding the StoryProtocol module ecosystem!
 
-
 # Base Module
 The Base Module provides a standard set of must-have functionalities for all modules registered on Story Protocol. Anyone wishing to create and register a module on Story Protocol must inherit and override the Base Module.
 
