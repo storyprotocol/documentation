@@ -221,7 +221,7 @@ export type RegisterDerivativeWithLicenseTokensResponse = {
 
 ## mintAndRegisterIpAssetWithPilTerms
 
-Mint an NFT from a collection, register it as an IP, attach metadata to the IP, and atach License Terms to the IP all in one function.
+Mint an NFT from a collection, register it as an IP, attach metadata to the IP, and attach License Terms to the IP all in one function.
 
 > 📘 NFT Metadata
 >
