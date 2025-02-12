@@ -20,6 +20,12 @@ next:
 
 Each IP Asset has an IP Royalty Vault, which acts as a pool for all monetary inflows related to an IP Asset's commercial exploration or from minting licenses. Anyone who holds Royalty Tokens (defined below) has the right to claim their share of this pool.
 
+<Cards columns={1}>
+  <Card title="IPRoyaltyVault.sol" href="https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/royalty/policies/IpRoyaltyVault.sol" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    View the smart contract for the IP Royalty Vault.
+  </Card>
+</Cards>
+
 ## Token Terminology
 
 1. **Royalty Tokens**: the IP Royalty Vault contract is also the ERC-20 contract for the Royalty Tokens of each IP Asset. This means the address of the IP Royalty Vault for an IP Asset is also the ERC-20 token address of the Royalty Tokens. Each IP Asset has 100,000,000 Royalty Tokens associated, where each token represents 0.000001% of those gains. The holders of these Royalty Tokens can claim the Revenue Tokens (defined below) that are in the associated IP Royalty Vault.
@@ -56,6 +62,10 @@ There are two ways that trigger the IP Royalty Vault deployment and make the ini
 Because Royalty Tokens are ERC-20, they can be transferred like any other token. Thus, the IP Account could send them to someone else, or even put them up for sale on the secondary market.
 
 ## How Revenue Flows
+
+> 🚧 Quick Note
+>
+> The below example uses $USDC, when in reality the token would be one of our [whitelisted revenue tokens](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens) like $WIP.
 
 This section will help explain how revenue flows from the time of payment to being claimed by the royalty token holder. For the purposes of explanation, we will use an example from the [Liquid Absolute Percentage (LAP)](doc:liquid-absolute-percentage), but it is the same for any royalty policy.
 
