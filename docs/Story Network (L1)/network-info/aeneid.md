@@ -110,7 +110,7 @@ next:
 
 ## Staking Dashboard
 
-| Faucet                                                      | Official |
+| Dashboard URL                                               | Official |
 | :---------------------------------------------------------- | :------- |
 | [Story Dashboard](https://aeneid.staking.story.foundation/) | ✅        |
 
