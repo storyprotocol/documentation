@@ -2,7 +2,7 @@
 title: Quickstart (COPY)
 excerpt: Start building on Story quickly.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   robots: index
 ---
