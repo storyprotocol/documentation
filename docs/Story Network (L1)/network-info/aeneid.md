@@ -42,7 +42,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://aeneid.storyrpc.io](https://aeneid.storyrpc.io)
+        `https://aeneid.storyrpc.io`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -78,7 +78,7 @@ next:
       </td>
 
       <td style={{ textAlign: "left" }}>
-        [https://aeneid.storyscan.xyz/](https://aeneid.storyscan.xyz/)
+        `https://aeneid.storyscan.xyz`
       </td>
 
       <td style={{ textAlign: "left" }}>
