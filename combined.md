@@ -1955,6 +1955,8 @@ Some PIL terms must be stored off-chain and passed in the `uri` field above. Thi
 # 📦 SPG (Periphery)
 The Story Protocol Gateway (SPG) is a group of periphery/utility smart contracts, deployed on our protocol that **allows you to combine independent operations** - like registering an [🧩 IP Asset](doc:ip-asset) and attaching License Terms to that IP Asset - **into one transaction to make your life easier**.
 
+This was primarily developed to make our [SDK](doc:sdk-overview) easier to use.
+
 For example, this `mintAndRegisterIpAndAttachPILTerms` is one of the functions in the SPG (more specifically in the `LicenseAttachmentWorkflows.sol`) that allows you to mint an NFT, register it as an IP Asset, and attach License Terms to it all in one call:
 
 ```sol LicenseAttachmentWorkflows.sol
