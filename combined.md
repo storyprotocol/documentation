@@ -7615,8 +7615,11 @@ Delegator Address: story1p470h0jtph4n5hztallp8vznq8ehylswtr4vxd
 
 To create a new validator, run the following command:
 
-```bash
-./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME} --rpc ${rpc} --chain-id ${chain_id}
+```bash Locked token node
+./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME} --rpc ${rpc} --chain-id ${chain_id} --unstake=false
+```
+```Text Unlocked token node
+./story validator create --stake ${AMOUNT_TO_STAKE_IN_WEI} --moniker ${VALIDATOR_NAME} --rpc ${rpc} --chain-id ${chain_id} --unstake=false
 ```
 
 This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. *Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!*
