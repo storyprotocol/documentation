@@ -12,7 +12,7 @@ next:
 ---
 In this guide, we will show you how to setup the Story smart contract development environment in just a few minutes
 
-## Prerequisites
+### :warning: Prerequisites
 
 * [Install Foundry](https://book.getfoundry.sh/getting-started/installation)
 * [Install yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
@@ -21,24 +21,25 @@ In this guide, we will show you how to setup the Story smart contract developmen
 
 1. Run the following in a new directory of your choice: `yarn init`
 2. Set up foundry using the following command: `forge init --force`
-   1. Open up your `foundry.toml` file and replace it with this:
-      ```Text foundry.toml
-      [profile.default]
-      out = 'out'
-      libs = ['node_modules', 'lib']
-      cache_path  = 'forge-cache'
-      gas_reports = ["*"]
-      optimizer = true
-      optimizer_runs = 20000
-      test = 'test'
-      solc = '0.8.26'
-      fs_permissions = [{ access = 'read', path = './out' }, { access = 'read-write', path = './deploy-out' }]
-      evm_version = 'cancun'
-      ```
-3. Once done, do some cleaning up on the dependency management side. Remove those conflicting with `forge` by running the following: `rm -rf lib/ .github/`
+3. Open up your `foundry.toml` file and replace it with this
+
+```toml foundry.toml
+[profile.default]
+out = 'out'
+libs = ['node_modules', 'lib']
+cache_path  = 'forge-cache'
+gas_reports = ["*"]
+optimizer = true
+optimizer_runs = 20000
+test = 'test'
+solc = '0.8.26'
+fs_permissions = [{ access = 'read', path = './out' }, { access = 'read-write', path = './deploy-out' }]
+evm_version = 'cancun'
+```
+
 4. Remove the placeholder test contracts: `rm src/Counter.sol test/Counter.t.sol`
 
-## Installing Dependencies
+### :package: Installing Dependencies
 
 Now, we are ready to start installing our dependencies. To incorporate the Story Protocol core and periphery modules, run the following to have them added to your `package.json`. We will also install `openzeppelin` and `erc6551` as a dependency for the contract and test.
 
