@@ -12558,7 +12558,7 @@ In this section, we will briefly go over the protocol contracts and then guide y
 
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/story-protocol-boilerplate" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    > ✅ Skip the tutorial and view the completed code. Follow the README instructions to run the tests, or go to the `/test` folder to view all of the example contracts.
+    Skip the tutorial and view the completed code. Follow the README instructions to run the tests, or go to the `/test` folder to view all of the example contracts.
   </Card>
 </Cards>
 
