@@ -21,9 +21,9 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 # Available Network
 
 <Cards columns={3}>
-  <Card title="Mainnet" href="https://docs.story.foundation/v1.3-beta/docs/mainnet/" icon="fa-home" target="_blank" />
+  <Card title="Mainnet" href="https://docs.story.foundation/docs/mainnet/" icon="fa-home" target="_blank" />
 
-  <Card title="Aeneid Testnet" hred="https://docs.story.foundation/v1.3-beta/docs/aeneid/" icon="fa-wrench" />
+  <Card title="Aeneid Testnet" href="https://docs.story.foundation/docs/aeneid/" icon="fa-wrench" target="_blank" />
 
-  <Card title="Run a localnet" hred="https://docs.story.foundation/v1.3-beta/docs/localnet/" icon="fa-cog" />
+  <Card title="Run a localnet" href="https://docs.story.foundation/docs/localnet/" icon="fa-cog" target="_blank" />
 </Cards>
