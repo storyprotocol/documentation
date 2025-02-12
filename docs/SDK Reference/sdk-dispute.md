@@ -41,7 +41,7 @@ const disputeResponse = await client.dispute.raiseDispute({
   // the protocol does not allow you to use it again
   cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
   // you must pick from one of the whitelisted tags here: 
-  // https://docs.story.foundation/docs/dispute-module#/dispute-tags
+  // https://docs.story.foundation/docs/dispute-module#dispute-tags
   targetTag: 'IMPROPER_REGISTRATION',
   bond: 0,
   liveness: 2592000,
