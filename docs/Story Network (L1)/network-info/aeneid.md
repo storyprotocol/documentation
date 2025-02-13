@@ -88,11 +88,11 @@ next:
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
+        <a href="https://aeneid.explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://explorer.story.foundation`
+        `https://aeneid.explorer.story.foundation`
       </td>
 
       <td style={{ textAlign: "left" }}>

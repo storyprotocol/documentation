@@ -496,7 +496,7 @@ The different relationship types that can be used for the `relationships` attrib
 }
 ```
 ```json Music
-// Example: https://explorer.story.foundation/ipa/0xD3eF4f98B91B5088FB4a840f539EfA4288703af0
+// Example: https://aeneid.explorer.story.foundation/ipa/0xD3eF4f98B91B5088FB4a840f539EfA4288703af0
 {
   title: "Rise Again",
   description: "This NFT certifies that Rise Again was created by srivatsan_qb (ID: 4123743b-8ba6-4028-a965-75b79a3ad424), with data securely fetched and verified using the Reclaim Protocol from Suno.com",

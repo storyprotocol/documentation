@@ -198,7 +198,7 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 
 ```typescript utils/createSpgNftCollection.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
-import { http } from 'viem
+import { http } from 'viem'
 
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
 const account: Account = privateKeyToAccount(privateKey)
@@ -266,7 +266,7 @@ console.log(
   `Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`
 );
 console.log(
-  `View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`
+  `View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`
 );
 ```
 
