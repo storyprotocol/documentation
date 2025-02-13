@@ -9701,7 +9701,7 @@ One big incentive alignment Story can have: IP companies running validators & pr
 
 Or a law firm automating disputes and broadcasting them to other validators. After an agreement of disputes, validators can immediately block transactions that include disputed IPs, which is not possible with an adjacent system providing (unless we have preconf, which is a debated topic in the Ethereum land).
 
-## *"You mention needing an L1 to improve upon the efficiency of an IP graph. Why not build an L2 with off-chain graph indexing?"*
+## *"You mentioned needing an L1 to improve the efficiency of an IP graph. Why not build an L2 with off-chain graph indexing?"*
 
 The IP graph must be on-chain because certain on-chain features require the ability to traverse and aggregate the IP graph. For example, royalty and revenue distribution need to occur on-chain through the IP graph. Using off-chain graph indexing would make these on-chain features either unfeasible or overly complex, as it would necessitate involving an oracle.
 
