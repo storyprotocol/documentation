@@ -9343,7 +9343,7 @@ Adding Story docs lets you interact with our docs directly and get the most accu
 <Image align="center" src="https://files.readme.io/01a847c7acd5e32d29cbc56184bec3ed1577e29d293b21d887a685b9202f01f0-Screenshot_2025-02-13_at_12.08.08_AM.png" />
 
 2. Paste the URL `https://raw.githubusercontent.com/storyprotocol/documentation/refs/heads/v1.3/combined.md`
-   1. This is our entire documentation combined into a single `.md` file.
+   1. This is our entire documentation combined into a single `.md` file, **which is automatically updated every single time our docs have changes.**
 3. Change the name to Story, and leave everything else the same
 
 <Image align="center" src="https://files.readme.io/08c6211d90a232b34ce6177c992f08bc9566667a40f177ad44a2f35cc30d7027-Screenshot_2025-02-13_at_12.09.33_AM.png" />
