@@ -2455,8 +2455,6 @@ Imagine we have a scenario where IPA4 tips IPA3 1M WIP by calling `payRoyaltyOnB
 
 ![](https://files.readme.io/ef288631b074cd82d2edb95b6b27844db6a36cd8976a29f20a0cd9b393752218-image.png)
 
-<br />
-
 ### External Royalty Policies
 
 Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For this to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. This can be particularly useful when used together with external royalty policies.
