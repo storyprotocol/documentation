@@ -114,18 +114,12 @@ Below is a list of optional flags to further customize your validator setup:
 
 ```bash
 story validator create 
-	--stake "1024000000000000000000" 
+	--stake 1024000000000000000000
   --moniker "timtimtim"
   --commission-rate 700
   --validator-pubkey "<validator_pubkey>" # if you dont have a .env
   --rpc "https://mainnet.storyrpc.io"
 	--chain-id 1514
-```
-
-### Example creation command with custom flags
-
-```bash
-./story validator create --stake 1024000000000000000000 --moniker "Story Validator" --chain-id 1516 --commission-rate 1500 --max-commission-change-rate 500 --max-commission-rate 5000 --rpc "https://odyssey.storyrpc.io"
 ```
 
 ### Verifying your validator
@@ -146,6 +140,7 @@ To stake to an existing validator, run the following command:
 ./story validator stake \
    --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
    --stake ${AMOUNT_TO_STAKE_IN_WEI}
+   --staking-period ${STAKING_PERIOD}
 ```
 
 * Note that your own `${VALIDATOR_PUB_KEY_IN_HEX}`may be found by running the `./story validator export` command as the `Compressed Public Key (hex)`.
@@ -170,6 +165,7 @@ Once staked, you may use the `Explorer URL` to confirm the transaction. As menti
 ./story validator stake \
   --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
   --stake 1024000000000000000000
+  --staking-period "short"
 ```
 
 ## Validator Unstaking
@@ -180,6 +176,7 @@ To unstake from a validator, run the following command:
 ./story validator unstake \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --unstake ${AMOUNT_TO_UNSTAKE_IN_WEI} \
+	--delegation-id ${ID_STAKING_PERIOD}
 ```
 
 This will unstake `${AMOUNT_TO_UNSTAKE_IN_WEI}` IP from the selected validator. You must unstake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
@@ -202,7 +199,8 @@ Like in the staking operation, please use the `Explorer URL` to confirm the tran
 ```bash
 ./story validator unstake \
    --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
-   --unstake 1024000000000000000000
+   --unstake 1024000000000000000000 \
+   --delegation-id 1
 ```
 
 ## Validator Stake-on-behalf
@@ -214,6 +212,7 @@ To stake on behalf of another delegator, run the following command:
   --delegator-pubkey ${DELEGATOR_PUB_KEY_IN_HEX} \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --stake ${AMOUNT_TO_STAKE_IN_WEI} \
+  --staking-period ${STAKING_PERIOD}
 ```
 
 This will stake `${AMOUNT_TO_STAKE_IN_WEI}` IP to the validator on behalf of the provided delegator. You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
@@ -236,9 +235,10 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 
 ```bash
 ./story validator stake-on-behalf \
-   --delegator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+   --delegator-pubkey 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
    --validator-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
-   --stake 1024000000000000000000
+   --stake 1024000000000000000000 \
+   --staking-period "short"
 ```
 
 ## Validator Unstake-on-behalf
