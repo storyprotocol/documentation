@@ -11789,7 +11789,7 @@ import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
 
 PILTerms memory pilTerms = PILFlavors.commercialRemix({
   mintingFee: 0,
-  commercialRevShare: 10 * 10 ** 6, // 10%
+  commercialRevShare: 5 * 10 ** 6, // 5% rev share
   royaltyPolicy: ROYALTY_POLICY_LAP,
   currencyToken: MERC20
 });
