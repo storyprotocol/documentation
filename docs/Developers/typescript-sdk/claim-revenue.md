@@ -37,6 +37,10 @@ When payments are made, they eventually end up in an IP Asset's [IP Royalty Vaul
 
 The IP Account (the smart contract that represents the [🧩 IP Asset](doc:ip-asset)) is what holds 100% of the Royalty Tokens when it's first registered. So usually, it indeed holds most of the Royalty Tokens.
 
+> 📘 Quick Note
+>
+> The below scenarios and examples use a [Liquid Absolute Percentage](doc:liquid-absolute-percentage) royalty policy. This is currently one of two royalty policies you can use.
+
 ## Scenario #1
 
 In this scenario, I own IP Asset 3. Someone pays my IP Asset 3 directly, and I claim that revenue. Let's view this in steps:
