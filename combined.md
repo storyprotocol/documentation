@@ -7781,8 +7781,8 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
    --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
    --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
    --stake 1024000000000000000000 \
-   --staking-period "short"
-	 --rpc
+   --staking-period "short" \
+	 --rpc \
    --chain-id
 ```
 
@@ -7795,7 +7795,7 @@ You may also unstake on behalf of delegators. However, to do so, you must be reg
   --delegator-address ${DELEGATOR_PUB_KEY_IN_HEX} \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --unstake ${AMOUNT_TO_STAKE_IN_WEI} \
-  --rpc
+  --rpc \
   --chain-id
 ```
 
@@ -7820,9 +7820,9 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 ./story validator unstake-on-behalf \
    --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
    --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
-   --unstake 1024000000000000000000
-   --rpc
-  --chain-id
+   --unstake 1024000000000000000000 \
+   --rpc \
+   --chain-id
 ```
 
 ## Validator Unjail
