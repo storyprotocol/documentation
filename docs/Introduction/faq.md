@@ -1,5 +1,5 @@
 ---
-title: FAQ
+title: ❓ FAQ
 excerpt: Get answers to the most common questions about Story as a whole.
 deprecated: false
 hidden: false
