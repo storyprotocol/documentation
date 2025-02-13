@@ -222,6 +222,26 @@ sudo xattr -rd com.apple.quarantine ./geth
 
 ### 2.2 Install Story Consensus Client
 
+#### Install Story Client
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/
+source $HOME/.bashrc
+story version
+```
+
+> You should expect to see version 1.0.0-stable
+
+(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./story
+```
+
 #### Cosmovisor installation
 
 For updating the story client, we recommend using Cosmovisor.
@@ -250,26 +270,6 @@ echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
 echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
 echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
 echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
-```
-
-#### Install Story Client
-
-```bash
-cd $HOME
-wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
-sudo mv story-linux-amd64 story
-sudo chmod +x story
-sudo mv ./story $HOME/go/bin/
-source $HOME/.bashrc
-story version
-```
-
-> You should expect to see version 1.0.0-stable
-
-(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-```bash
-sudo xattr -rd com.apple.quarantine ./story
 ```
 
 #### Init Story with Cosmovisor
