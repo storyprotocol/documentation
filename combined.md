@@ -13776,11 +13776,9 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 ```shell npm
 npm install --save @story-protocol/core-sdk @reown/appkit @reown/appkit-adapter-wagmi wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -13820,7 +13818,6 @@ export const wagmiAdapter = new WagmiAdapter({
 
 export const config = wagmiAdapter.wagmiConfig;
 ```
-
 ```jsx context/index.tsx
 'use client'
 
@@ -13870,7 +13867,6 @@ function ContextProvider({ children, cookies }: { children: ReactNode; cookies: 
 
 export default ContextProvider
 ```
-
 ```jsx app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -13907,7 +13903,6 @@ export default function RootLayout({
   )
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -14035,11 +14030,9 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 ```shell npm
 npm install --save @story-protocol/core-sdk @tomo-inc/tomo-evm-kit wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -14084,7 +14077,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14115,7 +14107,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -14172,11 +14163,9 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -14219,7 +14208,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14248,7 +14236,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -14305,11 +14292,9 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk viem wagmi @dynamic-labs/sdk-react-core @dynamic-labs/wagmi-connector @dynamic-labs/ethereum @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -14364,7 +14349,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14393,7 +14377,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
