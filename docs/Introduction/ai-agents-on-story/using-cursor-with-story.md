@@ -4,6 +4,8 @@ excerpt: Add the entire Story documentation to Cursor.
 deprecated: false
 hidden: false
 metadata:
+  image: >-
+    https://files.readme.io/519d12412249d2310708c39735bfa6268f386d52c07a910de29e18c1d71482f1-Screenshot_2025-02-13_at_12.15.17_AM.png
   robots: index
 ---
 [Cursor](https://www.cursor.com/) is an AI code editor that makes it easy to write code while building Story apps. Let's walk through how to setup Cursor for the best possible results with Story.
