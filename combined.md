@@ -9352,7 +9352,7 @@ Adding Story docs can let you specifically refer to Story features when building
 
 You can then reference the Story docs in your prompt with the `@Story` symbol.
 
-<Image align="left" src="https://files.readme.io/da9075912d50128fb1a0a38762e5c57afa66af9997396757b29dcef32c66d5cd-Screenshot_2025-02-13_at_12.11.55_AM.png" />
+<Image align="left" src="https://files.readme.io/ae2f9e910cc0c2e5bd00d33809127f821e23dd1b600b125b355793de2b959ddc-Screenshot_2025-02-13_at_12.15.17_AM.png" />
 
 # 🤖 For AI Agents
 This page is all about AI Agents. We have prepared a way for you to use our documentation as training data which can be seen below, or continue to learn about developing AI Agents on Story.
