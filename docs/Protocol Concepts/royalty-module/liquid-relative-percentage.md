@@ -51,16 +51,12 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 
 ![](https://files.readme.io/b2145b6218b5d08ee3a40076afcbe6f86727fb2df4a90f457539c6f17eefc528-image.png)
 
-<br />
-
 2. Each ancestor can call `transferToVault` on the royalty policy contract to receive the amount each ancestor has the right to claim from a given descendant. Funds are moved to the ancestor's IP Royalty Vault.
-
    1. 95k WIP are transferred to the IP Royalty Vault 2 since it has the right to 10% of all IPA 2 descendants revenue and has to pay 5% of its revenue to its direct parent IPA 1. So 100k is received from IPA 3 and 5k is paid to IPA 1, resulting in IPA 2 keeping 100k - 5k = 95k.
    2. 5k WIP are transferred to the IP Royalty Vault 1 since it has the right to 0.5% of all IPA 2 descendants revenue. IPA 1 has the right to 5% of revenue earned by IPA 2, which in turn has 10% of revenue earned by IPA 3. Given LRP royalty policy considers relative percentages, then IPA 1 has the right to 10%\*5% = 0.5% of revenue earned by IPA 3.
 
-   ![](https://files.readme.io/a12749274bbad8b4f72f6bdcf2f79cd9c5945c677a0c28303a6d6ac4a180f1b0-image.png)
+![](https://files.readme.io/a12749274bbad8b4f72f6bdcf2f79cd9c5945c677a0c28303a6d6ac4a180f1b0-image.png)
 
-   <br />
 3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
    1. 5k WIP are claimed to the IPA 1 which holds 100% RT1
    2. 95k WIP are claimed to the IPA 2 which holds 100% RT2
