@@ -10,7 +10,7 @@ metadata:
 
 ## Add Story Docs
 
-Adding Story docs can let you specifically refer to Story features when building your app.
+Adding Story docs lets you interact with our docs directly and get the most accurate answers to your questions.
 
 1. Go to Cursor Settings > Features > Docs and click "+ Add new doc"
 
