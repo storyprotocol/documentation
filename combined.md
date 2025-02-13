@@ -500,6 +500,46 @@ The different relationship types that can be used for the `relationships` attrib
 
 # Example Use Cases
 
+```json Ippy Mascot
+// Official Ippy Mascot: https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42
+{
+  "title": "Ippy",
+  "description": "Official mascot of Story.",
+  "ipType": "Character",
+  "image": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
+  "tags": ["Ippy", "Story", "Story Mascot", "Mascot", "Official"],
+  "creators": [
+    {
+      "name": "Story Foundation",
+      "address": "0x67ee74EE04A0E6d14Ca6C27428B27F3EFd5CD084",
+      "description": "The World's IP Blockchain",
+      "contributionPercent": 100,
+      "socialMedia": [
+        {
+          "platform": "Twitter",
+          "url": "https://twitter.com/storyprotocol"
+        },
+        {
+          "platform": "Telegram",
+          "url": "https://t.me/StoryAnnouncements"
+        },
+        {
+          "platform": "Website",
+          "url": "https://story.foundation"
+        },
+        {
+          "platform": "Discord",
+          "url": "https://discord.gg/storyprotocol"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://youtube.com/@storyFDN"
+        }
+      ]
+    }
+  ]
+}
+```
 ```json Harry Potter
 {
   title: "Harry Potter and the Philosopher's Stone",
