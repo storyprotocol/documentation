@@ -9509,13 +9509,12 @@ Once the providing agent has been paid for their work (when the requesting agent
   </Card>
 </Cards>
 
-# Explain Like I'm Five
+# 🤔 Explain Like I'm Five
 <Image alt="Credit to the original tweet [here](https://x.com/devrelius/status/1812865477657694513)." align="center" src="https://files.readme.io/0de1024-quick-story-overview.png">
   Credit to the original tweet [here](https://x.com/devrelius/status/1812865477657694513).
 </Image>
 
-
-# Quickstart
+# 🏁 Quickstart
 You want to start building on Story quickly... so let's get started!
 
 > 📘 Looking to read up on Story first?
@@ -9628,7 +9627,7 @@ Our tutorials will show you exactly how to claim revenue:
 >
 > For more information on royalty and how it functions, check out the [💸 Royalty Module](doc:royalty-module).
 
-# FAQ
+# ❓ FAQ
 ## *"Is on-chain IP real?"*
 
 Story isn't replacing the legal system, it's providing on-chain rails to make the legal system more efficient for creative IP.
@@ -9715,7 +9714,6 @@ We will support a few ways, including the [Dispute Module](doc:dispute-module), 
 A more nuanced answer to this (one that we're constantly exploring/improving upon) is there may be additional ways to deter IP infringement. For example, a staking validation mechanism where users could stake tokens on a piece of IP being valid, and if it were to be disputed and marked as copyright, the tokens get slashed and distributed to the creator who was harmed. Additionally we've thought of introducing external IP infringement detection services directly into our L1 at the lowest level that could flag or automatically mark IP as potential infringement the moment its registered.
 
 Ultimately Story is not a system built to prevent bad actors, rather it is meant to help facilitate honest actors to more easily register their IP, remix from others, and set proper terms for their work. The protocol is permissionless and stopping bad actors entirely would be near impossible, but we can try to disincentivize them as best we can. Much like how the pirating of media plummeted when Apple Music, Spotify, and Netflix made such media more accessible by creating a "path of least resistance", we see a similar future with Story & IP.
-
 
 # Protect DALL·E AI-Generated Images
 In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generated images by registering it on Story.
