@@ -14,6 +14,12 @@ next:
 >
 > We are still figuring out the best way to define an IPA Metadata Standard. For the sake of transparency, the following document is our thoughts so far but is subject to change as we progress towards releasing our public Mainnet.
 
+<Cards columns={1}>
+  <Card title="Official Ippy IP" href="https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42" icon="fa-home" target="_blank">
+    Check out the official Ippy IP, which has both NFT & IP metadata.
+  </Card>
+</Cards>
+
 This is the JSON metadata that is associated with an IP Asset, and gets stored inside of an IP Account. You must call `setMetadata(...)` inside of the IP Account in order to set the metadata, and then call `metadata()` to read it.
 
 # Attributes & Structure
