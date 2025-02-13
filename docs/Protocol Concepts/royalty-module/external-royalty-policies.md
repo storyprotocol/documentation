@@ -80,8 +80,6 @@ Let's explore both in the context of "Policy X". Let's say that from the 50% of 
 
 ![](https://files.readme.io/ecbc7a9db20ed8fee4c110b09239649490757cdb1f4ed63af20a98d2cd60cbc1-image.png)
 
-<br />
-
 Now let's imagine there is a 1M payment made to IP3 - an example of how the flow would be:
 
 ![](https://files.readme.io/4c9d0f8ca5e6c2b46f420b67016dbab667d429dba3fa2fa7b150deae9d4cf913-image.png)
