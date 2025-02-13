@@ -5228,7 +5228,7 @@ Parameters:
 ```typescript Request Type
 export type ClaimableRevenueRequest = {
   royaltyVaultIpId: Address;
-	claimer: Address;
+  claimer: Address;
   token: Address;
 }
 ```
