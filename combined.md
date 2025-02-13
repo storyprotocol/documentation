@@ -2497,8 +2497,6 @@ In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a %
 
 ![](https://files.readme.io/906b26bc193243391a86a33823d56568afd60eb0cc57b3ab42b77a97f1975142-image.png)
 
-<br />
-
 Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivative chain as a derivative of IP Asset 3. An example flow sequence below:
 
 1. IP Asset 4 pays 1M WIP in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
@@ -2506,13 +2504,13 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 ![](https://files.readme.io/3cb2287fee2bcbdfaed6a7068b7fcd1769d32f73f46d5f29e2c4b404b9d79f64-image.png)
 
 2. Each ancestor can call `transferToVault` on the royalty policy contract to receive the amount each ancestor has the right to claim from a given descendant. Funds are moved to the ancestor's IP Royalty Vault.
-3. 1. 100k WIP are transferred to the IP Royalty Vault 2 since it the right to 10% of all IPA 2 descendants revenue
+   1. 100k WIP are transferred to the IP Royalty Vault 2 since it the right to 10% of all IPA 2 descendants revenue
    2. 50k WIP are transferred to the IP Royalty Vault 1 since it the right to 5% of all IPA 2 descendants revenue
 
 ![](https://files.readme.io/2c12c635e25d9a815cd7d47ece1b75b72974208540b136e4d2405c994b791bd4-image.png)
 
 3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
-4. 1. 50k WIP are claimed to the IPA 1 which holds 100% RT1
+   1. 50k WIP are claimed to the IPA 1 which holds 100% RT1
    2. 100k WIP are claimed to the IPA 2 which holds 100% RT2
    3. 850k WIP are claimed by IPA 3 which holds 100% RT3\
       Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.
@@ -2561,16 +2559,12 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 
 ![](https://files.readme.io/b2145b6218b5d08ee3a40076afcbe6f86727fb2df4a90f457539c6f17eefc528-image.png)
 
-<br />
-
 2. Each ancestor can call `transferToVault` on the royalty policy contract to receive the amount each ancestor has the right to claim from a given descendant. Funds are moved to the ancestor's IP Royalty Vault.
-
    1. 95k WIP are transferred to the IP Royalty Vault 2 since it has the right to 10% of all IPA 2 descendants revenue and has to pay 5% of its revenue to its direct parent IPA 1. So 100k is received from IPA 3 and 5k is paid to IPA 1, resulting in IPA 2 keeping 100k - 5k = 95k.
    2. 5k WIP are transferred to the IP Royalty Vault 1 since it has the right to 0.5% of all IPA 2 descendants revenue. IPA 1 has the right to 5% of revenue earned by IPA 2, which in turn has 10% of revenue earned by IPA 3. Given LRP royalty policy considers relative percentages, then IPA 1 has the right to 10%\*5% = 0.5% of revenue earned by IPA 3.
 
-   ![](https://files.readme.io/a12749274bbad8b4f72f6bdcf2f79cd9c5945c677a0c28303a6d6ac4a180f1b0-image.png)
+![](https://files.readme.io/a12749274bbad8b4f72f6bdcf2f79cd9c5945c677a0c28303a6d6ac4a180f1b0-image.png)
 
-   <br />
 3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
    1. 5k WIP are claimed to the IPA 1 which holds 100% RT1
    2. 95k WIP are claimed to the IPA 2 which holds 100% RT2
@@ -2732,8 +2726,6 @@ There are two ways in which an External Royalty Policy can redistribute value ba
 Let's explore both in the context of "Policy X". Let's say that from the 50% of RT3 token supply "Policy X" received - 40% are kept in the "Policy X" contract and 10% are sent to an ancestor royalty vault (IP1).
 
 ![](https://files.readme.io/ecbc7a9db20ed8fee4c110b09239649490757cdb1f4ed63af20a98d2cd60cbc1-image.png)
-
-<br />
 
 Now let's imagine there is a 1M payment made to IP3 - an example of how the flow would be:
 
