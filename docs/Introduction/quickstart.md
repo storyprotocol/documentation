@@ -1,5 +1,5 @@
 ---
-title: Quickstart
+title: 🏁 Quickstart
 excerpt: Start building on Story quickly.
 deprecated: false
 hidden: false
