@@ -209,7 +209,7 @@ To stake on behalf of another delegator, run the following command:
 
 ```bash
 ./story validator stake-on-behalf \
-  --delegator-pubkey ${DELEGATOR_PUB_KEY_IN_HEX} \
+  --delegator-address ${DELEGATOR_EVM} \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --stake ${AMOUNT_TO_STAKE_IN_WEI} \
   --staking-period ${STAKING_PERIOD}
@@ -235,8 +235,8 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 
 ```bash
 ./story validator stake-on-behalf \
-   --delegator-pubkey 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
-   --validator-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+   --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
+   --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
    --stake 1024000000000000000000 \
    --staking-period "short"
 ```
@@ -247,7 +247,7 @@ You may also unstake on behalf of delegators. However, to do so, you must be reg
 
 ```bash
 ./story validator unstake-on-behalf \
-  --delegator-pubkey ${DELEGATOR_PUB_KEY_IN_HEX} \
+  --delegator-address ${DELEGATOR_PUB_KEY_IN_HEX} \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --unstake ${AMOUNT_TO_STAKE_IN_WEI} \
 ```
@@ -271,8 +271,8 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 
 ```bash
 ./story validator unstake-on-behalf \
-   --delegator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
-   --validator-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+   --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
+   --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
    --unstake 1024000000000000000000
 ```
 
@@ -324,7 +324,7 @@ If you are an authorized operator, you may unjail a validator on their behalf us
 ```bash
 ./story validator unjail-on-behalf \
   --private-key 0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef \
-  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+  --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930
 ```
 
 ## Validator Redelegate
