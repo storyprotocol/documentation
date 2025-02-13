@@ -7893,6 +7893,8 @@ To redelegate from one validator to another, run the following command:
   --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
   --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
   --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+  --rpc \
+  --chain-id
 ```
 
 **Available Flags:**
@@ -7913,7 +7915,9 @@ To redelegate from one validator to another, run the following command:
 ./story validator redelegate \
   --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
   --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
-  --redelegate 1024000000000000000000
+  --redelegate 1024000000000000000000 \
+  --rpc \
+  --chain-id
 ```
 
 ## Validator Redelegate-on-behalf
@@ -7925,7 +7929,9 @@ If you are an authorized operator, you may redelegate from one validator to anot
   --delegator-address ${DELEGATOR_EVM_ADDRESS} \
   --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
   --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
-  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI} \
+  --rpc \
+  --chain-id
 ```
 
 **Available Flags:**
@@ -7948,16 +7954,26 @@ If you are an authorized operator, you may redelegate from one validator to anot
   --delegator-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
   --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
   --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
-  --redelegate 1024000000000000000000
+  --redelegate 1024000000000000000000 \
+  --rpc \
+  --chain-id
 ```
 
-## Add Operator
+## Set Operator
 
 Delegators may add operators to unstake or redelegate on their behalf. To add an operator, run the following command:
 
+* `--chain-id` int         Chain ID to use for the transaction (default 1514)
+* `--explorer` string      URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
+* `--operator` string      Sets an operator to your delegator
+* `--private-key` string   Private key used for the transaction
+* `--rpc` string           RPC URL to connect to the network (default "[https://storyrpc.io](https://storyrpc.io)")
+
 ```bash
-./story validator add-operator \
-  --operator ${OPERATOR_EVM_ADDRESS}
+./story validator set-operator \
+  --operator ${OPERATOR_EVM_ADDRESS} \
+  --rpc \
+  --chain-id
 ```
 
 Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
@@ -7965,24 +7981,30 @@ Note that you will need at least 1 IP in the wallet submitting the transaction f
 ### Example add operator command use
 
 ```bash
-./story validator add-operator \
-  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
+./story validator set-operator \
+  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --rpc \
+  --chain-id
 ```
 
-## Remove Operator
+## Unset Operator
 
 To remove an operator, run the following command:
 
 ```bash
-./story validator remove-operator \
-  --operator ${OPERATOR_EVM_ADDRESS}
+./story validator unset-operator \
+  --operator ${OPERATOR_EVM_ADDRESS} \  
+  --rpc \
+  --chain-id
 ```
 
 ### Example Remove Operator command use
 
 ```bash
 ./story validator remove-operator \
-  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
+  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --rpc \
+  --chain-id
 ```
 
 ## Set Withdrawal Address
