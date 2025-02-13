@@ -16,6 +16,8 @@ next:
 
 **Chain ID**: 1315
 
+**Chainlist Link**: [https://chainlist.org/chain/1315](https://chainlist.org/chain/1315)
+
 ## :link: RPCs
 
 <Table align={["left","left","left"]}>
