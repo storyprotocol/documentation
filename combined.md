@@ -9321,7 +9321,7 @@ Think of it like this: Suppose you upload a song to Story. Now, anyone can see t
 
 With Story, you can share your work freely, knowing that wherever it goes, it’s tracked and fairly credited back to you. The idea is to create a fair environment for sharing, building upon, and growing creative work.
 
-# For AI Agents
+# 🤖 For AI Agents
 This page is all about AI Agents. We have prepared a way for you to use our documentation as training data which can be seen below, or continue to learn about developing AI Agents on Story.
 
 <Cards columns={2}>
