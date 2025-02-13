@@ -598,7 +598,7 @@ export async function registerIp(inference) {
   });
 
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
-  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`); 
+  console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`); 
 }
 ```
 

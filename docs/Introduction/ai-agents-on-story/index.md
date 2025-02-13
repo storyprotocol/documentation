@@ -1,5 +1,5 @@
 ---
-title: For AI Agents
+title: 🤖 For AI Agents
 excerpt: >-
   Learn about AI Agents on Story. Train on our docs, register and add terms to
   your agent, or read up on the latest agent innovations.

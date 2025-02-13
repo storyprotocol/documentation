@@ -1,5 +1,5 @@
 ---
-title: Explain Like I'm Five
+title: 🤔 Explain Like I'm Five
 excerpt: An easy to understand overview of Story.
 deprecated: false
 hidden: false

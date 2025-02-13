@@ -45,8 +45,6 @@ In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a %
 
 ![](https://files.readme.io/906b26bc193243391a86a33823d56568afd60eb0cc57b3ab42b77a97f1975142-image.png)
 
-<br />
-
 Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivative chain as a derivative of IP Asset 3. An example flow sequence below:
 
 1. IP Asset 4 pays 1M WIP in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
@@ -54,13 +52,13 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 ![](https://files.readme.io/3cb2287fee2bcbdfaed6a7068b7fcd1769d32f73f46d5f29e2c4b404b9d79f64-image.png)
 
 2. Each ancestor can call `transferToVault` on the royalty policy contract to receive the amount each ancestor has the right to claim from a given descendant. Funds are moved to the ancestor's IP Royalty Vault.
-3. 1. 100k WIP are transferred to the IP Royalty Vault 2 since it the right to 10% of all IPA 2 descendants revenue
+   1. 100k WIP are transferred to the IP Royalty Vault 2 since it the right to 10% of all IPA 2 descendants revenue
    2. 50k WIP are transferred to the IP Royalty Vault 1 since it the right to 5% of all IPA 2 descendants revenue
 
 ![](https://files.readme.io/2c12c635e25d9a815cd7d47ece1b75b72974208540b136e4d2405c994b791bd4-image.png)
 
 3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
-4. 1. 50k WIP are claimed to the IPA 1 which holds 100% RT1
+   1. 50k WIP are claimed to the IPA 1 which holds 100% RT1
    2. 100k WIP are claimed to the IPA 2 which holds 100% RT2
    3. 850k WIP are claimed by IPA 3 which holds 100% RT3\
       Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.

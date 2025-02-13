@@ -143,6 +143,12 @@ In addition, [Group IPAs](doc:grouping-module) are subject to the following addi
 >
 > We are still figuring out the best way to define an IPA Metadata Standard. For the sake of transparency, the following document is our thoughts so far but is subject to change as we progress towards releasing our public Mainnet.
 
+<Cards columns={1}>
+  <Card title="Official Ippy IP" href="https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42" icon="fa-home" target="_blank">
+    Check out the official Ippy IP, which has both NFT & IP metadata.
+  </Card>
+</Cards>
+
 This is the JSON metadata that is associated with an IP Asset, and gets stored inside of an IP Account. You must call `setMetadata(...)` inside of the IP Account in order to set the metadata, and then call `metadata()` to read it.
 
 # Attributes & Structure
@@ -494,6 +500,46 @@ The different relationship types that can be used for the `relationships` attrib
 
 # Example Use Cases
 
+```json Ippy Mascot
+// Official Ippy Mascot: https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42
+{
+  "title": "Ippy",
+  "description": "Official mascot of Story.",
+  "ipType": "Character",
+  "image": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
+  "tags": ["Ippy", "Story", "Story Mascot", "Mascot", "Official"],
+  "creators": [
+    {
+      "name": "Story Foundation",
+      "address": "0x67ee74EE04A0E6d14Ca6C27428B27F3EFd5CD084",
+      "description": "The World's IP Blockchain",
+      "contributionPercent": 100,
+      "socialMedia": [
+        {
+          "platform": "Twitter",
+          "url": "https://twitter.com/storyprotocol"
+        },
+        {
+          "platform": "Telegram",
+          "url": "https://t.me/StoryAnnouncements"
+        },
+        {
+          "platform": "Website",
+          "url": "https://story.foundation"
+        },
+        {
+          "platform": "Discord",
+          "url": "https://discord.gg/storyprotocol"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://youtube.com/@storyFDN"
+        }
+      ]
+    }
+  ]
+}
+```
 ```json Harry Potter
 {
   title: "Harry Potter and the Philosopher's Stone",
@@ -625,36 +671,33 @@ The different relationship types that can be used for the `relationships` attrib
 }
 ```
 ```json Music
-// Example: https://explorer.story.foundation/ipa/0xD3eF4f98B91B5088FB4a840f539EfA4288703af0
+// Example: https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8
 {
-  title: "Rise Again",
-  description: "This NFT certifies that Rise Again was created by srivatsan_qb (ID: 4123743b-8ba6-4028-a965-75b79a3ad424), with data securely fetched and verified using the Reclaim Protocol from Suno.com",
-  ipType: "Music",
-  creators: [
+  "title": "Midnight Marriage",
+  "description": "This is a house-style song generated on suno.",
+  "ipType": "Music",
+  "creators": [{
+    "name": "Jacob Tucker",
+    "address": "0x01",
+    "contributionPercent": 100
+  }],
+  "media": [{
+    "name": "Midnight Marriage",
+    "url": "https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3",
+    "mimeType": "audio/mpeg"
+  }],
+  "attributes": [
     {
-      name: "srivatsan_qb",
-      description: "Creator"
-    }
-  ],
-  media: [
-    {
-      name: "Rise Again",
-      url: "https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3",
-      mimeType: "audio/mpeg"
-    }
-  ],
-  attributes: [
-    {
-      key: "Artist",
-      value: "srivatsan_qb"
+      "key": "Suno Artist",
+      "value": "amazedneurofunk956"
     },
     {
-      key: "Artist ID",
-      value: "4123743b-8ba6-4028-a965-75b79a3ad424"
+      "key": "Artist ID",
+      "value": "4123743b-8ba6-4028-a965-75b79a3ad424"
     },
     {
-      key: "Source",
-      value: "Suno.com"
+      "key": "Source",
+      "value": "Suno.com"
     }
   ]
 }
@@ -1487,25 +1530,25 @@ Here are some common examples of royalty flow. *More coming soon!*
 
 ## Example 1
 
-<Image align="center" src="https://files.readme.io/574c9f3-Screenshot_2024-08-16_at_9.54.00_PM.png" />
+<Image align="center" src="https://files.readme.io/01710d13ebea0b9946a65dca0d5948b4a70d6ee6e5a3fbdbb722f74b588a6e42-Screenshot_2025-02-12_at_9.24.01_PM.png" />
 
 ### Explanation
 
 Someone registers their Azuki on Story. By default, that IP Asset has Non-Commercial Social Remixing Terms, which specify that anyone can create derivatives of that work but cannot commercialize them. So, someone else creates & registers a remix of that work (IPA2) which inherits those same terms. Someone else then does the same to IPA2, creating & registering IPA3.
 
-The owner of IPA1 then decides that others can commercialize the work, but they cannot create derivatives to do so, they must pay a 10 USDC minting fee, and they must share 10% of all revenue earned. So, someone wants to commercialize IPA1 by putting it on a t-shirt. They pay the 10 USDC minting fee to get a License Token, which represents the license to commercialize IPA1. They then put the image on a t-shirt and sell it. 10% of revenue earned by that t-shirt must be sent on-chain to IPA1.
+The owner of IPA1 then decides that others can commercialize the work, but they cannot create derivatives to do so, they must pay a 10 $WIP minting fee, and they must share 10% of all revenue earned. So, someone wants to commercialize IPA1 by putting it on a t-shirt. They pay the 10 $WIP minting fee to get a License Token, which represents the license to commercialize IPA1. They then put the image on a t-shirt and sell it. 10% of revenue earned by that t-shirt must be sent on-chain to IPA1.
 
 ## Example 2
 
-<Image align="center" src="https://files.readme.io/e3c7fbf-Screenshot_2024-08-16_at_9.54.16_PM.png" />
+<Image align="center" src="https://files.readme.io/9763a4efe56b88e8a29531e11341538ccd040a8c7d0a786fee8d1d237a2e7a85-Screenshot_2025-02-12_at_9.24.31_PM.png" />
 
 ### Explanation
 
 Someone registers their Azuki on Story. By default, that IP Asset has Non-Commercial Social Remixing Terms, which specify that anyone can create derivatives of that work but cannot commercialize them. So, someone else creates & registers a remix of that work (IPA2) which inherits those same terms. Someone else then does the same to IPA2, creating & registering IPA3.
 
-The owner of IPA1 then decides that others can create derivatives of their work and commercialize them, but they must pay a 10 USDC minting fee and share 10% of all revenue earned. So, someone wants to commercialize IPA1 by putting it on a t-shirt. They pay the 10 USDC minting fee to get a License Token and burn it to create their own derivative, which changes the background color to red. They then put the remixed image on a t-shirt and sell it. 10% of revenue earned by that t-shirt must be sent on-chain to IPA1.
+The owner of IPA1 then decides that others can create derivatives of their work and commercialize them, but they must pay a 10 $WIP minting fee and share 10% of all revenue earned. So, someone wants to commercialize IPA1 by putting it on a t-shirt. They pay the 10 $WIP minting fee to get a License Token and burn it to create their own derivative, which changes the background color to red. They then put the remixed image on a t-shirt and sell it. 10% of revenue earned by that t-shirt must be sent on-chain to IPA1.
 
-A third person wants to commercialize the remix by putting it in a TV advertisement, but they want to change the hair color to white. So, they pay a 10 USDC minting fee (of which, 1 USDC gets sent back to IPA1) to create their own derivative. They then put the remixed image in a TV ad. 10% of revenue earned by that t-shirt must be sent on-chain to IPA4, of which 10% will be distributed back to IPA1.
+A third person wants to commercialize the remix by putting it in a TV advertisement, but they want to change the hair color to white. So, they pay a 10 $WIP minting fee (of which, 1 $WIP gets sent back to IPA1) to create their own derivative. They then put the remixed image in a TV ad. 10% of revenue earned by that t-shirt must be sent on-chain to IPA4, of which 10% will be distributed back to IPA1.
 
 # PIL Terms
 <Cards columns={3}>
@@ -2455,8 +2498,6 @@ Imagine we have a scenario where IPA4 tips IPA3 1M WIP by calling `payRoyaltyOnB
 
 ![](https://files.readme.io/ef288631b074cd82d2edb95b6b27844db6a36cd8976a29f20a0cd9b393752218-image.png)
 
-<br />
-
 ### External Royalty Policies
 
 Revenue Tokens can also move from a vault to another vault via the functions `claimByTokenBatchAsSelf` located in the `IpRoyaltyVault.sol` contract. For this to be possible the vault that is claiming revenue tokens needs to own Royalty Tokens of the vault being claimed from. This can be particularly useful when used together with external royalty policies.
@@ -2499,8 +2540,6 @@ In the image below, IPA 1 and IPA 2 - due to being ancestors of IPA 3 - have a %
 
 ![](https://files.readme.io/906b26bc193243391a86a33823d56568afd60eb0cc57b3ab42b77a97f1975142-image.png)
 
-<br />
-
 Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivative chain as a derivative of IP Asset 3. An example flow sequence below:
 
 1. IP Asset 4 pays 1M WIP in royalties to its parent IPA 3 by calling `payRoyaltyOnBehalf`. Note that the royalty process is the same whether the payment is the license minting fee or any other royalty payment - with the difference being that the license minting fee is made via `payLicenseMintingFee` and is mandatory upon derivative creation. Once a payment is made, a share equivalent to the IPA 3 royalty stack % is sent to the royalty policy contract and the remaining amount is sent to the IPA 3 vault.
@@ -2508,13 +2547,13 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 ![](https://files.readme.io/3cb2287fee2bcbdfaed6a7068b7fcd1769d32f73f46d5f29e2c4b404b9d79f64-image.png)
 
 2. Each ancestor can call `transferToVault` on the royalty policy contract to receive the amount each ancestor has the right to claim from a given descendant. Funds are moved to the ancestor's IP Royalty Vault.
-3. 1. 100k WIP are transferred to the IP Royalty Vault 2 since it the right to 10% of all IPA 2 descendants revenue
+   1. 100k WIP are transferred to the IP Royalty Vault 2 since it the right to 10% of all IPA 2 descendants revenue
    2. 50k WIP are transferred to the IP Royalty Vault 1 since it the right to 5% of all IPA 2 descendants revenue
 
 ![](https://files.readme.io/2c12c635e25d9a815cd7d47ece1b75b72974208540b136e4d2405c994b791bd4-image.png)
 
 3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
-4. 1. 50k WIP are claimed to the IPA 1 which holds 100% RT1
+   1. 50k WIP are claimed to the IPA 1 which holds 100% RT1
    2. 100k WIP are claimed to the IPA 2 which holds 100% RT2
    3. 850k WIP are claimed by IPA 3 which holds 100% RT3\
       Note: Any royalty token holder address can claim - whether it is a smart contract, IPA, or EOA.
@@ -2563,16 +2602,12 @@ Now, let's imagine a scenario where a new IP Asset 4 intends to join the derivat
 
 ![](https://files.readme.io/b2145b6218b5d08ee3a40076afcbe6f86727fb2df4a90f457539c6f17eefc528-image.png)
 
-<br />
-
 2. Each ancestor can call `transferToVault` on the royalty policy contract to receive the amount each ancestor has the right to claim from a given descendant. Funds are moved to the ancestor's IP Royalty Vault.
-
    1. 95k WIP are transferred to the IP Royalty Vault 2 since it has the right to 10% of all IPA 2 descendants revenue and has to pay 5% of its revenue to its direct parent IPA 1. So 100k is received from IPA 3 and 5k is paid to IPA 1, resulting in IPA 2 keeping 100k - 5k = 95k.
    2. 5k WIP are transferred to the IP Royalty Vault 1 since it has the right to 0.5% of all IPA 2 descendants revenue. IPA 1 has the right to 5% of revenue earned by IPA 2, which in turn has 10% of revenue earned by IPA 3. Given LRP royalty policy considers relative percentages, then IPA 1 has the right to 10%\*5% = 0.5% of revenue earned by IPA 3.
 
-   ![](https://files.readme.io/a12749274bbad8b4f72f6bdcf2f79cd9c5945c677a0c28303a6d6ac4a180f1b0-image.png)
+![](https://files.readme.io/a12749274bbad8b4f72f6bdcf2f79cd9c5945c677a0c28303a6d6ac4a180f1b0-image.png)
 
-   <br />
 3. In the final step of the claiming flow, any Royalty Token holder address can call `claimRevenueOnBehalfByTokenBatch`/`claimRevenueOnBehalf` (for non-vault claimers) or `claimRevenueByTokenBatchAsSelf` (when the claimer is an IP Royalty Vault) to claim revenue tokens. In the current example:
    1. 5k WIP are claimed to the IPA 1 which holds 100% RT1
    2. 95k WIP are claimed to the IPA 2 which holds 100% RT2
@@ -2734,8 +2769,6 @@ There are two ways in which an External Royalty Policy can redistribute value ba
 Let's explore both in the context of "Policy X". Let's say that from the 50% of RT3 token supply "Policy X" received - 40% are kept in the "Policy X" contract and 10% are sent to an ancestor royalty vault (IP1).
 
 ![](https://files.readme.io/ecbc7a9db20ed8fee4c110b09239649490757cdb1f4ed63af20a98d2cd60cbc1-image.png)
-
-<br />
 
 Now let's imagine there is a 1M payment made to IP3 - an example of how the flow would be:
 
@@ -5238,7 +5271,7 @@ Parameters:
 ```typescript Request Type
 export type ClaimableRevenueRequest = {
   royaltyVaultIpId: Address;
-	claimer: Address;
+  claimer: Address;
   token: Address;
 }
 ```
@@ -5464,7 +5497,7 @@ const licenseTerms: LicenseTerms = {
   commercialAttribution: false,
   commercializerChecker: zeroAddress,
   commercializerCheckerData: '0x',
-  commercialRevShare: 0,
+  commercialRevShare: 10, // 10%
   commercialRevCeiling: 0n,
   derivativesAllowed: false,
   derivativesAttribution: false,
@@ -5833,7 +5866,7 @@ export type CreateNFTCollectionResponse = {
 };
 ```
 
-# Welcome to Story Network
+# 🌐 Welcome to Story Network
 # Story Network (L1)
 
 Welcome to the Hub for Story Network, the Story Chain.
@@ -6632,6 +6665,20 @@ If you ever run into issues and would like to try joining the network from a cle
 
     <tr>
       <td style={{ textAlign: "left" }}>
+        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `https://explorer.story.foundation`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark:
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
         <a href="https://www.okx.com/web3/explorer/story" target="_blank">OKX Explorer ↗️</a>
       </td>
 
@@ -6907,11 +6954,11 @@ visualization for the blockchain network. Tools include **Prometheus**,
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
+        <a href="https://aeneid.explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://explorer.story.foundation`
+        `https://aeneid.explorer.story.foundation`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -7477,7 +7524,7 @@ Story network uses the following Cosmos SDK modules without non-trivial modifica
 * [slashing](https://docs.cosmos.network/main/build/modules/slashing)
 * [upgrade](https://docs.cosmos.network/main/build/modules/upgrade)
 
-# Node Architecture
+# 🏗️ Node Architecture
 
 Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api) defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
 
@@ -7486,7 +7533,6 @@ Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SD
 `story` is built on the Cosmos SDK and CometBFT. The Cosmos SDK provides a modular framework for building blockchain applications, enabling seamless integration of new modules and features while allowing the network to be easily extended and customized. `story` client introduces upgrades and additional Cosmos SDK modules to support Engine API integration and novel staking mechanisms. CometBFT, a high-performance, scalable, and secure consensus engine, has been extensively tested within the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec).
 
 <Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
-
 
 # Precompiles
 ## Introduction
@@ -7750,10 +7796,12 @@ To stake on behalf of another delegator, run the following command:
 
 ```bash
 ./story validator stake-on-behalf \
-  --delegator-pubkey ${DELEGATOR_PUB_KEY_IN_HEX} \
+  --delegator-address ${DELEGATOR_EVM} \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --stake ${AMOUNT_TO_STAKE_IN_WEI} \
-  --staking-period ${STAKING_PERIOD}
+  --staking-period ${STAKING_PERIOD} \
+  --rpc
+  --chain-id
 ```
 
 This will stake `${AMOUNT_TO_STAKE_IN_WEI}` IP to the validator on behalf of the provided delegator. You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
@@ -7776,10 +7824,12 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 
 ```bash
 ./story validator stake-on-behalf \
-   --delegator-pubkey 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
-   --validator-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+   --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
+   --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
    --stake 1024000000000000000000 \
-   --staking-period "short"
+   --staking-period "short" \
+	 --rpc \
+   --chain-id
 ```
 
 ## Validator Unstake-on-behalf
@@ -7788,9 +7838,11 @@ You may also unstake on behalf of delegators. However, to do so, you must be reg
 
 ```bash
 ./story validator unstake-on-behalf \
-  --delegator-pubkey ${DELEGATOR_PUB_KEY_IN_HEX} \
+  --delegator-address ${DELEGATOR_PUB_KEY_IN_HEX} \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --unstake ${AMOUNT_TO_STAKE_IN_WEI} \
+  --rpc \
+  --chain-id
 ```
 
 This will unstake `${AMOUNT_TO_STAKE_IN_WEI}` IP from the validator on behalf of the delegator, assuming you are a registered operator for that delegator. You must unstake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
@@ -7812,9 +7864,11 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 
 ```bash
 ./story validator unstake-on-behalf \
-   --delegator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
-   --validator-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
-   --unstake 1024000000000000000000
+   --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
+   --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
+   --unstake 1024000000000000000000 \
+   --rpc \
+   --chain-id
 ```
 
 ## Validator Unjail
@@ -7823,7 +7877,9 @@ In case a validator becomes jailed, for example if it experiences substantial do
 
 ```Text Bash
 ./story validator unjail \
-  --private-key ${PRIVATE_KEY}
+  --private-key ${PRIVATE_KEY} \
+  --rpc
+  --chain-id
 ```
 
 Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
@@ -7839,7 +7895,9 @@ Note that you will need at least 1 IP in the wallet submitting the transaction f
 
 ```bash
 ./story validator unjail \
-  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --rpc \
+  --chain-id 
 ```
 
 ## Validator Unjail-on-behalf
@@ -7848,8 +7906,10 @@ If you are an authorized operator, you may unjail a validator on their behalf us
 
 ```bash
 ./story validator unjail-on-behalf \
-  --private-key ${PRIVATE_KEY}
-  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX}
+  --private-key ${PRIVATE_KEY} \
+  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
+  --rpc \
+  --chain-id
 ```
 
 **Available Flags:**
@@ -7865,7 +7925,9 @@ If you are an authorized operator, you may unjail a validator on their behalf us
 ```bash
 ./story validator unjail-on-behalf \
   --private-key 0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef \
-  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+  --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
+  --rpc \
+  --chain-id
 ```
 
 ## Validator Redelegate
@@ -7877,6 +7939,8 @@ To redelegate from one validator to another, run the following command:
   --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
   --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
   --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+  --rpc \
+  --chain-id
 ```
 
 **Available Flags:**
@@ -7897,7 +7961,9 @@ To redelegate from one validator to another, run the following command:
 ./story validator redelegate \
   --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
   --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
-  --redelegate 1024000000000000000000
+  --redelegate 1024000000000000000000 \
+  --rpc \
+  --chain-id
 ```
 
 ## Validator Redelegate-on-behalf
@@ -7909,7 +7975,9 @@ If you are an authorized operator, you may redelegate from one validator to anot
   --delegator-address ${DELEGATOR_EVM_ADDRESS} \
   --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
   --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
-  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI} \
+  --rpc \
+  --chain-id
 ```
 
 **Available Flags:**
@@ -7932,16 +8000,26 @@ If you are an authorized operator, you may redelegate from one validator to anot
   --delegator-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
   --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
   --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
-  --redelegate 1024000000000000000000
+  --redelegate 1024000000000000000000 \
+  --rpc \
+  --chain-id
 ```
 
-## Add Operator
+## Set Operator
 
 Delegators may add operators to unstake or redelegate on their behalf. To add an operator, run the following command:
 
+* `--chain-id` int         Chain ID to use for the transaction (default 1514)
+* `--explorer` string      URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
+* `--operator` string      Sets an operator to your delegator
+* `--private-key` string   Private key used for the transaction
+* `--rpc` string           RPC URL to connect to the network (default "[https://storyrpc.io](https://storyrpc.io)")
+
 ```bash
-./story validator add-operator \
-  --operator ${OPERATOR_EVM_ADDRESS}
+./story validator set-operator \
+  --operator ${OPERATOR_EVM_ADDRESS} \
+  --rpc \
+  --chain-id
 ```
 
 Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
@@ -7949,24 +8027,30 @@ Note that you will need at least 1 IP in the wallet submitting the transaction f
 ### Example add operator command use
 
 ```bash
-./story validator add-operator \
-  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
+./story validator set-operator \
+  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --rpc \
+  --chain-id
 ```
 
-## Remove Operator
+## Unset Operator
 
 To remove an operator, run the following command:
 
 ```bash
-./story validator remove-operator \
-  --operator ${OPERATOR_EVM_ADDRESS}
+./story validator unset-operator \
+  --operator ${OPERATOR_EVM_ADDRESS} \  
+  --rpc \
+  --chain-id
 ```
 
 ### Example Remove Operator command use
 
 ```bash
 ./story validator remove-operator \
-  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
+  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --rpc \
+  --chain-id
 ```
 
 ## Set Withdrawal Address
@@ -9224,7 +9308,7 @@ Story’s staking contract will handle all validators/delegators related operati
 
 The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
-# What is Story
+# 🔎 What is Story
 <Image align="center" src="https://files.readme.io/30567679bc8ee50fe55d31b026f751e3535b21f9b2ed52ae7a6777cfd094ee5c-image_6.png" />
 
 # Introducing the World's IP Blockchain
@@ -9293,7 +9377,30 @@ Think of it like this: Suppose you upload a song to Story. Now, anyone can see t
 
 With Story, you can share your work freely, knowing that wherever it goes, it’s tracked and fairly credited back to you. The idea is to create a fair environment for sharing, building upon, and growing creative work.
 
-# For AI Agents
+# Using Cursor with Story
+[Cursor](https://www.cursor.com/) is an AI code editor that makes it easy to write code while building Story apps. Let's walk through how to setup Cursor for the best possible results with Story.
+
+## Add Story Docs
+
+Adding Story docs lets you interact with our docs directly and get the most accurate answers to your questions.
+
+1. Go to Cursor Settings > Features > Docs and click "+ Add new doc"
+
+<Image align="center" src="https://files.readme.io/01a847c7acd5e32d29cbc56184bec3ed1577e29d293b21d887a685b9202f01f0-Screenshot_2025-02-13_at_12.08.08_AM.png" />
+
+2. Paste the URL `https://raw.githubusercontent.com/storyprotocol/documentation/refs/heads/v1.3/combined.md`
+   1. This is our entire documentation combined into a single `.md` file, **which is automatically updated every single time our docs have changes.**
+3. Change the name to Story, and leave everything else the same
+
+<Image align="center" src="https://files.readme.io/08c6211d90a232b34ce6177c992f08bc9566667a40f177ad44a2f35cc30d7027-Screenshot_2025-02-13_at_12.09.33_AM.png" />
+
+## Using the Docs
+
+You can then reference the Story docs in your prompt with the `@Story` symbol.
+
+<Image align="left" src="https://files.readme.io/ae2f9e910cc0c2e5bd00d33809127f821e23dd1b600b125b355793de2b959ddc-Screenshot_2025-02-13_at_12.15.17_AM.png" />
+
+# 🤖 For AI Agents
 This page is all about AI Agents. We have prepared a way for you to use our documentation as training data which can be seen below, or continue to learn about developing AI Agents on Story.
 
 <Cards columns={2}>
@@ -9481,13 +9588,12 @@ Once the providing agent has been paid for their work (when the requesting agent
   </Card>
 </Cards>
 
-# Explain Like I'm Five
+# 🤔 Explain Like I'm Five
 <Image alt="Credit to the original tweet [here](https://x.com/devrelius/status/1812865477657694513)." align="center" src="https://files.readme.io/0de1024-quick-story-overview.png">
   Credit to the original tweet [here](https://x.com/devrelius/status/1812865477657694513).
 </Image>
 
-
-# Quickstart
+# 🏁 Quickstart
 You want to start building on Story quickly... so let's get started!
 
 > 📘 Looking to read up on Story first?
@@ -9582,7 +9688,7 @@ Now you may be wondering, *"How do I set up automatic royalty sharing between my
 
 When you attach [License Terms](doc:license-terms) to your [🧩 IP Asset](doc:ip-asset), you can specify certain commercial terms such as `commercialRevShare`, which is the amount of revenue (from any source, original & derivative) that must be shared by derivative works with the original IP. See the above section for licensing questions.
 
-If someone then creates a derivative of my IP Asset - which has a `commercialRevShare` of let's say 10% in its license terms - and earns revenue on it, Story enforces the share of this revenue through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) (otherwise resulting in an on-chain dispute using the [❌ Dispute Module](doc:dispute-module) or traditional legal arbitration) and then handles the upstream revenue share at the protocol level. If the derivative work earns 100 $USDC, my original IP Asset could claim 10 $USDC.
+If someone then creates a derivative of my IP Asset - which has a `commercialRevShare` of let's say 10% in its license terms - and earns revenue on it, Story enforces the share of this revenue through the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) (otherwise resulting in an on-chain dispute using the [❌ Dispute Module](doc:dispute-module) or traditional legal arbitration) and then handles the upstream revenue share at the protocol level. If the derivative work earns 100 $WIP, my original IP Asset could claim 10 $WIP.
 
 Our tutorials will show you exactly how to claim revenue:
 
@@ -9600,7 +9706,7 @@ Our tutorials will show you exactly how to claim revenue:
 >
 > For more information on royalty and how it functions, check out the [💸 Royalty Module](doc:royalty-module).
 
-# FAQ
+# ❓ FAQ
 ## *"Is on-chain IP real?"*
 
 Story isn't replacing the legal system, it's providing on-chain rails to make the legal system more efficient for creative IP.
@@ -9615,7 +9721,7 @@ You would mint an NFT that represents your off-chain asset, and register that NF
 
 ## *"I am selling an off-chain asset (eg. merch). How do I make sure that automatic royalty flow is enforced?"*
 
-Automatic royalty flow can be enforced off-chain. Although the royalty infrastructure is on-chain, the associated license is valid beyond the chain. To legally abide by the license any derivative work will need to pay royalties on-chain to the IP Account that is attached to your IP Asset, or face consequences like in the real world (e.g. being taken to court for abusing a license) according to the terms set out by the license.
+Automatic royalty flow can be enforced off-chain. Although the royalty infrastructure is on-chain, the associated license is valid beyond the chain. To legally abide by the license, any derivative work will need to pay royalties on-chain to the IP Account that is attached to your IP Asset, or face consequences like in the real world (e.g. being taken to court for abusing a license) according to the terms set out by the license.
 
 Furthermore, one of the terms of the [Programmable IP License (PIL💊)](doc:programmable-ip-license-pil) is that licensees are obligated to provide revenue data for off-chain transactions (e.g. merch) to licensors, if there's a revenue share involved.
 
@@ -9670,11 +9776,11 @@ The alternative is running an adjacent system outside the L1 to provide these fe
 
 Namely, if the adjacent system goes down (so disputes and oracles stop) but the L1 works fine, it'd be a huge problem. This can be remedied with re-staking like AVS but the tech is not battle-tested and there's no precedence of success using re-staking (EIGEN token is still in work).
 
-One big incentive alignment Story can have: IP companies running validators & providing custom off-chain IP data to the network natively via validator-enshrined features. 
+One big incentive alignment Story can have: IP companies running validators & providing custom off-chain IP data to the network natively via validator-enshrined features.
 
 Or a law firm automating disputes and broadcasting them to other validators. After an agreement of disputes, validators can immediately block transactions that include disputed IPs, which is not possible with an adjacent system providing (unless we have preconf, which is a debated topic in the Ethereum land).
 
-## *"You mention needing an L1 to improve upon the efficiency of an IP graph. Why not build an L2 with off-chain graph indexing?"*
+## *"You mentioned needing an L1 to improve the efficiency of an IP graph. Why not build an L2 with off-chain graph indexing?"*
 
 The IP graph must be on-chain because certain on-chain features require the ability to traverse and aggregate the IP graph. For example, royalty and revenue distribution need to occur on-chain through the IP graph. Using off-chain graph indexing would make these on-chain features either unfeasible or overly complex, as it would necessitate involving an oracle.
 
@@ -9687,7 +9793,6 @@ We will support a few ways, including the [Dispute Module](doc:dispute-module), 
 A more nuanced answer to this (one that we're constantly exploring/improving upon) is there may be additional ways to deter IP infringement. For example, a staking validation mechanism where users could stake tokens on a piece of IP being valid, and if it were to be disputed and marked as copyright, the tokens get slashed and distributed to the creator who was harmed. Additionally we've thought of introducing external IP infringement detection services directly into our L1 at the lowest level that could flag or automatically mark IP as potential infringement the moment its registered.
 
 Ultimately Story is not a system built to prevent bad actors, rather it is meant to help facilitate honest actors to more easily register their IP, remix from others, and set proper terms for their work. The protocol is permissionless and stopping bad actors entirely would be near impossible, but we can try to disincentivize them as best we can. Much like how the pirating of media plummeted when Apple Music, Spotify, and Netflix made such media more accessible by creating a "path of least resistance", we see a similar future with Story & IP.
-
 
 # Protect DALL·E AI-Generated Images
 In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generated images by registering it on Story.
@@ -10639,7 +10744,7 @@ export async function registerIp(inference) {
   });
 
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
-  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`); 
+  console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`); 
 }
 ```
 
@@ -11120,7 +11225,7 @@ async function main() {
   });
 
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
-  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`); 
+  console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`); 
 }
 
 main();
@@ -11465,7 +11570,7 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 
 ```typescript utils/createSpgNftCollection.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
-import { http } from 'viem
+import { http } from 'viem'
 
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
 const account: Account = privateKeyToAccount(privateKey)
@@ -11533,7 +11638,7 @@ console.log(
   `Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`
 );
 console.log(
-  `View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`
+  `View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`
 );
 ```
 
@@ -11544,7 +11649,7 @@ console.log(
 In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer.
 
 <Cards columns={2}>
-  <Card title="Example Final Result" href="https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" icon="fa-home" target="_blank">
+  <Card title="Example Final Result" href="https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" icon="fa-home" target="_blank">
     View an example result after following this tutorial.
   </Card>
 
@@ -11648,7 +11753,7 @@ const nftMetadata = {
 
 ## 3. Done!
 
-When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
+When you run the script, you will register an IP Asset and it will look something like [this](https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!
 
@@ -11764,7 +11869,7 @@ import { PILFlavors } from "@storyprotocol/core/lib/PILFlavors.sol";
 
 PILTerms memory pilTerms = PILFlavors.commercialRemix({
   mintingFee: 0,
-  commercialRevShare: 10 * 10 ** 6, // 10%
+  commercialRevShare: 5 * 10 ** 6, // 5% rev share
   royaltyPolicy: ROYALTY_POLICY_LAP,
   currencyToken: MERC20
 });
@@ -13671,11 +13776,9 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 ```shell npm
 npm install --save @story-protocol/core-sdk @reown/appkit @reown/appkit-adapter-wagmi wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -13715,7 +13818,6 @@ export const wagmiAdapter = new WagmiAdapter({
 
 export const config = wagmiAdapter.wagmiConfig;
 ```
-
 ```jsx context/index.tsx
 'use client'
 
@@ -13765,7 +13867,6 @@ function ContextProvider({ children, cookies }: { children: ReactNode; cookies: 
 
 export default ContextProvider
 ```
-
 ```jsx app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -13802,7 +13903,6 @@ export default function RootLayout({
   )
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -13930,11 +14030,9 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 ```shell npm
 npm install --save @story-protocol/core-sdk @tomo-inc/tomo-evm-kit wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -13979,7 +14077,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14010,7 +14107,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -14067,11 +14163,9 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk @rainbow-me/rainbowkit wagmi viem @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -14114,7 +14208,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14143,7 +14236,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -14200,11 +14292,9 @@ export default function TestComponent() {
 ```shell npm
 npm install --save @story-protocol/core-sdk viem wagmi @dynamic-labs/sdk-react-core @dynamic-labs/wagmi-connector @dynamic-labs/ethereum @tanstack/react-query
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
@@ -14259,7 +14349,6 @@ export default function Web3Providers({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14288,7 +14377,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   );
 }
 ```
-
 ```jsx TestComponent.tsx
 import { custom, toHex } from 'viem';
 import { useWalletClient } from "wagmi";
@@ -14512,7 +14600,7 @@ async function main() {
   })
   
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
-  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`)
+  console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`)
 }
 
 main();
@@ -14564,10 +14652,6 @@ There are two main ways revenue can be claimed:
 1. **Scenario #1**: Someone pays my IP Asset directly, and I claim that revenue.
 2. **Scenario #2**: Someone pays a derivative IP Asset of my IP, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms.
 
-> 🚧 Quick Note
->
-> The below examples and diagrams show USDC. In reality, you'd be using one of the whitelisted revenue tokens [listed here](https://docs.story.foundation/docs/deployed-smart-contracts), which is more often than not $WIP.
-
 ### :warning: Prerequisites
 
 There are a few steps you have to complete before you can start the tutorial.
@@ -14582,15 +14666,22 @@ When payments are made, they eventually end up in an IP Asset's [IP Royalty Vaul
 
 The IP Account (the smart contract that represents the [🧩 IP Asset](doc:ip-asset)) is what holds 100% of the Royalty Tokens when it's first registered. So usually, it indeed holds most of the Royalty Tokens.
 
+> 📘 Quick Note
+>
+> The below scenarios and examples use a [Liquid Absolute Percentage](doc:liquid-absolute-percentage) royalty policy. This is currently one of two royalty policies you can use.
+
 ## Scenario #1
 
-In this scenario, I own IP Asset 3. Someone pays my IP Asset 3 directly, and I claim that revenue.
+In this scenario, I own IP Asset 3. Someone pays my IP Asset 3 directly, and I claim that revenue. Let's view this in steps:
 
-![](https://files.readme.io/a39e345a512747ff414668309a80ec1b01048c238bf1adef4d0760d830006cbd-image.png)
+1. As we can see in the below diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M $WIP, 850k $WIP automatically gets deposited into IP Royalty Vault 3.
 
-As we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 850k USDC automatically gets deposited into IP Royalty Vault 3.
+   ![](https://files.readme.io/54679e73c133053f6865da8f6587abf4090dc9edf7d87ff792fcb93cbe1f9b37-image.png)
+2. Now, IP Asset 3 wants to claim its revenue sitting in the IP Royalty Vault 3. It will look like this:
 
-Below is how IP Asset 3 would claim their revenue:
+   ![](https://files.readme.io/f5440ff2335b19874eda6607dbdf631045f9f9a0ce45e39f6d5cccf31f73dc51-image.png)
+
+Below is how IP Asset 3 would claim their revenue, as shown in the image above, with the SDK:
 
 > :eyes: Note the comments under the `claimOptions` object.\
 > Associated Docs: [royalty.claimAllRevenue](https://docs.story.foundation/docs/sdk-royalty#claimallrevenue)
@@ -14630,17 +14721,19 @@ main();
 
 ## Scenario #2
 
-In this scenario, I own IP Asset 1. Someone pays a derivative IP Asset 3, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms. This is exactly the same as Scenario #1, except one extra step is added.
+In this scenario, I own IP Asset 1. Someone pays a derivative IP Asset 3, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms. This is exactly the same as Scenario #1, except one extra step is added. Let's view this in steps:
 
-![](https://files.readme.io/04a92b164d8f25119881efe784aed4bb539cdd955f553d74191b513ac0623b68-image.png)
+1. As we can see in the below diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M $WIP, 150k $WIP automatically gets deposited to the LAP royalty policy contract to be distributed to ancestors.
 
-Similar to Scenario #1, as we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 150k USDC automatically gets deposited to the LAP royalty policy contract to be distributed to ancestors.
+   ![](https://files.readme.io/26ac5c87e3e26305ac7426854991ce695922f4edc5e4594d70d40b32c62f2618-image.png)
+2. Then, in a second step, the tokens are transferred to the ancestors' [IP Royalty Vault](doc:ip-royalty-vault) based on the negotiated `commercialRevShare` in the license terms.
 
-![](https://files.readme.io/8f11792c3e3d2e25f74a469996b9c000c61eac167d9512f9a0f353bf62b77abf-image.png)
+   ![](https://files.readme.io/6c62982d41649c35d697e403d4f5281a73671488f260d9ca361e3a69e3d2888b-image.png)
+3. Lastly, IP Asset 1 & 2 want to claim their revenue sitting in their associated IP Royalty Vaults. It will look like this:
 
-Then, in a second step, the tokens are transferred to the ancestors' [IP Royalty Vault](doc:ip-royalty-vault) based on the negotiated `commercialRevShare` in the license terms.
+   ![](https://files.readme.io/5b4616d79ac5304abc2d1292bb3f490663b0f7e6a5b54847bcc0f727ea43d19b-image.png)
 
-Below is how IP Asset 1 (or 2) would claim their revenue:
+Below is how IP Asset 1 (or 2) would claim their revenue, as shown in the image above, with the SDK:
 
 > :eyes: Note the comments under the `claimOptions` object.\
 > Associated Docs: [royalty.claimAllRevenue](https://docs.story.foundation/docs/sdk-royalty#claimallrevenue)
@@ -14936,12 +15029,12 @@ If you're a developer, here is everything you need:
 > Ask the writer of our docs on Telegram for help: @jacobmtucker
 
 <Cards columns={3}>
-  <Card title="Block Explorer" href="https://aeneid.storyscan.xyz" icon="fa-home" target="_blank">
-    View all block & transaction data on Story.
+  <Card title="Testnet Block Explorer" href="https://aeneid.storyscan.xyz" icon="fa-home" target="_blank">
+    View all testnet block & transaction data on Story.
   </Card>
 
-  <Card title="IP-related Explorer" href="https://explorer.story.foundation" icon="fa-user" target="_blank">
-    View transaction data specifically related to IP interactions like registering, licensing, etc.
+  <Card title="IP-related Explorer" href="https://aeneid.explorer.story.foundation" icon="fa-user" target="_blank">
+    View testnet transaction data specifically related to IP interactions like registering, licensing, etc.
   </Card>
 
   <Card title="Quickstart" href="https://docs.story.foundation/docs/quickstart" icon="fa-truck-fast" target="_blank">

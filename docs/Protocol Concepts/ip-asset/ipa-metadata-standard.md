@@ -14,6 +14,12 @@ next:
 >
 > We are still figuring out the best way to define an IPA Metadata Standard. For the sake of transparency, the following document is our thoughts so far but is subject to change as we progress towards releasing our public Mainnet.
 
+<Cards columns={1}>
+  <Card title="Official Ippy IP" href="https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42" icon="fa-home" target="_blank">
+    Check out the official Ippy IP, which has both NFT & IP metadata.
+  </Card>
+</Cards>
+
 This is the JSON metadata that is associated with an IP Asset, and gets stored inside of an IP Account. You must call `setMetadata(...)` inside of the IP Account in order to set the metadata, and then call `metadata()` to read it.
 
 # Attributes & Structure
@@ -365,6 +371,46 @@ The different relationship types that can be used for the `relationships` attrib
 
 # Example Use Cases
 
+```json Ippy Mascot
+// Official Ippy Mascot: https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42
+{
+  "title": "Ippy",
+  "description": "Official mascot of Story.",
+  "ipType": "Character",
+  "image": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
+  "tags": ["Ippy", "Story", "Story Mascot", "Mascot", "Official"],
+  "creators": [
+    {
+      "name": "Story Foundation",
+      "address": "0x67ee74EE04A0E6d14Ca6C27428B27F3EFd5CD084",
+      "description": "The World's IP Blockchain",
+      "contributionPercent": 100,
+      "socialMedia": [
+        {
+          "platform": "Twitter",
+          "url": "https://twitter.com/storyprotocol"
+        },
+        {
+          "platform": "Telegram",
+          "url": "https://t.me/StoryAnnouncements"
+        },
+        {
+          "platform": "Website",
+          "url": "https://story.foundation"
+        },
+        {
+          "platform": "Discord",
+          "url": "https://discord.gg/storyprotocol"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://youtube.com/@storyFDN"
+        }
+      ]
+    }
+  ]
+}
+```
 ```json Harry Potter
 {
   title: "Harry Potter and the Philosopher's Stone",
@@ -496,36 +542,33 @@ The different relationship types that can be used for the `relationships` attrib
 }
 ```
 ```json Music
-// Example: https://explorer.story.foundation/ipa/0xD3eF4f98B91B5088FB4a840f539EfA4288703af0
+// Example: https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8
 {
-  title: "Rise Again",
-  description: "This NFT certifies that Rise Again was created by srivatsan_qb (ID: 4123743b-8ba6-4028-a965-75b79a3ad424), with data securely fetched and verified using the Reclaim Protocol from Suno.com",
-  ipType: "Music",
-  creators: [
+  "title": "Midnight Marriage",
+  "description": "This is a house-style song generated on suno.",
+  "ipType": "Music",
+  "creators": [{
+    "name": "Jacob Tucker",
+    "address": "0x01",
+    "contributionPercent": 100
+  }],
+  "media": [{
+    "name": "Midnight Marriage",
+    "url": "https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3",
+    "mimeType": "audio/mpeg"
+  }],
+  "attributes": [
     {
-      name: "srivatsan_qb",
-      description: "Creator"
-    }
-  ],
-  media: [
-    {
-      name: "Rise Again",
-      url: "https://cdn1.suno.ai/937e3060-65c0-4934-acab-7d8cc05eb9a6.mp3",
-      mimeType: "audio/mpeg"
-    }
-  ],
-  attributes: [
-    {
-      key: "Artist",
-      value: "srivatsan_qb"
+      "key": "Suno Artist",
+      "value": "amazedneurofunk956"
     },
     {
-      key: "Artist ID",
-      value: "4123743b-8ba6-4028-a965-75b79a3ad424"
+      "key": "Artist ID",
+      "value": "4123743b-8ba6-4028-a965-75b79a3ad424"
     },
     {
-      key: "Source",
-      value: "Suno.com"
+      "key": "Source",
+      "value": "Suno.com"
     }
   ]
 }

@@ -5,7 +5,7 @@
         "contact": {},
         "version": "v1"
     },
-    "host": "api.storyprotocol.net",
+    "host": "api.storyapis.com",
     "paths": {
         "/api/v3/assets": {
             "post": {
@@ -28,7 +28,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -36,14 +36,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber, descendantCount or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber, descendantCount or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -83,7 +83,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -91,14 +91,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -148,7 +148,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -156,7 +156,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -201,7 +201,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -209,7 +209,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -247,7 +247,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -255,14 +255,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber, assetCount, licensesCount or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber, assetCount, licensesCount or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -302,7 +302,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -310,7 +310,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -355,7 +355,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -363,14 +363,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -410,7 +410,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -418,14 +418,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -472,7 +472,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -480,7 +480,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -518,7 +518,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -526,14 +526,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber, groupId or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber, groupId or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -573,7 +573,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -581,14 +581,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be groupId or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be groupId or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -628,7 +628,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -636,14 +636,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -683,7 +683,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -691,7 +691,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -736,7 +736,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -744,14 +744,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -791,7 +791,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -799,7 +799,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -844,7 +844,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -852,14 +852,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -899,7 +899,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -907,7 +907,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -952,7 +952,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -960,14 +960,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1007,7 +1007,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1015,7 +1015,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -1053,7 +1053,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1061,7 +1061,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -1106,7 +1106,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1114,14 +1114,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1161,7 +1161,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1169,7 +1169,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -1214,7 +1214,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1222,14 +1222,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1269,7 +1269,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1277,7 +1277,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -1322,7 +1322,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1330,14 +1330,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1377,7 +1377,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1385,7 +1385,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -1430,7 +1430,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1438,14 +1438,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1485,7 +1485,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1493,7 +1493,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
@@ -1538,7 +1538,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1546,14 +1546,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber, resourceType or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber, resourceType or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1593,7 +1593,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1601,14 +1601,14 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",
                         "required": true
                     },
                     {
-                        "description": "Query Parameters must be wrapped in options object and may be empty. OrderBy must be blockNumber, resourceType or empty.",
+                        "description": "Query Parameters must be wrapped in options object (though it can be left empty) ❗️ 👀. OrderBy must be blockNumber, resourceType or empty.",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -1655,7 +1655,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g",
+                        "default": "MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U",
                         "description": "API Key",
                         "name": "X-Api-Key",
                         "in": "header",
@@ -1663,7 +1663,7 @@
                     },
                     {
                         "type": "string",
-                        "default": "story-aeneid",
+                        "default": "story",
                         "description": "Chain Destination",
                         "name": "X-Chain",
                         "in": "header",

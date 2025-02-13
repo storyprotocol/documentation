@@ -1,5 +1,5 @@
 ---
-title: What is Story
+title: 🔎 What is Story
 excerpt: Introduction to Story
 deprecated: false
 hidden: false

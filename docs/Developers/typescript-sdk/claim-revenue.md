@@ -23,10 +23,6 @@ There are two main ways revenue can be claimed:
 1. **Scenario #1**: Someone pays my IP Asset directly, and I claim that revenue.
 2. **Scenario #2**: Someone pays a derivative IP Asset of my IP, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms.
 
-> 🚧 Quick Note
->
-> The below examples and diagrams show USDC. In reality, you'd be using one of the whitelisted revenue tokens [listed here](https://docs.story.foundation/docs/deployed-smart-contracts), which is more often than not $WIP.
-
 ### :warning: Prerequisites
 
 There are a few steps you have to complete before you can start the tutorial.
@@ -41,15 +37,22 @@ When payments are made, they eventually end up in an IP Asset's [IP Royalty Vaul
 
 The IP Account (the smart contract that represents the [🧩 IP Asset](doc:ip-asset)) is what holds 100% of the Royalty Tokens when it's first registered. So usually, it indeed holds most of the Royalty Tokens.
 
+> 📘 Quick Note
+>
+> The below scenarios and examples use a [Liquid Absolute Percentage](doc:liquid-absolute-percentage) royalty policy. This is currently one of two royalty policies you can use.
+
 ## Scenario #1
 
-In this scenario, I own IP Asset 3. Someone pays my IP Asset 3 directly, and I claim that revenue.
+In this scenario, I own IP Asset 3. Someone pays my IP Asset 3 directly, and I claim that revenue. Let's view this in steps:
 
-![](https://files.readme.io/a39e345a512747ff414668309a80ec1b01048c238bf1adef4d0760d830006cbd-image.png)
+1. As we can see in the below diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M $WIP, 850k $WIP automatically gets deposited into IP Royalty Vault 3.
 
-As we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 850k USDC automatically gets deposited into IP Royalty Vault 3.
+   ![](https://files.readme.io/54679e73c133053f6865da8f6587abf4090dc9edf7d87ff792fcb93cbe1f9b37-image.png)
+2. Now, IP Asset 3 wants to claim its revenue sitting in the IP Royalty Vault 3. It will look like this:
 
-Below is how IP Asset 3 would claim their revenue:
+   ![](https://files.readme.io/f5440ff2335b19874eda6607dbdf631045f9f9a0ce45e39f6d5cccf31f73dc51-image.png)
+
+Below is how IP Asset 3 would claim their revenue, as shown in the image above, with the SDK:
 
 > :eyes: Note the comments under the `claimOptions` object.\
 > Associated Docs: [royalty.claimAllRevenue](https://docs.story.foundation/docs/sdk-royalty#claimallrevenue)
@@ -89,17 +92,19 @@ main();
 
 ## Scenario #2
 
-In this scenario, I own IP Asset 1. Someone pays a derivative IP Asset 3, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms. This is exactly the same as Scenario #1, except one extra step is added.
+In this scenario, I own IP Asset 1. Someone pays a derivative IP Asset 3, and I have the right to a % of their revenue based on the `commercialRevShare` in the license terms. This is exactly the same as Scenario #1, except one extra step is added. Let's view this in steps:
 
-![](https://files.readme.io/04a92b164d8f25119881efe784aed4bb539cdd955f553d74191b513ac0623b68-image.png)
+1. As we can see in the below diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M $WIP, 150k $WIP automatically gets deposited to the LAP royalty policy contract to be distributed to ancestors.
 
-Similar to Scenario #1, as we can see in the above diagram, when IP Asset 4 (it doesn't have to be an IP Asset, it can be any address) pays IP Asset 3 1M USDC, 150k USDC automatically gets deposited to the LAP royalty policy contract to be distributed to ancestors.
+   ![](https://files.readme.io/26ac5c87e3e26305ac7426854991ce695922f4edc5e4594d70d40b32c62f2618-image.png)
+2. Then, in a second step, the tokens are transferred to the ancestors' [IP Royalty Vault](doc:ip-royalty-vault) based on the negotiated `commercialRevShare` in the license terms.
 
-![](https://files.readme.io/8f11792c3e3d2e25f74a469996b9c000c61eac167d9512f9a0f353bf62b77abf-image.png)
+   ![](https://files.readme.io/6c62982d41649c35d697e403d4f5281a73671488f260d9ca361e3a69e3d2888b-image.png)
+3. Lastly, IP Asset 1 & 2 want to claim their revenue sitting in their associated IP Royalty Vaults. It will look like this:
 
-Then, in a second step, the tokens are transferred to the ancestors' [IP Royalty Vault](doc:ip-royalty-vault) based on the negotiated `commercialRevShare` in the license terms.
+   ![](https://files.readme.io/5b4616d79ac5304abc2d1292bb3f490663b0f7e6a5b54847bcc0f727ea43d19b-image.png)
 
-Below is how IP Asset 1 (or 2) would claim their revenue:
+Below is how IP Asset 1 (or 2) would claim their revenue, as shown in the image above, with the SDK:
 
 > :eyes: Note the comments under the `claimOptions` object.\
 > Associated Docs: [royalty.claimAllRevenue](https://docs.story.foundation/docs/sdk-royalty#claimallrevenue)

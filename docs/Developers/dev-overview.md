@@ -17,12 +17,12 @@ If you're a developer, here is everything you need:
 > Ask the writer of our docs on Telegram for help: @jacobmtucker
 
 <Cards columns={3}>
-  <Card title="Block Explorer" href="https://aeneid.storyscan.xyz" icon="fa-home" target="_blank">
-    View all block & transaction data on Story.
+  <Card title="Testnet Block Explorer" href="https://aeneid.storyscan.xyz" icon="fa-home" target="_blank">
+    View all testnet block & transaction data on Story.
   </Card>
 
-  <Card title="IP-related Explorer" href="https://explorer.story.foundation" icon="fa-user" target="_blank">
-    View transaction data specifically related to IP interactions like registering, licensing, etc.
+  <Card title="IP-related Explorer" href="https://aeneid.explorer.story.foundation" icon="fa-user" target="_blank">
+    View testnet transaction data specifically related to IP interactions like registering, licensing, etc.
   </Card>
 
   <Card title="Quickstart" href="https://docs.story.foundation/docs/quickstart" icon="fa-truck-fast" target="_blank">

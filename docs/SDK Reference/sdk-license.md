@@ -151,7 +151,7 @@ const licenseTerms: LicenseTerms = {
   commercialAttribution: false,
   commercializerChecker: zeroAddress,
   commercializerCheckerData: '0x',
-  commercialRevShare: 0,
+  commercialRevShare: 10, // 10%
   commercialRevCeiling: 0n,
   derivativesAllowed: false,
   derivativesAttribution: false,

@@ -1,14 +1,14 @@
 ---
-title: Node Architecture
+title: 🏗️ Node Architecture
 excerpt: Overview of Story's modular architecture
 deprecated: false
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
 
 Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api) defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
