@@ -9252,7 +9252,7 @@ Story’s staking contract will handle all validators/delegators related operati
 
 The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
-# What is Story
+# 👋 What is Story
 <Image align="center" src="https://files.readme.io/30567679bc8ee50fe55d31b026f751e3535b21f9b2ed52ae7a6777cfd094ee5c-image_6.png" />
 
 # Introducing the World's IP Blockchain
