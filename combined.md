@@ -6619,6 +6619,20 @@ If you ever run into issues and would like to try joining the network from a cle
 
     <tr>
       <td style={{ textAlign: "left" }}>
+        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `https://explorer.story.foundation`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark:
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
         <a href="https://www.okx.com/web3/explorer/story" target="_blank">OKX Explorer ↗️</a>
       </td>
 
