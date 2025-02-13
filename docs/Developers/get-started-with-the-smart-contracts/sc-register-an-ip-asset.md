@@ -43,7 +43,7 @@ All you have to do is call `register` on the [IP Asset Registry](doc:ip-asset-re
 * `tokenContract` - the address of your NFT collection
 * `tokenId` - your NFT's ID
 
-Let's create a test file under `test/0_IPARegistrar.sol` to see it work and verify the results:
+Let's create a test file under `test/0_IPARegistrar.t.sol` to see it work and verify the results:
 
 > 📘 Contract Addresses
 >
@@ -51,7 +51,7 @@ Let's create a test file under `test/0_IPARegistrar.sol` to see it work and veri
 
 > You can view the `SimpleNFT` contract we're using to test [here](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/mocks/SimpleNFT.sol).
 
-```sol test/0_IPARegistrar.sol
+```sol test/0_IPARegistrar.t.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
@@ -106,13 +106,13 @@ Once you have your own SPGNFT, all you have to do is call `mintAndRegisterIp` wi
 * `recipient` - the address of who will receive the NFT and thus be the owner of the newly registered IP. *Note: remember that registering IP on Story is permissionless, so you can register an IP for someone else (by paying for the transaction) yet they can still be the owner of that IP Asset.*
 * `ipMetadata` - the metadata associated with your NFT & IP. See [this](https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata) section to better understand setting NFT & IP metadata.
 
-Let's create a test file under `test/0_IPARegistrar.sol` to see it work and verify the results:
+1. Run `touch test/0_IPARegistrar.t.sol` to create a test file under `test/0_IPARegistrar.t.sol`. Then, paste in the following code:
 
 > 📘 Contract Addresses
 >
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
-```sol test/0_IPARegistrar.sol
+```sol test/0_IPARegistrar.t.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
@@ -197,14 +197,14 @@ contract IPARegistrarTest is Test {
 }
 ```
 
-## Test Your Code!
+## Run the Test and Verify the Results
 
-Run `forge build`. If everything is successful, the command should successfully compile.
+2. Run `forge build`. If everything is successful, the command should successfully compile.
 
-Now run the test by executing the following command:
+3. Now run the test by executing the following command:
 
 ```shell
-forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/IPARegistrar.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
 ```
 
 ## Add License Terms to IP

@@ -19,9 +19,10 @@ In this guide, we will show you how to setup the Story smart contract developmen
 
 ## Creating a Project
 
-1. Run the following in a new directory of your choice: `yarn init`
-2. Set up foundry using the following command: `forge init --force`
-3. Open up your `foundry.toml` file and replace it with this
+1. Run `foundryup` to automatically install the latest stable version of the precompiled binaries: forge, cast, anvil, and chisel
+2. Run the following command in a new directory: `forge init`. This will create a `foundry.toml` and example project files in the project root. By default, forge init will also initialize a new git repository.
+3. Initialize a new yarn project: `yarn init`. Alternatively, you can use `npm init` or `pnpm init`.
+4. Open up your `foundry.toml` file and replace it with this
 
 ```toml foundry.toml
 [profile.default]
@@ -35,9 +36,19 @@ test = 'test'
 solc = '0.8.26'
 fs_permissions = [{ access = 'read', path = './out' }, { access = 'read-write', path = './deploy-out' }]
 evm_version = 'cancun'
+remappings = [
+    '@openzeppelin/=node_modules/@openzeppelin/', 
+    '@storyprotocol/core/=node_modules/@story-protocol/protocol-core/contracts/', 
+    '@storyprotocol/periphery/=node_modules/@story-protocol/protocol-periphery/contracts/', 
+    'erc6551/=node_modules/erc6551/', 
+    'forge-std/=node_modules/forge-std/src/', 
+    'ds-test/=node_modules/ds-test/src/', 
+    '@storyprotocol/test/=node_modules/@story-protocol/protocol-core/test/foundry/', 
+    '@solady/=node_modules/solady/'
+]
 ```
 
-4. Remove the placeholder test contracts: `rm src/Counter.sol test/Counter.t.sol`
+5. Remove the example contract files: `rm src/Counter.sol script/Counter.s.sol test/Counter.t.sol`
 
 ### :package: Installing Dependencies
 
@@ -60,17 +71,4 @@ yarn add -D https://github.com/dapphub/ds-test
 yarn add -D github:foundry-rs/forge-std#v1.7.6
 ```
 
-Then, create a file in the root folder named `remappings.txt` and paste the following:
-
-```Text remappings.txt
-@openzeppelin/=node_modules/@openzeppelin/
-@storyprotocol/core/=node_modules/@story-protocol/protocol-core/contracts/
-@storyprotocol/periphery/=node_modules/@story-protocol/protocol-periphery/contracts/
-erc6551/=node_modules/erc6551/
-forge-std/=node_modules/forge-std/src/
-ds-test/=node_modules/ds-test/src/
-@storyprotocol/test/=node_modules/@story-protocol/protocol-core/test/foundry/
-@solady/=node_modules/solady/
-```
-
-Now we are ready to build a simple test registration contract.
+Now we are ready to build a simple test registration contract!
