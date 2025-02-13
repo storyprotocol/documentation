@@ -5823,7 +5823,7 @@ export type CreateNFTCollectionResponse = {
 };
 ```
 
-# Welcome to Story Network
+# 🌐 Welcome to Story Network
 # Story Network (L1)
 
 Welcome to the Hub for Story Network, the Story Chain.
