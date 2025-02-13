@@ -625,7 +625,7 @@ The different relationship types that can be used for the `relationships` attrib
 }
 ```
 ```json Music
-// Example: https://explorer.story.foundation/ipa/0xD3eF4f98B91B5088FB4a840f539EfA4288703af0
+// Example: https://aeneid.explorer.story.foundation/ipa/0xD3eF4f98B91B5088FB4a840f539EfA4288703af0
 {
   title: "Rise Again",
   description: "This NFT certifies that Rise Again was created by srivatsan_qb (ID: 4123743b-8ba6-4028-a965-75b79a3ad424), with data securely fetched and verified using the Reclaim Protocol from Suno.com",
@@ -6897,11 +6897,11 @@ visualization for the blockchain network. Tools include **Prometheus**,
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
+        <a href="https://aeneid.explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `https://explorer.story.foundation`
+        `https://aeneid.explorer.story.foundation`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -10664,7 +10664,7 @@ export async function registerIp(inference) {
   });
 
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
-  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`); 
+  console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`); 
 }
 ```
 
@@ -11145,7 +11145,7 @@ async function main() {
   });
 
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`);
-  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`); 
+  console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`); 
 }
 
 main();
@@ -11490,7 +11490,7 @@ First, in a separate script, you must create a new SPG NFT collection. You can d
 
 ```typescript utils/createSpgNftCollection.ts
 import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
-import { http } from 'viem
+import { http } from 'viem'
 
 const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
 const account: Account = privateKeyToAccount(privateKey)
@@ -11558,7 +11558,7 @@ console.log(
   `Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`
 );
 console.log(
-  `View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`
+  `View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`
 );
 ```
 
@@ -11569,7 +11569,7 @@ console.log(
 In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer.
 
 <Cards columns={2}>
-  <Card title="Example Final Result" href="https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" icon="fa-home" target="_blank">
+  <Card title="Example Final Result" href="https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" icon="fa-home" target="_blank">
     View an example result after following this tutorial.
   </Card>
 
@@ -11673,7 +11673,7 @@ const nftMetadata = {
 
 ## 3. Done!
 
-When you run the script, you will register an IP Asset and it will look something like [this](https://explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
+When you run the script, you will register an IP Asset and it will look something like [this](https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!
 
@@ -14537,7 +14537,7 @@ async function main() {
   })
   
   console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
-  console.log(`View on the explorer: https://explorer.story.foundation/ipa/${response.ipId}`)
+  console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`)
 }
 
 main();
@@ -14966,12 +14966,12 @@ If you're a developer, here is everything you need:
 > Ask the writer of our docs on Telegram for help: @jacobmtucker
 
 <Cards columns={3}>
-  <Card title="Block Explorer" href="https://aeneid.storyscan.xyz" icon="fa-home" target="_blank">
-    View all block & transaction data on Story.
+  <Card title="Testnet Block Explorer" href="https://aeneid.storyscan.xyz" icon="fa-home" target="_blank">
+    View all testnet block & transaction data on Story.
   </Card>
 
-  <Card title="IP-related Explorer" href="https://explorer.story.foundation" icon="fa-user" target="_blank">
-    View transaction data specifically related to IP interactions like registering, licensing, etc.
+  <Card title="IP-related Explorer" href="https://aeneid.explorer.story.foundation" icon="fa-user" target="_blank">
+    View testnet transaction data specifically related to IP interactions like registering, licensing, etc.
   </Card>
 
   <Card title="Quickstart" href="https://docs.story.foundation/docs/quickstart" icon="fa-truck-fast" target="_blank">
