@@ -7753,7 +7753,9 @@ To stake on behalf of another delegator, run the following command:
   --delegator-address ${DELEGATOR_EVM} \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --stake ${AMOUNT_TO_STAKE_IN_WEI} \
-  --staking-period ${STAKING_PERIOD}
+  --staking-period ${STAKING_PERIOD} \
+  --rpc
+  --chain-id
 ```
 
 This will stake `${AMOUNT_TO_STAKE_IN_WEI}` IP to the validator on behalf of the provided delegator. You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
@@ -7780,6 +7782,8 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
    --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
    --stake 1024000000000000000000 \
    --staking-period "short"
+	 --rpc
+   --chain-id
 ```
 
 ## Validator Unstake-on-behalf
@@ -7791,6 +7795,8 @@ You may also unstake on behalf of delegators. However, to do so, you must be reg
   --delegator-address ${DELEGATOR_PUB_KEY_IN_HEX} \
   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
   --unstake ${AMOUNT_TO_STAKE_IN_WEI} \
+  --rpc
+  --chain-id
 ```
 
 This will unstake `${AMOUNT_TO_STAKE_IN_WEI}` IP from the validator on behalf of the delegator, assuming you are a registered operator for that delegator. You must unstake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
@@ -7815,6 +7821,8 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
    --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
    --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
    --unstake 1024000000000000000000
+   --rpc
+  --chain-id
 ```
 
 ## Validator Unjail
@@ -7823,7 +7831,9 @@ In case a validator becomes jailed, for example if it experiences substantial do
 
 ```Text Bash
 ./story validator unjail \
-  --private-key ${PRIVATE_KEY}
+  --private-key ${PRIVATE_KEY} \
+  --rpc
+  --chain-id
 ```
 
 Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
@@ -7839,7 +7849,9 @@ Note that you will need at least 1 IP in the wallet submitting the transaction f
 
 ```bash
 ./story validator unjail \
-  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --rpc \
+  --chain-id 
 ```
 
 ## Validator Unjail-on-behalf
@@ -7848,8 +7860,10 @@ If you are an authorized operator, you may unjail a validator on their behalf us
 
 ```bash
 ./story validator unjail-on-behalf \
-  --private-key ${PRIVATE_KEY}
-  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX}
+  --private-key ${PRIVATE_KEY} \
+  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
+  --rpc \
+  --chain-id
 ```
 
 **Available Flags:**
@@ -7865,7 +7879,9 @@ If you are an authorized operator, you may unjail a validator on their behalf us
 ```bash
 ./story validator unjail-on-behalf \
   --private-key 0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef \
-  --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930
+  --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
+  --rpc \
+  --chain-id
 ```
 
 ## Validator Redelegate
