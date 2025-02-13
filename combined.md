@@ -6882,6 +6882,8 @@ visualization for the blockchain network. Tools include **Prometheus**,
 
 **Chain ID**: 1315
 
+**Chainlist Link**: [https://chainlist.org/chain/1315](https://chainlist.org/chain/1315)
+
 ## :link: RPCs
 
 <Table align={["left","left","left"]}>
@@ -12346,7 +12348,7 @@ All you have to do is call `register` on the [IP Asset Registry](doc:ip-asset-re
 * `tokenContract` - the address of your NFT collection
 * `tokenId` - your NFT's ID
 
-Let's create a test file under `test/0_IPARegistrar.sol` to see it work and verify the results:
+Let's create a test file under `test/0_IPARegistrar.t.sol` to see it work and verify the results:
 
 > 📘 Contract Addresses
 >
@@ -12354,7 +12356,7 @@ Let's create a test file under `test/0_IPARegistrar.sol` to see it work and veri
 
 > You can view the `SimpleNFT` contract we're using to test [here](https://github.com/storyprotocol/story-protocol-boilerplate/blob/main/src/mocks/SimpleNFT.sol).
 
-```sol test/0_IPARegistrar.sol
+```sol test/0_IPARegistrar.t.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
@@ -12409,13 +12411,13 @@ Once you have your own SPGNFT, all you have to do is call `mintAndRegisterIp` wi
 * `recipient` - the address of who will receive the NFT and thus be the owner of the newly registered IP. *Note: remember that registering IP on Story is permissionless, so you can register an IP for someone else (by paying for the transaction) yet they can still be the owner of that IP Asset.*
 * `ipMetadata` - the metadata associated with your NFT & IP. See [this](https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata) section to better understand setting NFT & IP metadata.
 
-Let's create a test file under `test/0_IPARegistrar.sol` to see it work and verify the results:
+1. Run `touch test/0_IPARegistrar.t.sol` to create a test file under `test/0_IPARegistrar.t.sol`. Then, paste in the following code:
 
 > 📘 Contract Addresses
 >
 > We have filled in the addresses from the Story contracts for you. However you can also find the addresses for them here: [Deployed Smart Contracts](doc:deployed-smart-contracts)
 
-```sol test/0_IPARegistrar.sol
+```sol test/0_IPARegistrar.t.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
@@ -12500,14 +12502,14 @@ contract IPARegistrarTest is Test {
 }
 ```
 
-## Test Your Code!
+## Run the Test and Verify the Results
 
-Run `forge build`. If everything is successful, the command should successfully compile.
+2. Run `forge build`. If everything is successful, the command should successfully compile.
 
-Now run the test by executing the following command:
+3. Now run the test by executing the following command:
 
 ```shell
-forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/IPARegistrar.t.sol
+forge test --fork-url https://aeneid.storyrpc.io/ --match-path test/0_IPARegistrar.t.sol
 ```
 
 ## Add License Terms to IP
@@ -12972,9 +12974,10 @@ In this guide, we will show you how to setup the Story smart contract developmen
 
 ## Creating a Project
 
-1. Run the following in a new directory of your choice: `yarn init`
-2. Set up foundry using the following command: `forge init --force`
-3. Open up your `foundry.toml` file and replace it with this
+1. Run `foundryup` to automatically install the latest stable version of the precompiled binaries: forge, cast, anvil, and chisel
+2. Run the following command in a new directory: `forge init`. This will create a `foundry.toml` and example project files in the project root. By default, forge init will also initialize a new git repository.
+3. Initialize a new yarn project: `yarn init`. Alternatively, you can use `npm init` or `pnpm init`.
+4. Open up your `foundry.toml` file and replace it with this
 
 ```toml foundry.toml
 [profile.default]
@@ -12988,9 +12991,19 @@ test = 'test'
 solc = '0.8.26'
 fs_permissions = [{ access = 'read', path = './out' }, { access = 'read-write', path = './deploy-out' }]
 evm_version = 'cancun'
+remappings = [
+    '@openzeppelin/=node_modules/@openzeppelin/', 
+    '@storyprotocol/core/=node_modules/@story-protocol/protocol-core/contracts/', 
+    '@storyprotocol/periphery/=node_modules/@story-protocol/protocol-periphery/contracts/', 
+    'erc6551/=node_modules/erc6551/', 
+    'forge-std/=node_modules/forge-std/src/', 
+    'ds-test/=node_modules/ds-test/src/', 
+    '@storyprotocol/test/=node_modules/@story-protocol/protocol-core/test/foundry/', 
+    '@solady/=node_modules/solady/'
+]
 ```
 
-4. Remove the placeholder test contracts: `rm src/Counter.sol test/Counter.t.sol`
+5. Remove the example contract files: `rm src/Counter.sol script/Counter.s.sol test/Counter.t.sol`
 
 ### :package: Installing Dependencies
 
@@ -13013,20 +13026,8 @@ yarn add -D https://github.com/dapphub/ds-test
 yarn add -D github:foundry-rs/forge-std#v1.7.6
 ```
 
-Then, create a file in the root folder named `remappings.txt` and paste the following:
+Now we are ready to build a simple test registration contract!
 
-```Text remappings.txt
-@openzeppelin/=node_modules/@openzeppelin/
-@storyprotocol/core/=node_modules/@story-protocol/protocol-core/contracts/
-@storyprotocol/periphery/=node_modules/@story-protocol/protocol-periphery/contracts/
-erc6551/=node_modules/erc6551/
-forge-std/=node_modules/forge-std/src/
-ds-test/=node_modules/ds-test/src/
-@storyprotocol/test/=node_modules/@story-protocol/protocol-core/test/foundry/
-@solady/=node_modules/solady/
-```
-
-Now we are ready to build a simple test registration contract.
 
 # Register a Derivative
 <Cards columns={1}>
