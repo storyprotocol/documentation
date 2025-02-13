@@ -24,7 +24,7 @@ You would mint an NFT that represents your off-chain asset, and register that NF
 
 ## *"I am selling an off-chain asset (eg. merch). How do I make sure that automatic royalty flow is enforced?"*
 
-Automatic royalty flow can be enforced off-chain. Although the royalty infrastructure is on-chain, the associated license is valid beyond the chain. To legally abide by the license any derivative work will need to pay royalties on-chain to the IP Account that is attached to your IP Asset, or face consequences like in the real world (e.g. being taken to court for abusing a license) according to the terms set out by the license.
+Automatic royalty flow can be enforced off-chain. Although the royalty infrastructure is on-chain, the associated license is valid beyond the chain. To legally abide by the license, any derivative work will need to pay royalties on-chain to the IP Account that is attached to your IP Asset, or face consequences like in the real world (e.g. being taken to court for abusing a license) according to the terms set out by the license.
 
 Furthermore, one of the terms of the [Programmable IP License (PIL💊)](doc:programmable-ip-license-pil) is that licensees are obligated to provide revenue data for off-chain transactions (e.g. merch) to licensors, if there's a revenue share involved.
 
@@ -79,7 +79,7 @@ The alternative is running an adjacent system outside the L1 to provide these fe
 
 Namely, if the adjacent system goes down (so disputes and oracles stop) but the L1 works fine, it'd be a huge problem. This can be remedied with re-staking like AVS but the tech is not battle-tested and there's no precedence of success using re-staking (EIGEN token is still in work).
 
-One big incentive alignment Story can have: IP companies running validators & providing custom off-chain IP data to the network natively via validator-enshrined features. 
+One big incentive alignment Story can have: IP companies running validators & providing custom off-chain IP data to the network natively via validator-enshrined features.
 
 Or a law firm automating disputes and broadcasting them to other validators. After an agreement of disputes, validators can immediately block transactions that include disputed IPs, which is not possible with an adjacent system providing (unless we have preconf, which is a debated topic in the Ethereum land).
 
