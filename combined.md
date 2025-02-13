@@ -7467,7 +7467,7 @@ Story network uses the following Cosmos SDK modules without non-trivial modifica
 * [slashing](https://docs.cosmos.network/main/build/modules/slashing)
 * [upgrade](https://docs.cosmos.network/main/build/modules/upgrade)
 
-# Node Architecture
+# 🏗️ Node Architecture
 
 Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api) defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
 
@@ -7476,7 +7476,6 @@ Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SD
 `story` is built on the Cosmos SDK and CometBFT. The Cosmos SDK provides a modular framework for building blockchain applications, enabling seamless integration of new modules and features while allowing the network to be easily extended and customized. `story` client introduces upgrades and additional Cosmos SDK modules to support Engine API integration and novel staking mechanisms. CometBFT, a high-performance, scalable, and secure consensus engine, has been extensively tested within the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec).
 
 <Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
-
 
 # Precompiles
 ## Introduction
