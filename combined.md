@@ -1288,6 +1288,10 @@ PILTerms({
 
 Let the world build on and play with your creation... and earn money together from it! This license allows for endless free remixing while tracking all uses of your work while giving you full credit, with each derivative paying a percentage of revenue to its "parent" IP.
 
+### Example
+
+Check out Story's official mascot **Ippy**, which we have registered with commercial remix terms on both [Mainnet](https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42) and [Aeneid Testnet](https://aeneid.explorer.story.foundation/ipa/0x641E638e8FCA4d4844F509630B34c9D524d40BE5).
+
 ### What others can do?
 
 <Table align={["left","left"]}>
