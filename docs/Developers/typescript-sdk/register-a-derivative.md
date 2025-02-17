@@ -62,7 +62,7 @@ There are a few times when **you would need** a License Token to register a deri
 
 We're going to assume you have :x: no license tokens, :x: the derivative IP is not yet registered, and :x: you don't have your own NFT contract or an already minted NFT.
 
-**Follow steps 2-5 of** [Register an IP Asset](doc:register-an-ip-asset). Note you can skip step 5 if you already have an SPG NFT Collection. Then, come back here.
+**Follow steps 1-4 of** [Register an IP Asset](doc:register-an-ip-asset). Note you can skip step 4 if you already have an SPG NFT Collection. Then, come back here.
 
 Modify your code such that...
 
