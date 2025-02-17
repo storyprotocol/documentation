@@ -6,6 +6,8 @@ hidden: false
 metadata:
   title: ''
   description: ''
+  image: >-
+    https://files.readme.io/a998b5de53be113970b66e76def469e142a4ccec7e89bb65c1ee3c742212edf6-eli5.png
   robots: index
 next:
   description: ''
