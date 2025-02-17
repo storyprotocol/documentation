@@ -24,7 +24,7 @@ In this tutorial, you will learn how to properly register music as IP on Story u
   </Card>
 </Cards>
 
-## 0. Create a Song
+## 1. Create a Song
 
 Before we register music on Story, you'll obviously need some music! If you already have music, make sure you have a link to the music file directly. For example, `https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3`. If you don't already have this, you can upload your music file to IPFS:
 
@@ -37,11 +37,11 @@ If you want to create a test song, go to [Suno](https://suno.com), which is an a
 
 This is the URL we'll use in step 2.
 
-## 1. Complete the "How to Register IP" Tutorial
+## 2. Complete the "How to Register IP" Tutorial
 
 Most of what we need to do is already covered in [Register an IP Asset](doc:register-an-ip-asset). Complete that tutorial first, and then come back here.
 
-## 2. Change Metadata
+## 3. Change Metadata
 
 The only difference is how you set your metadata. In your `ipMetadata`, you can set a few extra related parameters (`ipType`, `media`, `attributes`, `creators`) like so:
 
@@ -117,7 +117,7 @@ const nftMetadata = {
 }
 ```
 
-## 3. Done!
+## 4. Done!
 
 When you run the script, you will register an IP Asset and it will look something like [this](https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
 
