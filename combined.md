@@ -13430,14 +13430,14 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-## 0. Before We Start
+## 1. Before We Start
 
 We should mention that you do not need an existing IP Asset to attach terms to it. There are two functions you can use that allow you to **register IP + create terms + attach terms** in the same function:
 
 * [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripassetwithpilterms)
 * [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#registeripandattachpilterms)
 
-## 1. Register License Terms
+## 2. Register License Terms
 
 In order to attach terms to an IP Asset, let's first create them!
 
@@ -13491,7 +13491,7 @@ async function main() {
 main();
 ```
 
-### 1a. :icecream: PIL Flavors
+### 2a. :icecream: PIL Flavors
 
 As you see above, you have to choose between a lot of terms.
 
@@ -13515,7 +13515,7 @@ We have convenience functions to help you register new terms. We have created [P
   </Card>
 </Cards>
 
-## 2. Attach License Terms
+## 3. Attach License Terms
 
 Now that we have created terms and have the associated `licenseTermsId`, we can attach them to an existing IP Asset like so:
 
@@ -13548,7 +13548,7 @@ async function main() {
 main();
 ```
 
-### 2a. Create Terms + Attach
+### 3a. Create Terms + Attach
 
 :point_right: It's worth mentioning that you can **create terms + attach terms** all in the same step with the the [registerPilTermsAndAttach](https://docs.story.foundation/docs/sdk-ipasset#registerpiltermsandattach) function. Whatever is easiest for you!
 
@@ -13557,7 +13557,7 @@ main();
 * [mintAndRegisterIpAssetWithPilTerms](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripassetwithpilterms)
 * [registerIpAndAttachPilTerms](https://docs.story.foundation/docs/sdk-ipasset#registeripandattachpilterms)
 
-## 3. Mint a License
+## 4. Mint a License
 
 Now that we have attached License Terms to our IP, the next step is minting a License Token, which we'll go over on the next page.
 
