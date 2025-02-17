@@ -11664,7 +11664,7 @@ In this tutorial, you will learn how to properly register music as IP on Story u
   </Card>
 </Cards>
 
-## 0. Create a Song
+## 1. Create a Song
 
 Before we register music on Story, you'll obviously need some music! If you already have music, make sure you have a link to the music file directly. For example, `https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3`. If you don't already have this, you can upload your music file to IPFS:
 
@@ -11677,11 +11677,11 @@ If you want to create a test song, go to [Suno](https://suno.com), which is an a
 
 This is the URL we'll use in step 2.
 
-## 1. Complete the "How to Register IP" Tutorial
+## 2. Complete the "How to Register IP" Tutorial
 
 Most of what we need to do is already covered in [Register an IP Asset](doc:register-an-ip-asset). Complete that tutorial first, and then come back here.
 
-## 2. Change Metadata
+## 3. Change Metadata
 
 The only difference is how you set your metadata. In your `ipMetadata`, you can set a few extra related parameters (`ipType`, `media`, `attributes`, `creators`) like so:
 
@@ -11757,7 +11757,7 @@ const nftMetadata = {
 }
 ```
 
-## 3. Done!
+## 4. Done!
 
 When you run the script, you will register an IP Asset and it will look something like [this](https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
 
@@ -14807,7 +14807,7 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-## 0. Before We Start
+## 1. Before We Start
 
 There are a lot of ways to register an IP Asset as a derivative of another. Below, we will help you figure out what function you should use.
 
@@ -14828,14 +14828,14 @@ Do you already have a [License Token](doc:license-token) you can use?
     * :white_check_mark: Yes: Use [registerDerivativeIp](https://docs.story.foundation/docs/sdk-ipasset#registerderivativeip)
     * :x: No: Use [mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripandmakederivative)
 
-### 0a. :question: Why would I ever use a License Token if it's not needed?
+### 1a. :question: Why would I ever use a License Token if it's not needed?
 
 There are a few times when **you would need** a License Token to register a derivative:
 
 * The License Token contains private license terms, so you would only be able to register as a derivative if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
 * The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `defaultMintingFee`.
 
-## 1. Register Derivative
+## 2. Register Derivative
 
 > 📘 This is just an example
 >
@@ -14895,7 +14895,7 @@ async function main() {
 }
 ```
 
-## 2. Paying and Claiming Revenue
+## 3. Paying and Claiming Revenue
 
 Congratulations, you registered a derivative IP Asset!
 
