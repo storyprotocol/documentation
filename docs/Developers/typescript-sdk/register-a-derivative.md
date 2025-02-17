@@ -26,7 +26,7 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
 
-## 0. Before We Start
+## 1. Before We Start
 
 There are a lot of ways to register an IP Asset as a derivative of another. Below, we will help you figure out what function you should use.
 
@@ -47,14 +47,14 @@ Do you already have a [License Token](doc:license-token) you can use?
     * :white_check_mark: Yes: Use [registerDerivativeIp](https://docs.story.foundation/docs/sdk-ipasset#registerderivativeip)
     * :x: No: Use [mintAndRegisterIpAndMakeDerivative](https://docs.story.foundation/docs/sdk-ipasset#mintandregisteripandmakederivative)
 
-### 0a. :question: Why would I ever use a License Token if it's not needed?
+### 1a. :question: Why would I ever use a License Token if it's not needed?
 
 There are a few times when **you would need** a License Token to register a derivative:
 
 * The License Token contains private license terms, so you would only be able to register as a derivative if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
 * The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `defaultMintingFee`.
 
-## 1. Register Derivative
+## 2. Register Derivative
 
 > 📘 This is just an example
 >
@@ -62,7 +62,7 @@ There are a few times when **you would need** a License Token to register a deri
 
 We're going to assume you have :x: no license tokens, :x: the derivative IP is not yet registered, and :x: you don't have your own NFT contract or an already minted NFT.
 
-**Follow steps 1-4 of** [Register an IP Asset](doc:register-an-ip-asset). Note you can skip step 4 if you already have an SPG NFT Collection. Then, come back here.
+**Follow steps 2-5 of** [Register an IP Asset](doc:register-an-ip-asset). Note you can skip step 5 if you already have an SPG NFT Collection. Then, come back here.
 
 Modify your code such that...
 
@@ -114,7 +114,7 @@ async function main() {
 }
 ```
 
-## 2. Paying and Claiming Revenue
+## 3. Paying and Claiming Revenue
 
 Congratulations, you registered a derivative IP Asset!
 
