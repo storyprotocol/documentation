@@ -13409,7 +13409,7 @@ main();
 
 Let's say the child earned 1,000 USD off-chain, and is linked to a huge ancestor tree where each parent has a different set of complex license terms. In this scenario, you won't be able to individually calculate each payment to each parent. Instead, you would just pay *yourself* the amount you earned, and the [💸 Royalty Module](doc:royalty-module) will automate the payment, such that each ancestor gets their due share.
 
-## Claiming Revenue
+## :checkered_flag: View Completed Code
 
 Congratulations, you paid an IP Asset on-chain!
 
@@ -13418,6 +13418,8 @@ Congratulations, you paid an IP Asset on-chain!
     All of this page is covered in this working code example.
   </Card>
 </Cards>
+
+## Claiming Revenue
 
 Now that we have paid revenue, we need to learn how to claim it! We will cover that on the next page.
 
