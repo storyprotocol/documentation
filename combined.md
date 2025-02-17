@@ -14611,7 +14611,7 @@ async function main() {
 main();
 ```
 
-## 5. Add License Terms to IP
+## 5. :checkered_flag: View Completed Code
 
 Congratulations, you registered an IP!
 
@@ -14620,6 +14620,8 @@ Congratulations, you registered an IP!
     Follow the completed code all the way through.
   </Card>
 </Cards>
+
+## 6. Add License Terms to IP
 
 Now that your IP is registered, you can create and attach [License Terms](doc:license-terms) to it. This will allow others to mint a license and use your IP, restricted by the terms.
 
@@ -14895,7 +14897,7 @@ async function main() {
 }
 ```
 
-## 3. Paying and Claiming Revenue
+## 3. :checkered_flag: View Completed Code
 
 Congratulations, you registered a derivative IP Asset!
 
@@ -14904,6 +14906,8 @@ Congratulations, you registered a derivative IP Asset!
     All of this page is covered in this working code example.
   </Card>
 </Cards>
+
+## 4. Paying and Claiming Revenue
 
 Now that we have established parent-child IP relationships, we can begin to explore payments and automated revenue share based on the license terms. We'll cover that in the upcoming pages.
 
