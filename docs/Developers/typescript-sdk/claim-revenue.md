@@ -144,7 +144,7 @@ async function main() {
 main();
 ```
 
-## Dispute an IP
+## :checkered_flag: View Completed Code
 
 Congratulations, you claimed revenue using the [💸 Royalty Module](doc:royalty-module)!
 
@@ -153,6 +153,8 @@ Congratulations, you claimed revenue using the [💸 Royalty Module](doc:royalty
     All of this page is covered in this working code example.
   </Card>
 </Cards>
+
+## Dispute an IP
 
 Now what happens if an IP Asset doesn't pay their due share? We can dispute the IP on-chain, which we will cover on the next page.
 
