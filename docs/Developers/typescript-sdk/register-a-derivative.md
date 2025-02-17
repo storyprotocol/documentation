@@ -114,7 +114,7 @@ async function main() {
 }
 ```
 
-## 3. Paying and Claiming Revenue
+## 3. :checkered_flag: View Completed Code
 
 Congratulations, you registered a derivative IP Asset!
 
@@ -123,5 +123,7 @@ Congratulations, you registered a derivative IP Asset!
     All of this page is covered in this working code example.
   </Card>
 </Cards>
+
+## 4. Paying and Claiming Revenue
 
 Now that we have established parent-child IP relationships, we can begin to explore payments and automated revenue share based on the license terms. We'll cover that in the upcoming pages.
