@@ -4,7 +4,7 @@ excerpt: >-
   A Case Study showing how PiPi, a generative pfp project, registers derivatives
   of Story's official Ippy mascot.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   image: >-
     https://files.readme.io/5bdd7e2accd0851b1462987c369c350000cb690ae901b4dc9002da02ea0808e3-Screenshot_2025-02-18_at_9.56.54_AM.png
@@ -12,7 +12,7 @@ metadata:
 ---
 [PiPi](https://pfp3.io/pipi/mint) is a free generative pfp project on Story that lets you mint derivative artworks of [Ippy](https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42), Story's official mascot. Ippy has [Non-Commercial Social Remixing (NCSR)](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) terms attached, which means anyone can use it or create derivative works as long as it's not used commercially and proper attribution is shown.
 
-When a PiPi is linked as a derivative of Ippy, it automatically inherits the same license terms (NCSR) and is linked in its ancestry graph, which you can see directly on our explorer.
+When a PiPi is linked as a derivative of Ippy, it automatically inherits the same license terms (NCSR) and is linked in its ancestry graph, which you can see directly on our explorer:
 
 <Image align="center" border={false} caption="In the bottom right, you can see Ippy is the root IP of this PiPi." src="https://files.readme.io/0d7c3ca3a88a9906dac899d6a776417f1c01a07cfa01d9f732974260fd9ea469-Screenshot_2025-02-18_at_10.03.13_AM.png" />
 
@@ -315,3 +315,25 @@ This function calls `registerDerivative` in the [📜 Licensing Module](doc:lice
 * `licenseTemplate`: the address of `PILicenseTemplate`, found in [Deployed Smart Contracts](doc:deployed-smart-contracts)
 * `royaltyContext`: just set to zero address
 * `maxMintingFee`, `maxRts`, and `maxRevenueShare` can be set to 0 as default
+
+## 6. Transfer NFT
+
+Now that the contract has handled registering the IP as a derivative, it can transfer ownership to the user to have ownership over the PiPi IP:
+
+```sol PiPi.sol
+function _mintNFT(address recipient) internal returns (string memory, address) {
+  // ... some code here ...
+  _safeTransfer(address(this), recipient, newTokenId, "");
+  // ... some code here ...
+}
+```
+
+## 7. Done!
+
+Congratulations, you registered a derivative of the official Ippy IP!
+
+<Cards columns={1}>
+  <Card title="View on Explorer" href="https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51" icon="fa-home" target="_blank">
+    View the derviative on our explorer.
+  </Card>
+</Cards>
