@@ -277,3 +277,41 @@ function tokenURI(uint256 tokenId) public view override returns (string memory) 
 Note that the NFT's `tokenUri` is set through
 
 ## 5. Register as Derivative
+
+Now that we have minted an NFT, registered it as IP, and set proper metadata, we can register it as a derivative of Ippy. The `PiPi.sol` contract uses `registerDerivativeForToken` to handle this:
+
+```sol PiPi.sol
+function registerDerivativeForToken(address ipId) internal {
+  address[] memory parentIpIds = new address[](1);
+  parentIpIds[0] = 0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42;
+
+  uint256[] memory licenseTermsIds = new uint256[](1);
+  licenseTermsIds[0] = 1;
+
+  address licenseTemplate = 0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316;
+  bytes memory royaltyContext = hex"0000000000000000000000000000000000000000";
+  uint256 maxMintingFee = 0;
+  uint32 maxRts = 0;
+  uint32 maxRevenueShare = 0;
+
+  LICENSING_MODULE.registerDerivative(
+    ipId,
+    parentIpIds,
+    licenseTermsIds,
+    licenseTemplate,
+    royaltyContext,
+    maxMintingFee,
+    maxRts,
+    maxRevenueShare
+  );
+}
+```
+
+This function calls `registerDerivative` in the [📜 Licensing Module](doc:licensing-module), with:
+
+* `ipId`: the new `ipId` we got in step 3
+* `parentIpIds`: an array that contains Ippy's `ipId`, which is `0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42`
+* `licenseTermsIds`: an array containing `1`, which is the license term ID of [Non-Commercial Social Remixing (NCSR)](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing). This means the derivative can use Ippy for free but not commercialize it
+* `licenseTemplate`: the address of `PILicenseTemplate`, found in [Deployed Smart Contracts](doc:deployed-smart-contracts)
+* `royaltyContext`: just set to zero address
+* `maxMintingFee`, `maxRts`, and `maxRevenueShare` can be set to 0 as default
