@@ -262,7 +262,7 @@ function _registerAsIPAsset(uint256 tokenId) internal returns (address) {
 }
 ```
 
-All this is doing is calling the `register` function on the [IP Asset Registry](doc:ip-asset-registry), which creates a new [🧩 IP Asset](doc:ip-asset) in our protocol, and returning a `ipId`.
+All this is doing is calling the `register` function on the [IP Asset Registry](doc:ip-asset-registry), which creates a new [🧩 IP Asset](doc:ip-asset) in our protocol, and returns an `ipId`.
 
 ## 4. Set Metadata on IP
 
