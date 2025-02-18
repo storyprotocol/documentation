@@ -10794,6 +10794,16 @@ main();
 # 'Case Study: Registering a Derivative of Ippy'
 [PiPi](https://pfp3.io/pipi/mint) is a free generative pfp project on Story that lets you mint derivative artworks of [Ippy](https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42), Story's official mascot. Ippy has [Non-Commercial Social Remixing (NCSR)](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) terms attached, which means anyone can use it or create derivative works as long as it's not used commercially and proper attribution is shown.
 
+<Cards columns={2}>
+  <Card title="Original Ippy" href="https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42" icon="fa-home" target="_blank">
+    View the original Ippy mascot on our explorer.
+  </Card>
+
+  <Card title="PiPi Derivative" href="https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51" icon="fa-home" target="_blank">
+    View a derviative PiPi on our explorer.
+  </Card>
+</Cards>
+
 When a PiPi is linked as a derivative of Ippy, it automatically inherits the same license terms (NCSR) and is linked in its ancestry graph, which you can see directly on our explorer:
 
 <Image align="center" border={false} caption="In the bottom right, you can see Ippy is the root IP of this PiPi." src="https://files.readme.io/0d7c3ca3a88a9906dac899d6a776417f1c01a07cfa01d9f732974260fd9ea469-Screenshot_2025-02-18_at_10.03.13_AM.png" />
@@ -10806,20 +10816,20 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [Setup Your Own Project](doc:sc-setup)
 
-## 1) Setup Metadata
+## 1. Setup Metadata
 
 Before we register our new PiPi IP, we need to set up its metadata. There are two types of metadata:
 
 1. NFT Metadata
 2. IP Metadata
 
-<Cards columns={4}>
+<Cards columns={1}>
   <Card title="NFT vs. IP Metadata" href="https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata" icon="fa-home" target="_blank">
     Learn how to properly set up NFT and IP Metadata.
   </Card>
 </Cards>
 
-Using [this PiPi](https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51) as an example, here is the NFT & IP metadata that was set:
+Using [this PiPi](https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51) as an example, here is the NFT & IP metadata that was set (*note: they are the same in this case*):
 
 > 📘 View Yourself
 >
@@ -11116,7 +11126,7 @@ Congratulations, you registered a derivative of the official Ippy IP!
 
 <Cards columns={1}>
   <Card title="View on Explorer" href="https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51" icon="fa-home" target="_blank">
-    View the derviative on our explorer.
+    View a derviative PiPi on our explorer.
   </Card>
 </Cards>
 
