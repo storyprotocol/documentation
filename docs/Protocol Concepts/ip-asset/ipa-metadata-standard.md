@@ -214,6 +214,48 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
 
     <tr>
       <td style={{ textAlign: "left" }}>
+        `mediaUrl`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Used for infringement checking, points to the actual media img or audio
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `mediaHash`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Hashed string of the media (for infringement checking)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        `mediaType`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `string`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        Type of media (audio, video, image), based on [mimeType](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types/Common_types)
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
         N/A
       </td>
 
@@ -368,6 +410,14 @@ The different relationship types that can be used for the `relationships` attrib
 19. **CONFIGURES** - A workflow CONFIGURES a model’s parameters.
 
 20. **ADAPTS\_TO** - A fine-tuned model ADAPTS\_TO new data.
+
+## Media Types
+
+Here are the valid media types:
+
+* Audio: `audio/wav`, `audio/mpeg`, `audio/flac`, `audio/aac`, `audio/ogg`, `audio/mp4`, `audio/x-aiff`, `audio/x-ms-wma`, `audio/opus`
+* Video: `video/mp4`, `video/webm`, `video/quicktime`
+* Image: `image/jpeg`, `image/png`, `image/apng`, `image/avif`, `image/gif`, `image/svg+xml`, `image/webp`
 
 # Example Use Cases
 
