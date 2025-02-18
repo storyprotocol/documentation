@@ -379,7 +379,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Type of media (audio, video, image), based on [mimeType](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types/Common_types)
+        Type of media (audio, video, image), based on [mimeType](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types/Common_types). See the allowed media types [here](https://docs.story.foundation/docs/ipa-metadata-standard#media-types).
       </td>
     </tr>
 
