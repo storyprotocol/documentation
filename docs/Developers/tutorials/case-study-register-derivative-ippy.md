@@ -24,7 +24,7 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [Setup Your Own Project](doc:sc-setup)
 
-## 1) Setup Metadata
+## 1. Setup Metadata
 
 Before we register our new PiPi IP, we need to set up its metadata. There are two types of metadata:
 
