@@ -197,7 +197,7 @@ Once you have metadata written, you can upload them to IPFS and will later set i
 When you want to register an IP on Story, you must first mint an NFT. This NFT represents the **ownership** over the [🧩 IP Asset](doc:ip-asset).
 
 <Cards columns={1}>
-  <Card title="View PiPi Contract" href="https://www.storyscan.xyz/address/0x5C6b236A100d09f8A625dB87E11122749A9B71A6?tab=contract" icon="fa-home" target="_blank">
+  <Card title="View PiPi Contract" href="https://www.storyscan.xyz/address/0x5C6b236A100d09f8A625dB87E11122749A9B71A6?tab=contract" icon="fa-scroll" iconColor="#ccb092" target="_blank">
     View the PiPi contract source code.
   </Card>
 </Cards>
