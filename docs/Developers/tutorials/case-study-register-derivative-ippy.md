@@ -294,8 +294,6 @@ function tokenURI(uint256 tokenId) public view override returns (string memory) 
 }
 ```
 
-Note that the NFT's `tokenUri` is set through
-
 ## 5. Register as Derivative
 
 Now that we have minted an NFT, registered it as IP, and set proper metadata, we can register it as a derivative of Ippy. The `PiPi.sol` contract uses `registerDerivativeForToken` to handle this:
