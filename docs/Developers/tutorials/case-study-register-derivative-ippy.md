@@ -21,7 +21,7 @@ metadata:
     View a derviative PiPi on our explorer.
   </Card>
 
-  <Card title="View PiPi Contract" href="https://www.storyscan.xyz/address/0x5C6b236A100d09f8A625dB87E11122749A9B71A6?tab=contract" icon="fa-home" target="_blank">
+  <Card title="View PiPi Contract" href="https://www.storyscan.xyz/address/0x5C6b236A100d09f8A625dB87E11122749A9B71A6?tab=contract" icon="fa-scroll" iconColor="#ccb092" target="_blank">
     View the PiPi contract source code.
   </Card>
 </Cards>
