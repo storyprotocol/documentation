@@ -336,7 +336,7 @@ This function calls `registerDerivative` in the [📜 Licensing Module](doc:lice
 
 ## 6. Transfer NFT
 
-Now that the contract has handled registering the IP as a derivative, it can transfer ownership to the user to have ownership over the PiPi IP:
+Now that the contract has handled registering the IP as a derivative, it transfers the NFT to the user to have ownership over the PiPi IP:
 
 ```sol PiPi.sol
 function _mintNFT(address recipient) internal returns (string memory, address) {
