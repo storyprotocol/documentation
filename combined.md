@@ -708,11 +708,9 @@ The different relationship types that can be used for the `relationships` attrib
 >
 > Get a quick 1-minute overview of IP Assets [here](https://twitter.com/jacobmtucker/status/1785765362744889410).
 
-IP Assets are the foundational programmable IP metadata on Story. Each IP Asset is an on-chain ERC-721 NFT (representing an IP). Yes, that means your Azuki or Pudgy Penguin is already eligible for registration into our protocol, and don't worry, there is no wrapping involved.
+IP Assets are the foundational programmable IP metadata on Story. Each IP Asset is an on-chain ERC-721 NFT (representing an IP). If your IP is off-chain, you would simply mint an ERC-721 NFT to represent that IP first, and then register it as an IP Asset.
 
-If your IP is off-chain, you would simply mint an ERC-721 NFT to represent that IP first, and then register it as an IP Asset.
-
-An IP Asset also has an associated [⚙️ IP Account](doc:ip-account), which is a modified ERC-6551 (Token Bound Account) implementation. It is a separate contract bound to the IP Asset for controlling permissions around interactions with Story's modules or storing the IP's associated data.
+When an IP Asset is created, an associated [⚙️ IP Account](doc:ip-account) is deployed, which is a modified ERC-6551 (Token Bound Account) implementation. It is a separate contract bound to the IP Asset for controlling permissions around interactions with Story's modules or storing the IP's associated data.
 
 ## Registering an IP Asset
 
