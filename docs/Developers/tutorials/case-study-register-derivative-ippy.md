@@ -12,13 +12,17 @@ metadata:
 ---
 [PiPi](https://pfp3.io/pipi/mint) is a free generative pfp project on Story that lets you mint derivative artworks of [Ippy](https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42), Story's official mascot. Ippy has [Non-Commercial Social Remixing (NCSR)](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing) terms attached, which means anyone can use it or create derivative works as long as it's not used commercially and proper attribution is shown.
 
-<Cards columns={2}>
+<Cards columns={3}>
   <Card title="Original Ippy" href="https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42" icon="fa-home" target="_blank">
     View the original Ippy mascot on our explorer.
   </Card>
 
   <Card title="PiPi Derivative" href="https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51" icon="fa-home" target="_blank">
     View a derviative PiPi on our explorer.
+  </Card>
+
+  <Card title="View PiPi Contract" href="https://www.storyscan.xyz/address/0x5C6b236A100d09f8A625dB87E11122749A9B71A6?tab=contract" icon="fa-home" target="_blank">
+    View the PiPi contract source code.
   </Card>
 </Cards>
 
@@ -192,6 +196,12 @@ Once you have metadata written, you can upload them to IPFS and will later set i
 
 When you want to register an IP on Story, you must first mint an NFT. This NFT represents the **ownership** over the [🧩 IP Asset](doc:ip-asset).
 
+<Cards columns={1}>
+  <Card title="View PiPi Contract" href="https://www.storyscan.xyz/address/0x5C6b236A100d09f8A625dB87E11122749A9B71A6?tab=contract" icon="fa-home" target="_blank">
+    View the PiPi contract source code.
+  </Card>
+</Cards>
+
 Here is part of the `_mintNFT` function in the `PiPi.sol` contract:
 
 ```sol PiPi.sol
@@ -222,7 +232,7 @@ contract PiPi is ERC721, Ownable, IERC721Receiver {
 
     _safeTransfer(address(this), recipient, newTokenId, "");
 
-    // ... more code here
+    // ... more code here ...
 
     return (nftUri, ipId);
   }
