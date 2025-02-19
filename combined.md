@@ -502,6 +502,7 @@ Below is a list of experimental fields that **are not required** but we may add 
 | `ipType`         | `string`           | Type of the IP Asset, can be defined arbitrarily by the creator. I.e. “character”, “chapter”, “location”, “items”, "music", etc                                                                                        |
 | `relationships`  | `IpRelationship[]` | The detailed relationship info with the IPA’s direct parent asset, such as `APPEARS_IN`, `FINETUNED_FROM`, etc. See more examples [here](https://docs.story.foundation/docs/ipa-metadata-standard#relationship-types). |
 | `watermarkImage` | `string`           | A separate image with your watermark already applied. This way apps choosing to use it can render this version of the image (with watermark applied).                                                                  |
+| `media`          | `IpMedia[]`        | An array of supporting media. Media type defined below                                                                                                                                                                 |
 | `app`            | `StoryApp`         | This is assigned to verified application from Story Protocol directly (on a request basis so far). We will map each App ID to a name                                                                                   |
 | `tags`           | `string[]`         | Any tags that can help surface this IPA                                                                                                                                                                                |
 | `robotTerms`     | `IPRobotTerms`     | Allows you to set Do Not Train for a specific agent                                                                                                                                                                    |
@@ -527,6 +528,13 @@ type StoryApp = {
 type IPRobotTerms = {
   userAgent: string;
   allow: string;
+}
+```
+```typescript IpMedia
+type IpMedia = {
+  name: string, 
+  url: string, 
+  mimeType: string, 
 }
 ```
 
