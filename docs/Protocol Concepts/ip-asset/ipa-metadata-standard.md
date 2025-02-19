@@ -137,7 +137,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Hash of your `image`.
+        Hash of your `image` using SHA-256 hashing algorithm. See [here](https://docs.story.foundation/docs/ipa-metadata-standard#hashing-content)  for how that is done.
 
         If your IP is an image itself, you can make this the same as `mediaHash`.
       </td>
@@ -193,7 +193,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Hashed string of the media (for infringement checking)
+        Hashed string of the media using SHA-256 hashing algorithm. See [here](https://docs.story.foundation/docs/ipa-metadata-standard#hashing-content) for how that is done.
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -265,6 +265,18 @@ For the `mediaType` field, here are the valid options:
 * Audio: `audio/wav`, `audio/mpeg`, `audio/flac`, `audio/aac`, `audio/ogg`, `audio/mp4`, `audio/x-aiff`, `audio/x-ms-wma`, `audio/opus`
 * Video: `video/mp4`, `video/webm`, `video/quicktime`
 * Image: `image/jpeg`, `image/png`, `image/apng`, `image/avif`, `image/gif`, `image/svg+xml`, `image/webp`
+
+## Hashing Content
+
+For `imageHash` and `mediaHash`, here is how you would calculate the hash:
+
+```typescript
+async function getFileHash(file: File): Promise<string> {
+  const arrayBuffer = await file.arrayBuffer()
+  const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer)
+  return toHex(new Uint8Array(hashBuffer), { size: 32 })
+}
+```
 
 # Example Use Cases
 
