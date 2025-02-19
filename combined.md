@@ -400,6 +400,9 @@ For the `mediaType` field, here are the valid options:
   "description": "Official mascot of Story.",
   "ipType": "Character",
   "image": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
+  "mediaUrl": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
+  "mediaHash": "0x21937ba9d821cb0306c7f1a1a2cc5a257509f228ea6abccc9af1a67dd754af6e",
+  "mediaType": "image/png",
   "creators": [
     {
       "name": "Story Foundation",
