@@ -39,34 +39,38 @@ npm install pinata-web3
 
 We can set metadata on our NFT & IP, *but you don't have to*. To do this, view the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for both your NFT & IP.
 
-Use the `generateIpMetadata` function to properly format your metadata and ensure it is of the correct type, as shown below:
-
 ```typescript main.ts
-import { IpMetadata } from '@story-protocol/core-sdk'
 // you should already have a client set up (prerequisite)
 import { client } from './utils'
 
 async function main() {
-  const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
-    title: 'My IP Asset',
-    description: 'This is a test IP asset',
-    creators: [{
-      "name": "Story Foundation",
-      "address": "0x67ee74EE04A0E6d14Ca6C27428B27F3EFd5CD084",
-      "description": "The World's IP Blockchain",
-      "contributionPercent": 100,
-      "socialMedia": [
-        {
-          "platform": "Twitter",
-          "url": "https://twitter.com/storyprotocol"
-        },
-        {
-          "platform": "Website",
-          "url": "https://story.foundation"
-        },
-      ]
-    }]
-  })
+  const ipMetadata = {
+    "title": "Ippy",
+    "description": "Official mascot of Story.",
+    "image": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
+    "imageHash": "0x21937ba9d821cb0306c7f1a1a2cc5a257509f228ea6abccc9af1a67dd754af6e",
+    "mediaUrl": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
+    "mediaHash": "0x21937ba9d821cb0306c7f1a1a2cc5a257509f228ea6abccc9af1a67dd754af6e",
+    "mediaType": "image/png",
+    "creators": [
+      {
+        "name": "Story Foundation",
+        "address": "0x67ee74EE04A0E6d14Ca6C27428B27F3EFd5CD084",
+        "description": "The World's IP Blockchain",
+        "contributionPercent": 100,
+        "socialMedia": [
+          {
+            "platform": "Twitter",
+            "url": "https://twitter.com/storyprotocol"
+          },
+          {
+            "platform": "Website",
+            "url": "https://story.foundation"
+          }
+        ]
+      }
+    ]
+  }
 }
 
 main();
