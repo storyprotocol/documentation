@@ -10,11 +10,11 @@ metadata:
 next:
   description: ''
 ---
-Welcome to the Story API Reference! Please use the `https://api.storyprotocol.net` endpoint.
+Welcome to the Story API Reference! Please use the `https://api.storyapis.com` endpoint.
 
 ```text Headers
-X-CHAIN: story-aeneid
-X-API-Key: f-Zi2LNuvBd61_yHaKl7kTg0KPULXTPdTSAzM1BsJ4g
+X-CHAIN: story | story-aeneid
+X-API-Key: MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U
 ```
 
 ## Rate Limit
