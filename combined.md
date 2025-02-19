@@ -14773,13 +14773,22 @@ async function main() {
   const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
     title: 'My IP Asset',
     description: 'This is a test IP asset',
-    watermarkImg: 'https://picsum.photos/200',
-    attributes: [
-      {
-        key: 'Rarity',
-        value: 'Legendary',
-      },
-    ],
+    creators: [{
+      "name": "Story Foundation",
+      "address": "0x67ee74EE04A0E6d14Ca6C27428B27F3EFd5CD084",
+      "description": "The World's IP Blockchain",
+      "contributionPercent": 100,
+      "socialMedia": [
+        {
+          "platform": "Twitter",
+          "url": "https://twitter.com/storyprotocol"
+        },
+        {
+          "platform": "Website",
+          "url": "https://story.foundation"
+        },
+      ]
+    }]
   })
 }
 
