@@ -387,6 +387,13 @@ type IpRelationship = {
   type: string; // see "Relationship Types" docs below
 }
 ```
+```typescript IpMedia
+type IpMedia = {
+  name: string, 
+  url: string, 
+  mimeType: string, 
+}
+```
 ```typescript StoryApp
 type StoryApp = {
   id: string;
@@ -399,13 +406,6 @@ type StoryApp = {
 type IPRobotTerms = {
   userAgent: string;
   allow: string;
-}
-```
-```typescript IpMedia
-type IpMedia = {
-  name: string, 
-  url: string, 
-  mimeType: string, 
 }
 ```
 
