@@ -118,8 +118,6 @@ Below are the important attributes you should provide in your IP metadata. Under
 
       <td style={{ textAlign: "left" }}>
         An image for your IP.
-
-        If your IP is an image itself, you can make this the same as `mediaUrl`.
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -138,8 +136,6 @@ Below are the important attributes you should provide in your IP metadata. Under
 
       <td style={{ textAlign: "left" }}>
         Hash of your `image` using SHA-256 hashing algorithm. See [here](https://docs.story.foundation/docs/ipa-metadata-standard#hashing-content)  for how that is done.
-
-        If your IP is an image itself, you can make this the same as `mediaHash`.
       </td>
 
       <td style={{ textAlign: "left" }}>
