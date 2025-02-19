@@ -11071,7 +11071,7 @@ This function calls `registerDerivative` in the [📜 Licensing Module](doc:lice
 * `licenseTermsIds`: an array containing `1`, which is the license term ID of [Non-Commercial Social Remixing (NCSR)](https://docs.story.foundation/docs/pil-flavors#flavor-1-non-commercial-social-remixing). This means the derivative can use Ippy for free but not commercialize it
 * `licenseTemplate`: the address of `PILicenseTemplate`, found in [Deployed Smart Contracts](doc:deployed-smart-contracts)
 * `royaltyContext`: just set to zero address
-* `maxMintingFee`, `maxRts`, and `maxRevenueShare` can be set to 0 as default
+* `maxMintingFee`, `maxRts`, and `maxRevenueShare` can be set to 0. They don't do anything because the license terms are non-commercial.
 
 ## 6. Transfer NFT
 
