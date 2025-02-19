@@ -277,6 +277,9 @@ async function getFileHash(file: File): Promise<string> {
   return toHex(new Uint8Array(hashBuffer), { size: 32 })
 }
 ```
+```shell Shell
+shasum -a 256 myfile.jpg
+```
 
 # Example Use Cases
 
@@ -323,101 +326,20 @@ async function getFileHash(file: File): Promise<string> {
   ]
 }
 ```
-```json Harry Potter
-{
-  title: "Harry Potter and the Philosopher's Stone",
-  createdAt: "1997-06-26T00:00:00", // June 26 1997
-  creators: [
-    {
-      name: "JK Rowling",
-      address: "0x0000000000000000000000000000000000000000",
-      description: "Author",
-      contributionPercent: "80",
-      socialMedia: [
-        {
-          platform: "Wikipedia",
-          url: "https://en.wikipedia.org/wiki/J._K._Rowling"
-        }
-      ]
-    },
-    {
-      name: "Thomas Taylor",
-      address: "0x0000000000000000000000000000000000000000",
-      description: "Illustrator",
-      contributionPercent: "15",
-    },
-    {
-      name: "Bloomsbury Publishing",
-      address: "0x0000000000000000000000000000000000000000",
-      description: "Publisher",
-      contributionPercent: "5",
-      socialMedia: [
-        {
-          platform: "Website",
-          url: "https://www.bloomsbury.com/"
-        }
-      ]
-    }
-  ]
-}
-```
-```json Simple IP Character
-{
-  title: "Kenta the Samurai Azuki",
-  creators: [
-    {
-      name: "Kaiser",
-      address: "0x0000000000000000000000000000000000000000",
-      contributionPercent: "80",
-      description : "Kaiser is an anime enthusiast.",
-      socialMedia: [
-        {
-          platform: "Twitter",
-          url: "https://twitter.com/kentathesamurai"
-        }
-      ]
-    },
-    {
-      name: "Azuki",
-      contributionPercent: "20",
-      description: "Creator of Azuki collection",
-    }
-  ]
-}
-```
-```json Physical Painting (RWA)
-{
-  title: "CICLOPIROX OLAMINE, 2004",
-  creators: [
-    {
-      name: "Damien Hirst",
-      contributionPercent: '100',
-      address: '0x0000000000000000000000000000000000000000',
-      description: "Damien Hirst, a poster boy for the Young British Artists who rose to prominence in late 1980s London, is one of the most notorious artists of his generation. He has pushed the limits of fine art and good taste with sculptures that comprise dead animals submerged in formaldehyde; innumerable spot paintings that appear mass-produced and can sell for millions of dollars; and the exuberantly tacky For the Love of God (2007), a human skull studded with 8,601 diamonds. Through his installations, sculptures, drawings, and paintings, Hirst explores themes including religion, mortality, and desire. Since 1988, when the artist developed and curated “Freeze,” a groundbreaking exhibition of his work and that of his Goldsmiths College peers, he has been the subject of major shows at Tate Modern in London, the National Gallery of Art in Washington, D.C., and the Rijksmuseum in Amsterdam. In 2008, Hirst controversially staged “Beautiful Inside my Head Forever,” an auction in which he sold his work directly to the public and raked in around $200 million for himself. His individual works have sold for more than $10 million at auction.      ",
-      socialMedia: [
-        {
-          platform: "Instagram",
-          url: "https://www.instagram.com/damienhirst/"
-        },
-        {
-          platform: "Wikipedia",
-          url: "https://en.wikipedia.org/wiki/Damien_Hirst"
-        }
-      ]
-    }
-  ]
-}
-```
 ```json Music
 // Example: https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8
 {
   "title": "Midnight Marriage",
   "description": "This is a house-style song generated on suno.",
-  "creators": [{
-    "name": "Jacob Tucker",
-    "address": "0x01",
-    "contributionPercent": 100
-  }]
+  "creators": [
+    {
+      "name": "Jacob Tucker",
+      "address": "0x01",
+      "contributionPercent": 100
+    }
+  ],
+  "image": "https://lh3.googleusercontent.com/tf9Z0bqm_hC_GSvgl1CHlPrzdGt1OQehRYHxtRp5S59d1a_jjVKFscIl98bX8U321GR7lyhcpgjDwjXEE9rd6wyJtaB78w7rOoXU=s1000",
+  "imageHash": ""
 }
 ```
 
