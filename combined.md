@@ -153,6 +153,11 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
 
 # Attributes & Structure
 
+Below are the important attributes you should provide in your IP metadata. Under the **Required For** column is what the specific field is required for:
+
+* :mag: Story Explorer - this field will help display your IP on the Story Explorer
+* :detective: Commercial Infringement Check - this field is required if your IP is **commercial** (that is, has commercial license terms attached). We will use these fields to run an infringement check on your IP.
+
 <Table align={["left","left","left","left"]}>
   <thead>
     <tr>
@@ -213,7 +218,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        `dateTime`
+        `createdAt`
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -223,7 +228,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
       <td style={{ textAlign: "left" }}>
         Date/Time that the IP was created (either ISO8601 or unix format).
 
-        This dateCreated field can be used to specify historical dates that aren’t on-chain. For example, Harry Potter was published on June 26.
+        This field can be used to specify historical dates that aren’t on-chain. For example, Harry Potter was published on June 26.
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -395,7 +400,6 @@ For the `mediaType` field, here are the valid options:
   "description": "Official mascot of Story.",
   "ipType": "Character",
   "image": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
-  "tags": ["Ippy", "Story", "Story Mascot", "Mascot", "Official"],
   "creators": [
     {
       "name": "Story Foundation",
@@ -432,7 +436,6 @@ For the `mediaType` field, here are the valid options:
 {
   title: "Harry Potter and the Philosopher's Stone",
   createdAt: "1997-06-26T00:00:00", // June 26 1997
-  ipType: "literature",
   creators: [
     {
       name: "JK Rowling",
@@ -463,28 +466,6 @@ For the `mediaType` field, here are the valid options:
           url: "https://www.bloomsbury.com/"
         }
       ]
-    }
-  ],
-  media: [
-    {
-      name: "ePub",
-      url: "link_to_epub",
-      mimeType: "application/epub+zip"
-    },
-    {
-      name: "Book Summary PDF",
-      url: "link_to_book_summary_pdf",
-      mimeType: "application/pdf"
-    }
-  ],
-  attributes: [
-    {
-      key: "ISBN",
-      value: "978-0-7475-3269-0"
-    },
-    {
-      key: "Genre",
-      value: "Fantasy"
     }
   ]
 }
@@ -533,28 +514,6 @@ For the `mediaType` field, here are the valid options:
         }
       ]
     }
-  ],
-  attributes: [
-    {
-      key: "Materials",
-      value: "Etching on Hahnemühle paper"
-    },
-    {
-      key: "Size",
-      value: "45 1/10 x 44 3/10 in | 114.5 x 112.5 cm"
-    },
-    {
-      key: "Edition",
-      value: "Edition of 68"
-    },
-    {
-      key: "Signature",
-      value: "Hand-signed by artist, Signed and numbered by the artist"
-    },
-    {
-      key: "Certificate of authenticity",
-      value: "link_to_certificate"
-    }
   ]
 }
 ```
@@ -563,31 +522,11 @@ For the `mediaType` field, here are the valid options:
 {
   "title": "Midnight Marriage",
   "description": "This is a house-style song generated on suno.",
-  "ipType": "Music",
   "creators": [{
     "name": "Jacob Tucker",
     "address": "0x01",
     "contributionPercent": 100
-  }],
-  "media": [{
-    "name": "Midnight Marriage",
-    "url": "https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3",
-    "mimeType": "audio/mpeg"
-  }],
-  "attributes": [
-    {
-      "key": "Suno Artist",
-      "value": "amazedneurofunk956"
-    },
-    {
-      "key": "Artist ID",
-      "value": "4123743b-8ba6-4028-a965-75b79a3ad424"
-    },
-    {
-      "key": "Source",
-      "value": "Suno.com"
-    }
-  ]
+  }]
 }
 ```
 
