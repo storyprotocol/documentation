@@ -346,6 +346,24 @@ Below are the important attributes you should provide in your IP metadata. Under
 
     <tr>
       <td style={{ textAlign: "left" }}>
+        `aiMetadata`
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        TBD
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        TBD
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        TBD
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
         N/A
       </td>
 
