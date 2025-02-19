@@ -397,7 +397,7 @@ For the `mediaType` field, here are the valid options:
 
 ## Hashing Content
 
-For `imageHash` and `mediaHash`, here is how you would calculate the hash:
+For `imageHash` and `mediaHash`, we use SHA-256 hashing algorithm. Here is how you would calculate the hash in code:
 
 ```typescript
 async function getFileHash(file: File): Promise<string> {
