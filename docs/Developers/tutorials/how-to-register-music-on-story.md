@@ -51,28 +51,6 @@ The only difference is how you set your metadata. In your `ipMetadata`, you can 
 const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
   title: 'Midnight Marriage',
   description: 'This is a house-style song generated on suno.',
-  ipType: 'Music',
-  media: [
-    {
-      name: 'Midnight Marriage',
-      url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
-      mimeType: 'audio/mpeg',
-    },
-  ],
-  attributes: [
-    {
-      key: 'Suno Artist',
-      value: 'amazedneurofunk956',
-    },
-    {
-      key: 'Artist ID',
-      value: '4123743b-8ba6-4028-a965-75b79a3ad424',
-    },
-    {
-      key: 'Source',
-      value: 'Suno.com',
-    },
-  ],
   creators: [
     {
       name: 'Jacob Tucker',
