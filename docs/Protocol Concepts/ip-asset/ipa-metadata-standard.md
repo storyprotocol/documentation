@@ -117,7 +117,9 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An image for your IP
+        An image for your IP.
+
+        If your IP is an image itself, you can make this the same as `mediaUrl`.
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -135,7 +137,9 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Hash of your image
+        Hash of your `image`.
+
+        If your IP is an image itself, you can make this the same as `mediaHash`.
       </td>
 
       <td style={{ textAlign: "left" }}>
