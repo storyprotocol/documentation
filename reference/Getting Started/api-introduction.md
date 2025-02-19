@@ -10,7 +10,7 @@ metadata:
 next:
   description: ''
 ---
-Welcome to the Story API Reference! Please use the `https://api.storyapis.com` endpoint.
+Welcome to the Story API Reference! Please use the `https://api.storyapis.com/api/v3` endpoint.
 
 ```text Headers
 X-CHAIN: story | story-aeneid
