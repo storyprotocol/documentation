@@ -28,6 +28,7 @@ Below are the important attributes you should provide in your IP metadata. Under
 
 * :mag: Story Explorer - this field will help display your IP on the Story Explorer
 * :detective: Commercial Infringement Check - this field is required if your IP is **commercial** (that is, has commercial license terms attached). We will use these fields to run an infringement check on your IP.
+* :robot: AI Agents - used for displaying metadata associated with AI Agents
 
 <Table align={["left","left","left","left"]}>
   <thead>
@@ -221,15 +222,15 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td style={{ textAlign: "left" }}>
-        TBD
+        `AIMetadata`
       </td>
 
       <td style={{ textAlign: "left" }}>
-        TBD
+        Used for registering & displaying AI Agent Metadata.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        TBD
+        :robot: AI Agents
       </td>
     </tr>
 
@@ -270,6 +271,14 @@ type IpCreatorSocial = {
   platform: string;
   url: string;
 };
+```
+```typescript AIMetadata
+type AIMetadata = {
+  // this can be any character file you want
+  // example: https://github.com/elizaOS/characterfile/blob/main/examples/example.character.json
+  characterFileUrl: string;
+  characterFileHash: string;
+}
 ```
 
 ## Media Types
@@ -367,6 +376,34 @@ shasum -a 256 myfile.jpg
       "mediaUrl": "https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3",
       "mediaHash": "0xb52a44f53b2485ba772bd4857a443e1fb942cf5dda73c870e2d2238ecd607aee",
       "mediaType": "audio/mpeg"
+    }
+    ```
+  </Tab>
+
+  <Tab title="AI Agent">
+    The main difference here is you should supply `aiMetadata` with a character file. You can provide any character file you want, or use <a href="https://github.com/elizaOS/characterfile/blob/main/examples/example.character.json" target="_blank">this</a> as an example.
+
+    ```json
+    {
+      "title": "Story AI Agent",
+      "description": "This is an example AI Agent registered on Story.",
+      "createdAt": "1740005219",
+      "creators": [
+        {
+          "name": "Jacob Tucker",
+          "address": "0xA2f9Cf1E40D7b03aB81e34BC50f0A8c67B4e9112",
+          "contributionPercent": 100
+        }
+      ],
+      "image": "https://ipfs.io/ipfs/bafybeigi3k77t5h5aefwpzvx3uiomuavdvqwn5rb5uhd7i7xcq466wvute",
+      "imageHash": "0x64ccc40de203f218d16bb90878ecca4338e566ab329bf7be906493ce77b1551a",
+      "mediaUrl": "https://ipfs.io/ipfs/bafybeigi3k77t5h5aefwpzvx3uiomuavdvqwn5rb5uhd7i7xcq466wvute",
+      "mediaHash": "0x64ccc40de203f218d16bb90878ecca4338e566ab329bf7be906493ce77b1551a",
+      "mediaType": "image/webp",
+      "aiMetadata": {
+      	"characterFileUrl": "https://ipfs.io/ipfs/bafkreic6eu4hlnwx46soib62rgkhhmlieko67dggu6bzk7bvtfusqsknfu",
+        "characterFileHash": "0x5e253875b6d7e7a4e407da899473b168229def8cc6a783957c35996928494d2d"
+      }
     }
     ```
   </Tab>
