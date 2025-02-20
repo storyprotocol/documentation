@@ -428,7 +428,7 @@ shasum -a 256 myfile.jpg
 
 <Tabs>
   <Tab title="Ippy Mascot">
-    View the Official Ippy Mascot [here](https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42)
+    This is the official Ippy mascot that is registered on mainnet. You can view it on our protocol explorer [here](https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42).
 
     ```json
     {
@@ -474,7 +474,7 @@ shasum -a 256 myfile.jpg
   </Tab>
 
   <Tab title="Music">
-    View the example [here](https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8).
+    This is an example song generated on [Suno](https://suno.com/) and registered on our testnet. View the example [here](https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8).
 
     ```json
     {
