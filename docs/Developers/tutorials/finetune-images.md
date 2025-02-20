@@ -454,7 +454,6 @@ export async function registerIp(inference) {
 In the `registerIp.ts` file, configure your NFT Metadata, which follows the [ERC-721 Metadata Standard](https://eips.ethereum.org/EIPS/eip-721).
 
 ```typescript story/registerIp.ts
-import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 
 export async function registerIp(inference) {
@@ -498,7 +497,6 @@ export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
 You can then use that function to upload your metadata, as shown below:
 
 ```typescript story/registerIp.ts
-import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { uploadJSONToIPFS } from "../pinata/uploadToIpfs";
 import { createHash } from "crypto";
@@ -577,7 +575,6 @@ Back in our `registerIp.ts` file, add the following code. It will mint an NFT, r
 * Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
 
 ```typescript story/registerIp.ts
-import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { uploadJSONToIPFS } from "../pinata/uploadToIpfs";
 import { createHash } from "crypto";
