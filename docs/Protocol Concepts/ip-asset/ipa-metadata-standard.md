@@ -344,91 +344,29 @@ shasum -a 256 myfile.jpg
   </Tab>
 
   <Tab title="Music">
-    ```json Music
-    // Example: https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8
+    View the example [here](https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8).
+
+    ```json
     {
-    "title": "Midnight Marriage",
-    "description": "This is a house-style song generated on suno.",
-    "createdAt": "1740005219",
-    "creators": [
-    {
-      "name": "Jacob Tucker",
-      "address": "0xA2f9Cf1E40D7b03aB81e34BC50f0A8c67B4e9112",
-      "contributionPercent": 100
-    }
-    ],
-    "image": "https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg",
-    "imageHash": "0xc404730cdcdf7e5e54e8f16bc6687f97c6578a296f4a21b452d8a6ecabd61bcc",
-    "mediaUrl": "https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3",
-    "mediaHash": "0xb52a44f53b2485ba772bd4857a443e1fb942cf5dda73c870e2d2238ecd607aee",
-    "mediaType": "audio/mpeg"
+      "title": "Midnight Marriage",
+        "description": "This is a house-style song generated on suno.",
+          "createdAt": "1740005219",
+            "creators": [
+              {
+                "name": "Jacob Tucker",
+                "address": "0xA2f9Cf1E40D7b03aB81e34BC50f0A8c67B4e9112",
+                "contributionPercent": 100
+              }
+            ],
+              "image": "https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg",
+                "imageHash": "0xc404730cdcdf7e5e54e8f16bc6687f97c6578a296f4a21b452d8a6ecabd61bcc",
+                  "mediaUrl": "https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3",
+                    "mediaHash": "0xb52a44f53b2485ba772bd4857a443e1fb942cf5dda73c870e2d2238ecd607aee",
+                      "mediaType": "audio/mpeg"
     }
     ```
   </Tab>
 </Tabs>
-
-```json Ippy Mascot
-// Official Ippy Mascot: https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42
-{
-  "title": "Ippy",
-  "description": "Official mascot of Story.",
-  "image": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
-  "imageHash": "0x21937ba9d821cb0306c7f1a1a2cc5a257509f228ea6abccc9af1a67dd754af6e",
-  "mediaUrl": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
-  "mediaHash": "0x21937ba9d821cb0306c7f1a1a2cc5a257509f228ea6abccc9af1a67dd754af6e",
-  "mediaType": "image/png",
-  "creators": [
-    {
-      "name": "Story Foundation",
-      "address": "0x67ee74EE04A0E6d14Ca6C27428B27F3EFd5CD084",
-      "description": "The World's IP Blockchain",
-      "contributionPercent": 100,
-      "socialMedia": [
-        {
-          "platform": "Twitter",
-          "url": "https://twitter.com/storyprotocol"
-        },
-        {
-          "platform": "Telegram",
-          "url": "https://t.me/StoryAnnouncements"
-        },
-        {
-          "platform": "Website",
-          "url": "https://story.foundation"
-        },
-        {
-          "platform": "Discord",
-          "url": "https://discord.gg/storyprotocol"
-        },
-        {
-          "platform": "YouTube",
-          "url": "https://youtube.com/@storyFDN"
-        }
-      ]
-    }
-  ]
-}
-```
-```json Music
-// Example: https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8
-{
-  "title": "Midnight Marriage",
-  "description": "This is a house-style song generated on suno.",
-  "createdAt": "1740005219",
-  "creators": [
-    {
-      "name": "Jacob Tucker",
-      "address": "0xA2f9Cf1E40D7b03aB81e34BC50f0A8c67B4e9112",
-      "contributionPercent": 100
-    }
-  ],
-  "image": "https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg",
-  "imageHash": "0xc404730cdcdf7e5e54e8f16bc6687f97c6578a296f4a21b452d8a6ecabd61bcc",
-  "mediaUrl": "https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3",
-  "mediaHash": "0xb52a44f53b2485ba772bd4857a443e1fb942cf5dda73c870e2d2238ecd607aee",
-  "mediaType": "audio/mpeg"
-}
-```
 
 # Experimental Fields
 
