@@ -108,7 +108,6 @@ View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your m
 
 ```javascript main.ts
 import OpenAI from 'openai'
-import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 
 async function main() {
@@ -149,7 +148,6 @@ The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.o
 
 ```javascript main.ts
 import OpenAI from 'openai'
-import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 
 async function main() {
