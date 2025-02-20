@@ -187,7 +187,6 @@ import fs from "fs";
 import axios from "axios";
 import FormData from "form-data";
 import { uploadBlobToIPFS } from './uploadToIpfs.ts'
-import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 
 async function main() {
