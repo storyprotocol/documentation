@@ -118,7 +118,6 @@ async function main() {
     "title": "Baby Sea Otter",
     "description": "A baby sea otter generated with DALL·E.",
     "createdAt": "1728401700",
-    // random images just for example
     "image": image.data[0].url,
     "imageHash": "0x...", // a hash of the image
     "mediaUrl": image.data[0].url,
