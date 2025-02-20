@@ -9873,7 +9873,6 @@ View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your m
 
 ```javascript main.ts
 import OpenAI from 'openai'
-import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 
 async function main() {
@@ -9883,25 +9882,21 @@ async function main() {
     "title": "Baby Sea Otter",
     "description": "A baby sea otter generated with DALL·E.",
     "createdAt": "1728401700",
-    "image": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
-    "imageHash": "0x21937ba9d821cb0306c7f1a1a2cc5a257509f228ea6abccc9af1a67dd754af6e",
-    "mediaUrl": "https://ipfs.io/ipfs/QmSamy4zqP91X42k6wS7kLJQVzuYJuW2EN94couPaq82A8",
-    "mediaHash": "0x21937ba9d821cb0306c7f1a1a2cc5a257509f228ea6abccc9af1a67dd754af6e",
+    "image": image.data[0].url,
+    "imageHash": "0x...", // a hash of the image
+    "mediaUrl": image.data[0].url,
+    "mediaHash": "0x...", // a hash of the image
     "mediaType": "image/png",
     "creators": [
       {
-        "name": "Story Foundation",
+        "name": "Jacob Tucker",
         "address": "0x67ee74EE04A0E6d14Ca6C27428B27F3EFd5CD084",
-        "description": "The World's IP Blockchain",
+        "description": "A cool dev rel person.",
         "contributionPercent": 100,
         "socialMedia": [
           {
             "platform": "Twitter",
-            "url": "https://twitter.com/storyprotocol"
-          },
-          {
-            "platform": "Website",
-            "url": "https://story.foundation"
+            "url": "https://x.com/jacobmtucker"
           }
         ]
       }
@@ -9918,7 +9913,6 @@ The NFT Metadata follows the [ERC-721 Metadata Standard](https://eips.ethereum.o
 
 ```javascript main.ts
 import OpenAI from 'openai'
-import { IpMetadata } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 
 async function main() {
