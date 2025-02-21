@@ -10863,11 +10863,7 @@ Before we register our new PiPi IP, we need to set up its metadata. There are tw
   </Card>
 </Cards>
 
-Using [this PiPi](https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51) as an example, here is the NFT & IP metadata that was set (*note: they are the same in this case*):
-
-> 📘 View Yourself
->
-> You can also see these yourself by going to the [explorer](https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51) and clicking "NFT Details > NFT Metadata URI > View Metadata" and "IP Details > IP Metadata URI > View Metadata"
+Using [this PiPi](https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B1b549a03625cc97e51) as an example, here is what the NFT & IP metadata should be:
 
 ```json NFT Metadata
 {
