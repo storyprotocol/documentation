@@ -11997,33 +11997,40 @@ Most of what we need to do is already covered in [Register an IP Asset](doc:regi
 
 ## 3. Change Metadata
 
-The only difference is how you set your metadata. In your `ipMetadata`, you can set a few extra related parameters (`ipType`, `media`, `attributes`, `creators`) like so:
+The only difference is how you set your metadata. Here is an example `ipMetadata`, where the `image.*` is the cover of the song, and `media.*` is the song itself.
 
-* Make sure to replace the `media.url` with the one we created in step 0!
+> 📘 Infringement Check
+>
+> Note that the fields passed into `media.*` are checked for infringement by our protocol.
 
 ```typescript main.ts
-const ipMetadata: IpMetadata = client.ipAsset.generateIpMetadata({
+const ipMetadata = {
   title: 'Midnight Marriage',
   description: 'This is a house-style song generated on suno.',
+  createdAt: '1740005219',
   creators: [
     {
       name: 'Jacob Tucker',
-      address: account.address,
+      address: '0xA2f9Cf1E40D7b03aB81e34BC50f0A8c67B4e9112',
       contributionPercent: 100,
     },
   ],
-})
+  image: 'https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg',
+  imageHash: '0xc404730cdcdf7e5e54e8f16bc6687f97c6578a296f4a21b452d8a6ecabd61bcc',
+  mediaUrl: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
+  mediaHash: '0xb52a44f53b2485ba772bd4857a443e1fb942cf5dda73c870e2d2238ecd607aee',
+  mediaType: 'audio/mpeg',
+}
 ```
 
 In your `nftMetadata`, **in order for the music to actually be played on our explorer** you must set a `media` parameter, and then you can also set some `attributes` that look something like this:
 
-* Again, make sure to replace the `media.url` with the one we created in step 0!
-* For the `image`, you can use any URL to an image. [picsum](https://picsum.photos)  is a website that generates random images, or you can use the image from your Suno song.
+* Make sure to replace the `media[0].url` with the one we created in step 0!
 
 ```typescript main.ts
 const nftMetadata = {
   name: 'Midnight Marriage',
-  description: 'This is an NFT representing ownership of the Midnight Marriage song.',
+  description: 'This is a house-style song generated on suno. This NFT represents ownership of the IP Asset.',
   image: 'https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg',
   media: [
     {
