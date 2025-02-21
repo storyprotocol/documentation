@@ -460,6 +460,8 @@ export async function uploadImageAndGetDetails(
 }
 ```
 
+We will now use this function in the following step.
+
 ## 7. Set up your IP Metadata
 
 In your `story` folder, create a `registerIp.ts` file.
