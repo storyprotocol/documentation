@@ -95,10 +95,10 @@ Using [this PiPi](https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B
   "title": "PiPi NFT",
   "description": "Pipi - The first Derivative IP Asset NFT collection on Story Protocol. Limited 2222 generative PFPs inspired by the Ippy, official Story mascot.",
   "image": "https://ipfs.io/ipfs/bafybeigsv4cgacndijwy6b7qhxbseonrybrcpbh47zrlm64gsjm4mlpb2q/nft_1103.jpeg",
-  "imageHash": "",
+  "imageHash": "0xb930f3ba19350bddbcd8c180a3127086f6e454d29cd5b3db613c70bae2848329",
   "mediaUrl": "https://ipfs.io/ipfs/bafybeigsv4cgacndijwy6b7qhxbseonrybrcpbh47zrlm64gsjm4mlpb2q/nft_1103.jpeg",
-  "mediaHash": "",
-  "mediaType" "image/jpeg",
+  "mediaHash": "0xb930f3ba19350bddbcd8c180a3127086f6e454d29cd5b3db613c70bae2848329",
+  "mediaType": "image/jpeg",
   "creators": [
     {
       "name": "PFP3",
