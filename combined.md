@@ -162,19 +162,19 @@ Below are the important attributes you should provide in your IP metadata. Under
 <Table align={["left","left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Property Name
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Type
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Description
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Required For
       </th>
     </tr>
@@ -182,201 +182,201 @@ Below are the important attributes you should provide in your IP metadata. Under
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `title`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `string`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Title of the IP
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :mag: Story Explorer
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `description`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `string`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Description of the IP
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :mag: Story Explorer
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `createdAt`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `string`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Date/Time that the IP was created (either ISO8601 or unix format).
 
         This field can be used to specify historical dates that aren’t on-chain. For example, Harry Potter was published on June 26.
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :mag: Story Explorer
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `image`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `string`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         An image for your IP.
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :mag: Story Explorer
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `imageHash`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `string`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Hash of your `image` using SHA-256 hashing algorithm. See [here](https://docs.story.foundation/docs/ipa-metadata-standard#hashing-content) for how that is done.
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :mag: Story Explorer
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `creators`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `IpCreator[]`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         An array of information about the creators. [See the type defined below](https://docs.story.foundation/docs/ipa-metadata-standard#type-definitions)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :mag: Story Explorer
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `mediaUrl`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `string`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Used for infringement checking, points to the actual media (ex. image or audio)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :detective: Commercial Infringement Check
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `mediaHash`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `string`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Hashed string of the media using SHA-256 hashing algorithm. See [here](https://docs.story.foundation/docs/ipa-metadata-standard#hashing-content) for how that is done.
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :detective: Commercial Infringement Check
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `mediaType`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `string`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Type of media (audio, video, image), based on [mimeType](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types/Common_types). See the allowed media types [here](https://docs.story.foundation/docs/ipa-metadata-standard#media-types).
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :detective: Commercial Infringement Check
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `aiMetadata`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `AIMetadata`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Used for registering & displaying AI Agent Metadata. [See the type defined below](https://docs.story.foundation/docs/ipa-metadata-standard#type-definitions)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :robot: AI Agents
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         N/A
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         N/A
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         You can include other values as well.
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         N/A
       </td>
     </tr>
@@ -423,10 +423,20 @@ For the `mediaType` field, here are the valid options:
 For `imageHash` and `mediaHash`, we use SHA-256 hashing algorithm. Here is how you would calculate the hash in code:
 
 ```typescript
+import { toHex } from 'viem';
+
+// get hash from a file
 async function getFileHash(file: File): Promise<string> {
   const arrayBuffer = await file.arrayBuffer()
   const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer)
   return toHex(new Uint8Array(hashBuffer), { size: 32 })
+}
+
+// get hash from a url
+async function getHashFromUrl(url: string): Promise<string> {
+  const response = await axios.get(url, { responseType: "arraybuffer" });
+  const buffer = Buffer.from(response.data);
+  return "0x" + createHash("sha256").update(buffer).digest("hex");
 }
 ```
 ```shell Shell
