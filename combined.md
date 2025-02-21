@@ -265,7 +265,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Hash of your `image` using SHA-256 hashing algorithm. See [here](https://docs.story.foundation/docs/ipa-metadata-standard#hashing-content)  for how that is done.
+        Hash of your `image` using SHA-256 hashing algorithm. See [here](https://docs.story.foundation/docs/ipa-metadata-standard#hashing-content) for how that is done.
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -283,7 +283,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td style={{ textAlign: "left" }}>
-        An array of information about the creators. Creator type defined below.
+        An array of information about the creators. [See the type defined below](https://docs.story.foundation/docs/ipa-metadata-standard#type-definitions)
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -355,7 +355,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td style={{ textAlign: "left" }}>
-        Used for registering & displaying AI Agent Metadata.
+        Used for registering & displaying AI Agent Metadata. [See the type defined below](https://docs.story.foundation/docs/ipa-metadata-standard#type-definitions)
       </td>
 
       <td style={{ textAlign: "left" }}>
