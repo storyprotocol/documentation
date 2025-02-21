@@ -37,7 +37,7 @@ npm install pinata-web3
 
 ## 1. \[OPTIONAL] Set up your IP Metadata
 
-We can set metadata on our NFT & IP, *but you don't have to*. To do this, view the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for both your NFT & IP.
+We can set metadata on our NFT & IP, *but you don't have to*. To do this, view the [📝 IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for both your NFT & IP.
 
 ```typescript main.ts
 // you should already have a client set up (prerequisite)

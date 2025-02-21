@@ -96,7 +96,7 @@ const client = StoryClient.newClient(config);
 
 ## 3. Set up your IP Metadata
 
-View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for your IP. You can use the `generateIpMetadata` function to properly format your metadata and ensure it is of the correct type, as shown below:
+View the [📝 IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for your IP. You can use the `generateIpMetadata` function to properly format your metadata and ensure it is of the correct type, as shown below:
 
 ```javascript main.ts
 import { IpMetadata } from "@story-protocol/core-sdk";

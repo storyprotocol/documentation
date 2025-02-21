@@ -466,7 +466,7 @@ We will now use this function in the following step.
 
 In your `story` folder, create a `registerIp.ts` file.
 
-View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct the metadata for your IP as shown below:
+View the [📝 IPA Metadata Standard](doc:ipa-metadata-standard) and construct the metadata for your IP as shown below:
 
 ```typescript story/registerIp.ts
 import { client, account } from './utils'

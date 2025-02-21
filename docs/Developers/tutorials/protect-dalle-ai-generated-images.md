@@ -104,7 +104,7 @@ export const client = StoryClient.newClient(config);
 
 ## 3. Set up your IP Metadata
 
-View the [IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for your IP. Back in the `main.ts` file, properly format your metadata as shown below:
+View the [📝 IPA Metadata Standard](doc:ipa-metadata-standard) and construct your metadata for your IP. Back in the `main.ts` file, properly format your metadata as shown below:
 
 ```javascript main.ts
 import OpenAI from 'openai'
