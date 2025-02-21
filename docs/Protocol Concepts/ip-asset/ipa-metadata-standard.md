@@ -1,6 +1,6 @@
 ---
-title: IPA Metadata Standard
-excerpt: ''
+title: 📝 IPA Metadata Standard
+excerpt: An overview of the IP-specific metadata standard.
 deprecated: false
 hidden: false
 metadata:
