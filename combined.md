@@ -138,7 +138,7 @@ In addition, [Group IPAs](doc:grouping-module) are subject to the following addi
 | Add IP Asset to a Group      | You can only add an IP Asset to a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it.      |
 | Remove IP Asset from a Group | You can only remove an IP Asset from a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it. |
 
-# IPA Metadata Standard
+# 📝 IPA Metadata Standard
 > 🚧 Warning: Still Under Discussion
 >
 > We are still figuring out the best way to define an IPA Metadata Standard. For the sake of transparency, the following document is our thoughts so far but is subject to change as we release future versions.
