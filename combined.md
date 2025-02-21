@@ -5195,7 +5195,7 @@ And lastly, some utility/extra clients:
 
 ### payRoyaltyOnBehalf
 
-Allows the function caller to pay royalties to the receiver IP asset on behalf of the payer IP asset.
+Allows the function caller to pay royalties to a receiver IP asset on behalf of the payer IP Asset.
 
 | Method               | Type                                                                          |
 | -------------------- | ----------------------------------------------------------------------------- |
@@ -5212,14 +5212,32 @@ Parameters:
 ```typescript TypeScript
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
+// In this case, lets say there is a root IPA 'A' and a derivative IPA 'B'.
+// Someone wants to pay 'B' for whatever reason (they bought it, they want to tip it, etc).
+// Since the payer is not an IP Asset (rather an external user), the `payerIpId` can
+// be a zeroAddress. And the receiver is, well, the receiver's ipId which is B.
+//
+// It's important to note that both 'B' and its parent 'A' will be able
+// to claim revenue from this based on the negotiated license terms
 const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
-  receiverIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // child ipId
+  receiverIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // B's ipId
   payerIpId: zeroAddress,
   token: WIP_TOKEN_ADDRESS,
   amount: 2,
   txOptions: { waitForTransaction: true },
 });
+console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
 
+// In this case, lets say there is a root IPA 'A' and a derivative IPA 'B'.
+// 'B' earns revenue off-chain, but must pay 'A' based on their negotiated license terms.
+// So 'B' pays 'A' what they are due
+const payRoyalty = await client.royalty.payRoyaltyOnBehalf({
+  receiverIpId: "0x6B86B39F03558A8a4E9252d73F2bDeBfBedf5b68", // A's ipId
+  payerIpId: "0x0b825D9E5FA196e6B563C0a446e8D9885057f9B1", // B's ipId
+  token: WIP_TOKEN_ADDRESS,
+  amount: 2,
+  txOptions: { waitForTransaction: true },
+});
 console.log(`Paid royalty at transaction hash ${payRoyalty.txHash}`);
 ```
 ```typescript Request Type
