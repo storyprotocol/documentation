@@ -10899,75 +10899,18 @@ Using [this PiPi](https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B
       "value": "Duck"
     }
   ],
-  "title": "PiPi NFT",
-  "ipType": "NFT",
-  "description": "Pipi - The first Derivative IP Asset NFT collection on Story Protocol. Limited 2222 generative PFPs inspired by the Ippy, official Story mascot.",
-  "creators": [
-    {
-      "name": "PFP3",
-      "address": "0xF91510A17392Be6B3b6F620427051168A1e56A72",
-      "description": "PFP Generator",
-      "image": "https://utfs.io/f/XyGBmmuHQK18FodS0WDuqCo1LVerXR7sgm8vJnESazWcM5yB",
-      "socialMedia": [
-        {
-          "platform": "twitter",
-          "url": "https://x.com/pfp3_"
-        },
-        {
-          "platform": "website",
-          "url": "https://pfp3.io"
-        },
-        {
-          "platform": "discord",
-          "url": "https://discord.gg/pfp3"
-        }
-      ],
-      "role": "creator",
-      "contributionPercent": 100
-    }
-  ],
-  "tags": [
-    "PiPi",
-    "Derivative IPA",
-    "NFT",
-    "PF3",
-    "PFP"
-  ]
+  "description": "Pipi - The first Derivative IP Asset NFT collection on Story Protocol. Limited 2222 generative PFPs inspired by the Ippy, official Story mascot."
 }
 ```
 ```json IP Metadata
 {
-  "name": "PiPi NFT #1103",
-  "image": "https://ipfs.io/ipfs/bafybeigsv4cgacndijwy6b7qhxbseonrybrcpbh47zrlm64gsjm4mlpb2q/nft_1103.jpeg",
-  "attributes": [
-    {
-      "trait_type": "Bg",
-      "value": "Orange"
-    },
-    {
-      "trait_type": "Body",
-      "value": "Pink"
-    },
-    {
-      "trait_type": "Eyes",
-      "value": "Cute"
-    },
-    {
-      "trait_type": "Cloth",
-      "value": "Blue"
-    },
-    {
-      "trait_type": "Glasses",
-      "value": "Neo"
-    },
-    {
-      "trait_type": "Hat",
-      "value": "Duck"
-    }
-  ],
   "title": "PiPi NFT",
-  "ipType": "NFT",
   "description": "Pipi - The first Derivative IP Asset NFT collection on Story Protocol. Limited 2222 generative PFPs inspired by the Ippy, official Story mascot.",
+  "image": "https://ipfs.io/ipfs/bafybeigsv4cgacndijwy6b7qhxbseonrybrcpbh47zrlm64gsjm4mlpb2q/nft_1103.jpeg",
+  "imageHash": "",
+  "mediaUrl": "https://ipfs.io/ipfs/bafybeigsv4cgacndijwy6b7qhxbseonrybrcpbh47zrlm64gsjm4mlpb2q/nft_1103.jpeg",
+  "mediaHash": "",
+  "mediaType" "image/jpeg",
   "creators": [
     {
       "name": "PFP3",
@@ -10998,7 +10941,8 @@ Using [this PiPi](https://explorer.story.foundation/ipa/0xBB42BF2713ee736284C45B
     "NFT",
     "PF3",
     "PFP"
-  ]
+  ], // experimental field
+  "ipType": "NFT" // experimental field
 }
 ```
 
