@@ -49,8 +49,9 @@ async function main() {
   const licenseTerms: LicenseTerms = {
     defaultMintingFee: 0n,
     // must be a whitelisted revenue token from https://docs.story.foundation/docs/deployed-smart-contracts
+    // in this case, we use $WIP
     currency: '0x1514000000000000000000000000000000000000',
-    // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+    // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
     royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E',
     transferable: false,
     expiration: 0n,

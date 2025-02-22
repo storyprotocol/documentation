@@ -319,7 +319,7 @@ async function main() {
 
   const commercialRemixTerms: LicenseTerms = {
     transferable: true,
-    royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+    royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
     defaultMintingFee: BigInt(10),
     expiration: BigInt(0),
     commercialUse: true,

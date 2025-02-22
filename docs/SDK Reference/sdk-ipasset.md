@@ -442,7 +442,7 @@ import { toHex } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   defaultMintingFee: BigInt(0),
   expiration: BigInt(0),
   commercialUse: true,
@@ -456,7 +456,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -796,7 +796,7 @@ import { LicenseTerms } from '@story-protocol/core-sdk';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   defaultMintingFee: BigInt(0),
   expiration: BigInt(0),
   commercialUse: true,
@@ -810,7 +810,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
