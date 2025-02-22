@@ -5280,7 +5280,7 @@ This section provides a detailed description of every function in our SDK.
   </Card>
 
   <Card title="Step-by-Step Guide" href="https://docs.story.foundation/docs/typescript-sdk" icon="fa-home" target="_blank">
-    Learn our SDK through a series of tutorials with the TypeScript SDK Guide.
+    Learn our SDK through a series of tutorials with the SDK Guide.
   </Card>
 </Cards>
 
