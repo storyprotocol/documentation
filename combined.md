@@ -5232,7 +5232,7 @@ export type SetPermissionsResponse = {
 # Overview
 This section provides a detailed description of every function in our SDK.
 
-<Table align={["left","left","left"]}>
+<Table align={["left","left","left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
@@ -5244,7 +5244,11 @@ This section provides a detailed description of every function in our SDK.
       </th>
 
       <th style={{ textAlign: "left" }}>
-        Supported Functions
+        Package
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        GitHub
       </th>
     </tr>
   </thead>
@@ -5260,7 +5264,11 @@ This section provides a detailed description of every function in our SDK.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        All
+        <a href="https://www.npmjs.com/package/@story-protocol/core-sdk" target="_blank">📦 NPM Package</a>
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        <a href="https://github.com/storyprotocol/sdk" target="_blank">View Code ↗️</a>
       </td>
     </tr>
 
@@ -5274,16 +5282,11 @@ This section provides a detailed description of every function in our SDK.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        * `register`
-        * `registerDerivative`
-        * `registerDerivativeWithLicenseTokens`
-        * `registerPILTerms`
-        * `mintLicenseTokens`
-        * `attachLicenseTerms`
-        * `mintAndRegisterIpAssetWithPilTerms`
-        * `registerNonComSocialRemixingPIL`
-        * `registerCommercialUsePIL`
-        * `registerCommercialRemixPIL`
+        <a href="https://pypi.org/project/story-protocol-python-sdk" target="_blank">📦 PyPi Package</a>
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        <a href="https://github.com/storyprotocol/python-sdk" target="_blank">View Code ↗️</a>
       </td>
     </tr>
   </tbody>
@@ -5291,15 +5294,7 @@ This section provides a detailed description of every function in our SDK.
 
 ***
 
-<Cards columns={3}>
-  <Card title="TypeScript NPM Package" href="https://www.npmjs.com/package/@story-protocol/core-sdk" icon="fa-home" iconColor="red" target="_blank">
-    View our `@story-protocol/core-sdk` package on npm.
-  </Card>
-
-  <Card title="Python Package" href="https://pypi.org/project/story-protocol-python-sdk" icon="fa-home" iconColor="#0273b7" target="_blank">
-    View our `story_protocol_python_sdk` package on pypi.
-  </Card>
-
+<Cards columns={1}>
   <Card title="Step-by-Step Guide" href="https://docs.story.foundation/docs/typescript-sdk" icon="fa-home" target="_blank">
     Learn our SDK through a series of tutorials with the TypeScript SDK Guide.
   </Card>
