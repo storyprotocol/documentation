@@ -5481,6 +5481,13 @@ if (response.success) {
   console.log(`License Terms already attached to this IPA.`)
 }
 ```
+```python
+response = story_client.License.attachLicenseTerms(
+  ip_id="0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721",
+  license_template="0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316", # insert PILicenseTemplate from https://docs.story.foundation/docs/deployed-smart-contracts
+  license_terms_id="1"
+)
+```
 ```typescript Request Type
 export type AttachLicenseTermsRequest = {
   ipId: Address;
@@ -5526,7 +5533,7 @@ Parameters:
 const response = await client.license.mintLicenseTokens({
   licenseTermsId: "1", 
   licensorIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
-  receiver: "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", 
+  receiver: "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", // optional
   amount: 1,
   maxMintingFee: BigInt(0), // disabled
   maxRevenueShare: 100, // default
@@ -5534,6 +5541,17 @@ const response = await client.license.mintLicenseTokens({
 });
 
 console.log(`License Token minted at transaction hash ${response.txHash}, License IDs: ${response.licenseTokenIds}`)
+```
+```python
+response = client.License.mintLicenseTokens(
+  licensor_ip_id="0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+  license_template="0x2E896b0b2Fdb7457499B56AAaA4AE55BCB4Cd316", # insert PILicenseTemplate from https://docs.story.foundation/docs/deployed-smart-contracts
+  license_terms_id="1",
+  amount=1,
+  receiver="0x14dC79964da2C08b23698B3D3cc7Ca32193d9955", # optional
+  max_minting_fee=0, # disabled
+  max_revenue_share=100 # default
+)
 ```
 ```typescript Request Type
 export type MintLicenseTokensRequest = {
@@ -5573,10 +5591,9 @@ import { LicenseTerms } from '@story-protocol/core-sdk';
 import { zeroAddress } from 'viem';
 
 const licenseTerms: LicenseTerms = {
-  defaultMintingFee: 0n,
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   transferable: false,
+  royaltyPolicy: "0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E", // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: 0n,
   expiration: 0n,
   commercialUse: false,
   commercialAttribution: false,
@@ -5584,11 +5601,12 @@ const licenseTerms: LicenseTerms = {
   commercializerCheckerData: '0x',
   commercialRevShare: 10, // 10%
   commercialRevCeiling: 0n,
-  derivativesAllowed: false,
+  derivativesAllowed: true,
   derivativesAttribution: false,
   derivativesApproval: false,
   derivativesReciprocal: false,
   derivativeRevCeiling: 0n,
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -5598,6 +5616,27 @@ const response = await client.license.registerPILTerms({
 })
 
 console.log(`PIL Terms registered at transaction hash ${response.txHash}, License Terms ID: ${response.licenseTermsId}`) 
+```
+```python
+response = story_client.License.registerPILTerms(
+  transferable=False,
+  royalty_policy="0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E", # RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  default_minting_fee=0,
+  expiration=0,
+  commercial_use=False,
+  commercial_attribution=False,
+  commercializer_checker="0x0000000000000000000000000000000000000000",
+  commercializer_checker_data="0x",
+  commercial_rev_share=10, # 10%
+  commercial_rev_ceiling=0,
+  derivatives_allowed=True,
+  derivatives_attribution=False,
+  derivatives_approval=False,
+  derivatives_reciprocal=False,
+  derivative_rev_ceiling=0,
+  currency="0x1514000000000000000000000000000000000000", # $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  uri="",
+)
 ```
 ```typescript Request Type
 export type RegisterPILTermsRequest = Omit<
