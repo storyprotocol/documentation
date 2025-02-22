@@ -36,7 +36,7 @@ This section provides a detailed description of every function in our SDK.
   <tbody>
     <tr>
       <td style={{ textAlign: "left" }}>
-        🔷 TypeScript
+        🔷TypeScript
       </td>
 
       <td style={{ textAlign: "left" }}>
@@ -54,7 +54,7 @@ This section provides a detailed description of every function in our SDK.
 
     <tr>
       <td style={{ textAlign: "left" }}>
-        :snake: Python
+        :snake:Python
       </td>
 
       <td style={{ textAlign: "left" }}>
