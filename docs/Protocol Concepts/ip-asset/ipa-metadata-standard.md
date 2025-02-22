@@ -367,7 +367,7 @@ shasum -a 256 myfile.jpg
   </Tab>
 
   <Tab title="Music">
-    This is an example song generated on <a href="https://suno.com/" target="_blank">Suno</a> and registered on our testnet. View the example <a href="https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" target="_blank">here</a>.
+    This is an example song generated on <a href="https://suno.com/" target="_blank">Suno</a> and registered on our testnet. View the example <a href="https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" target="_blank">on our protocol explorer</a>.
 
     ```json
     {
@@ -391,7 +391,9 @@ shasum -a 256 myfile.jpg
   </Tab>
 
   <Tab title="AI Agent">
-    The main difference here is you should supply `aiMetadata` with a character file. You can provide any character file you want, or use <a href="https://github.com/elizaOS/characterfile/blob/main/examples/example.character.json" target="_blank">this</a> as an example.
+    The main difference here is you should supply `aiMetadata` with a character file. You can provide any character file you want, or use <a href="https://github.com/elizaOS/characterfile/blob/main/examples/example.character.json" target="_blank">this ElizaOS example</a> as a template.
+
+    View the below example <a href="https://aeneid.explorer.story.foundation/ipa/0x49614De8b2b02C790708243F268Af50979D568d4" target="_blank">on our protocol explorer</a>.
 
     ```json
     {
