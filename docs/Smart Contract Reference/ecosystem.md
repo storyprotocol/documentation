@@ -1,7 +1,7 @@
 ---
 title: Ecosystem
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   robots: index
 ---
