@@ -91,6 +91,20 @@ const response = await client.ipAsset.register({
 
 console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
 ```
+```python Python
+metadata = {
+  'ip_metadata_uri': "test-uri",
+  'ip_metadata_hash': web3.to_hex(web3.keccak(text="test-ip-metadata-hash")),
+  'nft_metadata_uri': "test-uri",
+  'nft_metadata_hash': web3.to_hex(web3.keccak(text="test-nft-metadata-hash"))
+}
+
+response = story_client.IPAsset.register(
+  nft_contract="0x041B4F29183317Fd352AE57e331154b73F8a1D73",
+  token_id="12",
+  ip_metadata=metadata
+)
+```
 ```typescript Request Type
 export type RegisterRequest = {
   nftContract: Address;
