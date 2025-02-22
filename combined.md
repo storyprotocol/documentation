@@ -4201,7 +4201,7 @@ import { toHex } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   defaultMintingFee: BigInt(0),
   expiration: BigInt(0),
   commercialUse: true,
@@ -4215,7 +4215,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -4555,7 +4555,7 @@ import { LicenseTerms } from '@story-protocol/core-sdk';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   defaultMintingFee: BigInt(0),
   expiration: BigInt(0),
   commercialUse: true,
@@ -4569,7 +4569,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -11621,7 +11621,7 @@ async function main() {
 
   const commercialRemixTerms: LicenseTerms = {
     transferable: true,
-    royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+    royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
     defaultMintingFee: BigInt(10),
     expiration: BigInt(0),
     commercialUse: true,
@@ -13959,8 +13959,9 @@ async function main() {
   const licenseTerms: LicenseTerms = {
     defaultMintingFee: 0n,
     // must be a whitelisted revenue token from https://docs.story.foundation/docs/deployed-smart-contracts
+    // in this case, we use $WIP
     currency: '0x1514000000000000000000000000000000000000',
-    // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+    // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
     royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E',
     transferable: false,
     expiration: 0n,
@@ -14083,8 +14084,8 @@ import { zeroAddress } from 'viem';
 
 const licenseTerms: LicenseTerms = {
   defaultMintingFee: 0n,
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   transferable: false,
   expiration: 0n,
   commercialUse: false,
@@ -14171,7 +14172,7 @@ export type RegisterPILResponse = {
 
 ```typescript TypeScript
 const commercialUseParams = {
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   defaultMintingFee: '10' // 10 of the currency (using the above currency, 10 $WIP)
 }
 
@@ -14206,7 +14207,7 @@ Setting `waitForTransaction: true` in the transaction options will return the `l
 
 ```typescript TypeScript
 const commercialRemixParams = {
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   defaultMintingFee: '10', // 10 of the currency (using the above currency, 10 $WIP)
   commercialRevShare: 10 // 10%
 }
