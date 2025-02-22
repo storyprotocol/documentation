@@ -44,7 +44,7 @@ This section provides a detailed description of every function in our SDK.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        <a href="https://www.npmjs.com/package/@story-protocol/core-sdk" target="_blank">📦 NPM Package</a>
+        <a href="https://www.npmjs.com/package/@story-protocol/core-sdk" target="_blank">📦 npm Package</a>
       </td>
 
       <td style={{ textAlign: "left" }}>
