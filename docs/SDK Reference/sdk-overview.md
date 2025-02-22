@@ -54,7 +54,16 @@ This section provides a detailed description of every function in our SDK.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        `register`, `registerDerivative`, `registerDerivativeWithLicenseTokens`, `registerPILTerms`, `mintLicenseTokens`, `attachLicenseTerms`, `mintAndRegisterIpAssetWithPilTerms`, `registerNonComSocialRemixingPIL`, `registerCommercialUsePIL`, `registerCommercialRemixPIL`
+        * `register`
+        * `registerDerivative`
+        * `registerDerivativeWithLicenseTokens`
+        * `registerPILTerms`
+        * `mintLicenseTokens`
+        * `attachLicenseTerms`
+        * `mintAndRegisterIpAssetWithPilTerms`
+        * `registerNonComSocialRemixingPIL`
+        * `registerCommercialUsePIL`
+        * `registerCommercialRemixPIL`
       </td>
     </tr>
   </tbody>
