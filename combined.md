@@ -5718,6 +5718,9 @@ const response = await client.license.registerNonComSocialRemixingPIL({
 
 console.log(`PIL Terms registered at transaction hash ${response.txHash}, License Terms ID: ${response.licenseTermsId}`) 
 ```
+```python
+response = story_client.License.registerNonComSocialRemixingPIL()
+```
 ```typescript Request Type
 export type RegisterNonComSocialRemixingPILRequest = {
   txOptions?: TxOptions;
@@ -5748,8 +5751,9 @@ Parameters:
 
 ```typescript TypeScript
 const commercialUseParams = {
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: '10' // 10 of the currency (using the above currency, 10 $WIP)
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  defaultMintingFee: '10', // 10 of the currency (using the above currency, 10 $WIP)
+  royaltyPolicyAddress: "0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E" // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
 }
 
 const response = await client.license.registerCommercialUsePIL({
@@ -5758,6 +5762,13 @@ const response = await client.license.registerCommercialUsePIL({
 });
 
 console.log(`PIL Terms registered at transaction hash ${response.txHash}, License Terms ID: ${response.licenseTermsId}`) 
+```
+```python
+response = story_client.License.registerCommercialUsePIL(
+  currency='0x1514000000000000000000000000000000000000', # $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  default_minting_fee=10, # 10 of the currency (using the above currency, 10 $WIP),
+  royalty_policy="0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E", # RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+)
 ```
 ```typescript Request Type
 export type RegisterCommercialUsePILRequest = {
@@ -5793,8 +5804,9 @@ Parameters:
 
 ```typescript TypeScript
 const commercialRemixParams = {
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   defaultMintingFee: '10', // 10 of the currency (using the above currency, 10 $WIP)
+  royaltyPolicyAddress: "0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E", // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   commercialRevShare: 10 // 10%
 }
 
@@ -5804,6 +5816,14 @@ const response = await client.license.registerCommercialRemixPIL({
 });
 
 console.log(`PIL Terms registered at transaction hash ${response.txHash}, License Terms ID: ${response.licenseTermsId}`) 
+```
+```python
+response = story_client.License.registerCommercialRemixPIL(
+  currency='0x1514000000000000000000000000000000000000', # $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  default_minting_fee=10, # 10 of the currency (using the above currency, 10 $WIP)
+  royalty_policy="0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E", # RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  commercial_rev_share=10 # 10%
+)
 ```
 ```typescript Request Type
 export type RegisterCommercialRemixPILRequest = {
