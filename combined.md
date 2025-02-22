@@ -5232,9 +5232,18 @@ export type SetPermissionsResponse = {
 # Overview
 This section provides a detailed description of every function in our SDK.
 
-<Cards columns={2}>
-  <Card title="NPM Package" href="https://www.npmjs.com/package/@story-protocol/core-sdk" icon="fa-home" iconColor="red" target="_blank">
+We currently have:
+
+* :white_check_mark: Complete support for TypeScript
+* :hourglass: Partial support for Python (some functions are not yet released)
+
+<Cards columns={3}>
+  <Card title="TypeScript NPM Package" href="https://www.npmjs.com/package/@story-protocol/core-sdk" icon="fa-home" iconColor="red" target="_blank">
     View our `@story-protocol/core-sdk` package on npm.
+  </Card>
+
+  <Card title="Python Package" href="https://pypi.org/project/story-protocol-python-sdk" icon="fa-home" iconColor="#0273b7" target="_blank">
+    View our `story_protocol_python_sdk` package on pypi.
   </Card>
 
   <Card title="Step-by-Step Guide" href="https://docs.story.foundation/docs/typescript-sdk" icon="fa-home" target="_blank">
