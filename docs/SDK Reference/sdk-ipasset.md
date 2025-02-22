@@ -165,6 +165,16 @@ const response = await client.ipAsset.registerDerivative({
 
 console.log(`Derivative IPA linked to parent at transaction hash ${response.txHash}`)
 ```
+```python
+response = story_client.IPAsset.registerDerivative(
+  child_ip_id="0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+  parent_ip_ids=["0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba"],
+  license_terms_ids=["5"],
+  max_minting_fee=0, # disabled
+  max_rts=100_000_000, # default
+  max_revenue_share=100 # default
+)
+```
 ```typescript Request Type
 export type RegisterDerivativeRequest = {
   txOptions?: TxOptions;
@@ -218,6 +228,13 @@ const response = await client.ipAsset.registerDerivativeWithLicenseTokens({
 
 console.log(`Derivative IPA linked to parent at transaction hash ${response.txHash}`)
 ```
+```python
+response = story_client.IPAsset.registerDerivativeWithLicenseTokens(
+  child_ip_id="0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
+  license_token_ids=["5"],
+  max_rts=100_000_000 # default
+)
+```
 ```typescript Request Type
 export type RegisterDerivativeWithLicenseTokensRequest = {
   childIpId: Address;
@@ -265,7 +282,7 @@ import { LicenseTerms } from '@story-protocol/core-sdk';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
-  royaltyPolicy: RoyaltyPolicyLAP, // insert RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
   defaultMintingFee: BigInt(0),
   expiration: BigInt(0),
   commercialUse: true,
@@ -279,7 +296,7 @@ const commercialRemixTerms: LicenseTerms = {
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCeiling: BigInt(0),
-  currency: '0x1514000000000000000000000000000000000000', // insert $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
@@ -314,6 +331,55 @@ console.log(`
   IPA ID: ${response.ipId}, 
   License Terms ID: ${response.licenseTermsId}
 `)
+```
+```python
+commercial_remix_terms = {
+  "transferable": True,
+  "royalty_policy": "0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E", # RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  "default_minting_fee": 0,
+  "expiration": 0,
+  "commercial_use": True,
+  "commercial_attribution": True,
+  "commercializer_checker": "0x0000000000000000000000000000000000000000",
+  "commercializer_checker_data": "0x0000000000000000000000000000000000000000",
+  "commercial_rev_share": 50,
+  "commercial_rev_ceiling": 0,
+  "derivatives_allowed": True,
+  "derivatives_attribution": True,
+  "derivatives_approval": False,
+  "derivatives_reciprocal": True,
+  "derivative_rev_ceiling": 0,
+  "currency": "0x1514000000000000000000000000000000000000", # $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
+  "uri": "",
+}
+
+licensing_config = {
+  "is_set": False,
+  "minting_fee": 0,
+  "licensing_hook": "0x0000000000000000000000000000000000000000",
+  "hook_data": "0x0000000000000000000000000000000000000000",
+  "commercial_rev_share": 0,
+  "disabled": False,
+  "expect_minimum_group_reward_share": 0,
+  "expect_group_reward_pool": "0x0000000000000000000000000000000000000000",
+}
+
+metadata = {
+  'ip_metadata_uri': "test-uri",
+  'ip_metadata_hash': web3.to_hex(web3.keccak(text="test-ip-metadata-hash")),
+  'nft_metadata_uri': "test-uri",
+  'nft_metadata_hash': web3.to_hex(web3.keccak(text="test-nft-metadata-hash"))
+}
+
+response = story_client.IPAsset.mintAndRegisterIpAssetWithPilTerms(
+  spg_nft_contract="0xfE265a91dBe911db06999019228a678b86C04959",
+  terms=[{
+    "terms": commercial_remix_terms, 
+    "licensingConfig": licensing_config
+  }],
+  allow_duplicates=True,
+  ip_metadata=metadata
+)
 ```
 ```typescript Request Type
 export type MintAndRegisterIpAssetWithPilTermsRequest = {
