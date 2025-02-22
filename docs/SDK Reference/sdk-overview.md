@@ -48,7 +48,7 @@ This section provides a detailed description of every function in our SDK.
       </td>
 
       <td style={{ textAlign: "left" }}>
-        <a href="https://github.com/storyprotocol/sdk" target="_blank">↗️ View Code</a>
+        <a href="https://github.com/storyprotocol/sdk/tree/main" target="_blank">↗️ View Code</a>
       </td>
     </tr>
 
