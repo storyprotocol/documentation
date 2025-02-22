@@ -12,10 +12,43 @@ next:
 ---
 This section provides a detailed description of every function in our SDK.
 
-We currently have:
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>
+        Package
+      </th>
 
-* :white_check_mark: Complete support for TypeScript
-* :hourglass: Partial support for Python (some functions are not yet released)
+      <th style={{ textAlign: "left" }}>
+        Status
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        🔷 TypeScript
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :white_check_mark: Full Compatibility
+      </td>
+    </tr>
+
+    <tr>
+      <td style={{ textAlign: "left" }}>
+        :snake: Python
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        :warning: Partial Compatibility (some functions are not yet released)
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
+***
 
 <Cards columns={3}>
   <Card title="TypeScript NPM Package" href="https://www.npmjs.com/package/@story-protocol/core-sdk" icon="fa-home" iconColor="red" target="_blank">
