@@ -5232,7 +5232,7 @@ export type SetPermissionsResponse = {
 # Overview
 This section provides a detailed description of every function in our SDK.
 
-<Table align={["left","left"]}>
+<Table align={["left","left","left"]}>
   <thead>
     <tr>
       <th style={{ textAlign: "left" }}>
@@ -5241,6 +5241,10 @@ This section provides a detailed description of every function in our SDK.
 
       <th style={{ textAlign: "left" }}>
         Status
+      </th>
+
+      <th style={{ textAlign: "left" }}>
+        Supported Functions
       </th>
     </tr>
   </thead>
@@ -5254,6 +5258,10 @@ This section provides a detailed description of every function in our SDK.
       <td style={{ textAlign: "left" }}>
         :white_check_mark: Full Compatibility
       </td>
+
+      <td style={{ textAlign: "left" }}>
+        All
+      </td>
     </tr>
 
     <tr>
@@ -5263,6 +5271,10 @@ This section provides a detailed description of every function in our SDK.
 
       <td style={{ textAlign: "left" }}>
         :warning: Partial Compatibility (some functions are not yet released)
+      </td>
+
+      <td style={{ textAlign: "left" }}>
+        `register`, `registerDerivative`, `registerDerivativeWithLicenseTokens`, `registerPILTerms`, `mintLicenseTokens`, `attachLicenseTerms`, `mintAndRegisterIpAssetWithPilTerms`, `registerNonComSocialRemixingPIL`, `registerCommercialUsePIL`, `registerCommercialRemixPIL`
       </td>
     </tr>
   </tbody>
