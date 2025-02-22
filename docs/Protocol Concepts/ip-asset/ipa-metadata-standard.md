@@ -367,7 +367,7 @@ shasum -a 256 myfile.jpg
   </Tab>
 
   <Tab title="Music">
-    This is an example song generated on <a href="https://suno.com/" target="_blank">Suno</a> and registered on our testnet. View the example <a href="https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" target="_blank">on our protocol explorer</a>.
+    This is an example song generated on <a href="https://suno.com/" target="_blank">Suno</a> and registered on our testnet. View the below example <a href="https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8" target="_blank">on our protocol explorer</a>.
 
     ```json
     {
