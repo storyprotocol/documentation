@@ -1,8 +1,11 @@
 ---
 title: Story Ecosystem - Getting Started
+excerpt: ''
 deprecated: false
 hidden: false
 metadata:
+  title: ''
+  description: ''
   image: >-
     https://files.readme.io/2f833d9d3b353d115aabfba450c64b10f6ebb997dd7c879c14597d6e853ecba7-story-ecosystem.png
   robots: index
