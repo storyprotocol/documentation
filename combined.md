@@ -1,4 +1,6 @@
 # Story Ecosystem - Getting Started
+![](https://files.readme.io/cf39a91038f3fbd5cfdaacd2ce78964498a970a64d056529e668158b3f6e0299-image.png)
+
 ## Stay in the Loop
 
 * [Story Official X](https://x.com/StoryProtocol): Get the big announcements.
@@ -174,7 +176,7 @@ Though this is an initial list of projects, there are many more incredible apps 
 
 ### DeFi x IPFi
 
-<Table>
+<Table align={["left","left","left"]}>
   <thead>
     <tr>
       <th>
