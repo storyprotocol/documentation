@@ -28,7 +28,7 @@ Though this is an initial list of projects, there are many more incredible apps 
 
 ### AI Agents, IP-Based Tokens, and NFT Projects
 
-<Table>
+<Table align={["left","left","left"]}>
   <thead>
     <tr>
       <th>
@@ -179,33 +179,165 @@ Though this is an initial list of projects, there are many more incredible apps 
   </tbody>
 </Table>
 
-<br />
-
 ### DeFi x IPFi
 
-| **Project Name** | **Description**                                                                                                                                                              | **X/Twitter** |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| Verio            | Verio is live—stake and restake to maximize your rewards while keeping your assets liquid. Earn yield, secure the network, and unlock exclusive benefits for early adopters. |               |
+<Table>
+  <thead>
+    <tr>
+      <th>
+        **Project Name**
+      </th>
 
-Don’t just stake—restake and optimize your rewards with Verio. | [https://x.com/verio\_story](https://x.com/verio_story) |\
-\| PiperX | PiperX is the first DEX backed by Story, consistently ranking #1 in both user count and transaction volume. Fast-Swap Mode to ensure low slippage and fast transaction completion during high traffic.
+      <th>
+        **Description**
+      </th>
 
-Discover and trade the next big alpha in IP-backed memes, Real-World IP (RWIP) token, and agent tokens with PiperX.
+      <th>
+        **X/Twitter**
+      </th>
+    </tr>
+  </thead>
 
-With Concentrated Liquidity AMM. | [https://x.com/PiperxProtocol](https://x.com/PiperxProtocol) |\
-\| Unleash | **Unleash**, One stop shop for IP management and money market on Story.
+  <tbody>
+    <tr>
+      <td>
+        Verio
+      </td>
 
-Unleash is composed of **IPad (IP Launchpad)** and **IP Money Marke**t for an optimal IP operating system. Unleash revolutionizes IP monetization by merging a launchpad with a robust money market, maximizing value for IP. | [https://x.com/UnleashProtocol](https://x.com/UnleashProtocol) |\
-\| StoryHunt | StoryHunt is the largest Story Native DEX, backed by Story Foundation, bridging a $61T IP market with IPFi.
+      <td>
+        Verio is live—stake and restake to maximize your rewards while keeping your assets liquid. Earn yield, secure the network, and unlock exclusive benefits for early adopters.
 
-Trade, stake, and hunt the next big memes, agents, and entertainment RWAs—all while earning high APR on your liquidity.
+        Don’t just stake—restake and optimize your rewards with Verio.
+      </td>
 
-Join us to shape the future of IPFi, where every swap is a hunt for the next big IP in Story. | [https://x.com/0xStoryHunt](https://x.com/0xStoryHunt) |\
-\| D3X | Story native DEX aggregator and perp. | [https://x.com/d3x\_exchange](https://x.com/d3x_exchange) |
-\| Spotlight | Friendtech meets pump.fun, the first social and IP backed memecoin launchpad on Story. Built by a team of serial entrepreneurs who launched a successful crypto wallet with millions of users across multiple L1s. | [https://x.com/Spotlight\_IP](https://x.com/Spotlight_IP) |
-\| Meta Pool | Meta Pool is a multi-chain, Liquid-Staking Based Ecosystem, it includes, Vote-To-Earn through a DAO governance. | [https://x.com/meta\_pool](https://x.com/meta_pool) |
-\| ip.world | The platform for creating memecoins backed by real IP, powering the next evolution of internet remixing culture. Founded by ex-Google senior AI engineer and AWS, OG in crypto since 2015.   | [https://x.com/ipdotworld](https://x.com/ipdotworld) |
-\| Cielo | Monitor activity on Story with the Cielo web app and Telegram wallet tracker.  | [https://x.com/CieloFinance](https://x.com/CieloFinance) |
+      <td>
+        [https://x.com/verio\_story](https://x.com/verio_story)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        PiperX
+      </td>
+
+      <td>
+        PiperX is the first DEX backed by Story, consistently ranking #1 in both user count and transaction volume. Fast-Swap Mode to ensure low slippage and fast transaction completion during high traffic.
+
+        Discover and trade the next big alpha in IP-backed memes, Real-World IP (RWIP) token, and agent tokens with PiperX.
+
+        With Concentrated Liquidity AMM.
+      </td>
+
+      <td>
+        [https://x.com/PiperxProtocol](https://x.com/PiperxProtocol)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Unleash
+      </td>
+
+      <td>
+        **Unleash**, One stop shop for IP management and money market on Story.
+
+        Unleash is composed of **IPad (IP Launchpad)** and **IP Money Market** for an optimal IP operating system. Unleash revolutionizes IP monetization by merging a launchpad with a robust money market, maximizing value for IP.
+      </td>
+
+      <td>
+        [https://x.com/UnleashProtocol](https://x.com/UnleashProtocol)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        StoryHunt
+      </td>
+
+      <td>
+        StoryHunt is the largest Story Native DEX, backed by Story Foundation, bridging a $61T IP market with IPFi.
+
+        Trade, stake, and hunt the next big memes, agents, and entertainment RWAs—all while earning high APR on your liquidity.
+
+        Join us to shape the future of IPFi, where every swap is a hunt for the next big IP in Story.
+      </td>
+
+      <td>
+        [https://x.com/0xStoryHunt](https://x.com/0xStoryHunt)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        D3X
+      </td>
+
+      <td>
+        Story native DEX aggregator and perp.
+      </td>
+
+      <td>
+        [https://x.com/d3x\_exchange](https://x.com/d3x_exchange)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Spotlight
+      </td>
+
+      <td>
+        Friendtech meets pump.fun, the first social and IP backed memecoin launchpad on Story. Built by a team of serial entrepreneurs who launched a successful crypto wallet with millions of users across multiple L1s.
+      </td>
+
+      <td>
+        [https://x.com/Spotlight\_IP](https://x.com/Spotlight_IP)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Meta Pool
+      </td>
+
+      <td>
+        Meta Pool is a multi-chain, Liquid-Staking Based Ecosystem, it includes, Vote-To-Earn through a DAO governance.
+      </td>
+
+      <td>
+        [https://x.com/meta\_pool](https://x.com/meta_pool)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        ip.world
+      </td>
+
+      <td>
+        The platform for creating memecoins backed by real IP, powering the next evolution of internet remixing culture. Founded by ex-Google senior AI engineer and AWS, OG in crypto since 2015.
+      </td>
+
+      <td>
+        [https://x.com/ipdotworld](https://x.com/ipdotworld)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Cielo
+      </td>
+
+      <td>
+        Monitor activity on Story with the Cielo web app and Telegram wallet tracker.
+      </td>
+
+      <td>
+        [https://x.com/CieloFinance](https://x.com/CieloFinance)
+      </td>
+    </tr>
+  </tbody>
+</Table>
 
 ### AI x IP
 
@@ -231,12 +363,11 @@ Join us to shape the future of IPFi, where every swap is a hunt for the next big
 
 ### **DeFi x IPFi**
 
-| **Project Name**                                            | **Description**                                                                                                                                                                                                                  | **X/Twitter**                                            |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Aria                                                        | Tokenizing timeless, epic real-world IP so that you can own the iconic. Co-founded by music fund manager with over $1b in assets and Goldman veteran overseeing more than $100 billion in assets across diverse fund strategies. |                                                          |
-| [https://x.com/Aria\_Protocol](https://x.com/Aria_Protocol) |                                                                                                                                                                                                                                  |                                                          |
-| Loudr                                                       | A streaming platform where you can Listen & Invest the music tracks you love.                                                                                                                                                    | [https://x.com/Loudr\_xyz](https://x.com/Loudr_xyz)      |
-| Standard Protocol                                           | Standard is a fully onchain orderbook exchange (CLOB).                                                                                                                                                                           | [https://x.com/standardweb3](https://x.com/standardweb3) |
+| **Project Name**  | **Description**                                                                                                                                                                                                                  | **X/Twitter**                                               |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Aria              | Tokenizing timeless, epic real-world IP so that you can own the iconic. Co-founded by music fund manager with over $1b in assets and Goldman veteran overseeing more than $100 billion in assets across diverse fund strategies. | [https://x.com/Aria\_Protocol](https://x.com/Aria_Protocol) |
+| Loudr             | A streaming platform where you can Listen & Invest the music tracks you love.                                                                                                                                                    | [https://x.com/Loudr\_xyz](https://x.com/Loudr_xyz)         |
+| Standard Protocol | Standard is a fully onchain orderbook exchange (CLOB).                                                                                                                                                                           | [https://x.com/standardweb3](https://x.com/standardweb3)    |
 
 ### AI x IP
 
