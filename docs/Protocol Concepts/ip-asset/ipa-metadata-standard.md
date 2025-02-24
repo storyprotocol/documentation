@@ -14,9 +14,13 @@ next:
 >
 > We are still figuring out the best way to define an IPA Metadata Standard. For the sake of transparency, the following document is our thoughts so far but is subject to change as we release future versions.
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="Official Ippy IP" href="https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42" icon="fa-home" target="_blank">
     Check out the official Ippy IP, which has both NFT & IP metadata.
+  </Card>
+
+  <Card title="How to Metadata to IP Asset" href="https://docs.story.foundation/docs/ip-asset#/nft-vs-ip-metadata" icon="fa-computer" target="_blank">
+    Learn how to actually add IP (and NFT) metadata to your IP Asset with an explanation or completed code example.
   </Card>
 </Cards>
 
