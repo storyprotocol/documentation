@@ -6051,6 +6051,16 @@ export type CreateNFTCollectionResponse = {
 ```
 
 # 🌐 Welcome to Story Network
+<Cards columns={2}>
+  <Card title="Add Story Mainnet" href="https://chainid.network/chain/1514/" icon="fa-home" target="_blank">
+    Connect your wallet to Story's mainnet.
+  </Card>
+
+  <Card title="Add Story 'Aeneid' Testnet" href="https://chainid.network/chain/1315/" icon="fa-home" target="_blank">
+    Connect your wallet to Story's 'Aeneid' testnet.
+  </Card>
+</Cards>
+
 # Story Network (L1)
 
 Welcome to the Hub for Story Network, the Story Chain.
