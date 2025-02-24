@@ -9799,6 +9799,18 @@ You want to start building on Story quickly... so let's get started!
 >
 > If you'd like to read up on Story before diving into the technical details, check out our awesome [Learn Hub](https://learn.story.foundation/) which will explain the who, what, and why of Story.
 
+## :globe_with_meridians: Add Network
+
+<Cards columns={2}>
+  <Card title="Add Story Mainnet" href="https://chainid.network/chain/1514/" icon="fa-home" target="_blank">
+    Connect your wallet to Story's mainnet.
+  </Card>
+
+  <Card title="Add Story 'Aeneid' Testnet" href="https://chainid.network/chain/1315/" icon="fa-home" target="_blank">
+    Connect your wallet to Story's 'Aeneid' testnet.
+  </Card>
+</Cards>
+
 ## :fast_forward: Skip everything. Go to the code.
 
 <Cards columns={2}>
@@ -9826,7 +9838,7 @@ Check out the addresses for the deployed smart contracts [here](doc:deployed-sma
 * [Story Protocol Core](https://github.com/storyprotocol/protocol-core-v1) - This repository contains the core protocol logic, consisting of a thin IP registry (the [IP Asset Registry](doc:ip-asset-registry)), a set of [🧱 Modules](doc:story-modules) defining logic around [📜 Licensing](doc:licensing-module), [💸 Royalty](doc:royalty-module), [❌ Dispute](doc:dispute-module), metadata, and a module manager for administering module and user access control.
 * [Story Protocol Periphery](https://github.com/storyprotocol/protocol-periphery-v1)- Whereas the core contracts deal with the underlying protocol logic, the periphery contracts deal with protocol extensions that greatly increase UX and simplify IPA management. This is mostly handled through the [📦 SPG](doc:spg).
 
-## :globe_with_meridians: Use our API
+## 🔌 Use our API
 
 Check out the entire [API Reference](https://docs.story.foundation/reference/api-introduction) for learning how to use our API.
 
