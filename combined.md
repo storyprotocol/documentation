@@ -10938,18 +10938,18 @@ This function needs an SPG NFT Contract to mint from. For simplicity, you can us
   import { client } from './utils'
 
   async function createSpgNftCollection() {
-  const newCollection = await client.nftClient.createNFTCollection({
-    name: 'Test NFTs',
-    symbol: 'TEST',
-    isPublicMinting: false,
-    mintOpen: true,
-    mintFeeRecipient: zeroAddress,
-    contractURI: '',
-    txOptions: { waitForTransaction: true },
-  })
+    const newCollection = await client.nftClient.createNFTCollection({
+      name: 'Test NFTs',
+      symbol: 'TEST',
+      isPublicMinting: false,
+      mintOpen: true,
+      mintFeeRecipient: zeroAddress,
+      contractURI: '',
+      txOptions: { waitForTransaction: true },
+    })
 
-  console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
-  console.log(`NFT contract address: ${newCollection.spgNftContract}`)
+    console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
+    console.log(`NFT contract address: ${newCollection.spgNftContract}`)
   }
 
   createSpgNftCollection();
@@ -15055,18 +15055,18 @@ This function needs an SPG NFT Contract to mint from. For simplicity, you can us
   import { client } from './utils'
 
   async function createSpgNftCollection() {
-  const newCollection = await client.nftClient.createNFTCollection({
-    name: 'Test NFTs',
-    symbol: 'TEST',
-    isPublicMinting: false,
-    mintOpen: true,
-    mintFeeRecipient: zeroAddress,
-    contractURI: '',
-    txOptions: { waitForTransaction: true },
-  })
+    const newCollection = await client.nftClient.createNFTCollection({
+      name: 'Test NFTs',
+      symbol: 'TEST',
+      isPublicMinting: false,
+      mintOpen: true,
+      mintFeeRecipient: zeroAddress,
+      contractURI: '',
+      txOptions: { waitForTransaction: true },
+    })
 
-  console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
-  console.log(`NFT contract address: ${newCollection.spgNftContract}`)
+    console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
+    console.log(`NFT contract address: ${newCollection.spgNftContract}`)
   }
 
   createSpgNftCollection();
