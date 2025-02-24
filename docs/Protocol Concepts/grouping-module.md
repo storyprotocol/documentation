@@ -26,7 +26,7 @@ The Grouping Module enables the creation and management of group IP Assets, supp
 * Checking whether a group contains a specific IPA
 * Get the total number of IPAs of a group
 
-## Creating a Group IPA
+## :hammer_and_wrench: Creating a Group IPA
 
 Similar to the IP Asset registration process, in which you must have a minted NFT to register and then an IP Account is created, the same applies to Group IP Assets. You must have a minted ERC-721 NFT (that represents the ownership of the group) to register as a group, and then when you register, an IP Account for the group is deployed.
 
