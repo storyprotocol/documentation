@@ -36,39 +36,38 @@ Anyone can create a new group.
 
 Similar to how when an IP Asset is created an IP Account is deployed & registered through the [IP Asset Registry](doc:ip-asset-registry), the Group's IP Account is deployed and registered through the [Group IP Asset Registry](doc:group-ip-asset-registry). This is responsible for managing the registration and tracking of Group IP Assets, including the group members and reward pools.
 
-## The Group's IP Account
+### The Group's IP Account
 
 The Group IP Account should function equivalently to a normal IP Account, allowing attachment of license terms, creation of derivatives, execution with modules, and other interactions. It also has the same common interface of IP Account. Hence, the Group IP Account can be applied to anywhere where IP Account can be applied.
 
 Besides the common interfaces of IP Account, the Group IP Account has functions to manage the adding/removing of individual IPAs in the group.
 
-## Adding & Removing from a Group
+## :lock: Group Restrictions
 
-Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
+Here are the restrictions associated with a Group IPA:
 
-### Conditions to Join a Group
+* A derivative IP of a group IP can only have the group IP as its sole parent
+* A group IP cannot attach License Terms that use the [Liquid Absolute Percentage (LAP)](doc:liquid-absolute-percentage) royalty policy
+* An empty group cannot have derivative IPs or mint License Tokens
+* A group IP cannot be registered as a derivative
+* A group IP can only attach one license term common to all members
+* Once a Group gains its first member, the `mintingFee`, `licensingHook`, and `licensingHookData` are frozen. The Group’s `commercialRevShare` can only increase
+* A group has a maximum size of 1000 members
 
-An IPA must include one license terms that matches the license terms of the group. An IPA may include other license terms in addition to the one that matches the group.
+### Adding & Removing from a Group
+
+* Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
+* An IPA must include one license terms that matches the license terms of the group. An IPA may include other license terms in addition to the one that matches the group.
+* When adding an IP to a group, the Group and IP must have the same `mintingFee` and `licenseHook` in the LicenseConfig, and the Group’s `commercialRevShare` must be greater than or equal to the IP’s share
 
 ### Groups Becoming Locked
 
+When a group is locked, IPAs cannot be removed from it, but new IPAs can still be added.
+
 A group IPA is locked when:
 
-1. it has derivative IPs registered or
-2. when someone mints a license token from the group.
-
-Once the group is locked, IPAs cannot be removed from it, but new IPAs can still be added.
-
-## Group Restrictions
-
-* A derivative IP of a group IP can only have the group IP as its sole parent
-* A Group IP cannot attach License Terms that use the LAP Royalty policy
-* An empty group cannot have derivative IPs or mint License Tokens
-* A Group IP cannot be registered as a derivative as another parent IP
-* **Single License Term Validation:** Ensure that a Group IPA can only attach one license term common to all members
-* **Consistent License Config Validation:** When adding an IP to a group, the Group and IP must have the same mintingFee and licenseHook in the LicenseConfig, and the Group’s commercial revenue share must be greater than or equal to the IP’s share
-* **Freezing License Config Items:** Once a Group gains its first member, the mintingFee, licensingHook, and licensingHookData are frozen. The Group’s commercial revenue share can only increase
-* **Group Max Size Limit:** Enforce a maximum group size of 1000
+1. it has a derivative IP registered OR
+2. when someone mints a license token from the group
 
 ## :blue_book: Example
 
