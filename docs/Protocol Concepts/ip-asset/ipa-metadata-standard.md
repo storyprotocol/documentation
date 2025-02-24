@@ -20,7 +20,7 @@ next:
   </Card>
 
   <Card title="How to Metadata to IP Asset" href="https://docs.story.foundation/docs/ip-asset#/nft-vs-ip-metadata" icon="fa-computer" target="_blank">
-    Learn how to actually add IP (and NFT) metadata to your IP Asset with an explanation or completed code example.
+    Learn how to actually add the IP  metadata discussed here to your IP Asset with an explanation or completed code example.
   </Card>
 </Cards>
 
