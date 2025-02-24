@@ -15077,25 +15077,24 @@ main();
 
 Remember that in order to register a new IP, we first have to mint an NFT, which will represent the underlying ownership of the IP. This NFT then gets "registered" and becomes an [🧩 IP Asset](doc:ip-asset).
 
-For simplicity, we can use the SDK's `createNFTCollection` to create a new NFT collection for us. In a separate file `createSpgNftCollection.ts`, paste the following code (view a working example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/utils/createSpgNftCollection.ts)):
+We can use the `mintAndRegisterIp` function to mint an NFT and register it as an IP Asset in the same transaction.
 
-> ❓ Why do we have to do this?
->
-> In order to use the `mintAndRegisterIp` function in the next step, we'll have to deploy an **SPG NFT** collection. **This is any contract that implements** [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol). An easy way to deploy a contract like this is to call the `createNFTCollection` as you'll see below.
->
-> :warning: You only have to create a new SPG Collection **once**. Once you have your SPG NFT contract address, you can register any amount of IPs and will **not** have to do this again.
->
-> Instead of doing this, you can mint an NFT from your own contract and use the [register](https://docs.story.foundation/docs/sdk-ipasset#register) function (providing an `nftContract` and `tokenId`) *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts).
+This function needs an SPG NFT Contract to mint from. For simplicity, you can use a public collection we have created for you on Aeneid testnet: `0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc`.
 
-```typescript createSpgNftCollection.ts
-import { zeroAddress } from 'viem'
-import { client } from './utils'
+<Accordion title="Creating your own custom ERC-721 collection" icon="fa-info-circle">
+  Using the public collection we provide for you is fine, but when you do this for real, you should make your own NFT Collection for your IPs. You can do this in 2 ways:
 
-async function createSpgNftCollection() {
+  1. Deploy a contract that implements the [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol) interface, or use the SDK's `createNFTCollection` function (shown below) to do it for you. This will give you your own SPG NFT Collection that only you can mint from.
+
+  ```typescript createSpgNftCollection.ts
+  import { zeroAddress } from 'viem'
+  import { client } from './utils'
+
+  async function createSpgNftCollection() {
   const newCollection = await client.nftClient.createNFTCollection({
     name: 'Test NFTs',
     symbol: 'TEST',
-    isPublicMinting: true,
+    isPublicMinting: false,
     mintOpen: true,
     mintFeeRecipient: zeroAddress,
     contractURI: '',
@@ -15104,14 +15103,13 @@ async function createSpgNftCollection() {
 
   console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
   console.log(`NFT contract address: ${newCollection.spgNftContract}`)
-}
+  }
 
-createSpgNftCollection();
-```
+  createSpgNftCollection();
+  ```
 
-If you run this code and look at the console output, you will find the SPG NFT contract address. Save this for later.
-
-Now we can actually register our IP by minting an NFT, registering it as an [🧩 IP Asset](doc:ip-asset), and setting both NFT & IP metadata.
+  2. Create a custom ERC-721 NFT collection on your own and use the [register](https://docs.story.foundation/docs/sdk-ipasset#register) function - and providing an `nftContract` and `tokenId` - *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts). This is helpful if you already have a custom NFT contract that has your own custom logic, or if your IPs themselves are NFTs.
+</Accordion>
 
 > Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
 
@@ -15127,7 +15125,7 @@ async function main() {
 
   const response = await client.ipAsset.mintAndRegisterIp({
     // TODO: insert your SPG_NFT_CONTRACT_ADDRESS here
-    spgNftContract: SPG_NFT_CONTRACT_ADDRESS as Address,
+    spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
     allowDuplicates: true,
     ipMetadata: {
       ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
