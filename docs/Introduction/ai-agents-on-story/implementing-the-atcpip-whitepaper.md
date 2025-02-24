@@ -147,7 +147,7 @@ Once the providing agent has been paid for their work (when the requesting agent
 We have implemented a server that provides tools, based on the Model Control Protocol (MCP), for interacting with Story's protocol using <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a>.
 
 <Cards columns={1}>
-  <Card title="Story MCP" href="https://github.com/sarick-story/story-sdk-mcp" icon="fa-robot" target="_blank">
+  <Card title="Story MCP" href="https://github.com/piplabs/story-sdk-mcp" icon="fa-robot" target="_blank">
     Run an MCP server locally that has tools for interacting with Story's protocol to test Agent TCP/IP.
   </Card>
 </Cards>
