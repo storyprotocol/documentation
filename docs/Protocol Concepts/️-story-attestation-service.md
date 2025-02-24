@@ -6,8 +6,6 @@ hidden: false
 metadata:
   robots: index
 ---
-> 🚧 Coming soon...
-
 Story employs a multi-layered decentralized approach to validating intellectual property, grounded in two foundational components:
 
 1. The Story Attestation Service (SAS): leverages a network of specialized service providers — each detecting copyright violations across different mediums (images, audio, etc) — to provide transparent, publicly accessible signals on the legitimacy of an [🧩 IP Asset](doc:ip-asset). Applications that facilitate IP registration (e.g. original content) may also attest to the provenance of an IP asset (called "apptestations") in the future.
