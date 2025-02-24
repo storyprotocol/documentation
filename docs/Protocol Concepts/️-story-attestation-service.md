@@ -44,3 +44,7 @@ When [registering your IP on Story](doc:how-to-register-ip-on-story), you also p
 These are used for the commercial infringement check. Whatever media you pass in through `mediaUrl` will be checked by our infringement detection providers and flagged if proven malicious.
 
 If you do not pass in these `media.*` fields, then an infringement detection will not be performed and your IP will not be proven valid.
+
+## Current Providers
+
+1. [Yakoa](https://www.yakoa.io/) - Yakoa uses AI and machine learning to scan multiple blockchains, analyzing on-chain data to detect direct copies, stylistic forgeries, and unauthorized replications of digital assets. It compares new assets against a database of known IP, flagging potential violations in real time and providing detailed audit logs for enforcement.
