@@ -110,12 +110,7 @@ The IP can be further customized or modified using the [License Hook](https://do
 
 # Group IPA Restrictions
 
-In addition, [Group IPAs](doc:grouping-module) are subject to the following additional restrictions:
-
-| Action                       | Restriction                                                                                                                                                                        |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Add IP Asset to a Group      | You can only add an IP Asset to a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it.      |
-| Remove IP Asset from a Group | You can only remove an IP Asset from a group if that group is not "locked". A group becomes locked once the first license token is minted from it or a derivative is linked to it. |
+See [👥 Group IPA Restrictions](https://docs.story.foundation/docs/grouping-module#group-restrictions) for more information.
 
 # 📝 IPA Metadata Standard
 > 🚧 Warning: Still Under Discussion
