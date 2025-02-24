@@ -48,7 +48,7 @@ If you do not pass in these `media.*` fields, then an infringement detection wil
 ## Current Providers
 
 <Cards columns={1}>
-  <Card title="Yakoa" href="https://www.yakoa.io/" icon="fa-home" target="_blank">
+  <Card title="Yakoa" href="https://www.yakoa.io/" icon="fa-home" iconColor="#190087" target="_blank">
     Yakoa uses AI and machine learning to scan multiple blockchains, analyzing on-chain data to detect direct copies, stylistic forgeries, and unauthorized replications of digital assets. It compares new assets against a database of known IP, flagging potential violations in real time and providing detailed audit logs for enforcement.
   </Card>
 </Cards>
