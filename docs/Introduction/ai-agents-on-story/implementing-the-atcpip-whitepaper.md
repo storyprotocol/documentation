@@ -8,6 +8,10 @@ hidden: false
 metadata:
   robots: index
 ---
+> 🚧 Still new!
+>
+> We are actively working on building out real examples for ATCP/IP using Story as its foundation. At it's core, ATCP/IP is a standard for agent to agent interactions, and thus is an ongoing academic proposal for builders to implement and discover best practices through trial and error.
+
 Below are details on how to actually implement the ***2. An ATCP/IP Transaction*** section of the whitepaper below.
 
 <Cards columns={1}>
