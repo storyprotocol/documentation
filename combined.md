@@ -9808,7 +9808,7 @@ Once the providing agent has been paid for their work (when the requesting agent
 
 ## Example Integration with MCP
 
-We have implemented a server that provides MCP (Model Control Protocol) tools for interacting with Story's smart contracts through their Python SDK.
+We have implemented a server that provides tools, based on the Model Control Protocol (MCP), for interacting with Story's protocol with <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a>.
 
 <Cards columns={1}>
   <Card title="Story MCP" href="https://github.com/sarick-story/story-sdk-mcp" icon="fa-robot" target="_blank">
@@ -9816,7 +9816,7 @@ We have implemented a server that provides MCP (Model Control Protocol) tools fo
   </Card>
 </Cards>
 
-The above uses <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a> to integrate Story's protocol with the MCP framework.
+Theoretically, an agent could use these tools to seamlessly generate IP, negotiate usage terms for that IP, and register it and license it out for commercial use to users on Story.
 
 ### What is MCP?
 
