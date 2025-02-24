@@ -15077,7 +15077,7 @@ main();
 
 Remember that in order to register a new IP, we first have to mint an NFT, which will represent the underlying ownership of the IP. This NFT then gets "registered" and becomes an [🧩 IP Asset](doc:ip-asset).
 
-We can use the `mintAndRegisterIp` function to mint an NFT and register it as an IP Asset in the same transaction.
+Luckily, we can use the `mintAndRegisterIp` function to mint an NFT and register it as an IP Asset in the same transaction.
 
 This function needs an SPG NFT Contract to mint from. For simplicity, you can use a public collection we have created for you on Aeneid testnet: `0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc`.
 
@@ -15124,7 +15124,6 @@ async function main() {
   // previous code here ...
 
   const response = await client.ipAsset.mintAndRegisterIp({
-    // TODO: insert your SPG_NFT_CONTRACT_ADDRESS here
     spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
     allowDuplicates: true,
     ipMetadata: {
