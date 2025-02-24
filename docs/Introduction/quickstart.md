@@ -14,6 +14,8 @@ You want to start building on Story quickly... so let's get started!
 
 ## :globe_with_meridians: Add Network
 
+Enable Story's mainnet or testnet for your wallet.
+
 <Cards columns={2}>
   <Card title="Add Story Mainnet" href="https://chainid.network/chain/1514/" icon="fa-home" target="_blank">
     Connect your wallet to Story's mainnet.
