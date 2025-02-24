@@ -147,7 +147,7 @@ Once the providing agent has been paid for their work (when the requesting agent
 We have implemented a server that provides MCP (Model Control Protocol) tools for interacting with Story's smart contracts through their Python SDK.
 
 <Cards columns={1}>
-  <Card title="Story MCP" href="https://github.com/sarick-story/story-sdk-mcp" icon="fa-home" target="_blank">
+  <Card title="Story MCP" href="https://github.com/sarick-story/story-sdk-mcp" icon="fa-robot" target="_blank">
     Run an MCP server locally that has tools for interacting with Story's protocol to test Agent TCP/IP.
   </Card>
 </Cards>
