@@ -31,15 +31,21 @@ On Story, your IP is an NFT that gets registered on the protocol as an IP Asset.
 |         | Standard                                                                   | What is it?                                                                                                                                                                          |
 | :------ | :------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **NFT** | [Opensea ERC721 Standard](https://docs.opensea.io/docs/metadata-standards) | Things like name, image, attributes, etc                                                                                                                                             |
-| **IP**  | [📝 IPA Metadata Standard](doc:ipa-metadata-standard)                         | More specific to Story, this includes information about the author of the work, its relationship to other works, attributes like app-specific metadata & AI remixing attributes, etc |
+| **IP**  | [📝 IPA Metadata Standard](doc:ipa-metadata-standard)                      | More specific to Story, this includes information about the author of the work, its relationship to other works, attributes like app-specific metadata & AI remixing attributes, etc |
 
 All other metadata, such as the ownership, legal, and economic details of an IP Asset are handled by our protocol directly. For example, the protocol stores data associated with parent-child relationships through the [📜 Licensing Module](doc:licensing-module), the monetary flow between IP Assets through the [💸 Royalty Module](doc:royalty-module), and the legal constraints/permissions of an IP Asset with the [💊 Programmable IP License (PIL)](doc:programmable-ip-license).
 
 ### Adding NFT & IP Metadata to IP Asset
 
-> 📘 Working Code Example
->
-> To see how to implement proper metadata for the NFT & IP, in both the SDK and smart contracts directly, check out [How to Register IP on Story](doc:how-to-register-ip-on-story).
+<Cards columns={2}>
+  <Card title="SDK Completed Code Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-computer" target="_blank">
+    Jump to the code and see a completed code example of adding NFT & IP metadata to an IP Asset
+  </Card>
+
+  <Card title="SDK Explanation" href="https://docs.story.foundation/docs/register-an-ip-asset" icon="fa-file" target="_blank">
+    Learn how to add metadata to your IP Asset with a step-by-step explanation.
+  </Card>
+</Cards>
 
 In practice, whether you are using the SDK or our smart contract directly, our protocol asks you to provide 4 different parameters:
 
