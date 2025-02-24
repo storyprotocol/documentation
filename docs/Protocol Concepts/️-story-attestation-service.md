@@ -6,12 +6,18 @@ hidden: false
 metadata:
   robots: index
 ---
+<Accordion title="Skip the Read - 1 Minute Summary" icon="fa-info-circle">
+  You can think of the Story Attestation Service (SAS) as a bunch of independent infringement detection providers each proving the validity of an IP in their own way. So that each IP has a set of "badges" on it displaying who thinks the IP is valid and who doesn't.
+
+  It's then up to the ecosystem/market to determine which providers they trust or want to believe. This becomes a very decentralized "validator"-like approach to IP validity, where if an IP Asset has tons of providers saying it's valid, then it's probably valid.
+</Accordion>
+
 Story employs a multi-layered decentralized approach to validating intellectual property, grounded in two foundational components:
 
 1. The Story Attestation Service (SAS): leverages a network of specialized service providers — each detecting copyright violations across different mediums (images, audio, etc) — to provide transparent, publicly accessible signals on the legitimacy of an [🧩 IP Asset](doc:ip-asset). Applications that facilitate IP registration (e.g. original content) may also attest to the provenance of an IP asset (called "apptestations") in the future.
 2. The [❌ Dispute Module](doc:dispute-module): offers a flexible framework for resolving conflicts, tapping both on-chain and off-chain processes to accommodate the nuanced nature of IP disputes.
 
-In practice, Story’s system checks for infringement, verifies identity to ensure the rightful owner is recognized, and assesses provenance to determine an asset’s registration source. This blend of detection methods and dispute resolution creates a robust ecosystem that allows IP to be registered without introducing undue friction, while letting the market, and individual ecosystem apps, determine how much weight to give each attestation provider.
+This blend of detection methods and dispute resolution creates a robust ecosystem that allows IP to be registered without introducing undue friction, while letting the market, and individual ecosystem apps, determine how much weight to give each attestation provider.
 
 These layers make up the **IP Validation Service (IPVS)** - a fully decentralized marketplace of trust. The existing system of detection providers will continue to expand into a broader ecosystem of signal contributors, each able to offer specialized, verifiable assessments of IP authenticity. Through incentivized participation, IPVS fosters a self-sustaining market where different validators collaborate to deliver specialized signals.
 
