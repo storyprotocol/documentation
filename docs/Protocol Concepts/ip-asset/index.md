@@ -69,4 +69,4 @@ struct IPMetadata {
 * `ipMetadataURI` - a URI pointing to a JSON object that follows the [📝 IPA Metadata Standard](doc:ipa-metadata-standard)
 * `ipMetadataHash` - hash of the `ipMetadataURI` JSON object
 * `nftMetadataURI` - a URI pointing to a JSON object that follows the [Opensea ERC721 Standard](https://docs.opensea.io/docs/metadata-standards)
-* `nftMetadataHash` - hash the `nftMetadataURI` JSON object
+* `nftMetadataHash` - hash of the `nftMetadataURI` JSON object
