@@ -59,4 +59,4 @@ If you do not pass in these `media.*` fields, then an infringement detection wil
 
 ## Becoming an attestation provider
 
-The Story Attestation Service is undergoing active development. If you run any form of IP validation (infringement, identity, origin, etc), then you can become an attestation provider. To do so, please fill out this [form](https://docs.google.com/forms/d/10n3AnWoiLsxpaY17kJlxRazysDe8aOWJgirRnfkFRAk/edit)
+The Story Attestation Service is undergoing active development. If you run any form of IP validation (infringement, identity, origin, etc), then you can become an attestation provider. To do so, please fill out this [form](https://docs.google.com/forms/d/10n3AnWoiLsxpaY17kJlxRazysDe8aOWJgirRnfkFRAk/edit).
