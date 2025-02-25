@@ -54,3 +54,9 @@ If you do not pass in these `media.*` fields, then an infringement detection wil
     Pex.com is a digital platform that leverages advanced content recognition and analytics to help creators and rights holders track, manage, and monetize their visual and audio media online. It monitors how content is used across the web, making it easier for users to discover licensing opportunities and protect their intellectual property.
   </Card>
 </Cards>
+
+<br />
+
+## Becoming an attestation provider
+
+The Story Attestation Service is undergoing active development. If you run any form of IP validation (infringement, identity, origin, etc), then you can become an attestation provider. To do so, please fill out this [form](https://docs.google.com/forms/d/10n3AnWoiLsxpaY17kJlxRazysDe8aOWJgirRnfkFRAk/edit)
