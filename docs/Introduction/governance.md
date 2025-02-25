@@ -16,28 +16,26 @@ As the steward of the Story ecosystem, the Story Foundation works in close align
 
 Highlights of the Story Foundation’s role:
 
-<Accordion title="Strategic Grants" icon="fa-money">
+<Accordion title="Strategic Grants" icon="fa-money-check-dollar" iconColor="green">
   Provide **strategic grants** to align with innovation via partner projects including, but not limited to, infrastructure providers, application developers, artists, creators, brand partnerships, creative studios, and strategic growth partners.
 </Accordion>
 
-<Accordion title="Network Security" icon="fa-file-shield">
+<Accordion title="Network Security" icon="fa-file-shield" iconColor="blue">
   **Promote network security** by creating a security council and appointing members to serve on this council.
-
-  * <br />
 </Accordion>
 
-<Accordion title="Implement Proposals" icon="fa-scroll">
+<Accordion title="Implement Proposals" icon="fa-scroll" iconColor="#ccb092">
   Developing the ecosystem and protocol by **implementing proposals** of the Story DAO that are approved in accordance with the process outlined in the Story DAO Constitution and engaging parties to build apps. This may include funding research, public education, and establishing grant programs.
 </Accordion>
 
-<Accordion title="Educational Initiatives / Events" icon="fa-book">
+<Accordion title="Educational Initiatives / Events" icon="fa-book" iconColor="green">
   Organizing **educational initiatives and hosting events** to increase awareness of and promote the Story Network, Story Protocol and ecosystem.
 </Accordion>
 
-<Accordion title="Decentralization" icon="fa-globe">
+<Accordion title="Decentralization" icon="fa-globe" iconColor="brown">
   Advocating for and **supporting increased autonomy and decentralization** of the Story DAO.
 </Accordion>
 
-<Accordion title="Treasury Management" icon="fa-piggy-bank">
+<Accordion title="Treasury Management" icon="fa-piggy-bank" iconColor="pink">
   **Treasury management** and oversight to foster long-term ecosystem growth and support the Foundation’s ongoing mission.
 </Accordion>
