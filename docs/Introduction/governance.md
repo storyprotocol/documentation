@@ -32,7 +32,7 @@ As the steward of the Story ecosystem, the Story Foundation works in close align
   Organizing **educational initiatives and hosting events** to increase awareness of and promote the Story Network, Story Protocol and ecosystem.
 </Accordion>
 
-<Accordion title="Decentralization" icon="fa-globe" iconColor="brown">
+<Accordion title="Decentralization" icon="fa-globe" iconColor="lightblue">
   Advocating for and **supporting increased autonomy and decentralization** of the Story DAO.
 </Accordion>
 
