@@ -45,9 +45,9 @@ If you do not pass in these `media.*` fields, then an infringement detection wil
 
 ### Current Limitations
 
-* You must set the `media.*` fields before attaching commercial terms, otherwise no check will be performed.
+* You must set the `media.*` fields before attaching commercial terms (`commercialUse = true`), otherwise no check will be performed.
 * Attestations will only show up on the IP Portal (our "GitHub for IP" platform coming soon). We are working on publishing attestations to public record so anyone can access the results (**COMING SOON!**).
-* Only media that is \*\*existing on the internet\*\* will be detected. If someone registers new IP on Story, it will simply return \<span color="green">validated\</a> because our providers don't have data on it.
+* Only media that is **existing on the internet** will be detected. If someone registers new IP on Story, it will simply return validated because our providers don't have data on it.
 
 ## Current Providers
 
