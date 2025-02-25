@@ -180,7 +180,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td>
-        :detective: Commercial Infringement Check
+        [:detective: Commercial Infringement Check](doc:story-attestation-service)
       </td>
     </tr>
 
