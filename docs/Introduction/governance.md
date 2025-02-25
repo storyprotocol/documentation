@@ -20,7 +20,7 @@ As the steward of the Story ecosystem, the Story Foundation works in close align
   Provide **strategic grants** to align with innovation via partner projects including, but not limited to, infrastructure providers, application developers, artists, creators, brand partnerships, creative studios, and strategic growth partners.
 </Accordion>
 
-<Accordion title="Network Security" icon="fa-file-shield" iconColor="blue">
+<Accordion title="Network Security" icon="fa-file-shield" iconColor="cyan">
   **Promote network security** by creating a security council and appointing members to serve on this council.
 </Accordion>
 
@@ -28,7 +28,7 @@ As the steward of the Story ecosystem, the Story Foundation works in close align
   Developing the ecosystem and protocol by **implementing proposals** of the Story DAO that are approved in accordance with the process outlined in the Story DAO Constitution and engaging parties to build apps. This may include funding research, public education, and establishing grant programs.
 </Accordion>
 
-<Accordion title="Educational Initiatives / Events" icon="fa-book" iconColor="green">
+<Accordion title="Educational Initiatives / Events" icon="fa-book" iconColor="lightred">
   Organizing **educational initiatives and hosting events** to increase awareness of and promote the Story Network, Story Protocol and ecosystem.
 </Accordion>
 
