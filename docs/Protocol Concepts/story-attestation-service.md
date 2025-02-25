@@ -45,15 +45,11 @@ If you do not pass in these `media.*` fields, then an infringement detection wil
 
 ## Current Providers
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="Yakoa" href="https://www.yakoa.io/" icon="fa-home" iconColor="#190087" target="_blank">
     Yakoa uses AI and machine learning to scan multiple blockchains, analyzing on-chain data to detect direct copies, stylistic forgeries, and unauthorized replications of digital assets. It compares new assets against a database of known IP, flagging potential violations in real time and providing detailed audit logs for enforcement.
   </Card>
-</Cards>
 
-<br />
-
-<Cards columns={1}>
   <Card title="Pex" href="https://www.pex.com/" icon="fa-home" iconColor="#190087" target="_blank">
     Pex.com is a digital platform that leverages advanced content recognition and analytics to help creators and rights holders track, manage, and monetize their visual and audio media online. It monitors how content is used across the web, making it easier for users to discover licensing opportunities and protect their intellectual property.
   </Card>
