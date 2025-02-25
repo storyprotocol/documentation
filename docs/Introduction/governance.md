@@ -1,8 +1,8 @@
 ---
-title: Governance
-excerpt: Learn about Story's governance
+title: 🏛️ Governance
+excerpt: Learn about Story's governance.
 deprecated: false
-hidden: false
+hidden: true
 metadata:
   robots: index
 ---
