@@ -31,7 +31,7 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
 Below are the important attributes you should provide in your IP metadata. Under the **Required For** column is what the specific field is required for:
 
 * :mag: Story Explorer - this field will help display your IP on the Story Explorer
-* :detective: [Commercial Infringement Check](doc:story-attestation-service) - this field is required if your IP is **commercial** (that is, has commercial license terms attached). We will use these fields to run an infringement check on your IP.
+* :detective: [Commercial Infringement Check](doc:story-attestation-service) - this field is required if your IP is **commercial** (that is, has `commercialUse = true` license terms attached). We will use these fields to run an infringement check on your IP.
   * See [current limitations](https://docs.story.foundation/docs/story-attestation-service#current-limitations).
 * :robot: AI Agents - used for displaying metadata associated with AI Agents
 
