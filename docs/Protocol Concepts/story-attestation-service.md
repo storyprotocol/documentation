@@ -23,7 +23,7 @@ These layers make up the **IP Validation Service (IPVS)** - a fully decentralize
 
 So rather than preventing duplicates, which would cause far more potentially disruptive front running risk, the signals and attestations allow the original IPs surface above the rest.
 
-## When does the SAS scan my IP?
+## "When does the SAS scan my IP?"
 
 > 📘 Quick Note
 >
@@ -43,6 +43,12 @@ These are used for the commercial infringement check. Whatever media you pass in
 
 If you do not pass in these `media.*` fields, then an infringement detection will not be performed and your IP will not be proven valid.
 
+### Current Limitations
+
+* You must set the `media.*` fields before attaching commercial terms, otherwise no check will be performed.
+* Attestations will only show up on the IP Portal (our "GitHub for IP" platform coming soon). We are working on publishing attestations to public record so anyone can access the results (**COMING SOON!**).
+* Only media that is \*\*existing on the internet\*\* will be detected. If someone registers new IP on Story, it will simply return \<span color="green">validated\</a> because our providers don't have data on it.
+
 ## Current Providers
 
 <Cards columns={2}>
@@ -50,13 +56,11 @@ If you do not pass in these `media.*` fields, then an infringement detection wil
     Yakoa uses AI and machine learning to scan multiple blockchains, analyzing on-chain data to detect direct copies, stylistic forgeries, and unauthorized replications of digital assets. It compares new assets against a database of known IP, flagging potential violations in real time and providing detailed audit logs for enforcement.
   </Card>
 
-  <Card title="Pex" href="https://www.pex.com/" icon="fa-home" iconColor="#190087" target="_blank">
+  <Card title="Pex" href="https://www.pex.com/" icon="fa-home" iconColor="#019cf4" target="_blank">
     Pex.com is a digital platform that leverages advanced content recognition and analytics to help creators and rights holders track, manage, and monetize their visual and audio media online. It monitors how content is used across the web, making it easier for users to discover licensing opportunities and protect their intellectual property.
   </Card>
 </Cards>
 
-<br />
-
-## Becoming an attestation provider
+## Becoming an Attestation Provider
 
 The Story Attestation Service is undergoing active development. If you run any form of IP validation (infringement, identity, origin, etc), then you can become an attestation provider. To do so, please fill out this [form](https://docs.google.com/forms/d/10n3AnWoiLsxpaY17kJlxRazysDe8aOWJgirRnfkFRAk/edit).
