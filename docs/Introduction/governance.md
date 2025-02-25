@@ -12,6 +12,10 @@ metadata:
   </Card>
 </Cards>
 
+<Embed typeOfEmbed="pdf" url="" />
+
+<br />
+
 As the steward of the Story ecosystem, the Story Foundation works in close alignment with $IP Tokenholders and the broader ecosystem. The Story Foundation supports the Story DAO by providing operational support, executing tokenholder governance decisions, and overseeing strategic development and growth of the overall ecosystem. This relationship is designed to empower decentralized governance while preserving efficiency and stability throughout the Story ecosystem.
 
 Highlights of the Story Foundation’s role:
