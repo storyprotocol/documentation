@@ -16,7 +16,7 @@ As the steward of the Story ecosystem, the Story Foundation works in close align
 
 ## Story Foundation's Role
 
-<Accordion title="Strategic Grants" icon="fa-money-check-dollar" iconColor="green">
+<Accordion title="Strategic Grants" icon="fa-money-check-dollar" iconColor="lightgreen">
   Provide **strategic grants** to align with innovation via partner projects including, but not limited to, infrastructure providers, application developers, artists, creators, brand partnerships, creative studios, and strategic growth partners.
 </Accordion>
 
