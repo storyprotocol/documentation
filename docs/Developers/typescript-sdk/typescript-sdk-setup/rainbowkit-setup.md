@@ -6,7 +6,6 @@ hidden: false
 metadata:
   robots: index
 ---
-
 > 📘 Optional: Official RainbowKit Docs
 >
 > Check out the official Wagmi + RainbowKit installation docs [here](https://www.rainbowkit.com/docs/installation).
@@ -101,7 +100,7 @@ export default function TestComponent() {
 
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
-      account: wallet!.account,
+      wallet: wallet,
       transport: custom(wallet!.transport),
       chainId: "aeneid",
     };
