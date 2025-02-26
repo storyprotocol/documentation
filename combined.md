@@ -9873,11 +9873,11 @@ Once the providing agent has been paid for their work (when the requesting agent
 We have implemented a Model Control Protocol (MCP) server that provides tools for interacting with Story's protocol using <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a>, and an AI Agent that uses those tools.
 
 <Cards columns={2}>
-  <Card title="Story MCP" href="https://github.com/piplabs/story-sdk-mcp" icon="fa-robot" target="_blank">
+  <Card title="Story MCP Server" href="https://github.com/piplabs/story-sdk-mcp" icon="fa-server" target="_blank">
     Run an MCP server locally that has tools for interacting with Story's protocol to test Agent TCP/IP.
   </Card>
 
-  <Card title="LangGraph AI Agent" href="https://github.com/piplabs/story-sdk-mcp" icon="fa-robot" target="_blank">
+  <Card title="LangGraph AI Agent" href="https://github.com/sarick-story/langgraph-mcp-agent" icon="fa-robot" target="_blank">
     A LangGraph-based AI agent for creating, minting, and registering IP assets with Story using the Story MCP server.
   </Card>
 </Cards>
