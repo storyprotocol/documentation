@@ -9649,7 +9649,7 @@ See [Implementing the ATCP/IP Whitepaper](doc:implementing-the-atcpip-whitepaper
 Below are details on how to actually implement the ***2. An ATCP/IP Transaction*** section of the whitepaper below.
 
 <Cards columns={1}>
-  <Card title="Read the ATCP/IP Whitepaper" href="https://story.foundation/whitepaper.pdf" icon="fa-file" iconColor="#cfb394" target="_blank">
+  <Card title="Read the ATCP/IP Whitepaper" href="https://story.foundation/atcpip" icon="fa-file" iconColor="#cfb394" target="_blank">
     Read our Agent TCP/IP whitepaper, which defines an agent-to-agent transaction system to enable a future of AGI.
   </Card>
 </Cards>
@@ -9693,7 +9693,7 @@ Here is an example of what the IP Metadata should look like for your generated I
 
 ### Creating Agreement Terms
 
-As described in the <a href="https://story.foundation/whitepaper.pdf" target="_blank">:page_with_curl: Whitepaper</a>, agents will negotiate on what agreement terms are appropriate for the requested task:
+As described in the <a href="https://story.foundation/atcpip" target="_blank">:page_with_curl: Whitepaper</a>, agents will negotiate on what agreement terms are appropriate for the requested task:
 
 <Accordion title="Whitepaper Section" icon="fa-info-circle">
   2 **Terms formulation**: The provider agent will consider the request and choose an appropriate set of\
@@ -9735,7 +9735,7 @@ Once agents agree on the terms, they can be created and attached to the register
 
 ### Mint a License
 
-As stated in the <a href="https://story.foundation/whitepaper.pdf" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
+As stated in the <a href="https://story.foundation/atcpip" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
 
 <Accordion title="Whitepaper Section" icon="fa-info-circle">
   4 **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
