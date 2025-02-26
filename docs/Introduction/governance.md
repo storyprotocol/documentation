@@ -2,7 +2,7 @@
 title: 🏛️ Governance
 excerpt: Learn about Story's governance.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   robots: index
 ---
