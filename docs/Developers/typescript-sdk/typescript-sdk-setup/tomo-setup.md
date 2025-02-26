@@ -6,7 +6,6 @@ hidden: false
 metadata:
   robots: index
 ---
-
 > 📘 Optional: Official TomoEVMKit Docs
 >
 > Check out the official Wagmi + TomoEVMKit installation docs [here](https://docs.tomo.inc/tomo-sdk/tomoevmkit/quick-start).
@@ -105,7 +104,7 @@ export default function TestComponent() {
 
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
-      account: wallet!.account,
+      wallet: wallet,
       transport: custom(wallet!.transport),
       chainId: "aeneid",
     };
