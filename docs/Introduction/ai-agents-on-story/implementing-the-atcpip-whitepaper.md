@@ -59,7 +59,7 @@ Here is an example of what the IP Metadata should look like for your generated I
 
 ### Creating Agreement Terms
 
-As described in the <a href="https://story.foundation/whitepaper.pdf" target="_blank">:page_with_curl: Whitepaper</a>, agents will negotiate on what agreement terms are appropriate for the requested task:
+As described in the <a href="https://story.foundation/atcpip" target="_blank">:page_with_curl: Whitepaper</a>, agents will negotiate on what agreement terms are appropriate for the requested task:
 
 <Accordion title="Whitepaper Section" icon="fa-info-circle">
   2 **Terms formulation**: The provider agent will consider the request and choose an appropriate set of\
