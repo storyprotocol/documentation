@@ -9570,7 +9570,7 @@ The Module Registry maintains and updates the global list of modules and hooks r
 This page is all about AI Agents. We have prepared a way for you to use our documentation as training data which can be seen below, or continue to learn about developing AI Agents on Story.
 
 <Cards columns={2}>
-  <Card title="Train on Our Docs" href="https://github.com/storyprotocol/documentation/blob/v1.2/combined.md" icon="fa-robot" iconColor="#4e8189" target="_blank">
+  <Card title="Train on Our Docs" href="https://github.com/storyprotocol/documentation/blob/v1.3/combined.md" icon="fa-robot" iconColor="#4e8189" target="_blank">
     Looking to feed our docs into your AI Agent so it can use it as training data? Check out this file, which contains all of our docs in one combined `.md` file.
   </Card>
 
