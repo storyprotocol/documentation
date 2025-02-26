@@ -4428,7 +4428,7 @@ const licensingConfig: LicensingConfig = {
 };
 
 const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
-  spgNftContract: '0xfE265a91dBe911db06999019228a678b86C04959',
+  spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
   licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
   // set to true to mint ip with same nft metadata
   allowDuplicates: true,
@@ -4763,7 +4763,7 @@ const derivData: DerivativeData = {
 
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
   // an NFT contract address created by the SPG
-  spgNftContract: "0xfE265a91dBe911db06999019228a678b86C04959",
+  spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc",
   derivData,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
@@ -4843,19 +4843,9 @@ Parameters:
 import { PIL_TYPE } from '@story-protocol/core-sdk';
 import { toHex, Address, zeroAddress } from 'viem';
 
-const newCollection = await client.nftClient.createNFTCollection({
-  name: 'Test NFT',
-  symbol: 'TEST',
-  isPublicMinting: true,
-  mintOpen: true,
-  mintFeeRecipient: zeroAddress,
-  contractURI: '',
-  txOptions: { waitForTransaction: true },
-})
-
 const response = await client.ipAsset.mintAndRegisterIp({
   // an NFT contract address created by the SPG
-  spgNftContract: newCollection.spgNftContract as Address,
+  spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
   // set to true to have multiple NFTs with same metadata
   allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
@@ -4994,7 +4984,7 @@ Parameters:
 import { toHex } from 'viem';
 
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLicenseTokens({
-  spgNftContract: "0xfE265a91dBe911db06999019228a678b86C04959", // your NFT contract address
+  spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // your SPG NFT contract address
   licenseTokenIds: ['10'],
   maxRts: 100_000_000, // default
   // set to true to allow ip with same nft metadata
