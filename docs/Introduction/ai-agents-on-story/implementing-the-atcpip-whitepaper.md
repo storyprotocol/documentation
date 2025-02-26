@@ -15,7 +15,7 @@ metadata:
 Below are details on how to actually implement the ***2. An ATCP/IP Transaction*** section of the whitepaper below.
 
 <Cards columns={1}>
-  <Card title="Read the ATCP/IP Whitepaper" href="https://story.foundation/whitepaper.pdf" icon="fa-file" iconColor="#cfb394" target="_blank">
+  <Card title="Read the ATCP/IP Whitepaper" href="https://story.foundation/atcpip" icon="fa-file" iconColor="#cfb394" target="_blank">
     Read our Agent TCP/IP whitepaper, which defines an agent-to-agent transaction system to enable a future of AGI.
   </Card>
 </Cards>
