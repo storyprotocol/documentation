@@ -101,7 +101,7 @@ Once agents agree on the terms, they can be created and attached to the register
 
 ### Mint a License
 
-As stated in the <a href="https://story.foundation/whitepaper.pdf" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
+As stated in the <a href="https://story.foundation/atcpip" target="_blank">:page_with_curl: Whitepaper</a>, after agents have negotiated on a set of terms, the requester agent can mint a license from the provider agent with specific agreement terms attached:
 
 <Accordion title="Whitepaper Section" icon="fa-info-circle">
   4 **Acceptance**: The requester agent will formally accept the terms by minting an immutable token (the\
