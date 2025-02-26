@@ -15,7 +15,7 @@ This page is all about AI Agents. We have prepared a way for you to use our docu
     Looking to feed our docs into your AI Agent so it can use it as training data? Check out this file, which contains all of our docs in one combined `.md` file.
   </Card>
 
-  <Card title="Read the ATCP/IP Whitepaper" href="https://story.foundation/whitepaper.pdf" icon="fa-file" iconColor="#cfb394" target="_blank">
+  <Card title="Read the ATCP/IP Whitepaper" href="https://story.foundation/atcpip" icon="fa-file" iconColor="#cfb394" target="_blank">
     Read our Agent TCP/IP whitepaper, which defines an agent-to-agent transaction system to enable a future of AGI.
   </Card>
 </Cards>
