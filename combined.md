@@ -13258,7 +13258,6 @@ We recommend using wagmi as a Web3 provider and then installing a wallet service
 
 
 # Dynamic Setup
-
 > 📘 Optional: Official Dynamic Docs
 >
 > Check out the official Wagmi + Dynamic installation docs [here](https://docs.dynamic.xyz/react-sdk/using-wagmi).
@@ -13365,7 +13364,7 @@ export default function TestComponent() {
 
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
-      account: wallet!.account,
+      wallet: wallet,
       transport: custom(wallet!.transport),
       chainId: "aeneid",
     };
@@ -13397,9 +13396,7 @@ export default function TestComponent() {
 }
 ```
 
-
 # RainbowKit Setup
-
 > 📘 Optional: Official RainbowKit Docs
 >
 > Check out the official Wagmi + RainbowKit installation docs [here](https://www.rainbowkit.com/docs/installation).
@@ -13494,7 +13491,7 @@ export default function TestComponent() {
 
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
-      account: wallet!.account,
+      wallet: wallet,
       transport: custom(wallet!.transport),
       chainId: "aeneid",
     };
@@ -13526,9 +13523,7 @@ export default function TestComponent() {
 }
 ```
 
-
 # Tomo Setup
-
 > 📘 Optional: Official TomoEVMKit Docs
 >
 > Check out the official Wagmi + TomoEVMKit installation docs [here](https://docs.tomo.inc/tomo-sdk/tomoevmkit/quick-start).
@@ -13627,7 +13622,7 @@ export default function TestComponent() {
 
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
-      account: wallet!.account,
+      wallet: wallet,
       transport: custom(wallet!.transport),
       chainId: "aeneid",
     };
@@ -13659,9 +13654,7 @@ export default function TestComponent() {
 }
 ```
 
-
 # Reown (WalletConnect) Setup
-
 > 📘 Optional: Official WalletConnect Docs
 >
 > Check out the official Wagmi + Reown installation docs [here](https://docs.walletconnect.com/appkit/next/core/installation).
@@ -13810,7 +13803,7 @@ export default function TestComponent() {
 
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
-      account: wallet!.account,
+      wallet: wallet,
       transport: custom(wallet!.transport),
       chainId: "aeneid",
     };
@@ -13841,7 +13834,6 @@ export default function TestComponent() {
   )
 }
 ```
-
 
 # Pay an IPA
 <Cards columns={1}>
