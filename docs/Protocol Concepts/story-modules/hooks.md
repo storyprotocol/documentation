@@ -10,21 +10,19 @@ metadata:
 next:
   description: ''
 ---
-# Overview
-
 Hooks in Story Protocol are defined as a specialized interface that inherits from the Module framework. They are designed for developers to create custom implementations that integrate seamlessly with existing Modules.
 
 <Image align="center" src="https://files.readme.io/2ea34f7-Screenshot_2024-02-05_at_16.09.49.png" />
 
-# Concept and Functionality
+## Concept and Functionality
 
 While Modules are the backbone of the Story Protocol, executing actions and managing interactions, Hooks are distinct in their specific focus. They are tailored to verify conditions, an essential feature embodied in their `verify()` functionality. This design choice positions Hooks as a unique subset of Modules, specialized for particular tasks within the ecosystem.
 
-# Design Philosophy
+## Design Philosophy
 
 From a structural standpoint, Hooks are not treated as separate entities from Modules. This decision avoids unnecessary complexity in the architecture. Viewing Hooks as specialized Modules allows for a simplified, efficient design that emphasizes clarity in roles and interactions.
 
-# Sample Token Gated Hook Module
+## Sample Token Gated Hook Module
 
 ```coffeescript
 pragma solidity 0.8.23;
@@ -65,7 +63,7 @@ contract TokenGatedHook is BaseModule, IHookModule {
 
 ```
 
-Using The `TokenGatedHook` as `commercializerChecker` with `LicensingModule` for use case that only allow mint license to licensee who own a specific NFT token. 
+Using The `TokenGatedHook` as `commercializerChecker` with `LicensingModule` for use case that only allow mint license to licensee who own a specific NFT token.
 
 ```
         licensingModule.registerPolicyFrameworkManager(address(pilManager));
