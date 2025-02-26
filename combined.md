@@ -122,7 +122,7 @@ See [👥 Group IPA Restrictions](https://docs.story.foundation/docs/grouping-mo
     Check out the official Ippy IP, which has both NFT & IP metadata.
   </Card>
 
-  <Card title="How to Metadata to IP Asset" href="https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata" icon="fa-computer" target="_blank">
+  <Card title="How to Add Metadata to an IP Asset" href="https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata" icon="fa-computer" target="_blank">
     Learn how to actually add the IP  metadata discussed here to your IP Asset with an explanation or completed code example.
   </Card>
 </Cards>
