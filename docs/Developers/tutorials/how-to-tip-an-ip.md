@@ -96,7 +96,7 @@ Now we can call the `payRoyaltyOnBehalf` function. In this case:
 
 ```typescript main.ts
 import { client } from './utils'
-import { zeroAaddress } from 'viem'
+import { zeroAddress } from 'viem'
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {
@@ -127,7 +127,7 @@ The child IP can claim its 1 $WIP by calling the `claimAllRevenue` function:
 
 ```typescript main.ts
 import { client } from './utils'
-import { zeroAaddress } from 'viem'
+import { zeroAddress } from 'viem'
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {
@@ -160,7 +160,7 @@ We will use the `claimAllRevenue` function to claim the due revenue tokens.
 
 ```typescript main.ts
 import { client } from './utils'
-import { zeroAaddress } from 'viem'
+import { zeroAddress } from 'viem'
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
 
 async function main() {

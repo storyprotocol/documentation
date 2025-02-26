@@ -157,7 +157,7 @@ const response = await client.ipAsset.registerDerivative({
   childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
   parentIpIds: ["0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba"],
   licenseTermsIds: ["5"],
-  maxMintingFee: BigInt(0), // disabled
+  maxMintingFee: 0n, // disabled
   maxRts: 100_000_000, // default
   maxRevenueShare: 100, // default
   txOptions: { waitForTransaction: true }
@@ -279,30 +279,31 @@ Parameters:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
+import { zeroAddress, zeroHash } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
   royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
+  defaultMintingFee: 0n,
+  expiration: 0n,
   commercialUse: true,
   commercialAttribution: true,
   commercializerChecker: zeroAddress,
   commercializerCheckerData: zeroAddress,
   commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
+  commercialRevCeiling: 0n,
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
+  derivativeRevCeiling: 0n,
   currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
 const licensingConfig: LicensingConfig = {
   isSet: false,
-  mintingFee: BigInt(0),
+  mintingFee: 0n,
   licensingHook: zeroAddress,
   hookData: zeroHash,
   commercialRevShare: 0,
@@ -438,31 +439,31 @@ Parameters:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
-import { toHex } from 'viem';
+import { toHex, zeroAddress, zeroHash } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
   royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
+  defaultMintingFee: 0n,
+  expiration: 0n,
   commercialUse: true,
   commercialAttribution: true,
   commercializerChecker: zeroAddress,
   commercializerCheckerData: zeroAddress,
   commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
+  commercialRevCeiling: 0n,
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
+  derivativeRevCeiling: 0n,
   currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
 const licensingConfig: LicensingConfig = {
   isSet: false,
-  mintingFee: BigInt(0),
+  mintingFee: 0n,
   licensingHook: zeroAddress,
   hookData: zeroHash,
   commercialRevShare: 0,
@@ -541,7 +542,7 @@ import { toHex } from 'viem';
 const derivData: DerivativeData = {
   parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
   licenseTermsIds: ["1"],
-  maxMintingFee: BitInt(0), // disabled
+  maxMintingFee: 0n, // disabled
   maxRts: 100_000_000, // default
   maxRevenueShare: 100, // default
 };
@@ -640,7 +641,7 @@ import { toHex } from 'viem';
 const derivData: DerivativeData = {
   parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
   licenseTermsIds: ["1"],
-  maxMintingFee: BitInt(0), // disabled
+  maxMintingFee: 0n, // disabled
   maxRts: 100_000_000, // default
   maxRevenueShare: 100, // default
 };
@@ -783,30 +784,31 @@ Parameters:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
+import { zeroAddress, zeroHash } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
   royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // RoyaltyPolicyLAP address from https://docs.story.foundation/docs/deployed-smart-contracts
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
+  defaultMintingFee: 0n,
+  expiration: 0n,
   commercialUse: true,
   commercialAttribution: true,
   commercializerChecker: zeroAddress,
   commercializerCheckerData: zeroAddress,
   commercialRevShare: 50, // can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
+  commercialRevCeiling: 0n,
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
+  derivativeRevCeiling: 0n,
   currency: '0x1514000000000000000000000000000000000000', // $WIP address from https://docs.story.foundation/docs/deployed-smart-contracts
   uri: '',
 }
 
 const licensingConfig: LicensingConfig = {
   isSet: false,
-  mintingFee: BigInt(0),
+  mintingFee: 0n,
   licensingHook: zeroAddress,
   hookData: zeroHash,
   commercialRevShare: 0,
