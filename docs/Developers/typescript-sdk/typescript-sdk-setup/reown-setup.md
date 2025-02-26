@@ -6,7 +6,6 @@ hidden: false
 metadata:
   robots: index
 ---
-
 > 📘 Optional: Official WalletConnect Docs
 >
 > Check out the official Wagmi + Reown installation docs [here](https://docs.walletconnect.com/appkit/next/core/installation).
@@ -155,7 +154,7 @@ export default function TestComponent() {
 
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
-      account: wallet!.account,
+      wallet: wallet,
       transport: custom(wallet!.transport),
       chainId: "aeneid",
     };
