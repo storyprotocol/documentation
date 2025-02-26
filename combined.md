@@ -3695,19 +3695,13 @@ Register a group IP with a group reward pool, attach license terms to the group 
 
 Parameters:
 
-* `request.pIds`: must have the same PIL terms as the group IP.
+* `request.ipIds`: The IP IDs of the IPs to be added to the group.
 * `request.groupPool`: The address specifying how royalty will be split amongst the pool of IPs in the group.
-* `request.licenseTermsId`: The ID of the registered license terms that will be attached to the new group IP.
-* `request.licenseTemplate`: \[Optional] The address of the license template to be attached to the new group IP,default value is Programmable IP License.
+* `request.maxAllowedRevShare`: The maximum reward share percentage that can be allocated to each member IP.
+* `request.licenseData`: The data of the license and its configuration to be attached to the new group IP.
+  * `request.licenseData.licenseTermsId`: The ID of the registered license terms that will be attached to the new group IP.
+  * `request.licenseData.licenseTemplate`: \[Optional] The address of the license template to be attached to the new group IP,default value is Programmable IP License.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
-
-```typescript Response Type
-export type RegisterGroupAndAttachLicenseAndAddIpsResponse = {
-  txHash?: string;
-  encodedTxData?: EncodedTxData;
-  groupId?: Address;
-};
-```
 
 ```typescript TypeScript
 const response = await client.groupClient.registerGroupAndAttachLicenseAndAddIps({
@@ -3730,26 +3724,14 @@ const response = await client.groupClient.registerGroupAndAttachLicenseAndAddIps
   txOptions: { waitForTransaction: true },
 });
 ```
-```python Python
-metadata = {
-  'ip_metadata_uri': "test-uri",
-  'ip_metadata_hash': web3.to_hex(web3.keccak(text="test-ip-metadata-hash")),
-  'nft_metadata_uri': "test-uri",
-  'nft_metadata_hash': web3.to_hex(web3.keccak(text="test-nft-metadata-hash"))
-}
-
-response = story_client.IPAsset.register(
-  nft_contract="0x041B4F29183317Fd352AE57e331154b73F8a1D73",
-  token_id="12",
-  ip_metadata=metadata
-)
-```
 ```typescript Request Type
-export type RegisterRequest = {
-  nftContract: Address;
-  tokenId: string | number | bigint;
-  deadline?: string | number | bigint;
-} & IpMetadataAndTxOptions;
+export type RegisterGroupAndAttachLicenseAndAddIpsRequest = {
+  groupPool: Address;
+  ipIds: Address[];
+  licenseData: LicenseData;
+  maxAllowedRewardShare: number | string;
+  txOptions?: TxOptions;
+};
 ```
 ```typescript Response Type
 export type RegisterGroupAndAttachLicenseAndAddIpsResponse = {
