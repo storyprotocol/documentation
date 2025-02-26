@@ -144,15 +144,22 @@ Once the providing agent has been paid for their work (when the requesting agent
 
 ## Example Integration with MCP
 
-We have implemented a server that provides tools, based on the Model Control Protocol (MCP), for interacting with Story's protocol using <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a>.
+We have implemented a Model Control Protocol (MCP) server that provides tools for interacting with Story's protocol using <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a>, and an AI Agent that uses those tools.
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="Story MCP" href="https://github.com/piplabs/story-sdk-mcp" icon="fa-robot" target="_blank">
     Run an MCP server locally that has tools for interacting with Story's protocol to test Agent TCP/IP.
   </Card>
+
+  <Card title="LangGraph AI Agent" href="https://github.com/piplabs/story-sdk-mcp" icon="fa-robot" target="_blank">
+    A LangGraph-based AI agent for creating, minting, and registering IP assets with Story using the Story MCP server.
+  </Card>
 </Cards>
 
-Theoretically, an agent could use these tools to seamlessly generate IP, negotiate usage terms for that IP, and register it and license it out for commercial use to users on Story. **Coming soon! (like... tomorrow!)**
+1. You can clone the Story MCP server to play around with tools that interact with Story's protocol, like minting + registering IP and minting [License Tokens](doc:license-token).
+2. Then, run the LangGraph AI Agent that generates images upon user request, negotiates license terms with the user, and then uses the Story MCP server to mint + register IP on Story and mint a [License Token](doc:license-token) so the requesting user can use the work legally.
+
+Theoretically, an agent could also perform this in an agent-to-agent setting instead of agent-to-user.
 
 ### What is MCP?
 
