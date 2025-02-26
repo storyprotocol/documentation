@@ -144,7 +144,7 @@ Once the providing agent has been paid for their work (when the requesting agent
 
 ## Example Integration with MCP
 
-We have implemented a Model Control Protocol (MCP) server that provides tools for interacting with Story's protocol using <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a>, and an AI Agent that uses those tools.
+We have implemented a Model Context Protocol (MCP) server that provides tools for interacting with Story's protocol using <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a>, and an AI Agent that uses those tools.
 
 <Cards columns={2}>
   <Card title="Story MCP Server" href="https://github.com/piplabs/story-sdk-mcp" icon="fa-server" target="_blank">
