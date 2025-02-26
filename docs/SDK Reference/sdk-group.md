@@ -31,7 +31,7 @@ Registers a Group IPA.
 Parameters:
 
 * `request.groupPool`: The address specifying how royalty will be split amongst the pool of IPs in the group.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterGroupResponse = {
@@ -54,15 +54,15 @@ Parameters:
 * `request.nftContract`: The address of the NFT collection.
 * `request.groupId`: The ID of the group IP to add the newly registered IP.
 * `request.licenseTermsId`: The ID of the registered license terms that will be attached to the new IP.
-* `request.recipient`: [Optional] The address of the recipient of the minted NFT,default value is your wallet address.
-* `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP,default value is Programmable IP License.
-* `request.deadline`: [Optional] The deadline for the signature in milliseconds,default value is 1000ms.
-* `request.ipMetadata`: [Optional] The desired metadata for the newly minted NFT and newly registered IP.
-  * `request.ipMetadata.ipMetadataURI` [Optional] The URI of the metadata for the IP.
-  * `request.ipMetadata.ipMetadataHash` [Optional] The hash of the metadata for the IP.
-  * `request.ipMetadata.nftMetadataURI` [Optional] The URI of the metadata for the NFT.
-  * `request.ipMetadata.nftMetadataHash` [Optional] The hash of the metadata for the IP NFT.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.recipient`: \[Optional] The address of the recipient of the minted NFT,default value is your wallet address.
+* `request.licenseTemplate`: \[Optional] The address of the license template to be attached to the new group IP,default value is Programmable IP License.
+* `request.deadline`: \[Optional] The deadline for the signature in milliseconds,default value is 1000ms.
+* `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
+  * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
+  * `request.ipMetadata.ipMetadataHash` \[Optional] The hash of the metadata for the IP.
+  * `request.ipMetadata.nftMetadataURI` \[Optional] The URI of the metadata for the NFT.
+  * `request.ipMetadata.nftMetadataHash` \[Optional] The hash of the metadata for the IP NFT.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type MintAndRegisterIpAndAttachLicenseAndAddToGroupResponse = {
@@ -87,14 +87,14 @@ Parameters:
 * `request.tokenId`: The ID of the NFT.
 * `request.groupId`: The ID of the group IP to add the newly registered IP.
 * `request.licenseTermsId`: The ID of the registered license terms that will be attached to the new IP.
-* `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
-* `request.deadline`: [Optional] The deadline for the signature in milliseconds, default is 1000ms.
-* `request.ipMetadata`: [Optional] The desired metadata for the newly minted NFT and newly registered IP.
-  * `request.ipMetadata.ipMetadataURI` [Optional] The URI of the metadata for the IP.
-  * `request.ipMetadata.ipMetadataHash` [Optional] The hash of the metadata for the IP.
-  * `request.ipMetadata.nftMetadataURI` [Optional] The URI of the metadata for the NFT.
-  * `request.ipMetadata.nftMetadataHash` [Optional] The hash of the metadata for the IP NFT.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.licenseTemplate`: \[Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
+* `request.deadline`: \[Optional] The deadline for the signature in milliseconds, default is 1000ms.
+* `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
+  * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
+  * `request.ipMetadata.ipMetadataHash` \[Optional] The hash of the metadata for the IP.
+  * `request.ipMetadata.nftMetadataURI` \[Optional] The URI of the metadata for the NFT.
+  * `request.ipMetadata.nftMetadataHash` \[Optional] The hash of the metadata for the IP NFT.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterIpAndAttachLicenseAndAddToGroupResponse = {
@@ -117,8 +117,8 @@ Parameters:
 
 * `request.groupPool`: The address specifying how royalty will be split amongst the pool of IPs in the group.
 * `request.licenseTermsId`: The ID of the registered license terms that will be attached to the new group IP.
-* `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.licenseTemplate`: \[Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript Response Type
 export type RegisterGroupAndAttachLicenseResponse = {
@@ -141,9 +141,59 @@ Parameters:
 * `request.pIds`: must have the same PIL terms as the group IP.
 * `request.groupPool`: The address specifying how royalty will be split amongst the pool of IPs in the group.
 * `request.licenseTermsId`: The ID of the registered license terms that will be attached to the new group IP.
-* `request.licenseTemplate`: [Optional] The address of the license template to be attached to the new group IP,default value is Programmable IP License.
-* `request.txOptions`: [Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+* `request.licenseTemplate`: \[Optional] The address of the license template to be attached to the new group IP,default value is Programmable IP License.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript Response Type
+export type RegisterGroupAndAttachLicenseAndAddIpsResponse = {
+  txHash?: string;
+  encodedTxData?: EncodedTxData;
+  groupId?: Address;
+};
+```
+
+```typescript TypeScript
+const response = await client.groupClient.registerGroupAndAttachLicenseAndAddIps({
+  groupPool: "0xf96f2c30b41Cb6e0290de43C8528ae83d4f33F89", // EvenSplitGroupPool from https://docs.story.foundation/docs/deployed-smart-contracts
+  maxAllowedRewardShare: 5,
+  ipIds: ['0x01'],
+  licenseData: {
+    licenseTermsId: '5',
+    licensingConfig: {
+      isSet: false,
+      mintingFee: 0n,
+      licensingHook: zeroAddress,
+      hookData: zeroAddress,
+      commercialRevShare: 0,
+      disabled: false,
+      expectMinimumGroupRewardShare: 0,
+      expectGroupRewardPool: zeroAddress,
+    },
+  },
+  txOptions: { waitForTransaction: true },
+});
+```
+```python Python
+metadata = {
+  'ip_metadata_uri': "test-uri",
+  'ip_metadata_hash': web3.to_hex(web3.keccak(text="test-ip-metadata-hash")),
+  'nft_metadata_uri': "test-uri",
+  'nft_metadata_hash': web3.to_hex(web3.keccak(text="test-nft-metadata-hash"))
+}
+
+response = story_client.IPAsset.register(
+  nft_contract="0x041B4F29183317Fd352AE57e331154b73F8a1D73",
+  token_id="12",
+  ip_metadata=metadata
+)
+```
+```typescript Request Type
+export type RegisterRequest = {
+  nftContract: Address;
+  tokenId: string | number | bigint;
+  deadline?: string | number | bigint;
+} & IpMetadataAndTxOptions;
+```
 ```typescript Response Type
 export type RegisterGroupAndAttachLicenseAndAddIpsResponse = {
   txHash?: string;
