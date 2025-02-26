@@ -117,9 +117,13 @@ See [👥 Group IPA Restrictions](https://docs.story.foundation/docs/grouping-mo
 >
 > We are still figuring out the best way to define an IPA Metadata Standard. For the sake of transparency, the following document is our thoughts so far but is subject to change as we release future versions.
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="Official Ippy IP" href="https://explorer.story.foundation/ipa/0xB1D831271A68Db5c18c8F0B69327446f7C8D0A42" icon="fa-home" target="_blank">
     Check out the official Ippy IP, which has both NFT & IP metadata.
+  </Card>
+
+  <Card title="How to Metadata to IP Asset" href="https://docs.story.foundation/docs/ip-asset#nft-vs-ip-metadata" icon="fa-computer" target="_blank">
+    Learn how to actually add the IP  metadata discussed here to your IP Asset with an explanation or completed code example.
   </Card>
 </Cards>
 
@@ -130,7 +134,8 @@ This is the JSON metadata that is associated with an IP Asset, and gets stored i
 Below are the important attributes you should provide in your IP metadata. Under the **Required For** column is what the specific field is required for:
 
 * :mag: Story Explorer - this field will help display your IP on the Story Explorer
-* :detective: Commercial Infringement Check - this field is required if your IP is **commercial** (that is, has commercial license terms attached). We will use these fields to run an infringement check on your IP.
+* :detective: [Commercial Infringement Check](doc:story-attestation-service) - this field is required if your IP is **commercial** (that is, has `commercialUse = true` license terms attached). We will use these fields to run an infringement check on your IP.
+  * See [current limitations](https://docs.story.foundation/docs/story-attestation-service#current-limitations).
 * :robot: AI Agents - used for displaying metadata associated with AI Agents
 
 <Table align={["left","left","left","left"]}>
@@ -279,7 +284,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td>
-        :detective: Commercial Infringement Check
+        :detective: [Commercial Infringement Check](doc:story-attestation-service)
       </td>
     </tr>
 
@@ -297,7 +302,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td>
-        :detective: Commercial Infringement Check
+        :detective: [Commercial Infringement Check](doc:story-attestation-service)
       </td>
     </tr>
 
@@ -315,7 +320,7 @@ Below are the important attributes you should provide in your IP metadata. Under
       </td>
 
       <td>
-        :detective: Commercial Infringement Check
+        :detective: [Commercial Infringement Check](doc:story-attestation-service)
       </td>
     </tr>
 
@@ -681,18 +686,24 @@ If you'd like to jump into code examples/tutorials, please see [How to Register 
 
 On Story, your IP is an NFT that gets registered on the protocol as an IP Asset. However, both NFTs and IP Assets have their own metadata you can set, so what's the difference?
 
-|         | Standard                                                                   | What is it?                                                                                                                                                                          |
-| :------ | :------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **NFT** | [Opensea ERC721 Standard](https://docs.opensea.io/docs/metadata-standards) | Things like name, image, attributes, etc                                                                                                                                             |
-| **IP**  | [📝 IPA Metadata Standard](doc:ipa-metadata-standard)                         | More specific to Story, this includes information about the author of the work, its relationship to other works, attributes like app-specific metadata & AI remixing attributes, etc |
+|         | Standard                                                                   | What is it?                                                                                                                                |
+| :------ | :------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| **NFT** | [Opensea ERC721 Standard](https://docs.opensea.io/docs/metadata-standards) | Things like `name`, `description`, `image`, `attributes`, `animation_url`, etc                                                             |
+| **IP**  | [📝 IPA Metadata Standard](doc:ipa-metadata-standard)                      | More specific to Story, this includes necessary information about the underlying content for infringement checks, authors of the work, etc |
 
 All other metadata, such as the ownership, legal, and economic details of an IP Asset are handled by our protocol directly. For example, the protocol stores data associated with parent-child relationships through the [📜 Licensing Module](doc:licensing-module), the monetary flow between IP Assets through the [💸 Royalty Module](doc:royalty-module), and the legal constraints/permissions of an IP Asset with the [💊 Programmable IP License (PIL)](doc:programmable-ip-license).
 
 ### Adding NFT & IP Metadata to IP Asset
 
-> 📘 Working Code Example
->
-> To see how to implement proper metadata for the NFT & IP, in both the SDK and smart contracts directly, check out [How to Register IP on Story](doc:how-to-register-ip-on-story).
+<Cards columns={2}>
+  <Card title="SDK Completed Code Example" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegisterSpg.ts" icon="fa-computer" target="_blank">
+    Jump to the code and see a completed code example of adding NFT & IP metadata to an IP Asset
+  </Card>
+
+  <Card title="SDK Explanation" href="https://docs.story.foundation/docs/register-an-ip-asset" icon="fa-file" target="_blank">
+    Learn how to add metadata to your IP Asset with a step-by-step explanation.
+  </Card>
+</Cards>
 
 In practice, whether you are using the SDK or our smart contract directly, our protocol asks you to provide 4 different parameters:
 
@@ -716,7 +727,7 @@ struct IPMetadata {
 * `ipMetadataURI` - a URI pointing to a JSON object that follows the [📝 IPA Metadata Standard](doc:ipa-metadata-standard)
 * `ipMetadataHash` - hash of the `ipMetadataURI` JSON object
 * `nftMetadataURI` - a URI pointing to a JSON object that follows the [Opensea ERC721 Standard](https://docs.opensea.io/docs/metadata-standards)
-* `nftMetadataHash` - hash the `nftMetadataURI` JSON object
+* `nftMetadataHash` - hash of the `nftMetadataURI` JSON object
 
 # Hooks
 # Overview
@@ -2219,9 +2230,6 @@ interface IMulticall3 {
 ```
 
 
-# 🕵️ Story Attestation Service
-> 🚧 Coming soon...
-
 # ❓ Concepts FAQ
 ## *"What is the difference between License Tokens, Royalty Tokens, and Revenue Tokens?"*
 
@@ -2744,6 +2752,66 @@ From the 1M WIP inflow to IP3 Royalty Vault:
 * 100k WIP are claimed by the IP1 Royalty Vault which has 10% of RT3 token supply via `claimByTokenBatchAsSelf`  function
 * 400k WIP are claimed by "Policy X" which has 40 of RT3 token supply. This amount is further split by "Policy X" custom contract according to its specific rules - which define y% and z% - to its users.
 
+# 🕵️ Story Attestation Service
+<Accordion title="Skip the Read - 1 Minute Summary" icon="fa-info-circle">
+  You can think of the Story Attestation Service (SAS) as a bunch of independent service providers (infringement, identity, etc) each proving the validity of an IP in their own way. So that each IP has a set of "badges" on it displaying the results.
+
+  It's then up to the ecosystem/market to determine which providers they trust or want to believe. This becomes a  decentralized "validator"-like approach to IP validity, where if an IP Asset has lots of providers saying it is valid, then it probably valid.
+</Accordion>
+
+Story employs a multi-layered decentralized approach to validating intellectual property, grounded in two foundational components:
+
+1. The Story Attestation Service (SAS): leverages a network of specialized service providers — each detecting copyright violations across different mediums (images, audio, etc) — to provide transparent, publicly accessible signals on the legitimacy of an [🧩 IP Asset](doc:ip-asset). Applications that facilitate IP registration (e.g. original content) may also attest to the provenance of an IP asset (called "apptestations") in the future.
+2. The [❌ Dispute Module](doc:dispute-module): offers a flexible framework for resolving conflicts, tapping both on-chain and off-chain processes to accommodate the nuanced nature of IP disputes.
+
+This blend of detection methods and dispute resolution creates a robust ecosystem that allows IP to be registered without introducing undue friction, while letting the market, and individual ecosystem apps, determine how much weight to give each attestation provider.
+
+These layers make up the **IP Validation Service (IPVS)** - a fully decentralized marketplace of trust. The existing system of detection providers will continue to expand into a broader ecosystem of signal contributors, each able to offer specialized, verifiable assessments of IP authenticity. Through incentivized participation, IPVS fosters a self-sustaining market where different validators collaborate to deliver specialized signals.
+
+So rather than preventing duplicates, which would cause far more potentially disruptive front running risk, the signals and attestations allow the original IPs surface above the rest.
+
+## "When does the SAS scan my IP?"
+
+> 📘 Quick Note
+>
+> It's important to note that the Story Attestation Service only runs IP infringement checks on **commercial IP**. That is, IP Assets who have at least one [License Terms](doc:license-terms) where `commercialUse = true`.
+>
+> If your IP is non-commercial, then this section doesn't apply to you.
+
+When [registering your IP on Story](doc:how-to-register-ip-on-story), you pass in IP-specific metadata that implements the [📝 IPA Metadata Standard](doc:ipa-metadata-standard). In this standard, you'll see 3 fields:
+
+| Property Name | Type     | Description                                                                                                                                                                                                                                    |
+| :------------ | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mediaUrl`    | `string` | Used for infringement checking, points to the actual media (ex. image or audio)                                                                                                                                                                |
+| `mediaHash`   | `string` | Hashed string of the media using SHA-256 hashing algorithm. See [here](https://docs.story.foundation/docs/ipa-metadata-standard#hashing-content) for how that is done.                                                                         |
+| `mediaType`   | `string` | Type of media (audio, video, image), based on [mimeType](https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types/Common_types). See the allowed media types [here](https://docs.story.foundation/docs/ipa-metadata-standard#media-types). |
+
+These are used for the commercial infringement check. Whatever media you pass in through `mediaUrl` will be checked by our infringement detection providers and flagged if infringement is detected.
+
+If you do not pass in these `media.*` fields, then an infringement detection will not be performed and your IP will not be proven valid.
+
+### Current Limitations
+
+* You must set the `media.*` fields before attaching commercial terms (`commercialUse = true`), otherwise no check will be performed.
+* Attestations will only show up on the IP Portal (our "GitHub for IP" platform coming soon). We are working on publishing attestations to public record so anyone can access the results (**COMING SOON!**).
+* Only media that is **existing on the internet** will be detected. If someone registers new IP on Story, it will simply return validated because our providers don't have data on it.
+
+## Current Providers
+
+<Cards columns={2}>
+  <Card title="Yakoa" href="https://www.yakoa.io/" icon="fa-home" iconColor="#190087" target="_blank">
+    Yakoa uses AI and machine learning to scan multiple blockchains, analyzing on-chain data to detect direct copies, stylistic forgeries, and unauthorized replications of digital assets. It compares new assets against a database of known IP, flagging potential violations in real time and providing detailed audit logs for enforcement.
+  </Card>
+
+  <Card title="Pex" href="https://www.pex.com/" icon="fa-home" iconColor="#019cf4" target="_blank">
+    Pex.com is a digital platform that leverages advanced content recognition and analytics to help creators and rights holders track, manage, and monetize their visual and audio media online. It monitors how content is used across the web, making it easier for users to discover licensing opportunities and protect their intellectual property.
+  </Card>
+</Cards>
+
+## Becoming an Attestation Provider
+
+The Story Attestation Service is undergoing active development. If you run any form of IP validation (infringement, identity, origin, etc), then you can become an attestation provider. To do so, please fill out this [form](https://docs.google.com/forms/d/10n3AnWoiLsxpaY17kJlxRazysDe8aOWJgirRnfkFRAk/edit).
+
 # 👥 Grouping Module
 The Grouping Module enables the creation and management of group IP Assets, supporting a royalty pool for the group.
 
@@ -2761,7 +2829,7 @@ The Grouping Module enables the creation and management of group IP Assets, supp
 * Checking whether a group contains a specific IPA
 * Get the total number of IPAs of a group
 
-## Creating a Group IPA
+## :hammer_and_wrench: Creating a Group IPA
 
 Similar to the IP Asset registration process, in which you must have a minted NFT to register and then an IP Account is created, the same applies to Group IP Assets. You must have a minted ERC-721 NFT (that represents the ownership of the group) to register as a group, and then when you register, an IP Account for the group is deployed.
 
@@ -2771,39 +2839,38 @@ Anyone can create a new group.
 
 Similar to how when an IP Asset is created an IP Account is deployed & registered through the [IP Asset Registry](doc:ip-asset-registry), the Group's IP Account is deployed and registered through the [Group IP Asset Registry](doc:group-ip-asset-registry). This is responsible for managing the registration and tracking of Group IP Assets, including the group members and reward pools.
 
-## The Group's IP Account
+### The Group's IP Account
 
 The Group IP Account should function equivalently to a normal IP Account, allowing attachment of license terms, creation of derivatives, execution with modules, and other interactions. It also has the same common interface of IP Account. Hence, the Group IP Account can be applied to anywhere where IP Account can be applied.
 
 Besides the common interfaces of IP Account, the Group IP Account has functions to manage the adding/removing of individual IPAs in the group.
 
-## Adding & Removing from a Group
+## :lock: Group Restrictions
 
-Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
+Here are the restrictions associated with a Group IPA:
 
-### Conditions to Join a Group
+* A derivative IP of a group IP can only have the group IP as its sole parent
+* A group IP cannot attach License Terms that use the [Liquid Absolute Percentage (LAP)](doc:liquid-absolute-percentage) royalty policy
+* An empty group cannot have derivative IPs or mint License Tokens
+* A group IP cannot be registered as a derivative
+* A group IP can only attach one license term common to all members
+* Once a Group gains its first member, the `mintingFee`, `licensingHook`, and `licensingHookData` are frozen. The Group’s `commercialRevShare` can only increase
+* A group has a maximum size of 1000 members
 
-An IPA must include one license terms that matches the license terms of the group. An IPA may include other license terms in addition to the one that matches the group.
+### Adding & Removing from a Group
+
+* Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
+* An IPA must include one license terms that matches the license terms of the group. An IPA may include other license terms in addition to the one that matches the group.
+* When adding an IP to a group, the Group and IP must have the same `mintingFee` and `licenseHook` in the LicenseConfig, and the Group’s `commercialRevShare` must be greater than or equal to the IP’s share
 
 ### Groups Becoming Locked
 
+When a group is locked, IPAs cannot be removed from it, but new IPAs can still be added.
+
 A group IPA is locked when:
 
-1. it has derivative IPs registered or
-2. when someone mints a license token from the group.
-
-Once the group is locked, IPAs cannot be removed from it, but new IPAs can still be added.
-
-## Group Restrictions
-
-* A derivative IP of a group IP can only have the group IP as its sole parent
-* A Group IP cannot attach License Terms that use the LAP Royalty policy
-* An empty group cannot have derivative IPs or mint License Tokens
-* A Group IP cannot be registered as a derivative as another parent IP
-* **Single License Term Validation:** Ensure that a Group IPA can only attach one license term common to all members
-* **Consistent License Config Validation:** When adding an IP to a group, the Group and IP must have the same mintingFee and licenseHook in the LicenseConfig, and the Group’s commercial revenue share must be greater than or equal to the IP’s share
-* **Freezing License Config Items:** Once a Group gains its first member, the mintingFee, licensingHook, and licensingHookData are frozen. The Group’s commercial revenue share can only increase
-* **Group Max Size Limit:** Enforce a maximum group size of 1000
+1. it has a derivative IP registered OR
+2. when someone mints a license token from the group
 
 ## :blue_book: Example
 
@@ -9806,7 +9873,7 @@ Once the providing agent has been paid for their work (when the requesting agent
 We have implemented a server that provides tools, based on the Model Control Protocol (MCP), for interacting with Story's protocol using <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">the MCP Python SDK</a>.
 
 <Cards columns={1}>
-  <Card title="Story MCP" href="https://github.com/sarick-story/story-sdk-mcp" icon="fa-robot" target="_blank">
+  <Card title="Story MCP" href="https://github.com/piplabs/story-sdk-mcp" icon="fa-robot" target="_blank">
     Run an MCP server locally that has tools for interacting with Story's protocol to test Agent TCP/IP.
   </Card>
 </Cards>
@@ -10038,6 +10105,43 @@ We will support a few ways, including the [Dispute Module](doc:dispute-module), 
 A more nuanced answer to this (one that we're constantly exploring/improving upon) is there may be additional ways to deter IP infringement. For example, a staking validation mechanism where users could stake tokens on a piece of IP being valid, and if it were to be disputed and marked as copyright, the tokens get slashed and distributed to the creator who was harmed. Additionally we've thought of introducing external IP infringement detection services directly into our L1 at the lowest level that could flag or automatically mark IP as potential infringement the moment its registered.
 
 Ultimately Story is not a system built to prevent bad actors, rather it is meant to help facilitate honest actors to more easily register their IP, remix from others, and set proper terms for their work. The protocol is permissionless and stopping bad actors entirely would be near impossible, but we can try to disincentivize them as best we can. Much like how the pirating of media plummeted when Apple Music, Spotify, and Netflix made such media more accessible by creating a "path of least resistance", we see a similar future with Story & IP.
+
+# 🏛️ Governance
+As the steward of the Story ecosystem, the Story Foundation works in close alignment with $IP Tokenholders and the broader ecosystem. The Story Foundation supports the Story DAO by providing operational support, executing tokenholder governance decisions, and overseeing strategic development and growth of the overall ecosystem. This relationship is designed to empower decentralized governance while preserving efficiency and stability throughout the Story ecosystem.
+
+## Story DAO's Constitution
+
+<Cards columns={1}>
+  <Card title="Story DAO Constitution" href="https://story.foundation/constitution.pdf" icon="fa-scroll" iconColor="#ccb092" target="_blank">
+    Read the entire Story DAO constitution.
+  </Card>
+</Cards>
+
+## Story Foundation’s Role in Governance
+
+<Accordion title="Strategic Grants" icon="fa-money-check-dollar" iconColor="lightgreen">
+  Provide **strategic grants** to align with innovation via partner projects including, but not limited to, infrastructure providers, application developers, artists, creators, brand partnerships, creative studios, and strategic growth partners.
+</Accordion>
+
+<Accordion title="Network Security" icon="fa-file-shield" iconColor="cyan">
+  **Promote network security** by creating a security council and appointing members to serve on this council.
+</Accordion>
+
+<Accordion title="Implement Proposals" icon="fa-scroll" iconColor="#ccb092">
+  Developing the ecosystem and protocol by **implementing proposals** of the Story DAO that are approved in accordance with the process outlined in the Story DAO Constitution and engaging parties to build apps. This may include funding research, public education, and establishing grant programs.
+</Accordion>
+
+<Accordion title="Educational Initiatives / Events" icon="fa-book" iconColor="lightred">
+  Organizing **educational initiatives and hosting events** to increase awareness of and promote the Story Network, Story Protocol and ecosystem.
+</Accordion>
+
+<Accordion title="Decentralization" icon="fa-globe" iconColor="lightblue">
+  Advocating for and **supporting increased autonomy and decentralization** of the Story DAO.
+</Accordion>
+
+<Accordion title="Treasury Management" icon="fa-piggy-bank" iconColor="pink">
+  **Treasury management** and oversight to foster long-term ecosystem growth and support the Foundation’s ongoing mission.
+</Accordion>
 
 # Protect DALL·E AI-Generated Images
 In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generated images by registering it on Story.
@@ -12847,7 +12951,7 @@ There are a few steps you have to complete before you can start the tutorial.
 
 1. Complete the [Setup Your Own Project](doc:sc-setup)
 
-## 0/. Before We Start
+## Before We Start
 
 There are two scenarios:
 
