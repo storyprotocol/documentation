@@ -6,7 +6,6 @@ hidden: false
 metadata:
   robots: index
 ---
-
 > 📘 Optional: Official Dynamic Docs
 >
 > Check out the official Wagmi + Dynamic installation docs [here](https://docs.dynamic.xyz/react-sdk/using-wagmi).
@@ -113,7 +112,7 @@ export default function TestComponent() {
 
   async function setupStoryClient(): Promise<StoryClient> {
     const config: StoryConfig = {
-      account: wallet!.account,
+      wallet: wallet,
       transport: custom(wallet!.transport),
       chainId: "aeneid",
     };
