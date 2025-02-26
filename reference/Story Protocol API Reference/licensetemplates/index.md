@@ -1,4 +1,0 @@
----
-title: LicenseTemplates
-hidden: false
----
