@@ -389,7 +389,7 @@ const commercialRemix = {
   commercialAttribution: true,
   commercializerChecker: zeroAddress,
   commercializerCheckerData: "0x",
-  commercialRevShare: COMMERCIAL_REV_SHARE, // ex. 50 * 10 ** 6 (which means 50% of derivative revenue)
+  commercialRevShare: COMMERCIAL_REV_SHARE, // ex. 50 (which means 50% of derivative revenue)
   commercialRevCeiling: 0n,
   derivativesAllowed: true,
   derivativesAttribution: true,
