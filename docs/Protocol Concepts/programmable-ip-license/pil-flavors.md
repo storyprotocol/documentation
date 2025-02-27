@@ -95,8 +95,31 @@ PILTerms({
   derivativesReciprocal: true,
   derivativeRevCeiling: 0,
   currency: address(0),
-  uri: "https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/NCSR.json",
+  uri: "https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/NCSR.json"
 });
+```
+```typescript TypeScript
+import { zeroAddress } from 'viem';
+
+const nonCommercialSocialRemix = {
+  transferable: true,
+  royaltyPolicy: zeroAddress,
+  defaultMintingFee: 0n,
+  expiration: 0n,
+  commercialUse: false,
+  commercialAttribution: false,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: "0x",
+  commercialRevShare: 0,
+  commercialRevCeiling: 0n,
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: 0n,
+  currency: zeroAddress,
+  uri: "https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/NCSR.json"
+}
 ```
 
 * **Off-chain:**
@@ -204,8 +227,31 @@ PILTerms({
   derivativesReciprocal: false,
   derivativeRevCeiling: 0,
   currency: CURRENCY, // ex. $WIP address
-  uri: "https://github.com/piplabs/pil-document/blob/9a1f803fcf8101a8a78f1dcc929e6014e144ab56/off-chain-terms/CommercialUse.json",
+  uri: "https://github.com/piplabs/pil-document/blob/9a1f803fcf8101a8a78f1dcc929e6014e144ab56/off-chain-terms/CommercialUse.json"
 })
+```
+```typescript TypeScript
+import { zeroAddress } from 'viem';
+
+const commercialUse = {
+  transferable: true,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
+  defaultMintingFee: MINTING_FEE, // ex. 100n (costs 100 $WIP to mint)
+  expiration: 0n,
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: "0x",
+  commercialRevShare: 0,
+  commercialRevCeiling: 0n,
+  derivativesAllowed: false,
+  derivativesAttribution: false,
+  derivativesApproval: false,
+  derivativesReciprocal: false,
+  derivativeRevCeiling: 0n,
+  currency: CURRENCY, // ex. $WIP address
+  uri: "https://github.com/piplabs/pil-document/blob/9a1f803fcf8101a8a78f1dcc929e6014e144ab56/off-chain-terms/CommercialUse.json"
+}
 ```
 
 * **Off-chain**
@@ -328,8 +374,31 @@ PILTerms({
   derivativesReciprocal: true,
   derivativeRevCeiling: 0,
   currency: CURRENCY, // ex. $WIP address
-  uri: "https://github.com/piplabs/pil-document/blob/ad67bb632a310d2557f8abcccd428e4c9c798db1/off-chain-terms/CommercialRemix.json",
+  uri: "https://github.com/piplabs/pil-document/blob/ad67bb632a310d2557f8abcccd428e4c9c798db1/off-chain-terms/CommercialRemix.json"
 });
+```
+```typescript TypeScript
+import { zeroAddress } from 'viem';
+
+const commercialRemix = {
+  transferable: true,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
+  defaultMintingFee: MINTING_FEE, // ex. 100n (costs 100 $WIP to mint)
+  expiration: 0n,
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: "0x",
+  commercialRevShare: COMMERCIAL_REV_SHARE, // ex. 50 * 10 ** 6 (which means 50% of derivative revenue)
+  commercialRevCeiling: 0n,
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: 0n,
+  currency: CURRENCY, // ex. $WIP address
+  uri: "https://github.com/piplabs/pil-document/blob/ad67bb632a310d2557f8abcccd428e4c9c798db1/off-chain-terms/CommercialRemix.json"
+}
 ```
 
 * **Off-chain**
@@ -450,6 +519,29 @@ PILTerms({
   currency: CURRENCY, // ex. $WIP address
   uri: 'https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/CC-BY.json'
 });
+```
+```typescript TypeScript
+import { zeroAddress } from 'viem';
+
+const creativeCommonsAttribution = {
+  transferable: true,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
+  defaultMintingFee: 0n,
+  expiration: 0n,
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: "0x",
+  commercialRevShare: 0,
+  commercialRevCelling: 0n,
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCelling: 0n,
+  currency: CURRENCY, // ex. $WIP address
+  uri: 'https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/CC-BY.json'
+}
 ```
 
 * **Off-chain**
