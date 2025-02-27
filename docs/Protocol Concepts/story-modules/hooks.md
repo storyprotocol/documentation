@@ -24,6 +24,12 @@ From a structural standpoint, Hooks are not treated as separate entities from Mo
 
 ## Available Hooks
 
+Below are available hooks deployed on our protocol that you can use.
+
+> 📘 Deployed Addresses
+>
+> View the deployed addresses for these hooks [here](https://docs.story.foundation/docs/deployed-smart-contracts#periphery-contracts).
+
 | Hook                       | Description                                                                            | Contract Code                                                                                                                                              |
 | :------------------------- | :------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | LockLicenseHook            | Stop the minting of license tokens or registering new derivatives.                     | <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/hooks/LockLicenseHook.sol" target="_blank">View here ↗️</a>            |
