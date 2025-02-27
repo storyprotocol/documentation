@@ -136,36 +136,25 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
   <tbody>
     <tr>
       <td>
-        ✅ Commercialize the original and derivative works\\
+        ✅ Commercialize the original work
         (`commercialUse == true`)
       </td>
 
       <td>
-        :x: Remix this work\\
+        :x: Remix this work
         (`derivativesAllowed == false`)
       </td>
     </tr>
 
     <tr>
       <td>
-        ✅ Distribute their remix anywhere
+        :white_check_mark: Keep all revenue\
+        (`commercialRevShare == 0`)
       </td>
 
       <td>
         ❌ Claim credit for the original work\
         (`commercialAttribution == true`)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        :white_check_mark: Keep all revenue\\\
-        (`commercialRevShare == 0`)
-      </td>
-
-      <td>
-        :x: Claim credit for any derivative works\
-        (`derivativesAttribution == true`)
       </td>
     </tr>
 
