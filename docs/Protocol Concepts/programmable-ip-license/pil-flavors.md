@@ -25,11 +25,11 @@ Let the world build on and play with your creation. This license allows for endl
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others can
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others cannot
       </th>
     </tr>
@@ -37,35 +37,35 @@ Let the world build on and play with your creation. This license allows for endl
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Remix this work
         (`derivativesAllowed == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Commercialize the original and derivative works
         (`commercialUse == false`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Distribute their remix anywhere
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for any derivative works
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark: Get the license for free\
         (`defaultMintingFee == 0`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for the original work\
         ("Attribution" is true in the off-chain terms)
       </td>
@@ -80,21 +80,21 @@ Let the world build on and play with your creation. This license allows for endl
 ```sol Solidity
 PILTerms({
   transferable: true,
-  royaltyPolicy: zeroAddress,
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
+  royaltyPolicy: address(0),
+  defaultMintingFee: 0,
+  expiration: 0,
   commercialUse: false,
   commercialAttribution: false,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: "0x",
+  commercializerChecker: address(0),
+  commercializerCheckerData: EMPTY_BYTES,
   commercialRevShare: 0,
-  commercialRevCeiling: BigInt(0),
+  commercialRevCeiling: 0,
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
-  currency: zeroAddress,
+  derivativeRevCeiling: 0,
+  currency: address(0),
   uri: "https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/NCSR.json",
 });
 ```
@@ -123,11 +123,11 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others can
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others cannot
       </th>
     </tr>
@@ -135,47 +135,47 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Remix this work
         (`derivativesAllowed == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Claim credit for the original work
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Commercialize the original and derivative works
         (`commercialUse == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for any derivative works
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Distribute their remix anywhere
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Get the license for free\
         (`defaultMintingFee` is set)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark: Keep all revenue\
         (`commercialRevShare == 0`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for the original work even non-commercially\
         ("Attribution is true in the off-chain terms)
       </td>
@@ -191,19 +191,19 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 PILTerms({
   transferable: true,
   royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
-  defaultMintingFee: BigInt(100), // ex. costs 100 $WIP to mint
-  expiration: BigInt(0),
+  defaultMintingFee: MINTING_FEE, // ex. costs 100 $WIP to mint
+  expiration: 0,
   commercialUse: true,
   commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
+  commercializerChecker: address(0),
+  commercializerCheckerData: EMPTY_BYTES,
   commercialRevShare: 0,
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
+  commercialRevCeiling: 0,
+  derivativesAllowed: false,
+  derivativesAttribution: false,
   derivativesApproval: false,
   derivativesReciprocal: false,
-  derivativeRevCeiling: BigInt(0),
+  derivativeRevCeiling: 0,
   currency: CURRENCY, // ex. $WIP address
   uri: "https://github.com/piplabs/pil-document/blob/9a1f803fcf8101a8a78f1dcc929e6014e144ab56/off-chain-terms/CommercialUse.json",
 })
@@ -237,11 +237,11 @@ Check out Story's official mascot **Ippy**, which we have registered with commer
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others can
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others cannot
       </th>
     </tr>
@@ -249,57 +249,57 @@ Check out Story's official mascot **Ippy**, which we have registered with commer
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Remix this work
         (`derivativesAllowed == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Claim credit for the original work
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Commercialize the original and derivative works
         (`commercialUse == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for any derivative works
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Distribute their remix anywhere
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Keep all revenue\
         (`commercialRevShare` is set)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Get the license for free\
         (`defaultMintingFee` is set)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for the original work even non-commercially\
         ("Attribution is true in the off-chain terms)
       </td>
@@ -357,11 +357,11 @@ Let the world build on and play with your creation - including making money.
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others can
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others cannot
       </th>
     </tr>
@@ -369,58 +369,58 @@ Let the world build on and play with your creation - including making money.
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Remix this work
         (`derivativesAllowed == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Claim credit for the original work
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Commercialize the original and derivative works
         (`commercialUse == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for any derivative works
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Distribute their remix anywhere
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for the original work even non-commercially\
         ("Attribution is true in the off-chain terms)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark: Get the license for free\
         (`defaultMintingFee == 0`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark: Keep all revenue\
         (`commercialRevShare == 0`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
