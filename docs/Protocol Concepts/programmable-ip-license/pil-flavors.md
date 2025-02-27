@@ -136,31 +136,42 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
   <tbody>
     <tr>
       <td>
-        ✅ Remix this work
-        (`derivativesAllowed == true`)
-      </td>
-
-      <td>
-        ❌ Claim credit for the original work
-        (`commercialAttribution == true`)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        ✅ Commercialize the original and derivative works
+        ✅ Commercialize the original and derivative works\\
         (`commercialUse == true`)
       </td>
 
       <td>
-        :x: Claim credit for any derivative works
-        (`derivativesAttribution == true`)
+        :x: Remix this work\\
+        (`derivativesAllowed == false`)
       </td>
     </tr>
 
     <tr>
       <td>
         ✅ Distribute their remix anywhere
+      </td>
+
+      <td>
+        ❌ Claim credit for the original work\
+        (`commercialAttribution == true`)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        :white_check_mark: Keep all revenue\\\
+        (`commercialRevShare == 0`)
+      </td>
+
+      <td>
+        :x: Claim credit for any derivative works\
+        (`derivativesAttribution == true`)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+
       </td>
 
       <td>
@@ -171,8 +182,7 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 
     <tr>
       <td>
-        :white_check_mark: Keep all revenue\
-        (`commercialRevShare == 0`)
+
       </td>
 
       <td>
@@ -315,19 +325,19 @@ Check out Story's official mascot **Ippy**, which we have registered with commer
 PILTerms({
   transferable: true,
   royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
-  defaultMintingFee: BigInt(100), // ex. costs 100 $WIP to mint
-  expiration: BigInt(0),
+  defaultMintingFee: MINTING_FEE, // ex. costs 100 $WIP to mint
+  expiration: 0,
   commercialUse: true,
   commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50 * 10 ** 6, // ex. can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
+  commercializerChecker: address(0),
+  commercializerCheckerData: EMPTY_BYTES,
+  commercialRevShare: COMMERCIAL_REV_SHARE, // ex. 50 * 10 ** 6 (which means 50% of derivative revenue)
+  commercialRevCeiling: 0,
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
+  derivativeRevCeiling: 0,
   currency: CURRENCY, // ex. $WIP address
   uri: "https://github.com/piplabs/pil-document/blob/ad67bb632a310d2557f8abcccd428e4c9c798db1/off-chain-terms/CommercialRemix.json",
 });
@@ -434,12 +444,12 @@ Let the world build on and play with your creation - including making money.
 ```sol Solidity
 PILTerms({
   transferable: true,
-  royaltyPolicy: zeroAddress,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
   defaultMintingFee: 0,
   expiration: 0,
   commercialUse: true,
   commercialAttribution: true,
-  commercializerChecker: zeroAddress,
+  commercializerChecker: address(0),
   commercializerCheckerData: EMPTY_BYTES,
   commercialRevShare: 0,
   commercialRevCelling: 0,
@@ -448,7 +458,7 @@ PILTerms({
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCelling: 0,
-  currency: zeroAddress,
+  currency: CURRENCY, // ex. $WIP address
   uri: 'https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/CC-BY.json'
 });
 ```
