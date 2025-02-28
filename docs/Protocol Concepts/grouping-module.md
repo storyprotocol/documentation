@@ -57,8 +57,8 @@ Here are the restrictions associated with a Group IPA:
 ### Adding & Removing from a Group
 
 * Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
-* An IPA must include one license terms that matches the license terms of the group. An IPA may include other license terms in addition to the one that matches the group.
-* When adding an IP to a group, the Group and IP must have the same `mintingFee` and `licenseHook` in the LicenseConfig, and the Group’s `commercialRevShare` must be greater than or equal to the IP’s share
+* An IPA must include one license terms that matches the license terms of the group (same `licenseTemplate` and `licenseTerms`. An IPA may include other license terms in addition to the one that matches the group.
+* When adding an IP to a Group, the Group and IP must have the same `mintingFee` and `licenseHook` in the `LicenseConfig`. Additionally, the Group's commercial revenue share must be greater than or equal to the IP's commercial revenue share.
 
 ### Groups Becoming Locked
 
