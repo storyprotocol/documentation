@@ -200,7 +200,7 @@ sudo xattr -rd com.apple.quarantine ./geth
 
     [Service]
     User=${user}
-    ExecStart=${path_to_geth_binary} --aeneid --syncmode full
+    ExecStart=${path_to_geth_binary} -aeneid --syncmode full
     Restart=on-failure
     RestartSec=3
     LimitNOFILE=4096

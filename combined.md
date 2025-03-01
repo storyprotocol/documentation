@@ -1606,7 +1606,7 @@ sudo xattr -rd com.apple.quarantine ./geth
 
     [Service]
     User=${user}
-    ExecStart=${path_to_geth_binary} --aeneid --syncmode full
+    ExecStart=${path_to_geth_binary} -aeneid --syncmode full
     Restart=on-failure
     RestartSec=3
     LimitNOFILE=4096
@@ -16221,4 +16221,3 @@ Congratulations, you claimed revenue using the [💸 Royalty Module](doc:royalty
 Now what happens if an IP Asset doesn't pay their due share? We can dispute the IP on-chain, which we will cover on the next page.
 
 > 🚧 Coming soon!
-
