@@ -23,15 +23,15 @@ next:
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         RPC Name
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         RPC URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -39,15 +39,15 @@ next:
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         Story
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://aeneid.storyrpc.io`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
@@ -59,15 +59,15 @@ next:
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Explorer
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -75,29 +75,29 @@ next:
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://aeneid.storyscan.xyz`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://aeneid.explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://aeneid.explorer.story.foundation`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅
       </td>
     </tr>
@@ -106,9 +106,10 @@ next:
 
 ## Faucet
 
-| Faucet                                                                               | Amount |
-| :----------------------------------------------------------------------------------- | :----- |
-| [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/story/aeneid) | 1 IP   |
+| Faucet                                                                                                             | Amount |
+| :----------------------------------------------------------------------------------------------------------------- | :----- |
+| <a href="https://cloud.google.com/application/web3/faucet/story/aeneid" target="_blank">Google Cloud Faucet ↗️</a> | 10 IP  |
+| <a href="https://aeneid.faucet.story.foundation/" target="_blank">Official Faucet ↗️</a>                           | 10 IP  |
 
 ## Staking Dashboard
 
