@@ -1,5 +1,5 @@
 ---
-title: Network Info
+title: ℹ️ Network Info
 excerpt: ''
 deprecated: false
 hidden: false
