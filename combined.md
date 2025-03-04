@@ -14033,8 +14033,8 @@ export default function TestComponent() {
 Once you have the SDK set up in React, you can use it just as we describe in the [🛠️ TypeScript SDK Guide](doc:typescript-sdk).
 
 <Cards columns={2}>
-  <Card title="Working Code Examples" href="https://github.com/storyprotocol/typescript-tutorial" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    Extremely easy & straightforward working code examples for all of the following tutorials.
+  <Card title="Working Code Example" href="https://github.com/jacob-tucker/story-developer-sandbox" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    A working code example that shows setting up & calling TypeScript SDK functions in Next.js
   </Card>
 
   <Card title="SDK Reference" href="https://docs.story.foundation/docs/sdk-overview#/" icon="fa-books" iconColor="#51af51" target="_blank">
