@@ -223,7 +223,7 @@ export type BatchClaimAllRevenueRequest = WithClaimOptions & {
     childIpIds: Address[];
     royaltyPolicies: Address[];
     currencyTokens: Address[];
-  }[],
+  }[];
   options?: {
     useMulticallWhenPossible?: boolean;
   };
