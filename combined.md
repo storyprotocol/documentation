@@ -1,4 +1,4 @@
-# Network Info
+# ℹ️ Network Info
 # Overview
 
 Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
@@ -31,15 +31,15 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         RPC Name
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         RPC URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -47,16 +47,30 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         Story
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://aeneid.storyrpc.io`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Story by QuickNode
+      </td>
+
+      <td>
+        `https://www.quicknode.com/chains/story`
+      </td>
+
+      <td>
+
       </td>
     </tr>
   </tbody>
@@ -67,15 +81,15 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Explorer
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -83,29 +97,29 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://aeneid.storyscan.xyz/" target="_blank">Blockscout Explorer ↗️</a>
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://aeneid.storyscan.xyz`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://aeneid.explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://aeneid.explorer.story.foundation`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅
       </td>
     </tr>
@@ -114,9 +128,10 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
 ## Faucet
 
-| Faucet                                                                               | Amount |
-| :----------------------------------------------------------------------------------- | :----- |
-| [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/story/aeneid) | 1 IP   |
+| Faucet                                                                                                             | Amount |
+| :----------------------------------------------------------------------------------------------------------------- | :----- |
+| <a href="https://cloud.google.com/application/web3/faucet/story/aeneid" target="_blank">Google Cloud Faucet ↗️</a> | 10 IP  |
+| <a href="https://aeneid.faucet.story.foundation/" target="_blank">Official Faucet ↗️</a>                           | 10 IP  |
 
 ## Staking Dashboard
 
@@ -142,15 +157,15 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         RPC Name
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         RPC URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -158,16 +173,44 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         Story
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://mainnet.storyrpc.io`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Story by Ankr
+      </td>
+
+      <td>
+        `https://rpc.ankr.com/story_mainnet`
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Story by QuickNode
+      </td>
+
+      <td>
+        `https://www.quicknode.com/chains/story`
+      </td>
+
+      <td>
+
       </td>
     </tr>
   </tbody>
@@ -178,15 +221,15 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Explorer
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -194,43 +237,57 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://storyscan.xyz/" target="_blank">BlockScout Explorer ↗️</a>
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://storyscan.xyz/`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://explorer.story.foundation`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://www.okx.com/web3/explorer/story" target="_blank">OKX Explorer ↗️</a>
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://www.okx.com/web3/explorer/story`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        [Stakeme Explorer](https://storyscan.app/)
+      </td>
+
+      <td>
+        `https://storyscan.app/`
+      </td>
+
+      <td>
 
       </td>
     </tr>
@@ -242,11 +299,11 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Dashboard URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -254,31 +311,31 @@ Story Network is a purpose-built layer 1 blockchain achieving the best of EVM an
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         [Story Dashboard](https://staking.story.foundation/)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         [Origin Stake](https://ipworld.io/)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         [Node.Guru](https://story.explorers.guru/)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
@@ -3700,7 +3757,7 @@ Parameters:
 * `request.maxAllowedRevShare`: The maximum reward share percentage that can be allocated to each member IP.
 * `request.licenseData`: The data of the license and its configuration to be attached to the new group IP.
   * `request.licenseData.licenseTermsId`: The ID of the registered license terms that will be attached to the new group IP.
-  * `request.licenseData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
+  * `request.licenseData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
   * `request.licenseData.licenseTemplate`: \[Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
@@ -4295,9 +4352,9 @@ Parameters:
 * `request.childIpId`: The derivative IP ID.
 * `request.parentIpIds`: The parent IP IDs.
 * `request.licenseTermsIds`: The IDs of the license terms that the parent IP supports.
-* `request.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
-* `request.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
-* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+* `request.maxMintingFee`: \[Optional] The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+* `request.maxRevenueShare`: \[Optional] The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -4305,9 +4362,6 @@ const response = await client.ipAsset.registerDerivative({
   childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
   parentIpIds: ["0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba"],
   licenseTermsIds: ["5"],
-  maxMintingFee: 0n, // disabled
-  maxRts: 100_000_000, // default
-  maxRevenueShare: 100, // default
   txOptions: { waitForTransaction: true }
 });
 
@@ -4363,14 +4417,13 @@ Parameters:
 
 * `request.childIpId`: The derivative IP ID.
 * `request.licenseTokenIds`: The IDs of the license tokens.
-* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
 const response = await client.ipAsset.registerDerivativeWithLicenseTokens({
   childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
   licenseTokenIds: ["5"], // array of license ids relevant to the creation of the derivative, minted from the parent IPA
-  maxRts: 100_000_000, // default
   txOptions: { waitForTransaction: true }
 });
 
@@ -4413,10 +4466,10 @@ Mint an NFT from a collection, register it as an IP, attach metadata to the IP, 
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
+* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.licenseTermsData[]`: The array of license terms to be attached. :warning: **This function will fail if you pass in an empty array.**
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
-  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
+  * `request.licenseTermsData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI`: \[Optional] The URI of the metadata for the IP.
   * `request.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
@@ -4427,7 +4480,7 @@ Parameters:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
-import { zeroAddress, zeroHash } from 'viem';
+import { zeroAddress } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
@@ -4449,22 +4502,9 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: 0n,
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
 const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
   spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
-  // set to true to mint ip with same nft metadata
-  allowDuplicates: true,
+  licenseTermsData: [{ terms: commercialRemixTerms }],
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -4576,7 +4616,7 @@ Parameters:
 * `request.tokenId`:  The ID of the NFT.
 * `request.licenseTermsData[]`: The array of license terms to be attached. :warning: **This function will fail if you pass in an empty array.**
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
-  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
+  * `request.licenseTermsData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI`: \[Optional] The URI of the metadata for the IP.
   * `request.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
@@ -4587,7 +4627,7 @@ Parameters:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
-import { toHex, zeroAddress, zeroHash } from 'viem';
+import { toHex, zeroAddress } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
@@ -4609,22 +4649,10 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: 0n,
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
 const response = await client.ipAsset.registerIpAndAttachPilTerms({
   nftContract: '0x041B4F29183317Fd352AE57e331154b73F8a1D73',
   tokenId: '12',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
+  licenseTermsData: [{ terms: commercialRemixTerms }],
   ipMetadata: {
     ipMetadataURI: 'test-uri',
     ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
@@ -4672,9 +4700,9 @@ Parameters:
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
-  * `request.derivData.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
-  * `request.derivData.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+  * `request.derivData.maxMintingFee`: \[Optional]The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+  * `request.derivData.maxRevenueShare`: \[Optional]The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+  * `request.derivData.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -4687,18 +4715,13 @@ Parameters:
 ```typescript TypeScript
 import { toHex } from 'viem';
 
-const derivData: DerivativeData = {
-  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
-  licenseTermsIds: ["1"],
-  maxMintingFee: 0n, // disabled
-  maxRts: 100_000_000, // default
-  maxRevenueShare: 100, // default
-};
-
 const response = await client.ipAsset.registerDerivativeIp({
   nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
   tokenId: '127',
-  derivData,
+  derivData: {
+    parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+    licenseTermsIds: ["1"]
+  },
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -4766,13 +4789,13 @@ Mint an NFT from a collection and register it as a derivative IP without license
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
+* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
-  * `request.derivData.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
-  * `request.derivData.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+  * `request.derivData.maxMintingFee`: \[Optional]The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+  * `request.derivData.maxRevenueShare`: \[Optional]The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+  * `request.derivData.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -4783,21 +4806,15 @@ Parameters:
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
 import { toHex } from 'viem';
-
-const derivData: DerivativeData = {
-  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
-  licenseTermsIds: ["1"],
-  maxMintingFee: 0n, // disabled
-  maxRts: 100_000_000, // default
-  maxRevenueShare: 100, // default
-};
 
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
   // an NFT contract address created by the SPG
   spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc",
-  derivData,
+  derivData: {
+    parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+    licenseTermsIds: ["1"],
+  },
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -4863,7 +4880,7 @@ Mint an NFT from an SPGNFT collection and register it with metadata as an IP.
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
+* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.recipient`: \[Optional] The address of the recipient of the minted NFT, default value is your wallet address.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -4873,14 +4890,11 @@ Parameters:
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
 import { toHex, Address, zeroAddress } from 'viem';
 
 const response = await client.ipAsset.mintAndRegisterIp({
   // an NFT contract address created by the SPG
   spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
-  // set to true to have multiple NFTs with same metadata
-  allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -4926,13 +4940,13 @@ Parameters:
 * `request.ipId`: The ID of the IP.
 * `request.licenseTermsData[]`: The array of license terms to be attached.
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
-  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
+  * `request.licenseTermsData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
 * `request.deadline`: \[Optional] The deadline for the signature in milliseconds, default is 1000s.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
-import { zeroAddress, zeroHash } from 'viem';
+import { zeroAddress } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
@@ -4954,20 +4968,9 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: 0n,
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
 const response = await client.ipAsset.registerPilTermsAndAttach({
   ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }],
+  licenseTermsData: [{ terms: commercialRemixTerms }],
   txOptions: { waitForTransaction: true },
 })
 console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
@@ -5003,8 +5006,8 @@ Mint an NFT from a collection and register it as a derivative IP using license t
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
-* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -5020,9 +5023,6 @@ import { toHex } from 'viem';
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLicenseTokens({
   spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // your SPG NFT contract address
   licenseTokenIds: ['10'],
-  maxRts: 100_000_000, // default
-  // set to true to allow ip with same nft metadata
-  allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -5073,7 +5073,7 @@ Parameters:
 
 * `request.nftContract`: The address of the NFT collection.
 * `request.tokenId`: The ID of the NFT.
-* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+* `request.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -5090,7 +5090,6 @@ const response = await client.ipAsset.registerIpAndMakeDerivativeWithLicenseToke
   nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
   tokenId: '127',
   licenseTokenIds: ['10'],
-  maxRts: 100_000_000, // default
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -6565,8 +6564,8 @@ function supportsInterface(bytes4 interfaceId) public view virtual override(ERC1
 ```
 
 
-# Hooks
-Hooks in Story Protocol are defined as a specialized interface that inherits from the Module framework. They are designed for developers to create custom implementations that integrate seamlessly with existing Modules.
+# 🪝 Hooks
+Hooks are defined as a specialized interface that inherits from the Module framework. They are designed for developers to create custom implementations that integrate seamlessly with existing Modules.
 
 <Image align="center" src="https://files.readme.io/2ea34f7-Screenshot_2024-02-05_at_16.09.49.png" />
 
@@ -6578,91 +6577,18 @@ While Modules are the backbone of the Story Protocol, executing actions and mana
 
 From a structural standpoint, Hooks are not treated as separate entities from Modules. This decision avoids unnecessary complexity in the architecture. Viewing Hooks as specialized Modules allows for a simplified, efficient design that emphasizes clarity in roles and interactions.
 
-## Sample Token Gated Hook Module
+## Available Hooks
 
-```coffeescript
-pragma solidity 0.8.23;
+Below are available hooks deployed on our protocol that you can use.
 
-import { IERC165 } from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
-import { ERC165Checker } from "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol";
-import { IERC721 } from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import { IHookModule } from "../../../contracts/interfaces/modules/base/IHookModule.sol";
-import { BaseModule } from "../../../contracts/modules/BaseModule.sol";
+> 📘 Deployed Addresses
+>
+> View the deployed addresses for these hooks [here](https://docs.story.foundation/docs/deployed-smart-contracts#periphery-contracts).
 
-/// @title Token Gated Hook.
-/// @notice Hook for ensursing caller is the owner of an NFT token.
-contract TokenGatedHook is BaseModule, IHookModule {
-    using ERC165Checker for address;
-
-    string public constant override name = "TokenGatedHook";
-
-    function verify(address caller, bytes calldata data) external view returns (bool) {
-        address tokenAddress = abi.decode(data, (address));
-        if (caller == address(0)) {
-            return false;
-        }
-        if (!tokenAddress.supportsInterface(type(IERC721).interfaceId)) {
-            return false;
-        }
-        return IERC721(tokenAddress).balanceOf(caller) > 0;
-    }
-
-    function validateConfig(bytes calldata configData) external view override {
-        address tokenAddress = abi.decode(configData, (address));
-        require(tokenAddress.supportsInterface(type(IERC721).interfaceId), "TokenGatedHook: Invalid token address");
-    }
-
-    function supportsInterface(bytes4 interfaceId) public view virtual override(BaseModule, IERC165) returns (bool) {
-        return interfaceId == type(IHookModule).interfaceId || super.supportsInterface(interfaceId);
-    }
-}
-
-```
-
-Using The `TokenGatedHook` as `commercializerChecker` with `LicensingModule` for use case that only allow mint license to licensee who own a specific NFT token.
-
-```
-        licensingModule.registerPolicyFrameworkManager(address(pilManager));
-
-        PILPolicy memory policyData = PILPolicy({
-            attribution: true,
-            commercialUse: true,
-            commercialAttribution: false,
-            commercializerChecker: address(0),
-            commercializerCheckerData: "",
-            commercialRevShare: 100,
-            derivativesAllowed: false,
-            derivativesAttribution: false,
-            derivativesApproval: false,
-            derivativesReciprocal: false,
-            territories: new string[](1),
-            distributionChannels: new string[](1),
-            contentRestrictions: emptyStringArray
-        });
-
-        gatedNftFoo.mintId(address(this), 1);
-
-        MockTokenGatedHook tokenGatedHook = new MockTokenGatedHook();
-        policyData.commercializerChecker = address(tokenGatedHook);
-        // address(this) doesn't hold token of NFT collection gatedNftBar, so the verification will fail
-        policyData.commercializerCheckerData = abi.encode(address(gatedNftBar));
-        policyData.territories[0] = "territory1";
-        policyData.distributionChannels[0] = "distributionChannel1";
-
-        uint256 policyId = pilManager.registerPolicy(
-            RegisterPILPolicyParams({
-                transferable: true,
-                royaltyPolicy: address(mockRoyaltyPolicyLAP),
-                mintingFee: 0,
-                mintingFeeToken: address(0),
-                policy: policyData
-            })
-        );
-
-        vm.prank(ipOwner);
-        licensingModule.addPolicyToIp(ipId1, policyId);
-        licensingModule.mintLicense(policyId, ipId1, 1, licenseHolder, "");
-```
+| Hook                       | Description                                                                            | Contract Code                                                                                                                                              |
+| :------------------------- | :------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| LockLicenseHook            | Stop the minting of license tokens or registering new derivatives.                     | <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/hooks/LockLicenseHook.sol" target="_blank">View here ↗️</a>            |
+| TotalLicenseTokenLimitHook | Set a limit on the amount of license tokens that can be minted, updatable at any time. | <a href="https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/hooks/TotalLicenseTokenLimitHook.sol" target="_blank">View here ↗️</a> |
 
 # View Module
 # Overview
@@ -8066,11 +7992,11 @@ Let the world build on and play with your creation. This license allows for endl
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others can
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others cannot
       </th>
     </tr>
@@ -8078,35 +8004,35 @@ Let the world build on and play with your creation. This license allows for endl
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Remix this work
         (`derivativesAllowed == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Commercialize the original and derivative works
         (`commercialUse == false`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Distribute their remix anywhere
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for any derivative works
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark: Get the license for free\
         (`defaultMintingFee == 0`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for the original work\
         ("Attribution" is true in the off-chain terms)
       </td>
@@ -8121,23 +8047,46 @@ Let the world build on and play with your creation. This license allows for endl
 ```sol Solidity
 PILTerms({
   transferable: true,
+  royaltyPolicy: address(0),
+  defaultMintingFee: 0,
+  expiration: 0,
+  commercialUse: false,
+  commercialAttribution: false,
+  commercializerChecker: address(0),
+  commercializerCheckerData: EMPTY_BYTES,
+  commercialRevShare: 0,
+  commercialRevCeiling: 0,
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: 0,
+  currency: address(0),
+  uri: "https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/NCSR.json"
+});
+```
+```typescript TypeScript
+import { zeroAddress } from 'viem';
+
+const nonCommercialSocialRemix = {
+  transferable: true,
   royaltyPolicy: zeroAddress,
-  defaultMintingFee: BigInt(0),
-  expiration: BigInt(0),
+  defaultMintingFee: 0n,
+  expiration: 0n,
   commercialUse: false,
   commercialAttribution: false,
   commercializerChecker: zeroAddress,
   commercializerCheckerData: "0x",
   commercialRevShare: 0,
-  commercialRevCeiling: BigInt(0),
+  commercialRevCeiling: 0n,
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
+  derivativeRevCeiling: 0n,
   currency: zeroAddress,
-  uri: "https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/NCSR.json",
-});
+  uri: "https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/NCSR.json"
+}
 ```
 
 * **Off-chain:**
@@ -8164,11 +8113,11 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others can
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others cannot
       </th>
     </tr>
@@ -8176,47 +8125,46 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
-        ✅ Remix this work
-        (`derivativesAllowed == true`)
+      <td>
+        ✅ Commercialize the original work
+        (`commercialUse == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
-        ❌ Claim credit for the original work
+      <td>
+        :x: Remix this work
+        (`derivativesAllowed == false`)
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        :white_check_mark: Keep all revenue\
+        (`commercialRevShare == 0`)
+      </td>
+
+      <td>
+        ❌ Claim credit for the original work\
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        ✅ Commercialize the original and derivative works
-        (`commercialUse == true`)
+      <td>
+
       </td>
 
-      <td style={{ textAlign: "left" }}>
-        :x: Claim credit for any derivative works
-        (`derivativesAttribution == true`)
-      </td>
-    </tr>
-
-    <tr>
-      <td style={{ textAlign: "left" }}>
-        ✅ Distribute their remix anywhere
-      </td>
-
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Get the license for free\
         (`defaultMintingFee` is set)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        :white_check_mark: Keep all revenue\
-        (`commercialRevShare == 0`)
+      <td>
+
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for the original work even non-commercially\
         ("Attribution is true in the off-chain terms)
       </td>
@@ -8232,22 +8180,45 @@ Retain control over reuse of your work, while allowing anyone to appropriately u
 PILTerms({
   transferable: true,
   royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
-  defaultMintingFee: BigInt(100), // ex. costs 100 $WIP to mint
-  expiration: BigInt(0),
+  defaultMintingFee: MINTING_FEE, // ex. costs 100 $WIP to mint
+  expiration: 0,
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: address(0),
+  commercializerCheckerData: EMPTY_BYTES,
+  commercialRevShare: 0,
+  commercialRevCeiling: 0,
+  derivativesAllowed: false,
+  derivativesAttribution: false,
+  derivativesApproval: false,
+  derivativesReciprocal: false,
+  derivativeRevCeiling: 0,
+  currency: CURRENCY, // ex. $WIP address
+  uri: "https://github.com/piplabs/pil-document/blob/9a1f803fcf8101a8a78f1dcc929e6014e144ab56/off-chain-terms/CommercialUse.json"
+})
+```
+```typescript TypeScript
+import { zeroAddress } from 'viem';
+
+const commercialUse = {
+  transferable: true,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
+  defaultMintingFee: MINTING_FEE, // ex. 100n (costs 100 $WIP to mint)
+  expiration: 0n,
   commercialUse: true,
   commercialAttribution: true,
   commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
+  commercializerCheckerData: "0x",
   commercialRevShare: 0,
-  commercialRevCeiling: BigInt(0),
-  derivativesAllowed: true,
-  derivativesAttribution: true,
+  commercialRevCeiling: 0n,
+  derivativesAllowed: false,
+  derivativesAttribution: false,
   derivativesApproval: false,
   derivativesReciprocal: false,
-  derivativeRevCeiling: BigInt(0),
+  derivativeRevCeiling: 0n,
   currency: CURRENCY, // ex. $WIP address
-  uri: "https://github.com/piplabs/pil-document/blob/9a1f803fcf8101a8a78f1dcc929e6014e144ab56/off-chain-terms/CommercialUse.json",
-})
+  uri: "https://github.com/piplabs/pil-document/blob/9a1f803fcf8101a8a78f1dcc929e6014e144ab56/off-chain-terms/CommercialUse.json"
+}
 ```
 
 * **Off-chain**
@@ -8278,11 +8249,11 @@ Check out Story's official mascot **Ippy**, which we have registered with commer
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others can
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others cannot
       </th>
     </tr>
@@ -8290,57 +8261,57 @@ Check out Story's official mascot **Ippy**, which we have registered with commer
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Remix this work
         (`derivativesAllowed == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Claim credit for the original work
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Commercialize the original and derivative works
         (`commercialUse == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for any derivative works
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Distribute their remix anywhere
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Keep all revenue\
         (`commercialRevShare` is set)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Get the license for free\
         (`defaultMintingFee` is set)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for the original work even non-commercially\
         ("Attribution is true in the off-chain terms)
       </td>
@@ -8356,22 +8327,45 @@ Check out Story's official mascot **Ippy**, which we have registered with commer
 PILTerms({
   transferable: true,
   royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
-  defaultMintingFee: BigInt(100), // ex. costs 100 $WIP to mint
-  expiration: BigInt(0),
+  defaultMintingFee: MINTING_FEE, // ex. costs 100 $WIP to mint
+  expiration: 0,
   commercialUse: true,
   commercialAttribution: true,
-  commercializerChecker: zeroAddress,
-  commercializerCheckerData: zeroAddress,
-  commercialRevShare: 50 * 10 ** 6, // ex. can claim 50% of derivative revenue
-  commercialRevCeiling: BigInt(0),
+  commercializerChecker: address(0),
+  commercializerCheckerData: EMPTY_BYTES,
+  commercialRevShare: COMMERCIAL_REV_SHARE, // ex. 50 * 10 ** 6 (which means 50% of derivative revenue)
+  commercialRevCeiling: 0,
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
-  derivativeRevCeiling: BigInt(0),
+  derivativeRevCeiling: 0,
   currency: CURRENCY, // ex. $WIP address
-  uri: "https://github.com/piplabs/pil-document/blob/ad67bb632a310d2557f8abcccd428e4c9c798db1/off-chain-terms/CommercialRemix.json",
+  uri: "https://github.com/piplabs/pil-document/blob/ad67bb632a310d2557f8abcccd428e4c9c798db1/off-chain-terms/CommercialRemix.json"
 });
+```
+```typescript TypeScript
+import { zeroAddress } from 'viem';
+
+const commercialRemix = {
+  transferable: true,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
+  defaultMintingFee: MINTING_FEE, // ex. 100n (costs 100 $WIP to mint)
+  expiration: 0n,
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: "0x",
+  commercialRevShare: COMMERCIAL_REV_SHARE, // ex. 50 (which means 50% of derivative revenue)
+  commercialRevCeiling: 0n,
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCeiling: 0n,
+  currency: CURRENCY, // ex. $WIP address
+  uri: "https://github.com/piplabs/pil-document/blob/ad67bb632a310d2557f8abcccd428e4c9c798db1/off-chain-terms/CommercialRemix.json"
+}
 ```
 
 * **Off-chain**
@@ -8398,11 +8392,11 @@ Let the world build on and play with your creation - including making money.
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others can
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Others cannot
       </th>
     </tr>
@@ -8410,58 +8404,58 @@ Let the world build on and play with your creation - including making money.
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Remix this work
         (`derivativesAllowed == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         ❌ Claim credit for the original work
         (`commercialAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Commercialize the original and derivative works
         (`commercialUse == true`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for any derivative works
         (`derivativesAttribution == true`)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         ✅ Distribute their remix anywhere
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :x: Claim credit for the original work even non-commercially\
         ("Attribution is true in the off-chain terms)
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark: Get the license for free\
         (`defaultMintingFee == 0`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark: Keep all revenue\
         (`commercialRevShare == 0`)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
@@ -8475,23 +8469,46 @@ Let the world build on and play with your creation - including making money.
 ```sol Solidity
 PILTerms({
   transferable: true,
-  royaltyPolicy: zeroAddress,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
   defaultMintingFee: 0,
   expiration: 0,
   commercialUse: true,
   commercialAttribution: true,
-  commercializerChecker: zeroAddress,
+  commercializerChecker: address(0),
   commercializerCheckerData: EMPTY_BYTES,
   commercialRevShare: 0,
-  commercialRevCelling: 0,
+  commercialRevCeiling: 0,
   derivativesAllowed: true,
   derivativesAttribution: true,
   derivativesApproval: false,
   derivativesReciprocal: true,
   derivativeRevCelling: 0,
-  currency: zeroAddress,
+  currency: CURRENCY, // ex. $WIP address
   uri: 'https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/CC-BY.json'
 });
+```
+```typescript TypeScript
+import { zeroAddress } from 'viem';
+
+const creativeCommonsAttribution = {
+  transferable: true,
+  royaltyPolicy: ROYALTY_POLICY, // ex. RoyaltyPolicyLAP address
+  defaultMintingFee: 0n,
+  expiration: 0n,
+  commercialUse: true,
+  commercialAttribution: true,
+  commercializerChecker: zeroAddress,
+  commercializerCheckerData: "0x",
+  commercialRevShare: 0,
+  commercialRevCeiling: 0n,
+  derivativesAllowed: true,
+  derivativesAttribution: true,
+  derivativesApproval: false,
+  derivativesReciprocal: true,
+  derivativeRevCelling: 0n,
+  currency: CURRENCY, // ex. $WIP address
+  uri: 'https://github.com/piplabs/pil-document/blob/998c13e6ee1d04eb817aefd1fe16dfe8be3cd7a2/off-chain-terms/CC-BY.json'
+}
 ```
 
 * **Off-chain**
@@ -8973,8 +8990,8 @@ Here are the restrictions associated with a Group IPA:
 ### Adding & Removing from a Group
 
 * Only the owner of a group can add/remove IP Assets. You **do not** have to own an IP Asset to add it to your group.
-* An IPA must include one license terms that matches the license terms of the group. An IPA may include other license terms in addition to the one that matches the group.
-* When adding an IP to a group, the Group and IP must have the same `mintingFee` and `licenseHook` in the LicenseConfig, and the Group’s `commercialRevShare` must be greater than or equal to the IP’s share
+* An IPA must include one license terms that matches the license terms of the group (same `licenseTemplate` and `licenseTerms`. An IPA may include other license terms in addition to the one that matches the group.
+* When adding an IP to a Group, the Group and IP must have the same `mintingFee` and `licenseHook` in the `LicenseConfig`. Additionally, the Group's commercial revenue share must be greater than or equal to the IP's commercial revenue share.
 
 ### Groups Becoming Locked
 
