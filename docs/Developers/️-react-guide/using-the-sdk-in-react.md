@@ -1,12 +1,12 @@
 ---
 title: Using the SDK in React
-excerpt: Once you have the TypeScript SDK setup in React, learn how to use it.
+excerpt: Learn how to use the SDK in React once you have it set up.
 deprecated: false
 hidden: false
 metadata:
   robots: index
 ---
-Once you have the SDK setup in React, you can use it just as we describe in the [🛠️ TypeScript SDK Guide](doc:typescript-sdk).
+Once you have the SDK set up in React, you can use it just as we describe in the [🛠️ TypeScript SDK Guide](doc:typescript-sdk).
 
 <Cards columns={2}>
   <Card title="Working Code Examples" href="https://github.com/storyprotocol/typescript-tutorial" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
@@ -20,7 +20,7 @@ Once you have the SDK setup in React, you can use it just as we describe in the 
 
 ### :warning: Prerequisites
 
-1. Complete the [SDK set up in React](doc:react-setup)
+1. Complete the [SDK setup in React](doc:react-setup)
 
 ## Example
 
