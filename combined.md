@@ -13439,7 +13439,7 @@ The best way to get started is to get your hands dirty and start building.
   </Card>
 </Cards>
 
-In the following series of tutorials, you will learn how to setup the TypeScript SDK in React and build IP applications with the TypeScript SDK.
+In the following series of tutorials, you will learn how to setup the TypeScript SDK in React.
 
 # Setup
 We can also use the TypeScript SDK in React to delay signing & sending transactions to a JSON-RPC account like Metamask.
@@ -14030,7 +14030,7 @@ export default function TestComponent() {
 ```
 
 # Using the SDK in React
-Once you have the SDK setup in React, you can use it just as we describe in the [🛠️ TypeScript SDK Guide](doc:typescript-sdk).
+Once you have the SDK set up in React, you can use it just as we describe in the [🛠️ TypeScript SDK Guide](doc:typescript-sdk).
 
 <Cards columns={2}>
   <Card title="Working Code Examples" href="https://github.com/storyprotocol/typescript-tutorial" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
@@ -14044,7 +14044,7 @@ Once you have the SDK setup in React, you can use it just as we describe in the 
 
 ### :warning: Prerequisites
 
-1. Complete the [SDK set up in React](doc:react-setup)
+1. Complete the [SDK setup in React](doc:react-setup)
 
 ## Example
 
