@@ -14026,7 +14026,6 @@ export default function TestComponent() {
 ```
 
 # Setup
-
 ### :warning: Prerequisites
 
 We require node version 18 or later version and npm version 8 to be installed in your environment. To install node and npm, we recommend you go to the [Node.js official website](https://nodejs.org) and download the latest LTS (Long Term Support) version.
@@ -14084,16 +14083,9 @@ const config: StoryConfig = {
 export const client = StoryClient.newClient(config);
 ```
 
-### :purse: Set Up JSON-RPC Account (ex. Metamask)
+### :purse: Set Up for React (ex. Metamask)
 
-We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
-
-We recommend using wagmi as a Web3 provider and then installing a wallet service like Dynamic, RainbowKit, or WalletConnect. We provide an example for all 3:
-
-- [Dynamic Setup Tutorial](doc:dynamic-setup)
-- [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
-- [WalletConnect Setup Tutorial](doc:walletconnect-setup)
-- [Tomo Setup Tutorial](doc:tomo-setup)
+The [React Setup Guide](doc:react-setup) shows how we can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
 
 # 🛠️ TypeScript SDK Guide
 The best way to get started is to get your hands dirty and start building.
