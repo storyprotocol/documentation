@@ -67,6 +67,6 @@ const config: StoryConfig = {
 export const client = StoryClient.newClient(config);
 ```
 
-### :purse: Set Up for React (ex. Metamask)
+### :purse: Setup for React (ex. Metamask)
 
 The [React Setup Guide](doc:react-setup) shows how we can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
