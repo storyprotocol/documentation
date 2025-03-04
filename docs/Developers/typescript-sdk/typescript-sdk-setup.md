@@ -1,14 +1,14 @@
 ---
-title: TypeScript SDK Setup
-excerpt: ""
+title: Setup
+excerpt: Learn how to setup the TypeScript SDK.
 deprecated: false
 hidden: false
 metadata:
-  title: ""
-  description: ""
+  title: ''
+  description: ''
   robots: index
 next:
-  description: ""
+  description: ''
 ---
 
 ### :warning: Prerequisites
