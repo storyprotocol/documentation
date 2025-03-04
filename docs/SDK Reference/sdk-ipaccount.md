@@ -42,3 +42,74 @@ export type SetIpMetadataRequest = {
   txOptions?: Omit<TxOptions, "encodedTxDataOnly">;
 };
 ```
+
+### execute
+
+Executes a transaction from the IP Account.
+
+| Method    | Type                                                            |
+| --------- | --------------------------------------------------------------- |
+| `execute` | `(IPAccountExecuteRequest) => Promis<IPAccountExecuteResponse>` |
+
+Parameters:
+
+* `request.ipId`: The Ip Id to get ip account.
+* `request.to`: The recipient of the transaction.
+* `request.value`: The amount of Ether to send.
+* `request.accountAddress`: The ipId to send.
+* `request.data`: The data to send along with the transaction.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+
+```typescript Request Type
+export type IPAccountExecuteRequest = {
+  ipId: Address;
+  to: Address;
+  value: number;
+  data: Address;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type IPAccountExecuteResponse = {
+  txHash?: Hex;
+  encodedTxData?: EncodedTxData;
+};
+```
+
+### executeWithSig
+
+Executes a transaction from the IP Account.
+
+| Method           | Type                                                            |
+| ---------------- | --------------------------------------------------------------- |
+| `executeWithSig` | `(IPAccountExecuteRequest) => Promis<IPAccountExecuteResponse>` |
+
+Parameters:
+
+* `request.ipId`: The Ip Id to get ip account.
+* `request.to`: The recipient of the transaction.
+* `request.data`: The data to send along with the transaction.
+* `request.signer`: The signer of the transaction.
+* `request.deadline`: The deadline of the transaction signature.
+* `request.signature`: The signature of the transaction, EIP-712 encoded.
+* `request.value`: \[Optional] The amount of Ether to send.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+
+```typescript Request Type
+export type IPAccountExecuteWithSigRequest = {
+  ipId: Address;
+  to: Address;
+  data: Address;
+  signer: Address;
+  deadline: number | bigint | string;
+  signature: Address;
+  value?: number | bigint | string;
+  txOptions?: TxOptions;
+};
+```
+```typescript Response Type
+export type IPAccountExecuteWithSigResponse = {
+  txHash?: Hex;
+  encodedTxData?: EncodedTxData;
+};
+```
