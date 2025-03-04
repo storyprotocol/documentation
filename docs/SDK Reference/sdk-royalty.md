@@ -196,7 +196,7 @@ Parameters:
   * `request.claimOptions.autoTransferAllClaimedTokensFromIp`: \[Optional] When enabled, all claimed tokens on the claimer are transferred to the wallet address if the wallet owns the IP. If the wallet is the claimer or if the claimer is not an IP owned by the wallet, then the tokens will not be transferred. Set to false to disable auto transferring claimed tokens from the claimer. **Default: true**
   * `request.claimOptions.autoUnwrapIpTokens`: \[Optional] By default all claimed WIP tokens are converted back to IP after they are transferred. Set this to false to disable this behavior. **Default: false**
 * `request.options`: \[Optional]
-  * `request.options.useMulticallWhenPossible`: \[Optional]Use multicall to batch the calls `claimAllRevenue` into one transaction when possible. If only 1 ancestorIp is provided, multicall will not be used. **Default: true**
+  * `request.options.useMulticallWhenPossible`: \[Optional] Use multicall to batch the calls `claimAllRevenue` into one transaction when possible. If only 1 ancestorIp is provided, multicall will not be used. **Default: true**
 
 ```typescript TypeScript
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
