@@ -23,15 +23,15 @@ next:
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         RPC Name
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         RPC URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -39,16 +39,30 @@ next:
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         Story
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://mainnet.storyrpc.io`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Story by Ankr
+      </td>
+
+      <td>
+        `https://rpc.ankr.com/story_mainnet`
+      </td>
+
+      <td>
+
       </td>
     </tr>
   </tbody>
@@ -59,15 +73,15 @@ next:
 <Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Explorer
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -75,43 +89,43 @@ next:
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://storyscan.xyz/" target="_blank">BlockScout Explorer ↗️</a>
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://storyscan.xyz/`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://explorer.story.foundation/" target="_blank">IP Explorer ↗️</a> (only for IP-related actions like licensing, minting licenses, etc)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://explorer.story.foundation`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         <a href="https://www.okx.com/web3/explorer/story" target="_blank">OKX Explorer ↗️</a>
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         `https://www.okx.com/web3/explorer/story`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
@@ -123,11 +137,11 @@ next:
 <Table align={["left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Dashboard URL
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Official
       </th>
     </tr>
@@ -135,31 +149,31 @@ next:
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         [Story Dashboard](https://staking.story.foundation/)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         :white_check_mark:
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         [Origin Stake](https://ipworld.io/)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         [Node.Guru](https://story.explorers.guru/)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
 
       </td>
     </tr>
