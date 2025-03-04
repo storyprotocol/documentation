@@ -14090,9 +14090,13 @@ The [React Setup Guide](doc:react-setup) shows how we can also use the TypeScrip
 # 🛠️ TypeScript SDK Guide
 The best way to get started is to get your hands dirty and start building.
 
-<Cards columns={1}>
+<Cards columns={2}>
   <Card title="Working Code Examples" href="https://github.com/storyprotocol/typescript-tutorial" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Extremely easy & straightforward working code examples for all of the following tutorials.
+  </Card>
+
+  <Card title="SDK Reference" href="https://docs.story.foundation/docs/sdk-overview#/" icon="fa-books" iconColor="#51af51" target="_blank">
+    View the whole SDK reference, which shows examples and types for every function in our SDK.
   </Card>
 </Cards>
 
