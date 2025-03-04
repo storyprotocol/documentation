@@ -51,6 +51,20 @@ next:
         :white_check_mark:
       </td>
     </tr>
+
+    <tr>
+      <td>
+        Story by QuickNode
+      </td>
+
+      <td>
+        `https://www.quicknode.com/chains/story`
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
   </tbody>
 </Table>
 
