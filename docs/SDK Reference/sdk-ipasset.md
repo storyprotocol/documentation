@@ -275,7 +275,7 @@ Parameters:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
-import { zeroAddress, zeroHash } from 'viem';
+import { zeroAddress } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
@@ -422,7 +422,7 @@ Parameters:
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
-import { toHex, zeroAddress, zeroHash } from 'viem';
+import { toHex, zeroAddress } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
