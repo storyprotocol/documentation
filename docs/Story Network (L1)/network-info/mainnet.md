@@ -146,7 +146,7 @@ next:
 
     <tr>
       <td>
-        \[Stakeme]\([https://storyscan.app/](https://storyscan.app/))
+        [Stakeme Explorer](https://storyscan.app/)
       </td>
 
       <td>
