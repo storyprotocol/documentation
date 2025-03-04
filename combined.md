@@ -3969,7 +3969,9 @@ And lastly, some utility/extra clients:
 * payRoyaltyOnBehalf
 * claimableRevenue
 * claimAllRevenue
+* batchClaimAllRevenue
 * getRoyaltyVaultAddress
+* batchClaimAllRevenue
 
 ### payRoyaltyOnBehalf
 
@@ -4078,7 +4080,6 @@ Parameters:
 * `request.claimOptions`: \[Optional]
   * `request.claimOptions.autoTransferAllClaimedTokensFromIp`: \[Optional]When enabled, all claimed tokens on the claimer are transferred to the wallet address if the wallet owns the IP. If the wallet is the claimer or if the claimer is not an IP owned by the wallet, then the tokens will not be transferred. Set to false to disable auto transferring claimed tokens from the claimer. **Default: true**
   * `request.claimOptions.autoUnwrapIpTokens`: \[Optional]By default all claimed WIP tokens are converted back to IP after they are transferred. Set this to false to disable this behavior. **Default: false**
-* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
 import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
@@ -4105,6 +4106,9 @@ export type ClaimAllRevenueRequest = {
   childIpIds: Address[];
   royaltyPolicies: Address[];
   currencyTokens: Address[];
+} & WithClaimOptions;
+
+export type WithClaimOptions = {
   claimOptions?: {
     autoTransferAllClaimedTokensFromIp?: boolean;
     autoUnwrapIpTokens?: boolean;
@@ -4121,6 +4125,74 @@ export type ClaimAllRevenueResponse = {
 export type ClaimedToken = {
   token: Address;
   amount: bigint;
+};
+```
+
+### batchClaimAllRevenue
+
+Automatically batch claims all revenue from the child IPs of multiple ancestor IPs. If multicall is disabled, it will call `claimAllRevenue` for each ancestor IP. Then transfer all claimed tokens to the wallet if the wallet owns the IP or is the claimer. If claimed token is WIP, it will also be converted back to IP.
+
+| Method                 | Type                                                                              |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| `batchClaimAllRevenue` | `(request: BatchClaimAllRevenueRequest) => Promise<BatchClaimAllRevenueResponse>` |
+
+Parameters:
+
+* `request.ancestorIps[]`: An array of ancestor IP information from which the revenue is being claimed.
+  * `request.ancestorIps[].ipId`: The address of the ancestor IP from which the revenue is being claimed.
+  * `request.ancestorIps[].claimer`: The address of the claimer of the currency (revenue) tokens. This is normally the ipId of the ancestor IP if the IP has all royalty tokens. Otherwise, this would be the address that is holding the ancestor IP royalty tokens.
+  * `request.ancestorIps[].childIpIds[]`: The addresses of the child IPs from which royalties are derived.
+  * `request.ancestorIps[].royaltyPolicies[]`: The addresses of the royalty policies, where royaltyPolicies\[i] governs the royalty flow for childIpIds\[i].
+  * `request.ancestorIps[].currencyTokens[]`: The addresses of the currency tokens in which royalties will be claimed.
+* `request.claimOptions`: \[Optional]
+  * `request.claimOptions.autoTransferAllClaimedTokensFromIp`: \[Optional]When enabled, all claimed tokens on the claimer are transferred to the wallet address if the wallet owns the IP. If the wallet is the claimer or if the claimer is not an IP owned by the wallet, then the tokens will not be transferred. Set to false to disable auto transferring claimed tokens from the claimer. **Default: true**
+  * `request.claimOptions.autoUnwrapIpTokens`: \[Optional]By default all claimed WIP tokens are converted back to IP after they are transferred. Set this to false to disable this behavior. **Default: false**
+* `request.options`: \[Optional]
+  * `request.options.useMulticallWhenPossible`: Use multicall to batch the calls `claimAllRevenue` into one transaction when possible. If only 1 ancestorIp is provided, multicall will not be used. **Default: true**
+
+```typescript TypeScript
+import { WIP_TOKEN_ADDRESS } from '@story-protocol/core-sdk'
+
+const claimRevenue = await client.royalty.batchClaimAllRevenue({
+  ancestorIps: [
+    {
+      ipId: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+      claimer: '0x089d75C9b7E441dA3115AF93FF9A855BDdbfe384',
+      currencyTokens: [WIP_TOKEN_ADDRESS],
+      childIpIds: ['0xDa03c4B278AD44f5a669e9b73580F91AeDE0E3B2'],
+      royaltyPolicies: ['0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E']
+    }
+  ]
+})
+
+console.log(`Claimed revenue: ${claimRevenue.claimedTokens}`);
+```
+```typescript Request Type
+export type BatchClaimAllRevenueRequest = WithClaimOptions & {
+  ancestorIps: {
+    ipId: Address;
+    claimer: Address;
+    childIpIds: Address[];
+    royaltyPolicies: Address[];
+    currencyTokens: Address[];
+  }[],
+  options?: {
+    useMulticallWhenPossible?: boolean;
+  };
+};
+
+export type WithClaimOptions = {
+  claimOptions?: {
+    autoTransferAllClaimedTokensFromIp?: boolean;
+    autoUnwrapIpTokens?: boolean;
+  };
+};
+```
+```typescript Response Type
+export type BatchClaimAllRevenueResponse = {
+  txHashes: Hash[];
+  receipts: TransactionReceipt[];
+  claimedTokens?: IpRoyaltyVaultImplRevenueTokenClaimedEvent[];
 };
 ```
 
