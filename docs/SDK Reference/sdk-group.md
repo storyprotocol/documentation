@@ -143,7 +143,7 @@ Parameters:
 * `request.maxAllowedRevShare`: The maximum reward share percentage that can be allocated to each member IP.
 * `request.licenseData`: The data of the license and its configuration to be attached to the new group IP.
   * `request.licenseData.licenseTermsId`: The ID of the registered license terms that will be attached to the new group IP.
-  * `request.licenseData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
+  * `request.licenseData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
   * `request.licenseData.licenseTemplate`: \[Optional] The address of the license template to be attached to the new group IP, default value is Programmable IP License.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
