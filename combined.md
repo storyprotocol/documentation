@@ -13437,6 +13437,16 @@ The best way to get started is to get your hands dirty and start building.
 
 In the following series of tutorials, you will learn how to setup the TypeScript SDK in React and build IP applications with the TypeScript SDK.
 
+# Setup
+We can also use the TypeScript SDK to delay signing & sending transactions to a JSON-RPC account like Metamask.
+
+We recommend using wagmi as a Web3 provider and then installing a wallet service like Dynamic or RainbowKit. We provide examples for all of the following services:
+
+* [Dynamic Setup Tutorial](doc:dynamic-setup)
+* [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
+* [WalletConnect Setup Tutorial](doc:walletconnect-setup)
+* [Tomo Setup Tutorial](doc:tomo-setup)
+
 # Dynamic Setup
 > 📘 Optional: Official Dynamic Docs
 >
