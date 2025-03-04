@@ -147,9 +147,9 @@ Parameters:
 * `request.childIpId`: The derivative IP ID.
 * `request.parentIpIds`: The parent IP IDs.
 * `request.licenseTermsIds`: The IDs of the license terms that the parent IP supports.
-* `request.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
-* `request.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
-* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+* `request.maxMintingFee`: \[Optional] The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+* `request.maxRevenueShare`: \[Optional] The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -157,9 +157,6 @@ const response = await client.ipAsset.registerDerivative({
   childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
   parentIpIds: ["0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba"],
   licenseTermsIds: ["5"],
-  maxMintingFee: 0n, // disabled
-  maxRts: 100_000_000, // default
-  maxRevenueShare: 100, // default
   txOptions: { waitForTransaction: true }
 });
 
@@ -215,14 +212,13 @@ Parameters:
 
 * `request.childIpId`: The derivative IP ID.
 * `request.licenseTokenIds`: The IDs of the license tokens.
-* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
 const response = await client.ipAsset.registerDerivativeWithLicenseTokens({
   childIpId: "0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba",
   licenseTokenIds: ["5"], // array of license ids relevant to the creation of the derivative, minted from the parent IPA
-  maxRts: 100_000_000, // default
   txOptions: { waitForTransaction: true }
 });
 
@@ -265,10 +261,10 @@ Mint an NFT from a collection, register it as an IP, attach metadata to the IP, 
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
+* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.licenseTermsData[]`: The array of license terms to be attached. :warning: **This function will fail if you pass in an empty array.**
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
-  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
+  * `request.licenseTermsData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI`: \[Optional] The URI of the metadata for the IP.
   * `request.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
@@ -301,22 +297,9 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: 0n,
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
 const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
   spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
-  // set to true to mint ip with same nft metadata
-  allowDuplicates: true,
+  licenseTermsData: [{ terms: commercialRemixTerms }],
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -428,7 +411,7 @@ Parameters:
 * `request.tokenId`:  The ID of the NFT.
 * `request.licenseTermsData[]`: The array of license terms to be attached. :warning: **This function will fail if you pass in an empty array.**
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
-  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
+  * `request.licenseTermsData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI`: \[Optional] The URI of the metadata for the IP.
   * `request.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
@@ -461,22 +444,10 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: 0n,
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
 const response = await client.ipAsset.registerIpAndAttachPilTerms({
   nftContract: '0x041B4F29183317Fd352AE57e331154b73F8a1D73',
   tokenId: '12',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }], // IP already has non-commercial social remixing terms. You can add more here.
-  // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
+  licenseTermsData: [{ terms: commercialRemixTerms }],
   ipMetadata: {
     ipMetadataURI: 'test-uri',
     ipMetadataHash: toHex('test-metadata-hash', { size: 32 }),
@@ -524,9 +495,9 @@ Parameters:
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
-  * `request.derivData.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
-  * `request.derivData.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+  * `request.derivData.maxMintingFee`: \[Optional]The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+  * `request.derivData.maxRevenueShare`: \[Optional]The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+  * `request.derivData.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -539,18 +510,13 @@ Parameters:
 ```typescript TypeScript
 import { toHex } from 'viem';
 
-const derivData: DerivativeData = {
-  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
-  licenseTermsIds: ["1"],
-  maxMintingFee: 0n, // disabled
-  maxRts: 100_000_000, // default
-  maxRevenueShare: 100, // default
-};
-
 const response = await client.ipAsset.registerDerivativeIp({
   nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
   tokenId: '127',
-  derivData,
+  derivData: {
+    parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+    licenseTermsIds: ["1"]
+  },
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -618,13 +584,13 @@ Mint an NFT from a collection and register it as a derivative IP without license
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
+* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Recommended for simplicity: 0**
-  * `request.derivData.maxRevenueShare`: The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Recommended for simplicity: 100**
-  * `request.derivData.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+  * `request.derivData.maxMintingFee`: \[Optional]The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+  * `request.derivData.maxRevenueShare`: \[Optional]The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+  * `request.derivData.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -635,21 +601,15 @@ Parameters:
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
 import { toHex } from 'viem';
-
-const derivData: DerivativeData = {
-  parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
-  licenseTermsIds: ["1"],
-  maxMintingFee: 0n, // disabled
-  maxRts: 100_000_000, // default
-  maxRevenueShare: 100, // default
-};
 
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
   // an NFT contract address created by the SPG
   spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc",
-  derivData,
+  derivData: {
+    parentIpIds: ["0xd142822Dc1674154EaF4DDF38bbF7EF8f0D8ECe4"],
+    licenseTermsIds: ["1"],
+  },
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -715,7 +675,7 @@ Mint an NFT from an SPGNFT collection and register it with metadata as an IP.
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
+* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.recipient`: \[Optional] The address of the recipient of the minted NFT, default value is your wallet address.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -725,14 +685,11 @@ Parameters:
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
-import { PIL_TYPE } from '@story-protocol/core-sdk';
 import { toHex, Address, zeroAddress } from 'viem';
 
 const response = await client.ipAsset.mintAndRegisterIp({
   // an NFT contract address created by the SPG
   spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
-  // set to true to have multiple NFTs with same metadata
-  allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -778,13 +735,13 @@ Parameters:
 * `request.ipId`: The ID of the IP.
 * `request.licenseTermsData[]`: The array of license terms to be attached.
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
-  * `request.licenseTermsData.licensingConfig`: See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15).
+  * `request.licenseTermsData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
 * `request.deadline`: \[Optional] The deadline for the signature in milliseconds, default is 1000s.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
 import { LicenseTerms } from '@story-protocol/core-sdk';
-import { zeroAddress, zeroHash } from 'viem';
+import { zeroAddress } from 'viem';
 
 const commercialRemixTerms: LicenseTerms = {
   transferable: true,
@@ -806,20 +763,9 @@ const commercialRemixTerms: LicenseTerms = {
   uri: '',
 }
 
-const licensingConfig: LicensingConfig = {
-  isSet: false,
-  mintingFee: 0n,
-  licensingHook: zeroAddress,
-  hookData: zeroHash,
-  commercialRevShare: 0,
-  disabled: false,
-  expectMinimumGroupRewardShare: 0,
-  expectGroupRewardPool: zeroAddress,
-};
-
 const response = await client.ipAsset.registerPilTermsAndAttach({
   ipId: '0x4c1f8c1035a8cE379dd4ed666758Fb29696CF721',
-  licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }],
+  licenseTermsData: [{ terms: commercialRemixTerms }],
   txOptions: { waitForTransaction: true },
 })
 console.log(`License Terms ${response.licenseTermsId} attached to IP Asset.`)
@@ -855,8 +801,8 @@ Mint an NFT from a collection and register it as a derivative IP using license t
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: Set to true to allow minting IPs with the same NFT metadata.
-* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -872,9 +818,6 @@ import { toHex } from 'viem';
 const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLicenseTokens({
   spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // your SPG NFT contract address
   licenseTokenIds: ['10'],
-  maxRts: 100_000_000, // default
-  // set to true to allow ip with same nft metadata
-  allowDuplicates: true,
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
@@ -925,7 +868,7 @@ Parameters:
 
 * `request.nftContract`: The address of the NFT collection.
 * `request.tokenId`: The ID of the NFT.
-* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
+* `request.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -942,7 +885,6 @@ const response = await client.ipAsset.registerIpAndMakeDerivativeWithLicenseToke
   nftContract: "0x041B4F29183317Fd352AE57e331154b73F8a1D73", // your NFT contract address
   tokenId: '127',
   licenseTokenIds: ['10'],
-  maxRts: 100_000_000, // default
   // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
   ipMetadata: {
     ipMetadataURI: 'test-uri',
