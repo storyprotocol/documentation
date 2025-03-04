@@ -389,29 +389,16 @@ import { uploadBlobToIPFS, uploadJSONToIPFS } from './uploadToIpfs.ts'
 import { WIP_TOKEN_ADDRESS } from "@story-protocol/core-sdk";
 import { client, account } from './utils'
 import { createHash } from "crypto";
-import { LicenseTerms, LicensingConfig } from '@story-protocol/core-sdk';
+import { LicenseTerms } from '@story-protocol/core-sdk';
 import { zeroAddress, Address } from 'viem';
 
 async function main() {
   // previous code here ...
-  
-  // default license config
-  const licensingConfig: LicensingConfig = {
-    isSet: false,
-    mintingFee: BigInt(0),
-    licensingHook: zeroAddress,
-    hookData: zeroHash,
-    commercialRevShare: 0,
-    disabled: false,
-    expectMinimumGroupRewardShare: 0,
-    expectGroupRewardPool: zeroAddress,
-  };
 
   const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
     spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
-    allowDuplicates: true,
     // the terms we created in the previous step
-    licenseTermsData: [{ terms: commercialRemixTerms, licensingConfig }],
+    licenseTermsData: [{ terms: commercialRemixTerms }],
     ipMetadata: {
       ipMetadataURI: process.env.PINATA_GATEWAY + '/files/' + ipIpfsHash,
       ipMetadataHash: `0x${ipHash}`,

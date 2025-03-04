@@ -70,7 +70,6 @@ Modify your code such that...
 2. Add a `derivData` field, where:
    1. `parentIpIds` is the `ipIds` of the parents you want to become a derivative of. **NOTE: Once you become a derivative, you cannot add more parents**
    2. `licenseTermIds` is an array of license terms you want to register under. These are the terms your derivative must abide by
-   3. Set `maxMintingFee`, `maxRts`, and `maxRevenueShare` to be left as disabled/default as shown below
 
 Now we can call the function like so:
 
@@ -90,17 +89,13 @@ async function main() {
     // TODO: insert the parent's ipId
     parentIpIds: [PARENT_IP_ID],
     // TODO: insert the licenseTermsId attached to parent IpId
-    licenseTermsIds: [LICENSE_TERMS_ID],
-    maxMintingFee: BitInt(0), // disabled
-    maxRts: 100_000_000, // default
-    maxRevenueShare: 100, // default
+    licenseTermsIds: [LICENSE_TERMS_ID]
   };
 
   const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivative({
     // TODO: insert your NFT contract address created by the SPG
     spgNftContract: SPG_NFT_CONTRACT_ADDRESS as Address,
     derivData,
-    allowDuplicates: true,
     ipMetadata: {
       ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
       ipMetadataHash: `0x${ipHash}`,

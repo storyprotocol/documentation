@@ -153,17 +153,7 @@ const response = await client.groupClient.registerGroupAndAttachLicenseAndAddIps
   maxAllowedRewardShare: 5,
   ipIds: ['0x01'],
   licenseData: {
-    licenseTermsId: '5',
-    licensingConfig: {
-      isSet: false,
-      mintingFee: 0n,
-      licensingHook: zeroAddress,
-      hookData: zeroAddress,
-      commercialRevShare: 0,
-      disabled: false,
-      expectMinimumGroupRewardShare: 0,
-      expectGroupRewardPool: zeroAddress,
-    },
+    licenseTermsId: '5'
   },
   txOptions: { waitForTransaction: true },
 });

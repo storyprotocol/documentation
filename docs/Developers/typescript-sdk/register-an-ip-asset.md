@@ -186,7 +186,6 @@ async function main() {
 
   const response = await client.ipAsset.mintAndRegisterIp({
     spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
-    allowDuplicates: true,
     ipMetadata: {
       ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
       ipMetadataHash: `0x${ipHash}`,
