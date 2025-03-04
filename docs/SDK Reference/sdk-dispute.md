@@ -17,6 +17,8 @@ next:
 * raiseDispute
 * cancelDispute
 * resolveDispute
+* tagIfRelatedIpInfringed
+* disputeAssertion
 
 ### raiseDispute
 
@@ -120,5 +122,81 @@ export type ResolveDisputeRequest = {
 export type ResolveDisputeResponse = {
   txHash?: string;
   encodedTxData?: EncodedTxData;
+};
+```
+
+### tagIfRelatedIpInfringed
+
+Tags a derivative if a parent has been tagged with an infringement tag or a group ip if a group member has been tagged with an infringement tag.
+
+| Method                    | Type                                                                          |
+| ------------------------- | ----------------------------------------------------------------------------- |
+| `tagIfRelatedIpInfringed` | `(request: TagIfRelatedIpInfringedRequest) => Promise<TransactionResponse[]>` |
+
+Parameters:
+
+* `request.infringementTags[]`: An array of tags relating to the dispute
+  * `request.infringementTags[].ipId`: The `ipId` to tag
+  * `request.infringementTags[].disputeId`: The dispute id that tagged the related infringing parent IP
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+
+```typescript Request Type
+export type TagIfRelatedIpInfringedRequest = {
+  infringementTags: {
+    ipId: Address;
+    disputeId: number | string | bigint;
+  }[];
+  options?: {
+    /**
+     * Use multicall to batch the calls into one transaction when possible.
+     *
+     * If only 1 infringementTag is provided, multicall will not be used.
+     * @default true
+     */
+    useMulticallWhenPossible?: boolean;
+  };
+} & WithTxOptions;
+```
+```typescript Response Type
+export type TransactionResponse = {
+  txHash: Hex;
+
+  /** Transaction receipt, only available if waitForTransaction is set to true */
+  receipt?: TransactionReceipt;
+};
+```
+
+### disputeAssertion
+
+Counters a dispute that was raised by another party on an IP using counter evidence.
+
+This method can only be called by the IP's owner to counter a dispute by providing counter evidence. The counter evidence (e.g., documents, images) should be uploaded to IPFS, and its corresponding CID is converted to a hash for the request.
+
+If you only have a `disputeId`, call `disputeIdToAssertionId` to get the `assertionId` needed here.
+
+| Method             | Type                                                                 |
+| ------------------ | -------------------------------------------------------------------- |
+| `disputeAssertion` | `(request: DisputeAssertionRequest) => Promise<TransactionResponse>` |
+
+Parameters:
+
+* `request.ipId`: The IP ID that is the target of the dispute.
+* `request.assertionId`: The identifier of the assertion that was disputed. You can get this from the `disputeId` by calling `dispute.disputeIdToAssertionId`.
+* `request.counterEvidenceCID`: Content Identifier (CID) for the counter evidence. This should be obtained by uploading your dispute evidence (documents, images, etc.) to IPFS. **Example: "QmX4zdp8VpzqvtKuEqMo6gfZPdoUx9TeHXCgzKLcFfSUbk"**
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+
+```typescript Request Type
+export type DisputeAssertionRequest = {
+  ipId: Address;
+  assertionId: Hex;
+  counterEvidenceCID: string;
+} & WithTxOptions;
+```
+```typescript Response Type
+export type TransactionResponse = {
+  txHash: Hex;
+
+  /** Transaction receipt, only available if waitForTransaction is set to true */
+  receipt?: TransactionReceipt;
 };
 ```
