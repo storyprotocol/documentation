@@ -143,6 +143,20 @@ next:
 
       </td>
     </tr>
+
+    <tr>
+      <td>
+        \[Stakeme]\([https://storyscan.app/](https://storyscan.app/))
+      </td>
+
+      <td>
+        `https://storyscan.app/`
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
   </tbody>
 </Table>
 
