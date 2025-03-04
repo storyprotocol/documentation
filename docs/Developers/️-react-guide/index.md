@@ -18,4 +18,4 @@ The best way to get started is to get your hands dirty and start building.
   </Card>
 </Cards>
 
-In the following series of tutorials, you will learn how to setup the TypeScript SDK in React and build IP applications with the TypeScript SDK.
+In the following series of tutorials, you will learn how to setup the TypeScript SDK in React.
