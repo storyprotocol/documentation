@@ -14286,6 +14286,11 @@ There are a few times when **you would need** a License Token to register a deri
 * The License Token contains private license terms, so you would only be able to register as a derivative if you had the License Token that was manually minted by the owner. More on that [here](https://docs.story.foundation/docs/license-token#private-licenses).
 * The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `defaultMintingFee`.
 
+# Raise a Dispute
+> 🚧 Not Yet Completed
+>
+> This section is not yet completed. However you can view all of our SDK Dispute functions [here](doc:sdk-dispute).
+
 # Pay an IPA
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/registerDerivativeCommercialSpg.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
