@@ -19,6 +19,7 @@ next:
 * resolveDispute
 * tagIfRelatedIpInfringed
 * disputeAssertion
+* disputeIdToAssertionId
 
 ### raiseDispute
 
@@ -199,4 +200,20 @@ export type TransactionResponse = {
   /** Transaction receipt, only available if waitForTransaction is set to true */
   receipt?: TransactionReceipt;
 };
+```
+
+### disputeIdToAssertionId
+
+Maps a dispute id to an assertion id
+
+| Method                   | Type                    |                              |
+| :----------------------- | :---------------------- | :--------------------------- |
+| `disputeIdToAssertionId` | \`(disputeId: number \\ | bigint) => Promise\<Hex>\\\` |
+
+Parameters:
+
+* `request.disputeId`: The dispute ID.
+
+```typescript
+const result = await client.dispute.disputeIdToAssertionId(1);
 ```
