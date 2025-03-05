@@ -206,9 +206,9 @@ export type TransactionResponse = {
 
 Maps a dispute id to an assertion id
 
-| Method                   | Type                                              |
-| :----------------------- | :------------------------------------------------ |
-| `disputeIdToAssertionId` | `(disputeId: number \\| bigint) => Promise\<Hex>` |
+| Method                   | Type                             |
+| :----------------------- | :------------------------------- |
+| `disputeIdToAssertionId` | `(disputeId: number \\| bigint)` |
 
 Parameters:
 
