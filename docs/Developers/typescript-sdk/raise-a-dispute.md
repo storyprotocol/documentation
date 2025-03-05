@@ -1,6 +1,6 @@
 ---
 title: Raise a Dispute
-excerpt: Learn how to create an on-chain dispute on Story.
+excerpt: Learn how to create an on-chain dispute in TypeScript.
 deprecated: false
 hidden: false
 metadata:
