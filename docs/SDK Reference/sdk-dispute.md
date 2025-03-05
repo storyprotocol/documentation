@@ -164,6 +164,7 @@ const response = await client.dispute.tagIfRelatedIpInfringed({
       disputeId: 1,
     },
   ],
+  txOptions: { waitForTransaction: true },
 });
 ```
 ```typescript Request Type
@@ -212,6 +213,7 @@ const result = await client.dispute.disputeAssertion({
   ipId: "0xa1BaAA464716eC76A285Ef873d27f97645fE0366",
   assertionId: assertionId,
   counterEvidenceCID: "QmX4zdp8VpzqvtKuEqMo6gfZPdoUx9TeHXCgzKLcFfSUbk",
+  txOptions: { waitForTransaction: true },
 });
 ```
 ```typescript Request Type
