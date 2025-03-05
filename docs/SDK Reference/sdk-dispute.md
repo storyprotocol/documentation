@@ -38,7 +38,7 @@ Parameters:
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
-const disputeResponse = await client.dispute.raiseDispute({
+const response = await client.dispute.raiseDispute({
   targetIpId: '0xC92EC2f4c86458AFee7DD9EB5d8c57920BfCD0Ba',
   // NOTE: you must use your own CID here, because every time it is used,
   // the protocol does not allow you to use it again
@@ -84,6 +84,12 @@ Parameters:
 * `request.data`: \[Optional] Additional data used in the cancellation process.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript
+const response = await client.dispute.cancelDispute({
+  disputeId: 1,
+  txOptions: { waitForTransactions: true }
+});
+```
 ```typescript Request Type
 export type CancelDisputeRequest = {
   disputeId: number | string | bigint;
@@ -112,6 +118,13 @@ Parameters:
 * `request.data`: The data to resolve the dispute.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript
+const response = await client.dispute.resolveDispute({
+  disputeId: 1,
+  data: "0x",
+  txOptions: { waitForTransaction: true },
+});
+```
 ```typescript Request Type
 export type ResolveDisputeRequest = {
   disputeId: number | string | bigint;
@@ -139,8 +152,20 @@ Parameters:
 * `request.infringementTags[]`: An array of tags relating to the dispute
   * `request.infringementTags[].ipId`: The `ipId` to tag
   * `request.infringementTags[].disputeId`: The dispute id that tagged the related infringing parent IP
+* `request.options`: \[Optional]
+  * `request.options.useMulticallWhenPossible`: \[Optional]Use multicall to batch the calls into one transaction when possible. If only 1 infringementTag is provided, multicall will not be used. **Default: true**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript
+const response = await client.dispute.tagIfRelatedIpInfringed({
+  infringementTags: [
+    {
+      ipId: "0xa1BaAA464716eC76A285Ef873d27f97645fE0366",
+      disputeId: 1,
+    },
+  ],
+});
+```
 ```typescript Request Type
 export type TagIfRelatedIpInfringedRequest = {
   infringementTags: {
@@ -148,12 +173,6 @@ export type TagIfRelatedIpInfringedRequest = {
     disputeId: number | string | bigint;
   }[];
   options?: {
-    /**
-     * Use multicall to batch the calls into one transaction when possible.
-     *
-     * If only 1 infringementTag is provided, multicall will not be used.
-     * @default true
-     */
     useMulticallWhenPossible?: boolean;
   };
 } & WithTxOptions;
@@ -186,6 +205,15 @@ Parameters:
 * `request.counterEvidenceCID`: Content Identifier (CID) for the counter evidence. This should be obtained by uploading your dispute evidence (documents, images, etc.) to IPFS. **Example: "QmX4zdp8VpzqvtKuEqMo6gfZPdoUx9TeHXCgzKLcFfSUbk"**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
+```typescript
+const assertionId = await client.dispute.disputeIdToAssertionId(1);
+
+const result = await client.dispute.disputeAssertion({
+  ipId: "0xa1BaAA464716eC76A285Ef873d27f97645fE0366",
+  assertionId: assertionId,
+  counterEvidenceCID: "QmX4zdp8VpzqvtKuEqMo6gfZPdoUx9TeHXCgzKLcFfSUbk",
+});
+```
 ```typescript Request Type
 export type DisputeAssertionRequest = {
   ipId: Address;
