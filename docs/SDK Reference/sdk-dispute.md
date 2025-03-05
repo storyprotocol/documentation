@@ -153,7 +153,7 @@ Parameters:
   * `request.infringementTags[].ipId`: The `ipId` to tag
   * `request.infringementTags[].disputeId`: The dispute id that tagged the related infringing parent IP
 * `request.options`: \[Optional]
-  * `request.options.useMulticallWhenPossible`: \[Optional]Use multicall to batch the calls into one transaction when possible. If only 1 infringementTag is provided, multicall will not be used. **Default: true**
+  * `request.options.useMulticallWhenPossible`: \[Optional] Use multicall to batch the calls into one transaction when possible. If only 1 infringementTag is provided, multicall will not be used. **Default: true**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript
