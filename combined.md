@@ -11243,7 +11243,7 @@ const response = await client.dispute.raiseDispute({
 ```
 
 # 👋 Dev Overview
-If you're a developer, here is everything you need
+If you're a developer, here is everything you need:
 
 > 📘 Can't find something?
 >
