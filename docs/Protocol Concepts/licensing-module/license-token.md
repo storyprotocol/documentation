@@ -47,6 +47,7 @@ There are a few restrictions on registering a derivative:
 * When you link an IP Asset as a derivative, it cannot have license terms attached. It will inherit its terms from its parents.
 * None of the parent IP Assets or the child IP Asset can be disputed.
 * The child IP Asset cannot have derivatives already.
+* If at least one of the license terms is commercial, then they all must be commercial (`commerialUse = true`)
 
 ***
 
