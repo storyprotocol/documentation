@@ -25,7 +25,7 @@ There are a few steps you have to complete before you can start the tutorial.
 1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
 2. Have a basic understanding of the [❌ Dispute Module](doc:dispute-module)
 
-## 1) Dispute an IP
+## 1. Dispute an IP
 
 To dispute an IP Asset, you will need:
 
