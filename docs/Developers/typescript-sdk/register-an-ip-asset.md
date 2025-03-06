@@ -166,8 +166,10 @@ For simplicity, you can use a public collection we have created for you on Aenei
       txOptions: { waitForTransaction: true },
     })
 
-    console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
-    console.log(`NFT contract address: ${newCollection.spgNftContract}`)
+    console.log('New collection created:', {
+      'SPG NFT Contract Address': newCollection.spgNftContract,
+      'Transaction Hash': newCollection.txHash,
+    })
   }
 
   createSpgNftCollection();
