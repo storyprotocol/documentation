@@ -299,17 +299,17 @@ For the `mediaType` field, here are the valid options:
 For `imageHash` and `mediaHash`, we use SHA-256 hashing algorithm. Here is how you would calculate the hash in code:
 
 ```typescript
-import { toHex } from 'viem';
+import { toHex, Hex } from 'viem';
 
 // get hash from a file
-async function getFileHash(file: File): Promise<string> {
+async function getFileHash(file: File): Promise<Hex> {
   const arrayBuffer = await file.arrayBuffer()
   const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer)
   return toHex(new Uint8Array(hashBuffer), { size: 32 })
 }
 
 // get hash from a url
-async function getHashFromUrl(url: string): Promise<string> {
+async function getHashFromUrl(url: string): Promise<Hex> {
   const response = await axios.get(url, { responseType: "arraybuffer" });
   const buffer = Buffer.from(response.data);
   return "0x" + createHash("sha256").update(buffer).digest("hex");
