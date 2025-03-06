@@ -6,10 +6,6 @@ hidden: false
 metadata:
   robots: index
 ---
-> 🚧 Not Yet Completed
->
-> This section is not yet completed. However you can view all of our SDK Dispute functions [here](doc:sdk-dispute).
-
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     All of this page is covered in this working code example.
