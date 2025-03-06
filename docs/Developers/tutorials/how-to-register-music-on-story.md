@@ -43,11 +43,10 @@ Most of what we need to do is already covered in [Register an IP Asset](doc:regi
 
 ## 3. Change Metadata
 
-The only difference is how you set your metadata. Here is an example `ipMetadata`, where the `image.*` is the cover of the song, and `media.*` is the song itself.
+The only difference is how you set your metadata. Here is an example:
 
-> 📘 Infringement Check
->
-> Note that the fields passed into `media.*` are checked for infringement by our protocol.
+* `image.*` is used to display a cover image when your song is registered
+* `media.*` is used for the audio file. Also note that the fields passed into `media.*` are checked for infringement by the [🕵️ Story Attestation Service](doc:story-attestation-service).
 
 ```typescript main.ts
 const ipMetadata = {
@@ -69,22 +68,18 @@ const ipMetadata = {
 }
 ```
 
-In your `nftMetadata`, **in order for the music to actually be played on our explorer** you must set a `media` parameter, and then you can also set some `attributes` that look something like this:
+After you've done that, you can set your NFT metadata like so:
 
-* Make sure to replace the `media[0].url` with the one we created in step 0!
+* `image` for the cover image
+* `animation_url` is used for the audio file
+* `attributes` for any extra attributes you want to include
 
 ```typescript main.ts
 const nftMetadata = {
   name: 'Midnight Marriage',
   description: 'This is a house-style song generated on suno. This NFT represents ownership of the IP Asset.',
   image: 'https://cdn2.suno.ai/image_large_8bcba6bc-3f60-4921-b148-f32a59086a4c.jpeg',
-  media: [
-    {
-      name: 'Midnight Marriage',
-      url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
-      mimeType: 'audio/mpeg',
-    },
-  ],
+  animation_url: 'https://cdn1.suno.ai/dcd3076f-3aa5-400b-ba5d-87d30f27c311.mp3',
   attributes: [
     {
       key: 'Suno Artist',
