@@ -41,11 +41,11 @@ The main components of the arbitration system are:
       </th>
 
       <th>
-        Explanation
+        bytes32 (for protocol)
       </th>
 
       <th>
-        bytes32 (for protocol)
+        Explanation
       </th>
     </tr>
   </thead>
@@ -57,11 +57,11 @@ The main components of the arbitration system are:
       </td>
 
       <td>
-        Refers to registration of IP that already exists.
+        `0x494d50524f5045525f524547495354524154494f4e0000000000000000000000`
       </td>
 
       <td>
-        `0x494d50524f5045525f524547495354524154494f4e0000000000000000000000`
+        Refers to registration of IP that already exists.
       </td>
     </tr>
 
@@ -84,11 +84,11 @@ The main components of the arbitration system are:
       </td>
 
       <td>
-        Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.
+        `0x494d50524f5045525f5553414745000000000000000000000000000000000000`
       </td>
 
       <td>
-        `0x494d50524f5045525f5553414745000000000000000000000000000000000000`
+        Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.
       </td>
     </tr>
 
@@ -98,11 +98,11 @@ The main components of the arbitration system are:
       </td>
 
       <td>
-        Refers to missing payments associated with an IP.
+        `0x494d50524f5045525f5041594d454e5400000000000000000000000000000000`
       </td>
 
       <td>
-        `0x494d50524f5045525f5041594d454e5400000000000000000000000000000000`
+        Refers to missing payments associated with an IP.
       </td>
     </tr>
 
@@ -117,11 +117,11 @@ The main components of the arbitration system are:
       </td>
 
       <td>
-        Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
+        `0x434f4e54454e545f5354414e44415244535f56494f4c4154494f4e0000000000`
       </td>
 
       <td>
-        `0x434f4e54454e545f5354414e44415244535f56494f4c4154494f4e0000000000`
+        Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
       </td>
     </tr>
 
@@ -131,11 +131,11 @@ The main components of the arbitration system are:
       </td>
 
       <td>
-
+        `0x494e5f4449535055544500000000000000000000000000000000000000000000`
       </td>
 
       <td>
-        `0x494e5f4449535055544500000000000000000000000000000000000000000000`
+
       </td>
     </tr>
   </tbody>
