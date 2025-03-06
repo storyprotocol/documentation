@@ -802,7 +802,7 @@ Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
 * `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
-* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -825,6 +825,7 @@ const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLice
     nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
     nftMetadataURI: 'test-nft-uri',
   },
+  maxRts: 100_000_000, // default
   txOptions: { waitForTransaction: true }
 });
 
