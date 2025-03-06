@@ -33,32 +33,40 @@ The main components of the arbitration system are:
 
 **Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. **Tags must be whitelisted by protocol governance to be used in a dispute.** The initial set of tags are planned to be:
 
-<Table align={["left","left"]}>
+<Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Dispute Tag
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Explanation
+      </th>
+
+      <th>
+        bytes32 (for protocol)
       </th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `IMPROPER_REGISTRATION`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Refers to registration of IP that already exists.
+      </td>
+
+      <td>
+        `0x494d50524f5045525f524547495354524154494f4e0000000000000000000000`
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `IMPROPER_USAGE`
 
         Examples (non-exhaustive):
@@ -75,23 +83,31 @@ The main components of the arbitration system are:
         Restriction on Cross-Platform Use
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.
+      </td>
+
+      <td>
+        `0x494d50524f5045525f5553414745000000000000000000000000000000000000`
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `IMPROPER_PAYMENT`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Refers to missing payments associated with an IP.
+      </td>
+
+      <td>
+        `0x494d50524f5045525f5041594d454e5400000000000000000000000000000000`
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `CONTENT_STANDARDS_VIOLATION`
 
         No-Hate\
@@ -100,8 +116,26 @@ The main components of the arbitration system are:
         No-Pornography
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
+      </td>
+
+      <td>
+        `0x434f4e54454e545f5354414e44415244535f56494f4c4154494f4e0000000000`
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `IN_DISPUTE`
+      </td>
+
+      <td>
+
+      </td>
+
+      <td>
+        `0x494e5f4449535055544500000000000000000000000000000000000000000000`
       </td>
     </tr>
   </tbody>
