@@ -36,6 +36,20 @@ Once a non-transferable License Token is minted to a recipient, it is locked the
 
 ## Registering a Derivative
 
+You can register an IP Asset as a derivative of other IP Assets, each with their own license terms agreement. This creates a legally binding agreement between IP Assets that enforces things things like automatic payments in the [💸 Royalty Module](doc:royalty-module).
+
+### :warning: Restrictions
+
+There are a few restrictions on registering a derivative:
+
+* An IP Asset can only register as a derivative one time. If an IP Asset has multiple parents, it must register both at the same time.
+* Once an IP Asset is a derivative, it cannot link any more parents.
+* When you link an IP Asset as a derivative, it cannot have license terms attached. It will inherit its terms from its parents.
+* None of the parent IP Assets or the child IP Asset can be disputed.
+* The child IP Asset cannot have derivatives already.
+
+***
+
 There are two ways to register a derivative IP Asset.
 
 > 📘 Small Note
