@@ -105,6 +105,10 @@ For locked tokens, only flexible staking is allowed and the reward multiplier is
 
 After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
 
+## Decimal for stake amounts
+
+The decimal for stake operations (stake, unstake, redelegate, etc.) is 9. If a user specifies a smaller value, the dust will be refunded back to the users. Or if there is no token transfer involved, the specified value will be rounded down to 9 decimals.
+
 # Staking Operations
 
 ## Create validator
@@ -133,6 +137,8 @@ The staking amount needs to be larger than a threshold, which is 1024 IP.
 
 If a delegator delegates to a non-existent validator, the tokens will NOT be refunded.
 
+If users specify the token amount that has more than 9 decimal units, the actual staking amount will be rounded down to 9 decimal and refund the remaining back to the users.
+
 ## Unstake
 
 When staking without a staking period, users can unstake anytime. The tokens will be distributed to the user’s account after the unbonding time.
@@ -155,6 +161,8 @@ If the unstake amount passed in is larger than the total unstakable tokens, the 
 
 If a validator exits, by either being offline and getting jailed, or not having enough stakes to be in the top 64 validator set, the delegators can unstake their tokens if the tokens are not in a staking period or their staking period is mature. Otherwise, delegators must wait until the staking period matures to unstake.
 
+If users specify the token amount that has more than 9 decimal units, the actual unstaking amount will be rounded down to 9 decimal.
+
 ## Redelegate
 
 Redelegate operation allows a delegator to move its staked tokens from one validator to another. The tokens can be redelegated to the new validator immediately and start earning rewards. However, the redelegated tokens are still subject to the unbonding process, IF the source validator is in the active validator set or unbonding from the active validator set. During this 14 days unbounding time, it will be slashed if the original validator gets slashed.
@@ -172,6 +180,8 @@ Redelegation has its own maximum ongoing unbonding transaction limit per delegat
 Delegators can choose to redelegate their tokens to another active validator even if their tokens are still in an immature staking period. Their staking period maturation date and reward rate will stay the same.
 
 Redelegation can only be triggered when the source and destination validators support the same token type.
+
+If users specify the token amount that has more than 9 decimal units, the actual reledegated amount will be rounded down to 9 decimal.
 
 ## Set withdrawal/reward address
 
