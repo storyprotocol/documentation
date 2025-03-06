@@ -157,5 +157,3 @@ Congratulations, you claimed revenue using the [💸 Royalty Module](doc:royalty
 ## Dispute an IP
 
 Now what happens if an IP Asset doesn't pay their due share? We can dispute the IP on-chain, which we will cover on the next page.
-
-> 🚧 Coming soon!
