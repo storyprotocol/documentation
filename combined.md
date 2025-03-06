@@ -570,6 +570,10 @@ For locked tokens, only flexible staking is allowed and the reward multiplier is
 
 After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
 
+## Decimal for stake amounts
+
+The decimal for stake operations (stake, unstake, redelegate, etc.) is 9. If a user specifies a smaller value, the dust will be refunded back to the users. Or if there is no token transfer involved, the specified value will be rounded down to 9 decimals.
+
 # Staking Operations
 
 ## Create validator
@@ -598,6 +602,8 @@ The staking amount needs to be larger than a threshold, which is 1024 IP.
 
 If a delegator delegates to a non-existent validator, the tokens will NOT be refunded.
 
+If users specify the token amount that has more than 9 decimal units, the actual staking amount will be rounded down to 9 decimal and refund the remaining back to the users.
+
 ## Unstake
 
 When staking without a staking period, users can unstake anytime. The tokens will be distributed to the user’s account after the unbonding time.
@@ -620,6 +626,8 @@ If the unstake amount passed in is larger than the total unstakable tokens, the 
 
 If a validator exits, by either being offline and getting jailed, or not having enough stakes to be in the top 64 validator set, the delegators can unstake their tokens if the tokens are not in a staking period or their staking period is mature. Otherwise, delegators must wait until the staking period matures to unstake.
 
+If users specify the token amount that has more than 9 decimal units, the actual unstaking amount will be rounded down to 9 decimal.
+
 ## Redelegate
 
 Redelegate operation allows a delegator to move its staked tokens from one validator to another. The tokens can be redelegated to the new validator immediately and start earning rewards. However, the redelegated tokens are still subject to the unbonding process, IF the source validator is in the active validator set or unbonding from the active validator set. During this 14 days unbounding time, it will be slashed if the original validator gets slashed.
@@ -637,6 +645,8 @@ Redelegation has its own maximum ongoing unbonding transaction limit per delegat
 Delegators can choose to redelegate their tokens to another active validator even if their tokens are still in an immature staking period. Their staking period maturation date and reward rate will stay the same.
 
 Redelegation can only be triggered when the source and destination validators support the same token type.
+
+If users specify the token amount that has more than 9 decimal units, the actual reledegated amount will be rounded down to 9 decimal.
 
 ## Set withdrawal/reward address
 
@@ -4573,7 +4583,7 @@ Parameters:
   * `request.ipMetadata.ipMetadataHash` \[Optional] The hash of the metadata for the IP.
   * `request.ipMetadata.nftMetadataURI` \[Optional] The URI of the metadata for the NFT.
   * `request.ipMetadata.nftMetadataHash` \[Optional] The hash of the metadata for the IP NFT.
-* `request.deadline`: \[Optional]The deadline for the signature in milliseconds.
+* `request.deadline`: \[Optional] The deadline for the signature in milliseconds.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -4714,7 +4724,7 @@ Parameters:
 
 * `request.childIpId`: The derivative IP ID.
 * `request.licenseTokenIds`: The IDs of the license tokens.
-* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -4763,7 +4773,7 @@ Mint an NFT from a collection, register it as an IP, attach metadata to the IP, 
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.licenseTermsData[]`: The array of license terms to be attached. :warning: **This function will fail if you pass in an empty array.**
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
   * `request.licenseTermsData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
@@ -4919,7 +4929,7 @@ Parameters:
   * `request.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
   * `request.ipMetadata.nftMetadataURI`: \[Optional] The URI of the metadata for the NFT.
   * `request.ipMetadata.nftMetadataHash`: \[Optional] The hash of the metadata for the IP NFT.
-* `request.deadline`: \[Optional]The deadline for the signature in milliseconds.
+* `request.deadline`: \[Optional] The deadline for the signature in milliseconds.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -4997,8 +5007,8 @@ Parameters:
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: \[Optional]The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
-  * `request.derivData.maxRevenueShare`: \[Optional]The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+  * `request.derivData.maxMintingFee`: \[Optional] The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+  * `request.derivData.maxRevenueShare`: \[Optional] The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
   * `request.derivData.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
@@ -5006,7 +5016,7 @@ Parameters:
   * `request.ipMetadata.ipMetadataHash` \[Optional] The hash of the metadata for the IP.
   * `request.ipMetadata.nftMetadataURI` \[Optional] The URI of the metadata for the NFT.
   * `request.ipMetadata.nftMetadataHash` \[Optional] The hash of the metadata for the IP NFT.
-* `request.deadline`: \[Optional]The deadline for the signature in milliseconds.
+* `request.deadline`: \[Optional] The deadline for the signature in milliseconds.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -5047,9 +5057,21 @@ export type RegisterIpAndMakeDerivativeRequest = {
 export type DerivativeData = {
   parentIpIds: Address[];
   licenseTermsIds: bigint[] | string[] | number[];
-  maxMintingFee: bigint | string | number;
-  maxRts: number | string;
-  maxRevenueShare: number | string;
+  /**
+   * The maximum minting fee that the caller is willing to pay. if set to 0 then no limit.
+   * @default 0
+   */
+  maxMintingFee?: bigint | string | number;
+  /**
+   * The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+   * @default 100_000_000
+   */
+  maxRts?: number | string;
+  /**
+   * The maximum revenue share percentage allowed for minting the License Tokens. Must be between 0 and 100 (where 100% represents 100_000_000).
+   * @default 100
+   */
+  maxRevenueShare?: number | string;
   licenseTemplate?: Address;
 };
 ```
@@ -5086,13 +5108,13 @@ Mint an NFT from a collection and register it as a derivative IP without license
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: \[Optional]The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
-  * `request.derivData.maxRevenueShare`: \[Optional]The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
-  * `request.derivData.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+  * `request.derivData.maxMintingFee`: \[Optional] The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+  * `request.derivData.maxRevenueShare`: \[Optional] The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+  * `request.derivData.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -5135,9 +5157,21 @@ export type MintAndRegisterIpAndMakeDerivativeRequest = {
 export type DerivativeData = {
   parentIpIds: Address[];
   licenseTermsIds: bigint[] | string[] | number[];
-  maxMintingFee: bigint | string | number;
-  maxRts: number | string;
-  maxRevenueShare: number | string;
+  /**
+   * The maximum minting fee that the caller is willing to pay. if set to 0 then no limit.
+   * @default 0
+   */
+  maxMintingFee?: bigint | string | number;
+  /**
+   * The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+   * @default 100_000_000
+   */
+  maxRts?: number | string;
+  /**
+   * The maximum revenue share percentage allowed for minting the License Tokens. Must be between 0 and 100 (where 100% represents 100_000_000).
+   * @default 100
+   */
+  maxRevenueShare?: number | string;
   licenseTemplate?: Address;
 };
 ```
@@ -5177,7 +5211,7 @@ Mint an NFT from an SPGNFT collection and register it with metadata as an IP.
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.recipient`: \[Optional] The address of the recipient of the minted NFT, default value is your wallet address.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -5303,8 +5337,8 @@ Mint an NFT from a collection and register it as a derivative IP using license t
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
-* `request.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+* `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -5327,6 +5361,7 @@ const response = await client.ipAsset.mintAndRegisterIpAndMakeDerivativeWithLice
     nftMetadataHash: toHex('test-nft-metadata-hash', { size: 32 }),
     nftMetadataURI: 'test-nft-uri',
   },
+  maxRts: 100_000_000, // default
   txOptions: { waitForTransaction: true }
 });
 
@@ -5370,7 +5405,7 @@ Parameters:
 
 * `request.nftContract`: The address of the NFT collection.
 * `request.tokenId`: The ID of the NFT.
-* `request.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -6584,17 +6619,17 @@ For the `mediaType` field, here are the valid options:
 For `imageHash` and `mediaHash`, we use SHA-256 hashing algorithm. Here is how you would calculate the hash in code:
 
 ```typescript
-import { toHex } from 'viem';
+import { toHex, Hex } from 'viem';
 
 // get hash from a file
-async function getFileHash(file: File): Promise<string> {
+async function getFileHash(file: File): Promise<Hex> {
   const arrayBuffer = await file.arrayBuffer()
   const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer)
   return toHex(new Uint8Array(hashBuffer), { size: 32 })
 }
 
 // get hash from a url
-async function getHashFromUrl(url: string): Promise<string> {
+async function getHashFromUrl(url: string): Promise<Hex> {
   const response = await axios.get(url, { responseType: "arraybuffer" });
   const buffer = Buffer.from(response.data);
   return "0x" + createHash("sha256").update(buffer).digest("hex");
@@ -7085,32 +7120,40 @@ The main components of the arbitration system are:
 
 **Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. **Tags must be whitelisted by protocol governance to be used in a dispute.** The initial set of tags are planned to be:
 
-<Table align={["left","left"]}>
+<Table align={["left","left","left"]}>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         Dispute Tag
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         Explanation
+      </th>
+
+      <th>
+        bytes32 (for protocol)
       </th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `IMPROPER_REGISTRATION`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Refers to registration of IP that already exists.
+      </td>
+
+      <td>
+        `0x494d50524f5045525f524547495354524154494f4e0000000000000000000000`
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `IMPROPER_USAGE`
 
         Examples (non-exhaustive):
@@ -7127,23 +7170,31 @@ The main components of the arbitration system are:
         Restriction on Cross-Platform Use
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.
+      </td>
+
+      <td>
+        `0x494d50524f5045525f5553414745000000000000000000000000000000000000`
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `IMPROPER_PAYMENT`
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Refers to missing payments associated with an IP.
+      </td>
+
+      <td>
+        `0x494d50524f5045525f5041594d454e5400000000000000000000000000000000`
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
+      <td>
         `CONTENT_STANDARDS_VIOLATION`
 
         No-Hate\
@@ -7152,8 +7203,26 @@ The main components of the arbitration system are:
         No-Pornography
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
+      </td>
+
+      <td>
+        `0x434f4e54454e545f5354414e44415244535f56494f4c4154494f4e0000000000`
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `IN_DISPUTE`
+      </td>
+
+      <td>
+
+      </td>
+
+      <td>
+        `0x494e5f4449535055544500000000000000000000000000000000000000000000`
       </td>
     </tr>
   </tbody>
@@ -9754,6 +9823,21 @@ Once a non-transferable License Token is minted to a recipient, it is locked the
 
 ## Registering a Derivative
 
+You can register an IP Asset as a derivative of other IP Assets, each with their own license terms agreement. This creates a legally binding agreement between IP Assets that enforces things things like automatic payments in the [💸 Royalty Module](doc:royalty-module).
+
+### :warning: Restrictions
+
+There are a few restrictions on registering a derivative:
+
+* An IP Asset can only register as a derivative one time. If an IP Asset has multiple parents, it must register both at the same time.
+* Once an IP Asset is a derivative, it cannot link any more parents.
+* When you link an IP Asset as a derivative, it cannot have license terms attached. It will inherit its terms from its parents.
+* None of the parent IP Assets or the child IP Asset can be disputed.
+* The child IP Asset cannot have derivatives already.
+* If at least one of the license terms is commercial, then they all must be commercial (`commercialUse = true`)
+
+***
+
 There are two ways to register a derivative IP Asset.
 
 > 📘 Small Note
@@ -11159,7 +11243,7 @@ const response = await client.dispute.raiseDispute({
 ```
 
 # 👋 Dev Overview
-If you're a developer, here is everything you need:
+If you're a developer, here is everything you need
 
 > 📘 Can't find something?
 >
@@ -11248,117 +11332,6 @@ View our [API Reference](https://docs.story.foundation/reference/api-introductio
   </tbody>
 </Table>
 
-
-# How to Dispute an IP on Story
-* [Use the SDK](https://docs.story.foundation/docs/how-to-dispute-ip-on-story#using-the-sdk)
-* [Use a Smart Contract](https://docs.story.foundation/docs/how-to-dispute-ip-on-story#using-a-smart-contract)
-
-# Using the SDK
-
-<Cards columns={1}>
-  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    View the completed code for this tutorial.
-  </Card>
-</Cards>
-
-In this tutorial, you will learn how to dispute an IP on Story using the TypeScript SDK.
-
-## The Explanation
-
-There are many instances where you may want to dispute an IP - whether that IP is or is not owned by you. Disputing IP on Story is easy thanks to our [❌ Dispute Module](doc:dispute-module) and the [UMA Arbitration Policy](doc:uma-arbitration-policy).
-
-Let's say you register a drawing, and then someone else registers that drawing with 1 pixel off. You can dispute it along a `IMPROPER_REGISTRATION` tag, which communicates potential plagiarism.
-
-In this tutorial, you will simply learn how to flag an IP as being disputed.
-
-## 0. Before you Start
-
-There are a few steps you have to complete before you can start the tutorial.
-
-1. You will need to install [Node.js](https://nodejs.org/en/download) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). If you've coded before, you likely have these.
-2. Add your Story Network Testnet wallet's private key to `.env` file:
-
-```yaml .env
-WALLET_PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
-```
-
-3. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
-
-```yaml .env
-RPC_PROVIDER_URL=https://aeneid.storyrpc.io
-```
-
-4. Install the dependencies:
-
-```Text Terminal
-npm install @story-protocol/core-sdk viem
-```
-
-## 1. Set up your Story Config
-
-In a `utils.ts` file, add the following code to set up your Story Config:
-
-* Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
-
-```typescript utils.ts
-import { StoryClient, StoryConfig } from '@story-protocol/core-sdk'
-import { http } from 'viem'
-import { privateKeyToAccount, Address, Account } from 'viem/accounts'
-
-const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`
-export const account: Account = privateKeyToAccount(privateKey)
-
-const config: StoryConfig = {  
-  account: account,  
-  transport: http(process.env.RPC_PROVIDER_URL),  
-  chainId: 'aeneid',  
-}
-export const client = StoryClient.newClient(config)
-```
-
-## 2. Dispute an IP
-
-To dispute an IP Asset, you will need:
-
-* the `targetIpId` of the IP Asset you are disputing (we use a test one below)
-* the `targetTag` that you are applying to the dispute. Only [whitelisted tags](https://docs.story.foundation/docs/dispute-module#dispute-tags) can be applied.
-* a `cid` (Content Identifier) is a unique identifier in IPFS that represents the dispute evidence you must provide, as described [here](https://docs.story.foundation/docs/uma-arbitration-policy#dispute-evidence-submission-guidelines) (we use a test one below).
-  * :warning: **Note you can only provide a CID one time.** After it is used, it can't be used as evidence again.
-
-Create a `main.ts` file and add the code below:
-
-```typescript main.ts
-import { client } from './utils'
-
-async function main() {
-  const disputeResponse = await client.dispute.raiseDispute({
-    targetIpId: '0x6b42d065aDCDA6fA83B59ad731841360dC5321fB',
-    // NOTE: you must use your own CID here, because every time it is used,
-    // the protocol does not allow you to use it again
-    cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
-    // you must pick from one of the whitelisted tags here: https://docs.story.foundation/docs/dispute-module#dispute-tags
-    targetTag: 'IMPROPER_REGISTRATION',
-    bond: 0,
-    liveness: 2592000,
-    txOptions: { waitForTransaction: true },
-  })
-  console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispute ID: ${disputeResponse.disputeId}`) 
-}
-
-main();
-```
-
-## 3. Done!
-
-<Cards columns={1}>
-  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    See a completed, working example disputing an IP.
-  </Card>
-</Cards>
-
-# Using a Smart Contract
-
-> 🚧 Coming soon...
 
 # How to Register Music on Story
 In this tutorial, you will learn how to properly register music as IP on Story using the TypeScript SDK. At the end, you will be able to listen to your song directly on our explorer.
@@ -13476,9 +13449,13 @@ Once you have done that, you should see a console log with a link to our IP-expl
 # ⚛️ React Guide
 The best way to get started is to get your hands dirty and start building.
 
-<Cards columns={2}>
-  <Card title="Working Code Example" href="https://github.com/jacob-tucker/story-developer-sandbox" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
-    A working code example that shows setting up & calling TypeScript SDK functions in Next.js
+<Cards columns={3}>
+  <Card title="See Completed Code" href="https://github.com/jacob-tucker/story-developer-sandbox" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Clone our "developer sandbox" locally to see a working code example that shows setting up & calling TypeScript SDK functions in Next.js
+  </Card>
+
+  <Card title="Live Sandbox" href="https://sandbox.story.foundation" icon="fa-umbrella-beach" iconColor="#51af51" target="_blank">
+    Play around with a live version of our developer sandbox to get an introductory walkthrough of our SDK.
   </Card>
 
   <Card title="SDK Reference" href="https://docs.story.foundation/docs/sdk-overview#/" icon="fa-books" iconColor="#51af51" target="_blank">
@@ -14287,9 +14264,64 @@ There are a few times when **you would need** a License Token to register a deri
 * The License Token (which is an NFT) costs a `mintingFee` to mint, and you were able to buy it on a marketplace for a cheaper price. Then it makes more sense to simply register with the License Token then have to pay the more expensive `defaultMintingFee`.
 
 # Raise a Dispute
-> 🚧 Not Yet Completed
->
-> This section is not yet completed. However you can view all of our SDK Dispute functions [here](doc:sdk-dispute).
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    All of this page is covered in this working code example.
+  </Card>
+</Cards>
+
+This section demonstrates how to dispute an IP on Story. There are many instances where you may want to dispute an IP - whether that IP is or is not owned by you. Disputing IP on Story is easy thanks to our [❌ Dispute Module](doc:dispute-module) and the [UMA Arbitration Policy](doc:uma-arbitration-policy).
+
+Let's say you register a drawing, and then someone else registers that drawing with 1 pixel off. You can dispute it along a `IMPROPER_REGISTRATION` tag, which communicates potential plagiarism.
+
+In this tutorial, you will simply learn how to flag an IP as being disputed.
+
+### :warning: Prerequisites
+
+There are a few steps you have to complete before you can start the tutorial.
+
+1. Complete the [TypeScript SDK Setup](doc:typescript-sdk-setup)
+2. Have a basic understanding of the [❌ Dispute Module](doc:dispute-module)
+
+## 1. Dispute an IP
+
+To dispute an IP Asset, you will need:
+
+* the `targetIpId` of the IP Asset you are disputing (we use a test one below)
+* the `targetTag` that you are applying to the dispute. Only [whitelisted tags](https://docs.story.foundation/docs/dispute-module#dispute-tags) can be applied.
+* a `cid` (Content Identifier) is a unique identifier in IPFS that represents the dispute evidence you must provide, as described [here](https://docs.story.foundation/docs/uma-arbitration-policy#dispute-evidence-submission-guidelines) (we use a test one below).
+  * :warning: **Note you can only provide a CID one time.** After it is used, it can't be used as evidence again.
+
+Create a `main.ts` file and add the code below:
+
+```typescript main.ts
+import { client } from './utils'
+
+async function main() {
+  const disputeResponse = await client.dispute.raiseDispute({
+    targetIpId: '0x6b42d065aDCDA6fA83B59ad731841360dC5321fB',
+    // NOTE: you must use your own CID here, because every time it is used,
+    // the protocol does not allow you to use it again
+    cid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+    // you must pick from one of the whitelisted tags here: https://docs.story.foundation/docs/dispute-module#dispute-tags
+    targetTag: 'IMPROPER_REGISTRATION',
+    bond: 0,
+    liveness: 2592000,
+    txOptions: { waitForTransaction: true },
+  })
+  console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispute ID: ${disputeResponse.disputeId}`) 
+}
+
+main();
+```
+
+## 2. :checkered_flag: View Completed Code
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/disputeIp.ts" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    See a completed, working example disputing an IP.
+  </Card>
+</Cards>
 
 # Pay an IPA
 <Cards columns={1}>
@@ -14883,10 +14915,14 @@ Remember that in order to register a new IP, we first have to mint an NFT, which
 
 Luckily, we can use the `mintAndRegisterIp` function to mint an NFT and register it as an IP Asset in the same transaction.
 
-This function needs an SPG NFT Contract to mint from. For simplicity, you can use a public collection we have created for you on Aeneid testnet: `0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc`.
+This function needs an SPG NFT Contract to mint from.
 
-<Accordion title="Creating your own custom ERC-721 collection" icon="fa-info-circle">
-  Using the public collection we provide for you is fine, but when you do this for real, you should make your own NFT Collection for your IPs. You can do this in 2 ways:
+### 4a. :question: What SPG NFT contract address should I use?
+
+For simplicity, you can use a public collection we have created for you on Aeneid testnet: `0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc`. On Mainnet, or even when testing a real scenario on Aeneid, you should **create your own** contract as described in the "Using a custom ERC-721 contract" section below.
+
+<Accordion title="Using a custom ERC-721 contract" icon="fa-info-circle">
+  Using a public collection we provide for you is fine, but when you do this for real, you should make your own NFT Collection for your IPs. You can do this in 2 ways:
 
   1. Deploy a contract that implements the [ISPGNFT](https://github.com/storyprotocol/protocol-periphery-v1/blob/main/contracts/interfaces/ISPGNFT.sol) interface, or use the SDK's [createNFTCollection](https://docs.story.foundation/docs/sdk-nftclient#createnftcollection) function (shown below) to do it for you. This will give you your own SPG NFT Collection that only you can mint from.
 
@@ -14905,8 +14941,10 @@ This function needs an SPG NFT Contract to mint from. For simplicity, you can us
       txOptions: { waitForTransaction: true },
     })
 
-    console.log(`New SPG NFT collection created at transaction hash ${newCollection.txHash}`)
-    console.log(`NFT contract address: ${newCollection.spgNftContract}`)
+    console.log('New collection created:', {
+      'SPG NFT Contract Address': newCollection.spgNftContract,
+      'Transaction Hash': newCollection.txHash,
+    })
   }
 
   createSpgNftCollection();
@@ -14915,7 +14953,9 @@ This function needs an SPG NFT Contract to mint from. For simplicity, you can us
   2. Create a custom ERC-721 NFT collection on your own and use the [register](https://docs.story.foundation/docs/sdk-ipasset#register) function - providing an `nftContract` and `tokenId` - *instead of* using the `mintAndRegisterIp` function. See a working code example [here](https://github.com/storyprotocol/typescript-tutorial/blob/main/scripts/simpleMintAndRegister.ts). This is helpful if you **already have a custom NFT contract that has your own custom logic, or if your IPs themselves are NFTs.**
 </Accordion>
 
-> Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
+***
+
+Here is the code to register an IP:
 
 ```typescript main.ts
 import { IpMetadata } from '@story-protocol/core-sdk'
@@ -14944,6 +14984,8 @@ async function main() {
 
 main();
 ```
+
+* Associated Docs: [ipAsset.mintAndRegisterIp](https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip)
 
 ## 5. :checkered_flag: View Completed Code
 
@@ -15112,8 +15154,6 @@ Congratulations, you claimed revenue using the [💸 Royalty Module](doc:royalty
 ## Dispute an IP
 
 Now what happens if an IP Asset doesn't pay their due share? We can dispute the IP on-chain, which we will cover on the next page.
-
-> 🚧 Coming soon!
 
 # Register a Derivative
 <Cards columns={1}>
