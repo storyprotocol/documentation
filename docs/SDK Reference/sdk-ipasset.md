@@ -212,7 +212,7 @@ Parameters:
 
 * `request.childIpId`: The derivative IP ID.
 * `request.licenseTokenIds`: The IDs of the license tokens.
-* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -545,9 +545,21 @@ export type RegisterIpAndMakeDerivativeRequest = {
 export type DerivativeData = {
   parentIpIds: Address[];
   licenseTermsIds: bigint[] | string[] | number[];
-  maxMintingFee: bigint | string | number;
-  maxRts: number | string;
-  maxRevenueShare: number | string;
+  /**
+   * The maximum minting fee that the caller is willing to pay. if set to 0 then no limit.
+   * @default 0
+   */
+  maxMintingFee?: bigint | string | number;
+  /**
+   * The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+   * @default 100_000_000
+   */
+  maxRts?: number | string;
+  /**
+   * The maximum revenue share percentage allowed for minting the License Tokens. Must be between 0 and 100 (where 100% represents 100_000_000).
+   * @default 100
+   */
+  maxRevenueShare?: number | string;
   licenseTemplate?: Address;
 };
 ```
@@ -633,9 +645,21 @@ export type MintAndRegisterIpAndMakeDerivativeRequest = {
 export type DerivativeData = {
   parentIpIds: Address[];
   licenseTermsIds: bigint[] | string[] | number[];
-  maxMintingFee: bigint | string | number;
-  maxRts: number | string;
-  maxRevenueShare: number | string;
+  /**
+   * The maximum minting fee that the caller is willing to pay. if set to 0 then no limit.
+   * @default 0
+   */
+  maxMintingFee?: bigint | string | number;
+  /**
+   * The maximum number of royalty tokens that can be distributed to the external royalty policies (max: 100,000,000).
+   * @default 100_000_000
+   */
+  maxRts?: number | string;
+  /**
+   * The maximum revenue share percentage allowed for minting the License Tokens. Must be between 0 and 100 (where 100% represents 100_000_000).
+   * @default 100
+   */
+  maxRevenueShare?: number | string;
   licenseTemplate?: Address;
 };
 ```
@@ -869,7 +893,7 @@ Parameters:
 
 * `request.nftContract`: The address of the NFT collection.
 * `request.tokenId`: The ID of the NFT.
-* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+* `request.maxRts`: The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Recommended for simplicity: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
