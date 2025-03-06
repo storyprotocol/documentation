@@ -71,7 +71,7 @@ Parameters:
   * `request.ipMetadata.ipMetadataHash` \[Optional] The hash of the metadata for the IP.
   * `request.ipMetadata.nftMetadataURI` \[Optional] The URI of the metadata for the NFT.
   * `request.ipMetadata.nftMetadataHash` \[Optional] The hash of the metadata for the IP NFT.
-* `request.deadline`: \[Optional]The deadline for the signature in milliseconds.
+* `request.deadline`: \[Optional] The deadline for the signature in milliseconds.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -261,7 +261,7 @@ Mint an NFT from a collection, register it as an IP, attach metadata to the IP, 
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.licenseTermsData[]`: The array of license terms to be attached. :warning: **This function will fail if you pass in an empty array.**
   * `request.licenseTermsData.terms`: See the [LicenseTerms type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/resources/license.ts#L26).
   * `request.licenseTermsData.licensingConfig`: \[Optional] See the [LicensingConfig type](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/common.ts#L15). If none provided, it will default to the one shown [here](https://github.com/storyprotocol/sdk/blob/dev/packages/core-sdk/src/utils/validateLicenseConfig.ts).
@@ -417,7 +417,7 @@ Parameters:
   * `request.ipMetadata.ipMetadataHash`: \[Optional] The hash of the metadata for the IP.
   * `request.ipMetadata.nftMetadataURI`: \[Optional] The URI of the metadata for the NFT.
   * `request.ipMetadata.nftMetadataHash`: \[Optional] The hash of the metadata for the IP NFT.
-* `request.deadline`: \[Optional]The deadline for the signature in milliseconds.
+* `request.deadline`: \[Optional] The deadline for the signature in milliseconds.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -495,8 +495,8 @@ Parameters:
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: \[Optional]The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
-  * `request.derivData.maxRevenueShare`: \[Optional]The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+  * `request.derivData.maxMintingFee`: \[Optional] The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+  * `request.derivData.maxRevenueShare`: \[Optional] The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
   * `request.derivData.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
@@ -504,7 +504,7 @@ Parameters:
   * `request.ipMetadata.ipMetadataHash` \[Optional] The hash of the metadata for the IP.
   * `request.ipMetadata.nftMetadataURI` \[Optional] The URI of the metadata for the NFT.
   * `request.ipMetadata.nftMetadataHash` \[Optional] The hash of the metadata for the IP NFT.
-* `request.deadline`: \[Optional]The deadline for the signature in milliseconds.
+* `request.deadline`: \[Optional] The deadline for the signature in milliseconds.
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -584,13 +584,13 @@ Mint an NFT from a collection and register it as a derivative IP without license
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.derivData`: The derivative data to be used for registerDerivative.
   * `request.derivData.parentIpIds`: The IDs of the parent IPs to link the registered derivative IP.
   * `request.derivData.licenseTermsIds`: The IDs of the license terms to be used for the linking.
-  * `request.derivData.maxMintingFee`: \[Optional]The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
-  * `request.derivData.maxRevenueShare`: \[Optional]The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
-  * `request.derivData.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+  * `request.derivData.maxMintingFee`: \[Optional] The maximum minting fee that the caller is willing to pay. If set to 0, then there is no no limit. **Default: 0**
+  * `request.derivData.maxRevenueShare`: \[Optional] The maximum revenue share percentage agreed upon between a child and parent when a child is registering as derivative. Must be between 0 and 100. **Default: 100**
+  * `request.derivData.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
   * `request.derivData.licenseTemplate`: \[Optional] The address of the license template to be used for the linking.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -675,7 +675,7 @@ Mint an NFT from an SPGNFT collection and register it with metadata as an IP.
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
 * `request.recipient`: \[Optional] The address of the recipient of the minted NFT, default value is your wallet address.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -801,8 +801,8 @@ Mint an NFT from a collection and register it as a derivative IP using license t
 Parameters:
 
 * `request.spgNftContract`: The address of the NFT collection.
-* `request.allowDuplicates`: \[Optional]Set to true to allow minting IPs with the same NFT metadata. **Default: true**
-* `request.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+* `request.allowDuplicates`: \[Optional] Set to true to allow minting IPs with the same NFT metadata. **Default: true**
+* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
@@ -868,7 +868,7 @@ Parameters:
 
 * `request.nftContract`: The address of the NFT collection.
 * `request.tokenId`: The ID of the NFT.
-* `request.maxRts`: \[Optional]The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
+* `request.maxRts`: \[Optional] The maximum number of royalty tokens that can be distributed to the external royalty policies. Must be between 0 and 100,000,000. **Default: 100\_000\_000**
 * `request.licenseTokenIds`: The IDs of the license tokens to be burned for linking the IP to parent IPs.
 * `request.ipMetadata`: \[Optional] The desired metadata for the newly minted NFT and newly registered IP.
   * `request.ipMetadata.ipMetadataURI` \[Optional] The URI of the metadata for the IP.
