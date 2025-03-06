@@ -142,9 +142,9 @@ Luckily, we can use the `mintAndRegisterIp` function to mint an NFT and register
 
 This function needs an SPG NFT Contract to mint from.
 
-### 4a. :warning: What SPG NFT contract address should I use?
+### 4a. :question: What SPG NFT contract address should I use?
 
-For simplicity, you can use a public collection we have created for you on Aeneid testnet: `0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc`. On Mainnet, you should **create your own** contract as described in the section below.
+For simplicity, you can use a public collection we have created for you on Aeneid testnet: `0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc`. On Mainnet, you should **create your own** contract as described in the "Using a custom ERC-721 contract" section below.
 
 <Accordion title="Using a custom ERC-721 contract" icon="fa-info-circle">
   Using a public collection we provide for you is fine, but when you do this for real, you should make your own NFT Collection for your IPs. You can do this in 2 ways:
