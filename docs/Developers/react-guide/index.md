@@ -13,7 +13,7 @@ The best way to get started is to get your hands dirty and start building.
     Clone our "developer sandbox" locally to see a working code example that shows setting up & calling TypeScript SDK functions in Next.js
   </Card>
 
-  <Card title="Live Sandbox" href="https://sandbox.story.foundation" icon="fa-sand" iconColor="#51af51" target="_blank">
+  <Card title="Live Sandbox" href="https://sandbox.story.foundation" icon="fa-umbrella-beach" iconColor="#51af51" target="_blank">
     Play around with a live version of our developer sandbox to get an introductory walkthrough of our SDK.
   </Card>
 
