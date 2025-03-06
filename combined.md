@@ -4688,7 +4688,7 @@ response = story_client.IPAsset.registerDerivative(
 export type RegisterDerivativeRequest = {
   txOptions?: TxOptions;
   childIpId: Address;
-} & DerivativeData;
+} & DerivativeData & WithWipOptions;
 
 export type DerivativeData = {
   parentIpIds: Address[];
@@ -5243,7 +5243,7 @@ export type MintAndRegisterIpRequest = {
   spgNftContract: Address;
   recipient?: Address;
   allowDuplicates: boolean;
-} & IpMetadataAndTxOptions;
+} & IpMetadataAndTxOptions & WithWipOptions;
 ```
 ```typescript Response Type
 export type RegisterIpResponse = {
