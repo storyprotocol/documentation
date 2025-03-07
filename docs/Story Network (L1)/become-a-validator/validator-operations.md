@@ -109,6 +109,7 @@ Below is a list of optional flags to further customize your validator setup:
 * `--private-key`: Uses a specified private key for signing the transaction. If not set, the key in `priv_validator_key.json` will be used.
 * `--rpc`: Sets the RPC URL to connect to the network (default: [https://odyssey.storyrpc.io](https://odyssey.storyrpc.io)).
 * `--unlocked`: Determines if unlocked token staking is supported (`true` for unlocked staking, `false` for locked staking). By default, this is set to `true`.
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example creation command use
 
@@ -158,6 +159,7 @@ Once staked, you may use the `Explorer URL` to confirm the transaction. As menti
 * `--private-key`: (string) Private key used for the transaction
 * `--rpc`: (string) RPC URL to connect to the network
 * `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example staking command use
 
@@ -193,6 +195,7 @@ Like in the staking operation, please use the `Explorer URL` to confirm the tran
 * `--rpc`: (string) RPC URL to connect to the network (default: "[https://storyrpc.io](https://storyrpc.io)")
 * `--unstake`: (string) Amount to unstake in wei
 * `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example unstaking command use
 
@@ -232,6 +235,7 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 * `--stake`: (string) Amount for the validator to self-delegate in wei
 * `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
 * `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example Stake-on-behalf command use
 
@@ -272,6 +276,7 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 * `--rpc`: (string) RPC URL to connect to the network (default: "[https://storyrpc.io](https://storyrpc.io)")
 * `--unstake`: (string) Amount to unstake in wei
 * `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example Unstake-on-behalf command use
 
@@ -303,6 +308,7 @@ Note that you will need at least 1 IP in the wallet submitting the transaction f
 * `--explorer`: (string) URL of the blockchain explorer
 * `--private-key`: (string) Private key used for the transaction
 * `--rpc`: (string) RPC URL to connect to the network
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example unjail command use
 
@@ -332,6 +338,7 @@ If you are an authorized operator, you may unjail a validator on their behalf us
 * `--private-key`: (string) Private key used for the transaction
 * `--rpc`: (string) RPC URL to connect to the network
 * `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example unjail-on-behalf command use
 
@@ -367,6 +374,7 @@ To redelegate from one validator to another, run the following command:
 * `--rpc`: (string) RPC URL to connect to the network (default "[https://storyrpc.io](https://storyrpc.io)")
 * `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
 * `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example redelegate command use
 
@@ -405,6 +413,7 @@ If you are an authorized operator, you may redelegate from one validator to anot
 * `--rpc`: (string) RPC URL to connect to the network (default "[https://storyrpc.io](https://storyrpc.io)")
 * `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
 * `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
 ### Example redelegate-on-behalf command use
 
@@ -432,7 +441,8 @@ Delegators may add operators to unstake or redelegate on their behalf. To add an
 ./story validator set-operator \
   --operator ${OPERATOR_EVM_ADDRESS} \
   --rpc \
-  --chain-id
+  --chain-id \
+  --story-api ${STORY_API_URL}
 ```
 
 Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
@@ -443,7 +453,8 @@ Note that you will need at least 1 IP in the wallet submitting the transaction f
 ./story validator set-operator \
   --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
   --rpc \
-  --chain-id
+  --chain-id \
+  --story-api http://localhost:1317
 ```
 
 ## Unset Operator
@@ -454,7 +465,8 @@ To remove an operator, run the following command:
 ./story validator unset-operator \
   --operator ${OPERATOR_EVM_ADDRESS} \  
   --rpc \
-  --chain-id
+  --chain-id \
+  --story-api ${STORY_API_URL}
 ```
 
 ### Example Remove Operator command use
@@ -463,7 +475,8 @@ To remove an operator, run the following command:
 ./story validator remove-operator \
   --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
   --rpc \
-  --chain-id
+  --chain-id \
+  --story-api http://localhost:1317
 ```
 
 ## Set Withdrawal Address
@@ -472,7 +485,8 @@ To change the address that your delegator receives staking and withdrawal reward
 
 ```bash
 ./story validator set-withdrawal-address \
-  --withdrawal-address ${OPERATOR_EVM_ADDRESS}
+  --withdrawal-address ${OPERATOR_EVM_ADDRESS} \
+  --story-api ${STORY_API_URL}
 ```
 
 Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
@@ -482,7 +496,26 @@ Note that you will need at least 1 IP in the wallet submitting the transaction f
 ```bash
 ./story validator set-withdrawal-address \
   --withdrawal-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
+  --story-api http://localhost:1317
 ```
+
+## Update Validator Commission
+
+To change the commission rate for your validator, you can run the following:
+
+```
+./story valdiator update-validator-commission \
+		--commission-rate ${NEW_COMMISSION}
+```
+
+### Example Update Validator Commission
+
+```
+./story valdiator update-validator-commission \
+		--commission-rate 5000
+```
+
+<br />
 
 ## Migrating a validator to another machine
 
