@@ -7135,7 +7135,7 @@ The main components of the arbitration system are:
       </th>
 
       <th>
-        bytes32 (for protocol):
+        bytes32 (for protocol)
       </th>
     </tr>
   </thead>
