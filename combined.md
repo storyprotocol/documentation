@@ -1337,7 +1337,7 @@ ABCI++ comprises of a set of methods that interact with the Engine API, as outli
 * If not, the CL calls `engine_forkchoiceUpdate` to trigger a new payload generation.
 * The CL then calls `engine_getPayload` with `payloadID` to fetch the payload and propose a new block.
 
-### \*\*2. ProcessProposal (Processing a New Block)
+### **2. ProcessProposal** (Processing a New Block)
 
 * The CL calls `engine_newPayload` to  delivers the new block to the EL.
 * The EL validates payload of the new block, executes transactions deterministically and updates its state.
