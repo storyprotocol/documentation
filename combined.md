@@ -7121,9 +7121,9 @@ The main components of the arbitration system are:
 
 ### Dispute Tags
 
-**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. **Tags must be whitelisted by protocol governance to be used in a dispute.** The initial set of tags are planned to be:
+**Tags** refer to the "labels" that can be applied to IP Assets in the protocol when raising a dispute. **Tags must be whitelisted by protocol governance to be used in a dispute.** The initial set of tags are:
 
-<Table align={["left","left"]}>
+<Table align={["left","left","left"]}>
   <thead>
     <tr>
       <th>
@@ -7133,6 +7133,10 @@ The main components of the arbitration system are:
       <th>
         Explanation
       </th>
+
+      <th>
+        bytes32 (for protocol):
+      </th>
     </tr>
   </thead>
 
@@ -7140,13 +7144,14 @@ The main components of the arbitration system are:
     <tr>
       <td>
         `IMPROPER_REGISTRATION`
-
-        bytes32 (for protocol):
-        `0x494d50524f5045525f524547495354524154494f4e0000000000000000000000`
       </td>
 
       <td>
         Refers to registration of IP that already exists.
+      </td>
+
+      <td>
+        `0x494d50524f5045525f524547495354524154494f4e0000000000000000000000`
       </td>
     </tr>
 
@@ -7154,10 +7159,7 @@ The main components of the arbitration system are:
       <td>
         `IMPROPER_USAGE`
 
-        bytes32 (for protocol):\
-        `0x494d50524f5045525f5553414745000000000000000000000000000000000000`
-
-        Examples (non-exhaustive):\
+        Examples (non-exhaustive):
         Territory,
         Channels of Distribution,
         Expiration,
@@ -7174,27 +7176,29 @@ The main components of the arbitration system are:
       <td>
         Refers to improper use of an IP Asset across multiple items (examples on the left). These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license)   legal document.
       </td>
+
+      <td>
+        `0x494d50524f5045525f5553414745000000000000000000000000000000000000`
+      </td>
     </tr>
 
     <tr>
       <td>
         `IMPROPER_PAYMENT`
-
-        bytes32 (for protocol):\
-        `0x494d50524f5045525f5041594d454e5400000000000000000000000000000000`
       </td>
 
       <td>
         Refers to missing payments associated with an IP.
+      </td>
+
+      <td>
+        `0x494d50524f5045525f5041594d454e5400000000000000000000000000000000`
       </td>
     </tr>
 
     <tr>
       <td>
         `CONTENT_STANDARDS_VIOLATION`
-
-        bytes32 (for protocol):\
-        `0x434f4e54454e545f5354414e44415244535f56494f4c4154494f4e0000000000`
 
         No-Hate\
         Suitable-for-All-Ages
@@ -7205,18 +7209,23 @@ The main components of the arbitration system are:
       <td>
         Refers to "No-Hate", "Suitable-for-All-Ages", "No-Drugs-or-Weapons" and "No-Pornography". These items can be found in more detail in the [💊 Programmable IP License (PIL)](doc:programmable-ip-license) legal document.
       </td>
+
+      <td>
+        `0x434f4e54454e545f5354414e44415244535f56494f4c4154494f4e0000000000`
+      </td>
     </tr>
 
     <tr>
       <td>
         `IN_DISPUTE`
-
-        bytes32 (for protocol):\
-        `0x494e5f4449535055544500000000000000000000000000000000000000000000`
       </td>
 
       <td>
+        Different from the other 4, this is a temporary tag that goes away at the end of a dispute and is replaced by "0x" in case of no infringement or is replaced by one of the other tags.
+      </td>
 
+      <td>
+        `0x494e5f4449535055544500000000000000000000000000000000000000000000`
       </td>
     </tr>
   </tbody>
