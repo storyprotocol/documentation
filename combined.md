@@ -802,7 +802,6 @@ Story’s staking contract will handle all validators/delegators related operati
 The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
 # 🏗️ Node Architecture
-
 Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api) defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
 
 `story-geth` is a fork of the Geth client, with the addition of the [IPGraph Precompile](doc:precompile) and [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) precompile. It handles transaction execution, broadcasting and state storage while maintaining full compatibility with the Ethereum Virtual Machine (EVM) and supporting all Ethereum JSON-RPC methods.
@@ -810,6 +809,12 @@ Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SD
 `story` is built on the Cosmos SDK and CometBFT. The Cosmos SDK provides a modular framework for building blockchain applications, enabling seamless integration of new modules and features while allowing the network to be easily extended and customized. `story` client introduces upgrades and additional Cosmos SDK modules to support Engine API integration and novel staking mechanisms. CometBFT, a high-performance, scalable, and secure consensus engine, has been extensively tested within the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec).
 
 <Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
+
+<br />
+
+### Warning
+
+Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
 
 # List of Modules
 # List of Modules
