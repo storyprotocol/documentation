@@ -100,10 +100,7 @@ The main components of the arbitration system are:
       <td>
         `CONTENT_STANDARDS_VIOLATION`
 
-        No-Hate\
-        Suitable-for-All-Ages
-        No-Drugs-or-Weapons
-        No-Pornography
+        Examples: No-Hate, Suitable-for-All-Ages, No-Drugs-or-Weapons, No-Pornography
       </td>
 
       <td>
