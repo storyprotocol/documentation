@@ -99,6 +99,6 @@ const nftMetadata = {
 
 ## 4. Done!
 
-When you run the script, you will register an IP Asset and it will look something like [this](https://aeneid.explorer.story.foundation/ipa/0x3E5b9e540a531da38760CC32E2f52b174EC5Fce8) on our explorer.
+When you run the script, you will register an IP Asset and it will look something like [this](https://aeneid.explorer.story.foundation/ipa/0x70920EaC7F9748Ac5A71C82310f1ac1C7eD11f02) on our explorer.
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!
