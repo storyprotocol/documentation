@@ -79,6 +79,20 @@ next:
 
       </td>
     </tr>
+
+    <tr>
+      <td>
+        Story by BlockPI
+      </td>
+
+      <td>
+        `https://blockpi.io/chain/story`
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
   </tbody>
 </Table>
 
