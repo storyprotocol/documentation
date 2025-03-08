@@ -10774,6 +10774,8 @@ Our tutorials will show you exactly how to claim revenue:
 
 ## Whitelisted Revenue Tokens
 
+The below list contains the whitelisted revenue tokens that can be used in the [💸 Royalty Module](doc:royalty-module). Learn more about Revenue Tokens [here](doc:ip-royalty-vault).
+
 <Tabs>
   <Tab title="Aeneid Testnet">
     | Token  | Contract Address                             | Explorer                                                                                                                   | Mint                                                                                                                                                |
