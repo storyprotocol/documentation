@@ -53,6 +53,10 @@ ROYALTY_MODULE.payRoyaltyOnBehalf(childIpId, address(0), address(MERC20), 10);
 
 This will send 10 $MERC20 to the `childIpId`'s [IP Royalty Vault](doc:ip-royalty-vault). From there, the child can claim revenue. In the next section, you'll see a working version of this.
 
+> 🚧 Important: Approving the Royalty Module
+>
+> Before you call `payRoyaltyOnBehalf`, you have to approve the royalty module to spend the tokens for you. In the section below, you will see that we call `MERC20.approve(address(ROYALTY_MODULE), 10);` or else it will not work.
+
 ## 2. Claim Revenue
 
 When payments are made, they eventually end up in an IP Asset's [IP Royalty Vault](doc:ip-royalty-vault). From here, they are claimed/transferred to whoever owns the Royalty Tokens associated with it, which represent a % of revenue share for a given IP Asset's IP Royalty Vault.
@@ -175,7 +179,7 @@ contract RoyaltyTest is Test {
         // ADMIN SETUP
         // We mint 100 MERC20 to this contract so it has some money to pay.
         MERC20.mint(address(this), 100);
-        // We approve the Royalty Module to spend MERC20 on our behalf, which
+        // We have to approve the Royalty Module to spend MERC20 on our behalf, which
         // it will do using `payRoyaltyOnBehalf`.
         MERC20.approve(address(ROYALTY_MODULE), 10);
 
