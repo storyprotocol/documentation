@@ -2339,12 +2339,12 @@ Below is a list of optional flags to further customize your validator setup:
 * `--moniker`: Defines a custom name for the validator, visible to users on the network.
 * `--chain-id`: Specifies the Chain ID for the transaction. By default, this is set to `1516`.
 * `--commission-rate`: Sets the validator's commission rate in bips (1% = 100 bips). For instance, `1000` represents a 10% commission (default is `1000`).
-* `--explorer`: Specifies the URL of the blockchain explorer (default: [https://odyssey.storyscan.xyz](https://odyssey.storyscan.xyz)).
-* `--keyfile`: Points to the path of the Tendermint key file (default: `/home/node_story_odyssey/.story/story/config/priv_validator_key.json`).
+* `--explorer`: Specifies the URL of the blockchain explorer (default: [https://storyscan.xyz](https://storyscan.xyz)).
+* `--keyfile`: Points to the path of the Tendermint key file (default: `$HOME/.story/story/config/priv_validator_key.json`).
 * `--max-commission-change-rate`: Sets the maximum rate at which the validator's commission can change, in bips. For example, `100` represents a maximum change of 1% (default is `1000`).
 * `--max-commission-rate`: Defines the maximum commission rate the validator can charge, in bips. For instance, `5000` allows a 50% maximum rate (default is `5000`).
 * `--private-key`: Uses a specified private key for signing the transaction. If not set, the key in `priv_validator_key.json` will be used.
-* `--rpc`: Sets the RPC URL to connect to the network (default: [https://odyssey.storyrpc.io](https://odyssey.storyrpc.io)).
+* `--rpc`: Sets the RPC URL to connect to the network (default: [https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)).
 * `--unlocked`: Determines if unlocked token staking is supported (`true` for unlocked staking, `false` for locked staking). By default, this is set to `true`.
 * `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
 
@@ -2429,7 +2429,7 @@ Like in the staking operation, please use the `Explorer URL` to confirm the tran
 * `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
 * `--help`, `-h`: Help for unstake command
 * `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network (default: "[https://storyrpc.io](https://storyrpc.io)")
+* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
 * `--unstake`: (string) Amount to unstake in wei
 * `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
 * `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
@@ -2468,7 +2468,7 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 * `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
 * `--help`, `-h`: Help for stake-on-behalf command
 * `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network (default: "[https://storyrpc.io](https://storyrpc.io)")
+* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
 * `--stake`: (string) Amount for the validator to self-delegate in wei
 * `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
 * `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
@@ -2510,7 +2510,7 @@ Like in the other staking operations, please use the `Explorer URL` to confirm t
 * `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
 * `--help`, `-h`: Help for unstake-on-behalf command
 * `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network (default: "[https://storyrpc.io](https://storyrpc.io)")
+* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
 * `--unstake`: (string) Amount to unstake in wei
 * `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
 * `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
@@ -2608,7 +2608,7 @@ To redelegate from one validator to another, run the following command:
 * `--help`, `-h`: Help for redelegate command
 * `--private-key`: (string) Private key used for the transaction
 * `--redelegate`: (string) Amount to redelegate in wei
-* `--rpc`: (string) RPC URL to connect to the network (default "[https://storyrpc.io](https://storyrpc.io)")
+* `--rpc`: (string) RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
 * `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
 * `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
 * `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
@@ -2647,7 +2647,7 @@ If you are an authorized operator, you may redelegate from one validator to anot
 * `--help`, `-h`: Help for redelegate-on-behalf command
 * `--private-key`: (string) Private key used for the transaction
 * `--redelegate`: (string) Amount to redelegate in wei
-* `--rpc`: (string) RPC URL to connect to the network (default "[https://storyrpc.io](https://storyrpc.io)")
+* `--rpc`: (string) RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
 * `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
 * `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
 * `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
@@ -2672,7 +2672,7 @@ Delegators may add operators to unstake or redelegate on their behalf. To add an
 * `--explorer` string      URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
 * `--operator` string      Sets an operator to your delegator
 * `--private-key` string   Private key used for the transaction
-* `--rpc` string           RPC URL to connect to the network (default "[https://storyrpc.io](https://storyrpc.io)")
+* `--rpc` string           RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
 
 ```bash
 ./story validator set-operator \
@@ -2716,6 +2716,28 @@ To remove an operator, run the following command:
   --story-api http://localhost:1317
 ```
 
+## Set Rewards Address
+
+To change the address that your delegator receives staking and withdrawal rewards from, you can run the following:
+
+```bash
+./story validator set-rewards-address \
+  --rewards-address ${OPERATOR_EVM_ADDRESS} \
+  --story-api ${STORY_API_URL}
+```
+
+Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
+
+### Example Set Withdrawal Address command use
+
+```bash
+./story validator set-rewards-address \
+  --rewards-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
+  --story-api http://localhost:1317
+```
+
+##
+
 ## Set Withdrawal Address
 
 To change the address that your delegator receives staking and withdrawal rewards from, you can run the following:
@@ -2752,7 +2774,19 @@ To change the commission rate for your validator, you can run the following:
 		--commission-rate 5000
 ```
 
-<br />
+## Enabling Story API
+
+Prerequisites:
+
+1. Ensure your full node is synced and caught up with latest blocks
+
+Steps to enable:
+
+1. Navigate to `${STORY_DATA_ROOT}/config/story.toml`
+2. Set `enable = true` under the `[api]` section
+3. Restart the node
+
+Then  you could use `http://localhost:1317` as the `-story-api` value
 
 ## Migrating a validator to another machine
 
