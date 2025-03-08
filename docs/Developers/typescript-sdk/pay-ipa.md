@@ -44,7 +44,7 @@ Only tokens that are whitelisted by our protocol can be used as payment ("revenu
 
 > 📘 Testing: MockERC20
 >
-> If you want to test paying IP Assets, you'll probably want a whitelisted revenue token you can mint freely for testing. We have provided [MockERC20](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19) on Aeneid testnet which you can mint and pay with.
+> If you want to test paying IP Assets, you'll probably want a whitelisted revenue token you can mint freely for testing. We have provided [MockERC20](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19) on Aeneid testnet which you can mint and pay with. Then when you're ready, you should use $WIP.
 
 ## Scenario #1: Tipping an IP Asset
 
