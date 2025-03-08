@@ -5,7 +5,7 @@ hidden: true
 metadata:
   robots: index
 ---
-## Relay
+## Relay Smart Contracts
 
 ### GelatoRelay.sol
 
