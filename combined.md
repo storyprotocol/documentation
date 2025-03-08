@@ -14426,11 +14426,9 @@ To help with the following scenarios, let's say we have a parent IP Asset that h
 
 Only tokens that are whitelisted by our protocol can be used as payment ("revenue") tokens. $WIP is one of those tokens. To see that list, go [here](https://docs.story.foundation/docs/deployed-smart-contracts#whitelisted-revenue-tokens).
 
-> ❗️ Testing: MockERC20
+> 📘 Testing: MockERC20
 >
 > If you want to test paying IP Assets, you'll probably want a whitelisted revenue token you can mint freely for testing. We have provided [MockERC20](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x40c10f19) on Aeneid testnet which you can mint and pay with.
->
-> Note, however, that in order for the SDK to be able to spend MockERC20 for you, you must [approve it](https://aeneid.storyscan.xyz/address/0xF2104833d386a2734a4eB3B8ad6FC6812F29E38E?tab=write_contract#0x095ea7b3) where the `spender` is `0xD2f60c40fEbccf6311f8B47c4f2Ec6b040400086` (the address of `RoyaltyModule.sol` on Aeneid testnet) and the value is ≥ the amount you want to pay.
 
 ## Scenario #1: Tipping an IP Asset
 
