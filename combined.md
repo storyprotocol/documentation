@@ -32,7 +32,11 @@ Address: 0x61F2976610970AFeDc1d83229e1E21bdc3D5cbE4
 # Pyth
 ## Entropy Contract (Mainnet)
 
-0xdF21D137Aadc95588205586636710ca2890538d5
+### ERC1967Proxy.sol
+
+```
+address:0xdF21D137Aadc95588205586636710ca2890538d5
+```
 
 # ℹ️ Network Info
 # Overview
