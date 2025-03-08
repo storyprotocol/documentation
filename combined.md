@@ -10794,6 +10794,25 @@ Our tutorials will show you exactly how to claim revenue:
 * **Multicall3**: 0xcA11bde05977b3631167028862bE2a173976CA11
 * **Default License Terms ID** (Non-Commercial Social Remixing): 1
 
+## Ecosystem Official Contracts
+
+The below is a list of official ecosystem contracts.
+
+### Story ENS
+
+```json Aeneid Testnet
+{
+  "SidRegistry": "0x5dC881dDA4e4a8d312be3544AD13118D1a04Cb17",
+  "PublicResolver": "0x6D3B3F99177FB2A5de7F9E928a9BD807bF7b5BAD"
+}
+```
+```json Mainnet
+{
+  "SidRegistry": "0x5dC881dDA4e4a8d312be3544AD13118D1a04Cb17",
+  "PublicResolver": "0x6D3B3F99177FB2A5de7F9E928a9BD807bF7b5BAD"
+}
+```
+
 # Version Matrix
 A version matrix showing the **currently available protocol versions** for different developer tools on both of our testnet networks. *Updated daily*.
 
