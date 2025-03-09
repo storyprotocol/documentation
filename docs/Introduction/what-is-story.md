@@ -82,7 +82,3 @@ Think of it like this: Suppose you upload a song to Story. Now, anyone can see t
 **Example #2**: Let’s say a scientist uploads an image dataset to be used by artificial intelligence (AI) models for research. Through Story, that dataset is registered, so if any company uses it to train their AI, the original scientist is credited. If that dataset then contributes to a profitable AI application, Story ensures a fair share goes to the original contributor.
 
 With Story, you can share your work freely, knowing that wherever it goes, it’s tracked and fairly credited back to you. The idea is to create a fair environment for sharing, building upon, and growing creative work.
-
-## A Mindmap for Developers
-
-<Image align="center" border={false} caption="Credit to the original tweet [here](https://x.com/devrelius/status/1898756162675196098)." src="https://files.readme.io/49a6d447c37d25ec4566db511dead5b70a641fab57088e1cbd24d8236e3bef19-image.png" />
