@@ -10491,13 +10491,9 @@ Think of it like this: Suppose you upload a song to Story. Now, anyone can see t
 
 With Story, you can share your work freely, knowing that wherever it goes, it’s tracked and fairly credited back to you. The idea is to create a fair environment for sharing, building upon, and growing creative work.
 
-<br />
-
 ## A Mindmap for Developers
 
-![](https://files.readme.io/49a6d447c37d25ec4566db511dead5b70a641fab57088e1cbd24d8236e3bef19-image.png)
-
-([source](https://x.com/devrelius/status/1898756162675196098))
+<Image align="center" border={false} caption="Credit to the original tweet [here](https://x.com/devrelius/status/1898756162675196098)." src="https://files.readme.io/49a6d447c37d25ec4566db511dead5b70a641fab57088e1cbd24d8236e3bef19-image.png" />
 
 # ❓ FAQ
 ## *"Is on-chain IP real?"*
