@@ -8,7 +8,7 @@ metadata:
 ---
 [Storyscan](https://storyscan.xyz) has a public API endpoint that returns gas price, average block time, market cap, token price (coin gecko), and several other stats: `https://www.storyscan.xyz/api/v2/stats`
 
-Here is an example response:
+Here is an example response :arrow_heading_down:
 
 ```json
 {
