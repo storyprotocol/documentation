@@ -1,5 +1,5 @@
 ---
-title: Infrastructure Partners
+title: 🔧 Infrastructure Partners
 excerpt: A list of infrastructure partners & tools.
 deprecated: false
 hidden: false

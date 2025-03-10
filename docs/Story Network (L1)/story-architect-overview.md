@@ -1,5 +1,5 @@
 ---
-title: 🌐 Welcome to Story Network
+title: 👋 Welcome to Story Network
 excerpt: ''
 deprecated: false
 hidden: false
