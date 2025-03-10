@@ -457,717 +457,6 @@ visualization for the blockchain network. Tools include **Prometheus**,
 | **Promtail**   | Scrapes logs from Docker containers and sends them to Loki.        | `9080` (API), `9095` (Metrics) | `http://localhost:9080` |
 | **Grafana**    | Provides a dashboard interface for metrics and logs visualization. | `3000`                         | `http://localhost:3000` |
 
-# 👋 Welcome to Story Network
-<Cards columns={2}>
-  <Card title="Add Story Mainnet" href="https://chainid.network/chain/1514/" icon="fa-home" target="_blank">
-    Connect your wallet to Story's mainnet.
-  </Card>
-
-  <Card title="Add Story 'Aeneid' Testnet" href="https://chainid.network/chain/1315/" icon="fa-home" target="_blank">
-    Connect your wallet to Story's 'Aeneid' testnet.
-  </Card>
-</Cards>
-
-# Story Network (L1)
-
-Welcome to the Hub for Story Network, the Story Chain.
-
-This section is designed to help you understand the fundamentals of Story Network. We’ve structured the content into two parts:
-
-1. Understanding the Architecture
-2. Operating a Node
-
-Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates the best of both the Ethereum Virtual Machine (EVM) and Cosmos SDK. It offers full EVM compatibility while incorporating deep execution layer optimizations to efficiently support graph-based data structures. These optimizations make it particularly well-suited for handling complex intellectual property (IP) data structures in a cost-effective and scalable manner.
-
-## Key Features
-
-* **EVM Compatibility**: Full compatibility with Ethereum Virtual Machine
-* **Optimized Data Structures**: Precompiled primitives for efficient IP graph traversal
-* **Fast Finality**: CometBFT-based consensus layer for quick transaction finality
-* **Modular Architecture**: Decoupled consensus from execution using Ethereum's Engine-API
-
-## Documentation Sections
-
-### Getting Started
-
-* [Node Architecture](doc:story-node-structure)
-* [Network Info](doc:network-info)
-* [Whitepaper](https://www.story.foundation/whitepaper.pdf)
-
-### Node Operations
-
-* [Operating a node](doc:operating-a-node)
-  * Full Node Setup
-  * Archive Node Setup
-  * Node Upgrade Guide
-  * Release Notes
-
-### Validation
-
-* [Become a validator](doc:become-a-validator)
-  * Validator Setup
-  * Validator Operations
-
-### Network Economics
-
-* [Staking Design](doc:tokenomics-staking)
-  * Token Economics
-  * Staking Mechanisms
-  * Rewards Structure
-
-### Resources
-
-* [Additional Resources](doc:additional-resources)
-  * GitHub Repositories
-  * SIP Repository
-  * Community Forum
-* [Troubleshooting](doc:network-faq)
-  * Common Issues
-  * Troubleshooting
-  * Best Practices
-
-## Network Information
-
-The Story Network is currently available in multiple environments:
-
-* Mainnet (Production)
-* Aeneid (Testnet)
-* Localnet (Development)
-
-For detailed network information and connection details, please refer to the respective network documentation sections.
-
-# Release Notes
-This page provides information on the story execution and consensus client software release information. You may find execution client releases in [story-geth](https://github.com/piplabs/story-geth/releases) repo, and consensus client releases in [story](https://github.com/piplabs/story/releases) repo.
-
-### Production releases
-
-There are generally four types of releases:
-* Major: It requires hardfork upgrade with a predefined upgrade height. Node operators need to upgrade before or on the height. The release will increase minor version number.
-* Minor: It doesn't require hardfork upgrade. Node operators are required to upgrade binaries as soon as possible. The release will increase patch version number.
-* Fix: It is an urgent fix. Node operators are required to upgrade binaries as soon as possible. The release will increase minor version or patch version number.
-* Optional: It is an optional fix. Node operators can upgrade binaries based on needs. The release will increase patch version number.
-
-Each release comes with a release note describing a list of new features or fixes. Released software binaries are also attached in the release note. We currently provide binaries supporting four types of systems: darwin-amd64, darwin-arm64, linux-amd64, and linux-arm64. You may also build your binaries using the commit hash in the release note.
-
-### Release entries
-
-Refer to the following release matrix to run nodes for Mainnet and Aeneid Testnet.
-
-| Network | story-geth | story  |
-|---------|------------|--------|
-| Mainnet	| v1.0.1	   | v1.1.0 |
-| Aeneid 	| v1.0.1	   | v1.1.0 |
-
-# Operating Your Node
-## **1. Setting Up a Geth Archive Node**
-To run a Geth archive node, use `--gcmode=archive` instead of `--gcmode=full`. This ensures that Geth retains all historical blockchain state data, making it ideal for indexing services and blockchain analytics.
-
-- `--syncmode=full`: Ensures a complete blockchain sync.
-- `--gcmode=archive`: Retains full historical state data without pruning.
-
----
-
-## **2. Enabling RPC (HTTP) and WebSocket in Geth**
-### **HTTP (RPC) Options**
-| Option | Description |
-|--------|------------|
-| `--http` | Enables the HTTP-RPC server. |
-| `--http.addr=0.0.0.0` | Binds the HTTP server to all network interfaces. |
-| `--http.port=8545` | Sets the HTTP-RPC port (default: 8545). |
-| `--http.vhosts=*` | Allows requests from any domain (use with caution in production). |
-| `--http.api=web3,eth,txpool,net,engine,debug` | Specifies the available APIs for HTTP requests. |
-
-### **WebSocket (WS) Options**
-| Option | Description |
-|--------|------------|
-| `--ws` | Enables the WebSocket server. |
-| `--ws.addr=0.0.0.0` | Binds the WebSocket server to all network interfaces. |
-| `--ws.port=8546` | Sets the WebSocket port (default: 8546). |
-| `--ws.origins=*` | Allows WebSocket connections from any domain (use with caution in production). |
-| `--ws.api=web3,eth,txpool,net,engine,debug` | Specifies the available APIs for WebSocket connections. |
-
-These configurations ensure external applications can interact with the Geth node using both HTTP-RPC and WebSocket.
-
----
-
-## **3. Monitoring Geth and Story Protocol**
-### **Geth Monitoring Configuration**
-- `--metrics`: Enables Prometheus-compatible metrics for Geth.
-- `--metrics.addr=0.0.0.0`: Binds the metrics server to all interfaces.
-- `--metrics.port=6060`: Exposes metrics on port `6060`.
-
-### **Story Protocol Monitoring**
-- Modify `config.toml` and set:
-  ```toml
-  prometheus = true
-  ```
-- The default Prometheus metrics port for Story Protocol is `26660`.
-
-With these settings, both Geth and Story Protocol expose monitoring metrics that can be collected using Prometheus and visualized with Grafana.
-
-# Full Node
-This section will guide you through how to setup a Story node for mainnet. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
-
-The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
-
-* **`story-geth`execution client:**
-  * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
-  * Latest Stable Binary (v1.0.2): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.2)
-* **`story`consensus client:**
-  * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  * Latest Stable Binary (v1.1.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.1.0)
-
-# Story Node Installation Guide
-
-## Pre-Installation Checklist
-
-* [ ] Verify system meets hardware requirements
-* [ ] Operating system: Ubuntu 22.04 LTS
-* [ ] Required ports are available
-* [ ] Sufficient disk space available
-* [ ] Root or sudo access
-
-## Quick Reference
-
-* Installation time: \~30 minutes
-* Network: Story Mainnet or Story Aeneid Testnet
-* Required versions:
-  * Check Latest Release
-
-## 1. System Preparation
-
-### 1.1 System Requirements
-
-For optimal performance and reliability, we recommend running your node on either:
-
-* A Virtual Private Server (VPS)
-* A dedicated Linux-based machine
-
-### System Specs
-
-| Hardware  | Minimal Requirement |
-| --------- | ------------------- |
-| CPU       | Dedicated 8 Cores   |
-| RAM       | 32 GB               |
-| Disk      | 500 GB NVMe Drive   |
-| Bandwidth | 25 MBit/s           |
-
-### 1.2 Required Ports
-
-*Ensure all ports needed for your node functionality are needed, described below*
-
-* `story-geth`
-  * 8545
-    * Required if you want your node to interface via JSON-RPC API over HTTP
-  * 8546
-    * Required for websockets interaction
-  * 30303 (TCP + API)
-    * MUST be open for p2p communication
-* `story`
-  * 26656
-    * MUST be open for consensus p2p communication
-  * 26657
-    * Required if you want your node interfacing for Tendermint RPC
-  * 26660
-    * Needed if you want to expose prometheus metrics
-
-### 1.3 Install Dependencies
-
-```bash
-# Update system
-sudo apt update && sudo apt-get update
-
-# Install required packages
-sudo apt install -y \
-  curl \
-  git \
-  make \
-  jq \
-  build-essential \
-  gcc \
-  unzip \
-  wget \
-  lz4 \
-  aria2 \
-  gh
-```
-
-### 1.4 Install Go
-
-For Odyssey, we need to install Go 1.22.0
-
-```bash
-# Download and install Go 1.22.0
-cd $HOME
-
-# Set Go version
-GO_VERSION="1.22.0"
-
-# Download Go binary
-wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Remove existing Go installation and extract new version
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Clean up downloaded archive
-rm "go${GO_VERSION}.linux-amd64.tar.gz"
-
-# Add Go to PATH
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-
-# Verify installation
-go version
-```
-
-## 2. Story Node Installation
-
-### 2.1 Install Story-Geth
-
-1. Download and setup binary
-
-```bash
-cd $HOME
-wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
-sudo mv ./geth-linux-amd64 story-geth
-sudo chmod +x story-geth
-sudo mv ./story-geth $HOME/go/bin/
-source $HOME/.bashrc
-
-# Verify installation
-story-geth version
-```
-
-You will see the version of the geth binary.
-
-```
-Geth
-version: 1.0.1-stable
-...
-
-```
-
-(Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-```bash
-sudo xattr -rd com.apple.quarantine ./geth
-```
-
-2. Configure and start service
-
-<Tabs>
-  <Tab title="Mainnet">
-    ```bash
-           # Setup systemd service
-    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
-    [Unit]
-    Description=Story Geth Client
-    After=network.target
-
-    [Service]
-    User=${user}
-    ExecStart=${path_to_geth_binary} --story --syncmode full
-    Restart=on-failure
-    RestartSec=3
-    LimitNOFILE=4096
-
-    [Install]
-    WantedBy=multi-user.target
-    EOF
-
-    # Start service
-    sudo systemctl daemon-reload
-    sudo systemctl enable story-geth
-    sudo systemctl start story-geth
-
-    # Verify service status
-    sudo systemctl status story-geth
-    ```
-  </Tab>
-
-  <Tab title="Aeneid testnet">
-    ```bash
-    # Setup systemd service
-    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
-    [Unit]
-    Description=Story Geth Client
-    After=network.target
-
-    [Service]
-    User=${user}
-    ExecStart=${path_to_geth_binary} --aeneid --syncmode full
-    Restart=on-failure
-    RestartSec=3
-    LimitNOFILE=4096
-
-    [Install]
-    WantedBy=multi-user.target
-    EOF
-
-    # Start service
-    sudo systemctl daemon-reload
-    sudo systemctl enable story-geth
-    sudo systemctl start story-geth
-
-    # Verify service status
-    sudo systemctl status story-geth
-    ```
-  </Tab>
-</Tabs>
-
-### 2.2 Install Story Consensus Client
-
-#### Cosmovisor installation
-
-For updating the story client, we recommend using Cosmovisor.
-
-1. Install Cosmovisor
-
-```bash
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
-cosmovisor version
-```
-
-2. Configure Cosmovisor
-
-```bash
-# Set daemon configuration
-export DAEMON_NAME=story
-export DAEMON_HOME=$HOME/.story/story
-export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
-sudo mkdir -p \
-  $DAEMON_HOME/cosmovisor/backup \
-  $DAEMON_HOME/data
-
-
-# Persist configuration
-echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
-echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
-echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
-echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
-```
-
-#### Install Story Client
-
-```bash
-cd $HOME
-wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
-sudo mv story-linux-amd64 story
-sudo chmod +x story
-sudo mv ./story $HOME/go/bin/
-source $HOME/.bashrc
-story version
-```
-
-> You should expect to see version 1.0.0-stable
-
-(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
-
-```bash
-sudo xattr -rd com.apple.quarantine ./story
-```
-
-#### Init Story with Cosmovisor
-
-<Tabs>
-  <Tab title="Mainnet">
-    ```bash
-    cosmovisor init ./story
-    cosmovisor run init --network story --moniker ${moniker_name}
-    cosmovisor version
-    ```
-  </Tab>
-
-  <Tab title="Aeneid testnet">
-    ```bash
-    cosmovisor init ./story
-    cosmovisor run init --network aeneid --moniker ${moniker_name}
-    cosmovisor version
-    ```
-  </Tab>
-</Tabs>
-
-#### Custom Configuration
-
-To override your own node settings, you can do the following:
-
-* `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
-* `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
-* `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
-
-#### Custom Automation
-
-Below we list a sample `Systemd` configuration you may use on Linux
-
-```bash
-# story
-sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
-[Unit]
-Description=Story Cosmovisor
-After=network.target
-
-[Service]
-Type=simple
-User=$USER
-Group=$GROUP
-ExecStart=/usr/local/bin/cosmovisor run run \
---api-enable \
---api-address=0.0.0.0:1317
-Restart=on-failure
-RestartSec=5s
-LimitNOFILE=65535
-Environment="DAEMON_NAME=$DAEMON_NAME"
-Environment="DAEMON_HOME=$DAEMON_HOME"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
-WorkingDirectory=$DAEMON_HOME
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-```
-
-<Tabs>
-  <Tab title="With Cosmovisor">
-    ```bash
-    # story
-    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
-    [Unit]
-    Description=Story Cosmovisor
-    After=network.target
-
-    [Service]
-    Type=simple
-    User=${USER}
-    Group=${GROUP}
-    ExecStart=${path_to_story_binary} run run \
-    --api-enable \
-    --api-address=0.0.0.0:1317
-    Restart=on-failure
-    RestartSec=5s
-    LimitNOFILE=65535
-    Environment="DAEMON_NAME=$DAEMON_NAME"
-    Environment="DAEMON_HOME=$DAEMON_HOME"
-    Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-    Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-    Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
-    WorkingDirectory=$DAEMON_HOME
-
-    [Install]
-    WantedBy=multi-user.target
-    EOF
-
-    ```
-  </Tab>
-
-  <Tab title="Without Cosmovisor">
-    ```bash
-    # story
-    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
-    [Unit]
-    Description=Story Cosmovisor
-    After=network.target
-
-    [Service]
-    Type=simple
-    User=${USER}
-    Group=${GROUP}
-    ExecStart=${path_to_story_binary} run
-    Restart=on-failure
-    RestartSec=5s
-    LimitNOFILE=65535
-    WorkingDirectory=$HOME/.story/story
-
-    [Install]
-    WantedBy=multi-user.target
-    EOF
-
-    ```
-  </Tab>
-</Tabs>
-
-#### Start the service
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable story
-sudo systemctl start story
-
-# Monitor logs
-journalctl -u cosmovisor -f -o cat
-```
-
-#### Debugging
-
-If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
-
-* `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
-  * This will give you a list of consesus peers the node is sync'd with by moniker
-* `curl localhost:26657/health`
-  * This will let you know if the node is healthy - `{}` indicates it is
-
-## 3. Verify Installation
-
-### 3.1 Check Geth Status
-
-```bash
-# Check sync status
-curl -X POST -H "Content-Type: application/json" \
-  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
-  http://localhost:8545
-
-```
-
-### 3.2 Check Consensus Client
-
-```bash
-# Check node status
-curl localhost:26657/status
-
-# Check peer connections
-curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
-```
-
-## Clean status
-
-If you ever run into issues and would like to try joining the network from a cleared state, run the following:
-
-### Geth
-
-<Tabs>
-  <Tab title="Mainnet">
-    ```bash
-    rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
-    ```
-
-    Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story    --syncmode full`
-
-    Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode full`
-  </Tab>
-
-  <Tab title="Aeneid Testnet">
-    ```bash
-    rm -rf ${GETH_DATA_ROOT} && ./geth --aeneid --syncmode full
-    ```
-
-    Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --aeneid    --syncmode full`
-
-    Linux: `rm -rf ~/.story/geth/* && ./geth --aeneid --syncmode full`
-  </Tab>
-</Tabs>
-
-### Story
-
-<Tabs>
-  <Tab title="Mainnet">
-    ```bash
-    rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
-    ```
-
-    Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
-
-    Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
-  </Tab>
-
-  <Tab title="Aeneid Testnet">
-    ```bash
-    rm -rf ${STORY_DATA_ROOT} && ./story init --network aeneid && ./story run
-    ```
-
-    Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network aeneid && ./story run`
-
-    Linux: `rm -rf ~/.story/story/* && ./story init --network aeneid && ./story run`
-  </Tab>
-</Tabs>
-
-# Node Upgrade
-There are three types of upgrades
-
-1. Upgrade the story geth client
-2. Upgrade the story client manually
-3. Schedule the upgrade with Cosmovisor
-
-### Upgrade the story geth client
-
-```bash
-# Stop the services
-sudo systemctl stop story
-sudo systemctl stop story-geth
-
-# Download the new binary
-wget ${STORY_GETH_BINARY_URL}
-sudo mv ./geth-linux-amd64 story-geth
-sudo chmod +x story-geth
-sudo mv ./story-geth $HOME/go/bin/story-geth
-source $HOME/.bashrc
-
-# Restart the service
-sudo systemctl start story-geth
-sudo systemctl start story
-```
-
-### Upgrade the story client manually
-
-```bash
-# Stop the service
-sudo systemctl stop story
-
-# Download the new binary
-wget ${STORY_BINARY_URL}
-sudo mv story-linux-amd64 story
-sudo chmod +x story
-sudo mv ./story $HOME/go/bin/story
-
-# Schedule the update
-sudo systemctl start story
-```
-
-### Schedule the upgrade with Cosmovisor
-
-The following steps outline how to schedule an upgrade using Cosmovisor:
-
-1. Create the upgrade directory and download the new binary
-
-```bash
-# Download the new binary
-wget ${STORY_BINARY_URL}
-
-# Schedule the upgrade
-source $HOME/.bash_profile
-cosmovisor add-upgrade ${UPGRADE_NAME} ${UPGRADE_PATH} \
-  --force \
-  --upgrade-height ${UPGRADE_HEIGHT}
-```
-
-2. Verify the upgrade configuration
-
-```bash
-# Check the upgrade info
-cat $HOME/.story/data/upgrade-info.json
-```
-
-The upgrade-info.json should show:
-
-```json
-{
-  "name": "v1.0.0",
-  "time": "2025-02-05T12:00:00Z",
-  "height": 858000
-}
-```
-
-3. Monitor the upgrade
-
-```bash
-# Watch the node logs for the upgrade
-journalctl -u story -f -o cat
-```
-
-Note: Cosmovisor will automatically handle the binary switch once the specified block height is reached. Before the upgrade, confirm that your node is fully synced and has enough disk space available.
-
 # Gelato
 ## Relay Smart Contracts
 
@@ -1224,582 +513,6 @@ address: 0xdF21D137Aadc95588205586636710ca2890538d5
 ## Community Forum
 
 - [Story Forum](https://forum.story.foundation/)
-
-# Validator Operations
-## Quick Links
-
-* [Story Geth Releases](https://github.com/piplabs/story-geth/releases)
-* [Story Releases](https://github.com/piplabs/story/releases/)
-
-# Overview
-
-This section will guide you through how you can run your own validator. Validator operations may be done via the `story` consensus client.
-
-> 📘 Note
->
-> The below operations do not requiring running a node! However, if you would like to participate in staking rewards, you must run a validator node.
-
-Before proceeding, it is important to familiarize yourself with the difference between a delegator and a validator:
-
-* A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
-* A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves.
-
-In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded. **We recommend using your delegator account for all below operations.**
-
-> 📘 Note
->
-> You may also issue transactions as the validator itself. To get the EVM private key corresponding to your validator, please refer to the [Validator Key Export](https://docs.story.foundation/docs/validator-operations#validator-key-export) section.
-
-The `.env` file should look like the following *(make sure not to add a 0x prefix):*
-
-```bash
-# ~/.env
-PRIVATE_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-With this, you are all set to perform different validator operations! Below, we will guide you through all of those supported via the CLI:
-
-## Validator Key Export
-
-By default, when you run `./story init` a validator key is created for you. To view your validator key, run the following command:
-
-```bash
-./story validator export [flags]
-```
-
-This will print out your validator public key file in compressed and uncompressed formats. By default, we use the hex-encoded compressed key for public identification.
-
-```text
-Compressed Public Key (hex): 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
-Compressed Public Key (base64): A73HuJQLq+kibVLX+imaH689ZKgvgJiJJWyPFGlYpjmE
-Uncompressed Public Key (hex): 04bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a6398496b9e2af0a3a1d199c3cc1d09ee899336a530c185df6b46a9735b25e79a493af
-EVM Address: 0x9EacBe2C3B1eb0a9FC14106d97bd3A1F89efdDCc
-Validator Address: storyvaloper1p470h0jtph4n5hztallp8vznq8ehylsw9vpddx
-Delegator Address: story1p470h0jtph4n5hztallp8vznq8ehylswtr4vxd
-```
-
-**Available Flags:**
-
-* `--export-evm-key`: (string) Exports the derived EVM private key of your validator into the default data config directory
-* `--export-evm-key-path`: (string) Specifies a different download location for the derived EVM private key of your validator
-* `--keyfile`: (string) Path to the Tendermint key file (default "/home/ubuntu/.story/story/config/priv\_validator\_key.json")
-
-*If you would like to issue transactions as your validator, and not as a delegator, you may export the key to your`.env` file and ensure it has IP sent to it, e.g. via`./story validator export --export-evm-key --evm-key-path .env`*
-
-## Validator Creation
-
-To create a new validator, run the following command:
-
-```bash Locked token node
-./story validator create 
-			 --stake ${AMOUNT_TO_STAKE_IN_WEI} \
-			 --moniker ${VALIDATOR_NAME} \
-       --rpc ${rpc} \
-		   --chain-id ${chain_id} \
-			 --commission-rate ${rate} \
- 			 --unlocked=false
-```
-```Text Unlocked token node
-./story validator create 
-			 --stake ${AMOUNT_TO_STAKE_IN_WEI} \
-			 --moniker ${VALIDATOR_NAME} \
-       --rpc ${rpc} \
-		   --chain-id ${chain_id} \
-			 --commission-rate ${rate} \
-```
-
-This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. *Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!*
-
-Below is a list of optional flags to further customize your validator setup:
-
-**Available Flags:**
-
-* `--stake`: Sets the amount the validator will self-delegate in wei (default is `1024000000000000000000` wei).
-* `--moniker`: Defines a custom name for the validator, visible to users on the network.
-* `--chain-id`: Specifies the Chain ID for the transaction. By default, this is set to `1516`.
-* `--commission-rate`: Sets the validator's commission rate in bips (1% = 100 bips). For instance, `1000` represents a 10% commission (default is `1000`).
-* `--explorer`: Specifies the URL of the blockchain explorer (default: [https://storyscan.xyz](https://storyscan.xyz)).
-* `--keyfile`: Points to the path of the Tendermint key file (default: `$HOME/.story/story/config/priv_validator_key.json`).
-* `--max-commission-change-rate`: Sets the maximum rate at which the validator's commission can change, in bips. For example, `100` represents a maximum change of 1% (default is `1000`).
-* `--max-commission-rate`: Defines the maximum commission rate the validator can charge, in bips. For instance, `5000` allows a 50% maximum rate (default is `5000`).
-* `--private-key`: Uses a specified private key for signing the transaction. If not set, the key in `priv_validator_key.json` will be used.
-* `--rpc`: Sets the RPC URL to connect to the network (default: [https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)).
-* `--unlocked`: Determines if unlocked token staking is supported (`true` for unlocked staking, `false` for locked staking). By default, this is set to `true`.
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example creation command use
-
-```bash
-story validator create 
-	--stake 1024000000000000000000
-  --moniker "timtimtim"
-  --commission-rate 700
-  --validator-pubkey "<validator_pubkey>" # if you dont have a .env
-  --rpc "https://mainnet.storyrpc.io"
-	--chain-id 1514
-```
-
-### Verifying your validator
-
-Once created, please use the `Explorer URL` to confirm the transaction. If successful, you should see your validator pub key (*found in your`priv_validator_key.json` file)* listed as part of the following endpoint:
-
-```bash
-curl https://testnet.storyrpc.io/validators | jq .
-```
-
-Congratulations, you are now one of Story’s very first IP validators!
-
-## Validator Staking
-
-To stake to an existing validator, run the following command:
-
-```bash
-./story validator stake \
-   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
-   --stake ${AMOUNT_TO_STAKE_IN_WEI}
-   --staking-period ${STAKING_PERIOD}
-```
-
-* Note that your own `${VALIDATOR_PUB_KEY_IN_HEX}`may be found by running the `./story validator export` command as the `Compressed Public Key (hex)`.
-* You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid
-
-Once staked, you may use the `Explorer URL` to confirm the transaction. As mentioned earlier, you may use our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to confirm the new voting power of the validator.
-
-**Available Flags:**
-
-* `--validator-pubkey`: (string) The public key of the validator to stake to
-* `--stake`: (string) The amount of IP to stake in wei
-* `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
-* `--explorer`: (string) URL of the blockchain explorer
-* `--help`, `-h`: Display help information for stake command
-* `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network
-* `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example staking command use
-
-```bash
-./story validator stake \
-  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
-  --stake 1024000000000000000000
-  --staking-period "short"
-```
-
-## Validator Unstaking
-
-To unstake from a validator, run the following command:
-
-```bash
-./story validator unstake \
-  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
-  --unstake ${AMOUNT_TO_UNSTAKE_IN_WEI} \
-	--delegation-id ${ID_STAKING_PERIOD}
-```
-
-This will unstake `${AMOUNT_TO_UNSTAKE_IN_WEI}` IP from the selected validator. You must unstake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
-
-Like in the staking operation, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the newly reduced voting power of the validator.
-
-**Available Flags:**
-
-* `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
-* `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
-* `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
-* `--help`, `-h`: Help for unstake command
-* `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
-* `--unstake`: (string) Amount to unstake in wei
-* `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example unstaking command use
-
-```bash
-./story validator unstake \
-   --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
-   --unstake 1024000000000000000000 \
-   --delegation-id 1
-```
-
-## Validator Stake-on-behalf
-
-To stake on behalf of another delegator, run the following command:
-
-```bash
-./story validator stake-on-behalf \
-  --delegator-address ${DELEGATOR_EVM} \
-  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
-  --stake ${AMOUNT_TO_STAKE_IN_WEI} \
-  --staking-period ${STAKING_PERIOD} \
-  --rpc
-  --chain-id
-```
-
-This will stake `${AMOUNT_TO_STAKE_IN_WEI}` IP to the validator on behalf of the provided delegator. You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
-
-Like in the other staking operations, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the increased voting power of the validator.
-
-**Available Flags:**
-
-* `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
-* `--delegator-address`: (string) Delegator's EVM address
-* `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
-* `--help`, `-h`: Help for stake-on-behalf command
-* `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
-* `--stake`: (string) Amount for the validator to self-delegate in wei
-* `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
-* `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example Stake-on-behalf command use
-
-```bash
-./story validator stake-on-behalf \
-   --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
-   --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
-   --stake 1024000000000000000000 \
-   --staking-period "short" \
-	 --rpc \
-   --chain-id
-```
-
-## Validator Unstake-on-behalf
-
-You may also unstake on behalf of delegators. However, to do so, you must be registered as an authorized operator for that delegator. To unstake on behalf of another delegator as an operator, run the following command:
-
-```bash
-./story validator unstake-on-behalf \
-  --delegator-address ${DELEGATOR_PUB_KEY_IN_HEX} \
-  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
-  --unstake ${AMOUNT_TO_STAKE_IN_WEI} \
-  --rpc \
-  --chain-id
-```
-
-This will unstake `${AMOUNT_TO_STAKE_IN_WEI}` IP from the validator on behalf of the delegator, assuming you are a registered operator for that delegator. You must unstake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
-
-Like in the other staking operations, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the decreased voting power of the validator.
-
-**Available Flags:**
-
-* `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
-* `--delegator-address`: (string) Delegator's EVM address
-* `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
-* `--help`, `-h`: Help for unstake-on-behalf command
-* `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
-* `--unstake`: (string) Amount to unstake in wei
-* `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example Unstake-on-behalf command use
-
-```bash
-./story validator unstake-on-behalf \
-   --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
-   --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
-   --unstake 1024000000000000000000 \
-   --rpc \
-   --chain-id
-```
-
-## Validator Unjail
-
-In case a validator becomes jailed, for example if it experiences substantial downtime, you may use the following command to unjail the targeted validator:
-
-```Text Bash
-./story validator unjail \
-  --private-key ${PRIVATE_KEY} \
-  --rpc
-  --chain-id
-```
-
-Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
-
-**Available Flags:**
-
-* `--chain-id`: (int) Chain ID to use for the transaction
-* `--explorer`: (string) URL of the blockchain explorer
-* `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example unjail command use
-
-```bash
-./story validator unjail \
-  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
-  --rpc \
-  --chain-id 
-```
-
-## Validator Unjail-on-behalf
-
-If you are an authorized operator, you may unjail a validator on their behalf using the following command:
-
-```bash
-./story validator unjail-on-behalf \
-  --private-key ${PRIVATE_KEY} \
-  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
-  --rpc \
-  --chain-id
-```
-
-**Available Flags:**
-
-* `--chain-id`: (int) Chain ID to use for the transaction
-* `--explorer`: (string) URL of the blockchain explorer
-* `--private-key`: (string) Private key used for the transaction
-* `--rpc`: (string) RPC URL to connect to the network
-* `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example unjail-on-behalf command use
-
-```bash
-./story validator unjail-on-behalf \
-  --private-key 0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef \
-  --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
-  --rpc \
-  --chain-id
-```
-
-## Validator Redelegate
-
-To redelegate from one validator to another, run the following command:
-
-```bash
-./story validator redelegate \
-  --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
-  --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
-  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
-  --rpc \
-  --chain-id
-```
-
-**Available Flags:**
-
-* `--chain-id`: (int) Chain ID to use for the transaction (default 1514)
-* `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
-* `--explorer`: (string) URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
-* `--help`, `-h`: Help for redelegate command
-* `--private-key`: (string) Private key used for the transaction
-* `--redelegate`: (string) Amount to redelegate in wei
-* `--rpc`: (string) RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
-* `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
-* `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example redelegate command use
-
-```bash
-./story validator redelegate \
-  --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
-  --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
-  --redelegate 1024000000000000000000 \
-  --rpc \
-  --chain-id
-```
-
-## Validator Redelegate-on-behalf
-
-If you are an authorized operator, you may redelegate from one validator to another on behalf of a delegator using the following command:
-
-```bash
-./story validator redelegate-on-behalf \
-  --delegator-address ${DELEGATOR_EVM_ADDRESS} \
-  --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
-  --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
-  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI} \
-  --rpc \
-  --chain-id
-```
-
-**Available Flags:**
-
-* `--chain-id`: (int) Chain ID to use for the transaction (default 1514)
-* `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
-* `--delegator-address`: (string) Delegator's EVM address
-* `--explorer`: (string) URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
-* `--help`, `-h`: Help for redelegate-on-behalf command
-* `--private-key`: (string) Private key used for the transaction
-* `--redelegate`: (string) Amount to redelegate in wei
-* `--rpc`: (string) RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
-* `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
-* `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
-* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
-
-### Example redelegate-on-behalf command use
-
-```bash
-./story validator redelegate-on-behalf \
-  --delegator-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
-  --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
-  --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
-  --redelegate 1024000000000000000000 \
-  --rpc \
-  --chain-id
-```
-
-## Set Operator
-
-Delegators may add operators to unstake or redelegate on their behalf. To add an operator, run the following command:
-
-* `--chain-id` int         Chain ID to use for the transaction (default 1514)
-* `--explorer` string      URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
-* `--operator` string      Sets an operator to your delegator
-* `--private-key` string   Private key used for the transaction
-* `--rpc` string           RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
-
-```bash
-./story validator set-operator \
-  --operator ${OPERATOR_EVM_ADDRESS} \
-  --rpc \
-  --chain-id \
-  --story-api ${STORY_API_URL}
-```
-
-Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
-
-### Example add operator command use
-
-```bash
-./story validator set-operator \
-  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
-  --rpc \
-  --chain-id \
-  --story-api http://localhost:1317
-```
-
-## Unset Operator
-
-To remove an operator, run the following command:
-
-```bash
-./story validator unset-operator \
-  --operator ${OPERATOR_EVM_ADDRESS} \  
-  --rpc \
-  --chain-id \
-  --story-api ${STORY_API_URL}
-```
-
-### Example Remove Operator command use
-
-```bash
-./story validator remove-operator \
-  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
-  --rpc \
-  --chain-id \
-  --story-api http://localhost:1317
-```
-
-## Set Rewards Address
-
-To change the address that your delegator receives staking and withdrawal rewards from, you can run the following:
-
-```bash
-./story validator set-rewards-address \
-  --rewards-address ${OPERATOR_EVM_ADDRESS} \
-  --story-api ${STORY_API_URL}
-```
-
-Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
-
-### Example Set Withdrawal Address command use
-
-```bash
-./story validator set-rewards-address \
-  --rewards-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
-  --story-api http://localhost:1317
-```
-
-##
-
-## Set Withdrawal Address
-
-To change the address that your delegator receives staking and withdrawal rewards from, you can run the following:
-
-```bash
-./story validator set-withdrawal-address \
-  --withdrawal-address ${OPERATOR_EVM_ADDRESS} \
-  --story-api ${STORY_API_URL}
-```
-
-Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
-
-### Example Set Withdrawal Address command use
-
-```bash
-./story validator set-withdrawal-address \
-  --withdrawal-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
-  --story-api http://localhost:1317
-```
-
-## Update Validator Commission
-
-To change the commission rate for your validator, you can run the following:
-
-```
-./story valdiator update-validator-commission \
-		--commission-rate ${NEW_COMMISSION}
-```
-
-### Example Update Validator Commission
-
-```
-./story valdiator update-validator-commission \
-		--commission-rate 5000
-```
-
-## Enabling Story API
-
-Prerequisites:
-
-1. Ensure your full node is synced and caught up with latest blocks
-
-Steps to enable:
-
-1. Navigate to `${STORY_DATA_ROOT}/config/story.toml`
-2. Set `enable = true` under the `[api]` section
-3. Restart the node
-
-Then  you could use `http://localhost:1317` as the `-story-api` value
-
-## Migrating a validator to another machine
-
-> 🚧 Important
->
-> Before migrating your validator node to a new machine, make sure the current node is fully shut down. Attempting to restore an active validator could result in "double signing," a critical error that may lead to the slashing of your delegated shares.
-
-1. Begin by configuring a new environment for your validator. Ensure that the new full node is fully synced to the latest block on the network.
-2. To avoid accidental double-signing, it’s essential to fully shut down the original validator node before activating the new instance. We recommend deleting the Story service file to prevent it from automatically restarting after a system reboot. Additionally, back up your `priv_validator_key.json` file and remove it from the current server running the active validator. Skipping these steps could result in missed blocks or other penalties.
-
-```bash
-# Step 1: Stop the original validator node
-sudo systemctl stop <your_service_file_name>.service
-
-# Step 2: Disable the Story service to prevent automatic restarts
-sudo systemctl disable <your_service_file_name>.service
-
-# Step 3: Delete the Story service file to prevent it from starting on reboot
-sudo rm /etc/systemd/system/<your_service_file_name>.service
-
-# Step 4: Back up the `priv_validator_key.json` file securely, e.g., using SFTP:
-# Use an SFTP client or a secure method to download the file without displaying it in the terminal
-# If needed for verification purposes only, you may view it with the following command:
-cat ~/.story/story/config/priv_validator_key.json
-
-# Step 5: Remove the `priv_validator_key.json` file from the current server
-rm ~/.story/story/config/priv_validator_key.json
-```
-
-3. Locate the `priv_validator_key.json` file in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
-
-> ❗️ Important: Before proceeding, shut down the old validator on the original server and do not restart it!
-
-4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
 
 # Troubleshooting
 Welcome to Story node troubleshooting! This section covers common problems and solutions when running Story nodes.
@@ -3514,6 +2227,638 @@ This precompile provides multiple functions based on the function selector—the
 
 Refer to the [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
 
+# Release Notes
+This page provides information on the story execution and consensus client software release information. You may find execution client releases in [story-geth](https://github.com/piplabs/story-geth/releases) repo, and consensus client releases in [story](https://github.com/piplabs/story/releases) repo.
+
+### Production releases
+
+There are generally four types of releases:
+* Major: It requires hardfork upgrade with a predefined upgrade height. Node operators need to upgrade before or on the height. The release will increase minor version number.
+* Minor: It doesn't require hardfork upgrade. Node operators are required to upgrade binaries as soon as possible. The release will increase patch version number.
+* Fix: It is an urgent fix. Node operators are required to upgrade binaries as soon as possible. The release will increase minor version or patch version number.
+* Optional: It is an optional fix. Node operators can upgrade binaries based on needs. The release will increase patch version number.
+
+Each release comes with a release note describing a list of new features or fixes. Released software binaries are also attached in the release note. We currently provide binaries supporting four types of systems: darwin-amd64, darwin-arm64, linux-amd64, and linux-arm64. You may also build your binaries using the commit hash in the release note.
+
+### Release entries
+
+Refer to the following release matrix to run nodes for Mainnet and Aeneid Testnet.
+
+| Network | story-geth | story  |
+|---------|------------|--------|
+| Mainnet	| v1.0.1	   | v1.1.0 |
+| Aeneid 	| v1.0.1	   | v1.1.0 |
+
+# Operating Your Node
+## **1. Setting Up a Geth Archive Node**
+To run a Geth archive node, use `--gcmode=archive` instead of `--gcmode=full`. This ensures that Geth retains all historical blockchain state data, making it ideal for indexing services and blockchain analytics.
+
+- `--syncmode=full`: Ensures a complete blockchain sync.
+- `--gcmode=archive`: Retains full historical state data without pruning.
+
+---
+
+## **2. Enabling RPC (HTTP) and WebSocket in Geth**
+### **HTTP (RPC) Options**
+| Option | Description |
+|--------|------------|
+| `--http` | Enables the HTTP-RPC server. |
+| `--http.addr=0.0.0.0` | Binds the HTTP server to all network interfaces. |
+| `--http.port=8545` | Sets the HTTP-RPC port (default: 8545). |
+| `--http.vhosts=*` | Allows requests from any domain (use with caution in production). |
+| `--http.api=web3,eth,txpool,net,engine,debug` | Specifies the available APIs for HTTP requests. |
+
+### **WebSocket (WS) Options**
+| Option | Description |
+|--------|------------|
+| `--ws` | Enables the WebSocket server. |
+| `--ws.addr=0.0.0.0` | Binds the WebSocket server to all network interfaces. |
+| `--ws.port=8546` | Sets the WebSocket port (default: 8546). |
+| `--ws.origins=*` | Allows WebSocket connections from any domain (use with caution in production). |
+| `--ws.api=web3,eth,txpool,net,engine,debug` | Specifies the available APIs for WebSocket connections. |
+
+These configurations ensure external applications can interact with the Geth node using both HTTP-RPC and WebSocket.
+
+---
+
+## **3. Monitoring Geth and Story Protocol**
+### **Geth Monitoring Configuration**
+- `--metrics`: Enables Prometheus-compatible metrics for Geth.
+- `--metrics.addr=0.0.0.0`: Binds the metrics server to all interfaces.
+- `--metrics.port=6060`: Exposes metrics on port `6060`.
+
+### **Story Protocol Monitoring**
+- Modify `config.toml` and set:
+  ```toml
+  prometheus = true
+  ```
+- The default Prometheus metrics port for Story Protocol is `26660`.
+
+With these settings, both Geth and Story Protocol expose monitoring metrics that can be collected using Prometheus and visualized with Grafana.
+
+# Full Node
+This section will guide you through how to setup a Story node for mainnet. Story draws inspiration from ETH PoS in decoupling execution and consensus clients. The execution client `story-geth` relays EVM blocks into the `story` consensus client via Engine API, using an ABCI++ adapter to make EVM state compatible with that of CometBFT. With this architecture, consensus efficiency is no longer bottlenecked by execution transaction throughput.
+
+The `story` and `geth` binaries, which make up the clients required for running Story nodes, are available from our latest `release` pages:
+
+* **`story-geth`execution client:**
+  * Release Link: [**Click here**](https://github.com/piplabs/story-geth/releases)
+  * Latest Stable Binary (v1.0.2): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.2)
+* **`story`consensus client:**
+  * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
+  * Latest Stable Binary (v1.1.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.1.0)
+
+# Story Node Installation Guide
+
+## Pre-Installation Checklist
+
+* [ ] Verify system meets hardware requirements
+* [ ] Operating system: Ubuntu 22.04 LTS
+* [ ] Required ports are available
+* [ ] Sufficient disk space available
+* [ ] Root or sudo access
+
+## Quick Reference
+
+* Installation time: \~30 minutes
+* Network: Story Mainnet or Story Aeneid Testnet
+* Required versions:
+  * Check Latest Release
+
+## 1. System Preparation
+
+### 1.1 System Requirements
+
+For optimal performance and reliability, we recommend running your node on either:
+
+* A Virtual Private Server (VPS)
+* A dedicated Linux-based machine
+
+### System Specs
+
+| Hardware  | Minimal Requirement |
+| --------- | ------------------- |
+| CPU       | Dedicated 8 Cores   |
+| RAM       | 32 GB               |
+| Disk      | 500 GB NVMe Drive   |
+| Bandwidth | 25 MBit/s           |
+
+### 1.2 Required Ports
+
+*Ensure all ports needed for your node functionality are needed, described below*
+
+* `story-geth`
+  * 8545
+    * Required if you want your node to interface via JSON-RPC API over HTTP
+  * 8546
+    * Required for websockets interaction
+  * 30303 (TCP + API)
+    * MUST be open for p2p communication
+* `story`
+  * 26656
+    * MUST be open for consensus p2p communication
+  * 26657
+    * Required if you want your node interfacing for Tendermint RPC
+  * 26660
+    * Needed if you want to expose prometheus metrics
+
+### 1.3 Install Dependencies
+
+```bash
+# Update system
+sudo apt update && sudo apt-get update
+
+# Install required packages
+sudo apt install -y \
+  curl \
+  git \
+  make \
+  jq \
+  build-essential \
+  gcc \
+  unzip \
+  wget \
+  lz4 \
+  aria2 \
+  gh
+```
+
+### 1.4 Install Go
+
+For Odyssey, we need to install Go 1.22.0
+
+```bash
+# Download and install Go 1.22.0
+cd $HOME
+
+# Set Go version
+GO_VERSION="1.22.0"
+
+# Download Go binary
+wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Remove existing Go installation and extract new version
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Clean up downloaded archive
+rm "go${GO_VERSION}.linux-amd64.tar.gz"
+
+# Add Go to PATH
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
+
+# Verify installation
+go version
+```
+
+## 2. Story Node Installation
+
+### 2.1 Install Story-Geth
+
+1. Download and setup binary
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/
+source $HOME/.bashrc
+
+# Verify installation
+story-geth version
+```
+
+You will see the version of the geth binary.
+
+```
+Geth
+version: 1.0.1-stable
+...
+
+```
+
+(Mac OS X only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./geth
+```
+
+2. Configure and start service
+
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+           # Setup systemd service
+    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Geth Client
+    After=network.target
+
+    [Service]
+    User=${user}
+    ExecStart=${path_to_geth_binary} --story --syncmode full
+    Restart=on-failure
+    RestartSec=3
+    LimitNOFILE=4096
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    # Start service
+    sudo systemctl daemon-reload
+    sudo systemctl enable story-geth
+    sudo systemctl start story-geth
+
+    # Verify service status
+    sudo systemctl status story-geth
+    ```
+  </Tab>
+
+  <Tab title="Aeneid testnet">
+    ```bash
+    # Setup systemd service
+    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Geth Client
+    After=network.target
+
+    [Service]
+    User=${user}
+    ExecStart=${path_to_geth_binary} --aeneid --syncmode full
+    Restart=on-failure
+    RestartSec=3
+    LimitNOFILE=4096
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    # Start service
+    sudo systemctl daemon-reload
+    sudo systemctl enable story-geth
+    sudo systemctl start story-geth
+
+    # Verify service status
+    sudo systemctl status story-geth
+    ```
+  </Tab>
+</Tabs>
+
+### 2.2 Install Story Consensus Client
+
+#### Cosmovisor installation
+
+For updating the story client, we recommend using Cosmovisor.
+
+1. Install Cosmovisor
+
+```bash
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
+cosmovisor version
+```
+
+2. Configure Cosmovisor
+
+```bash
+# Set daemon configuration
+export DAEMON_NAME=story
+export DAEMON_HOME=$HOME/.story/story
+export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup
+sudo mkdir -p \
+  $DAEMON_HOME/cosmovisor/backup \
+  $DAEMON_HOME/data
+
+
+# Persist configuration
+echo "export DAEMON_NAME=story" >> $HOME/.bash_profile
+echo "export DAEMON_HOME=$HOME/.story/story" >> $HOME/.bash_profile
+echo "export DAEMON_DATA_BACKUP_DIR=${DAEMON_HOME}/cosmovisor/backup" >> $HOME/.bash_profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> $HOME/.bash_profile
+```
+
+#### Install Story Client
+
+```bash
+cd $HOME
+wget https://github.com/piplabs/story/releases/download/v1.0.0/story-linux-amd64
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/
+source $HOME/.bashrc
+story version
+```
+
+> You should expect to see version 1.0.0-stable
+
+(Mac OS X Only) The OS X binaries have yet to be signed by our build process, so you may need to unquarantine them manually:
+
+```bash
+sudo xattr -rd com.apple.quarantine ./story
+```
+
+#### Init Story with Cosmovisor
+
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    cosmovisor init ./story
+    cosmovisor run init --network story --moniker ${moniker_name}
+    cosmovisor version
+    ```
+  </Tab>
+
+  <Tab title="Aeneid testnet">
+    ```bash
+    cosmovisor init ./story
+    cosmovisor run init --network aeneid --moniker ${moniker_name}
+    cosmovisor version
+    ```
+  </Tab>
+</Tabs>
+
+#### Custom Configuration
+
+To override your own node settings, you can do the following:
+
+* `${STORY_DATA_ROOT}/config/config.toml` can be modified to change network and consensus settings
+* `${STORY_DATA_ROOT}/config/story.toml` to update various client configs
+* `${STORY_DATA_ROOT}/priv_validator_key.json` is a sensitive file containing your validator key, but may be replaced with your own
+
+#### Custom Automation
+
+Below we list a sample `Systemd` configuration you may use on Linux
+
+```bash
+# story
+sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
+[Unit]
+Description=Story Cosmovisor
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+Group=$GROUP
+ExecStart=/usr/local/bin/cosmovisor run run \
+--api-enable \
+--api-address=0.0.0.0:1317
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=65535
+Environment="DAEMON_NAME=$DAEMON_NAME"
+Environment="DAEMON_HOME=$DAEMON_HOME"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
+WorkingDirectory=$DAEMON_HOME
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+```
+
+<Tabs>
+  <Tab title="With Cosmovisor">
+    ```bash
+    # story
+    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Cosmovisor
+    After=network.target
+
+    [Service]
+    Type=simple
+    User=${USER}
+    Group=${GROUP}
+    ExecStart=${path_to_story_binary} run run \
+    --api-enable \
+    --api-address=0.0.0.0:1317
+    Restart=on-failure
+    RestartSec=5s
+    LimitNOFILE=65535
+    Environment="DAEMON_NAME=$DAEMON_NAME"
+    Environment="DAEMON_HOME=$DAEMON_HOME"
+    Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+    Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+    Environment="DAEMON_DATA_BACKUP_DIR=$DAEMON_HOME/cosmovisor/backup"
+    WorkingDirectory=$DAEMON_HOME
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    ```
+  </Tab>
+
+  <Tab title="Without Cosmovisor">
+    ```bash
+    # story
+    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
+    [Unit]
+    Description=Story Cosmovisor
+    After=network.target
+
+    [Service]
+    Type=simple
+    User=${USER}
+    Group=${GROUP}
+    ExecStart=${path_to_story_binary} run
+    Restart=on-failure
+    RestartSec=5s
+    LimitNOFILE=65535
+    WorkingDirectory=$HOME/.story/story
+
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+
+    ```
+  </Tab>
+</Tabs>
+
+#### Start the service
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable story
+sudo systemctl start story
+
+# Monitor logs
+journalctl -u cosmovisor -f -o cat
+```
+
+#### Debugging
+
+If you would like to check the status of `story` while it is running, it is helpful to query its internal JSONRPC/HTTP endpoint. Here are a few helpful commands to run:
+
+* `curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'`
+  * This will give you a list of consesus peers the node is sync'd with by moniker
+* `curl localhost:26657/health`
+  * This will let you know if the node is healthy - `{}` indicates it is
+
+## 3. Verify Installation
+
+### 3.1 Check Geth Status
+
+```bash
+# Check sync status
+curl -X POST -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  http://localhost:8545
+
+```
+
+### 3.2 Check Consensus Client
+
+```bash
+# Check node status
+curl localhost:26657/status
+
+# Check peer connections
+curl localhost:26657/net_info | jq '.result.peers[].node_info.moniker'
+```
+
+## Clean status
+
+If you ever run into issues and would like to try joining the network from a cleared state, run the following:
+
+### Geth
+
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    rm -rf ${GETH_DATA_ROOT} && ./geth --story --syncmode full
+    ```
+
+    Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --story    --syncmode full`
+
+    Linux: `rm -rf ~/.story/geth/* && ./geth --story --syncmode full`
+  </Tab>
+
+  <Tab title="Aeneid Testnet">
+    ```bash
+    rm -rf ${GETH_DATA_ROOT} && ./geth --aeneid --syncmode full
+    ```
+
+    Mac OS X: `rm -rf ~/Library/Story/geth/* && ./geth --aeneid    --syncmode full`
+
+    Linux: `rm -rf ~/.story/geth/* && ./geth --aeneid --syncmode full`
+  </Tab>
+</Tabs>
+
+### Story
+
+<Tabs>
+  <Tab title="Mainnet">
+    ```bash
+    rm -rf ${STORY_DATA_ROOT} && ./story init --network story && ./story run
+    ```
+
+    Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network story && ./story run`
+
+    Linux: `rm -rf ~/.story/story/* && ./story init --network story && ./story run`
+  </Tab>
+
+  <Tab title="Aeneid Testnet">
+    ```bash
+    rm -rf ${STORY_DATA_ROOT} && ./story init --network aeneid && ./story run
+    ```
+
+    Mac OS X: `rm -rf ~/Library/Story/story/* && ./story init --network aeneid && ./story run`
+
+    Linux: `rm -rf ~/.story/story/* && ./story init --network aeneid && ./story run`
+  </Tab>
+</Tabs>
+
+# Node Upgrade
+There are three types of upgrades
+
+1. Upgrade the story geth client
+2. Upgrade the story client manually
+3. Schedule the upgrade with Cosmovisor
+
+### Upgrade the story geth client
+
+```bash
+# Stop the services
+sudo systemctl stop story
+sudo systemctl stop story-geth
+
+# Download the new binary
+wget ${STORY_GETH_BINARY_URL}
+sudo mv ./geth-linux-amd64 story-geth
+sudo chmod +x story-geth
+sudo mv ./story-geth $HOME/go/bin/story-geth
+source $HOME/.bashrc
+
+# Restart the service
+sudo systemctl start story-geth
+sudo systemctl start story
+```
+
+### Upgrade the story client manually
+
+```bash
+# Stop the service
+sudo systemctl stop story
+
+# Download the new binary
+wget ${STORY_BINARY_URL}
+sudo mv story-linux-amd64 story
+sudo chmod +x story
+sudo mv ./story $HOME/go/bin/story
+
+# Schedule the update
+sudo systemctl start story
+```
+
+### Schedule the upgrade with Cosmovisor
+
+The following steps outline how to schedule an upgrade using Cosmovisor:
+
+1. Create the upgrade directory and download the new binary
+
+```bash
+# Download the new binary
+wget ${STORY_BINARY_URL}
+
+# Schedule the upgrade
+source $HOME/.bash_profile
+cosmovisor add-upgrade ${UPGRADE_NAME} ${UPGRADE_PATH} \
+  --force \
+  --upgrade-height ${UPGRADE_HEIGHT}
+```
+
+2. Verify the upgrade configuration
+
+```bash
+# Check the upgrade info
+cat $HOME/.story/data/upgrade-info.json
+```
+
+The upgrade-info.json should show:
+
+```json
+{
+  "name": "v1.0.0",
+  "time": "2025-02-05T12:00:00Z",
+  "height": 858000
+}
+```
+
+3. Monitor the upgrade
+
+```bash
+# Watch the node logs for the upgrade
+journalctl -u story -f -o cat
+```
+
+Note: Cosmovisor will automatically handle the binary switch once the specified block height is reached. Before the upgrade, confirm that your node is fully synced and has enough disk space available.
+
 # 🔧 Infrastructure Partners
 ## RPC Providers
 
@@ -3630,6 +2975,661 @@ Refer to the [Royalty Module](doc:royalty-module) for detailed information on ro
     Secure, flexible, and scalable wallet infrastructure.
   </Card>
 </Cards>
+
+# 👋 Welcome to Story Network
+<Cards columns={2}>
+  <Card title="Add Story Mainnet" href="https://chainid.network/chain/1514/" icon="fa-home" target="_blank">
+    Connect your wallet to Story's mainnet.
+  </Card>
+
+  <Card title="Add Story 'Aeneid' Testnet" href="https://chainid.network/chain/1315/" icon="fa-home" target="_blank">
+    Connect your wallet to Story's 'Aeneid' testnet.
+  </Card>
+</Cards>
+
+# Story Network (L1)
+
+Welcome to the Hub for Story Network, the Story Chain.
+
+This section is designed to help you understand the fundamentals of Story Network. We’ve structured the content into two parts:
+
+1. Understanding the Architecture
+2. Operating a Node
+
+Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates the best of both the Ethereum Virtual Machine (EVM) and Cosmos SDK. It offers full EVM compatibility while incorporating deep execution layer optimizations to efficiently support graph-based data structures. These optimizations make it particularly well-suited for handling complex intellectual property (IP) data structures in a cost-effective and scalable manner.
+
+## Key Features
+
+* **EVM Compatibility**: Full compatibility with Ethereum Virtual Machine
+* **Optimized Data Structures**: Precompiled primitives for efficient IP graph traversal
+* **Fast Finality**: CometBFT-based consensus layer for quick transaction finality
+* **Modular Architecture**: Decoupled consensus from execution using Ethereum's Engine-API
+
+## Documentation Sections
+
+### Getting Started
+
+* [Node Architecture](doc:story-node-structure)
+* [Network Info](doc:network-info)
+* [Whitepaper](https://www.story.foundation/whitepaper.pdf)
+
+### Node Operations
+
+* [Operating a node](doc:operating-a-node)
+  * Full Node Setup
+  * Archive Node Setup
+  * Node Upgrade Guide
+  * Release Notes
+
+### Validation
+
+* [Become a validator](doc:become-a-validator)
+  * Validator Setup
+  * Validator Operations
+
+### Network Economics
+
+* [Staking Design](doc:tokenomics-staking)
+  * Token Economics
+  * Staking Mechanisms
+  * Rewards Structure
+
+### Resources
+
+* [Additional Resources](doc:additional-resources)
+  * GitHub Repositories
+  * SIP Repository
+  * Community Forum
+* [Troubleshooting](doc:network-faq)
+  * Common Issues
+  * Troubleshooting
+  * Best Practices
+
+## Network Information
+
+The Story Network is currently available in multiple environments:
+
+* Mainnet (Production)
+* Aeneid (Testnet)
+* Localnet (Development)
+
+For detailed network information and connection details, please refer to the respective network documentation sections.
+
+# Validator Operations
+## Quick Links
+
+* [Story Geth Releases](https://github.com/piplabs/story-geth/releases)
+* [Story Releases](https://github.com/piplabs/story/releases/)
+
+# Overview
+
+This section will guide you through how you can run your own validator. Validator operations may be done via the `story` consensus client.
+
+> 📘 Note
+>
+> The below operations do not requiring running a node! However, if you would like to participate in staking rewards, you must run a validator node.
+
+Before proceeding, it is important to familiarize yourself with the difference between a delegator and a validator:
+
+* A **validator** is a full node that participates in consensus whose signed key resides in the `priv_validator_key.json` file under your `story` data directory. To print out your validator key details you may refer to the [validator key export section](https://docs.story.foundation/docs/validator-operations#validator-key-export)
+* A **delegator** refers to an account operator that holds `IP` and wishes to participate in consensus rewards but without needing to run a validator themselves.
+
+In the same folder as where your `story` binary resides, add a `.env` file with a `PRIVATE_KEY` whose account has `IP` funded. **We recommend using your delegator account for all below operations.**
+
+> 📘 Note
+>
+> You may also issue transactions as the validator itself. To get the EVM private key corresponding to your validator, please refer to the [Validator Key Export](https://docs.story.foundation/docs/validator-operations#validator-key-export) section.
+
+The `.env` file should look like the following *(make sure not to add a 0x prefix):*
+
+```bash
+# ~/.env
+PRIVATE_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+With this, you are all set to perform different validator operations! Below, we will guide you through all of those supported via the CLI:
+
+## Validator Key Export
+
+By default, when you run `./story init` a validator key is created for you. To view your validator key, run the following command:
+
+```bash
+./story validator export [flags]
+```
+
+This will print out your validator public key file in compressed and uncompressed formats. By default, we use the hex-encoded compressed key for public identification.
+
+```text
+Compressed Public Key (hex): 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984
+Compressed Public Key (base64): A73HuJQLq+kibVLX+imaH689ZKgvgJiJJWyPFGlYpjmE
+Uncompressed Public Key (hex): 04bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a6398496b9e2af0a3a1d199c3cc1d09ee899336a530c185df6b46a9735b25e79a493af
+EVM Address: 0x9EacBe2C3B1eb0a9FC14106d97bd3A1F89efdDCc
+Validator Address: storyvaloper1p470h0jtph4n5hztallp8vznq8ehylsw9vpddx
+Delegator Address: story1p470h0jtph4n5hztallp8vznq8ehylswtr4vxd
+```
+
+**Available Flags:**
+
+* `--export-evm-key`: (string) Exports the derived EVM private key of your validator into the default data config directory
+* `--export-evm-key-path`: (string) Specifies a different download location for the derived EVM private key of your validator
+* `--keyfile`: (string) Path to the Tendermint key file (default "/home/ubuntu/.story/story/config/priv\_validator\_key.json")
+
+*If you would like to issue transactions as your validator, and not as a delegator, you may export the key to your`.env` file and ensure it has IP sent to it, e.g. via`./story validator export --export-evm-key --evm-key-path .env`*
+
+## Validator Creation
+
+To create a new validator, run the following command:
+
+```bash Locked token node
+./story validator create 
+			 --stake ${AMOUNT_TO_STAKE_IN_WEI} \
+			 --moniker ${VALIDATOR_NAME} \
+       --rpc ${rpc} \
+		   --chain-id ${chain_id} \
+			 --commission-rate ${rate} \
+ 			 --unlocked=false
+```
+```Text Unlocked token node
+./story validator create 
+			 --stake ${AMOUNT_TO_STAKE_IN_WEI} \
+			 --moniker ${VALIDATOR_NAME} \
+       --rpc ${rpc} \
+		   --chain-id ${chain_id} \
+			 --commission-rate ${rate} \
+```
+
+This will create the validator corresponding to your validator key saved in `priv_validator_key.json`, providing the validator with `{$AMOUNT_TO_STAKE_IN_WEI}` IP to self-stake. *Note that to participate in consensus, at least 1024 IP must be staked (equivalent to`1024000000000000000000 wei`)!*
+
+Below is a list of optional flags to further customize your validator setup:
+
+**Available Flags:**
+
+* `--stake`: Sets the amount the validator will self-delegate in wei (default is `1024000000000000000000` wei).
+* `--moniker`: Defines a custom name for the validator, visible to users on the network.
+* `--chain-id`: Specifies the Chain ID for the transaction. By default, this is set to `1516`.
+* `--commission-rate`: Sets the validator's commission rate in bips (1% = 100 bips). For instance, `1000` represents a 10% commission (default is `1000`).
+* `--explorer`: Specifies the URL of the blockchain explorer (default: [https://storyscan.xyz](https://storyscan.xyz)).
+* `--keyfile`: Points to the path of the Tendermint key file (default: `$HOME/.story/story/config/priv_validator_key.json`).
+* `--max-commission-change-rate`: Sets the maximum rate at which the validator's commission can change, in bips. For example, `100` represents a maximum change of 1% (default is `1000`).
+* `--max-commission-rate`: Defines the maximum commission rate the validator can charge, in bips. For instance, `5000` allows a 50% maximum rate (default is `5000`).
+* `--private-key`: Uses a specified private key for signing the transaction. If not set, the key in `priv_validator_key.json` will be used.
+* `--rpc`: Sets the RPC URL to connect to the network (default: [https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)).
+* `--unlocked`: Determines if unlocked token staking is supported (`true` for unlocked staking, `false` for locked staking). By default, this is set to `true`.
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example creation command use
+
+```bash
+story validator create 
+	--stake 1024000000000000000000
+  --moniker "timtimtim"
+  --commission-rate 700
+  --validator-pubkey "<validator_pubkey>" # if you dont have a .env
+  --rpc "https://mainnet.storyrpc.io"
+	--chain-id 1514
+```
+
+### Verifying your validator
+
+Once created, please use the `Explorer URL` to confirm the transaction. If successful, you should see your validator pub key (*found in your`priv_validator_key.json` file)* listed as part of the following endpoint:
+
+```bash
+curl https://testnet.storyrpc.io/validators | jq .
+```
+
+Congratulations, you are now one of Story’s very first IP validators!
+
+## Validator Staking
+
+To stake to an existing validator, run the following command:
+
+```bash
+./story validator stake \
+   --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
+   --stake ${AMOUNT_TO_STAKE_IN_WEI}
+   --staking-period ${STAKING_PERIOD}
+```
+
+* Note that your own `${VALIDATOR_PUB_KEY_IN_HEX}`may be found by running the `./story validator export` command as the `Compressed Public Key (hex)`.
+* You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid
+
+Once staked, you may use the `Explorer URL` to confirm the transaction. As mentioned earlier, you may use our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to confirm the new voting power of the validator.
+
+**Available Flags:**
+
+* `--validator-pubkey`: (string) The public key of the validator to stake to
+* `--stake`: (string) The amount of IP to stake in wei
+* `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+* `--explorer`: (string) URL of the blockchain explorer
+* `--help`, `-h`: Display help information for stake command
+* `--private-key`: (string) Private key used for the transaction
+* `--rpc`: (string) RPC URL to connect to the network
+* `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example staking command use
+
+```bash
+./story validator stake \
+  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --stake 1024000000000000000000
+  --staking-period "short"
+```
+
+## Validator Unstaking
+
+To unstake from a validator, run the following command:
+
+```bash
+./story validator unstake \
+  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
+  --unstake ${AMOUNT_TO_UNSTAKE_IN_WEI} \
+	--delegation-id ${ID_STAKING_PERIOD}
+```
+
+This will unstake `${AMOUNT_TO_UNSTAKE_IN_WEI}` IP from the selected validator. You must unstake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
+
+Like in the staking operation, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the newly reduced voting power of the validator.
+
+**Available Flags:**
+
+* `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+* `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+* `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
+* `--help`, `-h`: Help for unstake command
+* `--private-key`: (string) Private key used for the transaction
+* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
+* `--unstake`: (string) Amount to unstake in wei
+* `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example unstaking command use
+
+```bash
+./story validator unstake \
+   --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+   --unstake 1024000000000000000000 \
+   --delegation-id 1
+```
+
+## Validator Stake-on-behalf
+
+To stake on behalf of another delegator, run the following command:
+
+```bash
+./story validator stake-on-behalf \
+  --delegator-address ${DELEGATOR_EVM} \
+  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
+  --stake ${AMOUNT_TO_STAKE_IN_WEI} \
+  --staking-period ${STAKING_PERIOD} \
+  --rpc
+  --chain-id
+```
+
+This will stake `${AMOUNT_TO_STAKE_IN_WEI}` IP to the validator on behalf of the provided delegator. You must stake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
+
+Like in the other staking operations, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the increased voting power of the validator.
+
+**Available Flags:**
+
+* `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+* `--delegator-address`: (string) Delegator's EVM address
+* `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
+* `--help`, `-h`: Help for stake-on-behalf command
+* `--private-key`: (string) Private key used for the transaction
+* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
+* `--stake`: (string) Amount for the validator to self-delegate in wei
+* `--staking-period`: (stakingPeriod) Staking period (options: "flexible", "short", "medium", "long") (default: flexible)
+* `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example Stake-on-behalf command use
+
+```bash
+./story validator stake-on-behalf \
+   --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
+   --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
+   --stake 1024000000000000000000 \
+   --staking-period "short" \
+	 --rpc \
+   --chain-id
+```
+
+## Validator Unstake-on-behalf
+
+You may also unstake on behalf of delegators. However, to do so, you must be registered as an authorized operator for that delegator. To unstake on behalf of another delegator as an operator, run the following command:
+
+```bash
+./story validator unstake-on-behalf \
+  --delegator-address ${DELEGATOR_PUB_KEY_IN_HEX} \
+  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
+  --unstake ${AMOUNT_TO_STAKE_IN_WEI} \
+  --rpc \
+  --chain-id
+```
+
+This will unstake `${AMOUNT_TO_STAKE_IN_WEI}` IP from the validator on behalf of the delegator, assuming you are a registered operator for that delegator. You must unstake at least 1024 IP worth (`*1024000000000000000000 wei`) for the transaction to be valid.
+
+Like in the other staking operations, please use the `Explorer URL` to confirm the transaction and our [validator endpoint](https://rpc.odyssey.storyrpc.io/validators) to double-check the decreased voting power of the validator.
+
+**Available Flags:**
+
+* `--chain-id`: (int) Chain ID to use for the transaction (default: 1514)
+* `--delegator-address`: (string) Delegator's EVM address
+* `--explorer`: (string) URL of the blockchain explorer (default: "[https://storyscan.xyz](https://storyscan.xyz)")
+* `--help`, `-h`: Help for unstake-on-behalf command
+* `--private-key`: (string) Private key used for the transaction
+* `--rpc`: (string) RPC URL to connect to the network (default: "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
+* `--unstake`: (string) Amount to unstake in wei
+* `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example Unstake-on-behalf command use
+
+```bash
+./story validator unstake-on-behalf \
+   --delegator-address 0xF84ce113FCEe12d78Eb41590c273498157c91520 \
+   --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
+   --unstake 1024000000000000000000 \
+   --rpc \
+   --chain-id
+```
+
+## Validator Unjail
+
+In case a validator becomes jailed, for example if it experiences substantial downtime, you may use the following command to unjail the targeted validator:
+
+```Text Bash
+./story validator unjail \
+  --private-key ${PRIVATE_KEY} \
+  --rpc
+  --chain-id
+```
+
+Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
+
+**Available Flags:**
+
+* `--chain-id`: (int) Chain ID to use for the transaction
+* `--explorer`: (string) URL of the blockchain explorer
+* `--private-key`: (string) Private key used for the transaction
+* `--rpc`: (string) RPC URL to connect to the network
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example unjail command use
+
+```bash
+./story validator unjail \
+  --validator-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --rpc \
+  --chain-id 
+```
+
+## Validator Unjail-on-behalf
+
+If you are an authorized operator, you may unjail a validator on their behalf using the following command:
+
+```bash
+./story validator unjail-on-behalf \
+  --private-key ${PRIVATE_KEY} \
+  --validator-pubkey ${VALIDATOR_PUB_KEY_IN_HEX} \
+  --rpc \
+  --chain-id
+```
+
+**Available Flags:**
+
+* `--chain-id`: (int) Chain ID to use for the transaction
+* `--explorer`: (string) URL of the blockchain explorer
+* `--private-key`: (string) Private key used for the transaction
+* `--rpc`: (string) RPC URL to connect to the network
+* `--validator-pubkey`: (string) Validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example unjail-on-behalf command use
+
+```bash
+./story validator unjail-on-behalf \
+  --private-key 0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef \
+  --validator-pubkey 03e42b4d778cda2f3612c85161ba7c0aad1550a872f3279d99e028a1dfa7854930 \
+  --rpc \
+  --chain-id
+```
+
+## Validator Redelegate
+
+To redelegate from one validator to another, run the following command:
+
+```bash
+./story validator redelegate \
+  --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
+  --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
+  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI}
+  --rpc \
+  --chain-id
+```
+
+**Available Flags:**
+
+* `--chain-id`: (int) Chain ID to use for the transaction (default 1514)
+* `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+* `--explorer`: (string) URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
+* `--help`, `-h`: Help for redelegate command
+* `--private-key`: (string) Private key used for the transaction
+* `--redelegate`: (string) Amount to redelegate in wei
+* `--rpc`: (string) RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
+* `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example redelegate command use
+
+```bash
+./story validator redelegate \
+  --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+  --redelegate 1024000000000000000000 \
+  --rpc \
+  --chain-id
+```
+
+## Validator Redelegate-on-behalf
+
+If you are an authorized operator, you may redelegate from one validator to another on behalf of a delegator using the following command:
+
+```bash
+./story validator redelegate-on-behalf \
+  --delegator-address ${DELEGATOR_EVM_ADDRESS} \
+  --validator-src-pubkey ${VALIDATOR_SRC_PUB_KEY_IN_HEX} \
+  --validator-dst-pubkey ${VALIDATOR_DST_PUB_KEY_IN_HEX} \
+  --redelegate ${AMOUNT_TO_REDELEGATE_IN_WEI} \
+  --rpc \
+  --chain-id
+```
+
+**Available Flags:**
+
+* `--chain-id`: (int) Chain ID to use for the transaction (default 1514)
+* `--delegation-id`: (uint32) The delegation ID (0 for flexible staking)
+* `--delegator-address`: (string) Delegator's EVM address
+* `--explorer`: (string) URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
+* `--help`, `-h`: Help for redelegate-on-behalf command
+* `--private-key`: (string) Private key used for the transaction
+* `--redelegate`: (string) Amount to redelegate in wei
+* `--rpc`: (string) RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
+* `--validator-dst-pubkey`: (string) Dst validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--validator-src-pubkey`: (string) Src validator's hex-encoded compressed 33-byte secp256k1 public key
+* `--story-api`: Prevent potential fund losses. By default, you should set `http://localhost:1317`as the value
+
+### Example redelegate-on-behalf command use
+
+```bash
+./story validator redelegate-on-behalf \
+  --delegator-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --validator-src-pubkey 03bdc7b8940babe9226d52d7fa299a1faf3d64a82f809889256c8f146958a63984 \
+  --validator-dst-pubkey 02ed58a9319aba87f60fe08e87bc31658dda6bfd7931686790a2ff803846d4e59c \
+  --redelegate 1024000000000000000000 \
+  --rpc \
+  --chain-id
+```
+
+## Set Operator
+
+Delegators may add operators to unstake or redelegate on their behalf. To add an operator, run the following command:
+
+* `--chain-id` int         Chain ID to use for the transaction (default 1514)
+* `--explorer` string      URL of the blockchain explorer (default "[https://storyscan.xyz](https://storyscan.xyz)")
+* `--operator` string      Sets an operator to your delegator
+* `--private-key` string   Private key used for the transaction
+* `--rpc` string           RPC URL to connect to the network (default "[https://mainnet.storyrpc.io](https://mainnet.storyrpc.io)")
+
+```bash
+./story validator set-operator \
+  --operator ${OPERATOR_EVM_ADDRESS} \
+  --rpc \
+  --chain-id \
+  --story-api ${STORY_API_URL}
+```
+
+Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
+
+### Example add operator command use
+
+```bash
+./story validator set-operator \
+  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --rpc \
+  --chain-id \
+  --story-api http://localhost:1317
+```
+
+## Unset Operator
+
+To remove an operator, run the following command:
+
+```bash
+./story validator unset-operator \
+  --operator ${OPERATOR_EVM_ADDRESS} \  
+  --rpc \
+  --chain-id \
+  --story-api ${STORY_API_URL}
+```
+
+### Example Remove Operator command use
+
+```bash
+./story validator remove-operator \
+  --operator 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab \
+  --rpc \
+  --chain-id \
+  --story-api http://localhost:1317
+```
+
+## Set Rewards Address
+
+To change the address that your delegator receives staking and withdrawal rewards from, you can run the following:
+
+```bash
+./story validator set-rewards-address \
+  --rewards-address ${OPERATOR_EVM_ADDRESS} \
+  --story-api ${STORY_API_URL}
+```
+
+Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
+
+### Example Set Withdrawal Address command use
+
+```bash
+./story validator set-rewards-address \
+  --rewards-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
+  --story-api http://localhost:1317
+```
+
+##
+
+## Set Withdrawal Address
+
+To change the address that your delegator receives staking and withdrawal rewards from, you can run the following:
+
+```bash
+./story validator set-withdrawal-address \
+  --withdrawal-address ${OPERATOR_EVM_ADDRESS} \
+  --story-api ${STORY_API_URL}
+```
+
+Note that you will need at least 1 IP in the wallet submitting the transaction for the transaction to be valid.
+
+### Example Set Withdrawal Address command use
+
+```bash
+./story validator set-withdrawal-address \
+  --withdrawal-address 0xf398C12A45Bc409b6C652E25bb0a3e702492A4ab
+  --story-api http://localhost:1317
+```
+
+## Update Validator Commission
+
+To change the commission rate for your validator, you can run the following:
+
+```
+./story valdiator update-validator-commission \
+		--commission-rate ${NEW_COMMISSION}
+```
+
+### Example Update Validator Commission
+
+```
+./story valdiator update-validator-commission \
+		--commission-rate 5000
+```
+
+## Enabling Story API
+
+Prerequisites:
+
+1. Ensure your full node is synced and caught up with latest blocks
+
+Steps to enable:
+
+1. Navigate to `${STORY_DATA_ROOT}/config/story.toml`
+2. Set `enable = true` under the `[api]` section
+3. Restart the node
+
+Then  you could use `http://localhost:1317` as the `-story-api` value
+
+## Migrating a validator to another machine
+
+> 🚧 Important
+>
+> Before migrating your validator node to a new machine, make sure the current node is fully shut down. Attempting to restore an active validator could result in "double signing," a critical error that may lead to the slashing of your delegated shares.
+
+1. Begin by configuring a new environment for your validator. Ensure that the new full node is fully synced to the latest block on the network.
+2. To avoid accidental double-signing, it’s essential to fully shut down the original validator node before activating the new instance. We recommend deleting the Story service file to prevent it from automatically restarting after a system reboot. Additionally, back up your `priv_validator_key.json` file and remove it from the current server running the active validator. Skipping these steps could result in missed blocks or other penalties.
+
+```bash
+# Step 1: Stop the original validator node
+sudo systemctl stop <your_service_file_name>.service
+
+# Step 2: Disable the Story service to prevent automatic restarts
+sudo systemctl disable <your_service_file_name>.service
+
+# Step 3: Delete the Story service file to prevent it from starting on reboot
+sudo rm /etc/systemd/system/<your_service_file_name>.service
+
+# Step 4: Back up the `priv_validator_key.json` file securely, e.g., using SFTP:
+# Use an SFTP client or a secure method to download the file without displaying it in the terminal
+# If needed for verification purposes only, you may view it with the following command:
+cat ~/.story/story/config/priv_validator_key.json
+
+# Step 5: Remove the `priv_validator_key.json` file from the current server
+rm ~/.story/story/config/priv_validator_key.json
+```
+
+3. Locate the `priv_validator_key.json` file in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
+
+> ❗️ Important: Before proceeding, shut down the old validator on the original server and do not restart it!
+
+4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
 
 # Dispute
 ## DisputeClient
