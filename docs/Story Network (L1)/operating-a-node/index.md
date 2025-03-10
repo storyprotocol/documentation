@@ -1,5 +1,5 @@
 ---
-title: Operating a Node
+title: 🖥️ Operating a Node
 deprecated: false
 hidden: false
 metadata:
