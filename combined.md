@@ -13962,7 +13962,7 @@ Once you have done that, you should see a console log with a link to our IP-expl
 The best way to get started is to get your hands dirty and start building.
 
 <Cards columns={3}>
-  <Card title="See Completed Code" href="https://github.com/jacob-tucker/story-developer-sandbox" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+  <Card title="Working Code Example" href="https://github.com/jacob-tucker/story-developer-sandbox" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     Clone our "developer sandbox" locally to see a working code example that shows setting up & calling TypeScript SDK functions in Next.js
   </Card>
 
