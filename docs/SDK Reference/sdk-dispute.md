@@ -35,6 +35,9 @@ Parameters:
 * `request.targetTag`: The target tag of the dispute.
 * `request.cid`: CID (Content Identifier) is a unique identifier in IPFS, including CID v0 (base58) and CID v1 (base32).
 * `request.data`: \[Optional] The data to initialize the policy.
+* `request.wipOptions`: \[Optional]
+  * `request.wipOptions.enableAutoWrapIp`: \[Optional]By default IP is converted to WIP if the current WIP balance does not cover the fees. Set this to `false` to disable this behavior. **Default: true**
+  * `request.wipOptions.enableAutoApprove`: \[Optional]Automatically approve WIP usage when WIP is needed but current allowance is not sufficient. Set this to `false` to disable this behavior. **Default: true**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript TypeScript
@@ -59,7 +62,10 @@ export type RaiseDisputeRequest = WithTxOptions & {
   targetTag: string;
   liveness: bigint | number | string;
   bond: bigint | number | string;
-  wipOptions?: Omit<WipOptions, "useMulticallWhenPossible">;
+  wipOptions?: {
+    enableAutoWrapIp?: boolean;
+    enableAutoApprove?: boolean;
+  };
 };
 ```
 ```typescript Response Type
