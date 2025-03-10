@@ -2974,6 +2974,10 @@ Note: Cosmovisor will automatically handle the binary switch once the specified 
   <Card title="Turnkey" href="https://www.turnkey.com/" icon="fa-home" iconColor="#000000" target="_blank">
     Secure, flexible, and scalable wallet infrastructure.
   </Card>
+
+  <Card title="Safe" href="https://safe.global/" icon="fa-home" iconColor="#0fff80" target="_blank">
+    The most trusted decentralized custody protocol and collective asset management platform.
+  </Card>
 </Cards>
 
 # 👋 Welcome to Story Network
