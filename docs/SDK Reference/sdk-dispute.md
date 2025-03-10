@@ -53,13 +53,13 @@ const response = await client.dispute.raiseDispute({
 console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispute ID: ${disputeResponse.disputeId}`)
 ```
 ```typescript Request Type
-export type RaiseDisputeRequest = {
+export type RaiseDisputeRequest = WithTxOptions & {
   targetIpId: Address;
   cid: string;
   targetTag: string;
   liveness: bigint | number | string;
   bond: bigint | number | string;
-  txOptions?: TxOptions;
+  wipOptions?: Omit<WipOptions, "useMulticallWhenPossible">;
 };
 ```
 ```typescript Response Type
@@ -204,6 +204,9 @@ Parameters:
 * `request.ipId`: The IP ID that is the target of the dispute.
 * `request.assertionId`: The identifier of the assertion that was disputed. You can get this from the `disputeId` by calling `dispute.disputeIdToAssertionId`.
 * `request.counterEvidenceCID`: Content Identifier (CID) for the counter evidence. This should be obtained by uploading your dispute evidence (documents, images, etc.) to IPFS. **Example: "QmX4zdp8VpzqvtKuEqMo6gfZPdoUx9TeHXCgzKLcFfSUbk"**
+* `request.wipOptions`: \[Optional]
+  * `request.wipOptions.enableAutoWrapIp`: \[Optional]By default IP is converted to WIP if the current WIP balance does not cover the fees. Set this to `false` to disable this behavior. **Default: true**
+  * `request.wipOptions.enableAutoApprove`: \[Optional]Automatically approve WIP usage when WIP is needed but current allowance is not sufficient. Set this to `false` to disable this behavior. **Default: true**
 * `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
 
 ```typescript
@@ -221,6 +224,10 @@ export type DisputeAssertionRequest = {
   ipId: Address;
   assertionId: Hex;
   counterEvidenceCID: string;
+  wipOptions?: {
+    enableAutoWrapIp?: boolean;
+    enableAutoApprove?: boolean;
+  };
 } & WithTxOptions;
 ```
 ```typescript Response Type
