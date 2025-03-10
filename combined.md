@@ -6302,7 +6302,7 @@ As the steward of the Story ecosystem, the Story Foundation works in close align
   **Treasury management** and oversight to foster long-term ecosystem growth and support the Foundation’s ongoing mission.
 </Accordion>
 
-# Story Ecosystem - Getting Started
+# 👥 Story Ecosystem - Getting Started
 ![](https://files.readme.io/cf39a91038f3fbd5cfdaacd2ce78964498a970a64d056529e668158b3f6e0299-image.png)
 
 ## Stay in the Loop
