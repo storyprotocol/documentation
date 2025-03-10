@@ -13,7 +13,7 @@ next:
 Welcome to the Story API Reference! Please use the `https://api.storyapis.com/api/v3` endpoint.
 
 ```text Headers
-X-CHAIN: story | story-aeneid
+X-CHAIN: story | story-aeneid (pick one depending on the network. `story` = mainnet, `story-aeneid` = testnet
 X-API-Key: MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U
 ```
 
