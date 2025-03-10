@@ -10,14 +10,17 @@ metadata:
 ### Methods
 
 * setIpMetadata
+* execute
+* executeWithSig
+* transferErc20
 
 ### setIpMetadata
 
 Sets the metadataURI for an IP asset.
 
-| Method          | Type                                    |
-| --------------- | --------------------------------------- |
-| `setIpMetadata` | `(SetIpMetadataRequest) => Promis<Hex>` |
+| Method          | Type                                     |
+| --------------- | ---------------------------------------- |
+| `setIpMetadata` | `(SetIpMetadataRequest) => Promise<Hex>` |
 
 Parameters:
 
@@ -47,9 +50,9 @@ export type SetIpMetadataRequest = {
 
 Executes a transaction from the IP Account.
 
-| Method    | Type                                                            |
-| --------- | --------------------------------------------------------------- |
-| `execute` | `(IPAccountExecuteRequest) => Promis<IPAccountExecuteResponse>` |
+| Method    | Type                                                             |
+| --------- | ---------------------------------------------------------------- |
+| `execute` | `(IPAccountExecuteRequest) => Promise<IPAccountExecuteResponse>` |
 
 Parameters:
 
@@ -80,9 +83,9 @@ export type IPAccountExecuteResponse = {
 
 Executes a transaction from the IP Account.
 
-| Method           | Type                                                            |
-| ---------------- | --------------------------------------------------------------- |
-| `executeWithSig` | `(IPAccountExecuteRequest) => Promis<IPAccountExecuteResponse>` |
+| Method           | Type                                                             |
+| ---------------- | ---------------------------------------------------------------- |
+| `executeWithSig` | `(IPAccountExecuteRequest) => Promise<IPAccountExecuteResponse>` |
 
 Parameters:
 
@@ -111,5 +114,42 @@ export type IPAccountExecuteWithSigRequest = {
 export type IPAccountExecuteWithSigResponse = {
   txHash?: Hex;
   encodedTxData?: EncodedTxData;
+};
+```
+
+### transferErc20
+
+Transfers ERC20 tokens from the IP Account to the target address.
+
+| Method          | Type                                                     |
+| --------------- | -------------------------------------------------------- |
+| `transferErc20` | `(TransferErc20Request) => Promise<TransactionResponse>` |
+
+Parameters:
+
+* `request.ipId`: The `ipId` of the account
+* `request.tokens`: The token info to transfer
+  * `request.tokens.address`: The address of the ERC20 token including WIP and standard ERC20.
+  * `request.tokens.amount`: The amount of tokens to transfer
+  * `request.tokens.target`: The address of the recipient.
+* `request.txOptions`: \[Optional] The transaction [options](https://github.com/storyprotocol/sdk/blob/main/packages/core-sdk/src/types/options.ts).
+
+```typescript Request Type
+export type TransferErc20Request = {
+  ipId: Address;
+  tokens: {
+    address: Address;
+    amount: bigint | number;
+    target: Address;
+  }[];
+  txOptions?: Omit<TxOptions, "encodedTxDataOnly">;
+};
+```
+```typescript Response Type
+export type TransactionResponse = {
+  txHash: Hex;
+
+  /** Transaction receipt, only available if waitForTransaction is set to true */
+  receipt?: TransactionReceipt;
 };
 ```
