@@ -558,7 +558,7 @@ Then  you could use `http://localhost:1317` as the `-story-api` value
 > Before migrating your validator node to a new machine, make sure the current node is fully shut down. Attempting to restore an active validator could result in "double signing," a critical error that may lead to the slashing of your delegated shares.
 
 1. Begin by configuring a new environment for your validator. Ensure that the new full node is fully synced to the latest block on the network.
-2. To avoid accidental double-signing, it’s essential to fully shut down the original validator node before activating the new instance. We recommend deleting the Story service file to prevent it from automatically restarting after a system reboot. Additionally, back up your `priv_validator_key.json` file and remove it from the current server running the active validator. Skipping these steps could result in missed blocks or other penalties.
+2. To avoid accidental double-signing, it’s essential to fully shut down the original validator node before activating the new instance. We recommend deleting the Story service file to prevent it from automatically restarting after a system reboot. Additionally, back up both `priv_validator_key.json` and `priv_validator_state.json` and remove it from the current server running the active validator. Skipping these steps could result in missed blocks or other penalties.
 
 ```bash
 # Step 1: Stop the original validator node
@@ -579,7 +579,7 @@ cat ~/.story/story/config/priv_validator_key.json
 rm ~/.story/story/config/priv_validator_key.json
 ```
 
-3. Locate the `priv_validator_key.json` file in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
+3. Locate `priv_validator_key.json` and `priv_validator_state.json` in the `~/.story/story/config/` directory on your new machine. Replace this file with the backup copy from your old validator.
 
 > ❗️ Important: Before proceeding, shut down the old validator on the original server and do not restart it!
 
