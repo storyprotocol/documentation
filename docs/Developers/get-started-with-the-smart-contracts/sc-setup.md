@@ -1,5 +1,5 @@
 ---
-title: Setup Your Own Project
+title: Setup
 excerpt: ''
 deprecated: false
 hidden: false
