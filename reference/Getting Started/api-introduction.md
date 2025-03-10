@@ -19,4 +19,4 @@ X-API-Key: MhBsxkU1z9fG6TofE59KqiiWV-YlYE8Q4awlLQehF3U
 
 ## Rate Limit
 
-The above public API key has a requests/second of 300. We will be releasing an official process for giving out API keys with higher rates soon (last updated: 02/19), but if you'd like to get in contact now, please email [jacob@piplabs.xyz](mailto:jacob@piplabs.xyz)
+The above public API key has a requests/second of 300. If you'd like an API key with a higher limit, please join our [Builder Discord](https://discord.gg/fajKk8q7gU) and describe your project needs in the **discussion channel**.
