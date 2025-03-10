@@ -1,5 +1,5 @@
 ---
-title: Deployed Smart Contracts
+title: 💾 Deployed Smart Contracts
 excerpt: ''
 deprecated: false
 hidden: false
