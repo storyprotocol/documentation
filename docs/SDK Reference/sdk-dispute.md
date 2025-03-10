@@ -34,7 +34,8 @@ Parameters:
 * `request.targetIpId`: The IP ID that is the target of the dispute.
 * `request.targetTag`: The target tag of the dispute.
 * `request.cid`: CID (Content Identifier) is a unique identifier in IPFS, including CID v0 (base58) and CID v1 (base32).
-* `request.data`: \[Optional] The data to initialize the policy.
+* `request.liveness`: The liveness is the time window (in seconds) in which a counter dispute can be presented (30days).
+* `request.bond`: The amount of wrapper IP that the dispute initiator pays upfront into a pool. To counter that dispute the opposite party of the dispute has to place a bond of the same amount. The winner of the dispute gets the original bond back + 50% of the other party bond. The remaining 50% of the loser party bond goes to the reviewer.
 * `request.wipOptions`: \[Optional]
   * `request.wipOptions.enableAutoWrapIp`: \[Optional]By default IP is converted to WIP if the current WIP balance does not cover the fees. Set this to `false` to disable this behavior. **Default: true**
   * `request.wipOptions.enableAutoApprove`: \[Optional]Automatically approve WIP usage when WIP is needed but current allowance is not sufficient. Set this to `false` to disable this behavior. **Default: true**
