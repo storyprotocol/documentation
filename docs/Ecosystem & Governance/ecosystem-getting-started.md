@@ -1,5 +1,5 @@
 ---
-title: Story Ecosystem - Getting Started
+title: 👥 Story Ecosystem - Getting Started
 excerpt: ''
 deprecated: false
 hidden: false
