@@ -1,5 +1,5 @@
 ---
-title: Become a validator
+title: Become a Validator
 excerpt: ''
 deprecated: false
 hidden: false
