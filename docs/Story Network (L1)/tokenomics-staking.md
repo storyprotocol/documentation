@@ -1,5 +1,5 @@
 ---
-title: Staking Design
+title: 💰 Staking Design
 excerpt: ''
 deprecated: false
 hidden: false
