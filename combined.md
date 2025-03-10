@@ -16702,7 +16702,7 @@ If everything worked correctly, you should see something like `Deployed to: 0xfb
   </Card>
 </Cards>
 
-# Setup Your Own Project
+# Setup
 In this guide, we will show you how to setup the Story smart contract development environment in just a few minutes
 
 ### :warning: Prerequisites
@@ -16765,7 +16765,6 @@ yarn add -D github:foundry-rs/forge-std#v1.7.6
 ```
 
 Now we are ready to build a simple test registration contract!
-
 
 # Pay & Claim Revenue
 <Cards columns={1}>
