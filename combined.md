@@ -11107,7 +11107,7 @@ Our tutorials will show you exactly how to claim revenue:
 >
 > For more information on royalty and how it functions, check out the [💸 Royalty Module](doc:royalty-module).
 
-# Deployed Smart Contracts
+# 💾 Deployed Smart Contracts
 ## Core Protocol Contracts
 
 * View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-core-v1/tree/main)
