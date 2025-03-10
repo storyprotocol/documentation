@@ -1,44 +1,4 @@
-# Gelato
-## Relay Smart Contracts
-
-### GelatoRelay.sol
-
-```
-Relay method: callWithSyncFee
-Address: 0xcd565435e0d2109feFde337a66491541Df0D1420
-```
-
-### GelatoRelayERC2771.sol
-
-```
-Relay method: callWithSyncFeeERC2771
-Address: 0x8aCE64CEA52b409F930f60B516F65197faD4B056
-```
-
-### GelatoRelayConcurrentERC2771.sol
-
-```
-Relay method: callWithSyncFeeERC2771 with isConcurrent: true\
-Address: 0xc7739c195618D314C08E8626C98f8573E4E43634
-```
-
-### GelatoRelay1BalanceERC2771.sol
-
-```
-Relay method: sponsoredCallERC2771\
-Address: 0x61F2976610970AFeDc1d83229e1E21bdc3D5cbE4
-```
-
-# Pyth
-## Entropy Contract (Mainnet)
-
-### ERC1967Proxy.sol
-
-```
-address: 0xdF21D137Aadc95588205586636710ca2890538d5
-```
-
-# ℹ️ Network Info
+# 🌐 Network Info
 # Overview
 
 Story Network is a purpose-built layer 1 blockchain achieving the best of EVM and Cosmos SDK. It is 100% EVM-compatible alongside deep execution layer optimizations to support graph data structures, purpose-built for handling complex data structures like IP quickly and cost-efficiently. It does this by:
@@ -497,6 +457,46 @@ visualization for the blockchain network. Tools include **Prometheus**,
 | **Promtail**   | Scrapes logs from Docker containers and sends them to Loki.        | `9080` (API), `9095` (Metrics) | `http://localhost:9080` |
 | **Grafana**    | Provides a dashboard interface for metrics and logs visualization. | `3000`                         | `http://localhost:3000` |
 
+# Gelato
+## Relay Smart Contracts
+
+### GelatoRelay.sol
+
+```
+Relay method: callWithSyncFee
+Address: 0xcd565435e0d2109feFde337a66491541Df0D1420
+```
+
+### GelatoRelayERC2771.sol
+
+```
+Relay method: callWithSyncFeeERC2771
+Address: 0x8aCE64CEA52b409F930f60B516F65197faD4B056
+```
+
+### GelatoRelayConcurrentERC2771.sol
+
+```
+Relay method: callWithSyncFeeERC2771 with isConcurrent: true\
+Address: 0xc7739c195618D314C08E8626C98f8573E4E43634
+```
+
+### GelatoRelay1BalanceERC2771.sol
+
+```
+Relay method: sponsoredCallERC2771\
+Address: 0x61F2976610970AFeDc1d83229e1E21bdc3D5cbE4
+```
+
+# Pyth
+## Entropy Contract (Mainnet)
+
+### ERC1967Proxy.sol
+
+```
+address: 0xdF21D137Aadc95588205586636710ca2890538d5
+```
+
 # Additional Resources
 
 # Additional Resources
@@ -513,6 +513,333 @@ visualization for the blockchain network. Tools include **Prometheus**,
 ## Community Forum
 
 - [Story Forum](https://forum.story.foundation/)
+
+# Staking Design
+# Purpose
+
+This document walks through the staking specification for Story. The goal is to provide clarity to network participants and technical partners on how Story’s staking mechanics work and how users can interface with our chain.
+
+# Tokenomics
+
+## Genesis
+
+The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team.  Please refer this document for the detailed [Token Distribution](https://www.story.foundation/blog/introducing-ip).
+
+## Locked vs Unlocked tokens
+
+Unlocked tokens have no restrictions imposed on them and can be used for gas consumption, transfers, and staking.
+
+Unlike unlocked tokens, locked tokens cannot be transferred or traded and are unlocked based on an unlock schedule. However, locked tokens may be staked to earn staking rewards, with the locked staking reward rate being half of that of unlocked tokens.
+
+Staked locked and unlocked tokens have the same voting power. That means that a validator with 100 staked locked tokens has the same network voting power as a validator with 100 staked unlocked tokens.
+
+Both types of tokens can be slashed if their validators get slashed.
+
+## Token emissions
+
+A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters:
+
+* blocks\_per\_year: 10368000 blocks
+  * The number of blocks expected to be produced in a year
+* inflations\_per\_year: 20,000,000 tokens
+  * The total number of inflationary tokens to be emitted in a year
+
+New emissions will flow to two places:
+
+1. Block Rewards
+2. Community Pool
+
+## Token burn
+
+Since Story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
+
+# Staking
+
+> 🔗 <a href="https://staking.story.foundation/" target="_blank">Stake with the Staking Dashboard ↗️</a>
+
+Story supports the below staking-related operations
+
+* Create validator
+* Update validator commission
+* Stake
+* Stake on behalf
+* Unstake
+* Unstake on behalf
+* Redelegate
+* Redelegate on behalf
+* Set withdraw address
+* Set reward address
+* Unjail
+* Unjail on behalf
+
+Before explaining the behavior of each of these operations, some high-level concepts like **Token Staking Types**, **Validator Set Status**, **Unbonding**, and **Staking Period** will be explained first:
+
+## Token Staking Types
+
+As staking is enabled for both locked and unlocked tokens, validators must choose which type of token staking they want to support. Once a token staking type is selected, validators cannot switch to a different type.
+
+## Validator Set Status
+
+In Story, validators are grouped into one of two sets, (1) the active (bonded) validator set, which participates in consensus and receives block rewards, or (2) the non-active (unbonded) validator set, which does not contribute to the consensus process. To be selected as part of the active validator set, a validator must be one of the top 64 validators ranked by staked tokens.
+
+## Unbonding
+
+Unstaking for delegators is subject to an unbonding process. Users must wait for an unbonding time before any tokens return to their accounts.
+
+This is the same for validators who self-delegate to themselves. They also need to go through the unbonding process when they want to unstake.
+
+The unbonding time is 14 days. During the unbonding period, the delegator/validator will not earn block rewards. But they may still be slashed.
+
+For each validator/delegator pair, the maximum ongoing unbonding transactions is 14. More unbonding requests beyond this limit will fail.
+
+## Staking period
+
+Delegators can decide how flexible and how long they want to stake their tokens. By default, for both locked and unlocked tokens, delegators can stake and then unstake immediately and get their token back after the unbonding time. We call this **flexible staking** in this document.
+
+For unlocked tokens, a few more fixed staking periods are supported: 90 days, 360 days, and 540 days. In this case, users can only call unstake after the staking period is mature. Any call earlier than the mature day will be discarded. Unstaking from a mature staking period is still subject to the unbonding process, meaning users will get their staked tokens back after 14 days of unbonding time.
+
+Staking in these fixed staking periods earns more rewards. The longer the period, the bigger the reward weight multiplier. Reward multiplier for different periods:
+
+* Locked flexible period - **0.5**
+* Flexible period - **1.0**
+* 90 days - **1.1**
+* 360 days - **1.5**
+* 540 days - **2**
+
+For locked tokens, only flexible staking is allowed and the reward multiplier is **0.5**. If a user delegates their locked tokens to a staking period, we will convert that to a flexible staking delegation.
+
+After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
+
+## Decimal for stake amounts
+
+The decimal for stake operations (stake, unstake, redelegate, etc.) is 9. If a user specifies a smaller value, the dust will be refunded back to the users. Or if there is no token transfer involved, the specified value will be rounded down to 9 decimals.
+
+# Staking Operations
+
+## Create validator
+
+To become a validator, the validator must first run a validator node based on the latest released story binaries, then call the CreateValidator function with an initial staking amount, moniker, and commission rate. It also needs to set the max commission rate and max commission rate change to make sure it doesn’t change the commission rate later dramatically. The minimum commission rate that a validator can set is 5%.
+
+The initial staking amount needs to be larger than a threshold, which is 1024 IP. The amount will be deducted from the caller’s wallet. It can only be staked to a flexible period.
+
+If a validator tries to call create validator function the second time, it will be ignored.
+
+## Update validator commission
+
+This operation allows validators to edit their validator commission rate. If the updated commission rate is larger than max commission rate or the commission rate change delta is larger than max commission rate change, the operation will fail.
+
+A fee of 1 IP will be charged for updating a validator to prevent spamming. The fee will be burnt by the contract.
+
+The commission rate can only be updated once per day. It will not throw an error from the contract. But it won’t take effect in the consensus layer.
+
+## Stake
+
+Both the validator and delegator can stake tokens to a validator. A validator can stake to itself, which is called self-delegation. Users can decide if they want to stake with a fixed staking period or stake without a period (flexible staking).
+
+If a fixed period is chosen, a delegation id will be returned to the users. Users must use this delegation id to unstake tokens from this stake operation. If flexible staking is chosen, the returned delegation id will be 0.
+
+The staking amount needs to be larger than a threshold, which is 1024 IP.
+
+If a delegator delegates to a non-existent validator, the tokens will NOT be refunded.
+
+If users specify the token amount that has more than 9 decimal units, the actual staking amount will be rounded down to 9 decimal and refund the remaining back to the users.
+
+## Unstake
+
+When staking without a staking period, users can unstake anytime. The tokens will be distributed to the user’s account after the unbonding time.
+
+A fee of 1 IP will be charged for unstaking to prevent spamming. The fee will be burnt by the contract.
+
+When staking with a staking period, users can only unstake after the staking period is mature. The tokens will be distributed to the user’s account after the unbonding time. Unstaking requests before the staking period matures will be ignored.
+
+The minimum unstaking amount is 1024 IP. After the unstaking request is processed, if the remaining staked amount is less than 1024 IP, the remaining part will also be unstaked together.
+
+The unstaking request will first go through the unbonding process, which is 14 days. After that, the unbonded requests are sent to a withdrawal queue, distributing a maximum of 32 withdrawals per block. If there are more than 32 withdrawal requests in the withdrawal queue, the next 32 withdrawal requests will be processed in the next block.
+
+Partial unstake of a delegation is supported. For example, if a 1-year long delegation has 1 million tokens, after 1 year, users can unstake 500k from this delegation and keep the remaining staked to continue earning rewards.
+
+Unstake can fail if the validator, delegator and delegation id passed in is incorrect.
+
+Unstake can also fail if the maximum concurrent unbonding request (currently 14) has been reached for the validator/delegator pair.
+
+If the unstake amount passed in is larger than the total unstakable tokens, the current total unstakable amounts will be unstaked. For example, if users unstake 1024 IP and only have 1023 IP stake, 1023 IP will be withdrawn.
+
+If a validator exits, by either being offline and getting jailed, or not having enough stakes to be in the top 64 validator set, the delegators can unstake their tokens if the tokens are not in a staking period or their staking period is mature. Otherwise, delegators must wait until the staking period matures to unstake.
+
+If users specify the token amount that has more than 9 decimal units, the actual unstaking amount will be rounded down to 9 decimal.
+
+## Redelegate
+
+Redelegate operation allows a delegator to move its staked tokens from one validator to another. The tokens can be redelegated to the new validator immediately and start earning rewards. However, the redelegated tokens are still subject to the unbonding process, IF the source validator is in the active validator set or unbonding from the active validator set. During this 14 days unbounding time, it will be slashed if the original validator gets slashed.
+
+A fee of 1 IP will be charged for redelegation to prevent spamming. The fee will be burnt by the contract.
+
+The minimum redelegation amount is 1024 IP. If a delegator’s initial stake is 1024 IP but later gets slashed, it can still redelegate its tokens to another validator even if the token amount is less than 1024 IP.
+
+Similarly to unstaking, if the redelegation amount passed in is larger than the total redelegatable tokens, the total redelegatable amounts will be redelegated. If the remaining balance after redelegation is less than 1024 IP, all remaining tokens will be redelegated together.
+
+The delegation id will stay the same after the redelegation.
+
+Redelegation has its own maximum ongoing unbonding transaction limit per delegator/source validator/destination validator pair, which is also 14.
+
+Delegators can choose to redelegate their tokens to another active validator even if their tokens are still in an immature staking period. Their staking period maturation date and reward rate will stay the same.
+
+Redelegation can only be triggered when the source and destination validators support the same token type.
+
+If users specify the token amount that has more than 9 decimal units, the actual reledegated amount will be rounded down to 9 decimal.
+
+## Set withdrawal/reward address
+
+Delegators can call the staking contract to set a withdrawal address. The unstaked tokens will be sent to this withdrawal address. Similarly, delegators can set a separate reward address. All reward distributions will be sent to this address.
+
+A fee of 1 IP will be charged for updating either the withdrawal address or the reward address to prevent spamming. The fee will be burnt by the contract.
+
+The address change will take effect in the next block.
+
+## Slash/Unjail
+
+Slashing penalizes bad behaviors on the validators by slashing out a fraction of their staked tokens. Two types of behaviors can get slashed in Story: **double sign** and **downtime**.
+
+* **double sign**: If a validator double signs for a block, they will get slashed 5% of their tokens and get permanently jailed (called tombstoned).
+* **downtime**: If a validator is offline for too long and misses 95% of the past 28,800 blocks, they will get slashed 0.02% of their tokens and get jailed.
+
+A validator will also get jailed after self-undelegation if the validator’s remaining self-delegation amount is smaller than the minimum self-delegation (1024 IP).
+
+A jailed validator cannot participate in the consensus and earn any reward. But they can unjail themselves after a cooldown time, which is currently set to 10 minutes. After 10 minutes, it can call story’s staking contract to unjail itself IF their stake is more than minimum stake amount (1024 IP), after which it can participate in the consensus again if it’s still within the top 64 validators.
+
+A jailed validator can still withdraw all their stakes.
+
+Delegators can still stake and unstake from a jailed validator as long as there are remaining stakes on this jailed validator. The jailed validator will only be removed from the chain (hence not able to be staked/unstaked) when there is no remaining stake on it.
+
+A fee of 1 IP will be charged for unjailing a validator to prevent spamming. The fee will be burnt by the contract.
+
+## On behalf functions
+
+Most of the staking-related operations can be done from another wallet on behalf of the validators or delegators. Most of these on-behalf functions are permissionless since they spend tokens from the wallet that calls the on-behalf operations, not from the actual validators or delegators.
+
+## Add operator
+
+If a delegator wants to allow another wallet to unstake or redelegate on their behalf, they must call the staking contract to add that wallet as the operator for their delegator. After that, the operator can unstake and redelegate the delegator’s tokens on behalf of the delegator.
+
+The same applies to a validator who wants to allow another wallet to unjail on its behalf.
+
+A fee of 1 IP will be charged for adding an operator.
+
+## An additional data field
+
+Each function will include an additional unformatted `data` input field to accommodate potential future changes. It can avoid changing user interfaces in the future.
+
+## Validator key format
+
+Validator public keys are secp256k1 keys. The keys have a 33 bytes compressed version and 65 bytes uncompressed version. When interacting with the story's smart contracts, a 33 bytes compressed key is used to identify validators.
+
+# Rewards
+
+## Rewards Pool Allocation
+
+For every block, a fixed proportion of token inflation will go to the rewards distribution pool, which will be shared among all 64 active validators according to each of their share weights. *These allocated tokens will then be shared among the validator and its delegators in a fashion described by the next section.* The validator share weight is calculated based on the total token staking amount, and whether or not the token staking type is locked or unlocked.
+
+As an example, assume that we have 100 tokens allocated for the validator rewards distribution pool, and assume that we only have 3 active validators:
+
+* validatorA with 10 locked tokens staked
+* validatorB with 10 locked tokens staked
+* validatorC with 10 unlocked tokens staked
+
+To calculate how many tokens each validator receives, we first calculate each of their weighted shares, which is defined as the number of staked tokens multiplied by their rewards multiplier (0.5 if staking locked tokens, 1 if staking unlocked tokens). This gives us:
+
+* validatorA with 10 \* 0.5 = 5 shares
+* validatorB with 10 \* 0.5 = 5 shares
+* validatorC with 10 \* 1 = 10 shares
+
+With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each validator:
+
+* validatorA with 100 \* (5 / 20) = 25 tokens
+* validatorB with 100 \* (5 / 20) = 25 tokens
+* validatorC with 100 \* (10 / 20) = 50 tokens
+
+The formula for calculating the total number of tokens allocated for a validator is as follows:
+
+<Image align="center" src="https://files.readme.io/833d419fc139ba363c56aef263dcca571fe449ab824a2349a69d7419ee658bd0-Screenshot_2024-10-30_at_8.13.27_PM.png" />
+
+where
+
+* R\_i is the total inflationary token rewards for validator i
+* S\_i is the staked tokens for validator i
+* M\_i is the rewards multiplier (0.5 for locked tokens, 1 for unlocked tokens)
+* R\_total is the total inflationary tokens allocated for the rewards pool
+
+## Validator And Delegator Rewards
+
+Total rewards allocations (*whose calculations are shown in the prior section*) for each validator are shared between the validator itself and all of its delegators:
+
+* The validator takes a fixed percentage commission, set by the validator itself
+* Remaining rewards are distributed among delegators according to their share weights
+
+Calculation of delegator rewards is similar to that of validator rewards, where the proportion of tokens received for each delegator out of the remaining validator rewards is calculated based on each delegator’s staking multiplier (described in the staking section).
+
+As an example, assume a validator has 100 total rewards allocated to it, with a validator commission of 20%, and 3 delegators delegating to it:
+
+* delegatorA with 10 tokens staked and a staking multiplier of 1
+* delegatorB with 10 tokens staked and a staking multiplier of 1
+* delegatorC with 10 tokens staked and a staking multiplier of 2
+
+To calculate how many tokens each delegator receives, we first calculate each of their weighted shares, which is defined as the number of staked tokens multiplied by their staking rewards multiplier. This gives us:
+
+* delegatorA with 10 \* 1 = 10 shares
+* delegatorB with 10 \* 1 = 10 shares
+* delegatorC with 10 \* 2 = 20 shares
+
+With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each delegator, noting that the total number of tokens to be distributed among delegators is give by 100 - (100 \* 0.20) = 80:
+
+* delegatorA with 80 \* (10 / 40) = 20 tokens
+* delegatorB with 80 \* (10 / 40) = 20 tokens
+* delegatorC with 80 \* (20 / 40) = 40 tokens
+
+The formula for calculating the delegator token reward can be found below:
+
+<Image align="center" src="https://files.readme.io/429c0eff2f0acddcabfa3e6259e427b47156aed244020bfb7f11a5b63387fec9-Screenshot_2024-10-30_at_8.15.51_PM.png" />
+
+where
+
+* D\_i is the total inflationary token rewards for delegator i
+* S\_i is the staked tokens for delegator i
+* M\_i is the staked rewards multiplier for delegator i
+* R\_total is the total inflationary tokens allocated for the validator
+* C is the commission rate for the validator
+
+The validator commission is also treated as a reward and will follow the same auto-reward distribution rule described below. The minimal validator commission is set to 5% to avoid a cut-throat competition of lower commission rates among validators.
+
+The reward calculation results will be rounded down to gwei. Anything smaller than 1 gwei will be truncated.
+
+## Auto reward distribution
+
+The reward is accumulated per block and can be distributed per block. However, it will only be automatically distributed to the delegator’s account when it is larger than a threshold. The default and also minimal threshold is 8 IP, which means that only if the delegator’s reward is more than 8 IP, it will be sent to the delegator’s account.
+
+The reward distribution will go to a reward distribution queue, which only processes a fixed amount of reward distribution requests per block. The reward distribution per block is 32.
+
+The staking reward cannot be manually withdrawn by design.
+
+# Community Pool
+
+A percentage of the newly minted tokens in every block will go to a community pool contract. The foundation will determine how to use the tokens sent to the pool. The maximum community pool percentage that can be set is 20%.
+
+The community pool contract address: **0xcccccc0000000000000000000000000000000002**
+
+# Singularity
+
+The first 1,580,851 blocks after the genesis is called Singularity, during which everyone can create a validator and stake tokens but the active validator set will only have the genesis validators. There is also no new token emission, hence no reward. Unstake and redelegate are also not supported.
+
+The Genesis validator set consists of 8 validators, setup by the foundation and trusted staking institutions. 4 of them support locked tokens and the other 4 support unlocked tokens. Each of them has an initial stake of 0.001 IP. Each of them will set a commission rate. During the Singularity, the genesis valdiators will need to self delegate at least 1024 IP to perform validator operations like editing validator commission rate.
+
+After Singularity, the top 64 validator nodes with the highest stakes will be selected to participate in consensus and receive rewards.
+
+Slashing/Jail won’t happen during Singularity.
+
+# Staking contract
+
+Story’s staking contract will handle all validators/delegators related operations. It’s deployed to address: **0xcccccc0000000000000000000000000000000001**
+
+The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
 
 # Release Notes
 This page provides information on the story execution and consensus client software release information. You may find execution client releases in [story-geth](https://github.com/piplabs/story-geth/releases) repo, and consensus client releases in [story](https://github.com/piplabs/story/releases) repo.
@@ -1722,1146 +2049,6 @@ rm ~/.story/story/config/priv_validator_key.json
 
 4. After transferring the private key file, restart the validator node on your new setup. This will reintegrate your validator with the network, enabling it to resume its validation role.
 
-# Staking Design
-# Purpose
-
-This document walks through the staking specification for Story. The goal is to provide clarity to network participants and technical partners on how Story’s staking mechanics work and how users can interface with our chain.
-
-# Tokenomics
-
-## Genesis
-
-The story genesis allocation will consist of 1 billion tokens, distributed among ecosystem participants, the foundation, investors, and the core team.  Please refer this document for the detailed [Token Distribution](https://www.story.foundation/blog/introducing-ip).
-
-## Locked vs Unlocked tokens
-
-Unlocked tokens have no restrictions imposed on them and can be used for gas consumption, transfers, and staking.
-
-Unlike unlocked tokens, locked tokens cannot be transferred or traded and are unlocked based on an unlock schedule. However, locked tokens may be staked to earn staking rewards, with the locked staking reward rate being half of that of unlocked tokens.
-
-Staked locked and unlocked tokens have the same voting power. That means that a validator with 100 staked locked tokens has the same network voting power as a validator with 100 staked unlocked tokens.
-
-Both types of tokens can be slashed if their validators get slashed.
-
-## Token emissions
-
-A fixed number of tokens will be allocated for emissions in the first year, with the quantity determined by the foundation at Genesis. For subsequent years, the number of emitted tokens will be controlled by an emissions algorithm whose parameters may be updated via governance or subject to change via hard forks. The emissions per block are controlled by the following two parameters:
-
-* blocks\_per\_year: 10368000 blocks
-  * The number of blocks expected to be produced in a year
-* inflations\_per\_year: 20,000,000 tokens
-  * The total number of inflationary tokens to be emitted in a year
-
-New emissions will flow to two places:
-
-1. Block Rewards
-2. Community Pool
-
-## Token burn
-
-Since Story uses a fork of geth as the execution client, the burning mechanism follows Ethereum’s EIP-1559.
-
-# Staking
-
-> 🔗 <a href="https://staking.story.foundation/" target="_blank">Stake with the Staking Dashboard ↗️</a>
-
-Story supports the below staking-related operations
-
-* Create validator
-* Update validator commission
-* Stake
-* Stake on behalf
-* Unstake
-* Unstake on behalf
-* Redelegate
-* Redelegate on behalf
-* Set withdraw address
-* Set reward address
-* Unjail
-* Unjail on behalf
-
-Before explaining the behavior of each of these operations, some high-level concepts like **Token Staking Types**, **Validator Set Status**, **Unbonding**, and **Staking Period** will be explained first:
-
-## Token Staking Types
-
-As staking is enabled for both locked and unlocked tokens, validators must choose which type of token staking they want to support. Once a token staking type is selected, validators cannot switch to a different type.
-
-## Validator Set Status
-
-In Story, validators are grouped into one of two sets, (1) the active (bonded) validator set, which participates in consensus and receives block rewards, or (2) the non-active (unbonded) validator set, which does not contribute to the consensus process. To be selected as part of the active validator set, a validator must be one of the top 64 validators ranked by staked tokens.
-
-## Unbonding
-
-Unstaking for delegators is subject to an unbonding process. Users must wait for an unbonding time before any tokens return to their accounts.
-
-This is the same for validators who self-delegate to themselves. They also need to go through the unbonding process when they want to unstake.
-
-The unbonding time is 14 days. During the unbonding period, the delegator/validator will not earn block rewards. But they may still be slashed.
-
-For each validator/delegator pair, the maximum ongoing unbonding transactions is 14. More unbonding requests beyond this limit will fail.
-
-## Staking period
-
-Delegators can decide how flexible and how long they want to stake their tokens. By default, for both locked and unlocked tokens, delegators can stake and then unstake immediately and get their token back after the unbonding time. We call this **flexible staking** in this document.
-
-For unlocked tokens, a few more fixed staking periods are supported: 90 days, 360 days, and 540 days. In this case, users can only call unstake after the staking period is mature. Any call earlier than the mature day will be discarded. Unstaking from a mature staking period is still subject to the unbonding process, meaning users will get their staked tokens back after 14 days of unbonding time.
-
-Staking in these fixed staking periods earns more rewards. The longer the period, the bigger the reward weight multiplier. Reward multiplier for different periods:
-
-* Locked flexible period - **0.5**
-* Flexible period - **1.0**
-* 90 days - **1.1**
-* 360 days - **1.5**
-* 540 days - **2**
-
-For locked tokens, only flexible staking is allowed and the reward multiplier is **0.5**. If a user delegates their locked tokens to a staking period, we will convert that to a flexible staking delegation.
-
-After the staking period ends, users can choose not to unstake. In this case, they will continue earning the same reward rate based on the reward rate of the corresponding staking period until they unstake manually. They can unstake at any time after the staking period ends. For example, if the 1-year staking period’s reward rate is 0.02% per block, after staking for 1 year, users can still earn 0.02% per block of the reward until they unstake.
-
-## Decimal for stake amounts
-
-The decimal for stake operations (stake, unstake, redelegate, etc.) is 9. If a user specifies a smaller value, the dust will be refunded back to the users. Or if there is no token transfer involved, the specified value will be rounded down to 9 decimals.
-
-# Staking Operations
-
-## Create validator
-
-To become a validator, the validator must first run a validator node based on the latest released story binaries, then call the CreateValidator function with an initial staking amount, moniker, and commission rate. It also needs to set the max commission rate and max commission rate change to make sure it doesn’t change the commission rate later dramatically. The minimum commission rate that a validator can set is 5%.
-
-The initial staking amount needs to be larger than a threshold, which is 1024 IP. The amount will be deducted from the caller’s wallet. It can only be staked to a flexible period.
-
-If a validator tries to call create validator function the second time, it will be ignored.
-
-## Update validator commission
-
-This operation allows validators to edit their validator commission rate. If the updated commission rate is larger than max commission rate or the commission rate change delta is larger than max commission rate change, the operation will fail.
-
-A fee of 1 IP will be charged for updating a validator to prevent spamming. The fee will be burnt by the contract.
-
-The commission rate can only be updated once per day. It will not throw an error from the contract. But it won’t take effect in the consensus layer.
-
-## Stake
-
-Both the validator and delegator can stake tokens to a validator. A validator can stake to itself, which is called self-delegation. Users can decide if they want to stake with a fixed staking period or stake without a period (flexible staking).
-
-If a fixed period is chosen, a delegation id will be returned to the users. Users must use this delegation id to unstake tokens from this stake operation. If flexible staking is chosen, the returned delegation id will be 0.
-
-The staking amount needs to be larger than a threshold, which is 1024 IP.
-
-If a delegator delegates to a non-existent validator, the tokens will NOT be refunded.
-
-If users specify the token amount that has more than 9 decimal units, the actual staking amount will be rounded down to 9 decimal and refund the remaining back to the users.
-
-## Unstake
-
-When staking without a staking period, users can unstake anytime. The tokens will be distributed to the user’s account after the unbonding time.
-
-A fee of 1 IP will be charged for unstaking to prevent spamming. The fee will be burnt by the contract.
-
-When staking with a staking period, users can only unstake after the staking period is mature. The tokens will be distributed to the user’s account after the unbonding time. Unstaking requests before the staking period matures will be ignored.
-
-The minimum unstaking amount is 1024 IP. After the unstaking request is processed, if the remaining staked amount is less than 1024 IP, the remaining part will also be unstaked together.
-
-The unstaking request will first go through the unbonding process, which is 14 days. After that, the unbonded requests are sent to a withdrawal queue, distributing a maximum of 32 withdrawals per block. If there are more than 32 withdrawal requests in the withdrawal queue, the next 32 withdrawal requests will be processed in the next block.
-
-Partial unstake of a delegation is supported. For example, if a 1-year long delegation has 1 million tokens, after 1 year, users can unstake 500k from this delegation and keep the remaining staked to continue earning rewards.
-
-Unstake can fail if the validator, delegator and delegation id passed in is incorrect.
-
-Unstake can also fail if the maximum concurrent unbonding request (currently 14) has been reached for the validator/delegator pair.
-
-If the unstake amount passed in is larger than the total unstakable tokens, the current total unstakable amounts will be unstaked. For example, if users unstake 1024 IP and only have 1023 IP stake, 1023 IP will be withdrawn.
-
-If a validator exits, by either being offline and getting jailed, or not having enough stakes to be in the top 64 validator set, the delegators can unstake their tokens if the tokens are not in a staking period or their staking period is mature. Otherwise, delegators must wait until the staking period matures to unstake.
-
-If users specify the token amount that has more than 9 decimal units, the actual unstaking amount will be rounded down to 9 decimal.
-
-## Redelegate
-
-Redelegate operation allows a delegator to move its staked tokens from one validator to another. The tokens can be redelegated to the new validator immediately and start earning rewards. However, the redelegated tokens are still subject to the unbonding process, IF the source validator is in the active validator set or unbonding from the active validator set. During this 14 days unbounding time, it will be slashed if the original validator gets slashed.
-
-A fee of 1 IP will be charged for redelegation to prevent spamming. The fee will be burnt by the contract.
-
-The minimum redelegation amount is 1024 IP. If a delegator’s initial stake is 1024 IP but later gets slashed, it can still redelegate its tokens to another validator even if the token amount is less than 1024 IP.
-
-Similarly to unstaking, if the redelegation amount passed in is larger than the total redelegatable tokens, the total redelegatable amounts will be redelegated. If the remaining balance after redelegation is less than 1024 IP, all remaining tokens will be redelegated together.
-
-The delegation id will stay the same after the redelegation.
-
-Redelegation has its own maximum ongoing unbonding transaction limit per delegator/source validator/destination validator pair, which is also 14.
-
-Delegators can choose to redelegate their tokens to another active validator even if their tokens are still in an immature staking period. Their staking period maturation date and reward rate will stay the same.
-
-Redelegation can only be triggered when the source and destination validators support the same token type.
-
-If users specify the token amount that has more than 9 decimal units, the actual reledegated amount will be rounded down to 9 decimal.
-
-## Set withdrawal/reward address
-
-Delegators can call the staking contract to set a withdrawal address. The unstaked tokens will be sent to this withdrawal address. Similarly, delegators can set a separate reward address. All reward distributions will be sent to this address.
-
-A fee of 1 IP will be charged for updating either the withdrawal address or the reward address to prevent spamming. The fee will be burnt by the contract.
-
-The address change will take effect in the next block.
-
-## Slash/Unjail
-
-Slashing penalizes bad behaviors on the validators by slashing out a fraction of their staked tokens. Two types of behaviors can get slashed in Story: **double sign** and **downtime**.
-
-* **double sign**: If a validator double signs for a block, they will get slashed 5% of their tokens and get permanently jailed (called tombstoned).
-* **downtime**: If a validator is offline for too long and misses 95% of the past 28,800 blocks, they will get slashed 0.02% of their tokens and get jailed.
-
-A validator will also get jailed after self-undelegation if the validator’s remaining self-delegation amount is smaller than the minimum self-delegation (1024 IP).
-
-A jailed validator cannot participate in the consensus and earn any reward. But they can unjail themselves after a cooldown time, which is currently set to 10 minutes. After 10 minutes, it can call story’s staking contract to unjail itself IF their stake is more than minimum stake amount (1024 IP), after which it can participate in the consensus again if it’s still within the top 64 validators.
-
-A jailed validator can still withdraw all their stakes.
-
-Delegators can still stake and unstake from a jailed validator as long as there are remaining stakes on this jailed validator. The jailed validator will only be removed from the chain (hence not able to be staked/unstaked) when there is no remaining stake on it.
-
-A fee of 1 IP will be charged for unjailing a validator to prevent spamming. The fee will be burnt by the contract.
-
-## On behalf functions
-
-Most of the staking-related operations can be done from another wallet on behalf of the validators or delegators. Most of these on-behalf functions are permissionless since they spend tokens from the wallet that calls the on-behalf operations, not from the actual validators or delegators.
-
-## Add operator
-
-If a delegator wants to allow another wallet to unstake or redelegate on their behalf, they must call the staking contract to add that wallet as the operator for their delegator. After that, the operator can unstake and redelegate the delegator’s tokens on behalf of the delegator.
-
-The same applies to a validator who wants to allow another wallet to unjail on its behalf.
-
-A fee of 1 IP will be charged for adding an operator.
-
-## An additional data field
-
-Each function will include an additional unformatted `data` input field to accommodate potential future changes. It can avoid changing user interfaces in the future.
-
-## Validator key format
-
-Validator public keys are secp256k1 keys. The keys have a 33 bytes compressed version and 65 bytes uncompressed version. When interacting with the story's smart contracts, a 33 bytes compressed key is used to identify validators.
-
-# Rewards
-
-## Rewards Pool Allocation
-
-For every block, a fixed proportion of token inflation will go to the rewards distribution pool, which will be shared among all 64 active validators according to each of their share weights. *These allocated tokens will then be shared among the validator and its delegators in a fashion described by the next section.* The validator share weight is calculated based on the total token staking amount, and whether or not the token staking type is locked or unlocked.
-
-As an example, assume that we have 100 tokens allocated for the validator rewards distribution pool, and assume that we only have 3 active validators:
-
-* validatorA with 10 locked tokens staked
-* validatorB with 10 locked tokens staked
-* validatorC with 10 unlocked tokens staked
-
-To calculate how many tokens each validator receives, we first calculate each of their weighted shares, which is defined as the number of staked tokens multiplied by their rewards multiplier (0.5 if staking locked tokens, 1 if staking unlocked tokens). This gives us:
-
-* validatorA with 10 \* 0.5 = 5 shares
-* validatorB with 10 \* 0.5 = 5 shares
-* validatorC with 10 \* 1 = 10 shares
-
-With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each validator:
-
-* validatorA with 100 \* (5 / 20) = 25 tokens
-* validatorB with 100 \* (5 / 20) = 25 tokens
-* validatorC with 100 \* (10 / 20) = 50 tokens
-
-The formula for calculating the total number of tokens allocated for a validator is as follows:
-
-<Image align="center" src="https://files.readme.io/833d419fc139ba363c56aef263dcca571fe449ab824a2349a69d7419ee658bd0-Screenshot_2024-10-30_at_8.13.27_PM.png" />
-
-where
-
-* R\_i is the total inflationary token rewards for validator i
-* S\_i is the staked tokens for validator i
-* M\_i is the rewards multiplier (0.5 for locked tokens, 1 for unlocked tokens)
-* R\_total is the total inflationary tokens allocated for the rewards pool
-
-## Validator And Delegator Rewards
-
-Total rewards allocations (*whose calculations are shown in the prior section*) for each validator are shared between the validator itself and all of its delegators:
-
-* The validator takes a fixed percentage commission, set by the validator itself
-* Remaining rewards are distributed among delegators according to their share weights
-
-Calculation of delegator rewards is similar to that of validator rewards, where the proportion of tokens received for each delegator out of the remaining validator rewards is calculated based on each delegator’s staking multiplier (described in the staking section).
-
-As an example, assume a validator has 100 total rewards allocated to it, with a validator commission of 20%, and 3 delegators delegating to it:
-
-* delegatorA with 10 tokens staked and a staking multiplier of 1
-* delegatorB with 10 tokens staked and a staking multiplier of 1
-* delegatorC with 10 tokens staked and a staking multiplier of 2
-
-To calculate how many tokens each delegator receives, we first calculate each of their weighted shares, which is defined as the number of staked tokens multiplied by their staking rewards multiplier. This gives us:
-
-* delegatorA with 10 \* 1 = 10 shares
-* delegatorB with 10 \* 1 = 10 shares
-* delegatorC with 10 \* 2 = 20 shares
-
-With the weighted and total shares calculated, we can then get the total number of inflationary tokens allocated for each delegator, noting that the total number of tokens to be distributed among delegators is give by 100 - (100 \* 0.20) = 80:
-
-* delegatorA with 80 \* (10 / 40) = 20 tokens
-* delegatorB with 80 \* (10 / 40) = 20 tokens
-* delegatorC with 80 \* (20 / 40) = 40 tokens
-
-The formula for calculating the delegator token reward can be found below:
-
-<Image align="center" src="https://files.readme.io/429c0eff2f0acddcabfa3e6259e427b47156aed244020bfb7f11a5b63387fec9-Screenshot_2024-10-30_at_8.15.51_PM.png" />
-
-where
-
-* D\_i is the total inflationary token rewards for delegator i
-* S\_i is the staked tokens for delegator i
-* M\_i is the staked rewards multiplier for delegator i
-* R\_total is the total inflationary tokens allocated for the validator
-* C is the commission rate for the validator
-
-The validator commission is also treated as a reward and will follow the same auto-reward distribution rule described below. The minimal validator commission is set to 5% to avoid a cut-throat competition of lower commission rates among validators.
-
-The reward calculation results will be rounded down to gwei. Anything smaller than 1 gwei will be truncated.
-
-## Auto reward distribution
-
-The reward is accumulated per block and can be distributed per block. However, it will only be automatically distributed to the delegator’s account when it is larger than a threshold. The default and also minimal threshold is 8 IP, which means that only if the delegator’s reward is more than 8 IP, it will be sent to the delegator’s account.
-
-The reward distribution will go to a reward distribution queue, which only processes a fixed amount of reward distribution requests per block. The reward distribution per block is 32.
-
-The staking reward cannot be manually withdrawn by design.
-
-# Community Pool
-
-A percentage of the newly minted tokens in every block will go to a community pool contract. The foundation will determine how to use the tokens sent to the pool. The maximum community pool percentage that can be set is 20%.
-
-The community pool contract address: **0xcccccc0000000000000000000000000000000002**
-
-# Singularity
-
-The first 1,580,851 blocks after the genesis is called Singularity, during which everyone can create a validator and stake tokens but the active validator set will only have the genesis validators. There is also no new token emission, hence no reward. Unstake and redelegate are also not supported.
-
-The Genesis validator set consists of 8 validators, setup by the foundation and trusted staking institutions. 4 of them support locked tokens and the other 4 support unlocked tokens. Each of them has an initial stake of 0.001 IP. Each of them will set a commission rate. During the Singularity, the genesis valdiators will need to self delegate at least 1024 IP to perform validator operations like editing validator commission rate.
-
-After Singularity, the top 64 validator nodes with the highest stakes will be selected to participate in consensus and receive rewards.
-
-Slashing/Jail won’t happen during Singularity.
-
-# Staking contract
-
-Story’s staking contract will handle all validators/delegators related operations. It’s deployed to address: **0xcccccc0000000000000000000000000000000001**
-
-The contract interfaces are defined here: [https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol)
-
-# 🏗️ Node Architecture
-Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api) defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
-
-`story-geth` is a fork of the Geth client, with the addition of the [IPGraph Precompile](doc:precompile) and [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) precompile. It handles transaction execution, broadcasting and state storage while maintaining full compatibility with the Ethereum Virtual Machine (EVM) and supporting all Ethereum JSON-RPC methods.
-
-`story` is built on the Cosmos SDK and CometBFT. The Cosmos SDK provides a modular framework for building blockchain applications, enabling seamless integration of new modules and features while allowing the network to be easily extended and customized. `story` client introduces upgrades and additional Cosmos SDK modules to support Engine API integration and novel staking mechanisms. CometBFT, a high-performance, scalable, and secure consensus engine, has been extensively tested within the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec).
-
-<Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
-
-<br />
-
-### Warning
-
-Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
-
-# List of Modules
-# List of Modules
-
-Here is a list of all production-grade modules that can be used on the Story blockchain, along with their respective documentation:
-
-* [evmengine](./evmengine-module) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](engine-api).
-* [evmstaking](./evmstaking-module) - Handles staking and network emission logics with queues.
-* [mint](./mint-module)
-
-## Cosmos SDK (modified)
-
-Story network uses the following Cosmos SDK modules with some modifications:
-
-* [staking](./staking-module)
-* [distribution](https://docs.cosmos.network/main/build/modules/distribution)
-
-## Cosmos SDK (unmodified)
-
-Story network uses the following Cosmos SDK modules without non-trivial modifications:
-
-* [auth](https://docs.cosmos.network/main/build/modules/auth)
-* [bank](https://docs.cosmos.network/main/build/modules/bank)
-* [consensusparams](https://docs.cosmos.network/main/build/modules/consensus)
-* [gov](https://docs.cosmos.network/main/build/modules/gov)
-* [slashing](https://docs.cosmos.network/main/build/modules/slashing)
-* [upgrade](https://docs.cosmos.network/main/build/modules/upgrade)
-
-# mint
-## Contents
-
-1. [Contents](#contents)
-2. [State](#state)
-3. [Begin Block](#begin-block)
-4. [Parameters](#parameters)
-5. [Events](#events)
-
-## State
-
-### Params
-
-* Params: `mint/params -> legacy_amino(params)`
-
-```protobuf protobuf
-message Params {
-  option (amino.name) = "client/x/mint/Params";
-
-  // type of coin to mint
-  string mint_denom = 1;
-  // inflation amount per year
-  string inflations_per_year = 2 [
-    (cosmos_proto.scalar)  = "cosmos.Dec",
-    (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
-    (gogoproto.nullable)   = false
-  ];
-  // expected blocks per year
-  uint64 blocks_per_year = 3;
-}
-```
-
-## Begin Block
-
-Minting parameters are calculated and inflation paid at the beginning of each block.
-
-### Inflation amount calculation
-
-Inflation amount is calculated using an "inflation calculation function" that's\
-passed to the `NewAppModule` function. If no function is passed, then the SDK's
-default inflation function will be used (`DefaultInflationCalculationFn`). In case a custom
-inflation calculation logic is needed, this can be achieved by defining and
-passing a function that matches `InflationCalculationFn`'s signature.
-
-```go
-type InflationCalculationFn func(ctx sdk.Context, minter Minter, params Params, bondedRatio math.LegacyDec) math.LegacyDec
-```
-
-## Parameters
-
-The minting module contains the following parameters:
-
-| Key               | Type            | Example             |
-| ----------------- | --------------- | ------------------- |
-| MintDenom         | string          | "stake"             |
-| InflationsPerYear | string (dec)    | "20000000000000000" |
-| BlocksPerYear     | string (uint64) | "10368000"          |
-
-* `MintDenom` is the coin denominator used.
-* `InflationsPerYear` is the target inflation per year, in 1e18 decimals.
-* `BlocksPerYear` is the target number of blocks per year.
-
-## Events
-
-The minting module emits the following events:
-
-### BeginBlocker
-
-| Type | Attribute Key | Attribute Value |
-| :--- | :------------ | :-------------- |
-| mint | amount        | "1000"          |
-
-# evmstaking
-## Abstract
-
-This document specifies the internal `x/evmstaking` module of the Story blockchain.
-
-In Story blockchain, the gas token resides on the execution layer (EL) to pay for transactions and interact with smart contracts. However, the consensus layer (CL) manages the consensus staking, slashing, and rewarding. This module exists to facilitate CL-level staking-related logic, such as delegating to validators with custom lock periods.
-
-## Contents
-
-1. **[State](#state)**
-2. **[Two Queue System](#two-queue-system)**
-3. **[Withdrawal Queue Content](#withdrawal-queue-content)**
-4. **[End Block](#end-block)**
-5. **[Processing Staking Events](#processing-staking-events)**
-6. **[Withdrawing Delegations](#withdrawing-delegations)**
-7. **[Withdrawing Rewards](#withdrawing-rewards)**
-8. **[Withdrawing UBI](#withdrawing-ubi)**
-
-## State
-
-### Withdrawal Queue
-
-Type: `Queue[types.Withdrawal]`
-
-The (stake) withdrawal queue stores the pending unbonded stakes to be burned on CL and minted on EL. Stakes that are unbonded after 14 days of unstaking period are added to the queue to be processed.
-
-### Reward Withdrawal Queue
-
-Type: `Queue[types.Withdrawal]`
-
-The reward withdrawal queue stores the pending rewards from stakes to be burned on CL and minted on EL. All rewards above a threshold are eligible to be queued in this queue, but there exists a parameter of maximum additions per block.
-
-### Parameters
-
-```protobuf protobuf
-message Params {
-  uint32 max_withdrawal_per_block = 1 [
-    (gogoproto.moretags) = "yaml:\"max_withdrawal_per_block\""
-  ];
-  uint32 max_sweep_per_block = 2 [
-    (gogoproto.moretags) = "yaml:\"max_sweep_per_block\""
-  ];
-  uint64 min_partial_withdrawal_amount = 3 [
-    (gogoproto.moretags) = "yaml:\"min_partial_withdrawal_amount\""
-  ];
-  string ubi_withdraw_address = 4 [
-    (gogoproto.moretags) = "yaml:\"ubi_withdraw_address\""
-  ];
-}
-```
-
-* `max_withdrawal_per_block` is the maximum number of withdrawals (reward and unstakes, each) to process per block. This parameter prevents nodes from processing a large amount of withdrawals at once, which could exceed the max chain timeout.
-* `max_sweep_per_block` is the maximum number of validator-delegator delegations to sweep per block. This parameter prevents nodes from processing a large amount of delegations at once.
-* `min_partial_withdrawal_amount` is the minimum amount required for rewards to get added to the reward withdrawal queue.
-* `ubi_withdrawal_address` is the UBI contract address to which UBI withdrawals should be deposited.
-
-### Delegator Withdraw Address
-
-Type: `Map[string, string]`
-
-The delegator-withdraw address mapping tracks the address to which a delegator receives their withdrawn stakes. The (stake) withdrawal queue uses this map to determine the `execution_address` in the `Withdrawal` struct used in building an EVM block payload.
-
-While the delegator can change the withdraw address at any time, existing stake withdraw requests in the (stake) withdrawal queue will maintain their original values.
-
-### Delegator Reward Address
-
-The delegator-reward address mapping tracks the address to which a delegator receives their reward stakes, similar to the delegator-withdraw mapping.
-
-While the delegator can change the reward address at any time, existing reward withdraw requests in the reward withdrawal queue will maintain their original values.
-
-Type: `Map[string, string]`
-
-### Delegator Operator Address
-
-Type: `Map[string, string]`
-
-The delegator-operator address mapping tracks the address to which a delegator has given the privilege to delegate (stake), undelegate (unstake), and redelegate on behalf of themselves.
-
-### IP Token Staking Contract
-
-Type: `*bindings.IPTokenStaking`
-
-IPTokenStaking contract is used to filter and parse staking-related events from EL.
-
-## Two Queue System
-
-The module departs from traditional Cosmos SDK staking module's unstaking system, where all unbonded entries (stakes that have unbonded after 14 days of unbonding period) are immediately distributed into delegators account. Instead, Story's unstaking system assimilates Ethereum 2.0's unstaking system, where 16 full or partial (reward) withdrawals are processed per slot.
-
-In a single queue of withdrawals, reward withdrawals can significantly delay stake withdrawals. Hence, Story blockchain implements a two-queue system where a max amount to process per block is enforced per queue. In other words, the stake/ubi withdrawal and reward withdrawal queues can each process the max parameter per block.
-
-## Withdrawal Queue Content
-
-Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine-module) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](engine-api). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
-
-In other words, the `evmstaking` module is in charge of parsing, processing, and inserting withdrawal requests to two queues, while the `evmengine` module is in charge of validating and dequeuing withdrawal requests, as well as depositing them to corresponding withdrawal addresses in EL.
-
-## End Block
-
-The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
-
-If the network is in the [Singularity period](tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations) and [Withdrawing Rewards](#withdrawing-rewards) for detailed withdrawal processes.
-
-## Processing Staking Events
-
-The module parses and processes staking events emitted from the [IPTokenStaking contract](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol), which are collected by the [evmengine](./evmengine-module) module. The list of events are:
-
-### Staking events
-
-* Create Validator
-* Deposit (delegate)
-* Withdraw (undelegate)
-* Redelegate
-* Unjail: anyone can request to unjail a jailed validator by paying the unjail fee in the contract.
-
-These operations incur a fixed gas cost to prevent spam.
-
-### Parameter events
-
-* Update Validator Commission: update the validator commission.
-* Set Withdrawal Address: delegator can modify their withdrawal address for future unstakes/undelegations.
-* Set Reward Address: delegator can modify their withdrawal address for future reward emissions.
-* Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelegation.
-* Unset Operator: delegator can remove operator.
-
-These operations incur a fixed gas cost to prevent spam.
-
-## Withdrawal
-
-Both withdrawal queues hold withdrawals of type:
-
-```protobuf protobuf
-message Withdrawal {
-  option (gogoproto.equal) = true;
-  option (gogoproto.goproto_getters) = false;
-
-  uint64 creation_height = 1;
-  string execution_address = 2 [
-    (cosmos_proto.scalar) = "cosmos.AddressString",
-    (gogoproto.moretags) = "yaml:\"execution_address\""
-  ];
-  uint64 amount = 3 [
-    (gogoproto.moretags) = "yaml:\"amount\""
-  ];
-  WithdrawalType withdrawal_type = 4 [
-    (gogoproto.moretags) = "yaml:\"withdrawal_type\""
-  ];
-  string validator_address = 5 [
-    (gogoproto.moretags) = "yaml:\"validator_address\""
-  ];
-}
-```
-
-* `creation_height` is the block height at which the withdrawal is created.
-* `execution_address` is the EVM address receiving the withdrawn fund, which is burned in CL.
-* `amount` is the amount to burn on CL and mint on EL.
-* `withdrawal_type` is the type of withdrawal: $0$ for unstakes, $1$ for reward, and $2$ for UBI.
-* `validator_address` is the EVM validator address.
-
-### Withdrawing Delegations
-
-Delegations that have unbonded after 14 days of unbonding period (ie. unbonded entries) gets added to the (stake) withdrawal queue at the end of each block. If validator is totally-unstaked, ie. all delegations and self-delegations are unbonded, then validator's commission is also withdrawn.
-
-### Withdrawing Rewards
-
-Inflation rewards allocated to delegations are auto-swept at the end of each block. If a delegation's accrued reward is greater than the parameterized threshold, the reward is added to the reward withdrawal queue to be credited to the delegator's EVM reward address.
-
-# evmengine
-## Abstract
-
-This document specifies the internal `x/evmengine` module of the Story blockchain.
-
-As Story Network separates the consensus and execution client, like Ethereum, the consensus client (CL) and execution client (EL) needs to communicate to sync to the network, propose proper EVM blocks, and execute EVM-triggered EL actions in CL.
-
-The module exists to facilitate all communications between CL and EL using the [Engine API](engine-api), from staking and upgrades to driving block production and consensus in CL and EL.
-
-## Contents
-
-1. **[State](#state)**
-2. **[Prepare Proposal](#prepare-proposal)**
-3. **[Process Proposal](#process-proposal)**
-4. **[Post Finalize](#post-finalize)**
-5. **[Messages](#messages)**
-6. **[UBI](#ubi)**
-7. **[Upgrades](#upgrades)**
-
-## State
-
-### Build Delay
-
-Type: `time.Duration`
-
-Build delay determines the wait duration from the start of `PrepareProposal` ABCI2 call before fetching the next EVM block data to propose from EL via the [Engine API](engine-api). Applicable to the current proposer only. If the node has a block optimistically built beforehand, the build delay is not used.
-
-### Build Optimistic
-
-Type: `bool`
-
-Enable optimistic building of a block if true. A node will deterministically build the next block if it finds itself as the next proposer in the current block. Optimistic building starts with requesting the next EVM block data (for the next CL block) immediately after the `FinalizeBlock` of ABCI2.
-
-### Head Table
-
-Type: `ExecutionHeadTable`
-
-Head table stores the latest execution head data to be used for partial validation of EVM blocks received from other validators. When the chain initializes, the execution head is populated with the genesis execution hash loaded from `genesis.json`.
-
-The following execution head is stored in the table.
-
-```protobuf protobuf
-message ExecutionHead {
-  option (cosmos.orm.v1.table) = {
-    id: 1;
-    primary_key: { fields: "id", auto_increment: true }
-  };
-
-  uint64 id               = 1; // Auto-incremented ID (always and only 1).
-  uint64 created_height   = 2; // Consensus chain height this execution block was created in.
-  uint64 block_height     = 3; // Execution block height.
-  bytes  block_hash       = 4; // Execution block hash.
-  uint64 block_time       = 5; // Execution block time.
-}
-```
-
-### Upgrade Contract
-
-Type: `*bindings.UpgradeEntrypoint`
-
-Upgrade contract is used to filter and parse upgrade-related events from EL.
-
-### UBI Contract
-
-Type: `*bindings.UBIPool`
-
-UBI contract is used to filter and parse UBI-related events from EL.
-
-### Mutable Payload
-
-Type: struct
-
-Mutable payload stores the optimistic block built, if optimistic building is enabled.
-
-#### Genesis State
-
-The module's `GenesisState` defines the state necessary for initializing the chain from a previously exported height.
-
-```protobuf protobuf
-message GenesisState {
-  Params params = 1 [(gogoproto.nullable) = false];
-}
-
-message Params {
-  bytes execution_block_hash = 1 [
-    (gogoproto.moretags) = "yaml:\"execution_block_hash\""
-  ];
-}
-```
-
-## Prepare Proposal
-
-At each block, if the node is the proposer, ABCI2 triggers `PrepareProposal` which
-
-1. Loads staking & reward withdrawals from the [evmstaking](./evmstaking-module) module.
-2. Builds a valid EVM block.
-   * If optimistic building: loads the optimistically built block.
-   * Non-optimistic: requests and retrieves an EVM block from EL.
-3. Collects the EVM logs of the previous/parent block.
-4. Assembles `MsgExecutionPayload` with the built EVM block and previous EVM logs.
-5. Returns a transaction containing the assembled `MsgExecutionPayload` data.
-
-This CL block is then propagated to all other validators.
-
-## Process Proposal
-
-At each block, if the node is not a proposer but a validator, ABCI2 triggers `ProcessProposal` with received commits (which should be a transaction of `MsgExecutionPayload` data in the honest case).
-
-The node first validates that the received commit has only one transaction with at least 2/3 of votes committed. Then, the node validates that the one transaction only contains one unmarshalled `MsgExecutionPayload` data. Finally, the node processes the received data and broadcasts its acceptance of the proposal to the network. If any of the validation or processing fails, the node rejects the proposal.
-
-More specifically, the node processes the received `MsgExecutionPayload` data in the following manner:
-
-1. Validates the fields of the received `MsgExecutionPayload` (outlined in [Messages](#msgexecutionpayload)).
-2. Compare local stake & reward withdrawals with the received withdrawals data.
-3. Push the received execution payload to EL via the Engine API and wait for payload validation.
-4. Update the EL forkchoice to the execution payload's block hash.
-5. Process staking events using the [evmstaking](./evmstaking-module) module.
-6. Process upgrade events.
-7. Update the execution head to the execution payload (finalized block).
-
-## Post Finalize
-
-If optimistic building is enabled, `PostFinalize` is triggered immediately after `FinalizeBlock` set through custom ABCI callback. During this process, the node peeks the staking and reward queues from the evmstaking module, and builds a new execution payload on top of the current execution head. It sets the optimistic block to be used in the next block's `PrepareProposal` phase and returns the response from the forkchoice update.
-
-## Messages
-
-In this section we describe the processing of the evmengine messages and the corresponding updates to the state. All created/modified state objects specified by each message are defined within the state section.
-
-### MsgExecutionPayload
-
-```protobuf protobuf
-message MsgExecutionPayload {
-  option (cosmos.msg.v1.signer) = "authority";
-  string            authority           = 1;
-  bytes             execution_payload   = 2;
-  repeated EVMEvent prev_payload_events = 3;
-}
-
-message EVMEvent {
-  bytes          address = 1;
-  repeated bytes topics  = 2;
-  bytes          data    = 3;
-  bytes          tx_hash = 4;
-}
-```
-
-This message is expected to fail if:
-
-* authority is invalid (not evmengine authority)
-* execution payload fails to unmarshal to [ExecutableData](https://github.com/piplabs/story/blob/c38b80c13579d3df7174ea10c3368ef0692f52da/client/x/evmengine/types/executable_data.go#L17-L35) for reasons such as invalid fields
-* execution payload's block number does not match CL head's block number + 1
-* execution payload's block parent hash does not match CL head's hash
-* execution payload's timestamp is invalid
-* execution payload's RANDAO does not match CL head's hash (ie. parent hash)
-* execution payload's `Withdrawals`, `BlobGasUsed`, and `ExcessBlobGas` fields are nil
-* execution payload's `Withdrawals` count does not match local node's sum of dequeued stake & reward withdrawals
-
-The message must contain previous block's events, which gets processed at the current CL block (in other words, execution events from EL block n-1 are processed at CL block n). In the future, the message will remove `prev_payload_events` and rely on [Engine API](engine-api) to get the current finalized EL block's events.
-
-Also note that EVM events are processed in CL in the order they are generated in EL.
-
-## UBI
-
-All UBI-related changes must be triggered from the canonical UBI contract in the EVM execution layer. This module handles the execution handling of those triggers in CL. Read more about [UBI for validators](https://docs.story.foundation/docs/tokenomics-staking#ubi-for-validators)
-
-### Set UBI Distribution
-
-The `UBIPool` contract emits the UBI distribution set event, which is parsed by the module to set the UBI percentage in the distribution module.
-
-## Upgrades
-
-All chain upgrade-related logics must be triggered from the canonical upgrade contract in the EVM execution layer. This module handles the execution handling of those triggers in CL.
-
-### Software Upgrade
-
-The `UpgradeEntrypoint` contract emits the software upgrade event, which is parsed by the module to schedule an upgrade at a given height for a given binary name. Currently, all upgrades must either be set via forks or by the software upgrade events; the latter process is a multisig-controlled process, which will transition into a voting-based process in the future.
-
-### Cancel Upgrade
-
-Similar to the software upgrade, the module processes the cancel upgrade event from EVM logs of the previous block, and clears an existing upgrade plan.
-
-# staking
-## Abstrat
-
-The staking module has been modified to accommodate for the following changes below. Refer to the Cosmos SDK's [staking module docs](https://docs.cosmos.network/main/build/modules/staking) for more information.
-
-## Reward Multiplier
-
-### Validators
-
-Validators can choose to accept either locked tokens or unlocked tokens as delegations. Validators for locked tokens are conditioned to half the inflation allocation of validators for unlocked tokens.
-
-Since each validator receives different inflation distribution based on delegations, the inflation distribution I<sub>v<sub>i</sub></sub> for validator v<sub>i</sub> in the rewards pool is calculated as follows:
-
-<Image align="center" src="https://files.readme.io/3ee4914a7cc6036ceebbdd31ce93e525984a08364f8c3ab2152b86b3bcd5df7e-Screenshot_2025-02-11_at_8.30.07_AM.png" />
-
-where
-
-* I<sub>v<sub>i</sub></sub> is the total inflationary token rewards for v<sub>i</sub>
-* S<sub>v<sub>i</sub></sub> is the staked tokens for v<sub>i</sub>
-* M<sub>v<sub>i</sub></sub> is the rewards multiplier for v<sub>i</sub>
-  * 0.5 for locked tokens
-  * 1 for unlocked tokens
-* R<sub>n</sub> is the total inflationary tokens allocated for the rewards pool in block n, calculated in the [mint](./mint-module.md) module
-
-### Delegations
-
-Delegators can delegate with four different staking lock times, which results in different staking reward multiplier for each delegation (delegator-validator pair of stakes). The inflation distribution for each delegation D<sub>i</sub> is calculated as follows:
-
-<Image align="center" src="https://files.readme.io/002ae69aa3b3e52a33747452fe0c0b91b9120f20155deb19b56fb7917132b8de-Screenshot_2025-02-11_at_8.34.44_AM.png" />
-
-where
-
-* S<sub>d<sub>i</sub></sub> is the staked tokens of delegation d<sub>i</sub> on validator v<sub>d</sub>
-* M<sub>d<sub>i</sub></sub> is the rewards multiplier of d<sub>i</sub> on v<sub>d</sub>
-* I<sub>v</sub> is the total inflationary token rewards for v<sub>d</sub>
-* C<sub>v</sub> is the commission rate for v<sub>d</sub>
-
-#### Time-weighted Reward Multiplier M<sub>d<sub>i</sub></sub>
-
-* *Flexible* (no lockup): 1
-* *Short* (90 days): 1.1
-* *Medium* (360 days): 1.5
-* *Long* (540 days): 2.0
-
-# Engine API
-The Engine API is a collection of JSON-RPC methods that facilitate communication between the execution layer (EL) and the consensus layer (CL) of an EVM node. Story's execution layer, which offers full EVM compatibility, supports all standard JSON-RPC methods defined by the [Ethereum Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md). Meanwhile, Story's consensus layer, built on Cosmos modules, utilizes the Engine API to coordinate with the execution layer.
-
-## Functionalities
-
-The Engine API facilitates seamless interaction between the EL and the CL by providing essential coordination mechanisms, including:
-
-* **Handshake**
-* **Synchronization**
-* **Block Validation**
-* **Block Proposal**
-
-## Execution Layer Implementation
-
-The EL in Story implements the following standard Engine API methods to support these functionalities:
-
-* `engine_exchangeCapabilities`: Exchanges supported methods.
-* `engine_getClientVersion`: Exchanges client version data.
-* `engine_newPayload`: Inserts the given payload into the local chain.
-* `engine_forkchoiceUpdate`: Updates the canonical chain marker and generates the payload with given attributes.
-* `engine_getPayload`: Retrieves the pre-generated payload.
-
-## Consensus Layer Interaction
-
-How does Story's Consensus Layer (CL) interact with these methods? The answer lies in CometBFT ABCI++.
-
-CometBFT is a state machine replication engine which provides consensus and security for Cosmos modules. ABCI++, also known as ABCI 2.0, is the interface between CometBFT and the actual state machine being replicated(i.e. EL's state machine).
-
-ABCI++ comprises of a set of methods that interact with the Engine API, as outlined below:
-
-### **1. PrepareProposal** (Proposing a New Block)
-
-* The CL checks whether a payload is already being generated using `payloadID`.
-* If not, the CL calls `engine_forkchoiceUpdate` to trigger a new payload generation.
-* The CL then calls `engine_getPayload` with `payloadID` to fetch the payload and propose a new block.
-
-### **2. ProcessProposal** (Processing a New Block)
-
-* The CL calls `engine_newPayload` to  delivers the new block to the EL.
-* The EL validates payload of the new block, executes transactions deterministically and updates its state.
-
-### **3. FinalizeBlock** (Finalizing a Decided Block)
-
-* The CL calls `engine_newPayload` to  delivers the finalized block to the EL.
-* If the block has not yet been incorporated into the EL, the EL validates payload of the new block, executes transactions deterministically and updates its state.
-* Since CometBFT provides instant finality, the CL calls `engine_forkchoiceUpdate` to finalize the block.
-* Finally, the CL calls `engine_forkchoiceUpdate` again, with extra attributes,  to start an optimistic build of the next block if enabled, and if the validator is the next proposer.
-
-This interaction ensures smooth coordination between the EL and the CL, maintaining the integrity and efficiency of Story's blockchain network.
-
-# Precompiles
-## Introduction
-
-Precompiled contracts are specialized smart contracts implemented directly in the execution layer of a blockchain. Unlike user-deployed smart contracts that execute EVM bytecode, precompiled contracts offer optimized native implementations for complex cryptographic and computational operations. This significantly improves efficiency and reduces gas costs. Precompiled contracts exist at fixed addresses within the execution client and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
-
-Story Protocol introduces two precompiled contracts:
-
-* `p256Verify` precompile to support signature verifications in the secp256r1 elliptic curve.
-* `ipgraph` precompile to enhance on-chain intellectual property management.
-
-In addition, Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
-
-## Precompiled Contracts
-
-| Address          | Functionality                                                 |
-| ---------------- | ------------------------------------------------------------- |
-| byte{0x01}       | `ecrecover`- ECDSA signature recovery                         |
-| byte{0x02}       | `sha256` - SHA-256 hash computation                           |
-| byte{0x03}       | `ripemd160` - RIPEMD-160 hash computation                     |
-| byte{0x04}       | `identity` - Identity function                                |
-| byte{0x05}       | `modexp` - Modular exponentiation                             |
-| byte{0x06}       | `bn256Add` - BN256 elliptic curve addition                    |
-| byte{0x07}       | `bn256ScalarMul` - BN256 elliptic curve scalar multiplication |
-| byte{0x08}       | `bn256Pairing` - BN256 elliptic curve pairing check           |
-| byte{0x09}       | `blake2f` - Blake2 hash function                              |
-| byte{0x0a}       | `kzgPointEvaluation` - KZG polynomial commitment evaluation   |
-| byte{0x01, 0x00} | `p256Verify` -  Secp256r1 signature verification              |
-| byte{0x01, 0x01} | `ipgraph` - Intellectual property management                  |
-
-## p256Verify precompile
-
-Refer to [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) for more information.
-
-## IPgraph precompile
-
-The `ipgraph` precompile enables efficient querying and modification of IP relationships and royalty structures while minimizing gas costs.
-
-This precompile provides multiple functions based on the function selector—the first 4 bytes of the input.
-
-| Function Selector        | Description                                                     | Gas computation formula                               | Gas Cost                           |
-| :----------------------- | :-------------------------------------------------------------- | :---------------------------------------------------- | :--------------------------------- |
-| `addParentIp`            | Adds a parent IP record                                         | `intrinsicGas + (ipGraphWriteGas * parentCount)`      | Larger than 1100                   |
-| `hasParentIp`            | Checks if an IP is parent of another IP                         | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
-| `getParentIps`           | Retrieves parent IPs                                            | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
-| `getParentIpsCount`      | Gets the number of parent IPs                                   | `ipGraphReadGas`                                      | 10                                 |
-| `getAncestorIps`         | Retrieves ancestor IPs                                          | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
-| `getAncestorIpsCount`    | Gets the number of ancestor IPs                                 | `ipGraphReadGas * averageParentIpCount * 2`           | 80                                 |
-| `hasAncestorIp`          | Checks if an IP is ancestor of another IP                       | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
-| `setRoyalty`             | Sets royalty details of an IP                                   | `ipGraphWriteGas`                                     | 1000                               |
-| `getRoyalty`             | Retrieves royalty details of an IP                              | `varies by royalty policy`                            | LAP:900, LRP:620, other:1000       |
-| `getRoyaltyStack`        | Retrieves royalty stack  of an IP                               | `varies by royalty policy`                            | LAP:50, LRP: 600, other:1000       |
-| `hasParentIpExt`         | Checks if an IP is parent of another IP through external call   | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
-| `getParentIpsExt`        | Retrieves parent IPs through external call                      | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
-| `getParentIpsCountExt`   | Gets the number of parent IPs through external call             | `ipGraphExternalReadGas`                              | 2100                               |
-| `getAncestorIpsExt`      | Retrieve ancestor IPs through external call                     | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
-| `getAncestorIpsCountExt` | Gets the number of ancestor IPs through external call           | `ipGraphExternalReadGas * averageParentIpCount * 2`   | 16800                              |
-| `hasAncestorIpExt`       | Checks if an IP is ancestor of another IP through external call | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
-| `getRoyaltyExt`          | Retrieves royalty details of an IP through external call        | `varies by royalty policy`                            | LAP:189000, LRP:130200, other:1000 |
-| `getRoyaltyStackExt`     | Retrieves royalty stack of an IP through external call          | `varies by royalty policy`                            | LAP:10500, LRP:126000, other:1000  |
-
-Refer to the [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
-
-# Infrastructure Partners
-## RPC Providers
-
-<Cards columns={1}>
-  <Card title="QuickNode" href="https://www.quicknode.com/chains/story" icon="fa-home" target="_blank">
-    QuickNode provides hosted Story RPC nodes under their free and paid plans, granting flexible and reliable access to the network. For high-throughput or mission-critical applications, Dedicated Clusters deliver premium performance with unmetered billing, elevated rate limits, and robust infrastructure.
-  </Card>
-</Cards>
-
-## Cross-chain
-
-<Cards columns={3}>
-  <Card title="LayerZero" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
-    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
-  </Card>
-
-  <Card title="deBridge" href="https://debridge.finance/" icon="fa-home" iconColor="#fbff3a" target="_blank">
-    Blazingly fast bridging for anyone that likes to be one step ahead.
-  </Card>
-
-  <Card title="Stargate" href="https://stargate.finance/" icon="fa-home" iconColor="#ffffff" target="_blank">
-    Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi.
-  </Card>
-</Cards>
-
-## Onramp/Offramp
-
-<Cards columns={2}>
-  <Card title="Transak" href="https://transak.com/" icon="fa-home" iconColor="#1461db" target="_blank">
-    Enable users to buy or sell crypto from your app.
-  </Card>
-
-  <Card title="Halliday" href="https://halliday.xyz/" icon="fa-home" iconColor="#392df8" target="_blank">
-    The Commerce Automation Network for Modular Chains.
-  </Card>
-</Cards>
-
-## Indexers/Data
-
-<Cards columns={3}>
-  <Card title="Simplehash" href="https://simplehash.com/" icon="fa-home" iconColor="#5046e5" target="_blank">
-    Instant access to Token and NFT market prices, metadata and media. 80+ chains.
-  </Card>
-
-  <Card title="Goldsky" href="https://goldsky.com/" icon="fa-home" iconColor="#ffbf60" target="_blank">
-    Crypto Data Live-Streamed.
-  </Card>
-
-  <Card title="Zettablock" href="https://zettablock.com/" icon="fa-home" iconColor="#3c4ff6" target="_blank">
-    A unified platform for open and trustfree AI development, empowering an accessible ecosystem of models and datasets.
-  </Card>
-</Cards>
-
-## Oracles/VRF
-
-<Cards columns={3}>
-  <Card title="Gelato" href="https://www.gelato.network/" icon="fa-home" iconColor="#ff3b57" target="_blank">
-    Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated.
-  </Card>
-
-  <Card title="Redstone" href="https://www.redstone.finance/" icon="fa-home" iconColor="#ae0722" target="_blank">
-    Modular oracles for DeFi.
-  </Card>
-
-  <Card title="Pyth" href="https://www.pyth.network/" icon="fa-home" iconColor="#e6dafe" target="_blank">
-    Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems.
-  </Card>
-
-  <Card title="Uma" href="https://uma.xyz/" icon="fa-home" iconColor="#fe4d4c" target="_blank">
-    A decentralized truth machine.
-  </Card>
-</Cards>
-
-## Dev Tools
-
-<Cards columns={2}>
-  <Card title="Protofire" href="https://protofire.io/" icon="fa-home" iconColor="#f54704" target="_blank">
-    Protofire boosts TVL and usage for Web3 projects with our Dev DAO, reducing costs and enhancing quality.
-  </Card>
-
-  <Card title="Wagmi" href="https://wagmi.sh/" icon="fa-home" iconColor="#000000" target="_blank">
-    Type Safe, Extensible, and Modular by design. Build high-performance blockchain frontends.
-  </Card>
-</Cards>
-
-## Wallets/AA
-
-<Cards columns={3}>
-  <Card title="Dynamic" href="https://www.dynamic.xyz/" icon="fa-home" iconColor="#4779ff" target="_blank">
-    Dynamic offers a suite of tools for effortless log in, wallet creation and user management. Designed for users. Built for developers.
-  </Card>
-
-  <Card title="Pimlico" href="https://www.pimlico.io/" icon="fa-home" iconColor="#7115aa" target="_blank">
-    The world's most popular account abstraction infrastructure platform
-  </Card>
-
-  <Card title="ZeroDev" href="https://zerodev.app/" icon="fa-home" iconColor="#23a4f0" target="_blank">
-    ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
-  </Card>
-
-  <Card title="Tomo" href="https://tomo.inc/" icon="fa-home" iconColor="#f21f7f" target="_blank">
-    The all-in-one wallet designed to bring the mass adoption.
-  </Card>
-
-  <Card title="Privy" href="https://www.privy.io/" icon="fa-home" iconColor="#000000" target="_blank">
-    Privy is a powerful authentication and key management platform to securely onboard, activate, and manage your users at scale.
-  </Card>
-
-  <Card title="Keplr" href="https://www.keplr.app/" icon="fa-home" iconColor="#0657fa" target="_blank">
-    Introducing Keplr, the fast, simple, secure wallet that plugs you into any blockchains and apps wherever you go. Pioneering its ways in the multichain future from day one.
-  </Card>
-
-  <Card title="Turnkey" href="https://www.turnkey.com/" icon="fa-home" iconColor="#000000" target="_blank">
-    Secure, flexible, and scalable wallet infrastructure.
-  </Card>
-</Cards>
-
-# 🌐 Welcome to Story Network
-<Cards columns={2}>
-  <Card title="Add Story Mainnet" href="https://chainid.network/chain/1514/" icon="fa-home" target="_blank">
-    Connect your wallet to Story's mainnet.
-  </Card>
-
-  <Card title="Add Story 'Aeneid' Testnet" href="https://chainid.network/chain/1315/" icon="fa-home" target="_blank">
-    Connect your wallet to Story's 'Aeneid' testnet.
-  </Card>
-</Cards>
-
-# Story Network (L1)
-
-Welcome to the Hub for Story Network, the Story Chain.
-
-This section is designed to help you understand the fundamentals of Story Network. We’ve structured the content into two parts:
-
-1. Understanding the Architecture
-2. Operating a Node
-
-Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates the best of both the Ethereum Virtual Machine (EVM) and Cosmos SDK. It offers full EVM compatibility while incorporating deep execution layer optimizations to efficiently support graph-based data structures. These optimizations make it particularly well-suited for handling complex intellectual property (IP) data structures in a cost-effective and scalable manner.
-
-## Key Features
-
-* **EVM Compatibility**: Full compatibility with Ethereum Virtual Machine
-* **Optimized Data Structures**: Precompiled primitives for efficient IP graph traversal
-* **Fast Finality**: CometBFT-based consensus layer for quick transaction finality
-* **Modular Architecture**: Decoupled consensus from execution using Ethereum's Engine-API
-
-## Documentation Sections
-
-### Getting Started
-
-* [Node Architecture](doc:story-node-structure)
-* [Network Info](doc:network-info)
-* [Whitepaper](https://www.story.foundation/whitepaper.pdf)
-
-### Node Operations
-
-* [Operating a node](doc:operating-a-node)
-  * Full Node Setup
-  * Archive Node Setup
-  * Node Upgrade Guide
-  * Release Notes
-
-### Validation
-
-* [Become a validator](doc:become-a-validator)
-  * Validator Setup
-  * Validator Operations
-
-### Network Economics
-
-* [Staking Design](doc:tokenomics-staking)
-  * Token Economics
-  * Staking Mechanisms
-  * Rewards Structure
-
-### Resources
-
-* [Additional Resources](doc:additional-resources)
-  * GitHub Repositories
-  * SIP Repository
-  * Community Forum
-* [Troubleshooting](doc:network-faq)
-  * Common Issues
-  * Troubleshooting
-  * Best Practices
-
-## Network Information
-
-The Story Network is currently available in multiple environments:
-
-* Mainnet (Production)
-* Aeneid (Testnet)
-* Localnet (Development)
-
-For detailed network information and connection details, please refer to the respective network documentation sections.
-
 # Troubleshooting
 Welcome to Story node troubleshooting! This section covers common problems and solutions when running Story nodes.
 
@@ -3630,6 +2817,819 @@ Welcome to Story node troubleshooting! This section covers common problems and s
   iptables -I INPUT -s localhost -j ACCEPT
   ```
 </details>
+
+# 🏗️ Node Architecture
+Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SDK and CometBFT to achieve fast block time and one-shot finality. A Story node consists of two clients: `story-geth` as the execution client (EL) and a `story` as the consensus client (CL). These clients communicate via the [Engine API interface](doc:engine-api) defined by [Ethereum](https://hackmd.io/@danielrachi/engine_api).
+
+`story-geth` is a fork of the Geth client, with the addition of the [IPGraph Precompile](doc:precompile) and [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) precompile. It handles transaction execution, broadcasting and state storage while maintaining full compatibility with the Ethereum Virtual Machine (EVM) and supporting all Ethereum JSON-RPC methods.
+
+`story` is built on the Cosmos SDK and CometBFT. The Cosmos SDK provides a modular framework for building blockchain applications, enabling seamless integration of new modules and features while allowing the network to be easily extended and customized. `story` client introduces upgrades and additional Cosmos SDK modules to support Engine API integration and novel staking mechanisms. CometBFT, a high-performance, scalable, and secure consensus engine, has been extensively tested within the Cosmos ecosystem. CometBFT and Cosmos SDK communicate through ABCI++ interface(link to ABCI++ spec).
+
+<Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
+
+<br />
+
+### Warning
+
+Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
+
+# List of Modules
+# List of Modules
+
+Here is a list of all production-grade modules that can be used on the Story blockchain, along with their respective documentation:
+
+* [evmengine](./evmengine-module) - Handles Cosmos-side logics on each EVM state transition via the [Engine API](engine-api).
+* [evmstaking](./evmstaking-module) - Handles staking and network emission logics with queues.
+* [mint](./mint-module)
+
+## Cosmos SDK (modified)
+
+Story network uses the following Cosmos SDK modules with some modifications:
+
+* [staking](./staking-module)
+* [distribution](https://docs.cosmos.network/main/build/modules/distribution)
+
+## Cosmos SDK (unmodified)
+
+Story network uses the following Cosmos SDK modules without non-trivial modifications:
+
+* [auth](https://docs.cosmos.network/main/build/modules/auth)
+* [bank](https://docs.cosmos.network/main/build/modules/bank)
+* [consensusparams](https://docs.cosmos.network/main/build/modules/consensus)
+* [gov](https://docs.cosmos.network/main/build/modules/gov)
+* [slashing](https://docs.cosmos.network/main/build/modules/slashing)
+* [upgrade](https://docs.cosmos.network/main/build/modules/upgrade)
+
+# mint
+## Contents
+
+1. [Contents](#contents)
+2. [State](#state)
+3. [Begin Block](#begin-block)
+4. [Parameters](#parameters)
+5. [Events](#events)
+
+## State
+
+### Params
+
+* Params: `mint/params -> legacy_amino(params)`
+
+```protobuf protobuf
+message Params {
+  option (amino.name) = "client/x/mint/Params";
+
+  // type of coin to mint
+  string mint_denom = 1;
+  // inflation amount per year
+  string inflations_per_year = 2 [
+    (cosmos_proto.scalar)  = "cosmos.Dec",
+    (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
+    (gogoproto.nullable)   = false
+  ];
+  // expected blocks per year
+  uint64 blocks_per_year = 3;
+}
+```
+
+## Begin Block
+
+Minting parameters are calculated and inflation paid at the beginning of each block.
+
+### Inflation amount calculation
+
+Inflation amount is calculated using an "inflation calculation function" that's\
+passed to the `NewAppModule` function. If no function is passed, then the SDK's
+default inflation function will be used (`DefaultInflationCalculationFn`). In case a custom
+inflation calculation logic is needed, this can be achieved by defining and
+passing a function that matches `InflationCalculationFn`'s signature.
+
+```go
+type InflationCalculationFn func(ctx sdk.Context, minter Minter, params Params, bondedRatio math.LegacyDec) math.LegacyDec
+```
+
+## Parameters
+
+The minting module contains the following parameters:
+
+| Key               | Type            | Example             |
+| ----------------- | --------------- | ------------------- |
+| MintDenom         | string          | "stake"             |
+| InflationsPerYear | string (dec)    | "20000000000000000" |
+| BlocksPerYear     | string (uint64) | "10368000"          |
+
+* `MintDenom` is the coin denominator used.
+* `InflationsPerYear` is the target inflation per year, in 1e18 decimals.
+* `BlocksPerYear` is the target number of blocks per year.
+
+## Events
+
+The minting module emits the following events:
+
+### BeginBlocker
+
+| Type | Attribute Key | Attribute Value |
+| :--- | :------------ | :-------------- |
+| mint | amount        | "1000"          |
+
+# evmstaking
+## Abstract
+
+This document specifies the internal `x/evmstaking` module of the Story blockchain.
+
+In Story blockchain, the gas token resides on the execution layer (EL) to pay for transactions and interact with smart contracts. However, the consensus layer (CL) manages the consensus staking, slashing, and rewarding. This module exists to facilitate CL-level staking-related logic, such as delegating to validators with custom lock periods.
+
+## Contents
+
+1. **[State](#state)**
+2. **[Two Queue System](#two-queue-system)**
+3. **[Withdrawal Queue Content](#withdrawal-queue-content)**
+4. **[End Block](#end-block)**
+5. **[Processing Staking Events](#processing-staking-events)**
+6. **[Withdrawing Delegations](#withdrawing-delegations)**
+7. **[Withdrawing Rewards](#withdrawing-rewards)**
+8. **[Withdrawing UBI](#withdrawing-ubi)**
+
+## State
+
+### Withdrawal Queue
+
+Type: `Queue[types.Withdrawal]`
+
+The (stake) withdrawal queue stores the pending unbonded stakes to be burned on CL and minted on EL. Stakes that are unbonded after 14 days of unstaking period are added to the queue to be processed.
+
+### Reward Withdrawal Queue
+
+Type: `Queue[types.Withdrawal]`
+
+The reward withdrawal queue stores the pending rewards from stakes to be burned on CL and minted on EL. All rewards above a threshold are eligible to be queued in this queue, but there exists a parameter of maximum additions per block.
+
+### Parameters
+
+```protobuf protobuf
+message Params {
+  uint32 max_withdrawal_per_block = 1 [
+    (gogoproto.moretags) = "yaml:\"max_withdrawal_per_block\""
+  ];
+  uint32 max_sweep_per_block = 2 [
+    (gogoproto.moretags) = "yaml:\"max_sweep_per_block\""
+  ];
+  uint64 min_partial_withdrawal_amount = 3 [
+    (gogoproto.moretags) = "yaml:\"min_partial_withdrawal_amount\""
+  ];
+  string ubi_withdraw_address = 4 [
+    (gogoproto.moretags) = "yaml:\"ubi_withdraw_address\""
+  ];
+}
+```
+
+* `max_withdrawal_per_block` is the maximum number of withdrawals (reward and unstakes, each) to process per block. This parameter prevents nodes from processing a large amount of withdrawals at once, which could exceed the max chain timeout.
+* `max_sweep_per_block` is the maximum number of validator-delegator delegations to sweep per block. This parameter prevents nodes from processing a large amount of delegations at once.
+* `min_partial_withdrawal_amount` is the minimum amount required for rewards to get added to the reward withdrawal queue.
+* `ubi_withdrawal_address` is the UBI contract address to which UBI withdrawals should be deposited.
+
+### Delegator Withdraw Address
+
+Type: `Map[string, string]`
+
+The delegator-withdraw address mapping tracks the address to which a delegator receives their withdrawn stakes. The (stake) withdrawal queue uses this map to determine the `execution_address` in the `Withdrawal` struct used in building an EVM block payload.
+
+While the delegator can change the withdraw address at any time, existing stake withdraw requests in the (stake) withdrawal queue will maintain their original values.
+
+### Delegator Reward Address
+
+The delegator-reward address mapping tracks the address to which a delegator receives their reward stakes, similar to the delegator-withdraw mapping.
+
+While the delegator can change the reward address at any time, existing reward withdraw requests in the reward withdrawal queue will maintain their original values.
+
+Type: `Map[string, string]`
+
+### Delegator Operator Address
+
+Type: `Map[string, string]`
+
+The delegator-operator address mapping tracks the address to which a delegator has given the privilege to delegate (stake), undelegate (unstake), and redelegate on behalf of themselves.
+
+### IP Token Staking Contract
+
+Type: `*bindings.IPTokenStaking`
+
+IPTokenStaking contract is used to filter and parse staking-related events from EL.
+
+## Two Queue System
+
+The module departs from traditional Cosmos SDK staking module's unstaking system, where all unbonded entries (stakes that have unbonded after 14 days of unbonding period) are immediately distributed into delegators account. Instead, Story's unstaking system assimilates Ethereum 2.0's unstaking system, where 16 full or partial (reward) withdrawals are processed per slot.
+
+In a single queue of withdrawals, reward withdrawals can significantly delay stake withdrawals. Hence, Story blockchain implements a two-queue system where a max amount to process per block is enforced per queue. In other words, the stake/ubi withdrawal and reward withdrawal queues can each process the max parameter per block.
+
+## Withdrawal Queue Content
+
+Since the module only processes unstakes/rewards/ubi and stores them in queues, the actual dequeueing for withdrawal to the execution layer is carried out in the [evmengine](./evmengine-module) module. More specifically, a proposer dequeues the max number of withdrawals from each queue and adds them to the EVM block payload, which gets executed by EL via the [Engine API](engine-api). When validators receive proposed block payload from the proposer, they individually peek the local queues and compare them against the received block's withdrawals. Mismatching withdrawals indicate non-determinism in staking logics and should result in chain halt.
+
+In other words, the `evmstaking` module is in charge of parsing, processing, and inserting withdrawal requests to two queues, while the `evmengine` module is in charge of validating and dequeuing withdrawal requests, as well as depositing them to corresponding withdrawal addresses in EL.
+
+## End Block
+
+The `EndBlock` ABCI2 call is responsible for fetching the unbonded entries (stakes that have unbonded after 14 days) from the [staking](./staking-module) module and inserting them into the (stake) withdrawal queue. Furthermore, it processes stake reward withdrawals into the reward withdrawal queue and UBI withdrawals into the (stake) withdrawal queue.
+
+If the network is in the [Singularity period](tokenomics-staking#singularity), the End Block is skipped as there are no staking rewards and withdrawals available during this period. Otherwise, refer to [Withdrawing Delegations](#withdrawing-delegations) and [Withdrawing Rewards](#withdrawing-rewards) for detailed withdrawal processes.
+
+## Processing Staking Events
+
+The module parses and processes staking events emitted from the [IPTokenStaking contract](https://github.com/piplabs/story/blob/main/contracts/src/protocol/IPTokenStaking.sol), which are collected by the [evmengine](./evmengine-module) module. The list of events are:
+
+### Staking events
+
+* Create Validator
+* Deposit (delegate)
+* Withdraw (undelegate)
+* Redelegate
+* Unjail: anyone can request to unjail a jailed validator by paying the unjail fee in the contract.
+
+These operations incur a fixed gas cost to prevent spam.
+
+### Parameter events
+
+* Update Validator Commission: update the validator commission.
+* Set Withdrawal Address: delegator can modify their withdrawal address for future unstakes/undelegations.
+* Set Reward Address: delegator can modify their withdrawal address for future reward emissions.
+* Set Operator: delegator can modify their operator with privileges of delegation, undelegation, and redelegation.
+* Unset Operator: delegator can remove operator.
+
+These operations incur a fixed gas cost to prevent spam.
+
+## Withdrawal
+
+Both withdrawal queues hold withdrawals of type:
+
+```protobuf protobuf
+message Withdrawal {
+  option (gogoproto.equal) = true;
+  option (gogoproto.goproto_getters) = false;
+
+  uint64 creation_height = 1;
+  string execution_address = 2 [
+    (cosmos_proto.scalar) = "cosmos.AddressString",
+    (gogoproto.moretags) = "yaml:\"execution_address\""
+  ];
+  uint64 amount = 3 [
+    (gogoproto.moretags) = "yaml:\"amount\""
+  ];
+  WithdrawalType withdrawal_type = 4 [
+    (gogoproto.moretags) = "yaml:\"withdrawal_type\""
+  ];
+  string validator_address = 5 [
+    (gogoproto.moretags) = "yaml:\"validator_address\""
+  ];
+}
+```
+
+* `creation_height` is the block height at which the withdrawal is created.
+* `execution_address` is the EVM address receiving the withdrawn fund, which is burned in CL.
+* `amount` is the amount to burn on CL and mint on EL.
+* `withdrawal_type` is the type of withdrawal: $0$ for unstakes, $1$ for reward, and $2$ for UBI.
+* `validator_address` is the EVM validator address.
+
+### Withdrawing Delegations
+
+Delegations that have unbonded after 14 days of unbonding period (ie. unbonded entries) gets added to the (stake) withdrawal queue at the end of each block. If validator is totally-unstaked, ie. all delegations and self-delegations are unbonded, then validator's commission is also withdrawn.
+
+### Withdrawing Rewards
+
+Inflation rewards allocated to delegations are auto-swept at the end of each block. If a delegation's accrued reward is greater than the parameterized threshold, the reward is added to the reward withdrawal queue to be credited to the delegator's EVM reward address.
+
+# evmengine
+## Abstract
+
+This document specifies the internal `x/evmengine` module of the Story blockchain.
+
+As Story Network separates the consensus and execution client, like Ethereum, the consensus client (CL) and execution client (EL) needs to communicate to sync to the network, propose proper EVM blocks, and execute EVM-triggered EL actions in CL.
+
+The module exists to facilitate all communications between CL and EL using the [Engine API](engine-api), from staking and upgrades to driving block production and consensus in CL and EL.
+
+## Contents
+
+1. **[State](#state)**
+2. **[Prepare Proposal](#prepare-proposal)**
+3. **[Process Proposal](#process-proposal)**
+4. **[Post Finalize](#post-finalize)**
+5. **[Messages](#messages)**
+6. **[UBI](#ubi)**
+7. **[Upgrades](#upgrades)**
+
+## State
+
+### Build Delay
+
+Type: `time.Duration`
+
+Build delay determines the wait duration from the start of `PrepareProposal` ABCI2 call before fetching the next EVM block data to propose from EL via the [Engine API](engine-api). Applicable to the current proposer only. If the node has a block optimistically built beforehand, the build delay is not used.
+
+### Build Optimistic
+
+Type: `bool`
+
+Enable optimistic building of a block if true. A node will deterministically build the next block if it finds itself as the next proposer in the current block. Optimistic building starts with requesting the next EVM block data (for the next CL block) immediately after the `FinalizeBlock` of ABCI2.
+
+### Head Table
+
+Type: `ExecutionHeadTable`
+
+Head table stores the latest execution head data to be used for partial validation of EVM blocks received from other validators. When the chain initializes, the execution head is populated with the genesis execution hash loaded from `genesis.json`.
+
+The following execution head is stored in the table.
+
+```protobuf protobuf
+message ExecutionHead {
+  option (cosmos.orm.v1.table) = {
+    id: 1;
+    primary_key: { fields: "id", auto_increment: true }
+  };
+
+  uint64 id               = 1; // Auto-incremented ID (always and only 1).
+  uint64 created_height   = 2; // Consensus chain height this execution block was created in.
+  uint64 block_height     = 3; // Execution block height.
+  bytes  block_hash       = 4; // Execution block hash.
+  uint64 block_time       = 5; // Execution block time.
+}
+```
+
+### Upgrade Contract
+
+Type: `*bindings.UpgradeEntrypoint`
+
+Upgrade contract is used to filter and parse upgrade-related events from EL.
+
+### UBI Contract
+
+Type: `*bindings.UBIPool`
+
+UBI contract is used to filter and parse UBI-related events from EL.
+
+### Mutable Payload
+
+Type: struct
+
+Mutable payload stores the optimistic block built, if optimistic building is enabled.
+
+#### Genesis State
+
+The module's `GenesisState` defines the state necessary for initializing the chain from a previously exported height.
+
+```protobuf protobuf
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message Params {
+  bytes execution_block_hash = 1 [
+    (gogoproto.moretags) = "yaml:\"execution_block_hash\""
+  ];
+}
+```
+
+## Prepare Proposal
+
+At each block, if the node is the proposer, ABCI2 triggers `PrepareProposal` which
+
+1. Loads staking & reward withdrawals from the [evmstaking](./evmstaking-module) module.
+2. Builds a valid EVM block.
+   * If optimistic building: loads the optimistically built block.
+   * Non-optimistic: requests and retrieves an EVM block from EL.
+3. Collects the EVM logs of the previous/parent block.
+4. Assembles `MsgExecutionPayload` with the built EVM block and previous EVM logs.
+5. Returns a transaction containing the assembled `MsgExecutionPayload` data.
+
+This CL block is then propagated to all other validators.
+
+## Process Proposal
+
+At each block, if the node is not a proposer but a validator, ABCI2 triggers `ProcessProposal` with received commits (which should be a transaction of `MsgExecutionPayload` data in the honest case).
+
+The node first validates that the received commit has only one transaction with at least 2/3 of votes committed. Then, the node validates that the one transaction only contains one unmarshalled `MsgExecutionPayload` data. Finally, the node processes the received data and broadcasts its acceptance of the proposal to the network. If any of the validation or processing fails, the node rejects the proposal.
+
+More specifically, the node processes the received `MsgExecutionPayload` data in the following manner:
+
+1. Validates the fields of the received `MsgExecutionPayload` (outlined in [Messages](#msgexecutionpayload)).
+2. Compare local stake & reward withdrawals with the received withdrawals data.
+3. Push the received execution payload to EL via the Engine API and wait for payload validation.
+4. Update the EL forkchoice to the execution payload's block hash.
+5. Process staking events using the [evmstaking](./evmstaking-module) module.
+6. Process upgrade events.
+7. Update the execution head to the execution payload (finalized block).
+
+## Post Finalize
+
+If optimistic building is enabled, `PostFinalize` is triggered immediately after `FinalizeBlock` set through custom ABCI callback. During this process, the node peeks the staking and reward queues from the evmstaking module, and builds a new execution payload on top of the current execution head. It sets the optimistic block to be used in the next block's `PrepareProposal` phase and returns the response from the forkchoice update.
+
+## Messages
+
+In this section we describe the processing of the evmengine messages and the corresponding updates to the state. All created/modified state objects specified by each message are defined within the state section.
+
+### MsgExecutionPayload
+
+```protobuf protobuf
+message MsgExecutionPayload {
+  option (cosmos.msg.v1.signer) = "authority";
+  string            authority           = 1;
+  bytes             execution_payload   = 2;
+  repeated EVMEvent prev_payload_events = 3;
+}
+
+message EVMEvent {
+  bytes          address = 1;
+  repeated bytes topics  = 2;
+  bytes          data    = 3;
+  bytes          tx_hash = 4;
+}
+```
+
+This message is expected to fail if:
+
+* authority is invalid (not evmengine authority)
+* execution payload fails to unmarshal to [ExecutableData](https://github.com/piplabs/story/blob/c38b80c13579d3df7174ea10c3368ef0692f52da/client/x/evmengine/types/executable_data.go#L17-L35) for reasons such as invalid fields
+* execution payload's block number does not match CL head's block number + 1
+* execution payload's block parent hash does not match CL head's hash
+* execution payload's timestamp is invalid
+* execution payload's RANDAO does not match CL head's hash (ie. parent hash)
+* execution payload's `Withdrawals`, `BlobGasUsed`, and `ExcessBlobGas` fields are nil
+* execution payload's `Withdrawals` count does not match local node's sum of dequeued stake & reward withdrawals
+
+The message must contain previous block's events, which gets processed at the current CL block (in other words, execution events from EL block n-1 are processed at CL block n). In the future, the message will remove `prev_payload_events` and rely on [Engine API](engine-api) to get the current finalized EL block's events.
+
+Also note that EVM events are processed in CL in the order they are generated in EL.
+
+## UBI
+
+All UBI-related changes must be triggered from the canonical UBI contract in the EVM execution layer. This module handles the execution handling of those triggers in CL. Read more about [UBI for validators](https://docs.story.foundation/docs/tokenomics-staking#ubi-for-validators)
+
+### Set UBI Distribution
+
+The `UBIPool` contract emits the UBI distribution set event, which is parsed by the module to set the UBI percentage in the distribution module.
+
+## Upgrades
+
+All chain upgrade-related logics must be triggered from the canonical upgrade contract in the EVM execution layer. This module handles the execution handling of those triggers in CL.
+
+### Software Upgrade
+
+The `UpgradeEntrypoint` contract emits the software upgrade event, which is parsed by the module to schedule an upgrade at a given height for a given binary name. Currently, all upgrades must either be set via forks or by the software upgrade events; the latter process is a multisig-controlled process, which will transition into a voting-based process in the future.
+
+### Cancel Upgrade
+
+Similar to the software upgrade, the module processes the cancel upgrade event from EVM logs of the previous block, and clears an existing upgrade plan.
+
+# staking
+## Abstrat
+
+The staking module has been modified to accommodate for the following changes below. Refer to the Cosmos SDK's [staking module docs](https://docs.cosmos.network/main/build/modules/staking) for more information.
+
+## Reward Multiplier
+
+### Validators
+
+Validators can choose to accept either locked tokens or unlocked tokens as delegations. Validators for locked tokens are conditioned to half the inflation allocation of validators for unlocked tokens.
+
+Since each validator receives different inflation distribution based on delegations, the inflation distribution I<sub>v<sub>i</sub></sub> for validator v<sub>i</sub> in the rewards pool is calculated as follows:
+
+<Image align="center" src="https://files.readme.io/3ee4914a7cc6036ceebbdd31ce93e525984a08364f8c3ab2152b86b3bcd5df7e-Screenshot_2025-02-11_at_8.30.07_AM.png" />
+
+where
+
+* I<sub>v<sub>i</sub></sub> is the total inflationary token rewards for v<sub>i</sub>
+* S<sub>v<sub>i</sub></sub> is the staked tokens for v<sub>i</sub>
+* M<sub>v<sub>i</sub></sub> is the rewards multiplier for v<sub>i</sub>
+  * 0.5 for locked tokens
+  * 1 for unlocked tokens
+* R<sub>n</sub> is the total inflationary tokens allocated for the rewards pool in block n, calculated in the [mint](./mint-module.md) module
+
+### Delegations
+
+Delegators can delegate with four different staking lock times, which results in different staking reward multiplier for each delegation (delegator-validator pair of stakes). The inflation distribution for each delegation D<sub>i</sub> is calculated as follows:
+
+<Image align="center" src="https://files.readme.io/002ae69aa3b3e52a33747452fe0c0b91b9120f20155deb19b56fb7917132b8de-Screenshot_2025-02-11_at_8.34.44_AM.png" />
+
+where
+
+* S<sub>d<sub>i</sub></sub> is the staked tokens of delegation d<sub>i</sub> on validator v<sub>d</sub>
+* M<sub>d<sub>i</sub></sub> is the rewards multiplier of d<sub>i</sub> on v<sub>d</sub>
+* I<sub>v</sub> is the total inflationary token rewards for v<sub>d</sub>
+* C<sub>v</sub> is the commission rate for v<sub>d</sub>
+
+#### Time-weighted Reward Multiplier M<sub>d<sub>i</sub></sub>
+
+* *Flexible* (no lockup): 1
+* *Short* (90 days): 1.1
+* *Medium* (360 days): 1.5
+* *Long* (540 days): 2.0
+
+# Engine API
+The Engine API is a collection of JSON-RPC methods that facilitate communication between the execution layer (EL) and the consensus layer (CL) of an EVM node. Story's execution layer, which offers full EVM compatibility, supports all standard JSON-RPC methods defined by the [Ethereum Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md). Meanwhile, Story's consensus layer, built on Cosmos modules, utilizes the Engine API to coordinate with the execution layer.
+
+## Functionalities
+
+The Engine API facilitates seamless interaction between the EL and the CL by providing essential coordination mechanisms, including:
+
+* **Handshake**
+* **Synchronization**
+* **Block Validation**
+* **Block Proposal**
+
+## Execution Layer Implementation
+
+The EL in Story implements the following standard Engine API methods to support these functionalities:
+
+* `engine_exchangeCapabilities`: Exchanges supported methods.
+* `engine_getClientVersion`: Exchanges client version data.
+* `engine_newPayload`: Inserts the given payload into the local chain.
+* `engine_forkchoiceUpdate`: Updates the canonical chain marker and generates the payload with given attributes.
+* `engine_getPayload`: Retrieves the pre-generated payload.
+
+## Consensus Layer Interaction
+
+How does Story's Consensus Layer (CL) interact with these methods? The answer lies in CometBFT ABCI++.
+
+CometBFT is a state machine replication engine which provides consensus and security for Cosmos modules. ABCI++, also known as ABCI 2.0, is the interface between CometBFT and the actual state machine being replicated(i.e. EL's state machine).
+
+ABCI++ comprises of a set of methods that interact with the Engine API, as outlined below:
+
+### **1. PrepareProposal** (Proposing a New Block)
+
+* The CL checks whether a payload is already being generated using `payloadID`.
+* If not, the CL calls `engine_forkchoiceUpdate` to trigger a new payload generation.
+* The CL then calls `engine_getPayload` with `payloadID` to fetch the payload and propose a new block.
+
+### **2. ProcessProposal** (Processing a New Block)
+
+* The CL calls `engine_newPayload` to  delivers the new block to the EL.
+* The EL validates payload of the new block, executes transactions deterministically and updates its state.
+
+### **3. FinalizeBlock** (Finalizing a Decided Block)
+
+* The CL calls `engine_newPayload` to  delivers the finalized block to the EL.
+* If the block has not yet been incorporated into the EL, the EL validates payload of the new block, executes transactions deterministically and updates its state.
+* Since CometBFT provides instant finality, the CL calls `engine_forkchoiceUpdate` to finalize the block.
+* Finally, the CL calls `engine_forkchoiceUpdate` again, with extra attributes,  to start an optimistic build of the next block if enabled, and if the validator is the next proposer.
+
+This interaction ensures smooth coordination between the EL and the CL, maintaining the integrity and efficiency of Story's blockchain network.
+
+# Precompiles
+## Introduction
+
+Precompiled contracts are specialized smart contracts implemented directly in the execution layer of a blockchain. Unlike user-deployed smart contracts that execute EVM bytecode, precompiled contracts offer optimized native implementations for complex cryptographic and computational operations. This significantly improves efficiency and reduces gas costs. Precompiled contracts exist at fixed addresses within the execution client and each precompile has a predefined gas cost based on its computational complexity, ensuring predictable execution fees.
+
+Story Protocol introduces two precompiled contracts:
+
+* `p256Verify` precompile to support signature verifications in the secp256r1 elliptic curve.
+* `ipgraph` precompile to enhance on-chain intellectual property management.
+
+In addition, Story Protocol’s execution layer supports all standard EVM precompiled contracts, ensuring full compatibility with Ethereum-based tooling and applications.
+
+## Precompiled Contracts
+
+| Address          | Functionality                                                 |
+| ---------------- | ------------------------------------------------------------- |
+| byte{0x01}       | `ecrecover`- ECDSA signature recovery                         |
+| byte{0x02}       | `sha256` - SHA-256 hash computation                           |
+| byte{0x03}       | `ripemd160` - RIPEMD-160 hash computation                     |
+| byte{0x04}       | `identity` - Identity function                                |
+| byte{0x05}       | `modexp` - Modular exponentiation                             |
+| byte{0x06}       | `bn256Add` - BN256 elliptic curve addition                    |
+| byte{0x07}       | `bn256ScalarMul` - BN256 elliptic curve scalar multiplication |
+| byte{0x08}       | `bn256Pairing` - BN256 elliptic curve pairing check           |
+| byte{0x09}       | `blake2f` - Blake2 hash function                              |
+| byte{0x0a}       | `kzgPointEvaluation` - KZG polynomial commitment evaluation   |
+| byte{0x01, 0x00} | `p256Verify` -  Secp256r1 signature verification              |
+| byte{0x01, 0x01} | `ipgraph` - Intellectual property management                  |
+
+## p256Verify precompile
+
+Refer to [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) for more information.
+
+## IPgraph precompile
+
+The `ipgraph` precompile enables efficient querying and modification of IP relationships and royalty structures while minimizing gas costs.
+
+This precompile provides multiple functions based on the function selector—the first 4 bytes of the input.
+
+| Function Selector        | Description                                                     | Gas computation formula                               | Gas Cost                           |
+| :----------------------- | :-------------------------------------------------------------- | :---------------------------------------------------- | :--------------------------------- |
+| `addParentIp`            | Adds a parent IP record                                         | `intrinsicGas + (ipGraphWriteGas * parentCount)`      | Larger than 1100                   |
+| `hasParentIp`            | Checks if an IP is parent of another IP                         | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
+| `getParentIps`           | Retrieves parent IPs                                            | `ipGraphReadGas * averageParentIpCount`               | 40                                 |
+| `getParentIpsCount`      | Gets the number of parent IPs                                   | `ipGraphReadGas`                                      | 10                                 |
+| `getAncestorIps`         | Retrieves ancestor IPs                                          | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
+| `getAncestorIpsCount`    | Gets the number of ancestor IPs                                 | `ipGraphReadGas * averageParentIpCount * 2`           | 80                                 |
+| `hasAncestorIp`          | Checks if an IP is ancestor of another IP                       | `ipGraphReadGas * averageAncestorIpCount * 2`         | 600                                |
+| `setRoyalty`             | Sets royalty details of an IP                                   | `ipGraphWriteGas`                                     | 1000                               |
+| `getRoyalty`             | Retrieves royalty details of an IP                              | `varies by royalty policy`                            | LAP:900, LRP:620, other:1000       |
+| `getRoyaltyStack`        | Retrieves royalty stack  of an IP                               | `varies by royalty policy`                            | LAP:50, LRP: 600, other:1000       |
+| `hasParentIpExt`         | Checks if an IP is parent of another IP through external call   | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
+| `getParentIpsExt`        | Retrieves parent IPs through external call                      | `ipGraphExternalReadGas * averageParentIpCount`       | 8400                               |
+| `getParentIpsCountExt`   | Gets the number of parent IPs through external call             | `ipGraphExternalReadGas`                              | 2100                               |
+| `getAncestorIpsExt`      | Retrieve ancestor IPs through external call                     | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
+| `getAncestorIpsCountExt` | Gets the number of ancestor IPs through external call           | `ipGraphExternalReadGas * averageParentIpCount * 2`   | 16800                              |
+| `hasAncestorIpExt`       | Checks if an IP is ancestor of another IP through external call | `ipGraphExternalReadGas * averageAncestorIpCount * 2` | 126000                             |
+| `getRoyaltyExt`          | Retrieves royalty details of an IP through external call        | `varies by royalty policy`                            | LAP:189000, LRP:130200, other:1000 |
+| `getRoyaltyStackExt`     | Retrieves royalty stack of an IP through external call          | `varies by royalty policy`                            | LAP:10500, LRP:126000, other:1000  |
+
+Refer to the [Royalty Module](doc:royalty-module) for detailed information on royalty policies.
+
+# 🔧 Infrastructure Partners
+## RPC Providers
+
+<Cards columns={1}>
+  <Card title="QuickNode" href="https://www.quicknode.com/chains/story" icon="fa-home" target="_blank">
+    QuickNode provides hosted Story RPC nodes under their free and paid plans, granting flexible and reliable access to the network. For high-throughput or mission-critical applications, Dedicated Clusters deliver premium performance with unmetered billing, elevated rate limits, and robust infrastructure.
+  </Card>
+</Cards>
+
+## Cross-chain
+
+<Cards columns={3}>
+  <Card title="LayerZero" href="https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts?chains=odyssey-testnet" icon="fa-home" iconColor="#000000" target="_blank">
+    LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.
+  </Card>
+
+  <Card title="deBridge" href="https://debridge.finance/" icon="fa-home" iconColor="#fbff3a" target="_blank">
+    Blazingly fast bridging for anyone that likes to be one step ahead.
+  </Card>
+
+  <Card title="Stargate" href="https://stargate.finance/" icon="fa-home" iconColor="#ffffff" target="_blank">
+    Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi.
+  </Card>
+</Cards>
+
+## Onramp/Offramp
+
+<Cards columns={2}>
+  <Card title="Transak" href="https://transak.com/" icon="fa-home" iconColor="#1461db" target="_blank">
+    Enable users to buy or sell crypto from your app.
+  </Card>
+
+  <Card title="Halliday" href="https://halliday.xyz/" icon="fa-home" iconColor="#392df8" target="_blank">
+    The Commerce Automation Network for Modular Chains.
+  </Card>
+</Cards>
+
+## Indexers/Data
+
+<Cards columns={3}>
+  <Card title="Simplehash" href="https://simplehash.com/" icon="fa-home" iconColor="#5046e5" target="_blank">
+    Instant access to Token and NFT market prices, metadata and media. 80+ chains.
+  </Card>
+
+  <Card title="Goldsky" href="https://goldsky.com/" icon="fa-home" iconColor="#ffbf60" target="_blank">
+    Crypto Data Live-Streamed.
+  </Card>
+
+  <Card title="Zettablock" href="https://zettablock.com/" icon="fa-home" iconColor="#3c4ff6" target="_blank">
+    A unified platform for open and trustfree AI development, empowering an accessible ecosystem of models and datasets.
+  </Card>
+</Cards>
+
+## Oracles/VRF
+
+<Cards columns={3}>
+  <Card title="Gelato" href="https://www.gelato.network/" icon="fa-home" iconColor="#ff3b57" target="_blank">
+    Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated.
+  </Card>
+
+  <Card title="Redstone" href="https://www.redstone.finance/" icon="fa-home" iconColor="#ae0722" target="_blank">
+    Modular oracles for DeFi.
+  </Card>
+
+  <Card title="Pyth" href="https://www.pyth.network/" icon="fa-home" iconColor="#e6dafe" target="_blank">
+    Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems.
+  </Card>
+
+  <Card title="Uma" href="https://uma.xyz/" icon="fa-home" iconColor="#fe4d4c" target="_blank">
+    A decentralized truth machine.
+  </Card>
+</Cards>
+
+## Dev Tools
+
+<Cards columns={2}>
+  <Card title="Protofire" href="https://protofire.io/" icon="fa-home" iconColor="#f54704" target="_blank">
+    Protofire boosts TVL and usage for Web3 projects with our Dev DAO, reducing costs and enhancing quality.
+  </Card>
+
+  <Card title="Wagmi" href="https://wagmi.sh/" icon="fa-home" iconColor="#000000" target="_blank">
+    Type Safe, Extensible, and Modular by design. Build high-performance blockchain frontends.
+  </Card>
+</Cards>
+
+## Wallets/AA
+
+<Cards columns={3}>
+  <Card title="Dynamic" href="https://www.dynamic.xyz/" icon="fa-home" iconColor="#4779ff" target="_blank">
+    Dynamic offers a suite of tools for effortless log in, wallet creation and user management. Designed for users. Built for developers.
+  </Card>
+
+  <Card title="Pimlico" href="https://www.pimlico.io/" icon="fa-home" iconColor="#7115aa" target="_blank">
+    The world's most popular account abstraction infrastructure platform
+  </Card>
+
+  <Card title="ZeroDev" href="https://zerodev.app/" icon="fa-home" iconColor="#23a4f0" target="_blank">
+    ZeroDev is the most powerful toolkit for building with smart accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts” (ERC-4337).
+  </Card>
+
+  <Card title="Tomo" href="https://tomo.inc/" icon="fa-home" iconColor="#f21f7f" target="_blank">
+    The all-in-one wallet designed to bring the mass adoption.
+  </Card>
+
+  <Card title="Privy" href="https://www.privy.io/" icon="fa-home" iconColor="#000000" target="_blank">
+    Privy is a powerful authentication and key management platform to securely onboard, activate, and manage your users at scale.
+  </Card>
+
+  <Card title="Keplr" href="https://www.keplr.app/" icon="fa-home" iconColor="#0657fa" target="_blank">
+    Introducing Keplr, the fast, simple, secure wallet that plugs you into any blockchains and apps wherever you go. Pioneering its ways in the multichain future from day one.
+  </Card>
+
+  <Card title="Turnkey" href="https://www.turnkey.com/" icon="fa-home" iconColor="#000000" target="_blank">
+    Secure, flexible, and scalable wallet infrastructure.
+  </Card>
+</Cards>
+
+# 👋 Welcome to Story Network
+<Cards columns={2}>
+  <Card title="Add Story Mainnet" href="https://chainid.network/chain/1514/" icon="fa-home" target="_blank">
+    Connect your wallet to Story's mainnet.
+  </Card>
+
+  <Card title="Add Story 'Aeneid' Testnet" href="https://chainid.network/chain/1315/" icon="fa-home" target="_blank">
+    Connect your wallet to Story's 'Aeneid' testnet.
+  </Card>
+</Cards>
+
+# Story Network (L1)
+
+Welcome to the Hub for Story Network, the Story Chain.
+
+This section is designed to help you understand the fundamentals of Story Network. We’ve structured the content into two parts:
+
+1. Understanding the Architecture
+2. Operating a Node
+
+Story Network is a purpose-built Layer 1 blockchain that seamlessly integrates the best of both the Ethereum Virtual Machine (EVM) and Cosmos SDK. It offers full EVM compatibility while incorporating deep execution layer optimizations to efficiently support graph-based data structures. These optimizations make it particularly well-suited for handling complex intellectual property (IP) data structures in a cost-effective and scalable manner.
+
+## Key Features
+
+* **EVM Compatibility**: Full compatibility with Ethereum Virtual Machine
+* **Optimized Data Structures**: Precompiled primitives for efficient IP graph traversal
+* **Fast Finality**: CometBFT-based consensus layer for quick transaction finality
+* **Modular Architecture**: Decoupled consensus from execution using Ethereum's Engine-API
+
+## Documentation Sections
+
+### Getting Started
+
+* [Node Architecture](doc:story-node-structure)
+* [Network Info](doc:network-info)
+* [Whitepaper](https://www.story.foundation/whitepaper.pdf)
+
+### Node Operations
+
+* [Operating a node](doc:operating-a-node)
+  * Full Node Setup
+  * Archive Node Setup
+  * Node Upgrade Guide
+  * Release Notes
+
+### Validation
+
+* [Become a validator](doc:become-a-validator)
+  * Validator Setup
+  * Validator Operations
+
+### Network Economics
+
+* [Staking Design](doc:tokenomics-staking)
+  * Token Economics
+  * Staking Mechanisms
+  * Rewards Structure
+
+### Resources
+
+* [Additional Resources](doc:additional-resources)
+  * GitHub Repositories
+  * SIP Repository
+  * Community Forum
+* [Troubleshooting](doc:network-faq)
+  * Common Issues
+  * Troubleshooting
+  * Best Practices
+
+## Network Information
+
+The Story Network is currently available in multiple environments:
+
+* Mainnet (Production)
+* Aeneid (Testnet)
+* Localnet (Development)
+
+For detailed network information and connection details, please refer to the respective network documentation sections.
 
 # Dispute
 ## DisputeClient
