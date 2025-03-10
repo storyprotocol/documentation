@@ -1283,7 +1283,7 @@ Welcome to Story node troubleshooting! This section covers common problems and s
   ```
 </details>
 
-# Staking Design
+# 💰 Staking Design
 # Purpose
 
 This document walks through the staking specification for Story. The goal is to provide clarity to network participants and technical partners on how Story’s staking mechanics work and how users can interface with our chain.
@@ -3055,7 +3055,7 @@ The Story Network is currently available in multiple environments:
 
 For detailed network information and connection details, please refer to the respective network documentation sections.
 
-# Become a Validator
+# 🔏 Become a Validator
 ## Quick Links
 
 * [Story Geth Releases](https://github.com/piplabs/story-geth/releases)
