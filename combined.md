@@ -3654,8 +3654,8 @@ Raises a dispute on a given ipId
 Parameters:
 
 * `request.targetIpId`: The IP ID that is the target of the dispute.
-* `request.targetTag`: The target tag of the dispute.
-* `request.cid`: CID (Content Identifier) is a unique identifier in IPFS, including CID v0 (base58) and CID v1 (base32).
+* `request.targetTag`: The target tag of the dispute. See [dispute tags](https://docs.story.foundation/docs/dispute-module#dispute-tags). **Example: "IMPROPER\_REGISTRATION"**
+* `request.cid`: Content Identifier (CID) for the dispute evidence. This should be obtained by uploading your dispute evidence (documents, images, etc.) to IPFS. **Example: "QmX4zdp8VpzqvtKuEqMo6gfZPdoUx9TeHXCgzKLcFfSUbk"**
 * `request.liveness`: The liveness is the time window (in seconds) in which a counter dispute can be presented (30days).
 * `request.bond`: The amount of wrapper IP that the dispute initiator pays upfront into a pool. To counter that dispute the opposite party of the dispute has to place a bond of the same amount. The winner of the dispute gets the original bond back + 50% of the other party bond. The remaining 50% of the loser party bond goes to the reviewer.
 * `request.wipOptions`: \[Optional]
