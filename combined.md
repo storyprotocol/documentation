@@ -11087,7 +11087,9 @@ See [Network Info](doc:network-info) for all RPC, explorer, and faucet info.
 
 ## :computer: Use our SDKs
 
-We have built a [🛠️ TypeScript SDK](doc:typescript-sdk) with its own in-depth tutorials for popular functions and use cases.
+Check out the entire [SDK Reference](doc:sdk-overview) to see an explanation + example for every function in our :hammer_and_wrench: **TypeScript SDK** (can use this in React as well) and :snake: **Python SDK**.
+
+We have also built a [🛠️ TypeScript SDK Guide](doc:typescript-sdk), which is more of a step-by-step walkthrough, with its own in-depth tutorials for popular functions and use cases.
 
 ## :gear: Deployed Smart Contracts
 
@@ -11098,7 +11100,7 @@ Check out the addresses for the deployed smart contracts [here](doc:deployed-sma
 
 ## 🔌 Use our API
 
-Check out the entire [API Reference](https://docs.story.foundation/reference/api-introduction) for learning how to use our API.
+Check out the entire [API Reference](https://docs.story.foundation/reference/api-introduction) for learning how to use our API. For common things like fetching gas price, average block time, market cap, token price, and more, check out the [Blockscout API](doc:blockscout-api).
 
 ## :memo: Register IP on Story
 
@@ -11174,6 +11176,32 @@ Our tutorials will show you exactly how to claim revenue:
 > 📘 Learn More
 >
 > For more information on royalty and how it functions, check out the [💸 Royalty Module](doc:royalty-module).
+
+## :x: Disputing
+
+Now you may be wondering, *"How can I actually dispute someone else's IP if they steal mine, or don't pay me proper revenue for using it?"*
+
+There are two main philosophies/ways to take down "bad" IP.
+
+The first is the [🕵️ Story Attestation Service](doc:story-attestation-service). This compromises of a bunch of infringement detection providers that, upon IP registration, automatically review the IP - using their own methods, whether it's AI, manual checking, etc - and flag it if the IP is infringing (ex. registering a picture of Pikachu). Then, any IP discovery platform like the [IP Portal](https://portal.story.foundation) can surface the reviews and let users decide if they want to use an IP or not.
+
+*For example, an IP that has hundreds of flags from different infringement providers probably isn't a legitimate IP.*
+
+The second is using the [❌ Dispute Module](doc:dispute-module) to officially tag & block IP at the protocol level. Anyone can flag an IP and it will be sent off to arbitration partners like [UMA](https://uma.xyz) who will decide its fate. If officially tagged, an IP can no longer earn revenue or create derivatives via the protocol.
+
+*For example, if someone doesn't make a proper payment for using an IP commercially, or uses it in a disallowed territory, or contains NSFW content.*
+
+Our tutorials will show you exactly how to raise a dispute on-chain:
+
+<Cards columns={2}>
+  <Card title="Using the SDK" href="https://docs.story.foundation/docs/raise-a-dispute" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    Learn how to dispute IP on Story using the TypeScript SDK.
+  </Card>
+</Cards>
+
+> 📘 Learn More
+>
+> For more information on filing a dispute on-chain, check out the [❌ Dispute Module](doc:dispute-module).
 
 # 💾 Deployed Smart Contracts
 ## Core Protocol Contracts
