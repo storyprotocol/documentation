@@ -12,9 +12,9 @@ You want to start building on Story quickly... so let's get started!
 >
 > If you'd like to read up on Story before diving into the technical details, check out our awesome [Learn Hub](https://learn.story.foundation/) which will explain the who, what, and why of Story.
 
-## :world_map: A "Mindmap" for Developers
-
 <Image align="center" border={false} caption="Credit to the original tweet [here](https://x.com/devrelius/status/1898756162675196098)." src="https://files.readme.io/49a6d447c37d25ec4566db511dead5b70a641fab57088e1cbd24d8236e3bef19-image.png" />
+
+***
 
 ## :globe_with_meridians: Add Network
 
