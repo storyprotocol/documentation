@@ -12027,6 +12027,10 @@ You can see the explorer recognizes the metadata format, and you can play the so
 * [Register & Monetize Stability Images](doc:register-stability-images)
 * [Finetune Images on Story](doc:finetune-images)
 
+## :purse: Wallet-less / Onboarding
+
+* [Email Login & Sponsored Transactions with Pivy](doc:privy-tutorial)
+
 # Finetune Images on Story
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/jacob-tucker/finetune-story-flux" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
@@ -14107,7 +14111,7 @@ import {
   StoryClient,
   StoryConfig,
 } from "@story-protocol/core-sdk";
-import { http } from 'viem'
+import { http } from "viem";
 
 export default function Home() {
   const { client: smartWalletClient } = useSmartWallets();
@@ -14118,39 +14122,39 @@ export default function Home() {
     const config: StoryConfig = {
       account: smartWalletClient!.account,
       transport: http("https://aeneid.storyrpc.io"),
-        chainId: "aeneid",
-  };
-  const client = StoryClient.newClient(config);
-  return client;
-}
+      chainId: "aeneid",
+    };
+    const client = StoryClient.newClient(config);
+    return client;
+  }
 
-async function registerIp() {
-  const storyClient = await setupStoryClient();
+  async function registerIp() {
+    const storyClient = await setupStoryClient();
 
-  const response = await storyClient.ipAsset.mintAndRegisterIp({
-    spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // public spg contract for testing
-    txOptions: { encodedTxDataOnly: true },
-  });
+    const response = await storyClient.ipAsset.mintAndRegisterIp({
+      spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // public spg contract for testing
+      txOptions: { encodedTxDataOnly: true },
+    });
 
-  const uiOptions = {
-    title: "Register IP",
-    description: "This is an example transaction that registers an IP.",
-    buttonText: "Register",
-  };
+    const uiOptions = {
+      title: "Register IP",
+      description: "This is an example transaction that registers an IP.",
+      buttonText: "Register",
+    };
 
-  const txHash = await smartWalletClient?.sendTransaction(
-    response.encodedTxData as EncodedTxData,
-    { uiOptions }
-);
-console.log(`View Tx: https://aeneid.storyscan.xyz/tx/${txHash}`);
-}
+    const txHash = await smartWalletClient?.sendTransaction(
+      response.encodedTxData as EncodedTxData,
+      { uiOptions }
+    );
+    console.log(`View Tx: https://aeneid.storyscan.xyz/tx/${txHash}`);
+  }
 
-return (
-  <div>
-    {/* previous code here */}
-    <button onClick={registerIp}>Register IP</button>
-  </div>
-)
+  return (
+    <div>
+      {/* previous code here */}
+      <button onClick={registerIp}>Register IP</button>
+    </div>
+  );
 }
 ```
 
