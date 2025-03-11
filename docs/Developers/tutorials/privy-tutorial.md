@@ -382,39 +382,39 @@ export default function Home() {
     const config: StoryConfig = {
       account: smartWalletClient!.account,
       transport: http("https://aeneid.storyrpc.io"),
-      chainId: "aeneid",
-  	};
-  	const client = StoryClient.newClient(config);
-  	return client;
-	}
+        chainId: "aeneid",
+  };
+  const client = StoryClient.newClient(config);
+  return client;
+}
 
-  async function registerIp() {
-    const storyClient = await setupStoryClient();
+async function registerIp() {
+  const storyClient = await setupStoryClient();
 
-    const response = await storyClient.ipAsset.mintAndRegisterIp({
-      spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // public spg contract for testing
-      txOptions: { encodedTxDataOnly: true },
-    });
+  const response = await storyClient.ipAsset.mintAndRegisterIp({
+    spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // public spg contract for testing
+    txOptions: { encodedTxDataOnly: true },
+  });
 
-    const uiOptions = {
-      title: "Register IP",
-      description: "This is an example transaction that registers an IP.",
-      buttonText: "Register",
-    };
+  const uiOptions = {
+    title: "Register IP",
+    description: "This is an example transaction that registers an IP.",
+    buttonText: "Register",
+  };
 
-    const txHash = await smartWalletClient?.sendTransaction(
-      response.encodedTxData as EncodedTxData,
-      { uiOptions }
-  	);
-  	console.log(`View Tx: https://aeneid.storyscan.xyz/tx/${txHash}`);
-  }
+  const txHash = await smartWalletClient?.sendTransaction(
+    response.encodedTxData as EncodedTxData,
+    { uiOptions }
+);
+console.log(`View Tx: https://aeneid.storyscan.xyz/tx/${txHash}`);
+}
 
-  return (
-    <div>
-      {/* previous code here */}
-      <button onClick={registerIp}>Register IP</button>
-    </div>
-  )
+return (
+  <div>
+    {/* previous code here */}
+    <button onClick={registerIp}>Register IP</button>
+  </div>
+)
 }
 ```
 
