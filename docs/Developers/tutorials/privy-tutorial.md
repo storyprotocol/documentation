@@ -25,7 +25,7 @@ Here is how Privy describes both of these things:
 >
 > Smart wallets are programmable, onchain accounts that incorporate the features of account abstraction. With just a few lines of code, you can create smart wallets for your users to sponsor gas payments, send batched transactions, and more.
 
-We will be implementing both.
+We will be implementing both using [Privy](https://www.privy.io/) + [Pimlico](https://www.pimlico.io/).
 
 ### :warning: Prerequisites
 
