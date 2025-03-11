@@ -1,5 +1,5 @@
 ---
-title: Email Login & Sponsored Transactions with Pivy
+title: Email Login & Sponsored Transactions with Privy
 excerpt: >-
   Learn how to implement email logins and sponsored transactions with Privy &
   Pimlico.
