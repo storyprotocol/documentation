@@ -14201,9 +14201,9 @@ The best way to get started is to get your hands dirty and start building.
 In the following series of tutorials, you will learn how to setup the TypeScript SDK in React.
 
 # Setup
-We can also use the TypeScript SDK in React to delay signing & sending transactions to a JSON-RPC account like Metamask.
+We do not have a specific React SDK, however **we can use the TypeScript SDK in React** all the same, to delay signing & sending transactions to a JSON-RPC account like Metamask.
 
-We recommend using [wagmi](https://wagmi.sh/) as a Web3 provider and then installing a wallet service like Dynamic or RainbowKit. We provide examples for all of the following services:
+We recommend using [wagmi](https://wagmi.sh/) as a Web3 provider and then installing a wallet provider like Dynamic or RainbowKit. We provide examples for all of the following:
 
 * [Dynamic Setup Tutorial](doc:dynamic-setup)
 * [RainbowKit Setup Tutorial](doc:rainbowkit-setup)
