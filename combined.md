@@ -12029,7 +12029,7 @@ You can see the explorer recognizes the metadata format, and you can play the so
 
 ## :purse: Wallet-less / Onboarding
 
-* [Email Login & Sponsored Transactions with Pivy](doc:privy-tutorial)
+* [Email Login & Sponsored Transactions with Privy](doc:privy-tutorial)
 
 # Finetune Images on Story
 <Cards columns={1}>
@@ -13747,7 +13747,7 @@ Once you have done that, you should see a console log with a link to our IP-expl
 
 ## 6. Done!
 
-# Email Login & Sponsored Transactions with Pivy
+# Email Login & Sponsored Transactions with Privy
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/jacob-tucker/story-privy-tutorial" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
     View the completed code for this tutorial.
