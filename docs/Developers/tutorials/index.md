@@ -32,4 +32,4 @@ next:
 
 ## :purse: Wallet-less / Onboarding
 
-* [Email Login & Sponsored Transactions with Pivy](doc:privy-tutorial)
+* [Email Login & Sponsored Transactions with Privy](doc:privy-tutorial)
