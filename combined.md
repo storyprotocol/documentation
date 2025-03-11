@@ -12027,6 +12027,10 @@ You can see the explorer recognizes the metadata format, and you can play the so
 * [Register & Monetize Stability Images](doc:register-stability-images)
 * [Finetune Images on Story](doc:finetune-images)
 
+## :purse: Wallet-less / Onboarding
+
+* [Email Login & Sponsored Transactions with Pivy](doc:privy-tutorial)
+
 # Finetune Images on Story
 <Cards columns={1}>
   <Card title="Completed Code" href="https://github.com/jacob-tucker/finetune-story-flux" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
@@ -13792,13 +13796,17 @@ NEXT_PUBLIC_PRIVY_APP_ID=
 npm install @story-protocol/core-sdk permissionless viem @privy-io/react-auth
 ```
 
-## 1. Set up Privy
+## 1. Set up Embedded Wallets
 
 <Cards columns={1}>
   <Card title="Official Privy Tutoral" href="https://docs.privy.io/guide/react/wallets/smart-wallets/usage#setup" icon="fa-home" target="_blank">
     Follow Privy's official tutorial for setup instead of reading this step.
   </Card>
 </Cards>
+
+> 📘 Learn more on Embedded Wallets
+>
+> You can read Privy's tutorial [here](https://docs.privy.io/guide/react/wallets/embedded/creation) that describes setting up Embedded Wallets, which is a fancy way of saying email login for your users. In the below example, we simply create an embedded wallet for every user, but you may want more customization by reading their tutorial.
 
 You must wrap any component that will be using embedded/smart wallets with the `PrivyProvider` and `SmartWalletsProvider`. In a `providers.tsx` (or whatever you want to call it) file, add the following code:
 
@@ -13849,9 +13857,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>
@@ -14105,7 +14111,7 @@ import {
   StoryClient,
   StoryConfig,
 } from "@story-protocol/core-sdk";
-import { http } from 'viem'
+import { http } from "viem";
 
 export default function Home() {
   const { client: smartWalletClient } = useSmartWallets();
@@ -14117,10 +14123,10 @@ export default function Home() {
       account: smartWalletClient!.account,
       transport: http("https://aeneid.storyrpc.io"),
       chainId: "aeneid",
-  	};
-  	const client = StoryClient.newClient(config);
-  	return client;
-	}
+    };
+    const client = StoryClient.newClient(config);
+    return client;
+  }
 
   async function registerIp() {
     const storyClient = await setupStoryClient();
@@ -14139,8 +14145,8 @@ export default function Home() {
     const txHash = await smartWalletClient?.sendTransaction(
       response.encodedTxData as EncodedTxData,
       { uiOptions }
-  	);
-  	console.log(`View Tx: https://aeneid.storyscan.xyz/tx/${txHash}`);
+    );
+    console.log(`View Tx: https://aeneid.storyscan.xyz/tx/${txHash}`);
   }
 
   return (
@@ -14148,7 +14154,7 @@ export default function Home() {
       {/* previous code here */}
       <button onClick={registerIp}>Register IP</button>
     </div>
-  )
+  );
 }
 ```
 
