@@ -152,7 +152,7 @@ The second is using the [❌ Dispute Module](doc:dispute-module) to officially t
 
 *For example, if someone doesn't make a proper payment for using an IP commercially, or uses it in a disallowed territory, or contains NSFW content.*
 
-Our tutorials will show you exactly how to handle on-chain disputing:
+Our tutorials will show you exactly how to raise a dispute on-chain:
 
 <Cards columns={2}>
   <Card title="Using the SDK" href="https://docs.story.foundation/docs/raise-a-dispute" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
