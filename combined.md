@@ -13786,7 +13786,11 @@ NEXT_PUBLIC_PRIVY_APP_ID=
    1. Name: `Story Aeneid Testnet`
    2. ID number: `1315`
    3. RPC URL: `https://aeneid.storyrpc.io`
-   4. For the Bundler URL and Paymaster URL, go to <a href="https://dashboard.pimlico.io" target="_blank">Pimlico's Dashboard ↗️</a> and create a new app. Then click on "API Keys", create a new API Key, and click "RPC URLs" as shown below:
+   4. For the Bundler URL and Paymaster URL, go to <a href="https://dashboard.pimlico.io" target="_blank">Pimlico's Dashboard ↗️</a> and create a new app. Then click on "API Keys", create a new API Key, click "RPC URLs" as shown below, and then select "Story Aeneid Testnet" as the network:
+
+> 🚧 This is for testing
+>
+> In a real scenario, you would have to set up proper sponsorship policies and billing info on Pimlico to automatically sponsor the transactions on behalf of your app. We don't have to do this on testnet.
 
 ![](https://files.readme.io/eb5092fec55f86d23003b4cf44d1f07a028952c04196b47a9460ca30c4667567-image.png)
 
