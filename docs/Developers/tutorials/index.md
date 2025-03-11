@@ -29,3 +29,7 @@ next:
 * [Protect DALL·E AI-Generated Images](doc:protect-dalle-ai-generated-images)
 * [Register & Monetize Stability Images](doc:register-stability-images)
 * [Finetune Images on Story](doc:finetune-images)
+
+## :purse: Wallet-less / Onboarding
+
+* [Email Login & Sponsored Transactions with Pivy](doc:privy-tutorial)
