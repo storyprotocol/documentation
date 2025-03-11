@@ -12006,94 +12006,173 @@ When you run the script, you will register an IP Asset and it will look somethin
 
 You can see the explorer recognizes the metadata format, and you can play the song directly on the page!
 
-# Training Data
+# Email Login & Sponsored Transactions with Pivy
+[https://docs.dynamic.xyz/smart-wallets/add-smart-wallets](https://docs.dynamic.xyz/smart-wallets/add-smart-wallets)
 
-In this tutorial, you will learn how to license and protect DALL·E 2 AI-Generated images by registering it on Story.
-
-## The Explanation
-
-AI runs on IP. The sheer speed and superabundance of AI-generated media is outpacing the current intellectual property system that was designed for physical replication. In many cases, AI is trained on and is producing copyrighted data.
-
-This creates a "tragedy of the commons" situation, where creators are no longer incentivized to make new content if AI is just going to steal and summarize it. As a result, creators make no money since consumers go straight to AI bots, and AI bots lose in the long run if there's no new content.
-
-To solve this, IP that is used as training data by LLMs should be registered on Story. Submit a project showcasing registering IP training data on Story, and an AI training on this registered data.
-
-## 0. Before you Start
+### :warning: Prerequisites
 
 There are a few steps you have to complete before you can start the tutorial.
 
-1. Add your Story Network Testnet wallet's private key to `.env` file:
+1. Create a new project on <a href="https://dashboard.privy.io" target="_blank">Privy's Dashboard ↗️</a>
+2. Copy your **"App ID"** under **"App settings > API keys"**. In your local project, make a `.env` file and add your App ID:
 
-```yaml .env
-WALLET_PRIVATE_KEY=
+```Text .env
+NEXT_PUBLIC_PRIVY_APP_ID=
 ```
 
-2. Go to [Pinata](https://pinata.cloud/) and create a new API key. Add the JWT to your `.env` file:
+3. On your project dashboard, enable Smart Wallets under "**Wallet Configuration > Smart wallets**" and select "**Kernel (ZeroDev)**" as shown below:
 
-```yaml .env
-PINATA_JWT=
-```
+![](https://files.readme.io/4d62b6c1080f012ddb0899498bb6af24b834928ef4c5e97359ffb56223675658-image.png)
 
-3. Go to [OpenAI](https://platform.openai.com/settings/organization/api-keys) and create a new API key. Add the new key to your `.env` file:
+4. Once you enable Smart wallets, right underneath make sure to put a "Custom chain" with the following values:
+   1. Name: `Story Aeneid Testnet`
+   2. ID number: `1315`
+   3. RPC URL: `https://aeneid.storyrpc.io`
+   4. For the Bundler URL and Paymaster URL, go to <a href="https://dashboard.pimlico.io" target="_blank">Pimlico's Dashboard ↗️</a> and create a new app. Then click on "API Keys", create a new API Key, and click "RPC URLs" as shown below:
 
-> 🚧 OpenAI Credits
->
-> In order to generate an image, you'll need OpenAI credits. If you just created an account, you will probably have a free trial that will give you a few credits to start with.
-
-```yaml .env
-OPENAI_API_KEY=
-```
-
-4. Add your preferred RPC URL to your `.env` file. You can just use the public default one we provide:
-
-```yaml .env
-RPC_PROVIDER_URL=https://aeneid.storyrpc.io
-```
+![](https://files.readme.io/eb5092fec55f86d23003b4cf44d1f07a028952c04196b47a9460ca30c4667567-image.png)
 
 5. Install the dependencies:
 
 ```Text Terminal
-npm install @story-protocol/core-sdk pinata-web3 viem
+npm install @story-protocol/core-sdk permissionless viem @privy-io/react-auth
 ```
 
-## 1. Generate an Image
+## 1. Set up Privy
 
-```typescript main.ts
-import OpenAI from "openai";
+<Cards columns={1}>
+  <Card title="Official Privy Tutoral" href="https://docs.privy.io/guide/react/wallets/smart-wallets/usage#setup" icon="fa-home" target="_blank">
+    Follow Privy's official tutorial for setup instead of reading this step.
+  </Card>
+</Cards>
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+You must wrap any component that will be using embedded/smart wallets with the `PrivyProvider` and `SmartWalletsProvider`. In a `providers.tsx` (or whatever you want to call it) file, add the following code:
 
-const image = await openai.images.generate({
-  model: "dall-e-2",
-  prompt: "A cute baby sea otter",
-});
+```jsx providers.tsx
+"use client";
 
-console.log(image.data[0].url); // the url to the newly created image
+import { PrivyProvider } from "@privy-io/react-auth";
+import { SmartWalletsProvider } from "@privy-io/react-auth/smart-wallets";
+import { aeneid } from "@story-protocol/core-sdk";
+
+export default function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <PrivyProvider
+      appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID as string}
+      config={{
+        // Customize Privy's appearance in your app
+        appearance: {
+          theme: "light",
+          accentColor: "#676FFF",
+          logo: "/story-logo.jpg",
+        },
+        // Create embedded wallets for users who don't have a wallet
+        // when they sign in with email
+        embeddedWallets: {
+          createOnLogin: "all-users",
+        },
+        defaultChain: aeneid,
+        supportedChains: [aeneid],
+      }}
+    >
+      <SmartWalletsProvider>{children}</SmartWalletsProvider>
+    </PrivyProvider>
+  );
+}
 ```
 
-## 2. Set up your Story Config
+Then you can simply add it to your`layout.tsx` like so:
 
-- Associated docs: [TypeScript SDK Setup](doc:typescript-sdk-setup)
+```jsx layout.tsx
+import Providers from "@/providers/providers";
 
-```javascript main.ts
-import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
-import { http } from "viem";
-import { privateKeyToAccount, Address, Account } from "viem/accounts";
+/* other code here... */
 
-// previous code here ...
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
+}
 
-const privateKey: Address = `0x${process.env.WALLET_PRIVATE_KEY}`;
-const account: Account = privateKeyToAccount(privateKey);
-
-const config: StoryConfig = {
-  account: account,
-  transport: http(process.env.RPC_PROVIDER_URL),
-  chainId: "aeneid",
-};
-const client = StoryClient.newClient(config);
 ```
+
+## 2. Login & Logout
+
+You can add email login to your app like so:
+
+```jsx page.tsx
+import { usePrivy } from "@privy-io/react-auth";
+import { useSmartWallets } from "@privy-io/react-auth/smart-wallets";
+
+export default function Home() {
+  const { login, logout, user } = usePrivy();
+  const { client: smartWalletClient } = useSmartWallets();
+
+  useEffect(() => {
+    if (user) {
+      const smartWallet = user.linkedAccounts.find((account) => account.type === 'smart_wallet');
+      // Logs the smart wallet's address
+      console.log(smartWallet.address);
+      // Logs the smart wallet type (e.g. 'safe', 'kernel', 'light_account', 'biconomy', 'thirdweb', 'coinbase_smart_wallet')
+      console.log(smartWallet.type);
+    }
+  }, [user])
+
+  return (
+    <button onClick={user ? logout : login}>
+      {user ? "Logout" : "Login with Privy"}
+    </button>
+  )
+}
+```
+
+## 3. Sign a Message with Privy
+
+<Cards columns={1}>
+  <Card title="Official Privy Tutoral" href="https://docs.privy.io/guide/react/wallets/smart-wallets/usage#signing-messages" icon="fa-home" target="_blank">
+    Follow Privy's official tutorial for signing messages instead of reading this step.
+  </Card>
+</Cards>
+
+<br />
+
+```jsx page.tsx
+import { usePrivy } from "@privy-io/react-auth";
+import { useSmartWallets } from "@privy-io/react-auth/smart-wallets";
+
+export default function Home() {
+  const { login, logout, user } = usePrivy();
+  const { client: smartWalletClient } = useSmartWallets();
+
+  useEffect(() => {
+    if (user) {
+      const smartWallet = user.linkedAccounts.find((account) => account.type === 'smart_wallet');
+      // Logs the smart wallet's address
+      console.log(smartWallet.address);
+      // Logs the smart wallet type (e.g. 'safe', 'kernel', 'light_account', 'biconomy', 'thirdweb', 'coinbase_smart_wallet')
+      console.log(smartWallet.type);
+    }
+  }, [user])
+
+  return (
+    <button onClick={user ? logout : login}>
+      {user ? "Logout" : "Login with Privy"}
+    </button>
+  )
+}
+```
+
+<br />
 
 ## 3. Set up your IP Metadata
 
@@ -12239,7 +12318,7 @@ SPG_NFT_CONTRACT_ADDRESS=
 
 The code below will mint an NFT, register it as an [🧩 IP Asset](doc:ip-asset), set [License Terms](doc:license-terms) on the IP, and then set both NFT & IP metadata.
 
-- Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
+* Associated Docs: [Mint, Register, and Attach Terms](https://docs.story.foundation/docs/attach-terms-to-an-ip-asset#mint-nft-register-as-ip-asset-and-attach-terms)
 
 ```typescript main.ts
 import {
@@ -12272,7 +12351,6 @@ console.log(
 ```
 
 ## 7. Done!
-
 
 # 📘 Tutorials
 ## 📋 Registration
