@@ -8,7 +8,24 @@ hidden: true
 metadata:
   robots: index
 ---
-[https://docs.dynamic.xyz/smart-wallets/add-smart-wallets](https://docs.dynamic.xyz/smart-wallets/add-smart-wallets)
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/jacob-tucker/story-privy-tutorial" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    View the completed code for this tutorial.
+  </Card>
+</Cards>
+
+You are reading this tutorial because you probably want to do one or both of these things:
+
+1. Enable users who don't have a wallet to login with email to your app ("Embedded Wallets")
+2. Sponsor transactions for your users so they don't have to pay gas ("Smart Wallets")
+
+Here is how Privy describes both of these things:
+
+> Embedded wallets are self-custodial wallets provisioned by Privy itself for a wallet experience that is directly embedded in your application. Embedded wallets do not require a separate wallet client, like a browser extension or a mobile app, and can be accessed directly from your product. These are primarily designed for users of your app who may not already have an external wallet, or don't want to connect their external wallet.
+>
+> Smart wallets are programmable, onchain accounts that incorporate the features of account abstraction. With just a few lines of code, you can create smart wallets for your users to sponsor gas payments, send batched transactions, and more.
+
+We will be implementing both.
 
 ### :warning: Prerequisites
 
@@ -400,3 +417,9 @@ export default function Home() {
 ```
 
 ## 6. Done!
+
+<Cards columns={1}>
+  <Card title="Completed Code" href="https://github.com/jacob-tucker/story-privy-tutorial" icon="fa-thumbs-up" iconColor="#51af51" target="_blank">
+    View the completed code for this tutorial.
+  </Card>
+</Cards>
