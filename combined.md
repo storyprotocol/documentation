@@ -13792,13 +13792,17 @@ NEXT_PUBLIC_PRIVY_APP_ID=
 npm install @story-protocol/core-sdk permissionless viem @privy-io/react-auth
 ```
 
-## 1. Set up Privy
+## 1. Set up Embedded Wallets
 
 <Cards columns={1}>
   <Card title="Official Privy Tutoral" href="https://docs.privy.io/guide/react/wallets/smart-wallets/usage#setup" icon="fa-home" target="_blank">
     Follow Privy's official tutorial for setup instead of reading this step.
   </Card>
 </Cards>
+
+> 📘 Learn more on Embedded Wallets
+>
+> You can read Privy's tutorial [here](https://docs.privy.io/guide/react/wallets/embedded/creation) that describes setting up Embedded Wallets, which is a fancy way of saying email login for your users. In the below example, we simply create an embedded wallet for every user, but you may want more customization by reading their tutorial.
 
 You must wrap any component that will be using embedded/smart wallets with the `PrivyProvider` and `SmartWalletsProvider`. In a `providers.tsx` (or whatever you want to call it) file, add the following code:
 
@@ -13849,9 +13853,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>
@@ -14116,39 +14118,39 @@ export default function Home() {
     const config: StoryConfig = {
       account: smartWalletClient!.account,
       transport: http("https://aeneid.storyrpc.io"),
-      chainId: "aeneid",
-  	};
-  	const client = StoryClient.newClient(config);
-  	return client;
-	}
+        chainId: "aeneid",
+  };
+  const client = StoryClient.newClient(config);
+  return client;
+}
 
-  async function registerIp() {
-    const storyClient = await setupStoryClient();
+async function registerIp() {
+  const storyClient = await setupStoryClient();
 
-    const response = await storyClient.ipAsset.mintAndRegisterIp({
-      spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // public spg contract for testing
-      txOptions: { encodedTxDataOnly: true },
-    });
+  const response = await storyClient.ipAsset.mintAndRegisterIp({
+    spgNftContract: "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc", // public spg contract for testing
+    txOptions: { encodedTxDataOnly: true },
+  });
 
-    const uiOptions = {
-      title: "Register IP",
-      description: "This is an example transaction that registers an IP.",
-      buttonText: "Register",
-    };
+  const uiOptions = {
+    title: "Register IP",
+    description: "This is an example transaction that registers an IP.",
+    buttonText: "Register",
+  };
 
-    const txHash = await smartWalletClient?.sendTransaction(
-      response.encodedTxData as EncodedTxData,
-      { uiOptions }
-  	);
-  	console.log(`View Tx: https://aeneid.storyscan.xyz/tx/${txHash}`);
-  }
+  const txHash = await smartWalletClient?.sendTransaction(
+    response.encodedTxData as EncodedTxData,
+    { uiOptions }
+);
+console.log(`View Tx: https://aeneid.storyscan.xyz/tx/${txHash}`);
+}
 
-  return (
-    <div>
-      {/* previous code here */}
-      <button onClick={registerIp}>Register IP</button>
-    </div>
-  )
+return (
+  <div>
+    {/* previous code here */}
+    <button onClick={registerIp}>Register IP</button>
+  </div>
+)
 }
 ```
 
