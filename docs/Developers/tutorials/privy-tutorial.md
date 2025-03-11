@@ -4,7 +4,7 @@ excerpt: >-
   Learn how to implement email logins and sponsored transactions with Privy &
   Pimlico.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   robots: index
 ---
@@ -56,13 +56,17 @@ NEXT_PUBLIC_PRIVY_APP_ID=
 npm install @story-protocol/core-sdk permissionless viem @privy-io/react-auth
 ```
 
-## 1. Set up Privy
+## 1. Set up Embedded Wallets
 
 <Cards columns={1}>
   <Card title="Official Privy Tutoral" href="https://docs.privy.io/guide/react/wallets/smart-wallets/usage#setup" icon="fa-home" target="_blank">
     Follow Privy's official tutorial for setup instead of reading this step.
   </Card>
 </Cards>
+
+> 📘 Learn more on Embedded Wallets
+>
+> You can read Privy's tutorial [here](https://docs.privy.io/guide/react/wallets/embedded/creation) that describes setting up Embedded Wallets, which is a fancy way of saying email login for your users. In the below example, we simply create an embedded wallet for every user, but you may want more customization by reading their tutorial.
 
 You must wrap any component that will be using embedded/smart wallets with the `PrivyProvider` and `SmartWalletsProvider`. In a `providers.tsx` (or whatever you want to call it) file, add the following code:
 
