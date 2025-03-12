@@ -1,5 +1,10 @@
 ---
 title: Gelato
+excerpt: >-
+  Gelato VRF provides verifiable randomness for blockchain applications by
+  utilizing Drand, a decentralized and trusted source of random numbers. It
+  ensures that developers receive truly random values that are both provable and
+  tamper-resistant.
 deprecated: false
 hidden: false
 metadata:
