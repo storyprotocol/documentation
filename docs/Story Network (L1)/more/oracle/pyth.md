@@ -17,8 +17,6 @@ Pyth Network provides real-time financial market data to smart contracts across 
 
 <br />
 
-See Pyth's [How to Generate Random numbers in EVM dApps](https://docs.pyth.network/entropy/generate-random-numbers/evm) guide to integrate your application with Pyth Entropy.
-
 ### Contracts
 
 #### Mainnet
