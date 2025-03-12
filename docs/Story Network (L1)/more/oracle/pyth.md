@@ -11,6 +11,8 @@ hidden: true
 metadata:
   robots: index
 ---
+## VRF
+
 ### Documentation
 
 To integrate Pyth Entropy, you need to invoke an on-chain function to request a random number from Entropy. This function accepts a randomly generated number, which can be created off-chain and sent to the Entropy contract. In return, the contract provides a sequence number. Once the request is processed, Pyth Entropy will send a callback to your contract, delivering the generated random number.
@@ -36,8 +38,6 @@ address: 0x4374e5a8b9C22271E9EB878A2AA31DE97DF15DAF
 <br />
 
 #### Testnet (Aeneid)
-
-<br />
 
 ##### ERC1967Proxy.sol
 
