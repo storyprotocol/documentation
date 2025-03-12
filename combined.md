@@ -493,7 +493,7 @@ Address: 0x61F2976610970AFeDc1d83229e1E21bdc3D5cbE4
 
 Pyth Network provides real-time financial market data to smart contracts across 100+ blockchains, sourcing prices from over 100 exchanges and market makers. With 850+ price feeds covering equities, commodities, and cryptocurrencies, Pyth aggregates and updates prices multiple times per second.
 
-[PythUpgradeable.sol](https://aeneid.storyscan.xyz/address/0x98046Bd286715D3B0BC227Dd7a956b83D8978603)
+<br />
 
 See Pyth's [How to Generate Random numbers in EVM dApps](https://docs.pyth.network/entropy/generate-random-numbers/evm) guide to integrate your application with Pyth Entropy.
 
@@ -501,13 +501,13 @@ See Pyth's [How to Generate Random numbers in EVM dApps](https://docs.pyth.netwo
 
 #### Mainnet
 
-##### ERC1967Proxy.sol
+##### [ERC1967Proxy.sol](https://www.storyscan.xyz/address/0xD458261E832415CFd3BAE5E416FdF3230ce6F134)
 
 ```
 address: 0xD458261E832415CFd3BAE5E416FdF3230ce6F134
 ```
 
-##### PythUpgradable.sol
+##### [PythUpgradable.sol](https://www.storyscan.xyz/address/0x5f3c61944CEb01B3eAef861251Fb1E0f14b848fb)
 
 ```
 address: 0x5f3c61944CEb01B3eAef861251Fb1E0f14b848fb
@@ -539,13 +539,13 @@ See Pyth's [How to Generate Random numbers in EVM dApps](https://docs.pyth.netwo
 
 #### Mainnet
 
-##### ERC1967Proxy.sol
+##### [ERC1967Proxy.sol](https://www.storyscan.xyz/address/0xdF21D137Aadc95588205586636710ca2890538d5)
 
 ```
 address: 0xdF21D137Aadc95588205586636710ca2890538d5
 ```
 
-##### EntropyUpgradeable.sol
+##### [EntropyUpgradeable.sol](\[https://www.storyscan.xyz/address/0x4374e5a8b9C22271E9EB878A2AA31DE97DF15DAF]\(https://www.storyscan.xyz/address/0x4374e5a8b9C22271E9EB878A2AA31DE97DF15DAF\))
 
 ```
 address: 0x4374e5a8b9C22271E9EB878A2AA31DE97DF15DAF
