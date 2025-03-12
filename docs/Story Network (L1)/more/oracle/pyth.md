@@ -23,13 +23,13 @@ See Pyth's [How to Generate Random numbers in EVM dApps](https://docs.pyth.netwo
 
 #### Mainnet
 
-##### ERC1967Proxy.sol
+##### [ERC1967Proxy.sol](https://www.storyscan.xyz/address/0xD458261E832415CFd3BAE5E416FdF3230ce6F134)
 
 ```
 address: 0xD458261E832415CFd3BAE5E416FdF3230ce6F134
 ```
 
-##### PythUpgradable.sol
+##### [PythUpgradable.sol](https://www.storyscan.xyz/address/0x5f3c61944CEb01B3eAef861251Fb1E0f14b848fb)
 
 ```
 address: 0x5f3c61944CEb01B3eAef861251Fb1E0f14b848fb
