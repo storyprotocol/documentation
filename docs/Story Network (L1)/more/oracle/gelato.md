@@ -24,7 +24,7 @@ metadata:
 0xafd37d0558255aA687167560cd3AaeEa75c2841E
 ```
 
-##### [Automate.sol](0xab2c44495F5F954149b94C750ca20B64ea60B51c)
+##### [Automate.sol](https://www.storyscan.xyz/address/0xab2c44495F5F954149b94C750ca20B64ea60B51c)
 
 ```
 0xab2c44495F5F954149b94C750ca20B64ea60B51c
