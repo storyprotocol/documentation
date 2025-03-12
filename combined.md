@@ -458,11 +458,21 @@ visualization for the blockchain network. Tools include **Prometheus**,
 | **Grafana**    | Provides a dashboard interface for metrics and logs visualization. | `3000`                         | `http://localhost:3000` |
 
 # Gelato
-## VRF
+# VRF
 
 ### Smart Contracts
 
-#### GelatoRelay.sol
+#### Functions and VRF
+
+##### Mainnet
+
+<br />
+
+#### Relays
+
+##### Mainnet
+
+###### GelatoRelay.sol
 
 Relay method: `callWithSyncFee`
 
