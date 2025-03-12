@@ -18,7 +18,17 @@ metadata:
 
 #### Mainnet
 
-<br />
+##### [EIP173Proxy.sol](https://www.storyscan.xyz/address/0xafd37d0558255aA687167560cd3AaeEa75c2841E)
+
+```
+0xafd37d0558255aA687167560cd3AaeEa75c2841E
+```
+
+##### [Automate.sol](0xab2c44495F5F954149b94C750ca20B64ea60B51c)
+
+```
+0xab2c44495F5F954149b94C750ca20B64ea60B51c
+```
 
 ### Relays
 
@@ -29,7 +39,7 @@ metadata:
 Relay method: `callWithSyncFee`
 
 ```
-Address: 0xcd565435e0d2109feFde337a66491541Df0D1420
+0xcd565435e0d2109feFde337a66491541Df0D1420
 ```
 
 ##### GelatoRelayERC2771.sol
@@ -37,7 +47,7 @@ Address: 0xcd565435e0d2109feFde337a66491541Df0D1420
 Relay method: `callWithSyncFeeERC2771`
 
 ```
-Address: 0x8aCE64CEA52b409F930f60B516F65197faD4B056
+0x8aCE64CEA52b409F930f60B516F65197faD4B056
 ```
 
 ##### GelatoRelayConcurrentERC2771.sol
@@ -45,7 +55,7 @@ Address: 0x8aCE64CEA52b409F930f60B516F65197faD4B056
 Relay method: `callWithSyncFeeERC2771` with `isConcurrent: true`
 
 ```
-Address: 0xc7739c195618D314C08E8626C98f8573E4E43634
+0xc7739c195618D314C08E8626C98f8573E4E43634
 ```
 
 ##### GelatoRelay1BalanceERC2771.sol
@@ -53,5 +63,5 @@ Address: 0xc7739c195618D314C08E8626C98f8573E4E43634
 Relay method: `sponsoredCallERC2771`
 
 ```
-Address: 0x61F2976610970AFeDc1d83229e1E21bdc3D5cbE4
+0x61F2976610970AFeDc1d83229e1E21bdc3D5cbE4
 ```
