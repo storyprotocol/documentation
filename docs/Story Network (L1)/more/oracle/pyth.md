@@ -1,5 +1,11 @@
 ---
 title: Pyth
+excerpt: >-
+  Pyth Network is a decentralized oracle providing market data and verifiable
+  random functions (VRF) for smart contracts. Its VRF service enables on-chain
+  generation of provably fair random numbers. By sourcing data directly from
+  institutional providers, Pyth ensures secure, low-latency updates while
+  maintaining transparency and efficiency.
 deprecated: false
 hidden: true
 metadata:
