@@ -10,7 +10,7 @@ hidden: false
 metadata:
   robots: index
 ---
-## VRF
+# VRF
 
 ### Smart Contracts
 
