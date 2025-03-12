@@ -29,7 +29,7 @@ address: 0x4374e5a8b9C22271E9EB878A2AA31DE97DF15DAF
 
 <br />
 
-#### Mainnet (Aeneid)
+#### Testnet (Aeneid)
 
 <br />
 
