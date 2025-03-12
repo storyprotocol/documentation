@@ -1,5 +1,5 @@
 ---
-title: Oracle
+title: Oracles
 deprecated: false
 hidden: false
 metadata:
