@@ -7,7 +7,7 @@ excerpt: >-
   from institutional providers, Pyth ensures secure, low-latency price updates
   while maintaining transparency and efficiency.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   robots: index
 ---
