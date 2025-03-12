@@ -14,7 +14,17 @@ metadata:
 
 ### Smart Contracts
 
-#### GelatoRelay.sol
+#### Functions and VRF
+
+##### Mainnet
+
+<br />
+
+#### Relays
+
+##### Mainnet
+
+###### GelatoRelay.sol
 
 Relay method: `callWithSyncFee`
 
