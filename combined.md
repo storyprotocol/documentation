@@ -489,9 +489,47 @@ Address: 0x61F2976610970AFeDc1d83229e1E21bdc3D5cbE4
 ```
 
 # Pyth
-## VRF
+## Price Feeds
 
-### Documentation
+Pyth Network provides real-time financial market data to smart contracts across 100+ blockchains, sourcing prices from over 100 exchanges and market makers. With 850+ price feeds covering equities, commodities, and cryptocurrencies, Pyth aggregates and updates prices multiple times per second.
+
+[PythUpgradeable.sol](https://aeneid.storyscan.xyz/address/0x98046Bd286715D3B0BC227Dd7a956b83D8978603)
+
+See Pyth's [How to Generate Random numbers in EVM dApps](https://docs.pyth.network/entropy/generate-random-numbers/evm) guide to integrate your application with Pyth Entropy.
+
+### Contracts
+
+#### Mainnet
+
+##### ERC1967Proxy.sol
+
+```
+address: 0xD458261E832415CFd3BAE5E416FdF3230ce6F134
+```
+
+##### PythUpgradable.sol
+
+```
+address: 0x5f3c61944CEb01B3eAef861251Fb1E0f14b848fb
+```
+
+#### Testnet (Aeneid)
+
+##### [ERC1967Proxy.sol](https://aeneid.storyscan.xyz/address/0x36825bf3Fbdf5a29E2d5148bfe7Dcf7B5639e320)
+
+```
+address: 0x36825bf3Fbdf5a29E2d5148bfe7Dcf7B5639e320
+```
+
+##### [PythUpgradeable.sol](https://aeneid.storyscan.xyz/address/0x98046Bd286715D3B0BC227Dd7a956b83D8978603)
+
+```
+address: 0x98046Bd286715D3B0BC227Dd7a956b83D8978603
+```
+
+<br />
+
+## VRF
 
 To integrate Pyth Entropy, you need to invoke an on-chain function to request a random number from Entropy. This function accepts a randomly generated number, which can be created off-chain and sent to the Entropy contract. In return, the contract provides a sequence number. Once the request is processed, Pyth Entropy will send a callback to your contract, delivering the generated random number.
 
