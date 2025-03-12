@@ -31,6 +31,6 @@ Address: 0xc7739c195618D314C08E8626C98f8573E4E43634
 ### GelatoRelay1BalanceERC2771.sol
 
 ```
-Relay method: sponsoredCallERC2771\
+Relay method: sponsoredCallERC2771
 Address: 0x61F2976610970AFeDc1d83229e1E21bdc3D5cbE4
 ```
