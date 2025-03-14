@@ -187,7 +187,7 @@ function mintLicenseTokenAndRegisterDerivative(
 
 Create another new file under `test/Example.t.sol` and paste the following:
 
-```sol Example.t.sol
+```sol test/Example.t.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
