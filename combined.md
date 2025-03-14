@@ -15387,7 +15387,7 @@ Now that we have created terms and have the associated `licenseTermsId`, we can 
 
 > Associated Docs: [license.attachLicenseTerms](https://docs.story.foundation/docs/sdk-license#attachlicenseterms)
 
-```typescript TypeScript
+```typescript main.ts
 import { LicenseTerms } from '@story-protocol/core-sdk';
 import { zeroAddress } from 'viem';
 // you should already have a client set up (prerequisite)
