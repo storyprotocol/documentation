@@ -21,11 +21,9 @@ Install the [Story Protocol SDK](https://www.npmjs.com/package/@story-protocol/c
 ```shell npm
 npm install --save @story-protocol/core-sdk viem
 ```
-
 ```shell pnpm
 pnpm install @story-protocol/core-sdk viem
 ```
-
 ```shell yarn
 yarn add @story-protocol/core-sdk viem
 ```
