@@ -2399,7 +2399,7 @@ The `story` and `geth` binaries, which make up the clients required for running 
   * Latest Stable Binary (v1.0.2): [**Click here**](https://github.com/piplabs/story-geth/releases/tag/v1.0.2)
 * **`story`consensus client:**
   * Releases link: [**Click here**](https://github.com/piplabs/story/releases)
-  * Latest Stable Binary (v1.1.0): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.1.0)
+  * Latest Stable Binary (v1.1.1): [**Click here**](https://github.com/piplabs/story/releases/tag/v1.1.0)
 
 # Story Node Installation Guide
 
