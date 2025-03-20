@@ -23,6 +23,7 @@ This arbitration policy is a dispute resolution mechanism that uses UMA’s opti
 1. Raise Dispute - The first step to initiate a dispute against an IP Asset is to call the `raiseDispute` function on [DisputeModule.sol](https://github.com/storyprotocol/protocol-core-v1/blob/main/contracts/modules/dispute/DisputeModule.sol). This function will in turn call `assertTruth` on UMA's `OptimisticOracleV3.sol`. To initiate a dispute the dispute initiator will need to post a bond of at least the minimum bond defined by UMA for the selected currency. Note that this bond will be lost if the dispute is deemed not verifiably correct by the oracle.
 
    After this step, the dispute will be “open” to be countered/appealed by other users. If there is no counter/appeal, UMA rules define that the IP will be considered to be infringing.
+
    ```sol DisputeModule.sol
        /// @notice Raises a dispute on a given ipId
    		/// @param targetIpId The ipId that is the target of the dispute
@@ -40,6 +41,7 @@ This arbitration policy is a dispute resolution mechanism that uses UMA’s opti
 2. (Optional) Dispute Assertion / Counter Dispute / Make Appeal - After the `raiseDispute` call there is a period of time called "liveness" in which a counter dispute/appeal can be submitted. The liveness period is split in two parts: (i) the first part of the liveness period in which only the IP owner can counter dispute/appeal and (ii) a second part in which any address can counter dispute/appeal - which can be done by calling `disputeAssertion` on `ArbitrationPolicyUMA.sol`. To counter a dispute the caller will need to post a bond of the same amount and currency that was used by the dispute initiator when raising a dispute. Note that this bond will be lost if the original dispute is deemed to be verifiably correct by the oracle.
 
    After this step, the dispute is escalated and will be reviewed by external party UMA.
+
    ```sol ArbitrationPolicyUMA.sol
        /// @notice Allows the IP that was targeted with a dispute to dispute the assertion while providing 				counter evidence
        /// @param assertionId The identifier of the assertion that was disputed
@@ -53,8 +55,8 @@ This arbitration policy is a dispute resolution mechanism that uses UMA’s opti
 3. \[If step 2 happened] UMA reviewers judge the dispute. On this step the user just has to wait until the UMA reviewers make the dispute judgement. This step could take 48-96 hours.
 4. Settle Assertion
    1. If nobody submitted a counter dispute then when the liveness period is over, any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
-   2. If somebody has submitted a counter dispute/appeal before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
-   This step is expected to be automatic as UMA runs a bot that calls `settleAssertion` which in turn distributes the bonds back to the address that wins the dispute.
+   2. If somebody has submitted a counter dispute/appeal before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.\
+      This step is expected to be automatic as UMA runs a bot that calls `settleAssertion` which in turn distributes the bonds back to the address that wins the dispute.
 
 ## Dispute Evidence Submission Guidelines
 
