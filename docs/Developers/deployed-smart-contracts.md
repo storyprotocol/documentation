@@ -10,6 +10,10 @@ metadata:
 next:
   description: ''
 ---
+> 🚧 Warning
+>
+> Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
+
 ## Core Protocol Contracts
 
 * View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-core-v1/tree/main)
