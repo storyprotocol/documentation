@@ -10,6 +10,10 @@ metadata:
 next:
   description: ''
 ---
+> 🚧 Warning
+>
+> Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
+
 In this section, we will briefly go over the protocol contracts and then guide you through how to start building on top of the protocol. If you haven't yet familiarized yourself with the overall architecture, we recommend first going over the [Architecture Overview](doc:overview) section.
 
 ## Smart Contract Tutorial
