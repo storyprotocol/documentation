@@ -34,12 +34,22 @@ metadata:
 
 #### Mainnet
 
-##### GelatoRelay.sol
+##### GelatoRelay
 
 Relay method: `callWithSyncFee`
 
+###### EIP173Proxy.sol
+
 ```
 0xcd565435e0d2109feFde337a66491541Df0D1420
+```
+
+#####
+
+###### GelatoRelay.sol
+
+```
+0xA75983F686999843804a2ECC0E93C35d39a4F750
 ```
 
 ##### GelatoRelayERC2771.sol
