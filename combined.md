@@ -1712,11 +1712,9 @@ Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SD
 
 <Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
 
-<br />
-
-### Warning
-
-Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
+> 🚧 Warning
+>
+> Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
 
 # List of Modules
 # List of Modules
@@ -11327,6 +11325,10 @@ Our tutorials will show you exactly how to raise a dispute on-chain:
 > For more information on filing a dispute on-chain, check out the [❌ Dispute Module](doc:dispute-module).
 
 # 💾 Deployed Smart Contracts
+> 🚧 Warning
+>
+> Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
+
 ## Core Protocol Contracts
 
 * View contracts on our GitHub [here](https://github.com/storyprotocol/protocol-core-v1/tree/main)
@@ -16237,6 +16239,10 @@ Now that you have registered new license terms, we can attach them to an IP Asse
 We will go over this on the next page.
 
 # ⚙️ Smart Contract Guide
+> 🚧 Warning
+>
+> Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
+
 In this section, we will briefly go over the protocol contracts and then guide you through how to start building on top of the protocol. If you haven't yet familiarized yourself with the overall architecture, we recommend first going over the [Architecture Overview](doc:overview) section.
 
 ## Smart Contract Tutorial
