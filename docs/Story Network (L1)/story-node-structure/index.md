@@ -18,8 +18,6 @@ Story is a purpose-built modular blockchain fully EVM compatible using Cosmos SD
 
 <Image align="center" src="https://files.readme.io/12b850eac8fcdf10ebb8d2ed23f7217e1b791b87865b37e582d8711790e4f204-image.png" />
 
-<br />
-
-### Warning
-
-Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
+> 🚧 Warning
+>
+> Do not use `RANDAO` for pseudo-randomness, instead use onchain VRF (Pyth or Gelato). Currently, `RANDAO` value is set as the parent block hash and thus is not random for X-1 block.
