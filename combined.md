@@ -531,57 +531,59 @@ Redstone delivers real-time financial data to smart contracts on 70+ blockchains
 
 See Redstone's [Documentation](https://docs.redstone.finance/docs/introduction) guide to integrate your application with Redstone Price Feeds.
 
-## ETH
+## Smart Contracts
 
-### TransparentUpgradeableProxy
+### ETH
+
+#### TransparentUpgradeableProxy
 
 ```
 0x22d47686b3AEC9068768f84EFD8Ce2637a347B0A
 ```
 
-### StoryPriceFeedEthWithoutRoundsV1
+#### StoryPriceFeedEthWithoutRoundsV1
 
 ```
 0xb9D0073aCb296719C26a8BF156e4b599174fe1d5
 ```
 
-## BTC
+### BTC
 
-### TransparentUpgradeableProxy
+#### TransparentUpgradeableProxy
 
 ```
 0xc44be6D00307c3565FDf753e852Fc003036cBc13
 ```
 
-### StoryPriceFeedBtcWithoutRoundsV1
+#### StoryPriceFeedBtcWithoutRoundsV1
 
 ```
 0xE23eCA12D7D2ED3829499556F6dCE06642AFd990
 ```
 
-## USDC
+### USDC
 
-### TransparentUpgradeableProxy
+#### TransparentUpgradeableProxy
 
 ```
 0xED2B1ca5D7E246f615c2291De309643D41FeC97e
 ```
 
-### StoryPriceFeedUsdcWithoutRoundsV1
+#### StoryPriceFeedUsdcWithoutRoundsV1
 
 ```
 0x31a36CdF4465ba61ce78F5CDbA26FDF8ec361803
 ```
 
-## USDT
+### USDT
 
-### TransparentUpgradeableProxy
+#### TransparentUpgradeableProxy
 
 ```
 0x7A9b672fc20b5C89D6774514052b3e0899E5E263
 ```
 
-### StoryPriceFeedUsdtWithoutRoundsV1
+#### StoryPriceFeedUsdtWithoutRoundsV1
 
 ```
 0xe8D9FbC10e00ecc9f0694617075fDAF657a76FB2
@@ -594,7 +596,7 @@ Pyth Network provides real-time financial market data to smart contracts across 
 
 See Pyth's [Documentation](https://docs.pyth.network/price-feeds/price-feeds) guide to integrate your application with Pyth Price Feeds.
 
-## Contracts
+## Smart Contracts
 
 ### Mainnet
 
@@ -632,7 +634,7 @@ To integrate Pyth Entropy, you need to invoke an on-chain function to request a 
 
 See Pyth's [How to Generate Random numbers in EVM dApps](https://docs.pyth.network/entropy/generate-random-numbers/evm) guide to integrate your application with Pyth Entropy.
 
-## Contracts
+## Smart Contracts
 
 ### Mainnet
 
