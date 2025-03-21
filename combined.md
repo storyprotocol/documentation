@@ -8060,7 +8060,7 @@ This arbitration policy is a dispute resolution mechanism that uses UMA’s opti
    		/// @param disputeEvidenceHash The hash pointing to the dispute evidence - this could be an IPFS CID 				converted to a bytes32 hash. This is the document with the proof that UMA reviewers will potentially read
    		/// @param targetTag The target tag of the dispute
    		/// @param data The data to initialize the policy - here you can do abi.encode of liveness, token address 		and bond amount
-       /// @return disputeId The id of the newly raised dispute
+   		/// @return disputeId The id of the newly raised dispute
        function raiseDispute(
            address targetIpId,
            bytes32 disputeEvidenceHash,
