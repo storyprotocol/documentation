@@ -462,6 +462,8 @@ visualization for the blockchain network. Tools include **Prometheus**,
 
 Gelato VRF provides verifiable randomness for blockchain applications by utilizing Drand, a decentralized and trusted source of random numbers. It ensures that developers receive truly random values that are both provable and tamper-resistant.
 
+See Gelato's [Documentation](\[https://docs.gelato.network/web3-services/vrf]\(https://docs.gelato.network/web3-services/vrf\)) guide to integrate your application with their Price Feeds.
+
 ## Smart Contracts
 
 ### Functions and VRF
