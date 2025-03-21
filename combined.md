@@ -8083,10 +8083,9 @@ This arbitration policy is a dispute resolution mechanism that uses UMA’s opti
        function disputeIdToAssertionId(uint256 disputeId) external view returns (bytes32);
    ```
 3. \[If step 2 happened] UMA reviewers judge the dispute. On this step the user just has to wait until the UMA reviewers make the dispute judgement. This step could take 48-96 hours.
-4. Settle Assertion
+4. Settle Assertion - This step is expected to be automatic as UMA runs a bot that calls `settleAssertion` which in turn distributes the bonds back to the address that wins the dispute.
    1. If nobody submitted a counter dispute then when the liveness period is over, any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
-   2. If somebody has submitted a counter dispute/appeal before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.\
-      This step is expected to be automatic as UMA runs a bot that calls `settleAssertion` which in turn distributes the bonds back to the address that wins the dispute.
+   2. If somebody has submitted a counter dispute/appeal before the liveness period is over, then the dispute is escalated to UMA decision makers who will judge and make a decision on whether the IP is infringing or not. After the decision has been made, then any address can call `settleAssertion` on UMA's `OptimisticOracleV3.sol`.
 
 ## Dispute Evidence Submission Guidelines
 
