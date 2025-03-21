@@ -2,10 +2,9 @@
 title: Pyth
 excerpt: >-
   Pyth Network is a decentralized oracle providing pricing data and verifiable
-  random functions (VRF) for smart contracts. Pyth Entropy(VRF) service enables
-  on-chain generation of provably fair random numbers. By sourcing data directly
-  from institutional providers, Pyth ensures secure, low-latency price updates
-  while maintaining transparency and efficiency.
+  random functions (VRF) for smart contracts. By sourcing data directly from
+  institutional providers, Pyth ensures secure, low-latency price updates while
+  maintaining transparency and efficiency.
 deprecated: false
 hidden: false
 metadata:
