@@ -1,12 +1,9 @@
 ---
 title: Gelato
 excerpt: >-
-  Gelato Network is a Web3 automation platform that powers smart contract
-  execution across major blockchains. Gelato offers a suite of products,
-  including its decentralized automation protocol, Web3 Functions (serverless
-  cloud functions for blockchain), and Gasless Transactions. It also provides
-  Gelato VRF, a verifiable random function service delivering secure and
-  tamper-proof randomness.
+  Gelato Network automates smart contract execution across major blockchains.
+  Its products include decentralized automation, Web3 Functions, Gasless
+  Transactions, and Gelato VRF for secure, verifiable randomness.
 deprecated: false
 hidden: false
 metadata:
