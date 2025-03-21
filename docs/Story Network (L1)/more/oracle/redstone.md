@@ -14,7 +14,7 @@ metadata:
 
 Redstone delivers real-time financial data to smart contracts on 70+ blockchains, covering crypto, RWAs, LRTs, BTCFi, and other emerging assets. Combining institutional and crypto-native data, Redstone ensures reliability through multi-layered validation, including anomaly detection, market depth analysis, and cross-source variance checks.
 
-See Redstone's [Documentation](https://docs.redstone.finance/docs/introduction) guide to integrate your application with Redstone Price Feeds.
+See Redstone's [Documentation](https://docs.redstone.finance/docs/introduction) guide to integrate your application with their price feeds.
 
 ## Smart Contracts
 
