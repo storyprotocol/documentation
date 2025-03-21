@@ -462,7 +462,7 @@ visualization for the blockchain network. Tools include **Prometheus**,
 
 Gelato VRF provides verifiable randomness for blockchain applications by utilizing Drand, a decentralized and trusted source of random numbers. It ensures that developers receive truly random values that are both provable and tamper-resistant.
 
-See Gelato's [Documentation](\[https://docs.gelato.network/web3-services/vrf]\(https://docs.gelato.network/web3-services/vrf\)) guide to integrate your application with their Price Feeds.
+See Gelato's [Documentation](\[https://docs.gelato.network/web3-services/vrf]\(https://docs.gelato.network/web3-services/vrf\)) guide to integrate your application with their price feeds.
 
 ## Smart Contracts
 
@@ -533,7 +533,7 @@ Relay method: `sponsoredCallERC2771`
 
 Redstone delivers real-time financial data to smart contracts on 70+ blockchains, covering crypto, RWAs, LRTs, BTCFi, and other emerging assets. Combining institutional and crypto-native data, Redstone ensures reliability through multi-layered validation, including anomaly detection, market depth analysis, and cross-source variance checks.
 
-See Redstone's [Documentation](https://docs.redstone.finance/docs/introduction) guide to integrate your application with Redstone Price Feeds.
+See Redstone's [Documentation](https://docs.redstone.finance/docs/introduction) guide to integrate your application with their price feeds.
 
 ## Smart Contracts
 
@@ -598,7 +598,7 @@ See Redstone's [Documentation](https://docs.redstone.finance/docs/introduction) 
 
 Pyth Network provides real-time financial market data to smart contracts across 100+ blockchains, sourcing prices from over 100 exchanges and market makers. With 850+ price feeds covering equities, commodities, and cryptocurrencies, Pyth aggregates and updates prices multiple times per second.
 
-See Pyth's [Documentation](https://docs.pyth.network/price-feeds/price-feeds) guide to integrate your application with Pyth Price Feeds.
+See Pyth's [Documentation](https://docs.pyth.network/price-feeds/price-feeds) guide to integrate your application with their price feeds.
 
 ## Smart Contracts
 
