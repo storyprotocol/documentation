@@ -15,7 +15,7 @@ metadata:
 
 Pyth Network provides real-time financial market data to smart contracts across 100+ blockchains, sourcing prices from over 100 exchanges and market makers. With 850+ price feeds covering equities, commodities, and cryptocurrencies, Pyth aggregates and updates prices multiple times per second.
 
-See Pyth's [Documentation](https://docs.pyth.network/price-feeds/price-feeds) guide to integrate your application with their Price Feeds.
+See Pyth's [Documentation](https://docs.pyth.network/price-feeds/price-feeds) guide to integrate your application with their price feeds.
 
 ## Smart Contracts
 
