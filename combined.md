@@ -527,7 +527,9 @@ Relay method: `sponsoredCallERC2771`
 # Redstone
 # Price Feeds
 
-Redstone provides real-time financial market data to smart contracts across 70+ blockchains. It extends beyond standard cryptocurrency price feeds to serve emerging financial products and specialized digital assets. Including reliable data for complex instruments like Liquid Restaking Tokens (LRT), Bitcoin DeFi derivatives (BTCFi), and various Real World Assets (RWA). By combining institutional data provider connections with traditional crypto market data, RedStone processes these specialized feeds through multiple validation layers - from asset-specific anomaly detection to market depth analysis and cross-source variance checks.
+Redstone delivers real-time financial data to smart contracts on 70+ blockchains, covering crypto, RWAs, LRTs, BTCFi, and other emerging assets. Combining institutional and crypto-native data, Redstone ensures reliability through multi-layered validation, including anomaly detection, market depth analysis, and cross-source variance checks.
+
+See Redstone's [Documentation](https://docs.redstone.finance/docs/introduction) guide to integrate your application with Redstone Price Feeds.
 
 ## ETH
 
