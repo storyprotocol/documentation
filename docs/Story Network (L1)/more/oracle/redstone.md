@@ -4,14 +4,15 @@ excerpt: >-
   Redstone is a decentralized oracle network designed to deliver customizable
   data feeds for smart contracts and DeFi protocols. It uses a unique off-chain
   data delivery model where data is signed and bundled off-chain, then submitted
-  on-chain only when needed. Redstone supports a wide range of assets, including
-  cryptocurrencies, commodities, and custom data feeds. 
+  on-chain only when needed. 
 deprecated: false
 hidden: false
 metadata:
   robots: index
 ---
 # Price Feeds
+
+Redstone provides real-time financial market data to smart contracts across 70+ blockchains. It extends beyond standard cryptocurrency price feeds to serve emerging financial products and specialized digital assets. Including reliable data for complex instruments like Liquid Restaking Tokens (LRT), Bitcoin DeFi derivatives (BTCFi), and various Real World Assets (RWA). By combining institutional data provider connections with traditional crypto market data, RedStone processes these specialized feeds through multiple validation layers - from asset-specific anomaly detection to market depth analysis and cross-source variance checks.
 
 ## ETH
 
