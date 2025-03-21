@@ -17,7 +17,7 @@ Pyth Network provides real-time financial market data to smart contracts across 
 
 See Pyth's [Documentation](https://docs.pyth.network/price-feeds/price-feeds) guide to integrate your application with Pyth Price Feeds.
 
-## Contracts
+## Smart Contracts
 
 ### Mainnet
 
