@@ -1,16 +1,20 @@
 ---
 title: Gelato
 excerpt: >-
-  Gelato VRF provides verifiable randomness for blockchain applications by
-  utilizing Drand, a decentralized and trusted source of random numbers. It
-  ensures that developers receive truly random values that are both provable and
-  tamper-resistant.
+  Gelato Network is a Web3 automation platform that powers smart contract
+  execution across major blockchains. Gelato offers a suite of products,
+  including its decentralized automation protocol, Web3 Functions (serverless
+  cloud functions for blockchain), and Gasless Transactions. It also provides
+  Gelato VRF, a verifiable random function service delivering secure and
+  tamper-proof randomness.
 deprecated: false
 hidden: false
 metadata:
   robots: index
 ---
 # VRF
+
+Gelato VRF provides verifiable randomness for blockchain applications by utilizing Drand, a decentralized and trusted source of random numbers. It ensures that developers receive truly random values that are both provable and tamper-resistant.
 
 ## Smart Contracts
 
