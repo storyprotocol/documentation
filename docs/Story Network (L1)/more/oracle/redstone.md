@@ -2,10 +2,10 @@
 title: Redstone
 excerpt: >-
   Redstone is a decentralized oracle network designed to deliver customizable
-  data feeds for smart contracts and DeFi protocols. Redstone uses a unique
-  off-chain data delivery model where data is signed and bundled off-chain, then
-  submitted on-chain only when needed. Redstone supports a wide range of assets,
-  including cryptocurrencies, commodities, and custom data feeds. 
+  data feeds for smart contracts and DeFi protocols. It uses a unique off-chain
+  data delivery model where data is signed and bundled off-chain, then submitted
+  on-chain only when needed. Redstone supports a wide range of assets, including
+  cryptocurrencies, commodities, and custom data feeds. 
 deprecated: false
 hidden: false
 metadata:
