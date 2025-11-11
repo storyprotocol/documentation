@@ -136,6 +136,7 @@ cd $HOME
 wget https://github.com/piplabs/story-geth/releases/download/v1.0.1/geth-linux-amd64
 sudo mv ./geth-linux-amd64 story-geth
 sudo chmod +x story-geth
+mkdir -p $HOME/go/bin
 sudo mv ./story-geth $HOME/go/bin/
 source $HOME/.bashrc
 
