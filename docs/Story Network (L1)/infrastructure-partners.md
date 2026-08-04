@@ -125,3 +125,7 @@ metadata:
     The most trusted decentralized custody protocol and collective asset management platform.
   </Card>
 </Cards>
+
+## Live RPC Latency Benchmarks
+
+For live latency comparisons across public Story RPC endpoints, see [OpenChainBench](https://openchainbench.com/benchmarks/story-rpc) — an open benchmark that continuously measures free keyless endpoints so developers can choose the fastest provider for their region.
